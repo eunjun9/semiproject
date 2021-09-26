@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-09-26T10:35:10.824Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36" etag="nV49994bO3YrGFOM8LAt" version="15.3.0" type="github" pages="2">
+<mxfile host="app.diagrams.net" modified="2021-09-26T10:35:56.862Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36" etag="1ts8HdMN9pGEp9cgMdWR" version="15.3.0" type="github" pages="2">
   <diagram id="3fcx4SjpPdzD_JpHyCO2" name="Page-1">
     <mxGraphModel dx="2692" dy="1716" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -687,13 +687,16 @@
         <mxCell id="l9_X9TsSDByedX8LzIIi-54" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;fontSize=12;" edge="1" parent="1" source="l9_X9TsSDByedX8LzIIi-50" target="l9_X9TsSDByedX8LzIIi-46">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="6830" y="50" />
+              <mxPoint x="6830" y="210" />
               <mxPoint x="6830" y="-230" />
             </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="l9_X9TsSDByedX8LzIIi-50" value="매출 관리로 돌아가기" style="rounded=0;whiteSpace=wrap;html=1;fontSize=12;" vertex="1" parent="1">
-          <mxGeometry x="6600" y="20" width="120" height="60" as="geometry" />
+          <mxGeometry x="6600" y="180" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="l9_X9TsSDByedX8LzIIi-56" value="환불 상세 내역 확인" style="rounded=0;whiteSpace=wrap;html=1;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="6600" y="30" width="120" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
