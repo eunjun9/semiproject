@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2021-09-26T10:22:16.696Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36" etag="WnUCOVEpP6U5Vc5r5jR1" version="15.3.0" type="github" pages="2">
+<mxfile host="app.diagrams.net" modified="2021-09-26T10:32:38.375Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36" etag="-7pxDguHvzYE6cT8u1FF" version="15.3.0" type="github" pages="2">
   <diagram id="3fcx4SjpPdzD_JpHyCO2" name="Page-1">
-    <mxGraphModel dx="3137" dy="1950" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="4620" dy="2732" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -40,7 +40,7 @@
         <mxCell id="EY9S80nein7VaTpR3va8-204" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=15;" edge="1" parent="1" source="EY9S80nein7VaTpR3va8-3" target="EY9S80nein7VaTpR3va8-202">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="EY9S80nein7VaTpR3va8-3" value="메인페이지" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="EY9S80nein7VaTpR3va8-3" value="메인페이지" style="rounded=1;whiteSpace=wrap;html=1;fontSize=16;" vertex="1" parent="1">
           <mxGeometry x="1750" y="-190" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="EY9S80nein7VaTpR3va8-4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=none;" edge="1" parent="1" source="EY9S80nein7VaTpR3va8-33" target="EY9S80nein7VaTpR3va8-7">
@@ -326,6 +326,11 @@
         </mxCell>
         <mxCell id="EY9S80nein7VaTpR3va8-120" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="EY9S80nein7VaTpR3va8-117" target="EY9S80nein7VaTpR3va8-5">
           <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="l9_X9TsSDByedX8LzIIi-45" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=16;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="EY9S80nein7VaTpR3va8-117" target="l9_X9TsSDByedX8LzIIi-44">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="2010" y="-370" as="targetPoint" />
+          </mxGeometry>
         </mxCell>
         <mxCell id="EY9S80nein7VaTpR3va8-117" value="시작페이지" style="rounded=1;whiteSpace=wrap;html=1;fontStyle=1;fontSize=24;" vertex="1" parent="1">
           <mxGeometry x="1710" y="-420" width="200" height="100" as="geometry" />
@@ -660,6 +665,15 @@
             <mxPoint x="4800" y="460" as="sourcePoint" />
             <mxPoint x="4800" y="540" as="targetPoint" />
           </mxGeometry>
+        </mxCell>
+        <mxCell id="l9_X9TsSDByedX8LzIIi-47" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=16;" edge="1" parent="1" source="l9_X9TsSDByedX8LzIIi-44" target="l9_X9TsSDByedX8LzIIi-46">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="l9_X9TsSDByedX8LzIIi-44" value="관리자 페이지" style="rounded=0;whiteSpace=wrap;html=1;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="6600" y="-400" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="l9_X9TsSDByedX8LzIIi-46" value="관리자 페이지" style="rounded=0;whiteSpace=wrap;html=1;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="6600" y="-260" width="120" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
