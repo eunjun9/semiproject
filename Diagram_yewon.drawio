@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-09-26T13:31:11.587Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.61 Safari/537.36" etag="rmC-bwlv8MifZHXiAwUL" version="15.3.3" type="github" pages="3">
+<mxfile host="app.diagrams.net" modified="2021-09-26T13:35:02.327Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.61 Safari/537.36" etag="GIf30LWF9WBENyTJbYj3" version="15.3.3" type="github" pages="3">
   <diagram id="s2rgSWj9j16v0FCGX9V-" name="Class-회원">
     <mxGraphModel dx="10575" dy="7829" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="#ffffff" math="0" shadow="0">
       <root>
@@ -2609,9 +2609,6 @@
         <mxCell id="zyT8950G4NkSEfIN2jek-20" value="클래스 페이지" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="pYS1sYun6x1fYFt21yPo-1">
           <mxGeometry x="745" y="-475" width="95" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="zyT8950G4NkSEfIN2jek-22" value="취소 요청" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="pYS1sYun6x1fYFt21yPo-1">
-          <mxGeometry x="1001" y="-474" width="95" height="30" as="geometry" />
-        </mxCell>
         <mxCell id="zyT8950G4NkSEfIN2jek-23" value="" style="endArrow=none;html=1;startSize=6;endSize=6;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;" edge="1" parent="pYS1sYun6x1fYFt21yPo-1">
           <mxGeometry x="-12.040000000000083" y="-928" width="50" height="50" as="geometry">
             <mxPoint x="790.87" y="-529" as="sourcePoint" />
@@ -2638,6 +2635,30 @@
             <mxPoint x="1048" y="-529" as="sourcePoint" />
             <mxPoint x="1048" y="-480" as="targetPoint" />
           </mxGeometry>
+        </mxCell>
+        <mxCell id="zyT8950G4NkSEfIN2jek-29" value="취소요청" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="pYS1sYun6x1fYFt21yPo-1">
+          <mxGeometry x="982" y="-476" width="130" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="zyT8950G4NkSEfIN2jek-30" value="" style="endArrow=classic;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="pYS1sYun6x1fYFt21yPo-1">
+          <mxGeometry x="167.33999999999992" y="-615" width="50" height="50" as="geometry">
+            <mxPoint x="1112" y="-456" as="sourcePoint" />
+            <mxPoint x="1177" y="-456" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="zyT8950G4NkSEfIN2jek-31" value="No" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="pYS1sYun6x1fYFt21yPo-1">
+          <mxGeometry x="1121" y="-479" width="40" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="zyT8950G4NkSEfIN2jek-32" value="결제 정보 변화 없음" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="pYS1sYun6x1fYFt21yPo-1">
+          <mxGeometry x="1178.5" y="-471" width="149" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="zyT8950G4NkSEfIN2jek-33" value="" style="endArrow=classic;html=1;" edge="1" parent="pYS1sYun6x1fYFt21yPo-1">
+          <mxGeometry x="-194.16000000000008" y="-654" width="50" height="50" as="geometry">
+            <mxPoint x="1046.5" y="-436" as="sourcePoint" />
+            <mxPoint x="1046.5" y="-387" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="zyT8950G4NkSEfIN2jek-34" value="결제 취소" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="pYS1sYun6x1fYFt21yPo-1">
+          <mxGeometry x="999.5" y="-382" width="95" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
