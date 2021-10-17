@@ -1,0 +1,152 @@
+@charset "UTF-8";
+
+html {
+    /* 사용자 설정 문자 크기 그대로 반영 되도록 */
+    font-size : 100%;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+}
+
+/* 소셜링 메인 페이지 ----------------------------------------------------------------------- */
+
+.wrapper {
+    max-width : 75%;
+    margin : 0 auto;
+    padding : 0 4%;
+}
+
+.socialing {
+    margin-top: 5%;
+}
+
+/* 상단 타이틀 */
+
+.s-title {
+    line-height: 1.8;
+}
+
+.s-title > #main-title {
+    font-weight: bold;
+    color: rgb(7,86,105);
+}
+
+.s-title > #sub-title {
+    font-weight: bold;
+    color: rgb(188,188,188);
+}
+
+/* 시작 임박 소셜링 */
+
+#soon-title {
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.s-container {
+    display : flex;
+    justify-content: space-around;
+}
+
+#s-list {
+    width: 27%;
+}
+
+#s-thumbnail {
+    height: 200px;
+    width: 100%;
+}
+
+#s-thumtitle {
+    line-height: 2.2;
+    font-weight: bold;
+}
+
+#s-thumsub {
+    margin-top: -20px;
+    color: lightslategray;
+}
+
+/* 소셜링 전체 보기 - 필터링 */
+
+#all-title {
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+
+#filterbox {
+    background-color: rgb(218,239,245);
+    padding: 50px 100px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+#flabel {
+    font-weight: bold;
+    color: gray;
+}
+
+select[name=local],
+input[name=dateIn] {
+    margin-left: 70px;
+}
+
+select[name=local-details],
+input[name=onoff] {
+    margin-left: 20px;
+}
+
+select[name=local],
+select[name=local-details],
+select[name=lineup] {
+    padding: 3px;
+}
+
+#s-reset {
+    margin-left: 250px;
+    background-color: white;
+    padding: 8px;
+    font-weight: bold;
+}
+
+#s-submit {
+    margin-left: 20px;
+    background-color: rgb(7,86,105);
+    color: white;
+    padding: 8px;
+    font-weight: bold;
+}
+
+/* 소셜링 전체 보기 - 글 목록 */
+
+#lineupbox {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 30px;
+}
+
+.s-container2 {
+    display : grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap : 50px;
+}
+
+#writing {
+    background-color: rgb(218,239,245);
+    padding: 8px;
+    font-weight: bold;
+}
+
+#writebox {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 30px;
+    margin-bottom: 50px;
+}

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>소셜링</title>
+
+    <!-- 리셋 css -->
+    <!-- <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css"> -->
+    <!-- 외부 스타일 시트 -->
+    <link href="resources/css/style.css" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="socialing wrapper">
+        <div class="s-title">
+            <h1 id="main-title">소셜링</h1>
+            <h3 id="sub-title">언제 어디서나 일상을 더 다채롭게</h3>
+        </div>
+        <br><hr><br>
+        <article>
+            <h3 id="soon-title">시작 임박 소셜링</h3>
+            <div class="s-container">
+                <div id="s-list">
+                    <img id="s-thumbnail" src="resources/image/jery5.jpg"><br>
+                    <p id="s-thumtitle">할로윈 같이 즐겨요</p><br>
+                    <h6 id="s-thumsub">이태원역 6호선 10.31(일) 오후 6:00</h6>
+                </div>
+                <div id="s-list">
+                    <img id="s-thumbnail" src="resources/image/jery23.JPG">
+                    <p id="s-thumtitle">아침에 공원에서 산책하실 분!</p><br>
+                    <h6 id="s-thumsub">평촌 중앙공원 10.20(수) 오전 9:00</h6>
+                </div>
+                <div id="s-list">
+                    <img id="s-thumbnail" src="resources/image/jery15.JPG">
+                    <p id="s-thumtitle">이터널스 같이 보러가요</p><br>
+                    <h6 id="s-thumsub">CGV 용산아이파크몰 11.20(토) 오후 3:00</h6>
+                </div>
+            </div>
+        </article>
+        <article>
+            <h3 id="all-title">소셜링 전체 보기</h3>
+            <div id="filterbox">
+                <form>
+                    <input type="text" name="keyword" size="30" maxlength="20" placeholder="검색할 키워드를 입력해주세요"><br><br>
+                    <label id="flabel">지역</label>
+                    <select name="local">
+                        <option value="seoul">서울</option>
+                        <option value="gyeonggi">경기</option>
+                        <option value="incheon">인천</option>
+                        <option value="gangwon">강원</option>
+                    </select>
+                    <select name="local-details">
+                        <option value="">관악구</option>
+                        <option value="">동작구</option>
+                        <option value="">서초구</option>
+                        <option value="">강남구</option>
+                    </select><br><br>
+                    <label id="flabel">날짜</label>
+                    <input type="date" name="dateIn"><br><br>
+                    <label id="flabel">온오프라인</label>
+                    <input type="radio" id="offline" name="onoff" value="offline" checked>
+                    <label for="offline">오프라인</label>&nbsp;
+                    <input type="radio" id="online" name="onoff" value="online">
+                    <label for="online">온라인</label>
+                    <input type="reset" value="조건 초기화" id="s-reset">
+                    <input type="submit" value="선택항목 검색" id="s-submit">
+                </form>
+            </div>
+            <div id="lineupbox">
+                <select name="lineup">
+                    <option value="">최신순</option>
+                    <option value="">인기순</option>
+                </select>
+            </div>
+            <div class="s-container2">
+                <div id="s-list2">
+                    <img id="s-thumbnail" src="resources/image/jery5.jpg"><br>
+                    <p id="s-thumtitle">할로윈 같이 즐겨요</p><br>
+                    <h6 id="s-thumsub">이태원역 6호선 10.31(일) 오후 6:00</h6>
+                </div>
+                <div id="s-list2">
+                    <img id="s-thumbnail" src="resources/image/jery23.JPG">
+                    <p id="s-thumtitle">아침에 공원에서 산책하실 분!</p><br>
+                    <h6 id="s-thumsub">평촌 중앙공원 10.20(수) 오전 9:00</h6>
+                </div>
+                <div id="s-list2">
+                    <img id="s-thumbnail" src="resources/image/jery15.JPG">
+                    <p id="s-thumtitle">이터널스 같이 보러가요</p><br>
+                    <h6 id="s-thumsub">CGV 용산아이파크몰 11.20(토) 오후 3:00</h6>
+                </div>
+                <div id="s-list2">
+                    <img id="s-thumbnail" src="resources/image/jery5.jpg"><br>
+                    <p id="s-thumtitle">할로윈 같이 즐겨요</p><br>
+                    <h6 id="s-thumsub">이태원역 6호선 10.31(일) 오후 6:00</h6>
+                </div>
+                <div id="s-list2">
+                    <img id="s-thumbnail" src="resources/image/jery23.JPG">
+                    <p id="s-thumtitle">아침에 공원에서 산책하실 분!</p><br>
+                    <h6 id="s-thumsub">평촌 중앙공원 10.20(수) 오전 9:00</h6>
+                </div>
+                <div id="s-list2">
+                    <img id="s-thumbnail" src="resources/image/jery15.JPG">
+                    <p id="s-thumtitle">이터널스 같이 보러가요</p><br>
+                    <h6 id="s-thumsub">CGV 용산아이파크몰 11.20(토) 오후 3:00</h6>
+                </div>
+                <div id="s-list2">
+                    <img id="s-thumbnail" src="resources/image/jery5.jpg"><br>
+                    <p id="s-thumtitle">할로윈 같이 즐겨요</p><br>
+                    <h6 id="s-thumsub">이태원역 6호선 10.31(일) 오후 6:00</h6>
+                </div>
+                <div id="s-list2">
+                    <img id="s-thumbnail" src="resources/image/jery23.JPG">
+                    <p id="s-thumtitle">아침에 공원에서 산책하실 분!</p><br>
+                    <h6 id="s-thumsub">평촌 중앙공원 10.20(수) 오전 9:00</h6>
+                </div>
+                <div id="s-list2">
+                    <img id="s-thumbnail" src="resources/image/jery15.JPG">
+                    <p id="s-thumtitle">이터널스 같이 보러가요</p><br>
+                    <h6 id="s-thumsub">CGV 용산아이파크몰 11.20(토) 오후 3:00</h6>
+                </div>
+            </div>
+            <div id="writebox">
+                <form>
+                    <button type="button" id="writing">글 쓰기</button>
+                </form>
+            </div>
+        </article>
+    </div>
+</body>
+</html>
