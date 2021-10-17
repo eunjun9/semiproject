@@ -1,0 +1,150 @@
+@charset "UTF-8";
+
+/* 로그인 화면 */
+
+body {
+    font-family: Noto Sans KR;
+}
+
+.login-main{
+    display: flex;
+    
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.login-bar{
+    width: 60%;
+    height: 100vh;
+
+}
+
+.login-img{
+     background-image: url(../image/loginPhoto2.jpg);
+     width: 80%;
+     height: 100vh;
+     background-size: cover;
+     
+}
+
+.login-logo{
+    display: block;
+    margin-bottom: 50px;
+}
+
+.login-button {
+    font-size: 15px;
+    padding-top: 50px;
+}
+
+.center {
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.img{
+    height: 24px;
+    border: none;
+}
+
+.text{
+    text-align: center;
+}
+
+.kakao-text{
+    background-color : #f7e317;
+    font-weight: bold;
+}
+
+#kakao-button{
+    background-color : #f7e317;
+    width: 350px;
+}
+#email-button{
+    background-color: #daeff5;
+    margin-top: 10px;
+    color: black;
+    width: 250px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.btn{
+    height: 48px;
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    padding-left: 50px;
+    padding-right: 50px;
+    background-color: #daeff5;
+  
+}
+
+/* 로고 밑 소다 소개 문구 */
+.login-text{
+    color: black;
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+}
+
+/* --------------------------*/
+/* 이메일 로그인 페이지 */
+.login-input, .loginArea{
+    font-size: 15px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+
+#login-button{
+    background-color: #daeff5;
+    margin-top: 5px;
+    color: black;
+    width: 350px;
+    text-decoration: none;
+}
+
+#email, #pwd {
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    height: 30px;
+    width: 300px;
+}
+
+.login-fail-text{
+    font-size: 12px;
+    color: red;
+    margin-bottom: 10px;
+}
+
+/* 회원가입, 이메일 비밀번호 찾기*/
+.login-join-find{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    
+}
+
+.login-join {
+    width: 100px;
+    margin-right: 20px;
+    margin-left: 12px;
+}
+
+.login-find {
+    width: 150px;
+}
+
+.join-text , .login-find {
+    font-size: 12px;
+}
