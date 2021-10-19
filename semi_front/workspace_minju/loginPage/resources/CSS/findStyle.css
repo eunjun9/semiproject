@@ -1,6 +1,10 @@
 
 /* 이메일, 비밀번호 찾기 */
 
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
 .popup {
     display: flex;
     position: relative;
@@ -31,7 +35,7 @@
     margin-top: 10px;
     border: 1px solid gray;
     border-radius:  10px;
-    background-color: #daeff5;
+    background-color: rgb(218,239,245);
 
 }
 
