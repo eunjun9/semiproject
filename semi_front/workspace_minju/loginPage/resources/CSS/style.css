@@ -3,7 +3,7 @@
 /* 로그인 화면 */
 
 body {
-    font-family: Noto Sans KR;
+    font-family: 'Noto Sans KR', sans-serif;
 }
 
 .login-main{
@@ -69,7 +69,7 @@ a {
     width: 350px;
 }
 #email-button{
-    background-color: #daeff5;
+    background-color: rgb(218,239,245);
     margin-top: 10px;
     color: black;
     width: 250px;
@@ -86,7 +86,7 @@ a {
     border: none;
     padding-left: 50px;
     padding-right: 50px;
-    background-color: #daeff5;
+    background-color: rgb(218,239,245);
   
 }
 
@@ -106,7 +106,7 @@ a {
 }
 
 #login-button{
-    background-color: #daeff5;
+    background-color: rgb(218,239,245);
     margin-top: 5px;
     color: black;
     width: 350px;
