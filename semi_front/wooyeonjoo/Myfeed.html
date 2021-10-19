@@ -22,11 +22,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
     <!--font-family: 'Noto Sans KR', sans-serif;-->
 
-    <!--슬라이드-->
-    
-    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
-
+    <!-- JQuery-->
     <script src="../js/jquery-3.6.0.min.js"></script>
+
+    <!--슬라이드-->
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
 <style>
     .swiper {
@@ -43,9 +44,11 @@
 
     <div class="header">
         <div class="head-inner">
-            <div class="logo">
-                <img src="image/logo.png">
-            </div>
+
+          <div class="logo">
+            <img src="image/logo.png">
+          </div>
+
             <div class="big-category">
                 <div class="category1">
                     <a href="#">SOCIALING</a>
@@ -57,42 +60,199 @@
                     <a href="#">MYPAGE</a>
                 </div>
             </div>
+
         </div>
     </div>
 
     <!--body-->
-    <div class="body">
-        <div class="body-inner">
-            <div class="magazine">
-                <div class="title">매거진</div>
-                <div class="word">자신만의 스토리와 철학을 가진<br>
-                    다양한 사람들의 다양한 이야기</div>
+    
+    <div class="board">
+      <div class="board-inner">
+        <div class="magazine">
+              <div class="title">매거진</div>
+              <div class="word">자신만의 스토리와 철학을 가진<br>
+                  다양한 사람들의 다양한 이야기</div>
+      </div>
+      </div>
+    </div>
+
+
+     <!--슬라이드1-->
+
+<div class="first">
+    <div class="title">
+        <div class="title-inner">
+            <div class="tit">
+                <div class="b-title">다른 이들과 나누는 우리들의 이야기! 모임 후기 게시판</div>
+                <div class="view1">
+                    <a href="#">전체보기</a>
+                    <a href="#">글쓰기</a>
+                </div>
             </div>
         </div>
     </div>
 
 
-    <div class="body">
-        <div class="body-inner">
-            <div class="board1">
-                <div class="b-title1">다른 이들과 나누는 우리들의 이야기! 모임 후기 게시판</div>
+    <!-- Swiper -->
+    <div class="slide1">
+       
+    <div class="swiper mySwiper1">
+        <div class="swiper-wrapper">
+
+          <div class="swiper-slide">
+              <img src="image/white.jpg">
+          </div>
+          <div class="swiper-slide">
+            <img src="image/white.jpg">
+          </div>
+          <div class="swiper-slide">
+            <img src="image/white.jpg">
+          </div>
+          <div class="swiper-slide">
+            <img src="image/white.jpg">
+          </div>
+          <div class="swiper-slide">
+              <img src="image/white.jpg">
+          </div>
+          <div class="swiper-slide">
+            <img src="image/white.jpg">
+        </div>
+        <div class="swiper-slide">
+            <img src="image/white.jpg">
+        </div>
+        <div class="swiper-slide">
+            <img src="image/white.jpg">
+        </div>
+
+          </div>
+        </div>
+        
+        
+        <div class=button1>
+          <!-- If we need navigation buttons -->
+          <div class="swiper-button-prev but1"></div>
+        </div>
+        
+        <div class=button2>
+          <div class="swiper-button-next but2"></div>
+        </div>
+      
+      </div> 
+    </div>
+
+      <!-- Initialize Swiper -->
+      <script>
+        var swiper1 = new Swiper(".mySwiper1", {
+          slidesPerView: 3,
+          spaceBetween: 30,
+        
+          loop : true,
+
+          // Navigation arrows
+      navigation: {
+        nextEl: '.but1',
+        prevEl: '.but2',
+      },
+
+        });
+      </script>
+
+
+     
+
+<!--슬라이드2-->
+<div class="second">
+<div class="title">
+    <div class="title-inner">
+        <div class="tit">
+            <div class="b-title">소다 만의 STORY를 공개합니다</div>
+            <div class="view1">
+                <a href="#">전체보기</a>
+            </div>
+            </div>
+
+        </div>
+    </div>
+
+
+<!-- Swiper -->
+<div class="slide2">
+<div class="swiper mySwiper2">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+          <img src="image/white.jpg">
+      </div>
+      <div class="swiper-slide">
+        <img src="image/white.jpg">
+      </div>
+      <div class="swiper-slide">
+        <img src="image/white.jpg">
+      </div>
+      <div class="swiper-slide">
+        <img src="image/white.jpg">
+      </div>
+      <div class="swiper-slide">
+          <img src="image/white.jpg">
+      </div>
+      <div class="swiper-slide">
+        <img src="image/white.jpg">
+    </div>
+    <div class="swiper-slide">
+        <img src="image/white.jpg">
+    </div>
+    <div class="swiper-slide">
+        <img src="image/white.jpg">
+    </div>
+
+    </div> 
+  </div> 
+
+    <div class=button3>
+      <!-- If we need navigation buttons -->
+     <div class="swiper-button-prev but3"></div>
+    </div>
+    
+    <div class=button4>
+     <div class="swiper-button-next but4"></div>
+    </div>
+
+</div>
+</div>
+  <!-- Initialize Swiper -->
+  <script>
+    var swiper2 = new Swiper(".mySwiper2", {
+      slidesPerView: 3,
+      spaceBetween: 30,
+
+      loop : true,
+
+      // Navigation arrows
+  navigation: {
+    nextEl: '.but3',
+    prevEl: '.but4',
+  },
+    });
+  </script>    
+  
+  
+      <!--슬라이드-->
+  
+  <div class="third">
+      <div class="title">
+        <div class="title-inner">
+            <div class="tit">
+                <div class="b-title">내 팔로워는 지금 뭘 하고 있을까? 팔로워 게시판</div>
                 <div class="view1">
                     <a href="#">전체보기</a>
-                    <a href="#">글쓰기</a>
                 </div>
                 </div>
-
             </div>
         </div>
-    </div> 
 
-    
-
-    <!--슬라이드-->
 
     <!-- Swiper -->
-    <div class="slide">
-    <div class="swiper mySwiper">
+    <div class="slide3">
+    <div class="swiper mySwiper3">
         <div class="swiper-wrapper">
           <div class="swiper-slide">
               <img src="image/white.jpg">
@@ -118,40 +278,37 @@
         <div class="swiper-slide">
             <img src="image/white.jpg">
         </div>
-        </div> 
-    </div> 
+        </div>
+      </div> 
+        
+        <div class=button5>
+          <!-- If we need navigation buttons -->
+         <div class="swiper-button-prev but5"></div>
+       </div>
+   
+       <div class=button6>
+         <div class="swiper-button-next but6"></div>
+       </div>
+      </div> 
 </div>
 
-      <div class=button1>
-       <!-- If we need navigation buttons -->
-      <div class="swiper-button-prev"></div>
-    </div>
-
-    <div class=button2>
-      <div class="swiper-button-next"></div>
-    </div>
-
-    
-     
-    
-      <!-- Swiper JS -->
-      <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    
       <!-- Initialize Swiper -->
       <script>
-        var swiper = new Swiper(".mySwiper", {
+        var swiper3 = new Swiper(".mySwiper3", {
           slidesPerView: 3,
           spaceBetween: 30,
-         
-          
+
+      loop : true,
+
+
           // Navigation arrows
       navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
+        nextEl: '.but5',
+        prevEl: '.but6',
       },
         });
       </script>
-
+          
 
 
 

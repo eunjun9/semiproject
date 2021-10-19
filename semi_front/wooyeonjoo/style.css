@@ -64,64 +64,72 @@ img{
 
 
 
+
+
 /*---------------body----------------*/
 
 /* 배너 */
-.body {
+.board {
     width: 100%;
     display: flex;
  }
  
- .body-inner {
+ .board-inner {
      max-width: 1000px;
      margin : 0 auto;
  }
 
-  .magazine{
+.magazine{
     width: 1000px;
     height: 300px;
     margin-top : 20px;
-    background: url('../Semi/image/터키.jpg') no-repeat center top -207px;
+    background: url('image/터키.jpg') no-repeat center top -207px;
     background-size: cover;
 }
 
 .magazine .title{
-    position: absolute;
-    top:17%;
-    left:12%;
-    /* transform: translate(-20%, -20%);                                                                    */
-    font-size:20px;
+    position:sticky;
+    transform: translate(50px, 25px);                                                                   
+    font-size:25px;
     font-weight: bold;
     color: white;
     z-index: 2;
-    text-align: center;
 }
 
 .magazine .word{
-    position: absolute;
-    top:22%;
-    left:12%;
-    /* transform: translate(-50%, -50%);                                                                    */
-    font-size:15px;
-    font-weight: bold;
+    position: sticky;
+    transform: translate(50px, 20px);                                                                   
+    font-size:17px;
     color: white;
     z-index: 2;
-    text-align: center;
 }
 
 /* 게시판 */
 
-.board1{
+
+.title {
+    width: 100%;
+    display: flex;
+ }
+ 
+ .title-inner {
+     max-width: 1000px;
+     margin : 0 auto;
+ }
+
+.tit{
     display:flex;
     justify-content: space-between;
     margin-top: 50px;
 }
 
-.b-title1 {
+
+.b-title{
     font-family: 'Noto Sans KR', sans-serif;
     font-weight: bold;
     font-size: 20px;
-    margin-left: -385px;
+    margin-left: -390px;
+    margin-bottom: 10px;
 
 }
 
@@ -136,29 +144,80 @@ img{
     font-size: 12px;
 }
 
-.slide{
+
+
+
+.first{
     position:static;
 }
 
-.button1{
-    position: relative;
-    top:-220px;
-    left: 200px;
-    
-}
-.button2{
-    position: relative;
-    top:-220px;
-    right: 200px;
-    
+.third{
+    margin-bottom: 50px;
 }
 
-.swiper-button-prev{
-    position: relative;
+
+.slide1{
+    width: 800px;
+    height: 200px;
+    position:relative;
+    margin : 0 auto;
 }
-.swiper-button-next{
-    position: relative;
+
+
+.slide2{
+    width: 800px;
+    height: 200px;
+    position:relative;
+    margin : 0 auto;
+   
 }
+
+
+.slide3{
+    width: 800px;
+    height: 200px;
+    position:relative;
+    margin : 0 auto;
+   
+}
+
+.button1{
+    left:-90px;
+    bottom : 130px;
+    position:absolute;
+}
+
+.button2{
+    right:-90px;
+    bottom : 130px;
+    position:absolute;
+}
+
+.button3{
+    left:-90px;
+    bottom : 130px;
+    position:absolute;
+}
+
+.button4{
+    right:-90px;
+    bottom : 130px;
+    position:absolute;
+}
+
+.button5{
+    left:-90px;
+    bottom : 130px;
+    position:absolute;
+}
+
+.button6{
+    right:-90px;
+    bottom : 130px;
+    position:absolute;
+}
+
+
 
 /*---------------footer----------------*/
 
