@@ -128,7 +128,7 @@ img{
     font-family: 'Noto Sans KR', sans-serif;
     font-weight: bold;
     font-size: 20px;
-    margin-left: -39px;
+    margin-left: -391px;
     margin-bottom: 10px;
 
 }
@@ -145,20 +145,18 @@ img{
 }
 
 
-
-
 .first{
     position:static;
 }
 
 .third{
-    margin-bottom: 50px;
+    margin-bottom: 40px;
 }
 
 
 .slide1{
     width: 800px;
-    height: 200px;
+    height: auto;
     position:relative;
     margin : 0 auto;
 }
@@ -166,7 +164,7 @@ img{
 
 .slide2{
     width: 800px;
-    height: 200px;
+    height: auto;
     position:relative;
     margin : 0 auto;
    
@@ -175,7 +173,7 @@ img{
 
 .slide3{
     width: 800px;
-    height: 200px;
+    height: auto;
     position:relative;
     margin : 0 auto;
    
