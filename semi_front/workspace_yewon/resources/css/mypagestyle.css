@@ -1,0 +1,170 @@
+@charset "UTF-8";
+html{
+    font-size:100%;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+img{
+    max-width: 100%;
+}
+
+/* header--------- */
+.page-header{
+    background-color: lightgoldenrodyellow;
+    height: 80px;
+    padding: 10px;
+    margin-bottom: 0px;
+}
+
+/* body ----------*/
+.mypage_main{
+    margin : 0 auto;
+    padding : 4%;
+    justify-content: space-between;
+    display: flex;
+    height: 630px;
+}
+.wrapper1{
+   border : 6px solid rgb(218, 239, 245);
+   background-color: white;
+   width: 33%;
+}
+.wrapper2{
+    border : 6px solid rgb(218, 239, 245);
+    background-color: white;
+    width: 64%;
+ }
+
+
+/* 사용자 정보 T------*/
+.info{
+    padding: 2%;
+}
+.info h2{
+    color : rgb(7, 86, 105);
+}
+
+/* 알림 */
+.notice{
+    position: relative;
+    left : 92%;
+    top : -45px;
+}
+.notice p{
+    margin-top: 0px;
+    text-decoration: none;
+    color: grey;
+    font-size: 12px;
+}
+
+/* 프로필 */
+.profile{
+    margin-left: 35%;
+    margin-top: -30px;
+}
+
+#name{
+    margin-left: 10%;
+    color : rgb(77, 77, 77);
+    margin-top: 0px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#level{
+    border : 1.5px solid lightgrey;
+    border-radius: 5px;
+    width: 53px;
+    font-size: 15px;
+    text-align: center;
+    position: relative;
+    top : -41px;
+    left : 40%;
+}
+
+#mail{
+    font-size: 12px;
+    color : rgb(141, 141, 141);
+    margin-top: -45px;
+    margin-left: 2%;
+}
+#feed{
+    font-size: 13px;
+    font-weight: bold;
+    color : rgb(77, 77, 77);
+    margin-left: 10%;
+    margin-top: 0px; 
+}
+
+/*페이지 이동 영역*/
+.move{
+    width: 250px;
+    height: 160px;
+    background-color: rgb(248, 241, 233);
+    margin: 30px auto;
+    padding: 20px;
+    list-style: none;
+}
+.move li{
+    /* border-bottom: 1px solid lightgray; */
+    margin-bottom: 20px;
+    margin-left: 15px;
+}
+.mv{
+    color :rgb(77, 77, 77);
+    font-size: 15px;
+}
+.pmv{
+    margin-left: 150px;
+}
+   
+
+/* 관심내역 ---------*/
+.interest{
+    padding: 2%;
+    margin-left: 15px;
+    margin-bottom: 50px;
+}
+.interest h4{
+    color : rgb(77, 77, 77);
+    margin-left: 20px;
+    margin-bottom: -10px;
+}
+
+.interest span p{
+    position: relative;
+    top : -24px;
+    left : 110px;
+    font-size: 13px;
+    color: rgb(201, 0, 0);
+}
+.arrow{
+
+   top : -60px; 
+
+}
+.pic{
+    border: 0.5px solid lightgrey;
+}
+
+/*소셜링*/
+.socialing{
+    margin-top: 50px;
+}
+
+
+/*클래스*/
+.myclass{
+    margin-top: 110px;
+}
+.clist{
+    display: grid;
+    grid-template-columns: repeat(3, 2fr);
+    grid-auto-rows: 100px;
+    gap: 0px;
+}
+
