@@ -1,0 +1,178 @@
+@charset "UTF-8";
+html{
+    font-size:100%;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+img{
+    max-width: 100%;
+}
+
+/* body ----------*/
+.mypage_main{
+    margin : 0 auto;
+    padding : 5% 10%;
+    justify-content: space-between;
+    display: flex;
+    height: 640px;
+}
+.wrapper1{
+   border : 6px solid rgb(218, 239, 245);
+   background-color: white;
+   width: 33%;
+}
+.wrapper2{
+    border : 6px solid rgb(218, 239, 245);
+    background-color: white;
+    width: 66%;
+ }
+
+
+/* 사용자 정보------*/
+.info{
+    padding: 2%;
+}
+.info h2{
+    color : rgb(7, 86, 105);
+}
+
+/* 알림 */
+.notice{
+    position: relative;
+    left : 90%;
+    top : -35px;
+}
+.notice p{
+    margin-top: 0px;
+    text-decoration: none;
+    color: grey;
+    font-size: 12px;
+}
+
+/* 프로필 */
+.profile{
+    margin-left: 35%;
+    margin-top: -40px;
+}
+
+#name{
+    margin-left: 10%;
+    color : rgb(77, 77, 77);
+    margin-top: -10px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#level{
+    border : 1.5px solid lightgrey;
+    border-radius: 5px;
+    width: 45px;
+    height: 27px;
+    font-size: 13px;
+    text-align: center;
+    position: relative;
+    top : -35px;
+    left : 40%;
+}
+
+#mail{
+    font-size: 12px;
+    color : rgb(141, 141, 141);
+    margin-top: -40px;
+    margin-left: 2%;
+}
+#myfeed{
+    font-size: 13px;
+    font-weight: bold;
+    color : rgb(77, 77, 77);
+    position: relative;
+    top : -8px;
+    margin-left: 10%;
+}
+
+/*페이지 이동 영역*/
+.move{
+    width: 80%;
+    height: 170px;
+    background-color: rgb(248, 241, 233);
+    margin: 20px auto;
+    padding: 4%;
+    list-style: none;
+    
+}
+.move li{
+    /* border-bottom: 1px solid lightgray; */
+    margin-bottom: 3px; 
+    margin-left: 15px;
+}
+.mv{
+    color :rgb(77, 77, 77);
+    font-size: 14px;
+}
+.pmv{
+    margin-left: 65%;
+}
+   
+
+/* 관심내역 ---------*/
+.interest{
+    padding: 3%;
+    margin: 20px auto;
+}
+.interest h3{
+    color : rgb(77, 77, 77);
+    margin-left: 15px;
+    margin-top: -10px;
+}
+
+.interest span p{
+    position: relative;
+    top : -32px;
+    left : 120px;
+    font-size: 13px;
+    color: rgb(201, 0, 0);
+}
+
+
+/*소셜링*/
+.socialing:not(p){
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns : 200px 200px 200px ;
+    gap: 40px 10px;
+}
+
+.ipic{
+    border: 0.5px solid lightgrey;
+    margin-left: 3px;
+
+}
+
+#stitle{
+    position: relative;
+    top : -10px;
+    font-size: 14px;
+    margin-left: 4px; 
+    font-weight: 600;
+    color : rgb(88, 88, 88);
+}
+
+#stime{
+    color: rgba(65, 64, 64, 0.781);
+    margin-top: -15px;
+    font-size: 10px;
+    margin-left: 4px; 
+}
+
+.smv{
+    margin: 25px 240px;
+}
+
+.sarr{
+    margin: 0px 5px 0px 5px;
+}
+
