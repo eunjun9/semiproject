@@ -14,12 +14,68 @@ img {
     max-width: 100%;
 }
 
+hr {
+    height: 2px;
+    background-color: lightgray;
+    border: 0px;
+}
+
+/* header ------------------------------ */
+
+.header {
+    width: 100%;
+     max-height: 200px;
+}
+ 
+.head-inner {
+     max-width: 1000px;
+     max-height: 200px;
+     margin : 0 auto;
+}
+ 
+.logo{
+     width: 200px;
+     text-align: center;
+     display: block; 
+     margin: 0px auto;
+     margin-bottom: -20px;
+}
+ 
+.big-category{
+     display: flex;
+     justify-content: space-between;
+}
+ 
+.category1 > a{
+     margin-right: 20px;
+     color: gray;
+     font-family: 'Noto Sans KR', sans-serif;
+}
+
+.category1{
+     margin-left: 15px;
+}
+ 
+.category2>a{
+     margin-right: 20px;
+     color: gray;
+     font-family: 'Noto Sans KR', sans-serif;
+}
+
+.category2{
+     margin-right: 15px;
+}
+
 /* 소셜링 메인 페이지 ----------------------------------------------------------------------- */
 
-.wrapper {
-    max-width : 75%;
-    margin : 0 auto;
-    padding : 0 4%;
+.body {
+    width: 100%;
+    display: flex;
+}
+ 
+.body-inner {
+     max-width: 1000px;
+     margin : 0 auto;
 }
 
 .socialing {
@@ -33,20 +89,23 @@ img {
 }
 
 .s-title > #main-title {
+    font-size: 2.2rem;
     font-weight: bold;
     color: rgb(7,86,105);
+    margin-bottom: -15px;
 }
 
 .s-title > #sub-title {
     font-weight: bold;
     color: rgb(188,188,188);
+    margin-bottom: 30px;
 }
 
 /* 시작 임박 소셜링 */
 
 #soon-title {
-    margin-top: 10px;
-    margin-bottom: 30px;
+    margin-top: 30px;
+    margin-bottom: 20px;
 }
 
 .s-container {
@@ -64,28 +123,35 @@ img {
 }
 
 #s-thumtitle {
-    line-height: 2.2;
+    margin-top: -1px;
+    margin-left: 5px;
     font-weight: bold;
 }
 
 #s-thumsub {
-    margin-top: -20px;
+    margin-top: -32px;
+    margin-left: 5px;
     color: lightslategray;
 }
 
 /* 소셜링 전체 보기 - 필터링 */
 
 #all-title {
-    margin-top: 50px;
+    margin-top: -10px;
     margin-bottom: 30px;
 }
 
 #filterbox {
     background-color: rgb(218,239,245);
-    padding: 50px 100px;
+    padding: 50px 150px;
     display: flex;
     justify-content: space-between;
     margin-bottom: 30px;
+}
+
+#searchIcon {
+    margin-bottom: -10px;
+    margin-left: -10px;
 }
 
 #flabel {
@@ -93,14 +159,43 @@ img {
     color: gray;
 }
 
+input:focus {
+    outline: none;
+}
+
+input[name=keyword] {
+    border:none;
+    background-color:transparent;
+    border-bottom: 1px solid rgb(185,185,185);
+    font-size: 1.02rem;
+}
+
+select[name=local],
+select[name=local-details] {
+    width: 100px;
+    height: 30px;
+}
+
+input[name=dateIn] {
+    height: 25px;
+}
+
+select[name=lineup] {
+    width: 80px;
+    height: 30px;
+}
+
 select[name=local],
 input[name=dateIn] {
     margin-left: 70px;
 }
 
-select[name=local-details],
-input[name=onoff] {
+select[name=local-details] {
     margin-left: 20px;
+}
+
+input[name=onoff] {
+    margin-left: 25px;
 }
 
 select[name=local],
@@ -110,10 +205,15 @@ select[name=lineup] {
 }
 
 #s-reset {
-    margin-left: 250px;
+    color: gray;
+    margin-left: 150px;
     background-color: white;
     padding: 8px;
     font-weight: bold;
+    border-style: outset;
+    border : 1px solid lightgray;
+    border-radius: 5px;
+    width: 100px;
 }
 
 #s-submit {
@@ -122,6 +222,9 @@ select[name=lineup] {
     color: white;
     padding: 8px;
     font-weight: bold;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    width: 120px;
 }
 
 /* 소셜링 전체 보기 - 글 목록 */
@@ -138,10 +241,24 @@ select[name=lineup] {
     gap : 50px;
 }
 
+#s-thumtitle2 {
+    margin-top: 5px;
+    font-weight: bold;
+}
+
+#s-thumsub2 {
+    margin-top: -32px;
+    color: lightslategray;
+}
+
 #writing {
+    color: lightslategray;
     background-color: rgb(218,239,245);
     padding: 8px;
     font-weight: bold;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    width: 80px;
 }
 
 #writebox {
@@ -149,4 +266,128 @@ select[name=lineup] {
     justify-content: flex-end;
     margin-top: 30px;
     margin-bottom: 50px;
+}
+
+/* 게시판 */
+
+.board1{
+    display:flex;
+    justify-content: space-between;
+    margin-top: 50px;
+}
+
+.b-title1 {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+    margin-left: -385px;
+
+}
+
+.view1{
+    margin-right: -385px;
+    margin-top: 10px;
+
+}
+.view1>a {
+    color: gray;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 12px;
+}
+
+.slide{
+    position:static;
+}
+
+.button1{
+    position: relative;
+    top:-220px;
+    left: 200px;
+    
+}
+.button2{
+    position: relative;
+    top:-220px;
+    right: 200px;
+    
+}
+
+.swiper-button-prev{
+    position: relative;
+}
+.swiper-button-next{
+    position: relative;
+}
+
+/*---------------footer----------------*/
+
+.footer{
+    width: 100%;
+    height: 150px;
+    background-color:  rgb(248, 241, 233);
+}
+
+.foot-inner{
+    max-width: 1000px;
+    max-height: 150px;
+    margin : 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.foot-all{
+    margin-top:25px;
+}
+
+.foot-logo{
+    font-size: 30px;
+    font-weight: bold;
+    color:rgb(145, 244, 244);
+    margin-left: 100px;
+    margin-top: 45px;
+    font-family: 'Noto Sans KR', sans-serif;
+
+}
+
+.information{
+    font-size: 5px;
+}
+
+.foot-category{
+    font-size: 5px;
+    font-weight: bold;
+    margin-right: 100px;
+}
+
+.foot-category>ul>a{
+    color:black;
+}
+
+
+/* 이용약관 */
+
+.final{
+    max-width: 1000px;
+    margin : 0 auto;
+}
+
+.information {
+    color: gray;
+}
+
+.foot-category {
+    font-size: 0.6rem;
+}
+
+.foot-final{
+    text-align:center;
+    font-size: 5px;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.foot-final>a{
+    color: gray;
+    font-size: 12px;
 }
