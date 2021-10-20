@@ -181,38 +181,55 @@ img{
 
 .button1{
     left:-90px;
-    bottom : 130px;
+    bottom : 165px;
     position:absolute;
 }
 
 .button2{
     right:-90px;
-    bottom : 130px;
+    bottom : 165px;
     position:absolute;
 }
 
 .button3{
     left:-90px;
-    bottom : 130px;
+    bottom : 165px;
     position:absolute;
 }
 
 .button4{
     right:-90px;
-    bottom : 130px;
+    bottom : 165px;
     position:absolute;
 }
 
 .button5{
     left:-90px;
-    bottom : 130px;
+    bottom : 165px;
     position:absolute;
 }
 
 .button6{
     right:-90px;
-    bottom : 130px;
+    bottom : 165px;
     position:absolute;
+}
+
+
+
+.first-title{
+    color: black;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+.name{
+    color: black;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 12px;
+    margin-left: 10px;
 }
 
 
