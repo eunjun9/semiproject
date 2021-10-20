@@ -152,6 +152,10 @@ img{
 
 }
 
+.ipic:hover{
+    border: 0.5px solid rgb(7, 86, 105);
+}
+
 #stitle{
     position: relative;
     top : -10px;
@@ -159,6 +163,10 @@ img{
     margin-left: 4px; 
     font-weight: 600;
     color : rgb(88, 88, 88);
+}
+
+#stitle:hover{
+    color : rgb(7, 86, 105);
 }
 
 #stime{
