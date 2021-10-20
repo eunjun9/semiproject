@@ -15,7 +15,7 @@ img{
 /* body ----------*/
 .mypage_main{
     margin : 0 auto;
-    padding : 5% 10%;
+    padding : 4% 7%;
     justify-content: space-between;
     display: flex;
     height: 640px;
@@ -23,12 +23,12 @@ img{
 .wrapper1{
    border : 6px solid rgb(218, 239, 245);
    background-color: white;
-   width: 31%;
+   width: 30%;
 }
 .wrapper2{
     border : 6px solid rgb(218, 239, 245);
     background-color: white;
-    width: 68%;
+    width: 69%;
  }
 
 
@@ -118,45 +118,22 @@ img{
 }
    
 
-/* 관심내역 ---------*/
+/* 나의 클래스 공통 ---------*/
 .interest{
     padding: 3%;
     margin: 20px auto;
 }
-.interest h3{
-    color : rgb(77, 77, 77);
-    margin-left: 15px;
-    margin-top: -10px;
-}
-
-.interest span p{
-    position: relative;
-    top : -32px;
-    left : 185px;
-    font-size: 13px;
-    color: rgb(201, 0, 0);
-}
-
-
-/*소셜링*/
-.socialing:not(p){
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-columns : 200px 200px 200px ;
-    gap: 40px 10px;
-}
 
 .ipic{
     border: 0.5px solid lightgrey;
-    margin-left: 3px;
-
+    margin-left: 7px;
 }
 
 #stitle{
     position: relative;
     top : -10px;
     font-size: 14px;
-    margin-left: 4px; 
+    margin-left: 8px; 
     font-weight: 600;
     color : rgb(88, 88, 88);
 }
@@ -165,14 +142,59 @@ img{
     color: rgba(65, 64, 64, 0.781);
     margin-top: -15px;
     font-size: 10px;
-    margin-left: 4px; 
+    margin-left: 7px; 
 }
 
-.smv{
-    margin: 25px 240px;
+/* 원데이 클래스 -----*/
+.oneday h3{
+    color : rgb(77, 77, 77);
+    margin-left: 15px;
+    margin-top: -10px;
 }
 
-.sarr{
-    margin: 0px 5px 0px 5px;
+.oneday p{
+    position: relative;
+    top : -32px;
+    left : 185px;
+    font-size: 13px;
+    color: rgb(201, 0, 0);
 }
 
+/* 슬라이드 버튼 */
+.button1{
+    left:435px;
+    top : 295px;
+    position:absolute;
+}
+
+.button2{
+    right:100px;
+    top : 295px;
+    position:absolute;
+}
+
+/* VOD 클래스 -----*/
+.vod h4{
+    color : rgb(77, 77, 77);
+    margin-left: 15px;
+    margin-top: 20px;
+}
+
+.vod p{
+    position: relative;
+    top : -30px;
+    left : 175px;
+    font-size: 13px;
+    color: rgb(201, 0, 0);
+}
+.button3{
+    left:435px;
+    top : 535px;
+    position:absolute;
+}
+
+.button4{
+    right:100px;
+    top : 535px;
+    position:absolute;
+}

@@ -14,10 +14,18 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- JQuery-->
+    <script src="../js/jquery-3.6.0.min.js"></script>
+
+    <!--슬라이드-->
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
 </head>
 <body>
     <!-- 헤더 -->
-     <div class="header">
+    <div class="header">
         <div class="head-inner">
 
           <div class="logo">
@@ -63,63 +71,169 @@
     
     <div class="wrapper2">
         <div class="interest">
-            <span>
+            <span class="oneday">
                 <h3>나의 클래스 - 원데이</h3>
-                <p>2건</p>
+                <p>9건</p>
             </span>
-            <div class="socialing">
-                <div class="item1">
-                    <a href="#"><img class="ipic" width="92%" height="70%" src="resources/image/friend.jpg"></a>
-                    <a id="stitle" href="#">오일 파스텔 원데이 클래스</a>
-                    <p id="stime">사당역 10/8 토요일 오전 10시</p>
-                </div>
-                <div class="item1">
-                    <a href="#"><img class="ipic" width="92%" height="70%" src="resources/image/friend.jpg"></a>
-                    <a id="stitle" href="#">오일 파스텔 원데이 클래스</a>
-                    <p id="stime">사당역 10/8 토요일 오전 10시</p>
-                </div>
-                <div class="item1">
-                    <a href="#"><img class="ipic" width="92%" height="70%" src="resources/image/friend.jpg"></a>
-                    <a id="stitle" href="#">오일 파스텔 원데이 클래스</a>
-                    <p id="stime">사당역 10/8 토요일 오전 10시</p>
-                </div>
-            </div>
-            <!-- <div class="smv">
-                <a class="sarr" href="#"><img width="13px" src="resources/image/previous.png"></a>
-                <a href="#"><img width="13px" src="resources/image/circle_sky.png"></a>
-                <a href="#"><img width="13px" src="resources/image/circle_beige.png"></a>
-                <a href="#"><img width="13px" src="resources/image/circle_beige.png"></a>
-                <a href="#"><img width="13px" src="resources/image/circle_beige.png"></a>
-                <a class="sarr" href="#"><img width="13px" src="resources/image/next.png"></a>
-            </div> -->
-        </div>
-    </div>
+    
+            
+            <!-- Swiper -->
+            <div class="slide1">
                 
-           <!-- <div class="myclass">
-                <span>
-                    <h4>나의 클래스 - VOD</h4>
-                    <p>4건</p>
-                </span>
-                <a href="#"><img class="arrow" width= "2%" src="resources/image/previous.png"></a>
-                <div class="clist">
-                    <div class="item2">
-                        <a href="#"><img class="ipic" width="92%" height="70%" src="resources/image/friend.jpg"></a>
-                        <a id="stitle" href="#">주말에 관악산 등산하실 분</a>
-                        <p id="stime">사당역 10/8 토요일 오전 10시</p>
-                    </div>
-                    <div class="item2">
-                        <a href="#"><img class="ipic" width="92%" height="70%" src="resources/image/friend.jpg"></a>
-                        <a id="stitle" href="#">주말에 관악산 등산하실 분</a>
-                        <p id="stime">사당역 10/8 토요일 오전 10시</p>
-                    </div>
-                    <div class="item2">
-                        <a href="#"><img class="ipic" width="92%" height="70%" src="resources/image/friend.jpg"></a>
-                        <a id="stitle" href="#">주말에 관악산 등산하실 분</a>
-                        <p id="stime">사당역 10/8 토요일 오전 10시</p>
+                <div class="swiper mySwiper1 socialing">
+                    <div class="swiper-wrapper sw">
+                        
+                        <div class="swiper-slide">
+                            <a href="#"><img class="ipic" width="92%" height="70%" src="resources/image/friend.jpg"></a>
+                            <a id="stitle" href="#">오일 파스텔 원데이 클래스</a>
+                            <p id="stime">사당역 10/8 토요일 오전 10시</p>
+                        </div>
+                        <div class="swiper-slide">
+                            <a href="#"><img class="ipic" width="92%" height="70%" src="resources/image/friend.jpg"></a>
+                            <a id="stitle" href="#">도자기 공방 원데이 클래스</a>
+                            <p id="stime">망원역 11/8 토요일 오전 12시</p>
+                        </div>
+                        <div class="swiper-slide">
+                            <a href="#"><img class="ipic" width="92%" height="70%" src="resources/image/friend.jpg"></a>
+                            <a id="stitle" href="#">오일 파스텔 원데이 클래스</a>
+                            <p id="stime">사당역 10/8 토요일 오전 10시</p>
+                        </div>
+                        <div class="swiper-slide">
+                            <a href="#"><img class="ipic" width="92%" height="70%" src="resources/image/friend.jpg"></a>
+                            <a id="stitle" href="#">위빙 원데이 클래스</a>
+                            <p id="stime">성수역 11/12 토요일 오전 10시</p>
+                        </div>
+                        <div class="swiper-slide">
+                            <a href="#"><img class="ipic" width="92%" height="70%" src="resources/image/friend.jpg"></a>
+                            <a id="stitle" href="#">오일 파스텔 원데이 클래스</a>
+                            <p id="stime">사당역 10/8 토요일 오전 10시</p>
+                        </div>
+                        <div class="swiper-slide">
+                            <a href="#"><img class="ipic" width="92%" height="70%" src="resources/image/friend.jpg"></a>
+                            <a id="stitle" href="#">위빙 원데이 클래스</a>
+                            <p id="stime">성수역 11/12 토요일 오전 10시</p>
+                        </div>
+                        <div class="swiper-slide">
+                            <a href="#"><img class="ipic" width="92%" height="70%" src="resources/image/friend.jpg"></a>
+                            <a id="stitle" href="#">오일 파스텔 원데이 클래스</a>
+                            <p id="stime">사당역 10/8 토요일 오전 10시</p>
+                        </div>
+                        <div class="swiper-slide">
+                            <a href="#"><img class="ipic" width="92%" height="70%" src="resources/image/friend.jpg"></a>
+                            <a id="stitle" href="#">스콘 베이킹 원데이 클래스</a>
+                            <p id="stime">홍대입구 11/10 일요일 오전 10시</p>
+                        </div>
+                        
                     </div>
                 </div>
-                <a href="#"><img class="arrow" width= "2%" src="resources/image/next.png"></a>
-            </div>  -->
+                
+                <!-- 슬라이드 버튼 설정 -->
+                <div class=button1>
+                    <!-- If we need navigation buttons -->
+                    <div class="but1"><img width="25px" src="resources/image/prev_b.png"></div>
+                </div>
+                
+                <div class=button2>
+                    <div class="but2"><img width="25px" src="resources/image/next_b.png"></div>
+                </div>
+                
+            </div> 
+            
+            <!-- Initialize Swiper -->
+            <script>
+                var swiper1 = new Swiper(".mySwiper1", {
+                    slidesPerView: 3,
+                    spaceBetween: 1,
+                    
+                    loop : true, 
+                    
+                    // Navigation arrows
+                    navigation: {
+                        nextEl: '.but2',
+                        prevEl: '.but1',
+                    },
+                    
+                });
+                </script>
+
+        <!-- VOD 클래스 -->
+        <span class="vod">
+            <h4>나의 클래스 - VOD</h4>
+            <p>6건</p>
+        </span>
+
+
+        <!-- Swiper -->
+        <div class="slide1">
+            
+            <div class="swiper mySwiper2 socialing">
+                <div class="swiper-wrapper sw">
+                    
+                    <div class="swiper-slide">
+                        <a href="#"><img class="ipic" width="92%" height="70%" src="resources/image/friend.jpg"></a>
+                        <a id="stitle" href="#">오일 파스텔 원데이 클래스</a>
+                        <p id="stime">사당역 10/8 토요일 오전 10시</p>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="#"><img class="ipic" width="92%" height="70%" src="resources/image/friend.jpg"></a>
+                        <a id="stitle" href="#">도자기 공방 원데이 클래스</a>
+                        <p id="stime">망원역 11/8 토요일 오전 12시</p>
+                    </div>
+                    <div class="swiper-slide">
+                                <a href="#"><img class="ipic" width="92%" height="70%" src="resources/image/friend.jpg"></a>
+                                <a id="stitle" href="#">위빙 원데이 클래스</a>
+                                <p id="stime">성수역 11/12 토요일 오전 10시</p>
+                            </div>
+                            <div class="swiper-slide">
+                                <a href="#"><img class="ipic" width="92%" height="70%" src="resources/image/friend.jpg"></a>
+                                <a id="stitle" href="#">오일 파스텔 원데이 클래스</a>
+                                <p id="stime">사당역 10/8 토요일 오전 10시</p>
+                            </div>
+                            <div class="swiper-slide">
+                                <a href="#"><img class="ipic" width="92%" height="70%" src="resources/image/friend.jpg"></a>
+                                <a id="stitle" href="#">위빙 원데이 클래스</a>
+                                <p id="stime">성수역 11/12 토요일 오전 10시</p>
+                            </div>
+                            <div class="swiper-slide">
+                                <a href="#"><img class="ipic" width="92%" height="70%" src="resources/image/friend.jpg"></a>
+                                <a id="stitle" href="#">스콘 베이킹 원데이 클래스</a>
+                                <p id="stime">홍대입구 11/10 일요일 오전 10시</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 슬라이드 버튼 설정 -->
+                    <div class=button3>
+                        <!-- If we need navigation buttons -->
+                        <div class="but3"><img width="25px" src="resources/image/prev_b.png"></div>
+                    </div>
+                    
+                    <div class=button4>
+                        <div class="but4"><img width="25px" src="resources/image/next_b.png"></div>
+                    </div>
+                    
+                </div> 
+            </div>
+            
+            <!-- Initialize Swiper -->
+            <script>
+                var swiper1 = new Swiper(".mySwiper2", {
+                    slidesPerView: 3,
+                    spaceBetween: 1,
+                    
+                    loop : true, 
+                    
+                    // Navigation arrows
+                    navigation: {
+                        nextEl: '.but4',
+                        prevEl: '.but3',
+                    },
+                    
+                });
+            </script>   
+
+    </div>
+</div>
 
     
 </div>
