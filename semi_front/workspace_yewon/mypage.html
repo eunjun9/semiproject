@@ -8,15 +8,36 @@
 
     <!--외부 스타일 시트-->
     <link rel="stylesheet" href="resources/css/mypagestyle.css">
+    <link href="header.css" rel="stylesheet">
     <!-- font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
-<header class="page-header">
-    <p id="head-text"><b>헤더 영역입니다</b></p>
-</header>
+    <!-- 헤더 -->
+     <div class="header">
+        <div class="head-inner">
+
+          <div class="logo">
+            <img src="resources/image/logo.png">
+          </div>
+
+            <div class="big-category">
+                <div class="category1">
+                    <a href="#">SOCIALING</a>
+                    <a href="#">CLASS</a>
+                    <a href="#">MAGAZINE</a>
+                </div>
+                <div class="category2">
+                    <a href="#">CART</a>
+                    <a href="#">MYPAGE</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
 <div class="mypage_main">
     <div class="wrapper1">
         <div class="info">
@@ -29,7 +50,7 @@
                 <p id="name">홍길동</p>
                 <p id="level">회원</p>
                 <p id="mail">kh@gmail.com</p>
-                <a id="feed" href="#">내 피드 <img width="5%" src="resources/image/next.png"></a>
+                <a id="myfeed" href="#">내 피드 <img width="5%" src="resources/image/next.png"></a>
             </div>
 
             <ul class="move">
@@ -43,19 +64,56 @@
     
     <div class="wrapper2">
         <div class="interest">
+            <span>
+                <h3>관심 소셜링</h3>
+                <p>5건</p>
+            </span>
             <div class="socialing">
-                <span>
-                    <h4>관심 소셜링</h4>
-                    <p>3건</p>
-                </span>
-                <a href="#"><img class="arrow" width= "2%" src="resources/image/previous.png"></a>
-                <a href="#"><img class="pic" width="30%" height="130px" src="resources/image/friend.jpg"></a>
-                <a href="#"><img class="pic" width="30%" height="130px" src="resources/image/friend.jpg"></a>
-                <a href="#"><img class="pic" width="30%" height="130px" src="resources/image/friend.jpg"></a>
-                <a href="#"><img class="arrow" width= "2%" src="resources/image/next.png"></a>
+                <div class="item1">
+                    <a href="#"><img class="ipic" width="92%" height="70%" src="resources/image/friend.jpg"></a>
+                    <p id="stitle">주말에 관악산 등산하실 분</p>
+                    <p id="stime">사당역 10/8 토요일 오전 10시</p>
+                </div>
+                <div class="item1">
+                    <a href="#"><img class="ipic" width="92%" height="70%" src="resources/image/friend.jpg"></a>
+                    <p id="stitle">주말에 관악산 등산하실 분</p>
+                    <p id="stime">사당역 10/8 토요일 오전 10시</p>
+                </div>
+                <div class="item1">
+                    <a href="#"><img class="ipic" width="92%" height="70%" src="resources/image/friend.jpg"></a>
+                    <p id="stitle">주말에 관악산 등산하실 분</p>
+                    <p id="stime">사당역 10/8 토요일 오전 10시</p>
+                </div>
+                <div class="item1">
+                    <a href="#"><img class="ipic" width="92%" height="70%" src="resources/image/friend.jpg"></a>
+                    <p id="stitle">주말에 관악산 등산하실 분</p>
+                    <p id="stime">사당역 10/8 토요일 오전 10시</p>
+                </div>
+                <div class="item1">
+                    <a href="#"><img class="ipic" width="92%" height="70%" src="resources/image/friend.jpg"></a>
+                    <p id="stitle">주말에 관악산 등산하실 분</p>
+                    <p id="stime">사당역 10/8 토요일 오전 10시</p>
+                </div>
+                <div class="item1">
+                    <a href="#"><img class="ipic" width="92%" height="70%" src="resources/image/friend.jpg"></a>
+                    <p id="stitle">주말에 관악산 등산하실 분</p>
+                    <p id="stime">사당역 10/8 토요일 오전 10시</p>
+                </div>
             </div>
+            <div class="smv">
+                <a class="sarr" href="#"><img width="13px" src="resources/image/previous.png"></a>
+                <a href="#"><img width="13px" src="resources/image/circle_sky.png"></a>
+                <a href="#"><img width="13px" src="resources/image/circle_beige.png"></a>
+                <a href="#"><img width="13px" src="resources/image/circle_beige.png"></a>
+                <a href="#"><img width="13px" src="resources/image/circle_beige.png"></a>
+                <a class="sarr" href="#"><img width="13px" src="resources/image/next.png"></a>
+            </div>
+        </div>
+    </div>
+                
             
-            <div class="myclass">
+
+            <!-- <div class="myclass">
                 <span>
                     <h4>관심 클래스</h4>
                     <p>4건</p>
@@ -67,9 +125,7 @@
                     <a href="#"><img class="pic" width="88%" height="130px" src="resources/image/friend.jpg"> <p>제목</p></a>
                 </div>
                 <a href="#"><img class="arrow" width= "2%" src="resources/image/next.png"></a>
-            </div>
-        </div>
-    </div>
+            </div> -->
 </div>
 </body>
 </html>
