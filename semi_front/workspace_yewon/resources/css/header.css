@@ -20,47 +20,57 @@ img{
 
 /* header ------------------------------ */
 .header {
-   width: 100%;
-    max-height: 200px;
+    width: 100%;
+     max-height: 200px;
 }
-
+ 
 .head-inner {
-    max-width: 1000px;
-    max-height: 200px;
-    margin : 0 auto;
+     max-width: 1000px;
+     max-height: 200px;
+     margin : 0 auto;
 }
-
+ 
 .logo{
-    width: 200px;
-    text-align: center;
-    display: block; 
-    margin: 0px auto;
-    margin-bottom: -20px;
+     width: 200px;
+     text-align: center;
+     display: block; 
+     margin: 0px auto;
+     margin-bottom: -20px;
 }
-
+ 
 .big-category{
-    display: flex;
-    justify-content: space-between;
+     display: flex;
+     justify-content: space-between;
 }
 
-.category1>a{
-    margin-right: 20px;
-    color: gray;
-    font-family: 'Noto Sans KR', sans-serif;
+.category1>a:hover{
+    color: rgb(145, 224, 244);
 }
+
+.category2>a:hover{
+    color: rgb(145, 224, 244);
+}
+
+.category1 > a{
+     margin-right: 20px;
+     color: gray;
+     font-family: 'Noto Sans KR', sans-serif;
+}
+
 .category1{
-    margin-left:40px;
+     margin-left: 15px;
 }
-
+ 
 .category2>a{
-    margin-right: 20px;
-    color: gray;
-    font-family: 'Noto Sans KR', sans-serif;
+     margin-right: 20px;
+     color: gray;
+     font-family: 'Noto Sans KR', sans-serif;
 }
-.category2{
-    margin-right:40px;
 
+.category2{
+     margin-right: 15px;
 }
+
 
 
 
