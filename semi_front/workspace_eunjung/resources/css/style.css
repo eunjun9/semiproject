@@ -51,19 +51,11 @@ hr {
      color: gray;
      font-family: 'Noto Sans KR', sans-serif;
 }
-
-.category1{
-     margin-left: 15px;
-}
  
-.category2>a{
+.category2 > a{
      margin-right: 20px;
      color: gray;
      font-family: 'Noto Sans KR', sans-serif;
-}
-
-.category2{
-     margin-right: 15px;
 }
 
 /* 소셜링 메인 페이지 ----------------------------------------------------------------------- */
@@ -123,14 +115,12 @@ hr {
 }
 
 #s-thumtitle {
-    margin-top: -1px;
-    margin-left: 5px;
+    margin-top: 5px;
     font-weight: bold;
 }
 
 #s-thumsub {
     margin-top: -32px;
-    margin-left: 5px;
     color: lightslategray;
 }
 
@@ -239,16 +229,6 @@ select[name=lineup] {
     display : grid;
     grid-template-columns: repeat(3, 1fr);
     gap : 50px;
-}
-
-#s-thumtitle2 {
-    margin-top: 5px;
-    font-weight: bold;
-}
-
-#s-thumsub2 {
-    margin-top: -32px;
-    color: lightslategray;
 }
 
 #writing {
