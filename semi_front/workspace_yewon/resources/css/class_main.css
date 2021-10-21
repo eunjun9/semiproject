@@ -1,0 +1,31 @@
+@charset "UTF-8";
+html{
+    font-size:100%;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+img{
+    max-width: 100%;
+}
+
+/* body-----------------*/
+.class_main{
+    max-width : 75%;
+    margin : 0 auto;
+    padding : 0 4%;
+}
+
+
+.wrapper1 h2{
+    color:  rgb(7, 86, 105);
+}
+.wrapper1 p{
+    color: rgb(161, 161, 161);
+    top : -20px;
+    position: relative;
+    font-weight: 550;
+}
