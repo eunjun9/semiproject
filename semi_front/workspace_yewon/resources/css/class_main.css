@@ -19,7 +19,6 @@ img{
     padding : 0 4%;
 }
 
-
 .wrapper1 h2{
     color:  rgb(7, 86, 105);
 }
@@ -28,4 +27,88 @@ img{
     top : -20px;
     position: relative;
     font-weight: 550;
+}
+
+/* 사진 자동 슬라이드 ------------------*/
+/* *{margin:0;padding:0;} */
+.slide ul,li{list-style:none;}
+.slide{
+        height:380px;
+        width: 360px;
+        margin-left: -45px;
+        overflow:hidden;}
+.slide ul{
+          width:calc(100% * 4);
+          display:flex;
+          animation:slide 8s infinite;} /* slide를 8초동안 진행하며 무한반복 함 */
+.slide li{width:calc(100% / 4);}
+/* .slide li:nth-child(1){background:#ffa;}
+.slide li:nth-child(2){background:#faa;}
+.slide li:nth-child(3){background:#afa;}
+.slide li:nth-child(4){background:#aaf;} */
+@keyframes slide {
+  0% {margin-left:0;} /* 0 ~ 10  : 정지 */
+  10% {margin-left:0;} /* 10 ~ 25 : 변이 */
+  25% {margin-left:-100%;} /* 25 ~ 35 : 정지 */
+  35% {margin-left:-100%;} /* 35 ~ 50 : 변이 */
+  50% {margin-left:-200%;}
+  60% {margin-left:-200%;}
+  75% {margin-left:-300%;}
+  85% {margin-left:-300%;}
+  100% {margin-left:0;}
+}
+
+.filtering{
+    background-color: rgb(218, 239, 245);
+    width: 550px;
+    height: 300px;
+    margin-top: -365px;
+    margin-left: 315px;
+    margin-bottom: 40px;
+    padding: 4%;
+    display: flex; 
+}
+
+.filtering form{
+    margin: 0 auto;
+}
+
+.filtering input:focus{
+    outline: none;
+}
+
+#search{
+    position: relative;
+    margin-top: -20px;
+
+}
+
+.filtering input[name=keyword]{
+    margin-top: -40px;
+    margin-left: 10px;
+    border: none;
+    border-bottom: 1px solid rgb(185,185,185);
+    text-align: center;
+    background-color: transparent;
+}
+.filtering label{
+    color: rgb(77, 77, 77);
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.filtering select[name=city]{
+    margin-left: 50px;
+}
+
+.filtering select[name=town]{
+    margin-left: 25px;
+}
+
+.filtering select[name=bigC]{
+    margin-left: 25px;
+}
+
+.filtering select[name=smallC]{
+    margin-left: 10px;
 }
