@@ -175,37 +175,41 @@ img{
     left:430px;
     top : 320px;
     position:absolute;
+    cursor: pointer;
 }
 
 .button2{
     right:140px;
     top : 320px;
     position:absolute;
+    cursor: pointer;
 }
 
 /* VOD 클래스 -----*/
 .vod h3{
     color : rgb(77, 77, 77);
     margin-left: 15px;
-    margin-top: 65px;
-    margin-bottom: -20px;
+    margin-top: 40px;
+    margin-bottom: -25px;
 }
 
 .vod p{
     position: relative;
-    top : -25px;
+    top : -20px;
     left : 175px;
     font-size: 13px;
     color: rgb(201, 0, 0);
 }
 .button3{
     left:430px;
-    top : 615px;
+    top : 590px;
     position:absolute;
+    cursor: pointer;
 }
 
 .button4{
     right:140px;
-    top : 615px;
+    top : 590px;
     position:absolute;
+    cursor: pointer;
 }

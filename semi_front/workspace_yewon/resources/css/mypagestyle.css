@@ -18,17 +18,17 @@ img{
     padding : 5% 10%;
     justify-content: space-between;
     display: flex;
-    height: 640px;
+    height: 590px;
 }
 .wrapper1{
    border : 6px solid rgb(218, 239, 245);
    background-color: white;
-   width: 33%;
+   width: 32%;
 }
 .wrapper2{
     border : 6px solid rgb(218, 239, 245);
     background-color: white;
-    width: 66%;
+    width: 65%;
  }
 
 
@@ -44,10 +44,10 @@ img{
 .notice{
     position: relative;
     left : 90%;
-    top : -35px;
+    top : -50px;
 }
 .notice p{
-    margin-top: 0px;
+    margin-top: -10px;
     text-decoration: none;
     color: grey;
     font-size: 12px;
@@ -70,19 +70,19 @@ img{
 #level{
     border : 1.5px solid lightgrey;
     border-radius: 5px;
-    width: 45px;
-    height: 27px;
+    width: 42px;
+    height: 25px;
     font-size: 13px;
     text-align: center;
     position: relative;
-    top : -35px;
-    left : 40%;
+    top : -52px;
+    left : 45%;
 }
 
 #mail{
     font-size: 12px;
     color : rgb(141, 141, 141);
-    margin-top: -40px;
+    margin-top: -62px;
     margin-left: 2%;
 }
 #myfeed{
@@ -90,23 +90,23 @@ img{
     font-weight: bold;
     color : rgb(77, 77, 77);
     position: relative;
-    top : -8px;
+    top : -18px;
     margin-left: 10%;
 }
 
 /*페이지 이동 영역*/
 .move{
     width: 80%;
-    height: 170px;
+    height: 150px;
     background-color: rgb(248, 241, 233);
     margin: 20px auto;
-    padding: 4%;
+    padding: 5%;
     list-style: none;
     
 }
 .move li{
     /* border-bottom: 1px solid lightgray; */
-    margin-bottom: 3px; 
+    margin-bottom: 4px; 
     margin-left: 15px;
 }
 .mv{
@@ -121,17 +121,18 @@ img{
 /* 관심내역 ---------*/
 .interest{
     padding: 3%;
-    margin: 20px auto;
+    margin: 15px auto;
 }
 .interest h3{
     color : rgb(77, 77, 77);
     margin-left: 15px;
-    margin-top: -10px;
+    margin-top: 5px;
+    margin-bottom: -20px;
 }
 
 .interest span p{
     position: relative;
-    top : -32px;
+    top : -24px;
     left : 120px;
     font-size: 13px;
     color: rgb(201, 0, 0);
@@ -141,9 +142,9 @@ img{
 /*소셜링*/
 .socialing:not(p){
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    /* grid-template-columns: repeat(3, 1fr); */
     grid-template-columns : 200px 200px 200px ;
-    gap: 40px 10px;
+    gap: 50px 10px;
 }
 
 .ipic{
@@ -177,7 +178,8 @@ img{
 }
 
 .smv{
-    margin: 25px 240px;
+    margin-top: 45px; 
+    margin-left : 240px;
 }
 
 .sarr{
