@@ -48,18 +48,11 @@ img{
     color: gray;
     font-family: 'Noto Sans KR', sans-serif;
 }
-.category1{
-    margin-left:40px;
-}
 
 .category2>a{
     margin-right: 20px;
     color: gray;
     font-family: 'Noto Sans KR', sans-serif;
-}
-.category2{
-    margin-right:40px;
-
 }
 
 
@@ -68,74 +61,44 @@ img{
 
 /*---------------body----------------*/
 
-/* 배너 */
+/*타이틀 부분*/
 .board {
     width: 100%;
-    display: flex;
+    margin : 0 auto;
  }
  
  .board-inner {
-     max-width: 1000px;
-     margin : 0 auto;
+     max-width: 100%;
+     display: flex;
  }
 
-.magazine{
-    width: 1000px;
-    height: 300px;
-    margin-top : 20px;
-    background: url('image/터키.jpg') no-repeat center top -207px;
-    background-size: cover;
+.title-big{
+    margin-top: -40px;
 }
 
-.magazine .title{
+.title{
     position:sticky;
-    transform: translate(50px, 25px);                                                                   
+    transform: translate(50px, 37px);                                                                   
     font-size:25px;
     font-weight: bold;
-    color: white;
     z-index: 2;
+    color:rgb(7, 86, 105);
+
 }
 
-.magazine .word{
+.word{
     position: sticky;
-    transform: translate(50px, 20px);                                                                   
+    transform: translate(55px, 32px);                                                                   
     font-size:17px;
-    color: white;
+    color:rgb(7, 86, 105);
     z-index: 2;
-}
-
-/* 게시판 */
-
-
-.title {
-    width: 100%;
-    display: flex;
- }
- 
- .title-inner {
-     max-width: 1000px;
-     margin : 0 auto;
- }
-
-.tit{
-    display:flex;
-    justify-content: space-between;
-    margin-top: 50px;
-}
-
-
-.b-title{
-    font-family: 'Noto Sans KR', sans-serif;
-    font-weight: bold;
-    font-size: 20px;
-    margin-left: -391px;
-    margin-bottom: 10px;
-
 }
 
 .view1{
-    margin-right: -385px;
-    margin-top: 10px;
+   margin-left : 600px;
+   position:sticky;
+    transform: translate(150px, 130px); 
+    text-decoration: underline;
 
 }
 .view1>a {
@@ -145,93 +108,127 @@ img{
 }
 
 
-.first{
-    position:static;
-}
+/* 게시판 */
 
-.third{
-    margin-bottom: 40px;
-}
-
-
-.slide1{
-    width: 800px;
+.body-super{
+    width: 100%;
     height: auto;
-    position:relative;
-    margin : 0 auto;
 }
 
-
-.slide2{
-    width: 800px;
+.board{
+    width: 100%;
     height: auto;
-    position:relative;
-    margin : 0 auto;
-   
+    margin-top: 30px;
+    margin-bottom: 130px;
+    margin-left: -100px;
 }
 
+ .board-inner {
+     max-width: 1000px;
+     margin : 0 auto;
+     height: auto;
+    
+ }
 
-.slide3{
-    width: 800px;
-    height: auto;
-    position:relative;
-    margin : 0 auto;
-   
+
+ 
+.body-big{
+    margin-bottom: 150px;
 }
 
-.button1{
-    left:-90px;
-    bottom : 165px;
-    position:absolute;
+ .body-inner {
+     max-width: 1000px;
+     margin : 0 auto;
+     height: auto;
+    
+ }
+
+.title-big{
+    position:sticky;
+    transform: translate(50px, 25px); 
 }
 
-.button2{
-    right:-90px;
-    bottom : 165px;
-    position:absolute;
+.pics{
+    width: 200px;
+    margin-bottom: 50px;
 }
 
-.button3{
-    left:-90px;
-    bottom : 165px;
-    position:absolute;
+ .first{
+    display: flex;
+    justify-content: space-between;
+ }
+ .second{
+    display: flex;
+    justify-content: space-between;
+ }
+
+ .third{
+    display: flex;
+    justify-content: space-between;
+ }
+ .fourth{
+    display: flex;
+    justify-content: space-between;
+ }
+
+
+
+
+
+
+.all-title{
+    position:relative; 
 }
-
-.button4{
-    right:-90px;
-    bottom : 165px;
-    position:absolute;
-}
-
-.button5{
-    left:-90px;
-    bottom : 165px;
-    position:absolute;
-}
-
-.button6{
-    right:-90px;
-    bottom : 165px;
-    position:absolute;
-}
-
-
 
 .first-title{
+    position: absolute;
     color: black;
     font-family: 'Noto Sans KR', sans-serif;
     font-size: 16px;
     font-weight: bold;
-    margin-left: 10px;
+    margin-left: 7px;
+    margin-top: 0px;
 }
 
 .name{
+    position: absolute;
     color: black;
     font-family: 'Noto Sans KR', sans-serif;
     font-size: 12px;
-    margin-left: 10px;
+    margin-top: -5px;
+    margin-left: 7px;
 }
 
+
+
+/*-------하단 페이징-----------*/
+.paging{
+    margin-top: 20px;
+    margin-bottom: -90px;
+}
+
+.board_paging {
+    height: 50px;
+    line-height: 50px;
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    width: 480px;
+    margin: auto;
+ }
+ 
+ .board_paging a {
+    text-decoration: none;
+    color: #282A35;
+    width: 40px;
+    display: block;
+    text-align: center;
+ }
+ 
+ .board_paging a.current_page {
+    border-bottom: 2px solid #282A35;
+    font-weight: bold;
+ }
 
 
 /*---------------footer----------------*/
