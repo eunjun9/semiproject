@@ -1,0 +1,120 @@
+@charset "UTF-8";
+
+html {
+    font-size : 100%;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+img {
+    max-width: 100%;
+}
+
+hr {
+    height: 2px;
+    background-color: lightgray;
+    border: 0px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+/* 본문 간격 */
+
+.body {
+    width: 100%;
+    display: flex;
+}
+ 
+.body-inner {
+    max-width: 1000px;
+    width: 1000px;
+    margin : 0 auto;
+}
+
+.page {
+    margin-top: 5%;
+}
+
+/* 상단 제목, 썸네일 */
+
+.wrapper1 {
+    display: inline-block;
+    width: 40%;
+    margin-top: -50px;
+}
+
+.wrapper2 {
+    display: inline-block;
+    width: 49%;
+    margin-left: 10%;
+}
+
+#title {
+    font-size: 2.4rem;
+    font-weight: bold;
+}
+
+#subTitle {
+    color: rgb(75,75,75);
+    font-weight: bold;
+    display: inline;
+    line-height: 2.5;
+}
+
+#subTitle2 {
+    color: gray;
+    font-weight: bold;
+    font-size: 1.1rem;
+    display: inline;
+    margin-left: 30px;
+}
+
+.wrapper3 {
+    display: inline-block;
+    width: 50%;
+    margin-top: 80px;
+}
+
+.wrapper4 {
+    display: inline-block;
+    width: 39%;
+    margin-left: 10%;
+    margin-top: 80px;
+}
+
+.profileBox {
+    width: 90%;
+    border: 1px soild lightgray;
+    background-color: rgb(218,239,245);
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+#p-image {
+    width: 30%;
+    margin-left: 35%;
+}
+
+#p-name {
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-left: 42%;
+    margin-top: 5px;
+    margin-bottom: -10px;
+}
+
+#p-button {
+    background-color: rgb(7,86,105);
+    color: white;
+    padding: 8px;
+    font-weight: bold;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    width: 200px;
+    height: 35px;
+    margin-left: 20%;
+}
