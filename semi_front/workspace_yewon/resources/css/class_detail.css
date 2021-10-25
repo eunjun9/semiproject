@@ -14,40 +14,241 @@ img{
 /* body-----------------*/
 
 .class_detail1{
-    padding: 4% 7%;
+    padding: 5% 10% ;
 }
 
-/* 상세 페이지 헤더 */
+/* 상세 페이지 헤더--------------------*/
 .cDetail_h{
     display: flex; 
     justify-content :space-around;
-     margin: 20px auto;
+    margin: 20px auto;
 }
 
 .cThumbnail{
-    width: 470px;
+    width: 450px;
     height: 260px;
 }
 
 .cMTitle{
-    margin-top: 140px;
+    margin-top: 130px;
+    margin-left: 15px;
+
 }
 .cTutor{
-    margin-top: -70px;
+    margin-top: -85px;
     margin-left: 60px;
     color: rgb(107, 107, 107);
 }
 .cType{
-    margin-top: -25px;
+    margin-top: -15px;
     margin-left: 60px;
     color: rgb(107, 107, 107);
 }
 
-/* 상세 페이지 바디 */
-.class_detail2{
-    padding: 2% 11%;
+.class_detail1 p{
+     font-size: 14px;
+     margin-left: 100px;
+     margin-top: -52px;
+     color: rgb(7, 86, 105);
 }
 
-.cDetail_b h4{
+/* 결제창 -----------------------------*/
+.payment{
+    position: fixed;
+    width: 300px;
+    height: 200px;
+    background-color: rgba(244, 246, 246, 0.5);
+    box-shadow: 5px 5px 5px lightgrey;
+    margin-left: 900px;
+    margin-top: -400px;
+    padding: 1%;
+}
+
+#pTitle{
+    color : rgba(77, 77, 77);
+    text-align: center;
+    margin-top: 10px;
+}
+
+#pTutor{
+    font-style: italic;
+    font-size: 10pt;
+    color: grey;
+    text-align: right;
+    font-weight: bold;
+    margin-right: 20px;
+}
+
+#pPrice{
+    color: rgb(7, 86, 105);
+    text-align: right;
+    margin-right: 20px;
+    margin-top: -10px;
+}
+
+.payment button{
+    width: 110px;
+    height: 30px;
+    border-radius: 5px ;
+    border: 1px solid rgb(255, 255, 255);
+    cursor: pointer;
+    font-weight: bold;
+    color : rgba(77, 77, 77);
+}
+
+#cart{
+    background-color: rgb(248, 241, 233);
+    margin-left: 35px;
+}
+
+#pay{
+    background-color: rgb(218, 239, 245);
+    margin-left: 10px;
+}
+
+.selectDate{
+    display:none;
+    position:fixed;
+    top:50%; left:50%;
+    transform: translate(-50%,-50%);
+    max-width: 60%;
+    min-height: 30%;
+    background:#fff;
+}
+
+
+/* 상세 페이지 바디 ---------------- */
+.class_detail2{
+    padding: 3% 10% ;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    width: 850px;
+    margin-bottom: -60px;
+}
+
+.class_detail2 h4{
     color: rgb(7, 86, 105);
 }
+
+.cDetail_b{
+    width: 850px;
+}
+
+
+#cBodyText1{
+    margin-top: 50px;
+}
+
+.cBodyImg{
+    margin: auto;
+    width: 800px;
+    height: 500px;
+}
+
+.cBodyText2{
+    font-size: 17px;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+/* 상세페이지 푸터------------*/
+.class_detail3{
+    padding: 2% 14%;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    width: 850px;
+}
+
+.class_detail3:not(h4){
+    color: grey;
+    font-size: 11pt;
+}
+
+.class_detail3 h4{
+    color: rgb(7, 86, 105);
+}
+
+#cTutorIntro{
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+/* 문의사항 */
+.cQnA input[name=cQuestion]{
+    width: 760px;
+    height: 25px;
+    border-radius: 5px ;
+    border: 1px solid rgb(197, 197, 197);
+    font-size: 12px;
+    font-family: 'Noto Sans KR', sans-serif;
+    margin-bottom: 10px;
+}
+
+.cQnA button{
+    border-radius: 5px ;
+    border: 1px solid rgb(185,185,185, 0);
+    width: 65px;
+    height: 27px;
+    margin-left: 10px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.qBtn{
+    background-color: rgb(218, 239, 245); 
+    color: rgb(77, 77, 77);
+}
+
+.cQuestion1{
+    padding: 0.5%;
+    font-size: 12px;
+    border-radius: 5px ;
+    border: 1px solid rgb(197, 197, 197);
+    margin-bottom: -10px;
+}
+
+.cQuestion2{
+    padding: 0.5%;
+    font-size: 12px;
+    border-radius: 5px ;
+    border: 1px solid rgb(197, 197, 197);
+    margin-bottom: -10px;
+    cursor: pointer;
+}
+
+.aStatus{
+    color :rgb(7, 86, 105);
+    margin-left: 780px;
+    margin-top: -30px;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+.cAnswer{
+    width: 760px;
+    height: 40px;
+    border-radius: 5px ;
+    border: 1px solid rgb(197, 197, 197);
+    resize: none;
+    background-color:rgb(218, 239, 245);
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 10pt;
+}
+
+textarea.cAnswer{
+margin-top: -5px;
+}
+
+p.cAnswer{
+    display: none;
+    margin-top: 5px;
+}
+
+
+.aBtn{
+    position: relative;
+    top : -20px;
+    background-color: rgb(7, 86, 105);
+    color: white;
+}
+
