@@ -12,3 +12,42 @@ img{
     max-width: 100%;
 }
 /* body-----------------*/
+
+.class_detail1{
+    padding: 4% 7%;
+}
+
+/* 상세 페이지 헤더 */
+.cDetail_h{
+    display: flex; 
+    justify-content :space-around;
+     margin: 20px auto;
+}
+
+.cThumbnail{
+    width: 470px;
+    height: 260px;
+}
+
+.cMTitle{
+    margin-top: 140px;
+}
+.cTutor{
+    margin-top: -70px;
+    margin-left: 60px;
+    color: rgb(107, 107, 107);
+}
+.cType{
+    margin-top: -25px;
+    margin-left: 60px;
+    color: rgb(107, 107, 107);
+}
+
+/* 상세 페이지 바디 */
+.class_detail2{
+    padding: 2% 11%;
+}
+
+.cDetail_b h4{
+    color: rgb(7, 86, 105);
+}
