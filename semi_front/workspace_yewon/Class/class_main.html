@@ -49,29 +49,27 @@
     <!-- 클래스 -->
     <div class="class_main">
         <div class="wrapper1">
-            <h2>클래스</h2>
+            <h1>클래스</h1>
             <p>새로운 나, 24시간이면 충분해요</p>
         </div>
 
         <div class="wrapper2">
             <div class="slide">
                 <ul>
-                    <li><img src="../resources/image/sport.jpg" width="320px" height="380px"></li>
-                    <li><img src="../resources/image/dance.jpg" width="320px" height="380px"></li>
-                    <li><img src="../resources/image/weaving.jpg" width="320px" height="380px"></li>
-                    <li><img src="../resources/image/baking.jpg" width="320px"  height="380px"></li>
+                    <li><img src="../resources/image/painting.jpg" width="340px" height="380px"></li>
+                    <li><img src="../resources/image/dance.jpg" width="340px" height="380px"></li>
+                    <li><img src="../resources/image/weaving.jpg" width="340px" height="380px"></li>
+                    <li><img src="../resources/image/baking.jpg" width="340px"  height="380px"></li>
                 </ul>
             </div>
             <div class="filtering">
                 <form>
                     <img id="search" width="20px" src="../resources/icon/search.png">
-                    <input type="text" maxlength="25" size="40" placeholder="검색할 키워드를 입력해주세요" name="keyword" ><br>
+                    <input type="text" maxlength="25" size="40" placeholder="검색할 키워드를 입력해주세요" name="keyword" id="keyword" ><br>
                     
                     <label>가격</label>
-                    <input id="price1" type="number" value="10000" name="price1">
-                    <input id="price2" type="number" value="50000" name="price2"><br>
-                    
-
+                    <input id="price1" type="number" value="0" name="price1"><label> 원&nbsp;&nbsp;&nbsp;~&nbsp;&nbsp;  </label>
+                    <input id="price2" type="number" value="50000" name="price2"><label> 원</label><br>
 
                     <label>위치</label>
                     <select name="city">
@@ -163,17 +161,91 @@
                     </select><br> -->
 
                     <label>진행방식</label>
+                    <input type="checkbox" value="online" name="online"><label class="ckboxlabel">온라인</label>
+                    <input type="checkbox" value="offline" name="offline"><label class="ckboxlabel">오프라인</label><br>
+
                     <label>클래스 타입</label>
+                    <input type="checkbox" value="oneday" name="oneday"><label class="ckboxlabel">원데이 클래스</label>
+                    <input type="checkbox" value="vod" name="vod"><label class="ckboxlabel">VOD 클래스</label> <br>
 
-
-
+                    <button type="reset" name="reSel">조건 초기화</button>
+                    <button type="submit" name="selEnd">선택 검색</button>
                 </form>
             </div>
-                
         </div>
+        
+        <div class="wrapper3">
+        <select>
+            <option disabled>정렬 방식</option>
+            <option selected >인기순</option>
+            <option>최신순</option>
+            <option>가격 낮은순</option>
+            <option>가격 높은순</option>
+        </select><br>
+        </div>
+        
+        <div class="wrapper4">
+            <div class="cItem" >
+                <a href="class_detail.html">
+                    <img class="cThumbnail" src="../resources/image/class_ex1.jpg">
+                    <h4 class="cMTitle">펀치니들을 이용한 티프팅 소품 제작법 </h4>
+                    <p class="cPrice">50,000원</p>
+                </a>
+            </div>
+            <div class="cItem">
+                <img class="cThumbnail" src="../resources/image/class_ex2.JPG">
+                <h4 class="cMTitle">펀치니들을 이용한 티프팅 소품 제작법 </h4>
+                <p class="cPrice">50,000원</p>
+            </div>
+            <div class="cItem">
+                <img class="cThumbnail" src="../resources/image/class_ex1.jpg">
+                <h4 class="cMTitle">펀치니들을 이용한 티프팅 소품 제작법 </h4>
+                <p class="cPrice">50,000원</p>
+            </div>
+            <div class="cItem">
+                <img class="cThumbnail" src="../resources/image/class_ex2.JPG">
+                <h4 class="cMTitle">펀치니들을 이용한 티프팅 소품 제작법 </h4>
+                <p class="cPrice">50,000원</p>
+            </div>
+            <div class="cItem">
+                <img class="cThumbnail" src="../resources/image/class_ex1.jpg">
+                <h4 class="cMTitle">펀치니들을 이용한 티프팅 소품 제작법 </h4>
+                <p class="cPrice">50,000원</p>
+            </div>
+            <div class="cItem">
+                <img class="cThumbnail" src="../resources/image/class_ex2.JPG">
+                <h4 class="cMTitle">펀치니들을 이용한 티프팅 소품 제작법 </h4>
+                <p class="cPrice">50,000원</p>
+            </div>
+            <div class="cItem">
+                <img class="cThumbnail" src="../resources/image/class_ex1.jpg">
+                <h4 class="cMTitle">펀치니들을 이용한 티프팅 소품 제작법 </h4>
+                <p class="cPrice">50,000원</p>
+            </div>
+            <div class="cItem">
+                <img class="cThumbnail" src="../resources/image/class_ex2.JPG">
+                <h4 class="cMTitle">펀치니들을 이용한 티프팅 소품 제작법 </h4>
+                <p class="cPrice">50,000원</p>
+            </div>
+            <div class="cItem">
+                <img class="cThumbnail" src="../resources/image/class_ex1.jpg">
+                <h4 class="cMTitle">펀치니들을 이용한 티프팅 소품 제작법 </h4>
+                <p class="cPrice">50,000원</p>
+            </div>
+        </div>
+
+        <div class="wrapper5">
+            <a class="paging" href="#"><img width="18px" src="../resources/icon/previous.png"></a>
+                <a class="paging" href="#"><img width="20px" src="../resources/icon/circle_sky.png"></a>
+                <a class="paging" href="#"><img width="20px" src="../resources/icon/circle_beige.png"></a>
+                <a class="paging" href="#"><img width="20px" src="../resources/icon/circle_beige.png"></a>
+                <a class="paging" href="#"><img width="20px" src="../resources/icon/circle_beige.png"></a>
+                <a class="paging" href="#"><img width="20px" src="../resources/icon/circle_beige.png"></a>
+            <a class="paging" href="#"><img width="18px" src="../resources/icon/next.png"></a>
+        </div>
+
+
     </div>
-
-
 
 
 
