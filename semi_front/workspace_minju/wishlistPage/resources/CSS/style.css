@@ -34,8 +34,12 @@ body {
 
  hr{
      background-color: gray;
-     height: 2px;
+     height: 1px;
      border: 0px;
+ }
+ .hr-line{
+     margin-top: 4%;
+     margin-bottom: 2%;
  }
 
  /* 클래스 선택 체크박스 */
@@ -133,4 +137,38 @@ body {
     margin-left: 4%;
     height: 100px;
     cursor: pointer;
+ }
+
+ /* 선택버튼, 총결제금액 부분 */
+
+ .wish-footer{
+    max-width: 1000px;
+    width: 100%;
+    margin : 0 auto;
+ }
+ .class-checkbox-btn{
+     width: 150px;
+     display: flex;
+     justify-content:space-between;
+     margin-left: 3%;
+ }
+
+ .check-btn{
+    font-size: 12px;
+    background-color: rgb(218, 239, 245);
+    border-radius: 9px;
+    border: none;
+    padding : 7px 10px 7px 10px;
+ }
+
+ .check-btn2{
+    font-size: 12px;
+    background-color:  rgb(248, 241, 233);
+    border-radius: 9px;
+    border: none;
+    padding : 7px 10px 7px 10px;
+ }
+
+ .total{
+     font-size: 19px;
  }
