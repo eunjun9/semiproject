@@ -25,6 +25,11 @@ hr {
 .body {
     width: 100%;
     display: flex;
+
+    /* display: flex;
+    position: relative;
+    align-items: center;
+    flex-direction: column; */
 }
  
 .body-inner {
@@ -124,17 +129,30 @@ input[name=keyword] {
 
 select[name=local],
 select[name=local-details] {
+    border: 1px solid lightgray;
     width: 100px;
     height: 30px;
+    border-radius: 5px;
+    padding-left: 15px;
+    font-family: 'Noto Sans KR', sans-serif;
 }
 
 input[name=dateIn] {
-    height: 25px;
+    border: 1px solid lightgray;
+    width: 150px;
+    height: 30px;
+    border-radius: 5px;
+    padding-left: 10px;
+    font-family: 'Noto Sans KR', sans-serif;
 }
 
 select[name=lineup] {
+    border: 1px solid lightgray;
     width: 80px;
     height: 30px;
+    border-radius: 5px;
+    padding-left: 10px;
+    font-family: 'Noto Sans KR', sans-serif;
 }
 
 select[name=local],
