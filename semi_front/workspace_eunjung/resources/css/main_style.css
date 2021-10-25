@@ -1,13 +1,13 @@
 @charset "UTF-8";
 
 html {
-    /* 사용자 설정 문자 크기 그대로 반영 되도록 */
     font-size : 100%;
     font-family: 'Noto Sans KR', sans-serif;
 }
 
 a {
     text-decoration: none;
+    color: black;
 }
 
 img {
@@ -20,7 +20,7 @@ hr {
     border: 0px;
 }
 
-/* 소셜링 메인 페이지 ----------------------------------------------------------------------- */
+/* 본문 간격 */
 
 .body {
     width: 100%;
@@ -28,8 +28,8 @@ hr {
 }
  
 .body-inner {
-     max-width: 1000px;
-     margin : 0 auto;
+    max-width: 1000px;
+    margin : 0 auto;
 }
 
 .socialing {
@@ -210,35 +210,15 @@ select[name=lineup] {
     margin-bottom: 50px;
 }
 
-/* 게시판 */
-
-.board1{
-    display:flex;
-    justify-content: space-between;
-    margin-top: 50px;
-}
-
-.b-title1 {
-    font-family: 'Noto Sans KR', sans-serif;
-    font-weight: bold;
-    font-size: 20px;
-    margin-left: -385px;
-
-}
-
-.view1{
-    margin-right: -385px;
-    margin-top: 10px;
-
-}
-.view1>a {
-    color: gray;
-    font-family: 'Noto Sans KR', sans-serif;
-    font-size: 12px;
-}
+/* 슬라이드 */
 
 .slide{
-    position:static;
+    position: static;
+}
+
+.swiper {
+    width: 850px;
+    height: 300px;
 }
 
 .button1{
@@ -249,15 +229,17 @@ select[name=lineup] {
 }
 .button2{
     position: relative;
-    top:-220px;
-    right: 200px;
+    top:-263px;
+    right: -935px;
     
 }
 
-.swiper-button-prev{
+.button-prev{
     position: relative;
+    margin-left: -170px;
 }
 
-.swiper-button-next{
+.button-next{
     position: relative;
+    margin-right: -170px;
 }
