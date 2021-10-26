@@ -196,12 +196,42 @@ s
     font-weight: bold;
 }
 
+/* 결제 수단 */
+
+.pay-title{
+    font-size: 25px;
+    font-weight: bold;
+    padding: 5px 5px 5px 5px;
+    margin-left: 10%;
+     margin-bottom: 30px;
+}
+.order-select{
+    display: inline-block;
+    margin-left: 10%;
+}
+
+.bank, .card, .kakaopay{
+    font-size: 25px;
+    width: 770px;
+    height: 100%;
+    padding: 10px;
+    margin-bottom: 5px;
+    background-color: rgba(248, 241, 233, 0.45);
+    border: 1px solid rgb(221, 221, 221);
+}
+
+#pay {
+    width: 15px;
+    height: 15px;
+    margin-right: 10px;
+}
 
  /* 이전으로 가기 버튼 */
  .back-btn{
     display: flex;
     justify-content: center;
-    margin-top: 10%;
+    margin-top: 5%;
+    margin-bottom: 5%;
     width: 100%;
  }
 
