@@ -39,6 +39,14 @@ img {
      display: flex;
      justify-content: space-between;
 }
+
+.category1>a:hover{
+    color: rgb(145, 224, 244);
+}
+
+.category2>a:hover{
+    color: rgb(145, 224, 244);
+}
  
 .category1 > a{
      margin-right: 20px;
@@ -77,19 +85,21 @@ img {
     font-weight: bold;
     color:rgb(145, 244, 244);
     margin-left: 100px;
-    margin-top: 45px;
+    margin-top: 50px;
     font-family: 'Noto Sans KR', sans-serif;
 
 }
 
 .information{
     font-size: 5px;
+    margin-top: 12px;
 }
 
 .foot-category{
     font-size: 5px;
     font-weight: bold;
     margin-right: 100px;
+    margin-top: 22px;
 }
 
 .foot-category>ul>a{
@@ -106,6 +116,7 @@ img {
 
 .information {
     color: gray;
+    margin-top: 25px;
 }
 
 .foot-category {
@@ -116,8 +127,8 @@ img {
     text-align:center;
     font-size: 5px;
     font-weight: bold;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 .foot-final>a{
