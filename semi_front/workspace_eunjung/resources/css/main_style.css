@@ -12,6 +12,7 @@ a {
 
 img {
     max-width: 100%;
+    cursor: pointer;
 }
 
 hr {
@@ -67,13 +68,19 @@ hr {
     margin-bottom: 20px;
 }
 
-.s-container {
-    display : flex;
-    justify-content: space-around;
+#like2 {
+    width: 35px;
+    position : absolute;
+    bottom : 20px;
+    left : 210px;
 }
 
-#s-list {
-    width: 27%;
+#profile2 {
+    width: 55px;
+    position : absolute;
+    left: 212px;
+    top: -2px;
+    cursor: pointer;
 }
 
 #s-thumbnail {
@@ -84,6 +91,7 @@ hr {
 #s-thumtitle {
     margin-top: 5px;
     font-weight: bold;
+    cursor: pointer;
 }
 
 #s-thumsub {
@@ -107,12 +115,13 @@ hr {
 }
 
 #searchIcon {
-    margin-bottom: -10px;
-    margin-left: -10px;
+    margin-bottom: -8px;
+    margin-left: -4px;
+    margin-right: 5px;
 }
 
 #flabel {
-    font-weight: bold;
+    /* font-weight: bold; */
     color: gray;
 }
 
@@ -135,6 +144,7 @@ select[name=local-details] {
     border-radius: 5px;
     padding-left: 15px;
     font-family: 'Noto Sans KR', sans-serif;
+    cursor: pointer;
 }
 
 input[name=dateIn] {
@@ -144,6 +154,7 @@ input[name=dateIn] {
     border-radius: 5px;
     padding-left: 10px;
     font-family: 'Noto Sans KR', sans-serif;
+    cursor: pointer;
 }
 
 select[name=lineup] {
@@ -153,6 +164,7 @@ select[name=lineup] {
     border-radius: 5px;
     padding-left: 10px;
     font-family: 'Noto Sans KR', sans-serif;
+    cursor: pointer;
 }
 
 select[name=local],
@@ -174,16 +186,23 @@ select[name=lineup] {
     padding: 3px;
 }
 
+input[type=radio],
+label[for=offline],
+label[for=online] {
+    cursor: pointer;
+}
+
 #s-reset {
-    color: gray;
     margin-left: 150px;
-    background-color: white;
+    background-color: rgb(228,228,228);
+    color: rgb(91,91,91);
     padding: 8px;
     font-weight: bold;
     border-style: outset;
     border : 1px solid lightgray;
     border-radius: 5px;
     width: 100px;
+    cursor: pointer;
 }
 
 #s-submit {
@@ -195,6 +214,7 @@ select[name=lineup] {
     border: 1px solid lightgray;
     border-radius: 5px;
     width: 120px;
+    cursor: pointer;
 }
 
 /* 소셜링 전체 보기 - 글 목록 */
@@ -211,21 +231,58 @@ select[name=lineup] {
     gap : 50px;
 }
 
+#thumbox {
+    position : relative;
+}
+
+#like {
+    width: 40px;
+    position : absolute;
+    bottom : 20px;
+    left : 240px;
+}
+
+#titlebox {
+    display: flex;
+    position : relative;
+    width: 100%;
+}
+
+#profile {
+    width: 55px;
+    /* float: right; */
+    position : absolute;
+    left: 250px;
+    cursor: pointer;
+}
+
 #writing {
-    color: lightslategray;
     background-color: rgb(218,239,245);
+    color: rgb(91,91,91);
     padding: 8px;
     font-weight: bold;
     border: 1px solid lightgray;
     border-radius: 5px;
     width: 80px;
+    cursor: pointer;
 }
+
+.pagebox{
+    display: flex;
+    justify-content: center;
+    position : relative;
+    margin-top: 50px;
+}
+
+.paging{
+    margin-left: 10px; 
+} 
 
 #writebox {
     display: flex;
     justify-content: flex-end;
-    margin-top: 30px;
-    margin-bottom: 50px;
+    margin-top: -30px;
+    margin-bottom: 60px;
 }
 
 /* 슬라이드 */
