@@ -90,30 +90,27 @@ img{
     width: 110px;
     height: 30px;
     border-radius: 5px ;
-    border: 1px solid rgb(255, 255, 255);
+    border: 1px solid rgba(255, 255, 255, 0);
     cursor: pointer;
     font-weight: bold;
     color : rgba(77, 77, 77);
 }
 
+#pay{
+    width: 110px;
+    height: 30px;
+    border-radius: 5px ;
+    border: 1px solid rgba(255, 255, 255, 0);
+    cursor: pointer;
+    font-weight: bold;
+    color : rgba(77, 77, 77);
+    background-color: rgb(218, 239, 245);
+    margin-left: 100px;
+}
+
 #cart{
     background-color: rgb(248, 241, 233);
     margin-left: 35px;
-}
-
-#pay{
-    background-color: rgb(218, 239, 245);
-    margin-left: 10px;
-}
-
-.selectDate{
-    display:none;
-    position:fixed;
-    top:50%; left:50%;
-    transform: translate(-50%,-50%);
-    max-width: 60%;
-    min-height: 30%;
-    background:#fff;
 }
 
 
