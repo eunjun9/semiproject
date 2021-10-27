@@ -23,13 +23,13 @@ body {
  }
 
  .class-info{
-    padding-left: 18%;
+    padding-left: 15%;
     padding-right: 35%;
     
  }
 
  .class-price{
-     padding-left: 80px;
+     padding-left: 120px;
  }
 
 s
@@ -62,6 +62,7 @@ s
  /* 장바구니 담은 클래스 사진 + 텍스트 */
 
  .wish-content{
+    margin-left: 5%;
     margin-top: 20px;
     margin-bottom: 10px;
     display: inline-block;
@@ -224,6 +225,14 @@ s
     width: 15px;
     height: 15px;
     margin-right: 10px;
+}
+
+/* 결제 후 나타나는 페이지 */
+.pay-after{
+    text-align: center;
+    font-size: 25px;
+    margin-top: 10%;
+    margin-bottom: 5%;
 }
 
  /* 이전으로 가기 버튼 */
