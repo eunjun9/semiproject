@@ -73,7 +73,9 @@
                  $("#payBtn").click(function(){ 
                     if(confirm('결제화면으로 이동하시겠습니까?')){
                         // 결제화면으로 이동
-                    } 
+                    }  else {
+                        $(".modal").fadeOut(); 
+                    }
                  }); 
                  $("#cartBtn").click(function(){ 
                     if(confirm('장바구니로 이동하시겠습니까?')){
