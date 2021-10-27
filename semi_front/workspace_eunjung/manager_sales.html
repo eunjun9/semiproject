@@ -44,13 +44,27 @@
         <div class="body-inner">
             <div class="manager-content">
                 <aside>
-                    <h3 class="sub-title">메뉴 들어갈곳</h3>
-                    <ul class="sub-menu">
-                        <li><a href="#">서브 메뉴1</a></li>
-                        <li><a href="#">서브 메뉴2</a></li>
-                        <li><a href="#">서브 메뉴3</a></li>
-                        <li><a href="#">서브 메뉴4</a></li>
-                    </ul>
+                    <div class="admin-menu">
+                        <ul id="menu">
+                          <li class="member menu">
+                            <a href="#">회원관리</a> 
+                          </li> 
+                  
+                         <li class="content menu">
+                            <a href="#">컨텐츠관리</a> 
+                         </li>
+                  
+                        <li class="sales menu">
+                           <a href="#">매출관리</a> 
+                           <ul class="submenu"> 
+                            <li><a href="#">매출조회</a></li> 
+                            <li><a href="#">정산내역</a></li> 
+                            <li><a href="#">환불내역</a></li> 
+                           </ul> 
+                         </li>
+                      </ul>
+                  </div>
+                  
                     <h3 class="sub-title">KH Academy 소개</h3>
                     <p>
                         UI/UX 스마트 콘텐츠 웹기반 융합 응용SW 개발자 양성 과정
@@ -128,5 +142,17 @@
             <a href="#">사업자정보확인</a>
         </div>
     </div>
+
+    <script>
+        $(document).ready(function(){ 
+          $(".menu").mouseover(function(){ 
+            $(this).children(".submenu").show(300); 
+          }); 
+            $(".menu").mouseleave(function(){ 
+              $(this).children(".submenu").hide(300); 
+            });
+          });
+        
+        </script>
 </body>
 </html>
