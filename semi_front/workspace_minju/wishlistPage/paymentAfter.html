@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>신청/결제</title>
+    <title>결제완료</title>
     <!-- 외부 스타일 시트 -->
     <link rel="stylesheet" href="../wishlistPage/resources/CSS/payStyle.css">
     <!-- 외부 폰트 -->
@@ -16,7 +16,7 @@
     <!-- 위시리스트 화면 -->
     <div class="container">
         <div class="wish-title">
-            <h1>장바구니</h1>
+            <h1>결제완료</h1>
         </div>
         <div class="wish-heardLine"><hr>
          <span class="class-info text">    
@@ -36,10 +36,6 @@
 
      <div class="wish-content">
         
-        <!-- 체크박스 -->
-        <div class="class-checkbox">
-        <input type="checkbox" class="order-check" id="order1" name="order" checked>
-        </div>
         <div class="wish-class img">
         <img src="../wishlistPage/resources/image/sample1.jpg" width="200px" height="150px">
         </div>
@@ -63,10 +59,7 @@
       <!-- 두번째 클래스 영역 -->
     
      <div class="wish-content">
-        <!-- 체크박스 -->
-        <div class="class-checkbox">
-        <input type="checkbox" class="order-check" id="order2" name="order" checked>
-        </div>
+        
         <div class="wish-class img">
         <img src="../wishlistPage/resources/image/sample2.jpg" width="200px" height="150px">
         </div>
@@ -96,15 +89,12 @@
         <form id="order-info form" method="post">
             <h2>주문자 정보</h2>
             <h3>홍길동</h3>
-            <span class="input-area">
-                <!-- 가입할 때 입력한 휴대폰번호 불러오기 -->
-                <input type="text" name="order-phone" maxlength="11" placeholder="(-없이)휴대폰번호입력" required>
+            <span class="input-area" id="phone">
+             입력한 휴대폰 번호 노출
+             </span><br><br>
+             <span class="input-area" id="email">
+                입력한 이메일 주소 노출
              </span>
-             <button type="button" id="orderPhoneBtn">수정</button><br><br>
-             <span class="input-area">
-                <input type="email" name="order-email" placeholder="이메일주소입력">
-             </span>
-             <button type="button" id="orderPhoneBtn">수정</button>
          </form>
 
          <div class="order-price">
@@ -128,6 +118,12 @@
         </div>
 
         <hr class="hr-line">
+
+        <div class="pay-after">
+            <span class="text">주문이 정상적으로 처리되었습니다.<br>
+                결제 내역은 마이페이지에서 확인 가능합니다.<br>
+            (주문 실패 시 주문 실패 문구 노출)</span>
+        </div>
 
 
     <!-- 메인화면으로 이동 버튼 -->
