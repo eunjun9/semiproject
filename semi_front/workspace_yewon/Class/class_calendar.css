@@ -1,8 +1,7 @@
 .modal{
   position:fixed;
-  width:690px; 
+  width:740px; 
   height:520px; 
-  /* background: rgba(0,0,0,0.8);  */
   background-color: rgb(255, 246, 235);
   top : 30px;
   left: 300px;
@@ -10,130 +9,147 @@
   box-shadow: 5px 5px 5px lightgrey;
   border-radius: 5px ;
   border: 1px solid rgb(255, 255, 255);
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+.container{
+  width: 700px;
+  height: 400px;
 }
 
-.modal_content{
-  padding: 2%;
-} 
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+.clearfix:after {
+  content: '';
+  display: block;
+  clear: both;
+  float: none;
+}
 
-#back .imgwrap {
+/* ======== Calendar ======== */
+.my-calendar {
+  width: 700px;
+  margin: 30px;
+  padding: 20px 20px 10px;
+  text-align: center;
+  font-weight: 800;
+  cursor: default;
+}
+.my-calendar .clicked-date {
+  border-radius: 25px;
+  margin-top: 36px;
+  float: left;
+  width: 42%;
+  padding: 46px 0 26px;
+  background: #ddd;
+}
+.my-calendar .calendar-box {
+  float: right;
+  width: 58%;
+  padding-left: 30px;
+}
+
+.clicked-date .cal-day {
+  font-size: 24px;
+}
+.clicked-date .cal-date {
+  font-size: 110px;
+}
+
+.ctr-box {
+  padding: 0 16px;
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+.ctr-box .btn-cal {
   position: relative;
-  width: 100%;
-  height: 100%;
+  float: left;
+  width: 25px;
+  height: 25px;
+  margin-top: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  background: none;
 }
-
-#back .imgview {
+.ctr-box .btn-cal:after {
+  content: '<';
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  -webkit-transition: opacity 1s ease-in-out;
-  -moz-transition: opacity 1s ease-in-out;
-  -o-transition: opacity 1s ease-in-out;
-  transition: opacity 1s ease-in-out;
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-  filter: alpha(opacity=0);
-  opacity: 0;
+  line-height: 25px;
+  font-weight: bold;
+  font-size: 20px;
+}
+.ctr-box .btn-cal.next {
+  float: right;
+}
+.ctr-box .btn-cal.next:after {
+  content: '>';
 }
 
-#back .imgview.opaque {
-  opacity: 1;
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
-  filter: alpha(opacity=1);    
+.cal-table {
+  width: 100%;
+}
+.cal-table th {
+  width: 14.2857%;
+  padding-bottom: 5px;
+  font-size: 16px;
+  font-weight: 900;
+}
+.cal-table td {
+  padding: 3px 0;
+  height: 50px;
+  font-size: 15px;
+  vertical-align: middle;
+}
+.cal-table td.day {
+  position: relative;
+  cursor: pointer;
+}
+.cal-table td.today {
+  background: #ffd255;
+  border-radius: 50%;
+  color: #fff;
+}
+.cal-table td.day-active {
+  background: #ff8585;
+  border-radius: 50%;
+  color: #fff;
+}
+.cal-table td.has-event:after {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 4px;
+  background: #FFC107;
 }
 
-#container {
-  width: 480px;
-  color: rgb(7, 86, 105);
-  font-weight: 600;
-  margin-top: 2rem;
-  margin-left: 1rem;
-  float: left;      
-}
-
-#container h3{
-  margin-left: 220px;
-  margin-top: -30px;
-  margin-bottom: 35px;
-}
-
-#calenda {
-  color : grey;
-  font-size: 0.8rem;
-}
-
-#weekDic {
-  font-size: 0.7rem;
-  margin-top: 20px;
-  margin-left: 12px;
-}
-
-.day {
-  width: 12%;
-  height: 40px;
-  display: inline-block;
-  padding: 2px;
-  text-align: center;
-} 
-
-.today {
-  border: 1px solid rgb(7, 86, 105);
-  border-radius: 10px;
-  color: rgb(7, 86, 105);
-}
-.dic {
-  display: inline-block;
-  width: 11%;
-  padding: 5px;
-}
-#controller {
-  color: rgb(7, 86, 105);
-  margin-top: 7rem; 
-}
-
-#controller h3 {
-  margin-bottom: -20px;
-  margin-left: 524px;
-}
-
-#calBtn1{
-  margin-left: 70px;
-  margin-bottom: -40px;
-}
-#calBtn2{
-  margin-left: 280px;
-  margin-top: -30px;
+.cPayBtn button{
   margin-bottom: 10px;
-}
-#container .calBtn img {
-  width: 1.2rem;
-  height: 1.2rem;
-  filter: invert(85%);
-  transition: 0.3s;
-}
-#container .calBtn img:hover{
-  transform:scale(1.3);
-  filter: invert(100%);
-}
-
-#year {
-  font-size: 1.2rem;
-  margin-left: 160px;
-  margin-top: -15px;
-}
-#month {
-  font-size: 1.2rem;
-  margin-left: 225px;
-  margin-top: -37px;
+  margin-top: 5px;
+  cursor: pointer;
+  font-size: 12pt;
+  font-weight: bold;
+  color : rgba(77, 77, 77);
+  border-radius: 5px ;
+  border: 1px solid rgba(255, 255, 255, 0);
+  width : 110px;
+  height: 35px;
+  background-color: rgb(218, 239, 245);
 }
 
-#this-day {
-  font-size: 5rem;
-  margin-left: 520px;
+#cartBtn{
+  margin-left: 390px;
 }
-#date {
- font-size: 2.0rem;
- font-weight: bold;
- margin-top: -30px;
+
+#payBtn{
+  margin-left: 60px;
 }

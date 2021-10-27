@@ -39,7 +39,7 @@
                         <a href="#">MAGAZINE</a>
                     </div>
                     <div class="category2">
-                        <a href="#">CART</a>
+                        <a href="../../workspace_minju/wishlistPage/wishlist.html">CART</a>
                         <a href="../MyPage/mypage.html">MYPAGE</a>
                     </div>
                 </div>
@@ -61,199 +61,209 @@
             <h4 id="pTitle">펀치니들을 이용한 티프팅 소품 제작법</h4>
             <p id="pTutor">피스오브애플 <hr></p>
             <h3 id="pPrice">50,000원</h3>
-            <button id="pay">날짜 선택</button>
+            <button id="selCalBtn">수강하기</button>
         </div>
         
         <script>
             $(function(){ 
-                $("#pay").click(function(){ 
+                $("#selCalBtn").click(function(){ 
                     $(".modal").fadeIn(); 
-                    $(".class_detail_wrapper").css({background : 'rgba(230, 230, 230, 0.4)'})
                 }); 
                 
-                // $(".modal_content").click(function(){ 
-                //     $(".modal").fadeOut(); 
-                // }); 
+                 $("#payBtn").click(function(){ 
+                    if(confirm('결제화면으로 이동하시겠습니까?')){
+                        // 결제화면으로 이동
+                    } 
+                 }); 
+                 $("#cartBtn").click(function(){ 
+                    if(confirm('장바구니로 이동하시겠습니까?')){
+                        // 장바구니로 이동                       
+                    } else {
+                        $(".modal").fadeOut(); 
+                    }
+                 }); 
             });
             </script>
 
 
     <div class="modal">
-        <div class="modal_content">
-            <div id="container">
-                <h3>
-                    수강 날짜를 선택하세요
-                </h3>
-                <div class="calBtn" id="calBtn1" onclick="handleWeek(-1)"><img src="../resources/icon/previous.png"/></div>
-                <div id="year"></div>
-                <div id="month"></div>
-                <div class="calBtn" id="calBtn2" onclick="handleWeek(1)"><img src="../resources/icon/next.png" style='margin-left:2rem'/></div>
-                <div id="weekDic"></div>
-                <div id="calenda"></div>
-            </div>
-            <div id="controller">
-                <h3>Today Is</h3>
-                <div id="this-day"></div>
-                <div id="date"></div>
-            </div>
-            <div id="back">
-                <div class="imgwrap">
-                    <div class="imgview opaque" id="1"></div>
-                    <div class="imgview" id="2"></div>
-                    <div class="imgview" id="3"></div>
-                    <div class="imgview" id="4"></div>
-                    <div class="imgview" id="5"></div>
-                    <div class="imgview" id="6"></div>
-                    <div class="imgview" id="7"></div>
-                    <div class="imgview" id="8"></div>
-                    <div class="imgview" id="9"></div>
-                    <div class="imgview" id="10"></div>
-                    <div class="imgview" id="11"></div>
-                    <div class="imgview" id="12"></div>
-                    <div class="imgview" id="13"></div>
+            <div class="container">
+                <div class="my-calendar clearfix">
+                  <div class="clicked-date">
+                    <div class="cal-day"></div>
+                    <div class="cal-date"></div>
+                  </div>
+                  <div class="calendar-box">
+                    <div class="ctr-box clearfix">
+                      <button type="button" title="prev" class="btn-cal prev">
+                      </button>
+                      <span class="cal-month"></span>
+                      <span class="cal-year"></span>
+                      <button type="button" title="next" class="btn-cal next">
+                      </button>
+                    </div>
+                    <table class="cal-table">
+                      <thead>
+                        <tr>
+                          <th>일</th>
+                          <th>월</th>
+                          <th>화</th>
+                          <th>수</th>
+                          <th>목</th>
+                          <th>금</th>
+                          <th>토</th>
+                        </tr>
+                      </thead>
+                      <tbody class="cal-body"></tbody>
+                    </table>
+                  </div>
                 </div>
             </div>
-
+              
             <div class="cPayBtn">
-                
-            </div>
+                <button id="cartBtn">장바구니</button>
+                <button id="payBtn">결제하기</button>
+            </div> 
 
-        </div>
     </div>
+
     <script>
-        let today = new Date();
-        let thisDay = today.getDate();
-        let year = today.getFullYear();
-        let month = today.getMonth() + 1;
-        let date = today.getDay();
-        function getFirstDayIndex() {
-            let fistDayIndex = new Date(`${year}-${month}-01`).getDay();
-            return fistDayIndex;
+    const init = {
+      monList: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+      dayList: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'],
+      today: new Date(),
+      monForChange: new Date().getMonth(),
+      activeDate: new Date(),
+      getFirstDay: (yy, mm) => new Date(yy, mm, 1),
+      getLastDay: (yy, mm) => new Date(yy, mm + 1, 0),
+      nextMonth: function () {
+        let d = new Date();
+        d.setDate(1);
+        d.setMonth(++this.monForChange);
+        this.activeDate = d;
+        return d;
+      },
+      prevMonth: function () {
+        let d = new Date();
+        d.setDate(1);
+        d.setMonth(--this.monForChange);
+        this.activeDate = d;
+        return d;
+      },
+      addZero: (num) => (num < 10) ? '0' + num : num,
+      activeDTag: null,
+      getIndex: function (node) {
+        let index = 0;
+        while (node = node.previousElementSibling) {
+          index++;
         }
-        let fistDayIndex = getFirstDayIndex();
-        let index = 1;
-        
-        const calDic = {
-            1: 31,
-            2: 28,
-            3: 31,
-            4: 30,
-            5: 31,
-            6: 30,
-            7: 31,
-            8: 31,
-            9: 30,
-            10: 31,
-            11: 30,
-            12: 31,
-        };
-        const weekDic = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
-        const weekDic2 = [
-            "SUNDAY",
-            "MONDAY",
-            "TUESDAY",
-            "WEDNESDAY",
-            "THURSDAY",
-            "FRIDAY",
-            "SATDAY",
-        ];
-        weekDic.map((dic) => {
-            let container = document.querySelector("#weekDic");
-            let newElement = document.createElement("div");
-            newElement.id = dic;
-            newElement.className = "dic";
-            newElement.innerHTML = dic;
-            container.appendChild(newElement);
-        });
-        var day = 1;
-        function makeFirstWeek() {
-            day = 1;
-            let firstWeek = [];
-            i = 0;
-            fistDayIndex = getFirstDayIndex();
-            while (i < 7) {
-                if (i < fistDayIndex) {
-                    firstWeek.unshift(".");
-                } else {
-                    firstWeek.push(day);
-                    day += 1;
-                }
-                i += 1;
-            }
-            return firstWeek;
+        return index;
+      }
+    };
+    
+    const $calBody = document.querySelector('.cal-body');
+    const $btnNext = document.querySelector('.btn-cal.next');
+    const $btnPrev = document.querySelector('.btn-cal.prev');
+    
+    /**
+     * @param {number} date
+     * @param {number} dayIn
+    */
+    function loadDate (date, dayIn) {
+      document.querySelector('.cal-date').textContent = date;
+      document.querySelector('.cal-day').textContent = init.dayList[dayIn];
+    }
+    
+    /**
+     * @param {date} fullDate
+     */
+    function loadYYMM (fullDate) {
+      let yy = fullDate.getFullYear();
+      let mm = fullDate.getMonth();
+      let firstDay = init.getFirstDay(yy, mm);
+      let lastDay = init.getLastDay(yy, mm);
+      let markToday;  // for marking today date
+   
+      if (mm === init.today.getMonth() && yy === init.today.getFullYear()) {
+        markToday = init.today.getDate();
+      }
+    
+      document.querySelector('.cal-month').textContent = init.monList[mm];
+      document.querySelector('.cal-year').textContent = yy;
+    
+      let trtd = '';
+      let startCount;
+      let countDay = 0;
+      for (let i = 0; i < 6; i++) {
+        trtd += '<tr>';
+        for (let j = 0; j < 7; j++) {
+          if (i === 0 && !startCount && j === firstDay.getDay()) {
+            startCount = 1;
+          }
+          if (!startCount) {
+            trtd += '<td>'
+          } else {
+            let fullDate = yy + '.' + init.addZero(mm + 1) + '.' + init.addZero(countDay + 1);
+            trtd += '<td class="day';
+            trtd += (markToday && markToday === countDay + 1) ? ' today" ' : '"';
+            trtd += ` data-date="${countDay + 1}" data-fdate="${fullDate}">`;
+          }
+          trtd += (startCount) ? ++countDay : '';
+          if (countDay === lastDay.getDate()) { 
+            startCount = 0; 
+          }
+          trtd += '</td>';
         }
-        
-        function makeCalendar() {
-            let calenda = [];
-            let container = document.querySelector("#calenda");
-            container.innerHTML = "";
-            calenda.push(makeFirstWeek());
-            let m = calDic[month * 1];
-            let week = [];
-            let nDay = 1;
-            while (day <= m) {
-                week.push(day);
-                day += 1;
-                if (week.length === 7) {
-                    calenda.push(week);
-                    week = [];
-                }
-            }
-            calenda.push(week);
-            calenda.map((week) => {
-                week.map((day) => {
-                    let newElement = document.createElement("div");
-                    
-                    newElement.className =
-                    day === today.getDate() && month === today.getMonth() + 1
-                    ? "day today"
-                    : "day";
-                    newElement.innerHTML = day;
-                    container.appendChild(newElement);
-                });
-            });
-            console.log(calenda);
-            return calenda;
+        trtd += '</tr>';
+      }
+      $calBody.innerHTML = trtd;
+    }
+    
+    /**
+     * @param {string} val
+     */
+    function createNewList (val) {
+      let id = new Date().getTime() + '';
+      let yy = init.activeDate.getFullYear();
+      let mm = init.activeDate.getMonth() + 1;
+      let dd = init.activeDate.getDate();
+      const $target = $calBody.querySelector(`.day[data-date="${dd}"]`);
+     
+      let date = yy + '.' + init.addZero(mm) + '.' + init.addZero(dd);
+    
+      let eventData = {};
+      eventData['date'] = date;
+      eventData['memo'] = val;
+      eventData['complete'] = false;
+      eventData['id'] = id;
+      init.event.push(eventData);
+      $todoList.appendChild(createLi(id, val, date));
+    }
+    
+    
+    loadYYMM(init.today);
+    loadDate(init.today.getDate(), init.today.getDay());
+    
+    $btnNext.addEventListener('click', () => loadYYMM(init.nextMonth()));
+    $btnPrev.addEventListener('click', () => loadYYMM(init.prevMonth()));
+    
+    $calBody.addEventListener('click', (e) => {
+      if (e.target.classList.contains('day')) {
+        if (init.activeDTag) {
+          init.activeDTag.classList.remove('day-active');
         }
-        
-        let calenda = makeCalendar();
-        
-        function handleWeek(opt) {
-            document.getElementById(index).className = "imgview";
-            if (opt > 0) {
-                month += 1;
-                if (month > 12) {
-                    month = 1;
-                    year += 1;
-                }
-                index += 1;
-                index > 13 ? (index = 1) : index;
-            } else {
-                month -= 1;
-                if (month < 1) {
-                    month = 12;
-                    year -= 1;
-                }
-                index -= 1;
-                index < 1 ? (index = 13) : index;
-            }
-            console.log(year, month);
-            console.log(index);
-            makeCalendar();
-            document.getElementById("year").innerHTML = "";
-            document.getElementById("month").innerHTML = "";
-            document.getElementById("year").innerHTML = year + " / ";
-            document.getElementById("month").innerHTML = month;
-            document.getElementById(index).className = "imgview opaque";
-        }
-        function hoverAction(){
-            
-        }
-        document.getElementById("year").innerHTML = year + " / ";
-        document.getElementById("month").innerHTML = month;
-        document.getElementById("this-day").innerHTML = thisDay;
-        document.getElementById("date").innerHTML = weekDic2[date];
-        </script>
+        let day = Number(e.target.textContent);
+        loadDate(day, e.target.cellIndex);
+        e.target.classList.add('day-active');
+        console.log(day);
+        init.activeDTag = e.target;
+        init.activeDate.setDate(day);
+        reloadTodo();
+    }
+});
+    </script>
+    
+    
 
 <!-- 클래스 상세 페이지 바디-->
 <div class="class_detail2">
