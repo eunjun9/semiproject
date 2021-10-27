@@ -7,7 +7,7 @@ html {
 
 a {
     text-decoration: none;
-    color: black;
+    color: inherit;
 }
 
 /* 본문 간격 */
@@ -46,10 +46,6 @@ aside {
 }
 
 /* 사이드 메뉴 */
-a{
-    text-decoration:none;
-    color:inherit;
-}
 
 #menu{
     width:150px;
@@ -92,8 +88,6 @@ a{
 .admin-menu{
     margin-bottom: 70px;
 }
-
-
 
 /* 조회 테이블 */
 
