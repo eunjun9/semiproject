@@ -157,7 +157,7 @@ img{
 
 /* 문의사항 */
 .cQnA input[name=cQuestion]{
-    width: 760px;
+    width: 740px;
     height: 25px;
     border-radius: 5px ;
     border: 1px solid rgb(197, 197, 197);
@@ -207,7 +207,7 @@ img{
 }
 
 .cAnswer{
-    width: 760px;
+    width: 740px;
     height: 40px;
     border-radius: 5px ;
     border: 1px solid rgb(197, 197, 197);
@@ -234,3 +234,17 @@ p.cAnswer{
     color: white;
 }
 
+.btnArea{
+    margin-left: 280px;
+}
+
+.btnArea input{
+    border-radius: 5px ;
+    border: 1px solid rgb(197, 197, 197);
+    background-color: rgb(7, 86, 105);
+    color: rgb(255, 255, 255);
+    width: 70px;
+    height: 25px;
+    margin: 50px 10px 20px 10px;
+    cursor: pointer;
+}

@@ -9,7 +9,7 @@
     <!--외부 스타일 시트-->
     <link href="../resources/css/header.css" rel="stylesheet">
     <link href="../resources/css/class_detail.css" rel="stylesheet">
-    <link href="class_calendar.css" rel="stylesheet">
+    <link href="../resources/css/class_datepicker.css" rel="stylesheet">
     <!-- font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -261,7 +261,7 @@
         reloadTodo();
     }
 });
-    </script>
+</script>
     
     
 
@@ -310,8 +310,9 @@
             <div class="outer">
                 <p class="cQuestion1"> 가져가야 될 준비물이 있을까요?</p>
                 <p class="aStatus">답변 대기</p>
+                <!-- 작성자 본인만 가능 -->
                 <textarea class="cAnswer" placeholder="답변을 작성해주세요."></textarea>
-                <button name="aSubmit" class="aBtn">등록</button>
+                <button name="aSubmit" class="aBtn">등록</button> 
             </div>
             <div class="outer">
                 <p class="cQuestion2"> 가져가야 될 준비물이 있을까요?</p>
@@ -328,6 +329,14 @@
                 <p class="aStatus">답변 완료</p> 
                 <p class="cAnswer" >아니요 준비물은 없습니다.</p>
             </div>
+
+            <div class="btnArea">
+              <input type="button" value="목록보기">
+              <!-- 작성자 본인만 가능 -->
+              <!-- <input type="button" value="수정하기">
+              <input type="button" value="삭제하기"> -->
+            </div>
+
         </form>
     </div>
     
@@ -341,6 +350,7 @@
             }
         });
         </script>
+
 
 </div>
 
