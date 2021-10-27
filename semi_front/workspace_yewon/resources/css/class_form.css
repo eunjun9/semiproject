@@ -12,4 +12,118 @@ img{
     max-width: 100%;
 }
 
+hr {
+    height: 2px;
+    background-color: lightgray;
+    border: 0px;
+    margin-top: 45px;
+}
+
 /* body-----------------*/
+/* 상단 영역 */
+.class_form{
+    max-width : 85%;
+    margin : 0px auto;
+    padding : 2% 4%;
+}
+
+.cForm_title{
+    margin-top: 50px;
+    line-height: 0.7;
+}
+
+.cForm_title > #main-title {
+    font-weight: bold;
+    color: rgb(7,86,105);
+}
+
+.cForm_title > #sub-title {
+    font-weight: bold;
+    color: rgb(188,188,188);
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+#back {
+    font-size: 11pt;
+    color: slategray;
+}
+
+/* 작성 폼 영역 */
+/*part1*/
+#cForm_wrapper {
+    width: 1000px;
+    /* min-height: 100px; */
+    margin : 0 auto;
+    border : 6px solid rgb(218,239,245);
+    padding: 30px 50px 30px 50px;
+    margin-bottom: 50px;
+}
+
+#cForm_wrapper h3{
+    font-weight: bold;
+    margin-top: 50px;
+}
+
+#cForm_wrapper h4{
+    margin-bottom: 10px;
+    margin-top: 40px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: gray;
+}
+
+#sub_title1{
+    margin-top: 40px;
+}
+
+.image_area img {
+	width: 30%;
+	margin: 20px;
+}
+
+#cForm_wrapper input[type=file] {
+    display: none;
+}
+
+#fileBtn {
+    background-color: rgb(7,86,105);
+    color: white;
+    padding: 5px;
+    font-weight: bold;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    width: 80px;
+    cursor: pointer;
+}
+
+#cForm_wrapper select{
+    border: 1px solid rgb(185,185,185);
+    border-radius: 5px;
+    width: 150px;
+    height: 30px;
+}
+
+.btnlabel{
+    margin-left: 5px;
+}
+
+#offline,
+#vod{
+    margin-left: 20px;
+}
+
+input[name=cPrice]{
+    margin-bottom: 20px;
+}
+
+#sub_title6{
+    width: 300px;
+    height: 90px;
+    background-color: rgba(238, 238, 238, 0.788);
+    font-size: 17pt;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: bold;
+    resize: none;
+    margin-top: 160px;
+}
