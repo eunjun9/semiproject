@@ -73,7 +73,6 @@ img{
 
 .filtering form{
     margin: 0 auto;
-    
 }
 
 .filtering input:focus{
@@ -105,39 +104,48 @@ img{
 .filtering input[name=price1]{
     width: 70px;
     margin-left: 50px;
-    border: 1px solid rgb(185,185,185);
     margin-bottom: 15px;
+    border-radius: 5px ;
+    border: 1px solid rgb(185,185,185, 0);
 }
 
 .filtering input[name=price2]{
     width: 70px;
-    border: 1px solid rgb(185,185,185);
     margin-left: 5px;
     margin-bottom: 15px;
+    border-radius: 5px ;
+    border: 1px solid rgb(185,185,185, 0);
 }
 
 .filtering select[name=city]{
     margin-left: 50px;
-    border: 1px solid rgb(185,185,185);
     margin-bottom: 15px;
+    border-radius: 5px ;
+    border: 1px solid rgb(185,185,185, 0);
 }
 
 .filtering select[name=town]{
     margin-left: 40px;
-    border: 1px solid rgb(185,185,185);
     margin-bottom: 15px;
+    border-radius: 5px ;
+    border: 1px solid rgb(185,185,185, 0);
 }
 
 .filtering select[name=bigC]{
     margin-left: 25px;
-    border: 1px solid rgb(185,185,185);
+    border-radius: 5px ;
+    border: 1px solid rgb(185,185,185, 0);
     margin-bottom: 15px;
+    width: 95px;
+    
 }
 
 .filtering select[name=smallC]{
     margin-left: 26px;
-    border: 1px solid rgb(185,185,185);
+    border-radius: 5px ;
+    border: 1px solid rgb(185,185,185, 0);
     margin-bottom: 15px;
+    width: 130px;
 }
 
 .ckboxlabel{
