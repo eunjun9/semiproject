@@ -10,7 +10,7 @@ body {
     line-height: 2.0; 
 }
 
-a {
+a{
     text-decoration: none;
 }
 
@@ -45,10 +45,12 @@ img{
 
 .category1>a:hover{
     color: rgb(145, 224, 244);
+    text-decoration: none;
 }
 
 .category2>a:hover{
     color: rgb(145, 224, 244);
+    text-decoration: none;
 }
 
 .category1 > a{

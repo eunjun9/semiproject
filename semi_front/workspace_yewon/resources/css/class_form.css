@@ -4,7 +4,7 @@ html{
     font-family: 'Noto Sans KR', sans-serif;
 }
 
-a{
+a {
     text-decoration: none;
 }
 
@@ -46,6 +46,10 @@ hr{
 #back {
     font-size: 11pt;
     color: slategray;
+}
+#back:hover{
+    color: rgb(145, 224, 244);
+    text-decoration: none;
 }
 
 /* 작성 폼 영역 */
