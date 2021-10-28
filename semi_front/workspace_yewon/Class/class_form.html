@@ -81,14 +81,6 @@
                         <option>서버·백엔드</option>
                         <option>프론트엔드</option>
                     </select><br>
-
-                <h4 id="sub_title2">진행방식을 선택하세요</h4> 
-                <input type="radio" name="class_onoff" value="online" id="online" checked><label for="onlline" class="btnlabel">온라인</label>
-                <input type="radio" name="class_onoff" value="offline" id="offline"><label for="offline" class="btnlabel">오프라인</label><br>
-
-                <h4 id="sub_title3">클래스 타입을 선택하세요</h4> 
-                <input type="radio" name="class_type" value="oneday" id="oneday" checked><label for="oneday" class="btnlabel">원데이 클래스</label>
-                <input type="radio" name="class_type" value="vod" id="vod"><label for="vod" class="btnlabel">VOD 클래스</label><br>
                     
                 <h4 id="sub_title4">가격을 입력해주세요</h4> 
                 <input type="text" name="cPrice" placeholder="'원' 빼고 입력">원
@@ -96,28 +88,81 @@
                 
                 <h3>상세페이지를 작성해주세요</h3>
                 
-                <h4 id="sub_title5">썸네일/메인 이미지를 첨부해주세요</h4>
-                <div class="image_area"></div>
-                <button type="button" id="fileBtn">file</button><br>
-                <input type="file" name="cThumbnail" accept="image/gif,image/jpeg,image/png">
+                <div id="img_wrapper">
+                    <h4 id="sub_title5">썸네일/메인 이미지를 첨부해주세요</h4>
+                    <div class="image_area"></div>
+                    <button type="button" id="fileBtn">file</button><br>
+                    <input type="file" name="cThumbnail" accept="image/gif,image/jpeg,image/png">
+                </div>
 
                 <div id="form_head">
                     <textarea id="sub_title6" placeholder="클래스 제목을 입력하세요(최대25자)"></textarea>
-                </div>
-                
-                <hr>
-                
+                    <hr>
+                    <label for="c_tutor">강사</label><input area="text" name="c_tutor" id="c_tutor" placeholder="강사명을 입력하세요(최대 10자)"><br>
+                    <label>타입</label> 
+                    <input type="radio" name="class_type" value="oneday" id="oneday" checked><label for="oneday" class="btnlabel">원데이 클래스</label>
+                    <input type="radio" name="class_type" value="vod" id="vod"><label for="vod" class="btnlabel">VOD 클래스</label><br>
+                </div> 
 
+                <div id="form_body">
+                    <hr><br>
+                    <h4>클래스 소개를 작성하세요</h4>
+                    <!--썸머노트-->
+                    <textarea class="summernote" name="editordata"></textarea>
+                </div>
+                <hr>  
+                <h4>강사 소개를 작성하세요</h4>
+                <textarea name="tutor_intro" id="tutor_intro"></textarea>
+                
+                <h4>날짜를 선택하세요</h4>
+                <input type="date" name="class_date1"> &nbsp;부터 &nbsp;<input type="date" name="class_date2"> &nbsp;까지
+                
+                <h4>시간을 선택하세요</h4>
+                <input type="time" name="class_time1"> &nbsp;부터  &nbsp;<input type="time" name="class_time2"> &nbsp;까지
+
+                <h4>클래스 진행방식과 위치를 입력하세요</h4> <!--조건문으로 오프라인 클릭 시 위치 입력 readonly + api 사용-->
+                <input type="radio" name="class_onoff" value="online" id="online" checked><label for="onlline" class="btnlabel">온라인</label>
+                <input type="radio" name="class_onoff" value="offline" id="offline"><label for="offline" class="btnlabel">오프라인</label><br>
+                <input type="text" name="class_location" placeholder="온라인 클래스는 장소 입력이 불가능합니다." readonly>
+                <button id="location_Btn"type="button">검색</button><br>
+                <input type="text" name="location_detail" placeholder="상세주소를 입력하세요" ><br>
+            
+                <button type="submit" id="cf_submit">클래스 등록</button>
             </form>
         </div>
     </div>
 
+    <!-- 파일 버튼 스크립트 -->
+    <script>
+        let fileBtn = document.querySelector("#fileBtn");
 
-    <!--썸머노트-->
-    <!-- <form method="post">
-        <textarea class="summernote" name="editordata"></textarea>
-    </form>  -->
+        const fileElements = document.querySelectorAll("[type=file]");
+        const imageArea = document.querySelectorAll(".image_area");
 
+        /* 버튼 클릭했을 때 input type file 오픈 */
+        fileBtn.onclick = function() {
+            fileElements[0].click();
+        }
+
+        /* input type file 요소에 change 이벤트 발생 시 (파일 첨부 발생) */
+        fileElements.forEach(item => item.addEventListener('change', preview));
+
+        function preview(){
+            let index = Array.from(fileElements).indexOf(this);
+            
+            if(this.files && this.files[0]) {
+                let reader = new FileReader();
+                reader.readAsDataURL(this.files[0]);
+                reader.onload = function(){
+                    imageArea[index].innerHTML = "<img src='" + reader.result + "'>";
+                }
+            }
+        }
+    </script>
+
+
+
+    <!-- 썸머노트 스크립트 -->
     <script>
         $(document).ready(function(){
             $('.summernote').summernote({
