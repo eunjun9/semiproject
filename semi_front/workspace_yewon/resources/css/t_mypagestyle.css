@@ -131,7 +131,8 @@ img{
 }
 
 .ipic:hover{
-    border: 0.5px solid rgb(7, 86, 105);
+    transform:scale(1.05);
+    cursor : pointer;
 }
 
 #stitle{
