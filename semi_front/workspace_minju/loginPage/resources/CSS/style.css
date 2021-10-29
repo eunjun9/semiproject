@@ -67,6 +67,7 @@ a {
 #kakao-button{
     background-color : #f7e317;
     width: 350px;
+    cursor: pointer;
 }
 #email-button{
     background-color: rgb(218,239,245);
