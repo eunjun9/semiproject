@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Social Dining</title>
+<title>Insert title here</title>
 </head>
 <body>
-	
+
 </body>
 </html>
