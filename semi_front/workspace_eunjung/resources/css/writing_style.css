@@ -177,7 +177,7 @@ label {
     margin-top: 10px;
 }
 
-#search {
+.search {
     background-color: rgb(7,86,105);
     color: white;
     padding: 8px;

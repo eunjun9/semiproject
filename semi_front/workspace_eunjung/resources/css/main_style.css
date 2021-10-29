@@ -73,6 +73,7 @@ hr {
     position : absolute;
     bottom : 20px;
     left : 210px;
+    z-index : 10;
 }
 
 #profile2 {
@@ -95,7 +96,7 @@ hr {
 }
 
 #s-thumsub {
-    margin-top: -32px;
+    margin-top: -45px;
     color: lightslategray;
 }
 
@@ -240,6 +241,7 @@ label[for=online] {
     position : absolute;
     bottom : 20px;
     left : 240px;
+    z-index : 10;
 }
 
 #titlebox {
@@ -250,20 +252,8 @@ label[for=online] {
 
 #profile {
     width: 55px;
-    /* float: right; */
     position : absolute;
     left: 250px;
-    cursor: pointer;
-}
-
-#writing {
-    background-color: rgb(218,239,245);
-    color: rgb(91,91,91);
-    padding: 8px;
-    font-weight: bold;
-    border: 1px solid lightgray;
-    border-radius: 5px;
-    width: 80px;
     cursor: pointer;
 }
 
@@ -283,6 +273,17 @@ label[for=online] {
     justify-content: flex-end;
     margin-top: -30px;
     margin-bottom: 60px;
+}
+
+#writing {
+    background-color: rgb(218,239,245);
+    color: rgb(91,91,91);
+    padding: 8px;
+    font-weight: bold;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    width: 80px;
+    cursor: pointer;
 }
 
 /* 슬라이드 */
