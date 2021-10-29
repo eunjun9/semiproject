@@ -27,7 +27,7 @@
             </div>
             <div class="big-category">
                 <div class="category1">
-                    <a href="#">SOCIALING</a>
+                    <a href="socialing_main.html">SOCIALING</a>
                     <a href="#">CLASS</a>
                     <a href="#">MAGAZINE</a>
                 </div>
@@ -61,8 +61,8 @@
                 <div class="profileBox">
                     <img id="p-image" src="resources/image/profile.png"><br>
                     <p id="p-name">홍길동</p><br>
-                    <!-- if문으로 일반 회원 : 참여하기 / 작성자 : 참여확인 버튼 출력되게 -->
-                    <!-- <button type="button" id="p-button">소셜링 참여하기</button> -->
+                    <!-- if문으로 일반 회원 : 참여하기 버튼 / 작성자 : 참여확인 버튼 출력되게 -->
+                    <!-- <button type="button" id="p-button" onclick="join()">소셜링 참여하기</button> -->
                     <button type="button" id="p-button" onclick="openPopup('socialing_check.html', 'checking', 300, 350)">소셜링 참여확인</button>
                 </div>
             </div>
@@ -135,6 +135,14 @@
                 
             window.open(url, title, options);
         }
+
+        function join() {
+            let result = confirm('참여하시겠습니까?');
+
+            if(result) {
+                // 참여회원 테이블에 id 추가
+            }
+        }
     </script>
 
     <!--footer-->
@@ -159,8 +167,8 @@
     </div>
     <div class="final">
         <div class="foot-final">
-            <a href="#">이용약관 | </a>
-            <a href="#">개인정보처리방침 | </a>
+            <a href="terms.html">이용약관 | </a>
+            <a href="personalInfo.html">개인정보처리방침 | </a>
             <a href="#">사업자정보확인</a>
         </div>
     </div>

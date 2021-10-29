@@ -1,0 +1,106 @@
+
+.body-super {
+    width: 100%;
+    margin : 0 auto;
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    font-family: 'Noto Sans KR', sans-serif;
+ 
+ }
+ 
+ .body-inner{
+     max-width: 930px;
+     height: auto;
+    }
+    
+    .body-inner-blue{
+     width:930px;
+     height: auto;
+     border: 6px solid rgb(218, 239, 245);
+     background-color: white;
+     margin: 0 auto;
+  }
+ 
+
+.myfeed{
+    margin-top: 20px;
+    margin-left: 20px;
+  }
+
+.myfeed>a{
+    color: gray;
+}
+
+.id{
+    text-align: center;
+    font-weight: bold;
+    color: rgb(7, 86, 105);
+    font-size: 30px;
+}
+
+.follower-following{
+    display: flex;
+    justify-content: center;
+    margin-top: -24px;
+}
+
+.follower{
+    border: lightgrey 1px solid;
+    padding-left: 80px;    
+    padding-right:80px;
+    padding-top : 13px;
+    padding-bottom : 13px;
+    font-weight: bold;
+    font-size: 15px;
+    background-color:white;
+    color:grey;
+}
+
+.following{
+    border: lightgrey 1px solid;
+    padding-left: 80px;    
+    padding-right:80px;
+    padding-top : 13px;
+    padding-bottom : 13px;
+    font-size: 15px;
+    background-color:  rgb(248, 241, 233);
+    font-weight: bold;
+    color:grey;
+}
+
+.list{
+    width: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.list-each{
+    width: 360px;
+    display:flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.list-each>img{
+    width: 80px;
+    height: 80px;
+}
+
+.list-each>p{
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.list-each>button{
+    margin-top: 23px;
+    height: 30px;
+    background-color:  rgb(218, 239, 245);
+    color: grey;
+    border: lightgrey;
+}
+
+.br{
+    margin-bottom: 20px;
+}
+

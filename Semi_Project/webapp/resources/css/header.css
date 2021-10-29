@@ -1,10 +1,12 @@
-@charset "UTF-8";
+@charset "UTF-8"; /*인코딩 문자 깨짐 방지 (유니코드 문자열 있을 시)*/
 
 html{
+    /* 사용자 설정 문자 크기 그대로 반영 되도록 */
     font-size: 100%;
 }
 
 body {
+    color : #432;
     line-height: 2.0; 
 }
 
@@ -17,11 +19,9 @@ img{
 }
 
 /* header ------------------------------ */
-
 .header {
     width: 100%;
-    max-height: 200px;
-    color : #432;
+     max-height: 200px;
 }
  
 .head-inner {
@@ -45,23 +45,53 @@ img{
 
 .category1>a:hover{
     color: rgb(145, 224, 244);
+    text-decoration: none;
 }
 
 .category2>a:hover{
     color: rgb(145, 224, 244);
+    text-decoration: none;
 }
- 
+
 .category1 > a{
      margin-right: 20px;
      color: gray;
      font-family: 'Noto Sans KR', sans-serif;
 }
 
-.category2 > a{
+.category1{
+     margin-left: 15px;
+}
+ 
+.category2>a{
      margin-right: 20px;
      color: gray;
      font-family: 'Noto Sans KR', sans-serif;
 }
+
+.category2{
+     margin-right: 15px;
+}
+
+
+
+
+
+
+/*---------------body----------------*/
+
+/* 배너 */
+.board {
+    width: 100%;
+    display: flex;
+ }
+ 
+ .board-inner {
+     max-width: 1000px;
+     margin : 0 auto;
+ }
+
+
 
 /*---------------footer----------------*/
 
@@ -69,7 +99,6 @@ img{
     width: 100%;
     height: 150px;
     background-color:  rgb(248, 241, 233);
-    color : #432;
 }
 
 .foot-inner{
@@ -108,7 +137,6 @@ img{
 
 
 /* 이용약관 */
-
 .final{
     max-width: 1000px;
     margin : 0 auto;
