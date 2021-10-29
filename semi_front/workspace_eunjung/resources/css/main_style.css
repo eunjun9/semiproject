@@ -1,0 +1,320 @@
+@charset "UTF-8";
+
+html {
+    font-size : 100%;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+img {
+    max-width: 100%;
+    cursor: pointer;
+}
+
+hr {
+    height: 2px;
+    background-color: lightgray;
+    border: 0px;
+}
+
+/* 본문 간격 */
+
+.body {
+    width: 100%;
+    display: flex;
+
+    /* display: flex;
+    position: relative;
+    align-items: center;
+    flex-direction: column; */
+}
+ 
+.body-inner {
+    max-width: 1000px;
+    margin : 0 auto;
+}
+
+.socialing {
+    margin-top: 5%;
+}
+
+/* 상단 타이틀 */
+
+.s-title {
+    line-height: 1.8;
+}
+
+.s-title > #main-title {
+    font-size: 2.2rem;
+    font-weight: bold;
+    color: rgb(7,86,105);
+    margin-bottom: -15px;
+}
+
+.s-title > #sub-title {
+    font-weight: bold;
+    color: rgb(188,188,188);
+    margin-bottom: 30px;
+}
+
+/* 시작 임박 소셜링 */
+
+#soon-title {
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+#like2 {
+    width: 35px;
+    position : absolute;
+    bottom : 20px;
+    left : 210px;
+}
+
+#profile2 {
+    width: 55px;
+    position : absolute;
+    left: 212px;
+    top: -2px;
+    cursor: pointer;
+}
+
+#s-thumbnail {
+    height: 200px;
+    width: 100%;
+}
+
+#s-thumtitle {
+    margin-top: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#s-thumsub {
+    margin-top: -32px;
+    color: lightslategray;
+}
+
+/* 소셜링 전체 보기 - 필터링 */
+
+#all-title {
+    margin-top: -10px;
+    margin-bottom: 30px;
+}
+
+#filterbox {
+    background-color: rgb(218,239,245);
+    padding: 50px 150px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+#searchIcon {
+    margin-bottom: -8px;
+    margin-left: -4px;
+    margin-right: 5px;
+}
+
+#flabel {
+    /* font-weight: bold; */
+    color: gray;
+}
+
+input:focus {
+    outline: none;
+}
+
+input[name=keyword] {
+    border:none;
+    background-color:transparent;
+    border-bottom: 1px solid rgb(185,185,185);
+    font-size: 1.02rem;
+}
+
+select[name=local],
+select[name=local-details] {
+    border: 1px solid lightgray;
+    width: 100px;
+    height: 30px;
+    border-radius: 5px;
+    padding-left: 15px;
+    font-family: 'Noto Sans KR', sans-serif;
+    cursor: pointer;
+}
+
+input[name=dateIn] {
+    border: 1px solid lightgray;
+    width: 150px;
+    height: 30px;
+    border-radius: 5px;
+    padding-left: 10px;
+    font-family: 'Noto Sans KR', sans-serif;
+    cursor: pointer;
+}
+
+select[name=lineup] {
+    border: 1px solid lightgray;
+    width: 80px;
+    height: 30px;
+    border-radius: 5px;
+    padding-left: 10px;
+    font-family: 'Noto Sans KR', sans-serif;
+    cursor: pointer;
+}
+
+select[name=local],
+input[name=dateIn] {
+    margin-left: 70px;
+}
+
+select[name=local-details] {
+    margin-left: 20px;
+}
+
+input[name=onoff] {
+    margin-left: 25px;
+}
+
+select[name=local],
+select[name=local-details],
+select[name=lineup] {
+    padding: 3px;
+}
+
+input[type=radio],
+label[for=offline],
+label[for=online] {
+    cursor: pointer;
+}
+
+#s-reset {
+    margin-left: 150px;
+    background-color: rgb(228,228,228);
+    color: rgb(91,91,91);
+    padding: 8px;
+    font-weight: bold;
+    border-style: outset;
+    border : 1px solid lightgray;
+    border-radius: 5px;
+    width: 100px;
+    cursor: pointer;
+}
+
+#s-submit {
+    margin-left: 20px;
+    background-color: rgb(7,86,105);
+    color: white;
+    padding: 8px;
+    font-weight: bold;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    width: 120px;
+    cursor: pointer;
+}
+
+/* 소셜링 전체 보기 - 글 목록 */
+
+#lineupbox {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 30px;
+}
+
+.s-container2 {
+    display : grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap : 50px;
+}
+
+#thumbox {
+    position : relative;
+}
+
+#like {
+    width: 40px;
+    position : absolute;
+    bottom : 20px;
+    left : 240px;
+}
+
+#titlebox {
+    display: flex;
+    position : relative;
+    width: 100%;
+}
+
+#profile {
+    width: 55px;
+    /* float: right; */
+    position : absolute;
+    left: 250px;
+    cursor: pointer;
+}
+
+#writing {
+    background-color: rgb(218,239,245);
+    color: rgb(91,91,91);
+    padding: 8px;
+    font-weight: bold;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    width: 80px;
+    cursor: pointer;
+}
+
+.pagebox{
+    display: flex;
+    justify-content: center;
+    position : relative;
+    margin-top: 50px;
+}
+
+.paging{
+    margin-left: 10px; 
+} 
+
+#writebox {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: -30px;
+    margin-bottom: 60px;
+}
+
+/* 슬라이드 */
+
+.slide{
+    position: static;
+}
+
+.swiper {
+    width: 850px;
+    height: 300px;
+}
+
+.button1{
+    position: relative;
+    top:-220px;
+    left: 200px;
+    
+}
+.button2{
+    position: relative;
+    top:-263px;
+    right: -935px;
+    
+}
+
+.button-prev{
+    position: relative;
+    margin-left: -170px;
+}
+
+.button-next{
+    position: relative;
+    margin-right: -170px;
+}

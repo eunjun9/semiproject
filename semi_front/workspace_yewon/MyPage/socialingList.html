@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Socialing_List</title>
+
+    <!--외부 스타일 시트-->
+    <link href="../resources/css/socialingList.css" rel="stylesheet">
+    <link href="../resources/css/header.css" rel="stylesheet"> 
+
+     <!-- font -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500&display=swap" rel="stylesheet">
+
+  <!--슬라이드-->
+  <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+     <!-- JQuery -->
+    <script src="../js/jquery-3.6.0.min.js"></script> 
+</head>
+<div>
+    <!-- 헤더 -->
+    <div class="header">
+        <div class="head-inner">
+
+          <div class="logo">
+            <a href="#"><img src="../resources/icon/logo.png"></a>
+          </div>
+
+            <div class="big-category">
+                <div class="category1">
+                    <a href="#">SOCIALING</a>
+                    <a href="../Class/class_main.html">CLASS</a>
+                    <a href="#">MAGAZINE</a>
+                </div>
+                <div class="category2">
+                    <a href="#">CART</a>
+                    <a href="../MyPage/mypage.html">MYPAGE</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="sList_wrapper">
+        <div id="sList_box">
+            <div class="sList_title">
+                <a id="back" href="#">&lt; 마이페이지</a>
+                <h2>모임내역</h2>
+                <p id="main_title">최근 2개월 이내 모임내역</p>
+                <hr>
+            </div>
+            
+            <div class="sList_before">
+                <h3>참여 전 모임</h3> 
+                <p id="before_count">6건</p>
+            </div>
+                
+                <!-- Swiper -->
+                <div class="slide1">
+                    <div class="swiper mySwiper1 socialing">
+                        <div class="swiper-wrapper sw">
+                            <div class="swiper-slide">
+                                <a href="#"><img class="ipic" width="75%" height="15%" src="../resources/icon/friend.jpg"></a>
+                                <a id="stitle" href="#">주말에 관악산 등산하실 분</a>
+                                <p id="stime">사당역 10/8 토요일 오전 10시</p>
+                            </div>
+                            <div class="swiper-slide">
+                                <a href="#"><img class="ipic" width="75%" height="15%" src="../resources/icon/friend.jpg"></a>
+                                <a id="stitle" href="#">망원동 카페 투어 가요~!</a>
+                                <p id="stime">망원역 11/8 토요일 오전 12시</p>
+                            </div>
+                            <div class="swiper-slide">
+                                <a href="#"><img class="ipic" width="75%" height="15%" src="../resources/icon/friend.jpg"></a>
+                                <a id="stitle" href="#">배드민턴 내기 하실 분</a>
+                                <p id="stime">홍대입구 10/30 토요일 오전 10시</p>
+                            </div>
+                            <div class="swiper-slide">
+                                <a href="#"><img class="ipic" width="75%" height="18%" src="../resources/icon/friend.jpg"></a>
+                                <a id="stitle" href="#">주말에 관악산 등산하실 분</a>
+                                <p id="stime">사당역 10/8 토요일 오전 10시</p>
+                            </div>
+                            <div class="swiper-slide">
+                                <a href="#"><img class="ipic" width="75%" height="18%" src="../resources/icon/friend.jpg"></a>
+                                <a id="stitle" href="#">배드민턴 내기 하실 분</a>
+                                <p id="stime">홍대입구 10/30 토요일 오전 10시</p>
+                            </div>
+                            <div class="swiper-slide">
+                                <a href="#"><img class="ipic" width="75%" height="18%" src="../resources/icon/friend.jpg"></a>
+                                <a id="stitle" href="#">망원동 카페 투어 가요~!</a>
+                                <p id="stime">망원역 11/8 토요일 오전 12시</p>
+                            </div>  
+                        </div>
+                        <br><br><hr>
+                    </div>
+                
+
+                    <!-- 슬라이드 버튼 설정 -->
+                    <div class=button1>
+                        <!-- If we need navigation buttons -->
+                        <div class="but1"><img width="20px" src="../resources/icon/prev_b.png"></div>
+                    </div>
+                    
+                    <div class=button2>
+                        <div class="but2"><img width="20px" src="../resources/icon/next_b.png"></div>
+                    </div>    
+                </div> 
+            
+                <!-- Initialize Swiper -->
+                <script>
+                    var swiper1 = new Swiper(".mySwiper1", {
+                        slidesPerView: 3,
+                        spaceBetween: 1,
+                        
+                        loop : true, 
+                        
+                        // Navigation arrows
+                        navigation: {
+                            nextEl: '.but2',
+                            prevEl: '.but1',
+                        }
+                    });
+                </script>
+        
+
+            <div class="sList_after">
+                <h3>참여 완료 모임</h3>
+                <p id="after_count">5건</p>
+            </div>   
+            <!-- Swiper -->
+            <div class="slide1">
+                <div class="swiper mySwiper2 socialing">
+                    <div class="swiper-wrapper sw">
+                        <div class="swiper-slide">
+                            <a href="#"><img class="ipic" width="75%" height="15%" src="../resources/icon/friend.jpg"></a>
+                            <a id="stitle" href="#">주말에 관악산 등산하실 분</a>
+                            <p id="stime">사당역 10/8 토요일 오전 10시</p>
+                        </div>
+                        <div class="swiper-slide">
+                            <a href="#"><img class="ipic" width="75%" height="15%" src="../resources/icon/friend.jpg"></a>
+                            <a id="stitle" href="#">망원동 카페 투어 가요~!</a>
+                            <p id="stime">망원역 11/8 토요일 오전 12시</p>
+                        </div>
+                        <div class="swiper-slide">
+                            <a href="#"><img class="ipic" width="75%" height="15%" src="../resources/icon/friend.jpg"></a>
+                            <a id="stitle" href="#">배드민턴 내기 하실 분</a>
+                            <p id="stime">홍대입구 10/30 토요일 오전 10시</p>
+                        </div>
+                        <div class="swiper-slide">
+                            <a href="#"><img class="ipic" width="75%" height="18%" src="../resources/icon/friend.jpg"></a>
+                            <a id="stitle" href="#">주말에 관악산 등산하실 분</a>
+                            <p id="stime">사당역 10/8 토요일 오전 10시</p>
+                        </div>
+                        <div class="swiper-slide">
+                            <a href="#"><img class="ipic" width="75%" height="18%" src="../resources/icon/friend.jpg"></a>
+                            <a id="stitle" href="#">배드민턴 내기 하실 분</a>
+                            <p id="stime">홍대입구 10/30 토요일 오전 10시</p>
+                        </div>
+                        <div class="swiper-slide">
+                            <a href="#"><img class="ipic" width="75%" height="18%" src="../resources/icon/friend.jpg"></a>
+                            <a id="stitle" href="#">망원동 카페 투어 가요~!</a>
+                            <p id="stime">망원역 11/8 토요일 오전 12시</p>
+                        </div>  
+                    </div>
+                </div>
+            
+
+                <!-- 슬라이드 버튼 설정 -->
+                <div class=button3>
+                    <!-- If we need navigation buttons -->
+                    <div class="but3"><img width="20px" src="../resources/icon/prev_b.png"></div>
+                </div>
+                
+                <div class=button4>
+                    <div class="but4"><img width="20px" src="../resources/icon/next_b.png"></div>
+                </div>    
+            </div> 
+        
+            <!-- Initialize Swiper -->
+            <script>
+                var swiper1 = new Swiper(".mySwiper2", {
+                    slidesPerView: 3,
+                    spaceBetween: 1,
+                    
+                    loop : true, 
+                    
+                    // Navigation arrows
+                    navigation: {
+                        nextEl: '.but3',
+                        prevEl: '.but4',
+                    }
+                });
+            </script>
+    
+
+
+
+        </div>
+            
+    </div>
+
+    
+    
+    
+    
+    <!--footer-->
+    <div class="footer">
+        <div class="foot-inner">
+            <div class="foot-logo foot-all">
+                S O D A</div>
+            <div class="information foot-all">
+                <ul>주식회사 소셜 다이닝</ul>
+                <ul>대표 : 홍길동 | 개인정보관리책임자 : 홍길동 | 전화 : 02-123-4567 | 이메일 : soda@gmail.com</ul>
+                <ul>주소 : 서울 강남구 테헤란로 14길 6 남도빌딩 2층 | 사업자등록번호 : 000-00-00000</ul>
+                <ul> 통신판매 : 제 2021-서울강남-0000호</ul>
+                <ul>영업시간 : 월-금 오후 2시-7시</ul>
+            </div>
+            <div class="foot-category foot-all">
+                <ul><a href="#">소다소개</a></ul>
+                <ul><a href="#">공지사항 </a></ul>
+                <ul><a href="#">강사신청</a></ul>
+                <ul><a href="#">자주묻는질문</a></ul>
+            </div>
+
+        </div>
+    </div>
+    <div class="final">
+        <div class="foot-final">
+            <a href="#">이용약관 | </a>
+            <a href="#">개인정보처리방침 | </a>
+            <a href="#">사업자정보확인</a>
+        </div>
+    </div>
+    
+</body>
+</html>

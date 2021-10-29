@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>결제완료</title>
+    <!-- 외부 스타일 시트 -->
+    <link rel="stylesheet" href="../wishlistPage/resources/CSS/payStyle.css">
+    <!-- 외부 폰트 -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
+</head>
+
+    <!-- 헤더 가져오기 -->
+
+    <!-- 위시리스트 화면 -->
+    <div class="container">
+        <div class="wish-title">
+            <h1>결제완료</h1>
+        </div>
+        <div class="wish-heardLine"><hr>
+         <span class="class-info text">    
+             <h4>클래스 정보</h4>
+         </span> 
+         <span class="class-date text">
+            <h4>날짜/기한</h4>
+        </span> 
+        <span class="class-price text">
+            <h4>가격</h4>
+        </span>
+        <hr>
+        </div>
+
+        <!-- 클래스 썸네일 이미지 영역 / 테스트 이미지 삽입 -->  
+    <div class="wish-class">
+
+     <div class="wish-content">
+        
+        <div class="wish-class img">
+        <img src="../wishlistPage/resources/image/sample1.jpg" width="200px" height="150px">
+        </div>
+     </div>
+        
+        <!-- 장바구니 추가한 클래스 정보 가져올 영역 -->
+        <div class="wish-class-info">
+           <p class="category"> ONE-DAY </p>
+           <p class="title"> 도예공방에서 나만의 도자기 만들기 </p>
+        </div>
+
+        <div class="wish-class-date">
+            <p class="date"> 2021-11-06 토요일 오후 7시 </p>
+        </div>
+        
+        <div class="wish-class-price">
+            <p class="price">50,000원</p>
+        </div>
+        <hr class="hr-line">
+    
+      <!-- 두번째 클래스 영역 -->
+    
+     <div class="wish-content">
+        
+        <div class="wish-class img">
+        <img src="../wishlistPage/resources/image/sample2.jpg" width="200px" height="150px">
+        </div>
+        </div>
+        
+        <div class="wish-class-info">
+           <p class="category"> VOD </p>
+           <p class="title"> 40년 경력 포토그래퍼가 알려주는 '초/중급자를 위한 사진 라이팅 테크닉 클래스' </p>
+        </div>
+
+        <div class="wish-class-date">
+            <p class="date"> 150일 </p>
+        </div>
+        
+        <div class="wish-class-price">
+            <p class="price">100,000원</p>
+        </div>
+
+        <hr class="hr-line">
+    </div>
+
+    <!-- 주문자정보 / 결제금액 -->
+
+    <div class="order-info">
+        
+        <!-- user_name 불러오기 -->
+        <form id="order-info form" method="post">
+            <h2>주문자 정보</h2>
+            <h3>홍길동</h3>
+            <span class="input-area" id="phone" readonly>
+             입력한 휴대폰 번호 노출
+             </span><br><br>
+             <span class="input-area" id="email" readonly>
+                입력한 이메일 주소 노출
+             </span>
+         </form>
+
+         <div class="order-price">
+             <div class="total-price-first">
+                 <h2>결제 금액</h2>
+             </div>
+            <div class="total-price">
+                <p>ㄴ 합계 금액 : </p>
+                <p class="totalPrice">150,000원</p>
+            </div>
+            <div class="total-price">
+                <p>ㄴ 혜택 금액 : </p>
+                <p class="discountPrice">0원</p>
+            </div>
+            <div class="total-price-last">
+                <p>총 결제 금액 : </p>
+                <p class="orderPrice">150,000원</p>
+            </div>
+         </div>
+        
+        </div>
+
+        <hr class="hr-line">
+
+        <div class="pay-after">
+            <span class="text">주문이 정상적으로 처리되었습니다.<br>
+                결제 내역은 마이페이지에서 확인 가능합니다.<br>
+            (주문 실패 시 주문 실패 문구 노출)</span>
+        </div>
+
+
+    <!-- 메인화면으로 이동 버튼 -->
+    <div class="wish-footer">
+        <div class="back-btn">
+            <button type="button" id="back-button" class="back">메인화면</button>
+        </div>
+    
+    <!-- 결제내역으로 이동 버튼 -->
+        <div class="pay-btn">
+            <button type="button" id="pay-button" class="pay">결제내역</button>
+        </div>
+    </div>
+    </div>
+    <!-- 푸터 가져오기 -->
+
+    
+   </div> 
+
+</div>
+</body>
+</html>
