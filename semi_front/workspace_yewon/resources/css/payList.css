@@ -1,0 +1,188 @@
+@charset "UTF-8";
+html{
+    font-size:100%;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+}
+
+hr{
+    margin-bottom: -3px;
+    margin-top: -3px;
+}
+
+/* body-----------------*/
+/* 상단 타이틀 */
+.pList_wrapper{
+    margin : 20px auto;
+    padding : 3% 4%;
+}
+
+#pList_box{
+    width: 900px;
+    margin : 0 auto;
+    border : 6px solid rgb(218,239,245);
+    padding: 3% 4%;
+    margin-bottom: 30px;
+}
+
+#back {
+    font-size: 0.9rem;
+    color: slategray;
+}
+
+#back:hover{
+    color: rgb(145, 224, 244);
+    text-decoration: none;
+}
+
+#main_title{
+    color: rgb(188,188,188);
+    font-weight: bold;
+    margin-top: -20px;
+}
+
+/* 결제내역 필터 */
+.pay_filter{
+    padding: 2%;
+    margin: 30px auto;
+    width: 90%;
+    height: 35px;
+    background-color: rgb(218, 239, 245);
+    border: 1px solid rgb(185,185,185, 0);
+    border-radius: 5px;
+}
+.pay_filter form{
+    margin: auto 16%;
+}
+.pay_filter label{
+    font-weight: 600;
+    font-size: 11pt;
+}
+.pay_filter input[type=date]{
+    border: 1px solid rgb(185,185,185, 0);
+    border-radius: 5px;
+    width: 150px;
+    height: 25px;
+    font-family: 'Noto Sans KR', sans-serif;
+    cursor: pointer;
+    margin-left: 5px;
+}
+.pay_filter [name=filter_submit]{
+    border: 1px solid rgb(185,185,185, 0);
+    border-radius: 5px;
+    width: 70px;
+    height: 25px;
+    background-color: rgb(7, 86, 105);
+    color: white;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+/* 결제 내역 타이틀 */
+.list_title{
+    color : rgb(94, 94, 94);
+    display: flex;
+    justify-content:space-around;
+}
+#cInfo{
+    margin-left: 90px;
+    font-weight: lighter;
+}
+#cDate{
+    font-weight: lighter;
+    margin-left: 130px;
+}
+#cPrice{
+    font-weight: lighter;
+}
+
+/* 결제내역 정보 */
+.list_detail hr{
+  margin-top: -155px;
+}
+.class_info{
+    padding: 4% 2%;
+    width: 49%;
+    height: 50px;
+    position: relative;
+    border-right: 1px solid lightgray;
+    /* margin-top: 40px; */
+    top:40px;
+}
+.class_img{
+    width: 200px;
+    height: 140px;
+    margin-left: -10px;
+    position: relative;
+    top : -40px;
+}
+.class_img img{
+    width: 200px;
+    height: 140px;
+}
+
+.class_type{
+    position: relative;
+    top : -175px;
+    left : 210px;
+    width: 50px;
+    height: 40px;
+    font-size: 11px;
+    color: grey;
+}
+.class_title{
+    position: relative;
+    top : -200px;
+    left : 210px;
+    font-size: 16px;
+    width: 220px;
+    height: 20px;
+}
+
+/* 날짜 시간 */
+.class_date{
+    padding: 4% 2%;
+    position: relative;
+    width: 19%;
+    height: 50px;
+    border-right: 1px solid lightgray;
+    top: -82px;
+    left: 495px;
+}
+.class_date p{
+    position: relative;
+    font-size: 12px;
+    color : rgb(121, 121, 121);
+    margin-left: 5px;
+}
+
+/* 가격 */
+.price{
+    padding: 4% 2%;
+    position: relative;
+    width: 13%;
+    height: 50px;
+    top: -220px;
+    left: 757px;
+}
+.price p{
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.refund_Btn{
+    border: 1px solid rgb(185,185,185, 0);
+    border-radius: 5px;
+    width: 70px;
+    height: 25px;
+    background-color:rgb(218, 239, 245);
+    cursor: pointer;
+    margin-left: -5px;
+}
