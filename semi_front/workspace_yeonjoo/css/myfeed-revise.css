@@ -1,0 +1,222 @@
+
+.body-super {
+    width: 100%;
+    margin : 0 auto;
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    font-family: 'Noto Sans KR', sans-serif;
+ 
+ }
+ 
+ .body-inner{
+     max-width: 930px;
+     height: auto;
+    }
+    
+    .body-inner-blue{
+     width:930px;
+     height: auto;
+     border: 6px solid rgb(218, 239, 245);
+     background-color: white;
+     margin: 0 auto;
+     display: flex;
+     justify-content: center;
+  }
+
+  .body-inner2{
+      width:500px;
+      text-align: center;
+    }
+    
+    
+.profile{
+    margin-top: 50px;
+    display: inline-grid;
+}
+.profile>img{
+    width:150px;
+}
+
+.profile>button{
+    justify-content: center;
+    border: 1px solid white;
+    background-color:  rgb(218, 239, 245);
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.introduction>p{
+    margin-left:-290px;
+    margin-bottom: 4px;
+    font-weight: bold;
+}
+.introduction>textarea{
+    width: 335px;
+    resize: none;
+    margin-bottom: 10px;
+    border: lightgrey 1px solid;
+    font-family: 'Noto Sans KR', sans-serif;
+
+}
+
+.feed{
+    display: flex;
+    justify-content: space-around;
+}
+
+.feed>p{
+    margin-top: 0px;
+    font-weight: bold;
+    color: black;
+    margin-left: -13px;
+}
+.group{
+    display: flex;
+    justify-content: space-around;
+    margin-top: -40px;
+}
+
+.group>p{
+    margin-top: 0px;
+    font-weight: bold;
+    color: black;
+}
+.open1{
+    margin-right: -14px;
+}
+
+.sns{
+    display: block;
+}
+
+.sns-title{
+    text-align: left;
+    margin-left: 78px;
+    font-weight: bold;
+}
+
+.insta{
+    justify-content: center;
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.insta>img{
+    width: 30px;
+    height: 30px;
+    margin-right: 20px;
+}
+.insta>textarea{
+    width: 200px;
+    height: 30px;
+    border: lightgrey 1px solid;
+    resize: none;
+}
+
+.facebook{
+    justify-content: center;
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.facebook>img{
+    width: 30px;
+    height: 30px;
+    margin-right: 20px;
+}
+.facebook>textarea{
+    width: 200px;
+    height: 30px;
+    border: lightgrey 1px solid;
+    resize: none;
+}
+
+.blog{
+    justify-content: center;
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.blog>img{
+    width: 30px;
+    height: 30px;
+    margin-right: 20px;
+}
+.blog>textarea{
+    width: 200px;
+    height: 30px;
+    border: lightgrey 1px solid;
+    resize: none;
+}
+
+.interest{
+    margin-top: -10px;
+}
+
+.interest-title{
+    margin-top: 70px;
+    text-align: left;
+    margin-left: 78px;
+    font-weight: bold;
+}
+
+.career{
+    border: white 1px solid;
+    border-radius: 10px;
+    width: 60px;
+    background-color: rgb(248, 241, 233);
+    margin-left: 80px;
+    margin-top:10px;
+}
+
+.career-checkbox{
+    margin-bottom: 15px;
+}
+
+.culture{
+    border: white 1px solid;
+    border-radius: 10px;
+    width: 70px;
+    background-color: rgb(248, 241, 233);
+    margin-left: 80px;
+}
+
+.culture-checkbox{
+    margin-bottom: 15px;
+}
+
+.write{
+    border: white 1px solid;
+    border-radius: 10px;
+    width: 60px;
+    background-color: rgb(248, 241, 233);
+    margin-left: 80px;
+}
+
+.write-checkbox{
+    margin-bottom: 15px;
+}
+
+.lifestyle{
+    border: white 1px solid;
+    border-radius: 10px;
+    width: 100px;
+    background-color: rgb(248, 241, 233);
+    margin-left: 80px;
+}
+
+.lifestyle-checkbox{
+    margin-bottom: 15px;
+}
+
+.food{
+    border: white 1px solid;
+    border-radius: 10px;
+    width: 100px;
+    background-color: rgb(248, 241, 233);
+    margin-left: 80px;
+}
+
+.food-checkbox{
+    margin-bottom: 15px;
+}
