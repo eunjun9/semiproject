@@ -1,0 +1,259 @@
+@charset "UTF-8";
+html{
+    font-size:100%;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+}
+
+hr{
+    height: 2px;
+    background-color: gray;
+    margin-top: 45px;
+} 
+
+/* body-----------------*/
+/* 상단 영역 */
+.class_form{
+    max-width : 85%;
+    margin : 0px auto;
+    padding : 2% 4%;
+}
+
+.cForm_title{
+    margin-top: 50px;
+    line-height: 0.7;
+}
+
+.cForm_title > #main-title {
+    font-weight: bold;
+    color: rgb(7,86,105);
+}
+
+.cForm_title > #sub-title {
+    font-weight: bold;
+    color: rgb(188,188,188);
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+#back {
+    font-size: 11pt;
+    color: slategray;
+}
+#back:hover{
+    color: rgb(145, 224, 244);
+    text-decoration: none;
+}
+
+/* 작성 폼 영역 */
+/*part1*/
+#cForm_wrapper {
+    width: 1000px;
+    /* min-height: 100px; */
+    margin : 0 auto;
+    border : 6px solid rgb(218,239,245);
+    padding: 30px 50px 30px 50px;
+    margin-bottom: 50px;
+}
+
+#cForm_wrapper h3{
+    font-weight: bold;
+    margin-top: 40px;
+}
+
+#cForm_wrapper h4{
+    margin-bottom: 10px;
+    margin-top: 35px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: gray;
+}
+
+#cForm_wrapper select{
+    border: 1px solid rgb(185,185,185);
+    border-radius: 5px;
+    width: 150px;
+    height: 30px;
+}
+
+.btnlabel{
+    margin-left: 5px;
+    color: black;
+}
+
+#offline,
+#vod{
+    margin-left: 20px;
+}
+
+input[name=cPrice]{
+    margin-bottom: 20px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    height: 30px;
+}
+
+/* 상세페이지 헤드*/
+#img_wrapper{
+    width: 450px;
+    position: relative;
+    top : 10px;
+    left : 450px;
+}
+
+.image_area{
+    border: 1px dotted grey;
+    border: 1px solid lightgray;
+    width: 451px;
+    height: 262px;
+    top : 11px;
+    left : 450px;
+}
+.image_area img {
+    width: 450px;
+    height: 260px;
+}
+
+#cForm_wrapper input[type=file] {
+    display: none;
+}
+
+#fileBtn {
+    background-color: rgb(7,86,105);
+    color: white;
+    padding: 5px;
+    font-weight: bold;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    width: 80px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+#form_head{
+    width: 400px;
+    position: relative;
+    top: -180px;
+}
+
+#sub_title6{
+    width: 355px;
+    height: 90px;
+    background-color: rgba(247, 247, 247, 0.74);
+    font-size: 17pt;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: bold;
+    resize: none;
+    border: 1px dotted grey;
+    border-radius: 5px;
+}
+
+#form_head label:not(.btnlabel){
+    color : grey;
+    font-size: 11pt;
+    margin-bottom: 10px;
+}
+
+#c_tutor{
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    height: 30px;
+    width: 250px;
+    margin-left: 10px;
+    font-size: 11pt;
+}
+
+.btnlabel{
+    margin-left: 5px;
+}
+
+#form_head input[name=class_type]{
+    margin-left: 10px;
+}
+
+/* 상세페이지 바디 */
+#form_body{
+    margin-top: -60px;
+    margin-bottom: 50px;
+}
+
+#form_body h4{
+    margin-bottom: 30px;
+}
+
+#tutor_intro{
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    resize: none;
+    font-family: 'Noto Sans KR', sans-serif;
+    width: 880px;
+    height: 60px;
+}
+
+input[type=date]{
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    width: 180px;
+    height: 30px;
+}
+
+
+input[type=time]{
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    width: 180px;
+    height: 30px;
+}
+
+input[name=class_onoff]{
+    margin-left: 10px;
+}
+
+input[name=class_location]{
+    margin-top: 10px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    width: 430px;
+    height: 30px;
+}
+
+#location_Btn{
+    background-color: rgb(7,86,105);
+    color: white;
+    padding: 5px;
+    font-weight: bold;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    width: 80px;
+    cursor: pointer;
+}
+
+input[name=location_detail]{
+    margin-top: 5px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    width: 430px;
+    height: 30px;
+}
+
+#cf_submit{
+    background-color: rgb(7,86,105);
+    color: white;
+    padding: 5px;
+    font-weight: bold;
+    font-size: 13pt;
+    border: 1px solid lightgray;
+    border-radius: 25px;
+    width: 130px;
+    height: 50px;
+    cursor: pointer;
+    margin-top: 50px;
+    margin-left: 390px;
+}
