@@ -1,0 +1,126 @@
+
+.body-super{
+    width: 100%;
+    margin : 0 auto;
+    height: auto;
+    
+ }
+ 
+ .body-inner {
+     max-width: 930px;
+     margin : 0 auto;
+     height: auto;
+     display: flex;
+    
+ }
+ 
+
+
+ .title-big{
+    margin-top: 20px;
+    margin-bottom: 100px;
+}
+
+ .title{
+    position:sticky;
+    transform: translate(0px, 70px);                                                                   
+    font-size:25px;
+    font-weight: bold;
+    z-index: 2;
+    color:rgb(7, 86, 105);
+
+}
+
+
+ 
+ 
+ .board_title > h1{
+    color : rgb(7, 86, 105);
+    font-family: 'Noto Sans KR', sans-serif;
+ }
+ 
+ .board_content {
+    padding: 0px 20px;
+ }
+ 
+ .board_content .content {
+    margin-bottom: 30px;
+    font-family: 'Noto Sans KR', sans-serif;
+ }
+ 
+ .input_area {
+     border: solid 1px #dadada;
+     padding: 10px 10px 14px 10px;
+     background: white;
+  }
+ 
+ .input_area select {
+    width: 150px;
+    height: 30px;
+    border: 0px;
+ }
+ 
+ .input_area input {
+    width: 500px;
+    height: 30px;
+    border: 0px;
+ }
+ 
+ .input_area input:focus, .input_area select:focus {
+    outline: none;
+ }
+ 
+ .textarea {
+    resize: none;
+    border: solid 1px #dadada;
+ }
+ 
+ .textarea:focus {
+    outline: none;
+ }
+ 
+ .title_span {
+    background-color:  rgb(145, 224, 244);
+ }
+ 
+ .image_area {
+    padding: 20px;
+ }
+ 
+ .image_area img {
+    width: 100%;
+    margin:20px;
+ }
+ 
+ 
+ .btn_area {
+     text-align: center;
+     border-top: 1px solid #282A35;
+     padding: 30px;
+     margin-bottom: 50px;
+  }
+ 
+ .btn_area .button {
+    width: 100px;
+    height: 35px;
+    border: 0px;
+    color: black;
+    background: lightgray;
+    margin: 20px;
+    
+    cursor: pointer;
+    font-family: 'Noto Sans KR', sans-serif;
+ }
+ 
+ .btn_area .submit {
+     width: 100px;
+     height: 35px;
+     border: 0px;
+     color: black;
+     background: rgb(218, 239, 245);
+     margin: 20px;
+     cursor: pointer;
+     font-family: 'Noto Sans KR', sans-serif;
+  }
+ 
+ 
