@@ -16,7 +16,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
 
     <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> -->
 </head>
 <body>
     <!--header-->
@@ -27,7 +27,7 @@
             </div>
             <div class="big-category">
                 <div class="category1">
-                    <a href="#">SOCIALING</a>
+                    <a href="socialing_main.html">SOCIALING</a>
                     <a href="#">CLASS</a>
                     <a href="#">MAGAZINE</a>
                 </div>
@@ -69,8 +69,8 @@
                     <label for="offline">오프라인</label>
                     <input type="radio" id="online" name="place" value="on">
                     <label for="online">온라인</label><br>
-                    <input type="text" id="inputPlace" placeholder="여의나루역 5호선 한강공원 / Zoom">&nbsp;&nbsp;
-                    <button type="button" id="search">검색</button><br>
+                    <input type="text" id="inputPlace" class="postcodify_address postcodify_details" placeholder="여의나루역 5호선 한강공원 / Zoom">&nbsp;&nbsp;
+                    <button type="button" class="search" id="postcodify_search_button">검색</button><br>
                     <h4 id="w-sub-title5">인원 설정 (최소 2명 이상)</h4>
                     <select id="min" name="min">
                         <option value="2">2명</option>
@@ -100,28 +100,31 @@
         </div>
     </div>
 
+    <!-- jQuery와 Postcodify를 로딩한다 -->
+    <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script> -->
+
+    <!-- "검색" 단추를 누르면 팝업 레이어가 열리도록 설정한다 -->
+    <script> $(function() { $("#postcodify_search_button").postcodifyPopUp(); }); </script>
+
     <script>
         let fileBtn = document.querySelector("#fileBtn");
 
-        const fileElements = document.querySelectorAll("[type=file]");
-        const imageArea = document.querySelectorAll(".image_area");
+        const fileElements = document.querySelector("[type=file]");
+        const imageArea = document.querySelector(".image_area");
 
-        /* 버튼 클릭했을 때 input type file 오픈 */
         fileBtn.onclick = function() {
-            fileElements[0].click();
+            fileElements.click();
         }
 
-        /* input type file 요소에 change 이벤트 발생 시 (파일 첨부 발생) */
-        fileElements.forEach(item => item.addEventListener('change', preview));
+        fileElements.addEventListener('change', preview);
 
-        function preview(){
-            let index = Array.from(fileElements).indexOf(this);
-            
+        function preview(){       
             if(this.files && this.files[0]) {
                 let reader = new FileReader();
                 reader.readAsDataURL(this.files[0]);
                 reader.onload = function(){
-                    imageArea[index].innerHTML = "<img src='" + reader.result + "'>";
+                    imageArea.innerHTML = "<img src='" + reader.result + "'>";
                 }
             }
         }
@@ -149,8 +152,8 @@
     </div>
     <div class="final">
         <div class="foot-final">
-            <a href="#">이용약관 | </a>
-            <a href="#">개인정보처리방침 | </a>
+            <a href="terms.html">이용약관 | </a>
+            <a href="personalInfo.html">개인정보처리방침 | </a>
             <a href="#">사업자정보확인</a>
         </div>
     </div>

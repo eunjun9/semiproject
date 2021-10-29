@@ -27,7 +27,7 @@
             </div>
             <div class="big-category">
                 <div class="category1">
-                    <a href="#">SOCIALING</a>
+                    <a href="socialing_main.html">SOCIALING</a>
                     <a href="#">CLASS</a>
                     <a href="#">MAGAZINE</a>
                 </div>
@@ -129,22 +129,24 @@
     </div>
     <div class="final">
         <div class="foot-final">
-            <a href="#">이용약관 | </a>
-            <a href="#">개인정보처리방침 | </a>
+            <a href="terms.html">이용약관 | </a>
+            <a href="personalInfo.html">개인정보처리방침 | </a>
             <a href="#">사업자정보확인</a>
         </div>
     </div>
 
     <script>
-        $(document).ready(function(){ 
+        $(document).ready(function(){
+          
           $(".menu").mouseover(function(){ 
             $(this).children(".submenu").show(300); 
-          }); 
-            $(".menu").mouseleave(function(){ 
-              $(this).children(".submenu").hide(300); 
-            });
           });
+
+          $(".menu").mouseleave(function(){ 
+            $(this).children(".submenu").hide(300); 
+          });
+        });
         
-        </script>
+    </script>
 </body>
 </html>
