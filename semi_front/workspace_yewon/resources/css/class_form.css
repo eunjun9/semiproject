@@ -109,7 +109,6 @@ input[name=cPrice]{
 }
 
 .image_area{
-    border: 1px dotted grey;
     border: 1px solid lightgray;
     width: 451px;
     height: 262px;

@@ -1,0 +1,113 @@
+@charset "UTF-8";
+html{
+    font-size:100%;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+}
+
+hr{
+    margin-bottom: -3px;
+    margin-top: -3px;
+}
+
+/* body-----------------*/
+/* 상단 타이틀 */
+.pList_wrapper{
+    margin : 20px auto;
+    padding : 3% 4%;
+}
+
+#pList_box{
+    width: 850px;
+    height: 860px;
+    margin : 0 auto;
+    border : 6px solid rgb(218,239,245);
+    padding: 3% 4%;
+    margin-bottom: 30px;
+}
+
+#back {
+    font-size: 0.9rem;
+    color: slategray;
+}
+
+#back:hover{
+    color: rgb(145, 224, 244);
+    text-decoration: none;
+}
+
+#main_title{
+    color: rgb(188,188,188);
+    font-weight: bold;
+    margin-top: -20px;
+}
+
+/* 결제내역 필터 */
+.pay_filter{
+    padding: 2%;
+    margin: 30px auto;
+    width: 90%;
+    height: 35px;
+    background-color: rgb(218, 239, 245);
+    border: 1px solid rgb(185,185,185, 0);
+    border-radius: 5px;
+}
+.pay_filter form{
+    margin: auto 16%;
+}
+.pay_filter label{
+    font-weight: 600;
+    font-size: 11pt;
+}
+.pay_filter input[type=date]{
+    border: 1px solid rgb(185,185,185, 0);
+    border-radius: 5px;
+    width: 150px;
+    height: 25px;
+    font-family: 'Noto Sans KR', sans-serif;
+    cursor: pointer;
+    margin-left: 5px;
+}
+.pay_filter [name=filter_submit]{
+    border: 1px solid rgb(185,185,185, 0);
+    border-radius: 5px;
+    width: 70px;
+    height: 25px;
+    background-color: rgb(7, 86, 105);
+    color: white;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+/* 결제 내역 타이틀 */
+.list_title{
+    color : rgb(94, 94, 94);
+    display: flex;
+    justify-content:space-around
+}
+#cInfo{
+    margin-left: 90px;
+    font-weight: lighter;
+}
+#cDate{
+    font-weight: lighter;
+}
+#cPrice{
+    font-weight: lighter;
+}
+
+/* 결제내역 정보 */
+.list_body{
+    padding: 4% 2%;
+}
+.list_body img{
+    width: 200px;
+    height: 140px;
+}
