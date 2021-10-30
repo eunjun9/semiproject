@@ -1,3 +1,11 @@
+@charset "UTF-8";
+
+html {
+    font-size : 100%;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+
 
 .body-super {
     width: 100%;
