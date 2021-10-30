@@ -17,7 +17,6 @@
     <!-- favicon (Real Favicon Generator)-->
     <link rel="icon" type="image/x-icon" href="resources/image/khfavicon.ico">
     <!-- 글꼴 -->
-
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
     <!--font-family: 'Noto Sans KR', sans-serif;-->
 
@@ -33,8 +32,12 @@
     <div class="header">
         <div class="head-inner">
 
+
+		
           <div class="logo">
-            <img src="../image/logo.png">
+        	<!--  로고 이미지를 클릭하면 첫 화면으로 -->
+         	<a href="<%= request.getContextPath() %>">
+            <img src="<%= request.getContextPath() %>/resources/images/logo.png"></a>
           </div>
 
             <div class="big-category">
