@@ -1,0 +1,41 @@
+
+/* 이메일, 비밀번호 찾기 */
+
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.popup {
+    display: flex;
+    position: relative;
+    align-items: center;
+    flex-direction: column;
+}
+
+.btnArea {
+    margin-top: 20px;
+    display: flex;
+    position: relative;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+#nameInput, #phoneInput, #emailInput {
+    width: 200px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    height: 40px;
+    width: 300px;
+}
+
+.btn{
+    height: 40px;
+    width: 300px;
+    margin-top: 10px;
+    border: 1px solid gray;
+    border-radius:  10px;
+    background-color: rgb(218,239,245);
+
+}
+
