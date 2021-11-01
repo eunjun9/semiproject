@@ -10,7 +10,7 @@
     <title>회원등급변경</title>
 
     <!-- 외부 스타일 시트 -->
-    <link href="../css/Member_revise_popup.css" rel="stylesheet">
+    <link href="../css/memberRevisePopup.css" rel="stylesheet">
 
     <!-- 글꼴 (Noto Sans) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

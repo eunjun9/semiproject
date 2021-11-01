@@ -2,12 +2,13 @@
     pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="EUC-KR">
-<title>Insert title here</title>
 
-  <!-- 외부 스타일 시트 -->
-   <link href="../css/Write.css" rel="stylesheet">
+<head>
+   <meta charset="UTF-8">
+   <title>게시글 작성</title>
+
+   <!-- 외부 스타일 시트 -->
+   <link href="../css/magazineWrite.css" rel="stylesheet">
    <link href="../css/Headerfooter.css" rel="stylesheet">
 
    <!-- favicon (Real Favicon Generator)-->
@@ -177,6 +178,6 @@
       </div>
    </div>
 
-
 </body>
+
 </html>

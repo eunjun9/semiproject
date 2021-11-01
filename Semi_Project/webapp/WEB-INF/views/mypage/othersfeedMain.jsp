@@ -1,14 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="EUC-KR">
-<title>Insert title here</title>
+<html lang="ko">
 
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마이피드</title>
 
     <!-- 외부 스타일 시트 -->
-    <link href="../css/Myfeed.css" rel="stylesheet">
+    <link href="../css/myfeedMain.css" rel="stylesheet">
     <link href="../css/headerfooter.css" rel="stylesheet">
     
     <!-- favicon (Real Favicon Generator)-->
@@ -201,6 +203,6 @@
 
     </div>
 
-
 </body>
+
 </html>
