@@ -1,0 +1,108 @@
+@charset "UTF-8";
+
+html {
+    font-size : 100%;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.body {
+    width: 100%;
+}
+ 
+.body-inner {
+    width: 1000px;
+    margin : 0 auto;
+}
+
+.page {
+    margin-top: 2%;
+}
+
+/* 상단 제목 */
+
+.titleArea {
+    width: 100%;
+    height: 120px;
+    background-color: rgb(218,239,245);
+}
+
+.titleArea2 {
+    width: 1000px;
+    margin : 0 auto;
+}
+
+#title {
+    padding-top: 70px;
+}
+
+p {
+    line-height: 2.0;
+}
+
+
+
+/* 문의사항 */
+
+.cQnA{
+    display: flex;
+    
+}
+
+.cQuestion2{
+    font-size: 18px;
+    border-radius: 5px ;
+    margin-bottom: 10px;
+    padding: 10px;
+    cursor: pointer;
+    width: 740px;
+    height: 40px;
+}
+
+.outer{
+    vertical-align: middle;
+}
+
+.cAnswer1{
+    width: 740px;
+    height: 250px;
+    border-radius: 5px ;
+    border: 1px solid rgb(197, 197, 197);
+    resize: none;
+    padding: 10px;
+    
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 18px;
+    vertical-align: middle;
+  
+
+}
+
+.grade1{
+    height: 20px;
+    
+}
+
+.cAnswer2{
+    width: 740px;
+    height: 500px;
+    border-radius: 5px ;
+    border: 1px solid rgb(197, 197, 197);
+    resize: none;
+    padding: 10px;
+    
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 18px;
+    vertical-align: middle;
+    margin-top: 5px;
+
+}
+
+textarea.cAnswer{
+margin-top: -5px;
+}
+
+p.cAnswer{
+    display: none;
+    margin-top: 5px;
+}
+

@@ -1,0 +1,56 @@
+@charset "UTF-8";
+
+* {
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+html {
+    font-size: 100%;
+}
+
+body {
+    color: rgb(0, 0, 0);
+    line-height: 1.8; 
+}
+
+a {
+    text-decoration: none;
+}
+
+*{margin:0; padding: 0;}
+li{list-style: none;}
+
+.slide_wrapper{
+    position: relative;
+    width: 960px;
+    margin: 0 auto;
+    height: 300px;
+    overflow: hidden;
+}
+
+.slides{
+    position: absolute;
+    left: 0; top: 0;
+    width: 2610px;
+}
+
+.slides li:not(:last-child){
+    float:left;
+    margin-right: 30px;
+}
+
+.controls{
+    text-align: center;
+    margin-top: 50px;
+}
+
+.controls span{
+    
+    background: #333;
+    color: #fff;
+    padding: 10px 20px;
+    margin: 0 10px;
+    
+}
+
+
