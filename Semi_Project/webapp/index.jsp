@@ -27,7 +27,7 @@
         </nav>
         <nav class="main-bar">
             <ul class="main-nav">
-                <li><a class="button1" href="${ contextPath }/emailLoginPage.jsp">로그인</a></li>
+                <li><a class="button1" href="<%= request.getContextPath() %>/login">로그인</a></li>
             </ul>
         </nav>
 
@@ -91,5 +91,6 @@
         <p>주식회사 소셜 다이닝 | 대표 : 홍길동 | 개인정보관리책임자 : 홍길동 주소 : 서울 강남구 테헤란로 14길 6 남도빌딩 2층 | 사업자등록번호 : 000-00-00000</p>
     </div>
 </div>
+
 </body>
 </html>
