@@ -1,0 +1,113 @@
+@charset "UTF-8";
+html{
+    font-size:100%;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* 본문 */
+#about_soda{
+    padding: 4% 8%;
+}
+
+#about_soda img{
+    width: 100%;
+    height: 400px;
+}
+
+#about_soda h1{
+    color: rgb(145, 224, 244);
+    position: relative;
+    top: -155px;
+    left: 20px;
+}
+
+#title1{
+    color: rgb(63, 63, 63);
+    position: relative;
+    top: -185px;
+    left: 20px;
+}
+
+#title2{
+    color: rgb(63, 63, 63);
+    position: relative;
+    top: -208px;
+    left: 20px;
+}
+
+#title3{
+    position: relative;
+    top: -160px;
+}
+
+#content1{
+    position: relative;
+    top: -160px;
+    text-align: left;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+#entire_wrapper{
+    height: 300px;
+} 
+#sub_title1{
+    color: rgb(145, 224, 244);
+    text-align: left;
+    margin-left: 0px;
+    border-right: 1px solid grey;
+    width: 350px;
+    height: 230px;
+    position: relative;
+    top: -80px;
+}
+
+#sub_title1 h3{
+    position: relative;
+    top: -30px;
+}
+
+.content2{
+    text-align: left;
+    color: rgb(48, 48, 48);
+    position: relative;
+    font-family: 'Noto Sans KR', sans-serif;
+    top: -25px;
+    font-size: 0.9rem;
+}
+
+#sub_title2{
+    color: rgb(145, 224, 244);
+    text-align: left;
+    margin-left: 0px;
+    border-right: 1px solid grey;
+    width: 350px;
+    height: 230px;
+    position: relative;
+    top: -330px;
+    left: 380px;
+}
+
+#sub_title2 h3{
+    position: relative;
+    top: -30px;
+}
+
+#sub_title3{
+    color: rgb(145, 224, 244);
+    text-align: left;
+    margin-left: 0px;
+    width: 350px;
+    height: 230px;
+    position: relative;
+    top: -580px;
+    left: 760px;
+}
+
+#sub_title3 h3{
+    position: relative;
+    top: -30px;
+}
