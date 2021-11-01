@@ -1,24 +1,24 @@
 @charset "UTF-8";
 
-html {
-    font-size : 100%;
-    font-family: 'Noto Sans KR', sans-serif;
-}
-
-.body {
-    display: flex;
-    position: relative;
-    align-items: center;
-    flex-direction: column;
-}
-
-#title {
+#chk_title {
     color: rgb(7,86,105);
+    text-align: center;
+}
+
+.checkPop {
+    position: fixed;
+    left: 55%;
+    top: 200px; 
+    width: 300px; 
+    min-height: 300px;
+    border: 6px solid rgb(218,239,245);
+    background-color: white;
+    z-index: 1;
 }
 
 .checkArea {
-    margin-left: 30px;
-    margin-bottom: 30px;
+    margin-left: 80px;
+    margin-bottom: 20px;
 }
 
 label {
@@ -29,6 +29,8 @@ label {
 
 .btnArea {
     display: block;
+    text-align: center;
+    margin-bottom: 25px;
 }
 
 input[type="checkbox"] {
