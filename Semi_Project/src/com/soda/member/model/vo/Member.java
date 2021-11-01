@@ -1,0 +1,115 @@
+package com.soda.member.model.vo;
+
+import java.sql.Date;
+
+public class Member {
+	private String userId;			
+	private String userName;
+	private String userPhone;
+	private String userPwd;
+	private String userAddress;
+	private Date joinDate;
+	private String status;
+	private String userGrade;
+	
+	/*
+	 * USER_ID	VARCHAR2(30 BYTE)
+		USER_NAME	VARCHAR2(20 BYTE)
+		USER_PHONE	VARCHAR2(20 BYTE)
+		USER_PWD	VARCHAR2(20 BYTE)
+		USER_ADDRESS	VARCHAR2(30 BYTE)
+		JOIN_DATE	DATE
+		STATUS	VARCHAR2(5 BYTE)
+		USER_GRADE	VARCHAR2(10 BYTE)
+	 * 
+	 */
+
+	
+	public Member() {}
+
+	public Member(String userId, String userName, String userPhone, String userPwd, String userAddress, Date joinDate,
+			String status, String userGrade) {
+		super();
+		this.userId = userId;
+		this.userName = userName;
+		this.userPhone = userPhone;
+		this.userPwd = userPwd;
+		this.userAddress = userAddress;
+		this.joinDate = joinDate;
+		this.status = status;
+		this.userGrade = userGrade;
+	}
+
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public String getUserPhone() {
+		return userPhone;
+	}
+
+	public void setUserPhone(String userPhone) {
+		this.userPhone = userPhone;
+	}
+
+	public String getUserPwd() {
+		return userPwd;
+	}
+
+	public void setUserPwd(String userPwd) {
+		this.userPwd = userPwd;
+	}
+
+	public String getUserAddress() {
+		return userAddress;
+	}
+
+	public void setUserAddress(String userAddress) {
+		this.userAddress = userAddress;
+	}
+
+	public Date getJoinDate() {
+		return joinDate;
+	}
+
+	public void setJoinDate(Date joinDate) {
+		this.joinDate = joinDate;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public String getUserGrade() {
+		return userGrade;
+	}
+
+	public void setUserGrade(String userGrade) {
+		this.userGrade = userGrade;
+	}
+
+	@Override
+	public String toString() {
+		return "Member [userId=" + userId + ", userName=" + userName + ", userPhone=" + userPhone + ", userPwd="
+				+ userPwd + ", userAddress=" + userAddress + ", joinDate=" + joinDate + ", status=" + status
+				+ ", userGrade=" + userGrade + "]";
+	}
+	
+	
+}
