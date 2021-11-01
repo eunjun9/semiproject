@@ -16,7 +16,7 @@
 </head>
 
 <body>
-	<div id="home1" class="big-bg">
+	<div id="home1" class="big-bg" style="background-image:url(resources/images/soda_home1.png)">
 
     <header class="page-header wrapper">
         <nav class="main-bar">
@@ -49,7 +49,7 @@
         </h1>
     </div>
 </div>
-<div id="home2" class="big-bg">
+<div id="home2" class="big-bg" style="background-image:url(resources/images/soda_home2.png)">
     <header class="page-header2">
 
     </header>
@@ -66,7 +66,7 @@
        
     <div class="img-cover"></div>
 </div>
-<div id="home3" class="big-bg">
+<div id="home3" class="big-bg" style="background-image:url(resources/images/soda_home3.png)">
     <header class="page-header3">
        
     </header>
