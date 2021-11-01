@@ -39,13 +39,29 @@
                 </div>
                 <div class="category2">
                     <a href="#">CART</a>
-                    <a href="../MyPage/mypage.html">MYPAGE</a>
+                    <li class="mypage">
+                        <a href="#" >MYPAGE</a>
+                        <ul class="mypage_sub">
+                            <li><a href="#">마이페이지</a></li>
+                            <li><a href="#">로그아웃</a></li>
+                        </ul>
+                    </li>
                 </div>
             </div>
 
         </div>
     </div>
-
+    <script>
+        $(document).ready(function(){ 
+          $(".mypage").mouseover(function(){ 
+            $(this).children(".mypage_sub").show(300); 
+          }); 
+            $(".mypage").mouseleave(function(){ 
+              $(".mypage_sub").hide(300); 
+            });
+          });
+        
+    </script>
     <!-- 모임내역 바디 -->
     <div class="sList_wrapper">
         <div id="sList_box">
