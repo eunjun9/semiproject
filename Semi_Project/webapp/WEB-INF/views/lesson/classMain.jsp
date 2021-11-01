@@ -7,7 +7,7 @@
 <title>클래스_메인</title>
 
 	<!--외부 스타일 시트-->
-    <link href="/resources/css/class/class_main.css" rel="stylesheet">
+    <link href="resources/css/lesson/class_main.css" rel="stylesheet">
 
     <!-- font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

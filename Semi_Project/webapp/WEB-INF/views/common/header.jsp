@@ -32,22 +32,22 @@
         <div class="head-inner">
 
           <div class="logo">
-            <a href="#"><img src="../resources/icon/logo.png"></a>
+            <a href="${ contextPath }"><img src="resources/images/logo.png"></a>
           </div>
 
             <div class="big-category">
                 <div class="category1">
                     <a href="#">SOCIALING</a>
-                    <a href="../Class/class_main.html">CLASS</a>
+                    <a href="${ contextPath }/class/main">CLASS</a>
                     <a href="#">MAGAZINE</a>
                 </div>
                 <div class="category2">
                     <a href="#">CART</a>
                     <li class="mypage">
-                        <a href="#" >MYPAGE</a>
+                        <a href="${ contextPath }/mypage/list" >MYPAGE</a>
                         <ul class="mypage_sub">
-                            <li><a href="#">마이페이지</a></li>
-                            <li><a href="#">로그아웃</a></li>
+                            <li><a href="${ contextPath }/mypage/list">마이페이지</a></li>
+                            <li><a href="${ contextPath }/logout">로그아웃</a></li>
                         </ul>
                     </li>
                 </div>
