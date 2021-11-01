@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>개인정보 취급 방침</title>
+    <title>FAQ</title>
 
     <!-- 외부 스타일 시트 -->
     <link href="../css/Headerfooter.css" rel="stylesheet">

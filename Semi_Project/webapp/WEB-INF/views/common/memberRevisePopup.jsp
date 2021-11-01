@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>회원등급변경</title>
+    <title>회원 수정 팝업</title>
 
     <!-- 외부 스타일 시트 -->
     <link href="../css/memberRevisePopup.css" rel="stylesheet">

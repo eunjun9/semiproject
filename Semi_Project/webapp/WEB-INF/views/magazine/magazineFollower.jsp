@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Main</title>
+    <title>매거진 팔로워 후기</title>
 
     <!-- 외부 스타일 시트 -->
     <link href="../css/magazineUser.css" rel="stylesheet">
