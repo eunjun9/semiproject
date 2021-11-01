@@ -49,6 +49,7 @@
                 <div class="category2">
                     <a href="#">CART</a>
                     <a href="#">MYPAGE</a>
+                    <!-- 마우스 오버 시  마이페이지 / 로그아웃 리스트 출력되게 변경해야됨(예원) -->
                 </div>
             </div>
 
