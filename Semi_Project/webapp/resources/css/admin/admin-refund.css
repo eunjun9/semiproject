@@ -1,0 +1,167 @@
+@charset "UTF-8";
+
+html {
+    font-size : 100%;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+/* 본문 간격 */
+
+.body {
+    width: 100%;
+    display: flex;
+}
+ 
+.body-inner {
+    max-width: 1200px;
+    width: 1200px;
+    margin : 0 auto;
+}
+
+.sales {
+    margin-top: 5%;
+}
+
+/* 본문 배치 */
+
+.manager-content {
+    display : flex;
+    justify-content: space-between;
+    margin-bottom: 50px;
+    margin-left: 70px;
+}
+
+article {
+    width : 77%;
+    order : 2;
+}
+
+aside {
+    width : 20%;
+    order : 1;
+}
+
+/* 사이드 메뉴 */
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+#menu{
+    width:150px;
+    text-align:center;
+} 
+
+.menu{ 
+    line-height:2; 
+    border:1px solid lightgray; 
+    position:relative; 
+    background-color: rgb(218,239,245);
+    list-style: none;
+    margin-top: 5%;
+    margin-left: -20%;
+} 
+
+.menu .submenu{ 
+    position:absolute;
+    width:90px; 
+    left:149px;
+    border:1px solid lightgray; 
+    background-color:white; 
+    color:black; 
+    top:-1px; 
+    display:none; 
+    list-style: none;
+} 
+
+.menu:hover{ 
+    background-color:#222;
+    color:white;
+} 
+
+.menu .submenu>li:hover{ 
+    background-color:white; 
+    color:black; 
+    font-weight: bold;
+}
+
+.admin-menu{
+    margin-bottom: 70px;
+}
+
+
+
+/* 조회 테이블 */
+
+#main-title {
+    font-size: 2.2rem;
+}
+
+.combo-area {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 30px;
+}
+
+select[name=filter] {
+    border: 1px solid lightgray;
+    width: 120px;
+    height: 35px;
+    border-radius: 5px;
+    padding-left: 10px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.tbl {
+    border-collapse:collapse;
+    border-spacing:0;
+    width: 100%;
+}
+
+.tbl td {
+    border-bottom-width:1px;
+    border-color:rgb(150,150,150);
+    border-style:solid;
+    border-top-width:1px;
+    border-width:0px;
+    border-bottom-width: 1px;
+    font-size:15px;
+    overflow:hidden;
+    padding:10px 5px;
+    word-break:normal;
+}
+
+.tbl th {
+    border-bottom-width:1px;
+    border-color:rgb(150,150,150);
+    border-style:solid;
+    border-top-width:1.1px;
+    border-width:0px;
+    border-bottom-width: 1.1px;
+    font-size:15px;
+    font-weight:normal;
+    overflow:hidden;
+    padding:10px 5px;
+    word-break:normal;
+}
+
+.tbl .tbl-title {
+    background-color:#dadada;
+    border-color:rgb(150,150,150);
+    font-weight: bold;
+    text-align:center;
+    vertical-align:top;
+}
+
+.tbl .tbl-content {
+    border-color:inherit;
+    text-align:center;
+    vertical-align:top;
+}
