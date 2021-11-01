@@ -15,14 +15,15 @@
 	rel="stylesheet">
 </head>
 <body>
+<c:set var="contextPath" value="<%= request.getContextPath()%>"></c:set>  
+
 	<div class="login-main">
 
 		<div class="login-bar">
 			<div class="login-logo center">
 				<div class="login-logo center">
-					<a href="<%=request.getContextPath()%>"> <img
-						src="<%=request.getContextPath()%>/resources/images/logo.png"
-						width="400"></a>
+					<a href="${ contextPath }">
+					<img src="${ contextPath }/resources/images/logo.png" width="400"></a>
 				</div>
 			
 			<div class="login-text center">
@@ -31,37 +32,33 @@
 			</div>
 
 			<div class="loginArea center">
-				<form class="login-input"
-					action="<%=request.getContextPath()%>/login" method="post">
+				<form class="login-input" action="${ contextPath }/login" method="post">
 					<h1>로그인</h1>
 					<h4>이메일</h4>
-					<input type="email" id="email" name="email"
-						placeholder="이메일을 입력해주세요.">
+					<input type="email" id="email" name="email" placeholder="이메일을 입력해주세요." required>
 					<h4>비밀번호</h4>
-					<input type="password" id="pwd" name="pwd"
-						placeholder="비밀번호를 입력해주세요.">
+					<input type="password" id="pwd" name="pwd" placeholder="비밀번호를 입력해주세요." required>
 				</form>
-				<div class="login-fail-text">
+				<div class="login-fail-text" id="login-fail">
 					<!-- 로그인 실패 시 텍스트 출력 부분 -->
 				</div>
 
-				<span class="button-text text"> <input id="login-button text"
-					class="btn" type="submit">로그인하기
+				<span class="button-text text">
+				<input id="login-button text" class="btn" type="submit">로그인하기
 				</span>
 
 			</div>
 
 			<div class="login-join-find">
 				<div class="login-join">
-					<a href="<%=request.getContextPath()%>/memberJoin"
+					<a href="${ contextPath }/memberJoin"
 						class="join-text">회원가입</a>
 				</div>
 				<div class="login-find">
-					<a href="<%= request.getContextPath() %>/emailFind"
-						class="email-find"
-						onclick="openPopup('${ contextPath }/emailFind', 'emailFind', 500, 500);">이메일
-						찾기</a> <a href="#" class="pwd-find"
-						onclick="openPopup('${ contextPath }/pwdFind', 'pwdFind', 500, 500);">/
+					<a href="${ contextPath }/emailFind" class="email-find" 
+					onclick="openPopup('${ contextPath }/emailFind', 'emailFind', 500, 500);">이메일 찾기</a>
+					<a href="${ contextPath }/pwdFind" class="pwd-find" 
+					onclick="openPopup('${ contextPath }/pwdFind', 'pwdFind', 500, 500);">/
 						비밀번호 찾기</a>
 				</div>
 
@@ -74,9 +71,8 @@
 				<div class="login-kakao">
 					<button id="kakao-button" class="btn" type="button"
 						onclick="kakaoLogin();">
-						<span class="img"> <img
-							src="<%=request.getContextPath()%>/resources/image/kakao-sm.f3f473d5.svg"
-							alt="kakao_icon">
+						<span class="img">
+						<img src="${ contextPath }/resources/image/kakao-sm.f3f473d5.svg" alt="kakao_icon">
 						</span> <span class="kakao-text text">카카오톡으로 5초만에 로그인하기</span>
 					</button>
 				</div>
@@ -120,16 +116,15 @@
                         var userEmail = res.kakao_account.email; //email
                         console.log(userEmail);
 
-                        // 경로 생성하고 수정할 예정
-                       /*  $.ajax({
-                        url:"${ pageContext.servletContext.contextPath }/kakaoLogin",
+                         $.ajax({
+                        url:"${ contextPath }/kakaoLogin",
                         data:{ "id" : res.id, "name" : JSON.stringify(res.properties.nickname)},
                         Type:"post",
                         success:function(data){
-                            location.href="<%=request.getContextPath()%>";
+                            location.href="${ contextPath }";
                         }
                         
-                    }); */
+                    });
                     
                   },
     		     
@@ -158,6 +153,26 @@
               Kakao.Auth.setAccessToken(undefined)
             }
           }  
+        </script>
+        
+        
+        <!-- 로그인 실패 시 로그인창 하단에 텍스트 노출 -->
+        <script>
+        	$(function(){
+        		$("#login-button").click(function(){
+        			$.ajax({
+        				url : "${ contextPath }/login",
+        				data : { userId : $("#email").val(), userPwd : $("#pwd").val()  },
+        				type : "post",
+        				success : function(user) {
+        					console.log("success!");
+        					},
+        				error : function(e){
+        					$("#login-fail").val(e.responseText);
+        				}
+        			});
+        		});
+        	});
         </script>
 </body>
 </html>
