@@ -11,7 +11,7 @@
     <meta name="description" content="Full Screen Site">
     <title>시작페이지</title>
     <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
-    <link href="resources/css/startpage.css" rel="stylesheet">
+    <link href="resources/css/common/startpage.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
 </head>
 

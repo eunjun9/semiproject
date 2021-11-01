@@ -27,36 +27,45 @@
 </head>
 
 <body>
-    <!--header-->
-
+    <!-- 헤더 -->
     <div class="header">
         <div class="head-inner">
 
-
-		
           <div class="logo">
-        	<!--  로고 이미지를 클릭하면 첫 화면으로 -->
-         	<a href="<%= request.getContextPath() %>">
-            <img src="<%= request.getContextPath() %>/resources/images/logo.png"></a>
+            <a href="#"><img src="../resources/icon/logo.png"></a>
           </div>
 
             <div class="big-category">
                 <div class="category1">
                     <a href="#">SOCIALING</a>
-                    <a href="#">CLASS</a>
+                    <a href="../Class/class_main.html">CLASS</a>
                     <a href="#">MAGAZINE</a>
                 </div>
                 <div class="category2">
                     <a href="#">CART</a>
-                    <a href="#">MYPAGE</a>
-                    <!-- 마우스 오버 시  마이페이지 / 로그아웃 리스트 출력되게 변경해야됨(예원) -->
+                    <li class="mypage">
+                        <a href="#" >MYPAGE</a>
+                        <ul class="mypage_sub">
+                            <li><a href="#">마이페이지</a></li>
+                            <li><a href="#">로그아웃</a></li>
+                        </ul>
+                    </li>
                 </div>
             </div>
 
         </div>
     </div>
-
-
+    <script>
+        $(document).ready(function(){ 
+          $(".mypage").mouseover(function(){ 
+            $(this).children(".mypage_sub").show(300); 
+          }); 
+            $(".mypage").mouseleave(function(){ 
+              $(".mypage_sub").hide(300); 
+            });
+          });
+        
+    </script>
 
 </body>
 </html>
