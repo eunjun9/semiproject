@@ -1,0 +1,179 @@
+@charset "UTF-8";
+
+html {
+    font-size : 100%;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+/*---------------body----------------*/
+
+/* 배너 */
+.board {
+    width: 100%;
+    display: flex;
+ }
+ 
+ .board-inner {
+     max-width: 1000px;
+     margin : 0 auto;
+ }
+
+.magazine{
+    width: 1000px;
+    height: 300px;
+    margin-top : 20px;
+    background: url('../image/turkey.jpg') no-repeat center top -207px;
+    background-size: cover;
+}
+
+.magazine .title{
+    position:sticky;
+    transform: translate(50px, 25px);                                                                   
+    font-size:25px;
+    font-weight: bold;
+    color: white;
+    z-index: 2;
+}
+
+.magazine .word{
+    position: sticky;
+    transform: translate(50px, 20px);                                                                   
+    font-size:17px;
+    color: white;
+    z-index: 2;
+}
+
+/* 게시판 */
+
+
+.title {
+    width: 100%;
+    display: flex;
+ }
+ 
+ .title-inner {
+     max-width: 1000px;
+     margin : 0 auto;
+ }
+
+.tit{
+    display:flex;
+    justify-content: space-between;
+    margin-top: 50px;
+}
+
+
+.b-title{
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+    margin-left: -391px;
+    margin-bottom: 10px;
+
+}
+
+.view1{
+    margin-right: -385px;
+    margin-top: 10px;
+
+}
+.view1>a {
+    color: gray;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 12px;
+}
+
+
+.first{
+    position:static;
+}
+
+.third{
+    margin-bottom: 40px;
+}
+
+
+.slide1{
+    width: 800px;
+    height: auto;
+    position:relative;
+    margin : 0 auto;
+}
+
+
+.slide2{
+    width: 800px;
+    height: auto;
+    position:relative;
+    margin : 0 auto;
+   
+}
+
+
+.slide3{
+    width: 800px;
+    height: auto;
+    position:relative;
+    margin : 0 auto;
+   
+}
+
+.button1{
+    left:-90px;
+    bottom : 165px;
+    position:absolute;
+}
+
+.button2{
+    right:-90px;
+    bottom : 165px;
+    position:absolute;
+}
+
+.button3{
+    left:-90px;
+    bottom : 165px;
+    position:absolute;
+}
+
+.button4{
+    right:-90px;
+    bottom : 165px;
+    position:absolute;
+}
+
+.button5{
+    left:-90px;
+    bottom : 165px;
+    position:absolute;
+}
+
+.button6{
+    right:-90px;
+    bottom : 165px;
+    position:absolute;
+}
+
+.all-title{
+    position:relative; 
+}
+
+.first-title{
+    position: absolute;
+    color: black;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    margin-left: 10px;
+    margin-top: -5px;
+}
+
+.name{
+    position: absolute;
+    color: black;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 12px;
+    margin-top: -6px;
+    margin-left: 10px;
+}
+

@@ -1,0 +1,182 @@
+@charset "UTF-8";
+
+html {
+    font-size : 100%;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+
+
+.body-super {
+   width: 100%;
+   margin : 0 auto;
+   display: flex;
+   justify-content: center;
+   margin-top: 30px;
+   font-family: 'Noto Sans KR', sans-serif;
+
+}
+
+.body-inner{
+    max-width: 930px;
+    height: auto;
+   }
+   
+   .body-inner-blue{
+    width:930px;
+    height: auto;
+    border: 6px solid rgb(218, 239, 245);
+    background-color: white;
+    margin: 0 auto;
+ }
+
+.photo-follow{
+   justify-content:center;
+}
+
+ .id>p{
+    width:930px;
+    margin: 60px;
+    color: rgb(7, 86, 105);
+    font-weight: bold;
+    font-size: 30px;
+ }
+
+ 
+
+ .photo{
+    margin-top: 0px;
+    margin-right: 70px;
+ }
+
+.name-grade{
+   display: flex;
+   justify-content:space-around;
+   font-size: 20px;
+   margin-top: -25px;
+}
+
+.name{
+   font-weight: bold;
+}
+
+.grade{
+   font-size: 12px;
+}
+
+.grade>p{
+   border: 2px solid lightgray;
+   border-radius: 5px;
+   margin-top: 27px;
+}
+
+
+.photo-follow{
+   display: flex;
+}
+
+ .profile{
+    width: 110px;
+ }
+
+ .profile-button>button{
+   background-color:  rgb(218, 239, 245);
+   width: 220px;
+   height: 30px;
+   font-family: 'Noto Sans KR', sans-serif;
+ }
+
+.email{
+   font-size: 15px;
+   font-weight: bold;
+   text-align: center;
+   margin-top: -8px;
+   color: grey;
+}
+
+
+ .follow{
+   margin-top: 0px;
+   
+}
+
+.follow-num{
+   font-size: 18px;
+   font-weight: bold;
+   display: flex;
+   margin: -5px;
+   justify-content: center;
+   
+}
+ 
+.post-num-name{
+   text-align: center;
+   margin-right: 10px;
+}
+
+.post-name{
+   margin-top: -20px;
+}
+
+
+ 
+
+.content{
+   width: 930;
+}
+
+.content-inner{
+   width: 500px;
+}
+
+.mypage{
+   margin-top: -20px;
+   margin-left: 268px;
+   
+}
+
+.mypage>a{
+   font-weight:900;
+   color: black;
+}
+
+.introduction{
+   margin-top: 0px;
+   margin-left: 268px;
+}
+.intro>p{
+   font-weight: bold;
+   
+}
+
+.intro>textarea{
+   margin-top: -10px;
+   margin-left: -3px;
+   width:400px;
+   height: 50px;
+   border-color: white;
+   font-family: 'Noto Sans KR', sans-serif;
+   resize : none;
+}
+
+
+.tag{
+   display: flex; 
+}
+
+.tag>p{
+   border:2px solid lightgray;
+   margin-right: 7px;
+   border-radius: 5px;
+   background-color: rgb(248, 241, 233);
+}
+
+.pics{
+text-align: center;
+margin: -6px;
+}
+
+ .pics>img{
+   width: 200px;
+   height: 200px;
+}
