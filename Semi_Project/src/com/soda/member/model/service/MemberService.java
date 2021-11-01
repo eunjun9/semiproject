@@ -20,6 +20,14 @@ public class MemberService {
 
 		return loginMember;
 	}
+
+	public Member memberLogin(String userId) {
+		Connection conn = getConnection();
+		
+		
+		
+		return null;
+	}
 	
 	
 
