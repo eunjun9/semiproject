@@ -104,6 +104,10 @@ hr{
 }
 
 /* 결제내역 정보 */
+/* .list_detail{
+    visibility: hidden;
+} */
+
 .list_detail hr{
   margin-top: -155px;
 }
