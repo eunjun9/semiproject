@@ -1,4 +1,4 @@
-package com.common;
+package com.soda.order.model.dao;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
