@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="resources/css/mainpage.css">
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <title>메인메인</title>
+</head>
+<body>
+
+<!-- 예제 시작 -->
+
+<!-- 이 예제에서는 필요한 js, css 를 링크걸어 사용 -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
+
+<!--header-->
+
+<div class="header">
+    <div class="head-inner">
+        <div class="left-menu">
+            <ul class="main-menu">
+                <li><a class="main-logo" href="메인페이지.html"><b>SODA</b></a></li><br>
+                <li><a class="main-menu2" href="#">SOCIALING</a></li>
+                <li><a class="main-menu2" href="#">CLASS</a></li>
+                <li><a class="main-menu2" href="#">MAGAZINE</a></li>
+                <li><a class="main-menu2" href="#"><img class="icon" src="resources/images/장바구니.png"></img></a></li>
+                <li><a class="main-menu2" href="#"><img class="icon2" src="resources/images/사람아이콘3.png"></img></a></li>
+            </ul>
+            <h1 class="under-logo">
+                <b><span style="color: lightgray">S</span>ocial <br>
+                    <span style="color: lightgray">D</span>ining</b>
+            </h1>
+        </div>
+
+        <div class="banner-slide1">
+            <div class="banner">
+                <div>
+                    <img class="header-banner" src="resources/images/메인페이지그림1.png">
+                </div>
+                
+            </div>
+            <div>
+                <h2 class="right-title">배우고 싶다면 망설이지 말고 원데이 클래스</h2>
+            </div>
+       <div class="swiper-container" style="width: 640px; height: 380px;">
+        <div>
+            
+        </div>
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div>
+                        <img src="resources/images/다운로드 (1).jfif">
+                        <div>
+                            <a href="#" class=first-title><b>클라이밍</b></a><br>
+                            <a href="#" class=slide1-name>나는 나를 이긴다</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div>
+                        <img src="resources/images/다운로드.jfif">
+                        <a class="slide-title" href="#">클라이밍</a>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div>
+                        <img src="resources/images/1.png">
+                        <a class="slide-title" href="#">클라이밍</a>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div>
+                        <img src="resources/images/2.png">
+                        <a class="slide-title" href="#">클라이밍</a>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div>
+                        <img src="resources/images/3.png">
+                        <a class="slide-title" href="#">클라이밍</a>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div>
+                        <img src="resources/images/trip.jfif">
+                        <a class="slide-title" href="#">클라이밍</a>
+                    </div>
+                </div>
+                <div class="swiper-slide" style="font-size:50pt;">- 끝 -</div>
+            </div>
+
+            <!-- 네비게이션 -->
+            <div>
+                <div class="swiper-button-next"></div><!-- 다음 버튼 (오른쪽에 있는 버튼) -->
+            </div>
+            <div>
+                <div class="swiper-button-prev"></div><!-- 이전 버튼 -->
+            </div>
+            
+
+            
+        </div>
+
+        <script>
+
+        new Swiper('.swiper-container', {
+
+            slidesPerView : 3, // 동시에 보여줄 슬라이드 갯수
+            spaceBetween : 30, // 슬라이드간 간격
+            slidesPerGroup : 1, // 그룹으로 묶을 수, slidesPerView 와 같은 값을 지정하는게 좋음
+
+            // 그룹수가 맞지 않을 경우 빈칸으로 메우기
+            // 3개가 나와야 되는데 1개만 있다면 2개는 빈칸으로 채워서 3개를 만듬
+            loopFillGroupWithBlank : true,
+
+            loop : true, // 무한 반복
+
+            pagination : { // 페이징
+                el : '.swiper-pagination',
+                clickable : true, // 페이징을 클릭하면 해당 영역으로 이동, 필요시 지정해 줘야 기능 작동
+            },
+            navigation : { // 네비게이션
+                nextEl : '.swiper-button-next', // 다음 버튼 클래스명
+                prevEl : '.swiper-button-prev', // 이번 버튼 클래스명
+            },
+        });
+
+        </script>
+
+    <!-- 예제 종료 -->
+    </div>
+
+    
+
+     </div>
+</div>
+
+    <div class="start">
+    <!--슬라이드2-->
+    <div class="first">
+    <div class="title">
+        <div class="title-inner">
+            <div class="tit">
+                <div class="b-title">소다만의 STORY를 공개합니다</div>
+                <div class="view1">
+                    <a class="link-menu" href="#">전체보기</a>
+                </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <!-- Swiper -->
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div>
+                        <img src="http://ktsmemo.cdn3.cafe24.com/p/0292.jpg">
+                        <div>
+                            <a href="#" class=first-title>클라이밍</a><br>
+                            <a href="#" class=slide1-name>SODA</a>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div>
+                        <img src="http://oldmidi.cdn3.cafe24.com/p/0764.jpg">
+                        <div>
+                            <a href="#" class=first-title>서핑</a><br>
+                            <a href="#" class=slide1-name>SODA</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div>
+                        <img src="http://oldmidi.cdn3.cafe24.com/p/0500.jpg">
+                        <div>
+                            <a href="#" class=first-title>필라테스</a><br>
+                            <a href="#" class=slide1-name>SODA</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div>
+                        <img src="https://ktsmemo.cafe24.com/p/0107.jpg">
+                        <div>
+                            <a href="#" class=first-title>폴댄스</a><br>
+                            <a href="#" class=slide1-name>SODA</a>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div>
+                        <img src="https://ktsmemo.cafe24.com/p/0096.jpg">
+                        <div>
+                            <a href="#" class=first-title>필라테스</a><br>
+                            <a href="#" class=slide1-name>SODA</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div>
+                        <img src="http://ktsmemo.cdn3.cafe24.com/p/0636.jpg">
+                        <div>
+                            <a href="#" class=first-title>폴댄스</a><br>
+                            <a href="#" class=slide1-name>SODA</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide" style="font-size:50pt;">- 끝 -</div>
+            </div>
+
+            <!-- 네비게이션 -->
+            <div class="swiper-button-next"></div><!-- 다음 버튼 (오른쪽에 있는 버튼) -->
+            <div class="swiper-button-prev"></div><!-- 이전 버튼 -->
+
+            <!-- 페이징 -->
+            <div class="swiper-pagination"></div>
+        </div>
+
+        <script>
+
+        new Swiper('.swiper-container', {
+
+            slidesPerView : 3, // 동시에 보여줄 슬라이드 갯수
+            spaceBetween : 30, // 슬라이드간 간격
+            slidesPerGroup : 1, // 그룹으로 묶을 수, slidesPerView 와 같은 값을 지정하는게 좋음
+
+            // 그룹수가 맞지 않을 경우 빈칸으로 메우기
+            // 3개가 나와야 되는데 1개만 있다면 2개는 빈칸으로 채워서 3개를 만듬
+            loopFillGroupWithBlank : true,
+
+            loop : true, // 무한 반복
+
+            pagination : { // 페이징
+                el : '.swiper-pagination',
+                clickable : true, // 페이징을 클릭하면 해당 영역으로 이동, 필요시 지정해 줘야 기능 작동
+            },
+            navigation : { // 네비게이션
+                nextEl : '.swiper-button-next', // 다음 버튼 클래스명
+                prevEl : '.swiper-button-prev', // 이번 버튼 클래스명
+            },
+        });
+
+        </script>
+
+        <!-- 예제 종료 -->
+  
+      <!--슬라이드-->
+    <div>
+        <div class="second">
+            <div class="title">
+              <div class="title-inner">
+                  <div class="tit">
+                      <div class="b-title">내 팔로워는 지금 뭘 하고 있을까? 팔로워 게시판</div>
+                      <div class="view1">
+                          <a class="link-menu" href="#">전체보기</a>
+                      </div>
+                      </div>
+                  </div>
+              </div>
+  
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div>
+                        <img src="http://ktsmemo.cdn3.cafe24.com/p/0292.jpg">
+                        <div>
+                            <a href="#" class=first-title>클라이밍</a><br>
+                            <a href="#" class=slide1-name>SODA</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div>
+                        <img src="http://oldmidi.cdn3.cafe24.com/p/0764.jpg">
+                        <div>
+                            <a href="#" class=first-title>서핑</a><br>
+                            <a href="#" class=slide1-name>SODA</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div>
+                        <img src="http://oldmidi.cdn3.cafe24.com/p/0500.jpg">
+                        <div>
+                            <a href="#" class=first-title>필라테스</a><br>
+                            <a href="#" class=slide1-name>SODA</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div>
+                        <img src="https://ktsmemo.cafe24.com/p/0107.jpg">
+                        <div>
+                            <a href="#" class=first-title>폴댄스</a><br>
+                            <a href="#" class=slide1-name>SODA</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div>
+                        <img src="https://ktsmemo.cafe24.com/p/0096.jpg">
+                        <div>   
+                            <a href="#" class=first-title>필라테스</a><br>
+                            <a href="#" class=slide1-name>SODA</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div>
+                        <img src="http://ktsmemo.cdn3.cafe24.com/p/0636.jpg">
+                        <div>
+                            <a href="#" class=first-title>폴댄스</a><br>
+                            <a href="#" class=slide1-name>SODA</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide" style="font-size:50pt;">- 끝 -</div>
+            </div>
+        
+            <!-- 네비게이션 -->
+            <div class="swiper-button-next"></div><!-- 다음 버튼 (오른쪽에 있는 버튼) -->
+            <div class="swiper-button-prev"></div><!-- 이전 버튼 -->
+        
+            <!-- 페이징 -->
+            <div class="swiper-pagination"></div>
+        </div>
+        
+        <script>
+        
+        new Swiper('.swiper-container', {
+        
+            slidesPerView : 3, // 동시에 보여줄 슬라이드 갯수
+            spaceBetween : 30, // 슬라이드간 간격
+            slidesPerGroup : 1, // 그룹으로 묶을 수, slidesPerView 와 같은 값을 지정하는게 좋음
+        
+            // 그룹수가 맞지 않을 경우 빈칸으로 메우기
+            // 3개가 나와야 되는데 1개만 있다면 2개는 빈칸으로 채워서 3개를 만듬
+            loopFillGroupWithBlank : true,
+        
+            loop : true, // 무한 반복
+        
+            pagination : { // 페이징
+                el : '.swiper-pagination',
+                clickable : true, // 페이징을 클릭하면 해당 영역으로 이동, 필요시 지정해 줘야 기능 작동
+            },
+            navigation : { // 네비게이션
+                nextEl : '.swiper-button-next', // 다음 버튼 클래스명
+                prevEl : '.swiper-button-prev', // 이번 버튼 클래스명
+            },
+        });
+        
+        </script>
+    </div>
+      
+    
+    <!-- 예제 종료 -->
+    <!--footer-->
+    <div class="footer" >
+        <div class="foot-inner">
+            <div class="foot-logo foot-all">
+                S O D A</div>
+            <div class="information foot-all">
+                <ul>주식회사 소셜 다이닝</ul>
+                <ul>대표 : 홍길동 | 개인정보관리책임자 : 홍길동 | 전화 : 02-123-4567 | 이메일 : soda@gmail.com</ul>
+                <ul>주소 : 서울 강남구 테헤란로 14길 6 남도빌딩 2층 | 사업자등록번호 : 000-00-00000</ul>
+                <ul> 통신판매 : 제 2021-서울강남-0000호</ul>
+                <ul>영업시간 : 월-금 오후 2시-7시</ul>
+            </div>
+            <div class="foot-category foot-all">
+                <ul><a href="#">소다소개</a></ul>
+                <ul><a href="#">공지사항 </a></ul>
+                <ul><a href="#">강사신청</a></ul>
+                <ul><a href="#">자주묻는질문</a></ul>
+            </div>
+
+
+        </div>
+    </div>
+    <div class="final">
+        <div class="foot-final">
+            <a href="#">이용약관 | </a>
+            <a href="#">개인정보처리방침 | </a>
+            <a href="#">사업자정보확인</a>
+        </div>
+    </div>
+
+</div>
+
+
+</body>
+
+</html>
