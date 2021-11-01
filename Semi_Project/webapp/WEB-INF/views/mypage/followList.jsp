@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>마이피드</title>
+    <title>팔로우 목록</title>
 
     <!-- 외부 스타일 시트 -->
     <link href="../css/followList.css" rel="stylesheet">

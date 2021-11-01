@@ -5,7 +5,7 @@
 
 <head>
    <meta charset="UTF-8">
-   <title>게시글 작성</title>
+   <title>매거진 상세 페이지</title>
 
    <!-- 외부 스타일 시트 -->
    <link href="../css/magazineDetail.css" rel="stylesheet">
