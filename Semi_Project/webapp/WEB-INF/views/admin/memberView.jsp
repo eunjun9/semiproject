@@ -1,15 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
-<html>
+<html lang="ko">
+
 <head>
-<meta charset="EUC-KR">
-<title>Insert title here</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>관리자_정산내역</title>
 
-
- <!-- 외부 스타일 시트 -->
+  <!-- 외부 스타일 시트 -->
   <link href="../css/Headerfooter.css" rel="stylesheet">
-  <link href="../css/Manager_member_popup.css" rel="stylesheet">
+  <link href="../css/admin-member.css" rel="stylesheet">
 
   <!-- 글꼴 (Noto Sans) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -212,4 +214,5 @@
   </script>
 
 </body>
+
 </html>

@@ -1,15 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
-<html>
+<html lang="ko">
+
 <head>
-<meta charset="EUC-KR">
-<title>Insert title here</title>
-
-
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main</title>
 
     <!-- 외부 스타일 시트 -->
-    <link href="../css/Magazine_user.css" rel="stylesheet">
+    <link href="../css/magazineUser.css" rel="stylesheet">
     <link href="../css/Headerfooter.css" rel="stylesheet">
 
     <!-- favicon (Real Favicon Generator)-->
@@ -290,5 +291,8 @@
 
 
 
+
+
 </body>
+
 </html>

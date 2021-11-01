@@ -10,7 +10,7 @@
     <title>마이피드</title>
 
     <!-- 외부 스타일 시트 -->
-    <link href="../css/Myfeed.css" rel="stylesheet">
+    <link href="../css/myfeedMain.css" rel="stylesheet">
     <link href="../css/Headerfooter.css" rel="stylesheet">
 
     <!-- favicon (Real Favicon Generator)-->
