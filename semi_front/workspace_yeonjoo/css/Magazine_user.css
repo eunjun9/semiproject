@@ -1,4 +1,9 @@
+@charset "UTF-8";
 
+html {
+    font-size : 100%;
+    font-family: 'Noto Sans KR', sans-serif;
+}
 
 /*타이틀 부분*/
 .board {
