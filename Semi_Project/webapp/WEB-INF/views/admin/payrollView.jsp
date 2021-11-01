@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>관리자페이지_정산내역</title>
 <link rel="stylesheet"
-	href="<%= request.getContextPath() %>/resources/css/admin-style.css">
+	href="<%= request.getContextPath() %>/resources/css/admin/admin-style.css">
 	<!-- 외부 폰트 -->
 	<link
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap"
