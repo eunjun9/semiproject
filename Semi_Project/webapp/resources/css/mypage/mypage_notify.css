@@ -67,3 +67,8 @@ hr {
     font-weight: bold;
     margin-bottom: 20px;
 }
+
+#gt {
+    text-align: right;
+    color: rgb(160, 160, 160);
+}

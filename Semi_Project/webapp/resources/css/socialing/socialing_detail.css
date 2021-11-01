@@ -112,7 +112,8 @@ hr {
     margin-bottom: -20px;
 }
 
-#p-button {
+#p-button,
+#p-button2 {
     background-color: rgb(7,86,105);
     color: white;
     padding: 8px;
@@ -154,6 +155,7 @@ hr {
 #s-name {
     font-weight: bold;
     margin-left: 15px;
+    margin-bottom: -15px;
     cursor: pointer;
 }
 
