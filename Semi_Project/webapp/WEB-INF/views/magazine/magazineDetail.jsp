@@ -1,0 +1,255 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+
+
+   <!-- 외부 스타일 시트 -->
+   <link href="../css/Write_result.css" rel="stylesheet">
+   <link href="../css/Headerfooter.css" rel="stylesheet">
+
+   <!-- favicon (Real Favicon Generator)-->
+   <link rel="icon" type="image/x-icon" href="resources/image/khfavicon.ico">
+
+   <!-- 글꼴 -->
+   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
+   <!--font-family: 'Noto Sans KR', sans-serif;-->
+
+   <!-- JQuery-->
+   <script src="../js/jquery-3.6.0.min.js"></script>
+
+   <!-- 썸머노트 -->
+   <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+   <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+   <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+   <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+   <script src="lang/summernote-ko-KR.js"></script>
+</head>
+
+
+
+
+   <!--header-->
+
+   <div class="header">
+      <div class="head-inner">
+
+         <div class="logo">
+            <img src="../image/logo.png">
+         </div>
+
+         <div class="big-category">
+            <div class="category1">
+               <a href="#">SOCIALING</a>
+               <a href="#">CLASS</a>
+               <a href="#">MAGAZINE</a>
+            </div>
+            <div class="category2">
+               <a href="#">CART</a>
+               <a href="#">MYPAGE</a>
+            </div>
+         </div>
+
+      </div>
+   </div>
+
+
+   <!--body-->
+   <div class="body-super">
+      <div class="body-inner-blue">
+         <div class="buttons">
+            <div class="back">
+               <button>back</button>
+            </div>
+            <div class="admin">
+               <button>삭제</button>
+               <button>수정</button>
+               <button type="button" class="report-button"
+                  onclick="openPopup('Report_popup.html', 'checking', 450, 650)">신고</button>
+            </div>
+
+         </div>
+
+
+         <div class="title">
+            <p>제가 만든 향수 어떤가요?</p>
+         </div>
+
+         <div class="write">
+            <div class="content-inner">
+               <div class="myinfo">
+                  <div class="myinfo1">
+                     <div class="profile">
+                        <img src="../image/pro.jpg">
+                     </div>
+                     <div class="id">
+                        <p>Jennieisback</p>
+                     </div>
+                     <div class="date">
+                        <p>2시간 전</p>
+                     </div>
+                  </div>
+
+                  <div class="myinfo2">
+                     <div class="follow">
+                        <button>팔로워 추가</button>
+                     </div>
+                  </div>
+               </div>
+
+               <hr class="hr1">
+
+               <div class="contexnt">
+                  <p>
+                     지난 주말 퍼퓸 원데이 클래스에 참가했어요. <br>
+                     처음으로 저만의 향수를 만들어봤는데 너무 너무 뿌듯하고 좋네요. 추천합니다!<br><br>
+
+                     주소 : 서울특별시 강남구 청담동 A스튜디오<br>
+                     전화번소 02-123-2345<br>
+                     가격 : 3시간 6만원<br>
+                  </p>
+               </div>
+            </div>
+         </div>
+
+         <div class="comment-count">
+            댓글 3
+         </div>
+         <div class="comment">
+            <div class="comment-title">
+               <p>댓글</p>
+            </div>
+
+            <div class="comment-each">
+               <div class="com-front">
+                  <div class="comment-pro">
+                     <img src="../image/pro2.png">
+                  </div>
+                  <div class="comment-info">
+                     <a href="#">Sodaisthebest</a>
+                     <p class="com-con">역시 제니님ㅋ 최고예요!</p>
+                     <p class="com-date">2021.10.30</p>
+                  </div>
+               </div>
+               <div class="admin com-button">
+                  <button>삭제</button>
+                  <button>수정</button>
+                  <button type="button" class="report-button"
+                     onclick="openPopup('Report_popup.html', 'checking', 450, 650)">신고</button>
+               </div>
+            </div>
+            <div>
+               <hr class="hr2">
+            </div>
+
+            <div class="comment-each">
+               <div class="com-front">
+                  <div class="comment-pro">
+                     <img src="../image/pro2.png">
+                  </div>
+                  <div class="comment-info">
+                     <a href class="com-id">Ilovemountain</a>
+                     <p class="com-con">향수도 좋지만 등산은 어떠세요? :)</p>
+                     <p class="com-date">2021.10.30</p>
+                  </div>
+               </div>
+               <div class="admin com-button">
+                  <button>삭제</button>
+                  <button>수정</button>
+                  <button type="button" class="report-button"
+                     onclick="openPopup('Report_popup.html', 'checking', 450, 650)">신고</button>
+               </div>
+            </div>
+            <div>
+               <hr class="hr2">
+            </div>
+
+            <div class="comment-each">
+               <div class="com-front">
+                  <div class="comment-pro">
+                     <img src="../image/pro2.png">
+                  </div>
+                  <div class="comment-info">
+                     <a href class="com-id">Ilovemountain</a>
+                     <p class="com-con">향수도 좋지만 등산은 어떠세요? :)</p>
+                     <p class="com-date">2021.10.30</p>
+                  </div>
+               </div>
+               <div class="admin com-button">
+                  <button>삭제</button>
+                  <button>수정</button>
+                  <button type="button" class="report-button"
+                     onclick="openPopup('Report_popup.html', 'checking', 450, 650)">신고</button>
+               </div>
+            </div>
+            <div>
+               <hr class="hr2">
+            </div>
+
+
+            <div class="reply_write">
+               <textarea class="reply_content"></textarea>
+               <button>댓글등록</button>
+            </div>
+
+
+         </div>
+      </div>
+      
+      
+      
+      
+      <!--footer-->
+      <div class="footer">
+      <div class="foot-inner">
+         <div class="foot-logo">
+            S O D A</div>
+            <div class="information">
+               <ul>주식회사 소셜 다이닝</ul>
+               <ul>대표 : 홍길동 | 개인정보관리책임자 : 홍길동 | 전화 : 02-123-4567 | 이메일 : soda@gmail.com</ul>
+               <ul>주소 : 서울 강남구 테헤란로 14길 6 남도빌딩 2층 | 사업자등록번호 : 000-00-00000</ul>
+               <ul> 통신판매 : 제 2021-서울강남-0000호</ul>
+               <ul>영업시간 : 월-금 오후 2시-7시</ul>
+            </div>
+            <div class="foot-category">
+               <ul><a href="#">소다소개</a></ul>
+               <ul><a href="#">공지사항 </a></ul>
+               <ul><a href="#">강사신청</a></ul>
+               <ul><a href="#">자주묻는질문</a></ul>
+            </div>
+            
+            
+         </div>
+      </div>
+      <div class="final">
+         <div class="foot-final">
+            <a href="#">이용약관 | </a>
+            <a href="#">개인정보처리방침 | </a>
+            <a href="#">사업자정보확인</a>
+         </div>
+      </div>
+      
+   </div>
+      
+   
+   <!--게시물 신고 팝업-->
+   <script>
+      function openPopup(url, title, width, height) {
+         let left = (document.body.clientWidth / 2) - (width / 2);
+         left += window.screenLeft;
+         let top = (screen.availHeight / 2) - (height / 2);
+
+         let options = "width=" + width + ",height=" + height + ",left=" + left + ",top=" + top;
+
+         window.open(url, title, options);
+      }
+
+   </script>
+
+
+</body>
+</html>
