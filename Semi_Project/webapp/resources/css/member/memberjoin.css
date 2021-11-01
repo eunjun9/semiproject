@@ -1,0 +1,161 @@
+@charset "UTF-8"; /*인코딩 문자 깨짐 방지 (유니코드 문자열 있을 시)*/
+
+html{
+    /* 사용자 설정 문자 크기 그대로 반영 되도록 */
+    font-size: 100%;
+}
+
+body {
+    color : #432;
+    line-height: 2.0; 
+}
+
+a {
+    text-decoration: none;
+}
+
+img{
+    max-width: 100%;
+}
+
+
+
+/*---------------body----------------*/
+
+/* 배너 */
+.board {
+    width: 100%;
+    display: flex;
+ }
+ 
+ .board-inner {
+     max-width: 1000px;
+     margin : 0 auto;
+ }
+
+ *{
+    box-sizing: border-box;
+   
+}
+
+div{
+    display: block;
+}
+
+.joinInfoArea{
+    max-width: 1200px;
+    width: 400px;
+    padding-right: 0;
+    padding-left: 0;
+    margin-top: 30px;
+    margin-left: 38.5%;
+    margin-bottom: 3rem!important;
+}
+
+.firstjoin{
+    margin-left: 100px;
+    
+}
+
+form{
+    display: block;
+    margin-top: 0em;
+}
+
+body{
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    text-align: left;
+    background-color: #fff;
+}
+
+body, html{
+    font-family: Noto Sans KR;
+    letter-spacing: -.4px;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: left;
+}
+
+.common-form{
+    position: relative;
+    width: 400px;
+    height: 100%;
+    min-height: 1px;
+    padding-right: 0;
+    padding-left: 0;
+    margin-left: 50px;
+    margin-bottom: .5rem!important;
+    flex: 0 0 100%;
+    max-width: 100%;
+    display: block;
+    
+}
+
+#idCheck{
+    margin-left: 5px;
+}
+
+.form-group{
+    margin-bottom: 0;
+    margin: 0;
+}
+
+.form-label{
+    font-size: 13px;
+    color: #000;
+    font-weight: 500;
+    line-height: 1.54;
+    letter-spacing: -.31px;
+    margin-bottom: .25rem!important;
+    width: 100px;
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.form-control{
+    border-radius: 5px;
+    width: 270px;
+    height: 35px;
+    border: 1px solid lightgray;
+}
+
+.form-check{
+    position: relative;
+    display: block;
+    padding-left: 1.25rem;
+}
+
+.form-check-input{
+    position: absolute;
+    margin-top: .3rem;
+    margin-left: -1.25rem;
+    overflow: visible;
+    
+}
+
+#register_button{
+    padding: 15px;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.25;
+    border-radius: 999px;
+}
+
+.btn-joinsoda{
+    background-color: #DAEFF5;
+    color: black;
+    display: block;
+    margin-top: 20px;
+    margin-left: 20px;
+    width: 220px;
+    outline: none!important;
+    text-transform: none;
+    border: 1px solid #DAEFF5;
+}
+
+

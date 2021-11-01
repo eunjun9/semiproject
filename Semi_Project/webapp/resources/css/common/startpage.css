@@ -1,0 +1,204 @@
+@charset "UTF-8"; 
+
+html {
+    font-size: 100%;
+}
+
+body {
+    color: #432;
+    line-height: 1.8; 
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+}
+
+.big-bg {
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+}
+
+#home1 {
+    background-image: url(../images/soda_home1.png);
+    min-height: 100vh;
+}
+
+#home2 {
+    background-image: url(../images/soda_home2.png);
+    min-height: 100vh;
+}
+
+#home3 {
+    background-image: url(../images/soda_home3.png);
+    min-height: 100vh;
+}
+
+.page-header2{
+    height: 160px;
+}
+
+.page-header3{
+    height: 160px;
+}
+
+.home-content3{
+    margin-top: 100px;
+}
+
+.main-logo{
+    list-style: none;
+    font-size: 1.8rem;
+    display: flex;
+    margin-top: 10px;
+    margin-left: 50px;
+    padding: 9px;
+    letter-spacing: 5px;
+}
+
+.main-logo a {
+    color:rgb(145, 224, 244);
+}
+
+.main-logo a:hover {
+    color: rgb(91, 230, 255);
+}
+
+.main-nav {
+    list-style: none;
+    font-size: 1.25rem;
+    display: flex;
+    margin-top: 10px;
+    margin-left: 50px;
+    padding: 9px;
+    border-radius: 10px;
+}
+
+.main-nav li {
+    margin-left: 36px;
+}
+
+.main-nav a {
+    color:white;
+}
+
+.main-nav a:hover {
+    color: #0bd;
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.wrapper {
+    max-width:2000px;
+    margin: auto;
+}
+
+.page-title1 {
+    font-size: 4.0rem;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: normal;
+    text-align: center;
+    margin-top: 110px;
+    color:white;
+}
+
+.page-title3{
+    font-size: 4.0rem;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: normal;
+    text-align: center;
+    color:white;
+    
+}
+
+.page-subtitle1 {
+    font-size: 1.2em;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: normal;
+    text-align: center;
+    color:white;
+}
+
+.page-subtitle3{
+    font-size: 1.2em;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: normal;
+    text-align: center;
+    color:white;
+}
+
+.button1 {
+    background: rgb(145, 224, 244);
+    color: #fff;
+    padding: 9px;
+    border-radius: 10px;
+    font-size: 1rem;
+    margin-right: 30px;
+    font-weight: 600;
+}
+
+.button2 {
+    background: #0bd;
+    color: #fff;
+    padding: 9px;
+    border-radius: 10px;
+    font-size: 1rem;
+    left: 100px;
+}
+
+.join-content {
+    list-style: none;
+    text-align: center;
+    font-size: 2rem;
+    display: flex;
+    margin-top: 10px;
+    margin-left: 47%;
+    font-weight: 600;
+}
+
+.button2 {
+    background: lightgray;
+    color: black;
+    padding: 9px;
+    border-radius: 5px;
+    font-size: 1rem;
+    margin-top: 100px;
+    
+}
+
+.under-logo {
+    font-size: 5rem;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: normal;
+    text-align: left;
+    margin: auto;
+    margin-top: 120px;
+    margin-left: 50px;
+    letter-spacing: 5px;
+    color:white;
+    line-height: 70px;
+}
+
+.up-button{
+    margin-top: 80px;
+    width: 30px;
+}
+
+.up-btn{
+    margin-left: 740px;
+}
+
+
+.footer{
+    color: rgb(228, 228, 228);
+    margin-top: 120px;
+    line-height: 10px;
+    text-align: center;
+}
