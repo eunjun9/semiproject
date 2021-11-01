@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,12 +28,16 @@
 </head>
 
 <body>
+<!-- 변수 선언 -->
+<c:set var="contextPath" value="${ pageContext.servletContext.contextPath }" 
+scope="application"/>
+
     <!-- 헤더 -->
     <div class="header">
         <div class="head-inner">
 
           <div class="logo">
-            <a href="${ contextPath }"><img src="resources/images/logo.png"></a>
+            <a href="#"><img src="resources/images/logo.png"></a>
           </div>
 
             <div class="big-category">

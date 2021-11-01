@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,15 +37,15 @@
         <div class="wrapper2">
             <div class="slide">
                 <ul>
-                    <li><img src="../resources/image/painting.jpg" width="340px" height="380px"></li>
-                    <li><img src="../resources/image/dance.jpg" width="340px" height="380px"></li>
-                    <li><img src="../resources/image/weaving.jpg" width="340px" height="380px"></li>
-                    <li><img src="../resources/image/baking.jpg" width="340px"  height="380px"></li>
+                    <li><img src="resources/image/yewon/painting.jpg" width="340px" height="380px"></li>
+                    <li><img src="resources/image/yewon/dance.jpg" width="340px" height="380px"></li>
+                    <li><img src="resources/image/yewon/weaving.jpg" width="340px" height="380px"></li>
+                    <li><img src="resources/image/yewon/baking.jpg" width="340px"  height="380px"></li>
                 </ul>
             </div>
             <div class="filtering">
                 <form>
-                    <img id="search" width="20px" src="../resources/icon/search.png">
+                    <img id="search" width="20px" src="resources/images/yewon/search.png">
                     <input type="text" maxlength="25" size="40" placeholder="검색할 키워드를 입력해주세요" name="keyword" id="keyword" ><br>
                     
                     <label>가격</label>
