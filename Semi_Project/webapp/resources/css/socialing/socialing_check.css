@@ -1,0 +1,98 @@
+@charset "UTF-8";
+
+html {
+    font-size : 100%;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.body {
+    display: flex;
+    position: relative;
+    align-items: center;
+    flex-direction: column;
+}
+
+#title {
+    color: rgb(7,86,105);
+}
+
+.checkArea {
+    margin-left: 30px;
+    margin-bottom: 30px;
+}
+
+label {
+    font-size: 1.04rem;
+    line-height: 2.5;
+    cursor: pointer;
+}
+
+.btnArea {
+    display: block;
+}
+
+input[type="checkbox"] {
+    -webkit-appearance: none;
+    position: relative;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    outline: none !important;
+    border: 1px solid #eeeeee;
+    border-radius: 2px;
+    background: #fbfbfb;
+    margin-bottom: -2px;
+}
+
+input[type="checkbox"]::before {
+    content: "\2713";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    overflow: hidden;
+    transform: scale(0) translate(-50%, -50%);
+    line-height: 1;
+}
+
+input[type="checkbox"]:hover {
+    border-color: rgba(170, 170, 170, 0.5);
+}
+
+input[type="checkbox"]:checked {
+    background-color: rgb(7,86,105);
+    border-color: rgba(255, 255, 255, 0.3);
+    color: white;
+}
+
+input[type="checkbox"]:checked::before {
+    border-radius: 2px;
+    transform: scale(1) translate(-50%, -50%)
+}
+
+#cancel {
+    margin-left: 10px;
+    margin-right: 10px;
+    background-color: lightgray;
+    color: black;
+    padding: 6px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    width: 80px;
+    cursor: pointer;
+}
+
+#sub {
+    margin-left: 10px;
+    margin-right: 10px;
+    background-color: rgb(7,86,105);
+    color: white;
+    padding: 6px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    width: 80px;
+    cursor: pointer;
+}

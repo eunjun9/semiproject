@@ -1,0 +1,207 @@
+@charset "UTF-8";
+
+html {
+    font-size : 100%;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+img {
+    max-width: 100%;
+}
+
+hr {
+    height: 2px;
+    background-color: lightgray;
+    border: 0px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+/* 본문 간격 */
+
+.body {
+    width: 100%;
+    display: flex;
+}
+ 
+.body-inner {
+    max-width: 1000px;
+    width: 1000px;
+    margin : 0 auto;
+}
+
+.page {
+    margin-top: 5%;
+}
+
+/* 상단 제목, 썸네일, 설명, 작성자 정보 */
+
+.wrapper1 {
+    display: inline-block;
+    width: 40%;
+    vertical-align: top;
+}
+
+.wrapper2 {
+    display: inline-block;
+    width: 49%;
+    margin-left: 10%;
+}
+
+#title {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+#subTitle {
+    color: rgb(75,75,75);
+    font-weight: bold;
+    display: inline;
+    line-height: 2.5;
+}
+
+#subTitle2 {
+    color: rgb(153,153,153);
+    font-weight: bold;
+    font-size: 1.1rem;
+    display: inline;
+    margin-left: 30px;
+}
+
+.wrapper3 {
+    display: inline-block;
+    width: 50%;
+    margin-top: 80px;
+    vertical-align: top;
+}
+
+#content {
+    font-size: 1.08rem;
+}
+
+.wrapper4 {
+    display: inline-block;
+    width: 39%;
+    margin-left: 10%;
+    margin-top: 80px;
+}
+
+.profileBox {
+    width: 100%;
+    min-height: 50%;
+    box-shadow: 1px 1px 6px 3px lightgray;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+#p-image {
+    width: 30%;
+    margin-left: 35%;
+}
+
+#p-name {
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-left: 42%;
+    margin-top: 5px;
+    margin-bottom: -20px;
+}
+
+#p-button {
+    background-color: rgb(7,86,105);
+    color: white;
+    padding: 8px;
+    font-weight: bold;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    width: 200px;
+    height: 35px;
+    margin-left: 23%;
+    cursor: pointer;
+}
+
+/* 하단 참여멤버, 상세정보, 삭제/수정/신고 */
+
+#subTitle3 {
+    font-weight: bold;
+    color: rgb(7,86,105);
+}
+
+.subWrap {
+    height: 100px;
+    width: 100%;
+}
+
+#s-image {
+    width: 7%;
+    margin-top: 5px;
+    position: flex;
+    justify-content: center;
+    float: left;
+    cursor: pointer;
+}
+
+.subWrap2 {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+#s-name {
+    font-weight: bold;
+    margin-left: 15px;
+    cursor: pointer;
+}
+
+#s-intro {
+    font-weight: bold;
+    color: rgb(153,153,153);
+    margin-left: 15px;
+}
+
+#icon {
+    width: 22px;
+    margin-bottom: -4px;
+}
+
+#detail {
+    color: gray;
+    display: inline;
+    margin-left: 10px;
+}
+
+#subTitle4 {
+    font-weight: bold;
+    color: rgb(7,86,105);
+    margin-top: 60px;
+}
+
+.subWrap3 {
+    margin-bottom: 20px;
+}
+
+#delete,
+#update,
+#report {
+    margin-left: 20px;
+    background-color: rgb(7,86,105);
+    color: white;
+    padding: 6px;
+    font-weight: bold;
+    font-size: 1.02rem;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    width: 80px;
+    cursor: pointer;
+}
+
+.buttons {
+    display : flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
