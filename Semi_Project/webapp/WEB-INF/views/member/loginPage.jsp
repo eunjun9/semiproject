@@ -4,10 +4,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+ <link rel="icon" type="image/png" href="http://example.com/myicon.png">
 <meta charset="UTF-8">
 <title>loginPage</title>
 <!-- 외부 스타일시트 -->
-<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/loginpage-style.css">
+<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/member/loginpage-style.css">
 <!-- 외부 폰트 -->
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap"
