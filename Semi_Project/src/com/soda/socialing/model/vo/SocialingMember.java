@@ -10,11 +10,15 @@ public class SocialingMember {
 	
 	public SocialingMember() {}
 
-	public SocialingMember(int noticeNum, String userId, String status) {
+	public SocialingMember(int noticeNum, String userId, String status, String smember, String profile,
+			String introduction) {
 		super();
 		this.noticeNum = noticeNum;
 		this.userId = userId;
 		this.status = status;
+		this.smember = smember;
+		this.profile = profile;
+		this.introduction = introduction;
 	}
 
 	public int getNoticeNum() {
@@ -41,9 +45,34 @@ public class SocialingMember {
 		this.status = status;
 	}
 
+	public String getSmember() {
+		return smember;
+	}
+
+	public void setSmember(String smember) {
+		this.smember = smember;
+	}
+
+	public String getProfile() {
+		return profile;
+	}
+
+	public void setProfile(String profile) {
+		this.profile = profile;
+	}
+
+	public String getIntroduction() {
+		return introduction;
+	}
+
+	public void setIntroduction(String introduction) {
+		this.introduction = introduction;
+	}
+
 	@Override
 	public String toString() {
-		return "SocialingMember [noticeNum=" + noticeNum + ", userId=" + userId + ", status=" + status + "]";
+		return "SocialingMember [noticeNum=" + noticeNum + ", userId=" + userId + ", status=" + status + ", smember="
+				+ smember + ", profile=" + profile + ", introduction=" + introduction + "]";
 	}
-	
+
 }

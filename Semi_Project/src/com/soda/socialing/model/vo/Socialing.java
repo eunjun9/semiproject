@@ -16,8 +16,9 @@ public class Socialing {
 	
 	public Socialing() {}
 
-	public Socialing(int noticeNum, String splace, Date sdate, Date stime, String stype,
-			int maxMember) {
+
+	public Socialing(int noticeNum, String splace, Date sdate, Date stime, String stype, int maxMember, String userName,
+			String profile) {
 		super();
 		this.noticeNum = noticeNum;
 		this.splace = splace;
@@ -25,60 +26,96 @@ public class Socialing {
 		this.stime = stime;
 		this.stype = stype;
 		this.maxMember = maxMember;
+		this.userName = userName;
+		this.profile = profile;
 	}
+
 
 	public int getNoticeNum() {
 		return noticeNum;
 	}
 
+
 	public void setNoticeNum(int noticeNum) {
 		this.noticeNum = noticeNum;
 	}
+
 
 	public String getSplace() {
 		return splace;
 	}
 
+
 	public void setSplace(String splace) {
 		this.splace = splace;
 	}
+
 
 	public Date getSdate() {
 		return sdate;
 	}
 
+
 	public void setSdate(Date sdate) {
 		this.sdate = sdate;
 	}
+
 
 	public Date getStime() {
 		return stime;
 	}
 
+
 	public void setStime(Date stime) {
 		this.stime = stime;
 	}
+
 
 	public String getStype() {
 		return stype;
 	}
 
+
 	public void setStype(String stype) {
 		this.stype = stype;
 	}
+
 
 	public int getMaxMember() {
 		return maxMember;
 	}
 
+
 	public void setMaxMember(int maxMember) {
 		this.maxMember = maxMember;
 	}
 
+
+	public String getUserName() {
+		return userName;
+	}
+
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+
+	public String getProfile() {
+		return profile;
+	}
+
+
+	public void setProfile(String profile) {
+		this.profile = profile;
+	}
+
+
 	@Override
 	public String toString() {
-		return "Socialing [noticeNum=" + noticeNum + ", splace=" + splace + ", sdate=" + sdate
-				+ ", stime=" + stime + ", stype=" + stype + ", maxMember=" + maxMember + "]";
+		return "Socialing [noticeNum=" + noticeNum + ", splace=" + splace + ", sdate=" + sdate + ", stime=" + stime
+				+ ", stype=" + stype + ", maxMember=" + maxMember + ", userName=" + userName + ", profile=" + profile
+				+ "]";
 	}
 
 }

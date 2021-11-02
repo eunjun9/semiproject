@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -131,7 +132,8 @@
                     </select>
                 </div>
                 <div class="s-container2">
-                    <div id="s-list2">
+                	<c:forEach var="notice" items="${ noticeList }">
+                    <div id="s-list2" onclick="detailView(${ notice.nNum })">
                         <div id="thumbox">
                             <a href="socialing_detail.html"><img id="s-thumbnail" src="<%= request.getContextPath() %>/resources/images/eunjung/thumbnail.png"></a><br>
                             <img id="like" src="<%= request.getContextPath() %>/resources/images/eunjung/heart_empty.png">
@@ -139,124 +141,34 @@
                         </div>
                         <a href="#">
                             <div id="titlebox">
-                                <p id="s-thumtitle">한강에서 치맥 하실분~!</p><br>
-                                <h5 id="s-thumsub">여의나루역 5호선 10.30(토) 오후 2:00</h5>
+                                <p id="s-thumtitle">${ notice.nTitle }</p><br>
+                                <h5 id="s-thumsub">${ social.splace }${ social.sdate }</h5>
                                 <a href=""><img id="profile" src="<%= request.getContextPath() %>/resources/images/eunjung/profile.png"></a>
                             </div>
                         </a>
                     </div>
-                    <div id="s-list2">
-                        <div id="thumbox">
-                            <img id="s-thumbnail" src="<%= request.getContextPath() %>/resources/images/eunjung/flower1.PNG"><br>
-                            <img id="like" src="<%= request.getContextPath() %>/resources/images/eunjung/heart_empty.png">
-                        </div>
-                        <a href="#">
-                            <div id="titlebox">
-                                <p id="s-thumtitle">아침에 공원에서 산책하실 분!</p><br>
-                                <h5 id="s-thumsub">평촌 중앙공원 10.20(수) 오전 9:00</h5>
-                                <a href=""><img id="profile" src="<%= request.getContextPath() %>/resources/images/eunjung/profile.png"></a>
-                            </div>
-                        </a>
-                    </div>
-                    <div id="s-list2">
-                        <div id="thumbox">
-                            <img id="s-thumbnail" src="<%= request.getContextPath() %>/resources/images/eunjung/flower1.PNG"><br>
-                            <img id="like" src="<%= request.getContextPath() %>/resources/images/eunjung/heart_empty.png">
-                        </div>
-                        <a href="#">
-                            <div id="titlebox">
-                                <p id="s-thumtitle">이터널스 같이 보러가요</p><br>
-                                <h5 id="s-thumsub">CGV 용산아이파크몰 11.20(토) 오후 3:00</h5>
-                                <a href=""><img id="profile" src="<%= request.getContextPath() %>/resources/images/eunjung/profile.png"></a>
-                            </div>
-                        </a>
-                    </div>
-                    <div id="s-list2">
-                        <div id="thumbox">
-                            <img id="s-thumbnail" src="<%= request.getContextPath() %>/resources/images/eunjung/flower1.PNG"><br>
-                            <img id="like" src="<%= request.getContextPath() %>/resources/images/eunjung/heart_empty.png">
-                        </div>
-                        <a href="#">
-                            <div id="titlebox">
-                                <p id="s-thumtitle">할로윈 같이 즐겨요</p><br>
-                                <h5 id="s-thumsub">이태원역 6호선 10.31(일) 오후 6:00</h5>
-                                <a href=""><img id="profile" src="<%= request.getContextPath() %>/resources/images/eunjung/profile.png"></a>
-                            </div>
-                        </a>
-                    </div>
-                    <div id="s-list2">
-                        <div id="thumbox">
-                            <img id="s-thumbnail" src="<%= request.getContextPath() %>/resources/images/eunjung/flower1.PNG"><br>
-                            <img id="like" src="<%= request.getContextPath() %>/resources/images/eunjung/heart_empty.png">
-                        </div>
-                        <a href="#">
-                            <div id="titlebox">
-                                <p id="s-thumtitle">아침에 공원에서 산책하실 분!</p><br>
-                                <h5 id="s-thumsub">평촌 중앙공원 10.20(수) 오전 9:00</h5>
-                                <a href=""><img id="profile" src="<%= request.getContextPath() %>/resources/images/eunjung/profile.png"></a>
-                            </div>
-                        </a>
-                    </div>
-                    <div id="s-list2">
-                        <div id="thumbox">
-                            <img id="s-thumbnail" src="<%= request.getContextPath() %>/resources/images/eunjung/flower1.PNG"><br>
-                            <img id="like" src="<%= request.getContextPath() %>/resources/images/eunjung/heart_empty.png">
-                        </div>
-                        <a href="#">
-                            <div id="titlebox">
-                                <p id="s-thumtitle">이터널스 같이 보러가요</p><br>
-                                <h5 id="s-thumsub">CGV 용산아이파크몰 11.20(토) 오후 3:00</h5>
-                                <a href=""><img id="profile" src="<%= request.getContextPath() %>/resources/images/eunjung/profile.png"></a>
-                            </div>
-                        </a>
-                    </div>
-                    <div id="s-list2">
-                        <div id="thumbox">
-                            <img id="s-thumbnail" src="<%= request.getContextPath() %>/resources/images/eunjung/flower1.PNG"><br>
-                            <img id="like" src="<%= request.getContextPath() %>/resources/images/eunjung/heart_empty.png">
-                        </div>
-                        <a href="#">
-                            <div id="titlebox">
-                                <p id="s-thumtitle">할로윈 같이 즐겨요</p><br>
-                                <h5 id="s-thumsub">이태원역 6호선 10.31(일) 오후 6:00</h5>
-                                <a href=""><img id="profile" src="<%= request.getContextPath() %>/resources/images/eunjung/profile.png"></a>
-                            </div>
-                        </a>
-                    </div>
-                    <div id="s-list2">
-                        <div id="thumbox">
-                            <img id="s-thumbnail" src="<%= request.getContextPath() %>/resources/images/eunjung/flower1.PNG"><br>
-                            <img id="like" src="<%= request.getContextPath() %>/resources/images/eunjung/heart_empty.png">
-                        </div>
-                        <a href="#">
-                            <div id="titlebox">
-                                <p id="s-thumtitle">아침에 공원에서 산책하실 분!</p><br>
-                                <h5 id="s-thumsub">평촌 중앙공원 10.20(수) 오전 9:00</h5>
-                                <a href=""><img id="profile" src="<%= request.getContextPath() %>/resources/images/eunjung/profile.png"></a>
-                            </div>
-                        </a>
-                    </div>
-                    <div id="s-list2">
-                        <div id="thumbox">
-                            <img id="s-thumbnail" src="<%= request.getContextPath() %>/resources/images/eunjung/flower1.PNG"><br>
-                            <img id="like" src="<%= request.getContextPath() %>/resources/images/eunjung/heart_empty.png">
-                        </div>
-                        <a href="#">
-                            <div id="titlebox">
-                                <p id="s-thumtitle">이터널스 같이 보러가요</p><br>
-                                <h5 id="s-thumsub">CGV 용산아이파크몰 11.20(토) 오후 3:00</h5>
-                                <a href=""><img id="profile" src="<%= request.getContextPath() %>/resources/images/eunjung/profile.png"></a>
-                            </div>
-                        </a>
-                    </div>
+                	</c:forEach>
+                    
                 </div>
 
                 <div class="pagebox">
-                    <a class="paging" href="#"><img width="20px" src="<%= request.getContextPath() %>/resources/images/eunjung/circle_sky.png"></a>
-                    <a class="paging" href="#"><img width="20px" src="<%= request.getContextPath() %>/resources/images/eunjung/circle_beige.png"></a>
-                    <a class="paging" href="#"><img width="20px" src="<%= request.getContextPath() %>/resources/images/eunjung/circle_beige.png"></a>
-                    <a class="paging" href="#"><img width="20px" src="<%= request.getContextPath() %>/resources/images/eunjung/circle_beige.png"></a>
-                    <a class="paging" href="#"><img width="20px" src="<%= request.getContextPath() %>/resources/images/eunjung/circle_beige.png"></a>
+                	<a class="paging" href="${ contextPath }/socialing/main?page=1">
+                	<img width="16px" src="${ contextPath }/resources/images/eunjung/previous.png">
+		            <img width="16px" src="${ contextPath }/resources/images/eunjung/previous.png"></a>
+		            
+		            <a class="paging" href="#"><img width="18px" src="${ contextPath }/resources/images/eunjung/previous.png"></a>
+		            
+	                    <a class="paging" href="#"><img width="20px" src="${ contextPath }/resources/images/eunjung/circle_sky.png"></a>
+	                    <a class="paging" href="#"><img width="20px" src="${ contextPath }/resources/images/eunjung/circle_beige.png"></a>
+	                    <a class="paging" href="#"><img width="20px" src="${ contextPath }/resources/images/eunjung/circle_beige.png"></a>
+	                    <a class="paging" href="#"><img width="20px" src="${ contextPath }/resources/images/eunjung/circle_beige.png"></a>
+	                    <a class="paging" href="#"><img width="20px" src="${ contextPath }/resources/images/eunjung/circle_beige.png"></a>
+	                    
+	                <a class="paging" href="#"><img width="18px" src="${ contextPath }/resources/images/eunjung/next.png"></a>
+	                
+		            <a class="paging" href="${ contextPath }/socialing/main?page=${ pi.maxPage }">
+		            <img width="16px" src="${ contextPath }/resources/images/eunjung/next.png">
+		            <img width="16px" src="${ contextPath }/resources/images/eunjung/next.png"></a>
                 </div>
                 
                 <div id="writebox">

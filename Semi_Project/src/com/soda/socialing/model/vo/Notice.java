@@ -13,6 +13,8 @@ public class Notice {
 	private Date modifyDate;	// 수정 날짜
 	private String nSelfNum;	// 셀프참조 번호 *nullable
 	
+	private Socialing social;	// 소셜링 입력형식 추가
+	
 	public Notice() {}
 
 	public Notice(int nNum, String nTitle, String nContent, Date nDate, String nStatus, String nType, String userId,
