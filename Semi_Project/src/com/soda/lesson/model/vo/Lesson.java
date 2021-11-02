@@ -1,6 +1,7 @@
 package com.soda.lesson.model.vo;
 
 import java.sql.Date;
+import java.util.List;
 
 public class Lesson {
 	private int nNum; 			// 게시판 번호
@@ -15,12 +16,14 @@ public class Lesson {
 	private String cTutor;		// 강사 소개
 	private String cWriter;		// 작성자 (강사 아이디)
 	
+	private List<File> photoList;  // 첨부파일
+	
 	public Lesson() {}
 
-	public Lesson(int notice_num, String ctag1, String ctag2, int cPrice, String cType, String cCategogy, Date cSDate,
-			Date cEDate, String cLocation, String cTutor, String cWriter) {
+	public Lesson(int nNum, String ctag1, String ctag2, int cPrice, String cType, String cCategogy, Date cSDate,
+			Date cEDate, String cLocation, String cTutor, String cWriter, List<File> photoList) {
 		super();
-		this.nNum = notice_num;
+		this.nNum = nNum;
 		this.ctag1 = ctag1;
 		this.ctag2 = ctag2;
 		this.cPrice = cPrice;
@@ -31,16 +34,17 @@ public class Lesson {
 		this.cLocation = cLocation;
 		this.cTutor = cTutor;
 		this.cWriter = cWriter;
+		this.photoList = photoList;
 	}
 
-	public int getNotice_num() {
+	public int getnNum() {
 		return nNum;
 	}
 
-	public void setNotice_num(int notice_num) {
-		this.nNum = notice_num;
+	public void setnNum(int nNum) {
+		this.nNum = nNum;
 	}
-
+	
 	public String getCtag1() {
 		return ctag1;
 	}
@@ -121,12 +125,23 @@ public class Lesson {
 		this.cWriter = cWriter;
 	}
 
+
+	public List<File> getPhotoList() {
+		return photoList;
+	}
+
+	public void setPhotoList(List<File> photoList) {
+		this.photoList = photoList;
+	}
+
+	
 	@Override
 	public String toString() {
-		return "Lesson [notice_num=" + nNum + ", ctag1=" + ctag1 + ", ctag2=" + ctag2 + ", cPrice=" + cPrice
-				+ ", cType=" + cType + ", cCategogy=" + cCategogy + ", cSDate=" + cSDate + ", cEDate=" + cEDate
-				+ ", cLocation=" + cLocation + ", cTutor=" + cTutor + ", cWriter=" + cWriter + "]";
-	};
-	
+		return "Lesson [nNum=" + nNum + ", ctag1=" + ctag1 + ", ctag2=" + ctag2 + ", cPrice=" + cPrice + ", cType="
+				+ cType + ", cCategogy=" + cCategogy + ", cSDate=" + cSDate + ", cEDate=" + cEDate + ", cLocation="
+				+ cLocation + ", cTutor=" + cTutor + ", cWriter=" + cWriter + ", photoList=" + photoList + "]";
+	}
+
+
 	
 }

@@ -98,13 +98,13 @@ img{
     border-bottom: 1px solid rgb(185,185,185);
     text-align: center;
     background-color: #ffffff00;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 .filtering input[name=price1]{
     width: 70px;
     margin-left: 50px;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     border-radius: 5px ;
     border: 1px solid rgb(185,185,185, 0);
 }
@@ -112,30 +112,17 @@ img{
 .filtering input[name=price2]{
     width: 70px;
     margin-left: 5px;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     border-radius: 5px ;
     border: 1px solid rgb(185,185,185, 0);
 }
 
-.filtering select[name=city]{
-    margin-left: 50px;
-    margin-bottom: 15px;
-    border-radius: 5px ;
-    border: 1px solid rgb(185,185,185, 0);
-}
-
-.filtering select[name=town]{
-    margin-left: 40px;
-    margin-bottom: 15px;
-    border-radius: 5px ;
-    border: 1px solid rgb(185,185,185, 0);
-}
 
 .filtering select[name=bigC]{
     margin-left: 25px;
     border-radius: 5px ;
     border: 1px solid rgb(185,185,185, 0);
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     width: 95px;
     
 }
@@ -144,38 +131,38 @@ img{
     margin-left: 26px;
     border-radius: 5px ;
     border: 1px solid rgb(185,185,185, 0);
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     width: 130px;
 }
 
 .ckboxlabel{
     font-size: 13px;
     color: rgb(88, 88, 88);
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 .filtering input[name=online]{
     margin-left: 27px;
     border: 1px solid rgb(185,185,185);
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 .filtering input[name=offline]{
     margin-left: 69px;
     border: 1px solid rgb(185,185,185);
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 .filtering input[name=oneday]{
     margin-left: 10px;
     border: 1px solid rgb(185,185,185);
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 .filtering input[name=vod]{
     margin-left: 31px;
     border: 1px solid rgb(185,185,185);
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 .filtering button{
@@ -189,8 +176,8 @@ img{
 
 .filtering button[name=reSel]{
     background-color: rgb(248, 241, 233);
-    margin-top: 25px;
-    margin-bottom: -40px;
+    margin-top: 35px;
+    margin-bottom: 20px;
     margin-left: 40px;
     color: rgb(7, 86, 105);
 }
@@ -198,8 +185,8 @@ img{
 .filtering button[name=selEnd]{
     background-color: rgb(7, 86, 105);
     color: white;
-    margin-top: 25px;
-    margin-bottom: -40px;
+    margin-top: 35px;
+    margin-bottom: 20px;
     margin-left: 40px;
 }
 
@@ -248,7 +235,7 @@ img{
 /* 페이징 버튼------------*/
 .wrapper5{
     display: flex;
-    margin: 30px 340px;
+    margin: 30px 300px;
 }
 .paging{
     margin-left: 10px; 

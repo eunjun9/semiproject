@@ -35,9 +35,6 @@
 </head>
 
 <body>
-<!-- 변수 선언 -->
-<c:set var="contextPath" value="${ pageContext.servletContext.contextPath }" 
-scope="application"/>
 
     <!-- 헤더 -->
     <div class="header">

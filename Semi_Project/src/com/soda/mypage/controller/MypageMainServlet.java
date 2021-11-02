@@ -1,29 +1,23 @@
-package com.soda.lesson.controller;
+package com.soda.mypage.controller;
 
 import java.io.IOException;
-import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.soda.lesson.model.service.LessonService;
-import com.soda.lesson.model.vo.Lesson;
-import com.soda.lesson.model.vo.Notice;
-
 /**
- * Servlet implementation class ClassMainServlet
+ * Servlet implementation class MypageMainServlet
  */
-@WebServlet("/lesson/main")
-public class LessonMainServlet extends HttpServlet {
+@WebServlet("/mypage/main")
+public class MypageMainServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LessonMainServlet() {
+    public MypageMainServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,31 +26,16 @@ public class LessonMainServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		/* 페이징 처리 */
-		// 페이지 초기값 (첫 페이지)
-		int page = 1;
-		
-		// 전달 받은 페이지가 있을 때 
-		if(request.getParameter("page") != null) {
-			page = Integer.parseInt(request.getParameter("page"));
-		}
-		
-		/*필터 관련 파라미터 추출  (추후에 수정 )*/
-		
-		
-		//
-		
-		
-		
-		List<Notice> NoticeList = new LessonService().selectLessonList();
-	
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 
 }
