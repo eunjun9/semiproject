@@ -55,7 +55,8 @@ public class KakaoLoginServlet extends HttpServlet {
 			int kakaoJoin = new MemberService().kakaoJoin(joinMember);
 			
 			if(kakaoJoin > 0) {
-				request.getSession().setAttribute("message", "회원 가입이 완료 되었습니다. 다시 로그인 해주세요.");
+				Member kakaoLoginUser = new MemberService().loginMember(userId);
+				request.getSession().setAttribute("loginUser", kakaoLoginUser);
 				response.sendRedirect(request.getContextPath());
 			}else {
 				System.out.println("카카오 회원가입 실패");
