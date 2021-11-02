@@ -40,11 +40,9 @@
         <div class="head-inner">
 
           <div class="logo">
-<<<<<<< HEAD
             <a href="${ cotextPath }/mainpage"><img src="${ contextPath }/resources/images/logo.png"></a>
-=======
             <a href="#"><img src="${ contextPath }/resources/images/logo.png"></a>
->>>>>>> branch 'master' of https://github.com/umyewon/semiproject.git
+
           </div>
 
             <div class="big-category">
