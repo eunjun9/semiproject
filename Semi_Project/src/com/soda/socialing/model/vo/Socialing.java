@@ -3,12 +3,16 @@ package com.soda.socialing.model.vo;
 import java.util.Date;
 
 public class Socialing {
+	// notice
 	private int noticeNum;		// 게시판 번호 (pfk - Notice 테이블 noticeNum 참조 값)
 	private String splace;		// 모임 장소
 	private Date sdate;			// 모임 날짜
 	private Date stime;			// 모임 시간
 	private String stype;		// 온오프라인 여부 (ON/OFF)
 	private int maxMember;		// 참여 가능 인원
+	private String userName;	// 작성자명 (Member 테이블 join 결과 값)
+	private String profile;		// 작성자 프로필사진 (Profile 테이블 join 결과 값)
+	
 	
 	public Socialing() {}
 

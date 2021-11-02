@@ -168,7 +168,6 @@
             <img width="18px" src="resources/images/yewon/next.png"></a>
         </div>
 
-
     </div>
 
 
