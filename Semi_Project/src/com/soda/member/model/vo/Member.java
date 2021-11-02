@@ -11,8 +11,7 @@ public class Member {
 	private Date joinDate;
 	private String status;
 	private String userGrade;
-	
-	private String gender;
+	private String gender;	
 	
 	/*
 	 * USER_ID	VARCHAR2(30 BYTE)
@@ -23,12 +22,14 @@ public class Member {
 		JOIN_DATE	DATE
 		STATUS	VARCHAR2(5 BYTE)
 		USER_GRADE	VARCHAR2(10 BYTE)
+		USER_GENDER	VARCHAR2(3 BYTE)
 	 * 
 	 */
 
 	
 	public Member() {}
 	
+	// gender 포함
 	public Member(String userId, String userName, String userPhone, String userPwd, String userAddress, Date joinDate,
 			String status, String userGrade, String gender) {
 		super();
@@ -42,7 +43,6 @@ public class Member {
 		this.userGrade = userGrade;
 		this.gender = gender;
 	}
-
 
 	public String getUserId() {
 		return userId;
