@@ -107,49 +107,38 @@
         //카카오로그인
         function kakaoLogin() {
             Kakao.Auth.login({
-            	success: function (res) {
-            		console.log(res);
-            	  // 카카오로그인 성공 시 API 호출
+              success: function (res) {
                 Kakao.API.request({
                   url: '/v2/user/me',
                   success: function (res) {
-                      console.log(res);
+                        var userEmail = res.kakao_account.email; // 카카오 email
+                        console.log(userEmail);	 				 // 테스트용 콘솔 노출
+                        var userName = res.properties.nickname 	// 카카오 닉네임(이름)
+                        console.log(userName);					// 테스트용 콘솔 노출
+                        var kakaoId = res.id				// 비밀번호로 사용할 카카오 아이디
+                        console.log(kakaoId);
 
-                        var userEmail = res.kakao_account.email; //email
-                        var userName = res.properties.nickname;	// 닉네임(이름)
-                        
-                        var kakaologinVal = {
-        	        			"userId" : userId,
-        	        			"userEmail" : userEmail,
-        	        			"userName" : userName };
-        	        			
-                       	alert('로그인 성공');
-
-                         $.ajax({
-                        url:"${ contextPath }/kakaoLogin",
-                        data:JSON.stringify(kakaologinVal),
-                        dataType:"json",
+                       $.ajax({
+                        url:"${ contextPath }/kakao/login",
+                        data:{ "userEmail" : userEmail, "userName" : userName, "kakaoId" : kakaoId },
                         Type:"post",
                         success:function(data){
-                        	alert(res.userName+"님 환영합니다.");
+                        	// 카카오 로그인 성공 시 메인페이지로 이동
+                            location.href="${ contextPath }/main";
                         }
-                            location.href="${ contextPath }";
-                        }else {
-    	        				alert("로그인에 실패하였습니다.");
-    	        				return false;
-    	        			}
                         
                     });
                     
                   },
     		     
                   fail: function (error) {
-                    console.log(error)
+                	  // 카카오 로그인 실패 시 alert 창
+                	  alert('로그인에 실패하였습니다.');
                   },
                 })
               },
               fail: function (error) {
-                console.log(error)
+            	  location.href="${ contextPath }/errorpage";
               },
             })
           }

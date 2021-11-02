@@ -81,7 +81,7 @@
                         Type:"post",
                         success:function(data){
                         	// 카카오 로그인 성공 시 메인페이지로 이동
-                            location.href="${ contextPath }/main";
+                            location.href="${ contextPath }/mainpage";
                         }
                         
                     });

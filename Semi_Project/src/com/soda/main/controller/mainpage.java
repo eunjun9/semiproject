@@ -1,4 +1,4 @@
-package com.soda.main;
+package com.soda.main.controller;
 
 import java.io.IOException;
 
