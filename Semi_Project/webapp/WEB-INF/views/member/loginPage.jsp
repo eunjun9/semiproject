@@ -7,6 +7,7 @@
  <link rel="icon" type="image/png" href="http://example.com/myicon.png">
 <meta charset="UTF-8">
 <title>loginPage</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <!-- 외부 스타일시트 -->
 <link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/member/loginpage-style.css">
 <!-- 외부 폰트 -->
@@ -71,13 +72,15 @@
 
                         var userEmail = res.kakao_account.email; //email
                         console.log(userEmail);
+                        var userName = res.properties.nickname // 닉네임(이름)
+                        console.log(userName);
 
                        $.ajax({
-                        url:"${ contextPath }/kakaoLogin",
-                        data:{ "id" : res.id, "name" : JSON.stringify(res.properties.nickname)},
+                        url:"${ contextPath }/kakao/login",
+                        data:{ "userEmail" : userEmail, "userName" : userName },
                         Type:"post",
                         success:function(data){
-                            location.href="${ contextPath }";
+                            location.href="${ contextPath }/login";
                         }
                         
                     });
