@@ -1,11 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="com.soda.member.model.vo.Member"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+	// session 객체에 담긴 loginUser 정보를 변수에 담아두기
+	Member loginUser = (Member)session.getAttribute("loginUser");
+%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>header</title>
+	<%-- session에 담긴 message 있을 경우 alert 하는 script --%>
+	<% if(session.getAttribute("message") != null) {%>
+	<script>
+		alert('<%= session.getAttribute("message") %>');	
+	</script>
+	<% 
+		session.removeAttribute("message");
+		} 
+	%>
 
  	<!-- CSS -->
     <!-- 브라우저별로 디폴트로 적용된 CSS에 차이(여백, 폰트 크기 등)가 있어 CSS가 별도로
