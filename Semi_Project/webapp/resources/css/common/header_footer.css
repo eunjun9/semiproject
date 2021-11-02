@@ -3,10 +3,21 @@
 html{
     /* 사용자 설정 문자 크기 그대로 반영 되도록 */
     font-size: 100%;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+body {
+    color : #432;
+    line-height: 2.0; 
 }
 
 a{
     text-decoration: none;
+    color: gray;
+}
+
+a:hover{
+    color :rgb(145, 224, 244);
 }
 
 img{
@@ -36,8 +47,6 @@ img{
 .big-category{
      display: flex;
      justify-content: space-between;
-     color: gray;
-     line-height: 2.0;
 }
 
 .category1>a:hover{
@@ -83,6 +92,7 @@ img{
     background: rgba(224, 224, 224, 0.11);
     width: 90px;
 }
+
 
 
 

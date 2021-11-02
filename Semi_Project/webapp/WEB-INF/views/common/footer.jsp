@@ -8,15 +8,16 @@
 <title>footer</title>
 
     <!-- 외부 스타일 시트 -->
-    <link href="<%= request.getContextPath() %>/resources/css/header_footer.css" rel="stylesheet">
+    <link href="${ contextPath }/resources/css/common/header_footer.css" rel="stylesheet">
     <!-- favicon (Real Favicon Generator)-->
-    <link rel="icon" type="image/x-icon" href="resources/image/khfavicon.ico">
+    <link rel="icon" type="image/x-icon" href="${ contextPath }/resources/image/khfavicon.ico">
     <!-- 글꼴 -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
-    <!--font-family: 'Noto Sans KR', sans-serif;-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500&display=swap" rel="stylesheet">
 
     <!-- JQuery-->
-    <script src="resources/js/jquery-3.6.0.min.js"></script>
+    <script src="${ contextPath }/resources/js/jquery-3.6.0.min.js"></script>
 
 </head>
 <body>
@@ -32,11 +33,7 @@
                 <ul>주식회사 소셜 다이닝</ul>
                 <ul>대표 : 홍길동 | 개인정보관리책임자 : 홍길동 | 전화 : 02-123-4567 | 이메일 : soda@gmail.com</ul>
                 <ul>주소 : 서울 강남구 테헤란로 14길 6 남도빌딩 2층 | 사업자등록번호 : 000-00-00000</ul>
-<<<<<<< HEAD
                 <ul> 통신판매 : 제 2021-서울강남-0000호</ul>
-=======
-                <ul>통신판매 : 제 2021-서울강남-0000호</ul>
->>>>>>> branch 'master' of https://github.com/umyewon/semiproject.git
                 <ul>영업시간 : 월-금 오후 2시-7시</ul>
             </div>
             <div class="foot-category foot-all">

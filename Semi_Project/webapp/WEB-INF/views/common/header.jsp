@@ -25,7 +25,9 @@
     <!-- favicon (Real Favicon Generator)-->
     <link rel="icon" type="image/x-icon" href="${ contextPath }/resources/images/khfavicon.ico">
     <!-- 글꼴 -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
+  	<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500&display=swap" rel="stylesheet">
     <!--font-family: 'Noto Sans KR', sans-serif;-->
 
     <!-- JQuery-->
@@ -41,7 +43,6 @@
 
           <div class="logo">
             <a href="${ cotextPath }/mainpage"><img src="${ contextPath }/resources/images/logo.png"></a>
-            <a href="#"><img src="${ contextPath }/resources/images/logo.png"></a>
 
           </div>
 
