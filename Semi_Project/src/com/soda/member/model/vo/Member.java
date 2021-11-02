@@ -12,6 +12,8 @@ public class Member {
 	private String status;
 	private String userGrade;
 	
+	private String gender;
+	
 	/*
 	 * USER_ID	VARCHAR2(30 BYTE)
 		USER_NAME	VARCHAR2(20 BYTE)
@@ -26,9 +28,9 @@ public class Member {
 
 	
 	public Member() {}
-
+	
 	public Member(String userId, String userName, String userPhone, String userPwd, String userAddress, Date joinDate,
-			String status, String userGrade) {
+			String status, String userGrade, String gender) {
 		super();
 		this.userId = userId;
 		this.userName = userName;
@@ -38,7 +40,9 @@ public class Member {
 		this.joinDate = joinDate;
 		this.status = status;
 		this.userGrade = userGrade;
+		this.gender = gender;
 	}
+
 
 	public String getUserId() {
 		return userId;
@@ -104,12 +108,22 @@ public class Member {
 		this.userGrade = userGrade;
 	}
 
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
 	@Override
 	public String toString() {
 		return "Member [userId=" + userId + ", userName=" + userName + ", userPhone=" + userPhone + ", userPwd="
 				+ userPwd + ", userAddress=" + userAddress + ", joinDate=" + joinDate + ", status=" + status
-				+ ", userGrade=" + userGrade + "]";
+				+ ", userGrade=" + userGrade + ", gender=" + gender + "]";
 	}
+
+	
 	
 	
 }

@@ -1,252 +1,473 @@
-@charset "UTF-8"; /*인코딩 문자 깨짐 방지 (유니코드 문자열 있을 시)*/
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="resources/css/common/mainpage.css">
+    <title>메인메인</title>
 
-html{
-    /* 사용자 설정 문자 크기 그대로 반영 되도록 */
-    font-size: 100%;
-}
+    <!-- 글꼴 (Noto Sans) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
 
-body {
-    color : #432;
-    line-height: 2.0; 
-    height: 2100px;
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <!-- Slide -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+</head>
+<body>
+
+
+<!--header-->
+
+<div class="header">
+    <div class="head-inner">
+        <div class="left-menu">
+            <ul class="main-menu">
+                <li><a class="main-logo" href="메인페이지.html"><b>SODA</b></a></li><br>
+                <li><a class="main-menu2" href="#">SOCIALING</a></li>
+                <li><a class="main-menu2" href="#">CLASS</a></li>
+                <li><a class="main-menu2" href="#">MAGAZINE</a></li>
+                <li><a class="main-menu2" href="#"><img class="icon" src="resources/images/장바구니.png"></img></a></li>
+                <li><a class="main-menu2" href="#"><img class="icon2" src="resources/images/사람아이콘3.png"></img></a></li>
+            </ul>
+            <h1 class="under-logo">
+                <b><span style="color: lightgray">S</span>ocial <br>
+                    <span style="color: lightgray">D</span>ining</b>
+            </h1>
+        </div>
+
+        <div class="banner-slide1">
+            <div class="banner">
+                <div>
+                    <img class="header-banner" src="resources/images/메인페이지그림1.png">
+                </div>
+                
+            </div>
+            <div>
+                <h3 class="right-title">배우고 싶다면 망설이지 말고 원데이 클래스</h3>
+            </div>
+            <article>
+                <div class="slide">
+                    <div class="swiper mySwiper1" style="width: 580px; height: 300px; margin-left: 70px;">
+                        <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div id="thumbox">
+                                <ul>
+                                    <li><img src="resources/images/climing.png"><br></li>
+                                </ul>
+                                
+                            </div>
+                            <a href="#">
+                                <div id="titlebox">
+                                    <p id="s-thumtitle">클라이밍</p><br>
+                                    <h5 id="s-thumsub" style="margin-left: 30px;">나는 나를 이긴다</h5>
+                                    
+                                </div>
+                            </a>
+                        </div>
+                        <div class="swiper-slide">
+                            <div id="thumbox">
+                                <ul>
+                                    <li><img src="resources/images/surfing.png"><br></li>
+                                </ul>
+  
+                            </div>
+                            <a href="#">
+                                <div id="titlebox">
+                                    <p id="s-thumtitle">서핑</p><br>
+                                    <h5 id="s-thumsub" style="margin-left: 30px;">두려움을 넘어서</h5>
+                                    
+                                </div>
+                            </a>
+                        </div>
+                        <div class="swiper-slide">
+                            <div id="thumbox">
+                                <ul>
+                                    <li><img src="resources/images/poledancing.png"><br></li>
+                                </ul>
+
+                            </div>
+                            <a href="#">
+                                <div id="titlebox">
+                                    <p id="s-thumtitle">폴댄스</p><br>
+                                    <h5 id="s-thumsub" style="margin-left: 30px;">내 한계에 도전하다</h5>
+                                    
+                                </div>
+                            </a>
+                        </div>
+                        <div class="swiper-slide">
+                            <div id="thumbox">
+                                <ul>
+                                    <li><img src="resources/images/climing.png"><br></li>
+                                </ul>
+ 
+                            </div>
+                            <a href="#">
+                                <div id="titlebox">
+                                    <p id="s-thumtitle">클라이밍</p><br>
+                                    <h5 id="s-thumsub" style="margin-left: 30px;">나는 나를 이긴다</h5>
+                                    
+                                </div>
+                            </a>
+                        </div>
+                        <div class="swiper-slide">
+                            <div id="thumbox">
+                                <ul>
+                                    <li><img src="resources/images/surfing.png"><br></li>
+                                </ul>
+     
+                            </div>
+                            <a href="#">
+                                <div id="titlebox">
+                                    <p id="s-thumtitle">서핑</p><br>
+                                    <h5 id="s-thumsub" style="margin-left: 30px;">두려움을 넘어서</h5>
+                                    
+                                </div>
+                            </a>
+                        </div>
+                        <div class="swiper-slide">
+                            <div id="thumbox">
+                                <ul>
+                                    <li><img src="resources/images/poledancing.png"><br></li>
+                                </ul>
+  
+                            </div>
+                            <a href="#">
+                                <div id="titlebox">
+                                    <p id="s-thumtitle">폴댄스</p><br>
+                                    <h5 id="s-thumsub" style="margin-left: 30px;">내 한계에 도전하다</h5>
+                                    
+                                </div>
+                            </a>
+                        </div>
+                        </div> 
+                        
+                    </div> 
+                        <div class="button1">
+                            <!-- If we need navigation buttons -->
+                            <div class="but1"><img width="30px" src="resources/images/prev_b.png"></div>
+                        </div>
+                        
+                        <div class="button2">
+                            <div class="but2"><img width="30px" src="resources/images/next_b.png"></div>
+                        </div>
+                </div>
+                </article>
+
+            <!-- Swiper JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+        
+    <!-- Initialize Swiper -->
+    <script>
+        var swiper1 = new Swiper(".mySwiper1", {
+            slidesPerView: 3,
+            spaceBetween: 25,
+
+            loop: true,
+
+            autoplay:{
+                delay: 2000, 
+                disableOnInteraction: false,
+            },
+            
+            // Navigation arrows
+            navigation: {
+                nextEl: '.but1',
+                prevEl: '.but2',
+            },
+        });
+    </script>
+
+        </div>
+
+     </div>
+
+     <div class="socialing-content">
+        <div>
+            <h3 class="content-title">취향이 통하는 친구와 원데이 소셜링</h3>
+        </div>
+
+        <article>
+                <div class="slide">
+                    <div class="swiper mySwiper2">
+                        <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div id="thumbox">
+                                <img src="resources/images/flower1.PNG"><br>
+                            </div>
+                            <a href="#">
+                                <div id="titlebox">
+                                    <p id="s-thumtitle">할로윈 같이 즐겨요</p><br>
+                                    <h5 id="s-thumsub">이태원역 6호선 10.31(일) 오후 6:00</h5>
+                                    
+                                </div>
+                            </a>
+                        </div>
+                        <div class="swiper-slide">
+                            <div id="thumbox">
+                                <img src="resources/images/flower1.PNG"><br>
+                               
+                            </div>
+                            <a href="#">
+                                <div id="titlebox">
+                                    <p id="s-thumtitle">아침에 공원에서 산책하실 분!</p><br>
+                                    <h5 id="s-thumsub">평촌 중앙공원 10.20(수) 오전 9:00</h5>
+                                    
+                                </div>
+                            </a>
+                        </div>
+                        <div class="swiper-slide">
+                            <div id="thumbox">
+                                <img src="resources/images/flower1.PNG"><br>
+                                
+                            </div>
+                            <a href="#">
+                                <div id="titlebox">
+                                    <p id="s-thumtitle">이터널스 같이 보러가요</p><br>
+                                    <h5 id="s-thumsub">CGV 용산아이파크몰 11.20(토) 오...</h5>
+                                    
+                                </div>
+                            </a>
+                        </div>
+                        <div class="swiper-slide">
+                            <div id="thumbox">
+                                <img src="resources/images/flower1.PNG"><br>
+                                
+                            </div>
+                            <a href="#">
+                                <div id="titlebox">
+                                    <p id="s-thumtitle">할로윈 같이 즐겨요</p><br>
+                                    <h5 id="s-thumsub">이태원역 6호선 10.31(일) 오후 6:00</h5>
+                                    
+                                </div>
+                            </a>
+                        </div>
+                        <div class="swiper-slide">
+                            <div id="thumbox">
+                                <img src="resources/images/flower1.PNG"><br>
+                                
+                            </div>
+                            <a href="#">
+                                <div id="titlebox">
+                                    <p id="s-thumtitle">아침에 공원에서 산책하실 분!</p><br>
+                                    <h5 id="s-thumsub">평촌 중앙공원 10.20(수) 오전 9:00</h5>
+                                    
+                                </div>
+                            </a>
+                        </div>
+                        <div class="swiper-slide">
+                            <div id="thumbox">
+                                <img src="resources/images/flower1.PNG"><br>
+                                
+                            </div>
+                            <a href="#">
+                                <div id="titlebox">
+                                    <p id="s-thumtitle">이터널스 같이 보러가요</p><br>
+                                    <h5 id="s-thumsub">CGV 용산아이파크몰 11.20(토) 오...</h5>
+                                    
+                                </div>
+                            </a>
+                        </div>
+                        </div> 
+                    </div> 
+                </div>
+                    
+                    <div class="button3">
+                        <!-- If we need navigation buttons -->
+                        <div class="but3"><img width="30px" src="resources/images/prev_b.png"></div>
+                    </div>
+                    
+                    <div class="button4">
+                        <div class="but4"><img width="30px" src="resources/images/next_b.png"></div>
+                    </div>
+            </article>
+
+            <!-- Swiper JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+        
+    <!-- Initialize Swiper -->
+    <script>
+        var swiper2 = new Swiper(".mySwiper2", {
+            slidesPerView: 3,
+            spaceBetween: 30,
+
+            loop: true,
+            
+            // Navigation arrows
+            navigation: {
+                nextEl: '.but3',
+                prevEl: '.but4',
+            },
+        });
+    </script>
+
+     </div>
+     
+     <div class="onedayclass-content">
+        <div>
+            <h3 class="content-title">취향을 더 깊이있게 알아가는 원데이클래스</h3>
+        </div>
+        <article>
+                <div class="slide">
+                    <div class="swiper mySwiper3">
+                        <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div id="thumbox">
+                                <img src="resources/images/flower1.PNG"><br>
+                            </div>
+                            <a href="#">
+                                <div id="titlebox">
+                                    <p id="s-thumtitle">할로윈 같이 즐겨요</p><br>
+                                    <h5 id="s-thumsub">이태원역 6호선 10.31(일) 오후 6:00</h5>
+                                    
+                                </div>
+                            </a>
+                        </div>
+                        <div class="swiper-slide">
+                            <div id="thumbox">
+                                <img src="resources/images/flower1.PNG"><br>
+                               
+                            </div>
+                            <a href="#">
+                                <div id="titlebox">
+                                    <p id="s-thumtitle">아침에 공원에서 산책하실 분!</p><br>
+                                    <h5 id="s-thumsub">평촌 중앙공원 10.20(수) 오전 9:00</h5>
+                                    
+                                </div>
+                            </a>
+                        </div>
+                        <div class="swiper-slide">
+                            <div id="thumbox">
+                                <img src="resources/images/flower1.PNG"><br>
+                                
+                            </div>
+                            <a href="#">
+                                <div id="titlebox">
+                                    <p id="s-thumtitle">이터널스 같이 보러가요</p><br>
+                                    <h5 id="s-thumsub">CGV 용산아이파크몰 11.20(토) 오...</h5>
+                                    
+                                </div>
+                            </a>
+                        </div>
+                        <div class="swiper-slide">
+                            <div id="thumbox">
+                                <img src="resources/images/flower1.PNG"><br>
+                                
+                            </div>
+                            <a href="#">
+                                <div id="titlebox">
+                                    <p id="s-thumtitle">할로윈 같이 즐겨요</p><br>
+                                    <h5 id="s-thumsub">이태원역 6호선 10.31(일) 오후 6:00</h5>
+                                    
+                                </div>
+                            </a>
+                        </div>
+                        <div class="swiper-slide">
+                            <div id="thumbox">
+                                <img src="resources/images/flower1.PNG"><br>
+                                
+                            </div>
+                            <a href="#">
+                                <div id="titlebox">
+                                    <p id="s-thumtitle">아침에 공원에서 산책하실 분!</p><br>
+                                    <h5 id="s-thumsub">평촌 중앙공원 10.20(수) 오전 9:00</h5>
+                                    
+                                </div>
+                            </a>
+                        </div>
+                        <div class="swiper-slide">
+                            <div id="thumbox">
+                                <img src="resources/images/flower1.PNG"><br>
+                                
+                            </div>
+                            <a href="#">
+                                <div id="titlebox">
+                                    <p id="s-thumtitle">이터널스 같이 보러가요</p><br>
+                                    <h5 id="s-thumsub">CGV 용산아이파크몰 11.20(토) 오...</h5>
+                                    
+                                </div>
+                            </a>
+                        </div>
+                        </div> 
+                    </div> 
+                </div>
     
-}
+            </div>
+                <div class="button5">
+                    <!-- If we need navigation buttons -->
+                    <div class="but5"><img width="30px" src="resources/images/prev_b.png"></div>
+                </div>
+                
+                <div class="button6">
+                    <div class="but6"><img width="30px" src="resources/images/next_b.png"></div>
+                </div>
+            </article>
+    
+    
+     <!-- Swiper JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+        
+    <!-- Initialize Swiper -->
+    <script>
+        var swiper3 = new Swiper(".mySwiper3", {
+            slidesPerView: 3,
+            spaceBetween: 30,
 
-a {
-    text-decoration: none;
-}
+            loop: true,
+            
+            // Navigation arrows
+            navigation: {
+                nextEl: '.but5',
+                prevEl: '.but6',
+            },
+        });
+    </script>
 
-img{
-    max-width: 100%;
-}
+</div>
 
-/* header ------------------------------ */
-.header {
-   width: 100%;
-   margin : 0 auto;
-}
-
-.head-inner {
-    width: 930px;
-    height:650px;
-    margin : 0 auto;
-    display: flex;
-}
-
-.left-menu{
-    width: 230px;
-    height: 650px;
-    background: rgb(218, 239, 245);
-    border: 6px solid rgb(218, 239, 245);
-}
-
-.main-menu{
-    list-style: none;
-}
-
-.main-logo{
-    font-size: 1.25rem;
-    letter-spacing: 4px;
-    color: black;
-}
-
-.main-menu2{
-    margin-top: 10px;
-    letter-spacing: 2px;
-    color: black
-}
-
-.under-logo{
-    margin-left: 30px;
-    letter-spacing: 3px;
-    line-height: 55px;
-    font-size: 2.7rem;
-}
-
-.icon{
-    width: 30px;
-    margin-top: 15px;
-}
-
-.icon2{
-    width: 35px;
-    margin-top: 7px;
-}
-
-.banner-slide1{
-    display: inline;
-}
-
-.banner{
-    width: 700px;
-    height: 180px;
-    background-size: cover;
-    border: 2px solid rgb(218, 239, 245);
-}
-
-.header-banner{
-    width: 750px;
-}
-
-.right-title{
-    font-weight: 700;
-    margin-top: 15px;
-    margin-left: 30px;
-}
-
-.slide-title{
-   color: black;
-   
-}
-
-.slide1-name{
-    color: black;
-    float: right;
-}
+    
+      
+    
+    <!-- 예제 종료 -->
+    <!--footer-->
+    <div class="footer" >
+        <div class="foot-inner">
+            <div class="foot-logo foot-all">
+                S O D A</div>
+            <div class="information foot-all">
+                <ul>주식회사 소셜 다이닝</ul>
+                <ul>대표 : 홍길동 | 개인정보관리책임자 : 홍길동 | 전화 : 02-123-4567 | 이메일 : soda@gmail.com</ul>
+                <ul>주소 : 서울 강남구 테헤란로 14길 6 남도빌딩 2층 | 사업자등록번호 : 000-00-00000</ul>
+                <ul> 통신판매 : 제 2021-서울강남-0000호</ul>
+                <ul>영업시간 : 월-금 오후 2시-7시</ul>
+            </div>
+            <div class="foot-category foot-all">
+                <ul><a href="#">소다소개</a></ul>
+                <ul><a href="#">공지사항 </a></ul>
+                <ul><a href="#">강사신청</a></ul>
+                <ul><a href="#">자주묻는질문</a></ul>
+            </div>
 
 
-/*여기서부터 슬라이드*/
+        </div>
+    </div>
+    <div class="final">
+        <div class="foot-final">
+            <a href="#">이용약관 | </a>
+            <a href="#">개인정보처리방침 | </a>
+            <a href="#">사업자정보확인</a>
+        </div>
+    </div>
 
-.start{
-    width: 100%;
-    height: 1200px;
-    margin : 0 auto;
-    display: display;
-}
-
-.first{
-    position:static;
-    margin-top: 60px;
-}
-
-.b-title{
-    margin-left: 350px;
-    font-size: 1.2rem;
-    font-weight: 700;
-}
-
-.view1{
-    text-align: right;
-    margin-right: 400px;
-    color: black;
-}
+</div>
 
 
-.link-menu{
-    color: rgba(0, 0, 0, 0.517);
-}
+</body>
 
-.all-title{
-    position:relative; 
-}
-
-.first-title{
-    position: absolute;
-    color: black;
-    font-family: 'Noto Sans KR', sans-serif;
-    font-size: 16px;
-    font-weight: bold;
-    margin-left: 10px;
-    margin-top: -5px;
-}
-
-.name{
-    position: absolute;
-    color: black;
-    font-family: 'Noto Sans KR', sans-serif;
-    font-size: 12px;
-    margin-top: -6px;
-    margin-left: 10px;
-}
-
-
-.second{
-    margin-top: 30px;
-}
-
-
-/*---------------footer----------------*/
-.footer{
-    width: 100%;
-    height: 150px;
-    background-color:  rgb(248, 241, 233);
-    color : #432;
-}
-
-.foot-inner{
-    max-width: 1000px;
-    max-height: 150px;
-    margin : 0 auto;
-    display: flex;
-    justify-content: space-between;
-}
-
-.foot-logo{
-    font-size: 30px;
-    font-weight: bold;
-    color:rgb(145, 244, 244);
-    margin-left: 100px;
-    margin-top: 45px;
-    font-family: 'Noto Sans KR', sans-serif;
-
-}
-
-.information{
-    font-size: 5px;
-    margin-top: 12px;
-}
-
-.foot-category{
-    font-size: 5px;
-    font-weight: bold;
-    margin-right: 100px;
-    margin-top: 22px;
-}
-
-.foot-category>ul>a{
-    color:black;
-}
-
-
-/* 이용약관 */
-
-.final{
-    max-width: 1000px;
-    margin : 0 auto;
-}
-
-.foot-final{
-    text-align:center;
-    font-size: 5px;
-    font-weight: bold;
-}
-
-.foot-final>a{
-    color: gray;
-    font-size: 12px;
-}
-
-/* 슬라이더 */
-.swiper-container {
-    width: 810px;
-	height:320px;
-	
-}
-.swiper-slide {
-	display:flex; /* 내용을 중앙정렬 하기위해 flex 사용 */
-	align-items:center; /* 위아래 기준 중앙정렬 */
-	justify-content:center; /* 좌우 기준 중앙정렬 */
-}
-.swiper-slide img {
-	box-shadow:0 0 5px #555;
-	max-width:100%; /* 이미지 최대너비를 제한, 슬라이드에 이미지가 여러개가 보여질때 필요 */
-	/* 이 예제에서 필요해서 설정했습니다. 상황에따라 다를 수 있습니다. */
-}
-
-.swiper-button-next{
-    margin-top: -40px;
-}
-
-.swiper-button-prev{
-    margin-top: -40px;
-}
+</html>
