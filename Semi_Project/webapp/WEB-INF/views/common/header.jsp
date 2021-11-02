@@ -35,7 +35,7 @@
     <!--font-family: 'Noto Sans KR', sans-serif;-->
 
     <!-- JQuery-->
-    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script src="resources/js/jquery-3.6.0.min.js"></script>
 
 
 </head>
@@ -56,7 +56,7 @@ scope="application"/>
             <div class="big-category">
                 <div class="category1">
                     <a href="#">SOCIALING</a>
-                    <a href="${ contextPath }/class/main">CLASS</a>
+                    <a href="${ contextPath }/lesson/main">CLASS</a>
                     <a href="#">MAGAZINE</a>
                 </div>
                 <div class="category2">
@@ -64,7 +64,7 @@ scope="application"/>
                     <li class="mypage">
                         <a href="${ contextPath }/mypage/list" >MYPAGE</a>
                         <ul class="mypage_sub">
-                            <li><a href="${ contextPath }/mypage/list">마이페이지</a></li>
+                            <li><a href="${ contextPath }/mypage/main">마이페이지</a></li>
                             <li><a href="${ contextPath }/logout">로그아웃</a></li>
                         </ul>
                     </li>
@@ -73,6 +73,7 @@ scope="application"/>
 
         </div>
     </div>
+    <!-- 마이페이지 마우스 오버 시 리스트 출력 스크립트 -->
     <script>
         $(document).ready(function(){ 
           $(".mypage").mouseover(function(){ 

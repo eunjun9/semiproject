@@ -7,7 +7,7 @@
 <title>마이페이지_결제내역</title>
 
  	<!--외부 스타일 시트-->
-    <link href="/resources/css/mypage/mypage_payList.css" rel="stylesheet">
+    <link href="resources/css/mypage/mypage_payList.css" rel="stylesheet">
 
      <!-- font -->
      <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,7 +15,7 @@
      <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500&display=swap" rel="stylesheet">
 
      <!-- JQuery -->
-    <script src="../js/jquery-3.6.0.min.js"></script> 
+    <script src="resources/js/jquery-3.6.0.min.js"></script> 
 
 </head>
 <body>

@@ -7,7 +7,7 @@
 <title>클래스 등록</title>
 
     <!--외부 스타일 시트-->
-    <link href="/resources/css/class/class_form.css" rel="stylesheet">
+    <link href="resources/css/lesson/lesson_form.css" rel="stylesheet">
 
     <!-- 썸머노트 -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
