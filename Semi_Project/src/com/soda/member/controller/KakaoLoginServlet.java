@@ -66,7 +66,7 @@ public class KakaoLoginServlet extends HttpServlet {
 			
 		}else {
 			request.getSession().setAttribute("loginUser", loginUser);
-			response.sendRedirect(request.getContextPath() + "/main");
+			response.sendRedirect(request.getContextPath() + "/mainpage");
 		}
 	} 
 
