@@ -21,7 +21,7 @@
 	%>
 
     <!-- 외부 스타일 시트 -->
-    <link href="<%= request.getContextPath() %>/resources/css/common/header_footer.css" rel="stylesheet">
+    <link href="${ contextPath }/resources/css/common/header_footer.css" rel="stylesheet">
     <!-- favicon (Real Favicon Generator)-->
     <link rel="icon" type="image/x-icon" href="${ contextPath }/resources/images/khfavicon.ico">
     <!-- 글꼴 -->
@@ -56,7 +56,8 @@
                 <div class="category2">
                 <a href="#">CART</a>
                 <ul class="mypage">
-                    <li class="mypage"><a href="${ contextPath }/mypage/main" >MYPAGE</a>
+                    <li class="mypage">
+                    	<a href="${ contextPath }/mypage/main" >MYPAGE</a>
                         <ul class="mypage_sub">
                           <li><a href="${ contextPath }/mypage/main">마이페이지</a></li>
                           <li><a href="${ contextPath }/logout">로그아웃</a></li>
