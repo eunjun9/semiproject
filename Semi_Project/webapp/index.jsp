@@ -26,7 +26,7 @@
         </nav>
         <nav class="main-bar">
             <ul class="main-nav">
-                <li><a class="button1" href="#">로그인</a></li>
+                <li><a class="button1" href="<%= request.getContextPath() %>/login">로그인</a></li>
             </ul>
         </nav>
 
@@ -39,7 +39,7 @@
         특별한 하루가 될 거에요.
         </p>
         <ul class="join-content">
-            <li><a class="button2" href="join.html">가입하기</a></li>
+            <li><a class="button2" href="<%= request.getContextPath() %>/memberJoin">가입하기</a></li>
         </ul>
     </div>
     <div class="page-under wrapper">
@@ -60,7 +60,7 @@
         원데이 클래스와 VOD 클래스를 통해 나를 위한 시간 갖기
         </p>
         <ul class="join-content">
-            <li><a class="button2" href="join.html">가입하기</a></li>
+            <li><a class="button2" href="<%= request.getContextPath() %>/memberJoin">가입하기</a></li>
         </ul>
     </div>
        
