@@ -48,8 +48,6 @@ public class LessonMainServlet extends HttpServlet {
 		/*필터 관련 파라미터 추출  (추후에 수정 )*/
 		
 		
-		//
-		
 		//List<Notice> NoticeList = new LessonService().selectLessonList();
 		
 		request.getRequestDispatcher("/WEB-INF/views/lesson/lessonMain.jsp").forward(request, response);

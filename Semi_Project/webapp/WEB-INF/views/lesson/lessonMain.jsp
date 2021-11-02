@@ -64,8 +64,13 @@
                         <option value="sport">운동</option>
                     </select>
 
+					<select name="smallC">
+                        <option selected disabled>소분류 선택</option>
+                    </select><br>
+                    
                     <!-- 조건문으로 대분류 선택에 따른 소분류 목록 출력 -->
                     <!--value=it일때-->
+                    <c:if test="${ param.bigC == 'it' }">
                     <select name="smallC">
                         <option selected disabled>소분류 선택</option>
                         <option>AI·머신러닝</option>
@@ -75,8 +80,10 @@
                         <option>서버·백엔드</option>
                         <option>프론트엔드</option>
                     </select><br>
+                    </c:if>
 
                     <!--value=craft일때-->
+                     <c:if test="${ param.bigC == 'craft' }">
                     <!-- <select name="smallC">
                         <option selected disabled>소분류 선택</option>
                         <option>도자기</option>
@@ -84,16 +91,20 @@
                         <option>레진아트</option>
                         <option>위빙</option>
                     </select><br> -->
+                    </c:if>
 
                     <!--value=art일때-->
+                    <c:if test="${ param.bigC == 'art' }">
                     <!-- <select name="smallC">
                         <option selected disabled>소분류 선택</option>
                         <option>드로잉</option>
                         <option>악기</option>
                         <option>일러스트</option>
                     </select><br> -->
+                    </c:if>
 
                     <!--value=food일때-->
+                    <c:if test="${ param.bigC == 'food' }">
                     <!-- <select name="smallC">
                         <option selected disabled>소분류 선택</option>
                         <option>베이킹</option>
@@ -104,8 +115,10 @@
                         <option>커피</option>
                         <option>한식</option>
                     </select><br> -->
+                    </c:if>
 
                     <!--value=sport일때-->
+                    <c:if test="${ param.bigC == 'sport' }">
                     <!-- <select name="smallC">
                         <option selected disabled>소분류 선택</option>
                         <option>근력운동</option>
@@ -114,6 +127,7 @@
                         <option>폴댄스</option>
                         <option>필라테스</option>
                     </select><br> -->
+                    </c:if>
 
                     <label>진행방식</label>
                     <input type="checkbox" value="online" name="online"><label class="ckboxlabel">온라인</label>

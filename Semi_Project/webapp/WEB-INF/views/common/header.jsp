@@ -55,13 +55,13 @@
                 
                 <div class="category2">
                 <a href="#">CART</a>
-                <li class="mypage">
-                    <a href="${ contextPath }/mypage/main" >MYPAGE</a>
-                    <ul class="mypage_sub">
-                      <li><a href="${ contextPath }/mypage/main">마이페이지</a></li>
-                      <li><a href="${ contextPath }/logout">로그아웃</a></li>
-                    </ul>
-                </li>
+                <ul class="mypage">
+                    <li class="mypage"><a href="${ contextPath }/mypage/main" >MYPAGE</a>
+                        <ul class="mypage_sub">
+                          <li><a href="${ contextPath }/mypage/main">마이페이지</a></li>
+                          <li><a href="${ contextPath }/logout">로그아웃</a></li>
+                        </ul>
+                  </li></ul>
                 </div>
             </div>
         </div>
