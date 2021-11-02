@@ -45,7 +45,7 @@
         <div class="banner-slide1">
             <div class="banner">
                 <div>
-                    <img class="header-banner" src="resources/images/메인페이지그림1.png">
+                    <img class="header-banner" src="resources/images/main/메인페이지그림1.png">
                 </div>
                 
             </div>
@@ -59,7 +59,7 @@
                         <div class="swiper-slide">
                             <div id="thumbox">
                                 <ul>
-                                    <li><img src="resources/images/climing.png"><br></li>
+                                    <li><img src="resources/images/main/climing.png"><br></li>
                                 </ul>
                                 
                             </div>
@@ -74,7 +74,7 @@
                         <div class="swiper-slide">
                             <div id="thumbox">
                                 <ul>
-                                    <li><img src="resources/images/surfing.png"><br></li>
+                                    <li><img src="resources/images/main/surfing.png"><br></li>
                                 </ul>
   
                             </div>
@@ -89,7 +89,7 @@
                         <div class="swiper-slide">
                             <div id="thumbox">
                                 <ul>
-                                    <li><img src="resources/images/poledancing.png"><br></li>
+                                    <li><img src="resources/images/main/poledancing.png"><br></li>
                                 </ul>
 
                             </div>
@@ -104,7 +104,7 @@
                         <div class="swiper-slide">
                             <div id="thumbox">
                                 <ul>
-                                    <li><img src="resources/images/climing.png"><br></li>
+                                    <li><img src="resources/images/main/climing.png"><br></li>
                                 </ul>
  
                             </div>
@@ -119,7 +119,7 @@
                         <div class="swiper-slide">
                             <div id="thumbox">
                                 <ul>
-                                    <li><img src="resources/images/surfing.png"><br></li>
+                                    <li><img src="resources/images/main/surfing.png"><br></li>
                                 </ul>
      
                             </div>
@@ -134,7 +134,7 @@
                         <div class="swiper-slide">
                             <div id="thumbox">
                                 <ul>
-                                    <li><img src="resources/images/poledancing.png"><br></li>
+                                    <li><img src="resources/images/main/poledancing.png"><br></li>
                                 </ul>
   
                             </div>
@@ -151,11 +151,11 @@
                     </div> 
                         <div class="button1">
                             <!-- If we need navigation buttons -->
-                            <div class="but1"><img width="30px" src="resources/images/prev_b.png"></div>
+                            <div class="but1"><img width="30px" src="resources/images/main/prev_b.png"></div>
                         </div>
                         
                         <div class="button2">
-                            <div class="but2"><img width="30px" src="resources/images/next_b.png"></div>
+                            <div class="but2"><img width="30px" src="resources/images/main/next_b.png"></div>
                         </div>
                 </div>
                 </article>
@@ -199,7 +199,7 @@
                         <div class="swiper-wrapper">
                         <div class="swiper-slide">
                             <div id="thumbox">
-                                <img src="resources/images/flower1.PNG"><br>
+                                <img src="resources/images/main/flower1.PNG"><br>
                             </div>
                             <a href="#">
                                 <div id="titlebox">
@@ -211,7 +211,7 @@
                         </div>
                         <div class="swiper-slide">
                             <div id="thumbox">
-                                <img src="resources/images/flower1.PNG"><br>
+                                <img src="resources/images/main/flower1.PNG"><br>
                                
                             </div>
                             <a href="#">
@@ -224,7 +224,7 @@
                         </div>
                         <div class="swiper-slide">
                             <div id="thumbox">
-                                <img src="resources/images/flower1.PNG"><br>
+                                <img src="resources/images/main/flower1.PNG"><br>
                                 
                             </div>
                             <a href="#">
@@ -237,7 +237,7 @@
                         </div>
                         <div class="swiper-slide">
                             <div id="thumbox">
-                                <img src="resources/images/flower1.PNG"><br>
+                                <img src="resources/images/main/flower1.PNG"><br>
                                 
                             </div>
                             <a href="#">
@@ -250,7 +250,7 @@
                         </div>
                         <div class="swiper-slide">
                             <div id="thumbox">
-                                <img src="resources/images/flower1.PNG"><br>
+                                <img src="resources/images/main/flower1.PNG"><br>
                                 
                             </div>
                             <a href="#">
@@ -263,7 +263,7 @@
                         </div>
                         <div class="swiper-slide">
                             <div id="thumbox">
-                                <img src="resources/images/flower1.PNG"><br>
+                                <img src="resources/images/main/flower1.PNG"><br>
                                 
                             </div>
                             <a href="#">
@@ -280,11 +280,11 @@
                     
                     <div class="button3">
                         <!-- If we need navigation buttons -->
-                        <div class="but3"><img width="30px" src="resources/images/prev_b.png"></div>
+                        <div class="but3"><img width="30px" src="resources/images/main/prev_b.png"></div>
                     </div>
                     
                     <div class="button4">
-                        <div class="but4"><img width="30px" src="resources/images/next_b.png"></div>
+                        <div class="but4"><img width="30px" src="resources/images/main/next_b.png"></div>
                     </div>
             </article>
 
@@ -319,7 +319,7 @@
                         <div class="swiper-wrapper">
                         <div class="swiper-slide">
                             <div id="thumbox">
-                                <img src="resources/images/flower1.PNG"><br>
+                                <img src="resources/images/main/flower1.PNG"><br>
                             </div>
                             <a href="#">
                                 <div id="titlebox">
@@ -331,7 +331,7 @@
                         </div>
                         <div class="swiper-slide">
                             <div id="thumbox">
-                                <img src="resources/images/flower1.PNG"><br>
+                                <img src="resources/images/main/flower1.PNG"><br>
                                
                             </div>
                             <a href="#">
@@ -344,7 +344,7 @@
                         </div>
                         <div class="swiper-slide">
                             <div id="thumbox">
-                                <img src="resources/images/flower1.PNG"><br>
+                                <img src="resources/images/main/flower1.PNG"><br>
                                 
                             </div>
                             <a href="#">
@@ -357,7 +357,7 @@
                         </div>
                         <div class="swiper-slide">
                             <div id="thumbox">
-                                <img src="resources/images/flower1.PNG"><br>
+                                <img src="resources/images/main/flower1.PNG"><br>
                                 
                             </div>
                             <a href="#">
@@ -370,7 +370,7 @@
                         </div>
                         <div class="swiper-slide">
                             <div id="thumbox">
-                                <img src="resources/images/flower1.PNG"><br>
+                                <img src="resources/images/main/flower1.PNG"><br>
                                 
                             </div>
                             <a href="#">
@@ -383,7 +383,7 @@
                         </div>
                         <div class="swiper-slide">
                             <div id="thumbox">
-                                <img src="resources/images/flower1.PNG"><br>
+                                <img src="resources/images/main/flower1.PNG"><br>
                                 
                             </div>
                             <a href="#">
@@ -401,11 +401,11 @@
             </div>
                 <div class="button5">
                     <!-- If we need navigation buttons -->
-                    <div class="but5"><img width="30px" src="resources/images/prev_b.png"></div>
+                    <div class="but5"><img width="30px" src="resources/images/main/prev_b.png"></div>
                 </div>
                 
                 <div class="button6">
-                    <div class="but6"><img width="30px" src="resources/images/next_b.png"></div>
+                    <div class="but6"><img width="30px" src="resources/images/main/next_b.png"></div>
                 </div>
             </article>
     
