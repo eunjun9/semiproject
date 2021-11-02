@@ -33,7 +33,7 @@
     <!-- 외부 스타일 시트 -->
     <link href="<%= request.getContextPath() %>/resources/css/common/header_footer.css" rel="stylesheet">
     <!-- favicon (Real Favicon Generator)-->
-    <link rel="icon" type="image/x-icon" href="resources/image/khfavicon.ico">
+    <link rel="icon" type="image/x-icon" href="${ contextPath }/resources/images/khfavicon.ico">
     <!-- 글꼴 -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
     <!--font-family: 'Noto Sans KR', sans-serif;-->
@@ -45,13 +45,12 @@
 </head>
 
 <body>
-
     <!-- 헤더 -->
     <div class="header">
         <div class="head-inner">
 
           <div class="logo">
-            <a href="#"><img src="resources/images/logo.png"></a>
+            <a href="${ cotextPath }/mainpage"><img src="${ contextPath }/resources/images/logo.png"></a>
           </div>
 
             <div class="big-category">
@@ -60,15 +59,16 @@
                     <a href="${ contextPath }/lesson/main">CLASS</a>
                     <a href="#">MAGAZINE</a>
                 </div>
+                
                 <div class="category2">
-                    <a href="#">CART</a>
-                    <li class="mypage">
-                        <a href="${ contextPath }/mypage/list" >MYPAGE</a>
-                        <ul class="mypage_sub">
-                            <li><a href="${ contextPath }/mypage/main">마이페이지</a></li>
-                            <li><a href="${ contextPath }/logout">로그아웃</a></li>
-                        </ul>
-                    </li>
+                <a href="#">CART</a>
+                <li class="mypage">
+                    <a href="${ contextPath }/mypage/main" >MYPAGE</a>
+                    <ul class="mypage_sub">
+                      <li><a href="${ contextPath }/mypage/main">마이페이지</a></li>
+                      <li><a href="${ contextPath }/logout">로그아웃</a></li>
+                    </ul>
+                </li>
                 </div>
             </div>
         </div>

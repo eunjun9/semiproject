@@ -2,6 +2,7 @@ package com.soda.lesson.controller;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -41,14 +42,17 @@ public class LessonMainServlet extends HttpServlet {
 			page = Integer.parseInt(request.getParameter("page"));
 		}
 		
+		// 페이징과 관련된 데이터, 조회 된 게시판List를 담아서 map에 리턴
+		Map<String, Object> map = new LessonService().selectList(page);
+		
 		/*필터 관련 파라미터 추출  (추후에 수정 )*/
 		
 		
 		//
 		
+		//List<Notice> NoticeList = new LessonService().selectLessonList();
 		
-		
-		List<Notice> NoticeList = new LessonService().selectLessonList();
+		request.getRequestDispatcher("/WEB-INF/views/lesson/lessonMain.jsp").forward(request, response);
 	
 	}
 

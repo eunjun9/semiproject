@@ -15,7 +15,7 @@
     <!--font-family: 'Noto Sans KR', sans-serif;-->
 
     <!-- JQuery-->
-    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script src="resources/js/jquery-3.6.0.min.js"></script>
 
 </head>
 <body>
@@ -27,9 +27,9 @@
             <div class="information foot-all">
                 <ul>주식회사 소셜 다이닝</ul>
                 <ul>대표 : 홍길동 | 개인정보관리책임자 : 홍길동 | 전화 : 02-123-4567 | 이메일 : soda@gmail.com</ul>
-                <ul>주소 : 서울 강남구 테헤란로 14길 6 남도빌딩 2층 | 사업자등록번호 : 000-00-00000</>
-                    <ul> 통신판매 : 제 2021-서울강남-0000호</>
-                        <ul>영업시간 : 월-금 오후 2시-7시</ul>
+                <ul>주소 : 서울 강남구 테헤란로 14길 6 남도빌딩 2층 | 사업자등록번호 : 000-00-00000</ul>
+                <ul> 통신판매 : 제 2021-서울강남-0000호</ul>
+                <ul>영업시간 : 월-금 오후 2시-7시</ul>
             </div>
             <div class="foot-category foot-all">
                 <ul><a href="#">소다소개</a></ul>

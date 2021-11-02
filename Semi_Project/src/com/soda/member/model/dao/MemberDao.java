@@ -14,7 +14,7 @@ import com.soda.member.model.vo.Member;
 
 public class MemberDao {
 
-	private Properties memberQuery;
+	private Properties memberQuery = new Properties();
 	
 	public MemberDao() {
 		memberQuery = new Properties();

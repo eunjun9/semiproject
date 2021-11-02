@@ -8,7 +8,7 @@
 <title>클래스_메인</title>
 
 	<!--외부 스타일 시트-->
-    <link href="resources/css/lesson/lesson_main.css" rel="stylesheet">
+    <link href="${ contextPath }/resources/css/lesson/lesson_main.css" rel="stylesheet">
 
     <!-- font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -37,15 +37,15 @@
         <div class="wrapper2">
             <div class="slide">
                 <ul>
-                    <li><img src="resources/image/yewon/painting.jpg" width="340px" height="380px"></li>
-                    <li><img src="resources/image/yewon/dance.jpg" width="340px" height="380px"></li>
-                    <li><img src="resources/image/yewon/weaving.jpg" width="340px" height="380px"></li>
-                    <li><img src="resources/image/yewon/baking.jpg" width="340px"  height="380px"></li>
+                    <li><img src="${ contextPath }/resources/images/yewon/painting.jpg" width="340px" height="380px"></li>
+                    <li><img src="${ contextPath }/resources/images/yewon/dance.jpg" width="340px" height="380px"></li>
+                    <li><img src="${ contextPath }/resources/images/yewon/weaving.jpg" width="340px" height="380px"></li>
+                    <li><img src="${ contextPath }/resources/images/yewon/baking.jpg" width="340px"  height="380px"></li>
                 </ul>
             </div>
             <div class="filtering">
-                <form method="get" action="${ contextPath }/lesson/list }">
-                    <img id="search" width="20px" src="resources/images/yewon/search.png">
+                <form method="get" action="${ contextPath }/lesson/main }">
+                    <img id="search" width="20px" src="${ contextPath }/resources/images/yewon/search.png">
                     <input type="text" maxlength="25" size="40" placeholder="검색할 키워드를 입력해주세요" name="keyword" id="keyword" ><br>
                     
                     <label>가격</label>
@@ -141,7 +141,7 @@
         
         <div class="wrapper4">
         <!-- 게시글 반복문으로 삽입  -->
-        <c:forEach var="" items="">
+       <%--  <c:forEach var="" items="">
             <div class="cItem" >
             	<!-- a태그에 제목, 사진, 가격 넣어서 클릭 시 해당 페이지로 이동 nNum으로 구분  (아래 href 코드 수정 필요)-->
                 <a href="${ contextPath }/lesson/detail?nNum=">
@@ -150,24 +150,38 @@
                     <p class="cPrice"></p>
                 </a>
             </div>
-        </c:forEach>
+        </c:forEach> --%>
         </div>
 
-		<!-- 페이지 로직  -->
-        <div class="wrapper5">
-            <a class="paging" href="${ contextPath }/lesson/main?page=1"><img width="18px" src="resources/images/yewon/previous.png">
-            <img width="18px" src="resources/images/yewon/previous.png"></a>
-             <a class="paging" href="#"><img width="18px" src="../resources/icon/previous.png"></a>
-                <a class="paging" href="#"><img width="20px" src="resources/images/yewon/circle_sky.png"></a>
+		<!-- 페이지 로직 (필터링 조건문 추후에 작성) -->
+        <%-- <div class="wrapper5">
+        	<!-- (<<) 제일 첫 페이지로 이동 -->
+            <a class="paging" href="${ contextPath }/lesson/main?page=1"><img width="16px" src="resources/images/yewon/previous.png">
+            <img width="16px" src="resources/images/yewon/previous.png"></a>
+             
+             <!--  (<) 이전 페이지  : 현재 페이지 - 1이니까 -->
+             <c:choose>
+             	<!--  현재 페이지가 1보다 클 때는 이동하고  -->
+             	<c:when test="${ pi.page > 1 }">
+             	<a class="paging" href="${ contextPath }/lesson/main?page=${ pi.page - 1}"><img width="18px" src="resources/images/previous.png"></a>
+             	</c:when>
+             	<!-- 1이면 현재 페이지에 머뭄 -->
+             	<c:otherwise>
+             	<a class="paging" href="#"><img width="18px" src="resources/images/previous.png"></a>
+             	</c:otherwise>
+             </c:choose>
                 <a class="paging" href="#"><img width="20px" src="resources/images/yewon/circle_beige.png"></a>
                 <a class="paging" href="#"><img width="20px" src="resources/images/yewon/circle_beige.png"></a>
                 <a class="paging" href="#"><img width="20px" src="resources/images/yewon/circle_beige.png"></a>
                 <a class="paging" href="#"><img width="20px" src="resources/images/yewon/circle_beige.png"></a>
+                <a class="paging" href="#"><img width="20px" src="resources/images/yewon/circle_beige.png"></a>
+            <!--  (>) 다음 페이지 -->
             <a class="paging" href="#"><img width="18px" src="resources/images/yewon/next.png"></a>
-            <a class="paging" href="${ contextPath }/board/list?page=${ pi.maxPage }"><img width="18px" src="resources/images/yewon/next.png">
-            <img width="18px" src="resources/images/yewon/next.png"></a>
+            <!-- (>>) 제일 끝 페이지로 이동 -->
+            <a class="paging" href="${ contextPath }/lesson/list?page=${ pi.maxPage }"><img width="16px" src="resources/images/yewon/next.png">
+            <img width="16px" src="resources/images/yewon/next.png"></a>
         </div>
-
+ --%>
 
     </div>
 

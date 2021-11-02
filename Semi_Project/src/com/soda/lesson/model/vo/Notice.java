@@ -15,18 +15,22 @@ public class Notice {
 	
 	public Notice() {}
 
-	public Notice(int nNum, String nTitle, String nContent, Date nDate, String nStatus, String nType, String userId,
-			Date modifyDate) {
+
+	public Notice(int nNum, String nTitle, String nContent, String nStatus, String nType, String userId,
+			String userName, Date nDate, Date modifyDate) {
 		super();
 		this.nNum = nNum;
 		this.nTitle = nTitle;
 		this.nContent = nContent;
-		this.nDate = nDate;
 		this.nStatus = nStatus;
 		this.nType = nType;
 		this.userId = userId;
+		this.userName = userName;
+		this.nDate = nDate;
 		this.modifyDate = modifyDate;
 	}
+
+
 
 	public int getnNum() {
 		return nNum;
@@ -97,7 +101,7 @@ public class Notice {
 	public String toString() {
 		return "Notice [nNum=" + nNum + ", nTitle=" + nTitle + ", nContent=" + nContent + ", nDate=" + nDate
 				+ ", nStatus=" + nStatus + ", nType=" + nType + ", userId=" + userId + ", modifyDate=" + modifyDate
-			    + "]";
+			 + "]";
 	};
 	
 	

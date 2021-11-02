@@ -4,7 +4,15 @@ import java.sql.Date;
 import java.util.List;
 
 public class Lesson {
-	private int nNum; 			// 게시판 번호
+	private int nNum; 			// 게시판 번호 (notice 테이블 참조)
+	private String nTitle;		// 게시글 제목 (notice 테이블 참조)
+	private String nContent;	// 게시글 내용 (notice 테이블 참조)
+	private String nStatus;		// 상태 (Y, N) (notice 테이블 참조)
+	private String nType;		// 게시판 종류 (클래스, 소셜링, 매거진)
+	private String userId;		// 사용자 아이디 (Member_info 테이블 참조)
+	private String userName; 	// 사용자 이름 (Member_info 테이블 참조)
+	private Date nDate;			// 작성 날짜 (notice 테이블 참조)
+	private Date modifyDate;	// 수정 날짜 (notice 테이블 참조)
 	private String ctag1;		// 카테고리 대분류
 	private String ctag2;		// 카테고리 소분류
 	private int cPrice;			// 가격
@@ -14,16 +22,24 @@ public class Lesson {
 	private Date cEDate;		// 종료날짜
 	private String cLocation;	// 장소
 	private String cTutor;		// 강사 소개
-	private String cWriter;		// 작성자 (강사 아이디)
 	
 	private List<File> photoList;  // 첨부파일
 	
 	public Lesson() {}
 
-	public Lesson(int nNum, String ctag1, String ctag2, int cPrice, String cType, String cCategogy, Date cSDate,
-			Date cEDate, String cLocation, String cTutor, String cWriter, List<File> photoList) {
+	public Lesson(int nNum, String nTitle, String nContent, String nStatus, String nType, String userId,
+			String userName, Date nDate, Date modifyDate, String ctag1, String ctag2, int cPrice, String cType,
+			String cCategogy, Date cSDate, Date cEDate, String cLocation, String cTutor, List<File> photoList) {
 		super();
 		this.nNum = nNum;
+		this.nTitle = nTitle;
+		this.nContent = nContent;
+		this.nStatus = nStatus;
+		this.nType = nType;
+		this.userId = userId;
+		this.userName = userName;
+		this.nDate = nDate;
+		this.modifyDate = modifyDate;
 		this.ctag1 = ctag1;
 		this.ctag2 = ctag2;
 		this.cPrice = cPrice;
@@ -33,7 +49,6 @@ public class Lesson {
 		this.cEDate = cEDate;
 		this.cLocation = cLocation;
 		this.cTutor = cTutor;
-		this.cWriter = cWriter;
 		this.photoList = photoList;
 	}
 
@@ -44,7 +59,71 @@ public class Lesson {
 	public void setnNum(int nNum) {
 		this.nNum = nNum;
 	}
-	
+
+	public String getnTitle() {
+		return nTitle;
+	}
+
+	public void setnTitle(String nTitle) {
+		this.nTitle = nTitle;
+	}
+
+	public String getnContent() {
+		return nContent;
+	}
+
+	public void setnContent(String nContent) {
+		this.nContent = nContent;
+	}
+
+	public String getnStatus() {
+		return nStatus;
+	}
+
+	public void setnStatus(String nStatus) {
+		this.nStatus = nStatus;
+	}
+
+	public String getnType() {
+		return nType;
+	}
+
+	public void setnType(String nType) {
+		this.nType = nType;
+	}
+
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public Date getnDate() {
+		return nDate;
+	}
+
+	public void setnDate(Date nDate) {
+		this.nDate = nDate;
+	}
+
+	public Date getModifyDate() {
+		return modifyDate;
+	}
+
+	public void setModifyDate(Date modifyDate) {
+		this.modifyDate = modifyDate;
+	}
+
 	public String getCtag1() {
 		return ctag1;
 	}
@@ -117,15 +196,6 @@ public class Lesson {
 		this.cTutor = cTutor;
 	}
 
-	public String getcWriter() {
-		return cWriter;
-	}
-
-	public void setcWriter(String cWriter) {
-		this.cWriter = cWriter;
-	}
-
-
 	public List<File> getPhotoList() {
 		return photoList;
 	}
@@ -134,14 +204,13 @@ public class Lesson {
 		this.photoList = photoList;
 	}
 
-	
 	@Override
 	public String toString() {
-		return "Lesson [nNum=" + nNum + ", ctag1=" + ctag1 + ", ctag2=" + ctag2 + ", cPrice=" + cPrice + ", cType="
-				+ cType + ", cCategogy=" + cCategogy + ", cSDate=" + cSDate + ", cEDate=" + cEDate + ", cLocation="
-				+ cLocation + ", cTutor=" + cTutor + ", cWriter=" + cWriter + ", photoList=" + photoList + "]";
+		return "Lesson [nNum=" + nNum + ", nTitle=" + nTitle + ", nContent=" + nContent + ", nStatus=" + nStatus
+				+ ", nType=" + nType + ", userId=" + userId + ", userName=" + userName + ", nDate=" + nDate
+				+ ", modifyDate=" + modifyDate + ", ctag1=" + ctag1 + ", ctag2=" + ctag2 + ", cPrice=" + cPrice
+				+ ", cType=" + cType + ", cCategogy=" + cCategogy + ", cSDate=" + cSDate + ", cEDate=" + cEDate
+				+ ", cLocation=" + cLocation + ", cTutor=" + cTutor + ", photoList=" + photoList + "]";
 	}
 
-
-	
 }
