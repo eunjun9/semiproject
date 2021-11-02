@@ -1,6 +1,7 @@
 package com.soda.member.controller;
 
 import java.io.IOException;
+import java.security.SecureRandom;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.filter.SHA256Util;
 import com.soda.member.model.service.MemberService;
 import com.soda.member.model.vo.Member;
 
@@ -34,17 +36,22 @@ public class KakaoLoginServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String userId = request.getParameter("userEmail");
 		String userName = request.getParameter("userName");
+		String kakaoId = request.getParameter("kakaoId");
 		
 		Member loginUser = new MemberService().loginMember(userId);
 		
-	
+		// 가입된 정보 없으면 가입시켜주기
 		if( loginUser == null ) {
 			Member joinMember = new Member();
 			joinMember.setUserId(userId);
 			joinMember.setUserName(userName);
 			joinMember.setUserPhone("없음");
-			// 카카오계정 db 등록 시에 비밀번호 어떤 식으로 저장해야할 지 고민중
-			joinMember.setUserPwd("3b86ff88ef6c490628285f482af15ddcb29541f94b");
+			
+			// 카카오계정 고유ID를 암호화해서 비밀번호로 생성
+			String salt = SHA256Util.generateSalt();
+	        String newPassword = SHA256Util.getEncrypt(kakaoId, salt);
+	        joinMember.setUserPwd(newPassword);
+
 			joinMember.setUserAddress("데이터가 없습니다.");
 			
 			//카카오 자동 회원가입 로직 실행
@@ -59,7 +66,7 @@ public class KakaoLoginServlet extends HttpServlet {
 			
 		}else {
 			request.getSession().setAttribute("loginUser", loginUser);
-			response.sendRedirect(request.getContextPath());
+			response.sendRedirect(request.getContextPath() + "/main");
 		}
 	} 
 
