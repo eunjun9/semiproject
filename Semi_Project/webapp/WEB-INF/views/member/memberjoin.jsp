@@ -11,8 +11,8 @@
 
     
     <!-- 외부 스타일 시트 -->
-    <link href="resources/css/memberjoin.css" rel="stylesheet">
-    <link href="resources/css/header_footer.css" rel="stylesheet">
+    <link href="resources/css/common/memberjoin.css" rel="stylesheet">
+    <link href="resources/css/common/header_footer.css" rel="stylesheet">
     <!-- favicon (Real Favicon Generator)-->
     <link rel="icon" type="image/x-icon" href="resources/image/khfavicon.ico">
     <!-- 글꼴 -->
@@ -108,7 +108,7 @@
                 <div class="form-check mb-2"> 
                     <input class="form-check-input" type="checkbox" name="n_agree" id="n_agree" required=""> 
                     <label class="form-check-label" for="n_agree"> [필수] 
-                        <a class="link" href="이용약관및개인정보.html">이용약관</a>과 <a class="link" href="href="이용약관및개인정보.html">개인정보처리방침</a>에 동의 
+                        <a class="link" href="joincheckpage.html">이용약관</a>과 <a class="link" href="joincheckpage.html">개인정보처리방침</a>에 동의 
                     </label> 
                 </div> 
                 <div class="form-check"> 

@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>이용약관 및 개인정보 페이지</title>
-    <link href="resources/css/joincheck.css" rel="stylesheet">
+    <link href="resources/css/common/joincheck.css" rel="stylesheet">
     <link href="resources/css/header_footer.css" rel="stylesheet">
     
     <!-- favicon (Real Favicon Generator)-->
@@ -52,7 +52,7 @@
     <!--body-->
     <div class="form-body">
         <div class="form-check mb-2"> 
-            <input class="form-check-input" type="checkbox" name="n_agree" id="n_agree" required="">  [필수] 
+            <input class="form-check-input" type='checkbox' name='n_agree' id='n_agree' required="">  [필수] 이용약관
             <div class="form-body2">
                <p>
                 소다는 기본적으로 여러분 모두에게 동일한 내용의 서비스를 제공합니다. 다만, '청소년보호법' 등 관련 법령이나 기타 개별 서비스 제공에서의 특별한 필요에 의해서 연령 또는 일정한 등급을 기준으로 이용자를 구분하여 제공하는 서비스의 내용, 이용 시간, 이용 횟수 등을 다르게 하는 등 일부 이용을 제한하는 경우가 있습니다. 자세한 내용은 역시 각 서비스 상의 안내, 공지사항, 고객센터 도움말 등에서 확인하실 수 있습니다.
@@ -64,7 +64,7 @@
             </div> 
         </div>
         <div class="form-check mb-2"> 
-            <input class="form-check-input" type="checkbox" name="n_agree" id="n_agree" required="">  [선택] 
+            <input class="form-check-input" type='checkbox' name='n_agree' id='n_agree' required="">  [필수] 개인정보처리방침 
             <div class="form-body2">
                <p>
                 소다는 기본적으로 여러분 모두에게 동일한 내용의 서비스를 제공합니다. 다만, '청소년보호법' 등 관련 법령이나 기타 개별 서비스 제공에서의 특별한 필요에 의해서 연령 또는 일정한 등급을 기준으로 이용자를 구분하여 제공하는 서비스의 내용, 이용 시간, 이용 횟수 등을 다르게 하는 등 일부 이용을 제한하는 경우가 있습니다. 자세한 내용은 역시 각 서비스 상의 안내, 공지사항, 고객센터 도움말 등에서 확인하실 수 있습니다.
@@ -76,14 +76,24 @@
             </div> 
         </div>
         <div>
-            <input class="form-check-input" type="checkbox" name="n_agree" id="n_agree" required="">
+            <input class="form-check-input" type='checkbox' name='n_agree' id='n_agree' onclick='selectAll(this)' required="">
               <b>위 내용에 모두 동의합니다.</b>
               
               <div class="form-check"> 
-                <button id="register_button" class="btn-joinsoda"> <a class="joinsoda-check" href="join.html"> 확 인 </a></button> 
+                <button id="register_button" class="btn-joinsoda"> <a class="joinsoda-check" href="memberjoin.html"> 확 인 </a></button> 
             </div>
         </div> 
     </div>
+    <script>
+        function selectAll(selectAll)  {
+           const checkboxes 
+          = document.getElementsByName('n_agree');
+     
+           checkboxes.forEach((checkbox) => {
+               checkbox.checked = selectAll.checked;
+            })
+       }
+     </script>
     
 
     <!--footer-->

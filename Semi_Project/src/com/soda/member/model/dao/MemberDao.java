@@ -49,7 +49,8 @@ public class MemberDao {
 										rset.getString("user_address"),
 										rset.getDate("join_date"),
 										rset.getString("status"),
-										rset.getString("user_grade"));
+										rset.getString("user_grade"),
+										rset.getString("user_gender"));
 			}
 			
 		} catch (SQLException e) {
@@ -82,7 +83,8 @@ public class MemberDao {
 										rset.getString("user_address"),
 										rset.getDate("join_date"),
 										rset.getString("status"),
-										rset.getString("user_grade"));
+										rset.getString("user_grade"),
+										rset.getString("user_gender"));
 			}
 			
 		} catch (SQLException e) {
@@ -109,6 +111,7 @@ public class MemberDao {
 			pstmt.setString(3, joinMember.getUserPhone());
 			pstmt.setString(4, joinMember.getUserPwd());
 			pstmt.setString(5, joinMember.getUserAddress());
+			pstmt.setString(6, null);
 		
 			result = pstmt.executeUpdate();
 			
