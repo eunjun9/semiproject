@@ -35,7 +35,7 @@
 					<button id="kakao-button" class="btn" type="button"
 						onclick="kakaoLogin();">
 						<span class="img"> <img
-							src="${ contextPath }/resources/image/kakao-sm.f3f473d5.svg" alt="kakao_icon">
+							src="${ contextPath }/resources/images/kakao-sm.f3f473d5.svg" alt="kakao_icon">
 						</span> <span class="kakao-text text">카카오톡으로 5초만에 로그인하기</span>
 					</button>
 				</div>
@@ -50,7 +50,7 @@
 		</div>
 
 		<!-- 로그인페이지 우측 이미지 부분 (css로 적용) -->
-		<div class="login-img"></div>
+		<div class="login-img" style="background-image:url(resources/images/loginPhoto2.jpg)"></div>
 
 	</div>
 	<!-- 카카오로그인 api -->
