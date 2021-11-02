@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,8 +9,8 @@
 <title>소셜링_상세페이지</title>
 
 <!-- 외부 스타일 시트 -->
-<link href="resources/css/header_footer.css" rel="stylesheet">
-<link href="resources/css/detail_style.css" rel="stylesheet">
+<link href="/resources/css/socialing/socialing_detail.css" rel="stylesheet">
+<link href="/resources/css/socialing/socialing_check.css" rel="stylesheet">
 
 <!-- 글꼴 (Noto Sans) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,24 +22,7 @@
 </head>
 <body>
 	<!--header-->
-    <div class="header">
-        <div class="head-inner">
-            <div class="logo">
-                <img src="resources/image/logo.png">
-            </div>
-            <div class="big-category">
-                <div class="category1">
-                    <a href="socialing_main.html">SOCIALING</a>
-                    <a href="#">CLASS</a>
-                    <a href="#">MAGAZINE</a>
-                </div>
-                <div class="category2">
-                    <a href="#">CART</a>
-                    <a href="#">MYPAGE</a>
-                </div>
-            </div>
-        </div>
-    </div>
+    <%@ include file="/WEB-INF/views/common/header.jsp" %>
 
     <!-- body -->
     <div class="page body">
@@ -49,7 +34,7 @@
                 <h3 id="subTitle">날짜</h3><p id="subTitle2">10.30(토) 오후 2시 0분</p>
             </div>
             <div class="wrapper2">
-                <img src="resources/image/thumbnail.png">
+                <img src="<%= request.getContextPath() %>/resources/images/eunjung/thumbnail.png">
             </div>
             <div class="wrapper3">
                 <p id="content">
@@ -59,11 +44,17 @@
             </div>
             <div class="wrapper4">
                 <div class="profileBox">
-                    <img id="p-image" src="resources/image/profile.png"><br>
+                    <img id="p-image" src="<%= request.getContextPath() %>/resources/images/eunjung/profile.png"><br>
                     <p id="p-name">홍길동</p><br>
                     <!-- if문으로 일반 회원 : 참여하기 버튼 / 작성자 : 참여확인 버튼 출력되게 -->
-                    <!-- <button type="button" id="p-button" onclick="join()">소셜링 참여하기</button> -->
-                    <button type="button" id="p-button2">소셜링 참여확인</button>
+                    <c:choose>
+						<c:when test="${ loginUser.userId == notice.userId }">
+							<button type="button" id="p-button2">소셜링 참여확인</button>
+						</c:when>
+						<c:otherwise>
+							<button type="button" id="p-button" onclick="join()">소셜링 참여하기</button>
+						</c:otherwise>
+					</c:choose>           
                 </div>
             </div>
             <hr>
@@ -71,7 +62,7 @@
             <!-- 회원이 참여하기 버튼 누르면 비동기통신으로 멤버 목록 바로 갱신(시간 남으면) -->
             <div class="subWrap">
                 <a href="#"> <!-- 참여자 피드로 이동 -->
-                    <img id="s-image" src="resources/image/profile.png">
+                    <img id="s-image" src="<%= request.getContextPath() %>/resources/images/eunjung/profile.png">
                     <div class="subWrap2">
                         <p id="s-name">홍길동</p>
                         <p id="s-intro">사람들 만나고 사귀는 걸 좋아해요!</p>
@@ -80,7 +71,7 @@
             </div>
             <div class="subWrap">
                 <a href="#">
-                    <img id="s-image" src="resources/image/profile.png">
+                    <img id="s-image" src="<%= request.getContextPath() %>/resources/images/eunjung/profile.png">
                     <div class="subWrap2">
                         <p id="s-name">유미</p>
                         <p id="s-intro">글쓰기가 취미이고 맛있는거 먹는 걸 좋아해요~</p>
@@ -89,7 +80,7 @@
             </div>
             <div class="subWrap">
                 <a href="#">
-                    <img id="s-image" src="resources/image/profile.png">
+                    <img id="s-image" src="<%= request.getContextPath() %>/resources/images/eunjung/profile.png">
                     <div class="subWrap2">
                         <p id="s-name">구웅</p>
                         <p id="s-intro">토끼 티셔츠를 좋아합니다</p>
@@ -98,7 +89,7 @@
             </div>
             <div class="subWrap">
                 <a href="#">
-                    <img id="s-image" src="resources/image/profile.png">
+                    <img id="s-image" src="<%= request.getContextPath() %>/resources/images/eunjung/profile.png">
                     <div class="subWrap2">
                         <p id="s-name">루비</p>
                         <p id="s-intro">패션에 관심 많아요! ootd 구경오세요&gt;&lt;</p>
@@ -107,20 +98,22 @@
             </div>
             <h3 id="subTitle4">자세한 정보를 알려드릴게요</h3>
             <div class="subWrap3">
-                <img id="icon" src="resources/image/user.png">
+                <img id="icon" src="<%= request.getContextPath() %>/resources/images/eunjung/user.png">
                 <p id="detail">최소 2명 ~ 최대 4명</p>
             </div>
             <div class="subWrap3">
-                <img id="icon" src="resources/image/pin.png">
+                <img id="icon" src="<%= request.getContextPath() %>/resources/images/eunjung/pin.png">
                 <p id="detail">여의나루역 5호선 (서울특별시 영등포구 여의동로 지하 343)</p>
             </div>
             <div class="subWrap3">
-                <img id="icon" src="resources/image/time.png">
+                <img id="icon" src="<%= request.getContextPath() %>/resources/images/eunjung/time.png">
                 <p id="detail">10.30(토) 오후 2시 0분</p>
             </div>
             <div class="buttons"> <!-- 삭제, 수정은 작성자/관리자만 표시 -->
-                <button type="button" id="delete" onclick="deleteBoard()">삭제</button>
+            <c:if test="${ loginUser.userId == notice.userId || loginUser.userId.equals('admin') }">
+            	<button type="button" id="delete" onclick="deleteBoard()">삭제</button>
                 <button type="button" id="update">수정</button>
+            </c:if>
                 <button type="button" id="report" onclick="openPopup('report.html', 'report', 370, 500)">신고</button>
             </div>
         </div>
@@ -184,35 +177,9 @@
                 $('.checkPop').hide();
             });
         });
-
     </script>
 
     <!--footer-->
-    <div class="footer">
-        <div class="foot-inner">
-            <div class="foot-logo foot-all">
-                S O D A</div>
-            <div class="information foot-all">
-                <ul>주식회사 소셜 다이닝</ul>
-                <ul>대표 : 홍길동 | 개인정보관리책임자 : 홍길동 | 전화 : 02-123-4567 | 이메일 : soda@gmail.com</ul>
-                <ul>주소 : 서울 강남구 테헤란로 14길 6 남도빌딩 2층 | 사업자등록번호 : 000-00-00000</ul>
-                    <ul> 통신판매 : 제 2021-서울강남-0000호</ul>
-                        <ul>영업시간 : 월-금 오후 2시-7시</ul>
-            </div>
-            <div class="foot-category foot-all">
-                <ul><a href="#">소다소개</a></ul>
-                <ul><a href="#">공지사항 </a></ul>
-                <ul><a href="#">강사신청</a></ul>
-                <ul><a href="#">자주묻는질문</a></ul>
-            </div>
-        </div>
-    </div>
-    <div class="final">
-        <div class="foot-final">
-            <a href="terms.html">이용약관 | </a>
-            <a href="personalInfo.html">개인정보처리방침 | </a>
-            <a href="#">사업자정보확인</a>
-        </div>
-    </div>
+    <%@ include file="/WEB-INF/views/common/footer.jsp" %>
 </body>
 </html>

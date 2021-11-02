@@ -5,12 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>footer</title>
-<!-- CSS -->
-    <!-- 브라우저별로 디폴트로 적용된 CSS에 차이(여백, 폰트 크기 등)가 있어 CSS가 별도로
-    지정되지 않은 요소는 브라우져 별로 다르게 보일 가능성이 있음. 만들어져 있는 리셋 CSS 활용. -->
-    <!-- ress.css (모든 CSS 리셋이 아니라 디폴트 스타일을 활용해서 브라우저들의 최소한의 오차를 없앰) 
-    https://github.com/filipelinhares/ress -->
-    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+
     <!-- 외부 스타일 시트 -->
     <link href="<%= request.getContextPath() %>/resources/css/header_footer.css" rel="stylesheet">
     <!-- favicon (Real Favicon Generator)-->
