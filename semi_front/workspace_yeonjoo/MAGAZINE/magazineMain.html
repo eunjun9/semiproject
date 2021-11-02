@@ -8,7 +8,7 @@
   <title>Main</title>
 
   <!-- 외부 스타일 시트 -->
-  <link href="../css/Magazine.css" rel="stylesheet">
+  <link href="../css/magazineMain.css" rel="stylesheet">
   <link href="../css/Headerfooter.css" rel="stylesheet">
 
   <!-- favicon (Real Favicon Generator)-->
@@ -25,13 +25,7 @@
   <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
-  <style>
-    .swiper {
-      width: 800px;
-      height: 250px;
-    }
-  </style>
-
+ 
 
 </head>
 
@@ -88,44 +82,60 @@
       </div>
     </div>
 
+    <div class="list">
+      <div class="list-each">
+      <a href="#">피드보기</a>
+      </div>
+      <div class="list-each">
+      <a href="#">모임내역보기</a>
+      </div>
+      <div class="list-each">
+      <a href="#">팔로우보기</a>
+      </div>
+  </div>
 
     <!-- Swiper -->
     <div class="slide1">
+       
+    
 
       <div class="swiper mySwiper1">
         <div class="swiper-wrapper">
-
+          
           <div class="swiper-slide">
             <img src="../image/white.jpg">
-            <div class=all-title>
-              <a href="#" class=first-title>제가 만든 향수 어떤가요?</a><br>
-              <a href="#" class=name>Jennieisback</a>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <img src="../image/white.jpg">
-            <div class=all-title>
-              <a href="#" class=first-title>남한산성 다녀왔어요</a><br>
-              <a href="#" class=name>Ilovemountain</a>
-            </div>
-
-          </div>
-          <div class="swiper-slide">
-            <img src="../image/white.jpg">
-            <div class=all-title>
-              <a href="#" class=first-title>제주 서핑클래스 짱 좋아요</a><br>
-              <a href="#" class=name>surfingismylife</a>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <img src="../image/white.jpg">
-            <div class=all-title>
-              <a href="#" class=first-title>토익 수업듣고 930점 맞았어요</a><br>
-              <a href="#" class=name>IhateTOEIC</a>
+            <div class="all-title">
+              <a href="#" class="first-title">제가 만든 향수 어떤가요?</a><br>
+              <a href="#" class="name">Jennieisback</a>
+             
+            
             </div>
           </div>
 
-
+            <div class="swiper-slide">
+              <img src="../image/white.jpg">
+              <div class=all-title>
+                <a href="#" class="first-title">남한산성 다녀왔어요</a><br>
+                <a href="#" class="name">Ilovemountain</a>
+              </div>
+              
+            </div>
+            <div class="swiper-slide">
+              <img src="../image/white.jpg">
+              <div class=all-title>
+                <a href="#" class="first-title">제주 서핑클래스 짱 좋아요</a><br>
+                <a href="#" class="name">surfingismylife</a>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <img src="../image/white.jpg">
+              <div class=all-title>
+                <a href="#" class="first-title">토익 수업듣고 930점 맞았어요</a><br>
+              <a href="#" class="name">IhateTOEIC</a>
+            </div>
+          </div>
+          
+          
         </div>
       </div>
 
@@ -159,6 +169,19 @@
     });
   </script>
 
+<script>
+  $(document).ready(function () {
+    $('.name').click(function(){  // a 태그를 클릭하면 함수 동작하는데
+        if($('.list').css('display') == 'none'){  // div가 안보이면
+            $('.list').show();   // 보이게
+        } else {
+            $('.list').hide();   // 보이면 안보이게
+        }
+    });
+  });
+  </script>
+
+
 
 
 
@@ -184,29 +207,29 @@
           <div class="swiper-slide">
             <img src="../image/white.jpg">
             <div class=all-title>
-              <a href="#" class=first-title>요알못, 요리왕으로 거듭나다</a><br>
+              <a href="#" class="first-title">요알못, 요리왕으로 거듭나다</a><br>
+              <a href="#" class="name">SODA</a>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <img src="../image/white.jpg">
+            <div class="all-title">
+              <a href="#" class="first-title">경기 광주 숨은 맛집 탐방</a><br>
               <a href="#" class=name>SODA</a>
             </div>
           </div>
           <div class="swiper-slide">
             <img src="../image/white.jpg">
-            <div class=all-title>
-              <a href="#" class=first-title>경기 광주 숨은 맛집 탐방</a><br>
+            <div class="all-title">
+              <a href="#" class="first-title">다도 체험기</a><br>
               <a href="#" class=name>SODA</a>
             </div>
           </div>
           <div class="swiper-slide">
             <img src="../image/white.jpg">
-            <div class=all-title>
-              <a href="#" class=first-title>다도 체험기</a><br>
-              <a href="#" class=name>SODA</a>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <img src="../image/white.jpg">
-            <div class=all-title>
-              <a href="#" class=first-title>할 수 있다! 번지점프</a><br>
-              <a href="#" class=name>SODA</a>
+            <div class="all-title">
+              <a href="#" class="first-title">할 수 있다! 번지점프</a><br>
+              <a href="#" class="name">SODA</a>
             </div>
           </div>
 
@@ -263,30 +286,30 @@
         <div class="swiper-wrapper">
           <div class="swiper-slide">
             <img src="../image/white.jpg">
-            <div class=all-title>
-              <a href="#" class=first-title>퍼퓸 클래스 후기</a><br>
-              <a href="#" class=name>perfume1004</a>
+            <div class="all-title">
+              <a href="#" class="first-title">퍼퓸 클래스 후기</a><br>
+              <a href="#" class="name">perfume1004</a>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <img src="../image/white.jpg">
+            <div class="all-title">
+              <a href="#" class="first-title">이태원 핫플, brewery</a><br>
+              <a href="#" class="name">itawonzzang</a>
             </div>
           </div>
           <div class="swiper-slide">
             <img src="../image/white.jpg">
             <div class=all-title>
-              <a href="#" class=first-title>이태원 핫플, brewery</a><br>
-              <a href="#" class=name>itawonzzang</a>
+              <a href="#" class="first-title">경기 광주 숨은 맛집 탐방</a><br>
+              <a href="#" class="name">SODA</a>
             </div>
           </div>
           <div class="swiper-slide">
             <img src="../image/white.jpg">
-            <div class=all-title>
-              <a href="#" class=first-title>경기 광주 숨은 맛집 탐방</a><br>
-              <a href="#" class=name>SODA</a>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <img src="../image/white.jpg">
-            <div class=all-title>
-              <a href="#" class=first-title>할 수 있다! 번지점프</a><br>
-              <a href="#" class=name>SODA</a>
+            <div class="all-title">
+              <a href="#" class="first-title">할 수 있다! 번지점프</a><br>
+              <a href="#" class="name">SODA</a>
             </div>
           </div>
 

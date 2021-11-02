@@ -75,7 +75,7 @@ html {
 .view1{
     margin-right: -385px;
     margin-top: 10px;
-
+    
 }
 .view1>a {
     color: gray;
@@ -92,14 +92,13 @@ html {
     margin-bottom: 40px;
 }
 
-
 .slide1{
     width: 800px;
     height: auto;
     position:relative;
     margin : 0 auto;
+    z-index: 1;
 }
-
 
 .slide2{
     width: 800px;
@@ -108,7 +107,6 @@ html {
     margin : 0 auto;
    
 }
-
 
 .slide3{
     width: 800px;
@@ -154,9 +152,6 @@ html {
     position:absolute;
 }
 
-.all-title{
-    position:relative; 
-}
 
 .first-title{
     position: absolute;
@@ -176,4 +171,36 @@ html {
     margin-top: -6px;
     margin-left: 10px;
 }
+
+.swiper {
+    width: 800px;
+    height: 250px;
+    position: relative;
+    z-index: 1;
+  }
+
+
+.list{
+    position: absolute;
+    width : 130px;
+    height: 105px;
+    margin: 0 0;
+    padding-inline-start: 0px;
+    z-index: 2;
+    left : 180px;
+    top:750px;
+    display: none;
+}
+
+.list-each{
+    border: 1px black solid;
+    padding: 5px;
+}
+
+.list-each>a{
+    padding: 5px;
+    text-decoration-line:none;
+    color: black;
+}
+
 
