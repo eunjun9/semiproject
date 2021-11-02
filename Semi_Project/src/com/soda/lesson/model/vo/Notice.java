@@ -3,20 +3,20 @@ package com.soda.lesson.model.vo;
 import java.util.Date;
 
 public class Notice {
-	private int nNum;			// 게시글 번호
+	private int nNum;			// 게시글 번호 pk
 	private String nTitle;		// 게시글 제목
 	private String nContent;	// 게시글 내용
+	private String nStatus;		// 상태 (Y, N)
+	private String nType;		// 게시판 종류 (클래스, 소셜링, 매거진)
+	private String userId;		// 사용자 아이디 (Member_info 테이블 참조)
+	private String userName; 	// 사용자 이름 (Member_info 테이블 참조)
 	private Date nDate;			// 작성 날짜
-	private String nStatus;		// 상태
-	private String nType;		// 게시판 종류 (클래스 소셜링 매거진)
-	private String userId;		// 사용자 아이디
 	private Date modifyDate;	// 수정 날짜
-	private String nSelfNum;	// 셀프참조 번호
 	
 	public Notice() {}
 
 	public Notice(int nNum, String nTitle, String nContent, Date nDate, String nStatus, String nType, String userId,
-			Date modifyDate, String nSelfNum) {
+			Date modifyDate) {
 		super();
 		this.nNum = nNum;
 		this.nTitle = nTitle;
@@ -26,7 +26,6 @@ public class Notice {
 		this.nType = nType;
 		this.userId = userId;
 		this.modifyDate = modifyDate;
-		this.nSelfNum = nSelfNum;
 	}
 
 	public int getnNum() {
@@ -93,19 +92,12 @@ public class Notice {
 		this.modifyDate = modifyDate;
 	}
 
-	public String getnSelfNum() {
-		return nSelfNum;
-	}
-
-	public void setnSelfNum(String nSelfNum) {
-		this.nSelfNum = nSelfNum;
-	}
 
 	@Override
 	public String toString() {
 		return "Notice [nNum=" + nNum + ", nTitle=" + nTitle + ", nContent=" + nContent + ", nDate=" + nDate
 				+ ", nStatus=" + nStatus + ", nType=" + nType + ", userId=" + userId + ", modifyDate=" + modifyDate
-				+ ", nSelfNum=" + nSelfNum + "]";
+			    + "]";
 	};
 	
 	

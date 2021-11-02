@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.soda.lesson.model.service.LessonService;
 import com.soda.lesson.model.vo.Lesson;
+import com.soda.lesson.model.vo.Notice;
 
 /**
  * Servlet implementation class ClassMainServlet
@@ -31,7 +32,23 @@ public class LessonMainServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<Lesson> lessonList = new LessonService().selectLessonList();
+		/* 페이징 처리 */
+		// 페이지 초기값 (첫 페이지)
+		int page = 1;
+		
+		// 전달 받은 페이지가 있을 때 
+		if(request.getParameter("page") != null) {
+			page = Integer.parseInt(request.getParameter("page"));
+		}
+		
+		/*필터 관련 파라미터 추출  (추후에 수정 )*/
+		
+		
+		//
+		
+		
+		
+		List<Notice> NoticeList = new LessonService().selectLessonList();
 	
 	}
 

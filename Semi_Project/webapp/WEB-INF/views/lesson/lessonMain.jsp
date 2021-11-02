@@ -44,7 +44,7 @@
                 </ul>
             </div>
             <div class="filtering">
-                <form>
+                <form method="get" action="${ contextPath }/lesson/list }">
                     <img id="search" width="20px" src="resources/images/yewon/search.png">
                     <input type="text" maxlength="25" size="40" placeholder="검색할 키워드를 입력해주세요" name="keyword" id="keyword" ><br>
                     
@@ -52,33 +52,7 @@
                     <input id="price1" type="number" value="0" name="price1"><label> 원&nbsp;&nbsp;&nbsp;~&nbsp;&nbsp;  </label>
                     <input id="price2" type="number" value="50000" name="price2"><label> 원</label><br>
 
-                    <label>위치</label>
-                    <select name="city">
-                        <option value="city"selected disabled>지역 선택</option>
-                        <option value="seoul">서울</option>
-                        <option value="incheon">인천</option>
-                    </select>
-
                     <!-- 조건문으로 설정하기 -->
-                    <!--지역이 서울일때 -->
-                    <select name="town">
-                        <option value="town"selected disabled>구 선택</option>
-                        <option value="gawnak">관악구</option>
-                        <option value="gangnam">강남구</option>
-                        <option value="mapo">마포구</option>
-                        <option value="seocho">서초구</option>
-                        <option value="seongdong">성동구</option>
-                        <option value="yongsan">용산구</option>
-                    </select><br>   
-                    <!--지역이 인천일때 -->
-                    <!-- <select name="town">
-                        <option value="town"selected disabled>구</option>
-                        <option value="geyang">계양구</option>
-                        <option value="nam">남구</option>
-                        <option value="namdong">남동구</option>
-                        <option value="seo">서구</option>
-                        <option value="yeonsu">연수구</option>
-                    </select><br>                           -->
 
                     <label>카테고리</label>
                     <select name="bigC">
@@ -166,63 +140,32 @@
         </div>
         
         <div class="wrapper4">
+        <!-- 게시글 반복문으로 삽입  -->
+        <c:forEach var="" items="">
             <div class="cItem" >
-                <a href="class_detail.html">
-                    <img class="cThumbnail" src="../resources/image/class_ex1.jpg">
-                    <h4 class="cMTitle">펀치니들을 이용한 티프팅 소품 제작법 </h4>
-                    <p class="cPrice">50,000원</p>
+            	<!-- a태그에 제목, 사진, 가격 넣어서 클릭 시 해당 페이지로 이동 nNum으로 구분  (아래 href 코드 수정 필요)-->
+                <a href="${ contextPath }/lesson/detail?nNum=">
+                    <img class="cThumbnail" src="">
+                    <h4 class="cMTitle"></h4>
+                    <p class="cPrice"></p>
                 </a>
             </div>
-            <div class="cItem">
-                <img class="cThumbnail" src="../resources/image/class_ex2.JPG">
-                <h4 class="cMTitle">펀치니들을 이용한 티프팅 소품 제작법 </h4>
-                <p class="cPrice">50,000원</p>
-            </div>
-            <div class="cItem">
-                <img class="cThumbnail" src="../resources/image/class_ex1.jpg">
-                <h4 class="cMTitle">펀치니들을 이용한 티프팅 소품 제작법 </h4>
-                <p class="cPrice">50,000원</p>
-            </div>
-            <div class="cItem">
-                <img class="cThumbnail" src="../resources/image/class_ex2.JPG">
-                <h4 class="cMTitle">펀치니들을 이용한 티프팅 소품 제작법 </h4>
-                <p class="cPrice">50,000원</p>
-            </div>
-            <div class="cItem">
-                <img class="cThumbnail" src="../resources/image/class_ex1.jpg">
-                <h4 class="cMTitle">펀치니들을 이용한 티프팅 소품 제작법 </h4>
-                <p class="cPrice">50,000원</p>
-            </div>
-            <div class="cItem">
-                <img class="cThumbnail" src="../resources/image/class_ex2.JPG">
-                <h4 class="cMTitle">펀치니들을 이용한 티프팅 소품 제작법 </h4>
-                <p class="cPrice">50,000원</p>
-            </div>
-            <div class="cItem">
-                <img class="cThumbnail" src="../resources/image/class_ex1.jpg">
-                <h4 class="cMTitle">펀치니들을 이용한 티프팅 소품 제작법 </h4>
-                <p class="cPrice">50,000원</p>
-            </div>
-            <div class="cItem">
-                <img class="cThumbnail" src="../resources/image/class_ex2.JPG">
-                <h4 class="cMTitle">펀치니들을 이용한 티프팅 소품 제작법 </h4>
-                <p class="cPrice">50,000원</p>
-            </div>
-            <div class="cItem">
-                <img class="cThumbnail" src="../resources/image/class_ex1.jpg">
-                <h4 class="cMTitle">펀치니들을 이용한 티프팅 소품 제작법 </h4>
-                <p class="cPrice">50,000원</p>
-            </div>
+        </c:forEach>
         </div>
 
+		<!-- 페이지 로직  -->
         <div class="wrapper5">
-            <a class="paging" href="#"><img width="18px" src="../resources/icon/previous.png"></a>
-                <a class="paging" href="#"><img width="20px" src="../resources/icon/circle_sky.png"></a>
-                <a class="paging" href="#"><img width="20px" src="../resources/icon/circle_beige.png"></a>
-                <a class="paging" href="#"><img width="20px" src="../resources/icon/circle_beige.png"></a>
-                <a class="paging" href="#"><img width="20px" src="../resources/icon/circle_beige.png"></a>
-                <a class="paging" href="#"><img width="20px" src="../resources/icon/circle_beige.png"></a>
-            <a class="paging" href="#"><img width="18px" src="../resources/icon/next.png"></a>
+            <a class="paging" href="${ contextPath }/lesson/main?page=1"><img width="18px" src="resources/images/yewon/previous.png">
+            <img width="18px" src="resources/images/yewon/previous.png"></a>
+             <a class="paging" href="#"><img width="18px" src="../resources/icon/previous.png"></a>
+                <a class="paging" href="#"><img width="20px" src="resources/images/yewon/circle_sky.png"></a>
+                <a class="paging" href="#"><img width="20px" src="resources/images/yewon/circle_beige.png"></a>
+                <a class="paging" href="#"><img width="20px" src="resources/images/yewon/circle_beige.png"></a>
+                <a class="paging" href="#"><img width="20px" src="resources/images/yewon/circle_beige.png"></a>
+                <a class="paging" href="#"><img width="20px" src="resources/images/yewon/circle_beige.png"></a>
+            <a class="paging" href="#"><img width="18px" src="resources/images/yewon/next.png"></a>
+            <a class="paging" href="${ contextPath }/board/list?page=${ pi.maxPage }"><img width="18px" src="resources/images/yewon/next.png">
+            <img width="18px" src="resources/images/yewon/next.png"></a>
         </div>
 
 
