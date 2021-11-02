@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8" import="com.soda.member.model.vo.Member"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%
+	// session 객체에 담긴 loginUser 정보를 변수에 담아두기
+	Member loginUser = (Member)session.getAttribute("loginUser");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,28 +40,26 @@
 				</div>
 
 				<div class="loginArea center">
-					<form class="login-input" action="${ contextPath }/login"
-						method="post">
+					<form class="login-input" action="${ contextPath }/email/login" method="post">
 						<h1>로그인</h1>
 						<h4>이메일</h4>
-						<input type="email" id="email" name="email"
-							placeholder="이메일을 입력해주세요." required>
+						<input type="email" id="email" name="email" placeholder="이메일을 입력해주세요." required>
 						<h4>비밀번호</h4>
-						<input type="password" id="pwd" name="pwd"
-							placeholder="비밀번호를 입력해주세요." required>
+						<input type="password" id="pwd" name="pwd" placeholder="비밀번호를 입력해주세요." required>
 
 						<div class="login-fail-text" id="login-fail">
 							<!-- 로그인 실패 시 텍스트 출력 부분 -->
 						</div>
 
-						<span class="button-text text"> <input
-							id="login-button text" class="btn" type="submit" value="로그인하기"></span>
+						<span class="button-text text">
+						<input id="login-button text" class="btn" type="submit" value="로그인하기">
+						</span>
 					</form>
 				</div>
 
 				<div class="login-join-find">
 					<div class="login-join">
-						<a href="${ contextPath }/memberJoin" class="join-text">회원가입</a>
+						<a href="${ contextPath }/memberjoin" class="join-text">회원가입</a>
 					</div>
 					<div class="login-find">
 						<a href="${ contextPath }/emailFind" class="email-find"
@@ -77,7 +79,7 @@
 						<button id="kakao-button-ep" class="btn" type="button"
 							onclick="kakaoLogin();">
 							<span class="img"> <img
-								src="${ contextPath }/resources/images/kakao-sm.f3f473d5.svg"
+								src="${ contextPath }/resources/images/minju/kakao-sm.f3f473d5.svg"
 								alt="kakao_icon">
 							</span> <span class="kakao-text text">카카오톡으로 5초만에 로그인하기</span>
 						</button>
@@ -89,7 +91,7 @@
 
 		<!-- 로그인페이지 우측 이미지 부분 -->
 		<div class="login-img"
-			style="background-image: url(../resources/images/loginPhoto2.jpg)"></div>
+			style="background-image: url(../resources/images/minju/loginPhoto2.jpg)"></div>
 
 
 
@@ -172,7 +174,7 @@
 
 
 	<!-- 로그인 실패 시 로그인창 하단에 텍스트 노출 -->
-	<script>
+	<!--   <script>
         	$(function(){
         		$("#login-button").click(function(){
         			$.ajax({
@@ -188,6 +190,6 @@
         			});
         		});
         	});
-        </script>
+        </script>-->
 </body>
 </html>
