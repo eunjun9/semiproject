@@ -24,7 +24,7 @@
     <header class="page-header wrapper">
         <nav class="main-bar">
             <ul class="main-logo">
-                <li><a href="#"><b>SODA</b></a></li>
+                <li><a href="<%= request.getContextPath() %>/mainpage"><b>SODA</b></a></li>
             </ul>
         </nav>
         <nav class="main-bar">
@@ -45,7 +45,6 @@
 
             <li><a class="button2" href="<%= request.getContextPath() %>/memberJoin">가입하기</a></li>
 
-            <li><a class="button2" href="#">가입하기</a></li>
 
         </ul>
     </div>
@@ -70,7 +69,6 @@
 
             <li><a class="button2" href="<%= request.getContextPath() %>/memberJoin">가입하기</a></li>
 
-            <li><a class="button2" href="#">가입하기</a></li>
 
         </ul>
     </div>
