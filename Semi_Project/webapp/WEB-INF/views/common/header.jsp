@@ -31,7 +31,7 @@
     <!--font-family: 'Noto Sans KR', sans-serif;-->
 
     <!-- JQuery-->
-    <script src="resources/js/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
 
 </head>
@@ -42,7 +42,7 @@
         <div class="head-inner">
 
           <div class="logo">
-            <a href="${ cotextPath }/mainpage"><img src="${ contextPath }/resources/images/logo.png"></a>
+            <a href="${ contextPath }/mainpage"><img src="${ contextPath }/resources/images/logo.png"></a>
 
           </div>
 
