@@ -4,10 +4,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+ <link rel="icon" type="image/png" href="http://example.com/myicon.png">
 <meta charset="UTF-8">
 <title>loginPage</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <!-- 외부 스타일시트 -->
-<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/loginpage-style.css">
+<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/member/loginpage-style.css">
 <!-- 외부 폰트 -->
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap"
@@ -34,7 +36,7 @@
 					<button id="kakao-button" class="btn" type="button"
 						onclick="kakaoLogin();">
 						<span class="img"> <img
-							src="${ contextPath }/resources/image/kakao-sm.f3f473d5.svg" alt="kakao_icon">
+							src="${ contextPath }/resources/images/kakao-sm.f3f473d5.svg" alt="kakao_icon">
 						</span> <span class="kakao-text text">카카오톡으로 5초만에 로그인하기</span>
 					</button>
 				</div>
@@ -49,7 +51,7 @@
 		</div>
 
 		<!-- 로그인페이지 우측 이미지 부분 (css로 적용) -->
-		<div class="login-img"></div>
+		<div class="login-img" style="background-image:url(resources/images/loginPhoto2.jpg)"></div>
 
 	</div>
 	<!-- 카카오로그인 api -->
@@ -70,13 +72,15 @@
 
                         var userEmail = res.kakao_account.email; //email
                         console.log(userEmail);
+                        var userName = res.properties.nickname // 닉네임(이름)
+                        console.log(userName);
 
                        $.ajax({
-                        url:"${ contextPath }/kakaoLogin",
-                        data:{ "id" : res.id, "name" : JSON.stringify(res.properties.nickname)},
+                        url:"${ contextPath }/kakao/login",
+                        data:{ "userEmail" : userEmail, "userName" : userName },
                         Type:"post",
                         success:function(data){
-                            location.href="${ contextPath }";
+                            location.href="${ contextPath }/login";
                         }
                         
                     });

@@ -1,10 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="com.soda.member.model.vo.Member"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+	// session 객체에 담긴 loginUser 정보를 변수에 담아두기
+	Member loginUser = (Member)session.getAttribute("loginUser");
+%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>header</title>
+	<%-- session에 담긴 message 있을 경우 alert 하는 script --%>
+	<% if(session.getAttribute("message") != null) {%>
+	<script>
+		alert('<%= session.getAttribute("message") %>');	
+	</script>
+	<% 
+		session.removeAttribute("message");
+		} 
+	%>
 
  	<!-- CSS -->
     <!-- 브라우저별로 디폴트로 적용된 CSS에 차이(여백, 폰트 크기 등)가 있어 CSS가 별도로
@@ -21,33 +35,37 @@
     <!--font-family: 'Noto Sans KR', sans-serif;-->
 
     <!-- JQuery-->
-    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script src="resources/js/jquery-3.6.0.min.js"></script>
 
 
 </head>
 
 <body>
+<!-- 변수 선언 -->
+<c:set var="contextPath" value="${ pageContext.servletContext.contextPath }" 
+scope="application"/>
+
     <!-- 헤더 -->
     <div class="header">
         <div class="head-inner">
 
           <div class="logo">
-            <a href="#"><img src="../resources/icon/logo.png"></a>
+            <a href="#"><img src="resources/images/logo.png"></a>
           </div>
 
             <div class="big-category">
                 <div class="category1">
                     <a href="#">SOCIALING</a>
-                    <a href="../Class/class_main.html">CLASS</a>
+                    <a href="${ contextPath }/lesson/main">CLASS</a>
                     <a href="#">MAGAZINE</a>
                 </div>
                 <div class="category2">
                     <a href="#">CART</a>
                     <li class="mypage">
-                        <a href="#" >MYPAGE</a>
+                        <a href="${ contextPath }/mypage/list" >MYPAGE</a>
                         <ul class="mypage_sub">
-                            <li><a href="#">마이페이지</a></li>
-                            <li><a href="#">로그아웃</a></li>
+                            <li><a href="${ contextPath }/mypage/main">마이페이지</a></li>
+                            <li><a href="${ contextPath }/logout">로그아웃</a></li>
                         </ul>
                     </li>
                 </div>
@@ -55,6 +73,7 @@
 
         </div>
     </div>
+    <!-- 마이페이지 마우스 오버 시 리스트 출력 스크립트 -->
     <script>
         $(document).ready(function(){ 
           $(".mypage").mouseover(function(){ 

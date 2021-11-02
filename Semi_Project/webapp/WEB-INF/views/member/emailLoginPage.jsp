@@ -107,22 +107,37 @@
         //카카오로그인
         function kakaoLogin() {
             Kakao.Auth.login({
-              success: function (res) {
+            	success: function (res) {
+            		console.log(res);
+            	  // 카카오로그인 성공 시 API 호출
                 Kakao.API.request({
                   url: '/v2/user/me',
                   success: function (res) {
                       console.log(res);
 
                         var userEmail = res.kakao_account.email; //email
-                        console.log(userEmail);
+                        var userName = res.properties.nickname;	// 닉네임(이름)
+                        
+                        var kakaologinVal = {
+        	        			"userId" : userId,
+        	        			"userEmail" : userEmail,
+        	        			"userName" : userName };
+        	        			
+                       	alert('로그인 성공');
 
                          $.ajax({
                         url:"${ contextPath }/kakaoLogin",
-                        data:{ "id" : res.id, "name" : JSON.stringify(res.properties.nickname)},
+                        data:JSON.stringify(kakaologinVal),
+                        dataType:"json",
                         Type:"post",
                         success:function(data){
-                            location.href="${ contextPath }";
+                        	alert(res.userName+"님 환영합니다.");
                         }
+                            location.href="${ contextPath }";
+                        }else {
+    	        				alert("로그인에 실패하였습니다.");
+    	        				return false;
+    	        			}
                         
                     });
                     

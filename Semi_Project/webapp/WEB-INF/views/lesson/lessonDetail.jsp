@@ -7,15 +7,15 @@
 <title>클래스 상세페이지</title>
 
 	<!--외부 스타일 시트-->
-    <link href="/resources/css/class/class_detail.css" rel="stylesheet">
-    <link href="/resources/css/class/class_datepicker.css" rel="stylesheet">
+    <link href="resources/css/lesson/lesson_detail.css" rel="stylesheet">
+    <link href="resources/css/lesson/lesson_datepicker.css" rel="stylesheet">
     <!-- font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500&display=swap" rel="stylesheet">
 
     <!-- JQuery-->
-    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script src="resources/js/jquery-3.6.0.min.js"></script>
 
     <!--슬라이드-->
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />

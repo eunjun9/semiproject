@@ -1,4 +1,4 @@
-@charset "UTF-8"; 
+
 
 html {
     font-size: 100%;
@@ -24,17 +24,17 @@ img {
 }
 
 #home1 {
-    background-image: url(../images/soda_home1.png);
+    background-image: url(webapp/resources/images/home_bg2.png);
     min-height: 100vh;
 }
 
 #home2 {
-    background-image: url(../images/soda_home2.png);
+    background-image: url(resources/images/home_bg2.png);
     min-height: 100vh;
 }
 
 #home3 {
-    background-image: url(../images/soda_home3.png);
+    background-image: url(resources/images/home_bg2.png);
     min-height: 100vh;
 }
 
