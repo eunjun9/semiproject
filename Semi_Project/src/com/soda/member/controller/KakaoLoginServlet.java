@@ -1,6 +1,8 @@
 package com.soda.member.controller;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -30,39 +32,36 @@ public class KakaoLoginServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
 		String userId = request.getParameter("userEmail");
 		String userName = request.getParameter("userName");
 		
-		Member member = new MemberService().memberLogin(userId);
+		Member loginUser = new MemberService().loginMember(userId);
 		
-		/*
-		if( member == null ) {
+	
+		if( loginUser == null ) {
 			Member joinMember = new Member();
 			joinMember.setUserId(userId);
 			joinMember.setUserName(userName);
-			joinMember.setUserPhone("데이터가 없습니다.");
+			joinMember.setUserPhone("없음");
 			// 카카오계정 db 등록 시에 비밀번호 어떤 식으로 저장해야할 지 고민중
 			joinMember.setUserPwd("3b86ff88ef6c490628285f482af15ddcb29541f94b");
 			joinMember.setUserAddress("데이터가 없습니다.");
 			
 			//카카오 자동 회원가입 로직 실행
-			int kakaoJoin = new MemberService().kakaoEnroll(joinMember);
+			int kakaoJoin = new MemberService().kakaoJoin(joinMember);
 			
 			if(kakaoJoin > 0) {
-				session = request.getSession();
-				session.setAttribute("loginUser", kakaoJoin);
-				response.getWriter().append("/");
+				request.getSession().setAttribute("message", "회원 가입이 완료 되었습니다. 다시 로그인 해주세요.");
+				response.sendRedirect(request.getContextPath());
 			}else {
 				System.out.println("카카오 회원가입 실패");
 			}
 			
 		}else {
-			session.setAttribute("logined", member);
-			response.getWriter().append("/");
-		}*/
-		
-	}
+			request.getSession().setAttribute("loginUser", loginUser);
+			response.sendRedirect(request.getContextPath());
+		}
+	} 
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
