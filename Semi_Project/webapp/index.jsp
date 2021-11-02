@@ -47,7 +47,7 @@ scope="application"/>
         </p>
         <ul class="join-content">
 
-            <li><a class="button2" href="<%= request.getContextPath() %>/memberJoin">가입하기</a></li>
+            <li><a class="button2" href="<%= request.getContextPath() %>/memberjoin">가입하기</a></li>
 
 
         </ul>
@@ -71,7 +71,7 @@ scope="application"/>
         </p>
         <ul class="join-content">
 
-            <li><a class="button2" href="<%= request.getContextPath() %>/memberJoin">가입하기</a></li>
+            <li><a class="button2" href="<%= request.getContextPath() %>/memberjoin">가입하기</a></li>
 
 
         </ul>
@@ -90,7 +90,7 @@ scope="application"/>
         온라인에서도 만날 수 있어요. 매거진과 커뮤니티에서 취향 공유하기!
         </p>
         <ul class="join-content">
-            <li><a class="button2" href="#">가입하기</a></li>
+            <li><a class="button2" href="<%= request.getContextPath() %>/memberjoin">가입하기</a></li>
         </ul>
     </div>
     <div class="up-button">

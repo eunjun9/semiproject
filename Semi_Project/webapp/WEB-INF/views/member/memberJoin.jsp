@@ -11,7 +11,7 @@
 
     
     <!-- 외부 스타일 시트 -->
-    <link href="resources/css/common/memberjoin.css" rel="stylesheet">
+    <link href="resources/css/member/memberjoin.css" rel="stylesheet">
     <link href="resources/css/common/header_footer.css" rel="stylesheet">
     <!-- favicon (Real Favicon Generator)-->
     <link rel="icon" type="image/x-icon" href="resources/image/khfavicon.ico">
