@@ -20,16 +20,6 @@
 		} 
 	%>
 
-<%-- session에 담긴 message 있을 경우 alert 하는 script --%>
-<% if(session.getAttribute("message") != null) { %>
-<script>
-	alert('<%= session.getAttribute("message") %>');
-</script>
-<% 
-		session.removeAttribute("message"); // alert 창을 한번만 띄우기 위해 alert 후 세션 제거
-	}
-%>
-
     <!-- 외부 스타일 시트 -->
     <link href="<%= request.getContextPath() %>/resources/css/common/header_footer.css" rel="stylesheet">
     <!-- favicon (Real Favicon Generator)-->
@@ -54,12 +44,12 @@ scope="application"/>
         <div class="head-inner">
 
           <div class="logo">
-            <a href="#"><img src="resources/images/logo.png"></a>
+            <a href="#"><img src="${ contextPath }/resources/images/logo.png"></a>
           </div>
 
             <div class="big-category">
                 <div class="category1">
-                    <a href="#">SOCIALING</a>
+                    <a href="${ contextPath }/socialing/main">SOCIALING</a>
                     <a href="${ contextPath }/lesson/main">CLASS</a>
                     <a href="#">MAGAZINE</a>
                 </div>

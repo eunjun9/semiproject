@@ -225,7 +225,6 @@
             <a class="paging" href="#"><img width="18px" src="../resources/icon/next.png"></a>
         </div>
 
-
     </div>
 
 

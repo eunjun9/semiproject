@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -21,7 +22,8 @@
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
 </head>
 <body>
-
+<!-- 변수 선언 -->
+<c:set var="contextPath" value="${ pageContext.servletContext.contextPath }" scope="application"/>
 
 <!--header-->
 
@@ -30,7 +32,7 @@
         <div class="left-menu">
             <ul class="main-menu">
                 <li><a class="main-logo" href="메인페이지.html"><b>SODA</b></a></li><br>
-                <li><a class="main-menu2" href="#">SOCIALING</a></li>
+                <li><a class="main-menu2" href="${ contextPath }/socialing/main">SOCIALING</a></li>
                 <li><a class="main-menu2" href="#">CLASS</a></li>
                 <li><a class="main-menu2" href="#">MAGAZINE</a></li>
                 <li><a class="main-menu2" href="#"><img class="icon" src="resources/images/장바구니.png"></img></a></li>
