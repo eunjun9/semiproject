@@ -10,8 +10,13 @@ body {
     line-height: 2.0; 
 }
 
-a {
+a{
     text-decoration: none;
+    color: gray;
+}
+
+a:hover{
+    color :rgb(145, 224, 244);
 }
 
 img{
@@ -45,10 +50,12 @@ img{
 
 .category1>a:hover{
     color: rgb(145, 224, 244);
+    text-decoration: none;
 }
 
 .category2>a:hover{
     color: rgb(145, 224, 244);
+    text-decoration: none;
 }
 
 .category1 > a{
@@ -68,10 +75,22 @@ img{
 }
 
 .category2{
-     margin-right: 15px;
+     margin-right: 10px;
 }
 
+.mypage{
+    list-style: none;
+    width: 90px;
+    margin-top: -32px;
+    margin-left: 70px;
+}
 
+.mypage_sub{
+    list-style: none;
+    display: none;
+    background: rgba(224, 224, 224, 0.11);
+    width: 90px;
+}
 
 
 

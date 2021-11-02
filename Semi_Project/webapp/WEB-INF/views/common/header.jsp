@@ -10,6 +10,15 @@
 <head>
 <meta charset="UTF-8">
 <title>header</title>
+	<%-- session에 담긴 message 있을 경우 alert 하는 script --%>
+	<% if(session.getAttribute("message") != null) {%>
+	<script>
+		alert('<%= session.getAttribute("message") %>');	
+	</script>
+	<% 
+		session.removeAttribute("message");
+		} 
+	%>
 
 <%-- session에 담긴 message 있을 경우 alert 하는 script --%>
 <% if(session.getAttribute("message") != null) { %>
@@ -30,38 +39,54 @@
     <!--font-family: 'Noto Sans KR', sans-serif;-->
 
     <!-- JQuery-->
-    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script src="resources/js/jquery-3.6.0.min.js"></script>
 
 
 </head>
 
 <body>
-<c:set var="contextPath" value="${ pageContext.servletContext.contextPath }" scope="application"/>
+<!-- 변수 선언 -->
+<c:set var="contextPath" value="${ pageContext.servletContext.contextPath }" 
+scope="application"/>
 
-    <!--header-->
+    <!-- 헤더 -->
     <div class="header">
         <div class="head-inner">
-		
+
           <div class="logo">
-        	<!--  로고 이미지를 클릭하면 첫 화면으로 -->
-         	<a href="<%= request.getContextPath() %>">
-            <img src="<%= request.getContextPath() %>/resources/images/logo.png"></a>
+            <a href="#"><img src="resources/images/logo.png"></a>
           </div>
 
             <div class="big-category">
                 <div class="category1">
                     <a href="#">SOCIALING</a>
-                    <a href="#">CLASS</a>
+                    <a href="${ contextPath }/lesson/main">CLASS</a>
                     <a href="#">MAGAZINE</a>
                 </div>
                 <div class="category2">
                     <a href="#">CART</a>
-                    <a href="#">MYPAGE</a>
-                    <!-- 마우스 오버 시  마이페이지 / 로그아웃 리스트 출력되게 변경해야됨(예원) -->
+                    <li class="mypage">
+                        <a href="${ contextPath }/mypage/list" >MYPAGE</a>
+                        <ul class="mypage_sub">
+                            <li><a href="${ contextPath }/mypage/main">마이페이지</a></li>
+                            <li><a href="${ contextPath }/logout">로그아웃</a></li>
+                        </ul>
+                    </li>
                 </div>
             </div>
         </div>
     </div>
-
+    <!-- 마이페이지 마우스 오버 시 리스트 출력 스크립트 -->
+    <script>
+        $(document).ready(function(){ 
+          $(".mypage").mouseover(function(){ 
+            $(this).children(".mypage_sub").show(300); 
+          }); 
+            $(".mypage").mouseleave(function(){ 
+              $(".mypage_sub").hide(300); 
+            });
+          });
+        
+    </script>
 </body>
 </html>

@@ -4,23 +4,26 @@
 <!DOCTYPE html>
 <html>
 <head>
+ <link rel="icon" type="image/png" href="http://example.com/myicon.png">
 <meta charset="UTF-8">
 <title>loginPage</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <!-- 외부 스타일시트 -->
-<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/loginpage-style.css">
+<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/member/loginpage-style.css">
 <!-- 외부 폰트 -->
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap"
 	rel="stylesheet">
 </head>
 <body>
+<c:set var="contextPath" value="<%= request.getContextPath()%>"></c:set>
+
 	<div class="login-main">
 		<div class="login-bar">
 			<div class="logo">
 				<div class="login-logo center">
-					<a href="<%= request.getContextPath() %>"> <img
-						src="<%= request.getContextPath() %>/resources/images/logo.png"
-						width="400"></a>
+					<a href="${ contextPath }">
+					<img src="${ contextPath }/resources/images/logo.png" width="400"></a>
 				</div>
 			</div>
 			<div class="login-text center">
@@ -33,13 +36,13 @@
 					<button id="kakao-button" class="btn" type="button"
 						onclick="kakaoLogin();">
 						<span class="img"> <img
-							src="<%= request.getContextPath() %>/resources/image/kakao-sm.f3f473d5.svg" alt="kakao_icon">
+							src="${ contextPath }/resources/images/kakao-sm.f3f473d5.svg" alt="kakao_icon">
 						</span> <span class="kakao-text text">카카오톡으로 5초만에 로그인하기</span>
 					</button>
 				</div>
 
 				<div class="login-email">
-					<a href="${ contextPath }/member/login" id="email-button"
+					<a href="${ contextPath }/emailLoginPage.jsp" id="email-button"
 						class="btn"> <span class="email-text text">이메일로 로그인하기</span>
 					</a>
 				</div>
@@ -47,7 +50,8 @@
 
 		</div>
 
-		<div class="login-img"></div>
+		<!-- 로그인페이지 우측 이미지 부분 (css로 적용) -->
+		<div class="login-img" style="background-image:url(resources/images/loginPhoto2.jpg)"></div>
 
 	</div>
 	<!-- 카카오로그인 api -->
@@ -68,17 +72,18 @@
 
                         var userEmail = res.kakao_account.email; //email
                         console.log(userEmail);
+                        var userName = res.properties.nickname // 닉네임(이름)
+                        console.log(userName);
 
-                        // 경로 생성하고 수정할 예정
-                       /*  $.ajax({
-                        url:"${ pageContext.servletContext.contextPath }/kakaoLogin",
-                        data:{ "id" : res.id, "name" : JSON.stringify(res.properties.nickname)},
+                       $.ajax({
+                        url:"${ contextPath }/kakao/login",
+                        data:{ "userEmail" : userEmail, "userName" : userName },
                         Type:"post",
                         success:function(data){
-                            location.href="<%=request.getContextPath()%>";
+                            location.href="${ contextPath }/login";
                         }
                         
-                    }); */
+                    });
                     
                   },
     		     

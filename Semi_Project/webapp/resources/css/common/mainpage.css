@@ -22,148 +22,235 @@ img{
 
 /* header ------------------------------ */
 .header {
-   width: 100%;
-   margin : 0 auto;
-}
-
-.head-inner {
-    width: 930px;
-    height:650px;
+    width: 100%;
     margin : 0 auto;
-    display: flex;
+ }
+ 
+ .head-inner {
+     width: 930px;
+     height:600px;
+     margin : 0 auto;
+     display: flex;
+ }
+ 
+ .left-menu{
+     width: 230px;
+     height: 560px;
+     background: rgb(218, 239, 245);
+     border: 6px solid rgb(218, 239, 245);
+ }
+ 
+ .main-menu{
+     list-style: none;
+ }
+ 
+ .main-logo{
+     font-size: 1.25rem;
+     letter-spacing: 4px;
+     color: black;
+ }
+ 
+ .main-menu2{
+     margin-top: 10px;
+     letter-spacing: 2px;
+     color: black
+ }
+ 
+ .under-logo{
+     margin-left: 30px;
+     margin-top: 100px;
+     letter-spacing: 3px;
+     line-height: 55px;
+     font-size: 2.8rem;
+ }
+ 
+ .icon{
+     width: 30px;
+     margin-top: 15px;
+ }
+ 
+ .icon2{
+     width: 35px;
+     margin-top: 7px;
+ }
+ 
+ .banner-slide1{
+     display: inline;
+ }
+ 
+ .banner{
+     width: 700px;
+     height: 180px;
+     background-size: cover;
+     border: 2px solid rgb(218, 239, 245);
+ }
+ 
+ .header-banner{
+     width: 750px;
+ }
+ 
+ .right-title{
+     font-weight: 700;
+     margin-top: 15px;
+     margin-left: 30px;
+ }
+ 
+ .slide-title{
+    color: black;
+    
+ }
+ 
+ .slide1-name{
+     color: black;
+     float: right;
+ }
+
+/* 시작 임박 소셜링 */
+
+#soon-title {
+    margin-top: 30px;
+    margin-bottom: 20px;
 }
 
-.left-menu{
-    width: 230px;
-    height: 650px;
-    background: rgb(218, 239, 245);
-    border: 6px solid rgb(218, 239, 245);
+#like2 {
+    width: 35px;
+    position : absolute;
+    bottom : 20px;
+    left : 210px;
+    z-index : 10;
 }
 
-.main-menu{
+#profile2 {
+    width: 55px;
+    position : absolute;
+    left: 212px;
+    top: -2px;
+    cursor: pointer;
+}
+
+#s-thumbnail {
+    height: 200px;
+    width: 100%;
+}
+
+#s-thumtitle {
+    margin-top: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    color: black;
+}
+
+#s-thumsub {
+    margin-top: -45px;
+    color: lightslategray;
+}
+
+
+
+/* 슬라이드 */
+
+.slide{
+    position: static;
+    
+}
+
+/*.swiper {
+    width: 580px;
+    height: 350px;
+    margin-left: 75px;
+}*/
+
+.slide ul{
+    animation: slide 8s infinite;
+}
+
+.slide ul, li{
     list-style: none;
 }
 
-.main-logo{
-    font-size: 1.25rem;
-    letter-spacing: 4px;
-    color: black;
+.button1{
+    position: relative;
+    top:-220px;
+    left: 20px;
+    
+}
+.button2{
+    position: relative;
+    top:-270px;
+    right: -670px;
+    
 }
 
-.main-menu2{
-    margin-top: 10px;
-    letter-spacing: 2px;
-    color: black
+.button-prev1{
+    position: relative;
+    margin-left: -170px;
 }
 
-.under-logo{
-    margin-left: 30px;
-    letter-spacing: 3px;
-    line-height: 55px;
-    font-size: 2.7rem;
+.button-next2{
+    position: relative;
+    margin-right: -170px;
 }
 
-.icon{
-    width: 30px;
-    margin-top: 15px;
-}
-
-.icon2{
-    width: 35px;
-    margin-top: 7px;
-}
-
-.banner-slide1{
-    display: inline;
-}
-
-.banner{
-    width: 700px;
-    height: 180px;
-    background-size: cover;
-    border: 2px solid rgb(218, 239, 245);
-}
-
-.header-banner{
-    width: 750px;
-}
-
-.right-title{
-    font-weight: 700;
-    margin-top: 15px;
-    margin-left: 30px;
-}
-
-.slide-title{
-   color: black;
-   
-}
-
-.slide1-name{
-    color: black;
-    float: right;
-}
-
-
-/*여기서부터 슬라이드*/
-
-.start{
-    width: 100%;
-    height: 1200px;
-    margin : 0 auto;
-    display: display;
-}
-
-.first{
-    position:static;
-    margin-top: 60px;
-}
-
-.b-title{
-    margin-left: 350px;
-    font-size: 1.2rem;
-    font-weight: 700;
-}
-
-.view1{
-    text-align: right;
-    margin-right: 400px;
-    color: black;
-}
-
-
-.link-menu{
-    color: rgba(0, 0, 0, 0.517);
-}
-
-.all-title{
-    position:relative; 
-}
-
-.first-title{
-    position: absolute;
-    color: black;
-    font-family: 'Noto Sans KR', sans-serif;
-    font-size: 16px;
-    font-weight: bold;
-    margin-left: 10px;
-    margin-top: -5px;
-}
-
-.name{
-    position: absolute;
-    color: black;
-    font-family: 'Noto Sans KR', sans-serif;
-    font-size: 12px;
-    margin-top: -6px;
-    margin-left: 10px;
-}
-
-
-.second{
+/*---------------body----------------*/
+.socialing-content{
     margin-top: 30px;
 }
 
+.content-title{
+    margin-left: 300px;
+}
+
+.swiper {
+    width: 800px;
+    height: 250px;
+    margin-left: 90px;
+}
+
+.button3{
+    position: relative;
+    top:-190px;
+    left: 300px;
+    
+}
+.button4{
+    position: relative;
+    top:-230px;
+    right: -1170px;
+    
+}
+
+.button-prev{
+    position: relative;
+    margin-left: -170px;
+}
+
+.button-next{
+    position: relative;
+    margin-right: -170px;
+}
+
+.button5{
+    position: relative;
+    top:-190px;
+    left: 300px;
+    
+}
+.button6{
+    position: relative;
+    top:-230px;
+    right: -1170px;
+
+}
+
+.button-prev{
+    position: relative;
+    margin-left: -170px;
+}
+
+.button-next{
+    position: relative;
+    margin-right: -170px;
+}
 
 /*---------------footer----------------*/
 .footer{
@@ -224,29 +311,4 @@ img{
 .foot-final>a{
     color: gray;
     font-size: 12px;
-}
-
-/* 슬라이더 */
-.swiper-container {
-    width: 810px;
-	height:320px;
-	
-}
-.swiper-slide {
-	display:flex; /* 내용을 중앙정렬 하기위해 flex 사용 */
-	align-items:center; /* 위아래 기준 중앙정렬 */
-	justify-content:center; /* 좌우 기준 중앙정렬 */
-}
-.swiper-slide img {
-	box-shadow:0 0 5px #555;
-	max-width:100%; /* 이미지 최대너비를 제한, 슬라이드에 이미지가 여러개가 보여질때 필요 */
-	/* 이 예제에서 필요해서 설정했습니다. 상황에따라 다를 수 있습니다. */
-}
-
-.swiper-button-next{
-    margin-top: -40px;
-}
-
-.swiper-button-prev{
-    margin-top: -40px;
 }

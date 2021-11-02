@@ -7,7 +7,7 @@
 <title>소다소개</title>
 
 	<!-- 외부 스타일 시트 -->
-    <link href="resources/css/common/footer_aboutsoda.css" rel="stylesheet">
+    <link href="resources/css/footer/footer_aboutsoda.css" rel="stylesheet">
 
     <!-- 글꼴 (Noto Sans) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

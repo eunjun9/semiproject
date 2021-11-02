@@ -7,7 +7,7 @@
 <title>마이페이지</title>
 
 	<!--외부 스타일 시트-->
-    <link rel="stylesheet" href="/resources/css/mypage/mypage_main.css">
+    <link rel="stylesheet" href="resources/css/mypage/mypage_main.css">
     <!--폰트-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

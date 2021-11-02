@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM
+"http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<entry key="loginMember">
+		SELECT
+			  USER_ID
+			, USER_NAME
+			, USER_PHONE
+			, USER_PWD
+			, USER_ADDRESS
+			, JOIN_DATE
+			, STATUS
+			, USER_GRADE
+		 FROM MEMBER_INFO
+	    WHERE USER_ID = ?
+	      AND USER_PWD = ?
+	      AND STATUS = 'Y'
+	</entry>
+	
+	<entry key="kakaoLoginMember">
+		SELECT
+			  USER_ID
+			, USER_NAME
+			, USER_PHONE
+			, USER_PWD
+			, USER_ADDRESS
+			, JOIN_DATE
+			, STATUS
+			, USER_GRADE
+		 FROM MEMBER_INFO
+	    WHERE USER_ID = ?
+	      AND STATUS = 'Y'
+	</entry>
+	
+	<entry key="kakaoJoin">
+		INSERT
+		  INTO MEMBER_INFO
+		(
+		      USER_ID
+			, USER_NAME
+			, USER_PHONE
+			, USER_PWD
+			, USER_ADDRESS
+			, JOIN_DATE
+			, STATUS
+			, USER_GRADE
+		)
+		VALUES
+		(
+			  ?
+			, ?
+			, ?
+			, ?
+			, ?
+			, SYSDATE
+			, DEFAULT
+			, DEFAULT
+		)
+	</entry>
+
+</properties>

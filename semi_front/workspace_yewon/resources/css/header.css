@@ -12,6 +12,11 @@ body {
 
 a{
     text-decoration: none;
+    color: gray;
+}
+
+a:hover{
+    color :rgb(145, 224, 244);
 }
 
 img{
@@ -70,9 +75,22 @@ img{
 }
 
 .category2{
-     margin-right: 15px;
+     margin-right: 10px;
 }
 
+.mypage{
+    list-style: none;
+    width: 90px;
+    margin-top: -32px;
+    margin-left: 70px;
+}
+
+.mypage_sub{
+    list-style: none;
+    display: none;
+    background: rgba(224, 224, 224, 0.11);
+    width: 90px;
+}
 
 
 

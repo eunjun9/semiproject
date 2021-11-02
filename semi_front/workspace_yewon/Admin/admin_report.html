@@ -19,26 +19,45 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 </head>
 <body>
-    <!--header-->
+    <!-- 헤더 -->
     <div class="header">
-        <div class="head-inner">
-            <div class="logo">
-                <img src="../resources/icon/logo.png">
-            </div>
-            <div class="big-category">
-                <div class="category1">
-                    <a href="#">SOCIALING</a>
-                    <a href="#">CLASS</a>
-                    <a href="#">MAGAZINE</a>
-                </div>
-                <div class="category2">
-                    <a href="#">CART</a>
-                    <a href="#">MYPAGE</a>
-                </div>
-            </div>
-        </div>
-    </div>
+      <div class="head-inner">
 
+        <div class="logo">
+          <a href="#"><img src="../resources/icon/logo.png"></a>
+        </div>
+
+          <div class="big-category">
+              <div class="category1">
+                  <a href="#">SOCIALING</a>
+                  <a href="../Class/class_main.html">CLASS</a>
+                  <a href="#">MAGAZINE</a>
+              </div>
+              <div class="category2">
+                  <a href="#">CART</a>
+                  <li class="mypage">
+                      <a href="#" >MYPAGE</a>
+                      <ul class="mypage_sub">
+                          <li><a href="#">마이페이지</a></li>
+                          <li><a href="#">로그아웃</a></li>
+                      </ul>
+                  </li>
+              </div>
+          </div>
+
+      </div>
+  </div>
+  <script>
+      $(document).ready(function(){ 
+        $(".mypage").mouseover(function(){ 
+          $(this).children(".mypage_sub").show(300); 
+        }); 
+          $(".mypage").mouseleave(function(){ 
+            $(".mypage_sub").hide(300); 
+          });
+        });
+      
+  </script>
     <!-- body -->
     <div class="sales body">
         <div class="body-inner">

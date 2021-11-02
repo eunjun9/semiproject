@@ -63,31 +63,6 @@
 			</div>
 			<hr class="hr-line">
 
-			<!-- 두번째 클래스 영역 -->
-
-			<div class="wish-content">
-
-				<div class="wish-class img">
-					<img src="../wishlistPage/resources/image/sample2.jpg"
-						width="200px" height="150px">
-				</div>
-			</div>
-
-			<div class="wish-class-info">
-				<p class="category">VOD</p>
-				<p class="title">40년 경력 포토그래퍼가 알려주는 '초/중급자를 위한 사진 라이팅 테크닉 클래스'</p>
-			</div>
-
-			<div class="wish-class-date">
-				<p class="date">150일</p>
-			</div>
-
-			<div class="wish-class-price">
-				<p class="price">100,000원</p>
-			</div>
-
-			<hr class="hr-line">
-		</div>
 
 		<!-- 주문자정보 / 결제금액 -->
 
@@ -186,6 +161,6 @@
 	</div>
 	<!-- 푸터 가져오기 -->
 	<%@ include file="/WEB-INF/views/common/footer.jsp"%>
-
+</div>
 </body>
 </html>

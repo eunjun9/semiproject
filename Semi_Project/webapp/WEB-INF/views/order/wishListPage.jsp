@@ -72,32 +72,6 @@
 			<hr class="hr-line">
 		</div>
 
-		<!-- 두번째 클래스 영역 -->
-
-		<div class="wish-content">
-			<!-- 체크박스 -->
-			<div class="class-checkbox">
-				<input type="checkbox" class="order-check" id="order2" name="order"
-					checked>
-			</div>
-			<div class="wish-class img">
-				<img src="../wishlistPage/resources/image/sample2.jpg" width="200px"
-					height="150px">
-			</div>
-		</div>
-
-		<div class="wish-class-info">
-			<p class="category">VOD</p>
-			<p class="title">40년 경력 포토그래퍼가 알려주는 '초/중급자를 위한 사진 라이팅 테크닉 클래스'</p>
-		</div>
-
-		<div class="wish-class-date">
-			<p class="date">150일</p>
-		</div>
-
-		<div class="wish-class-price">
-			<p class="price">100,000원</p>
-		</div>
 
 		<!-- 신청하기(결제페이지로 이동) 버튼 -->
 		<div class="wish-class-btn">
