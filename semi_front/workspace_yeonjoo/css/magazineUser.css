@@ -30,6 +30,18 @@ html {
 
 }
 
+.id-list>ul{
+    list-style: none;
+    margin: 0 0;
+    padding-inline-start: 0px;
+}
+
+.id-list>li{
+    border: 1px black solid;
+    padding: 5px;
+}
+
+
 .word{
     position: sticky;
     transform: translate(50px, 32px);                                                                   
@@ -39,7 +51,7 @@ html {
 }
 
 .view1{
-   margin-left : 600px;
+   margin-left : 660px;
    position:sticky;
     transform: translate(90px, 130px); 
     text-decoration: underline;
@@ -49,6 +61,33 @@ html {
     color: gray;
     font-family: 'Noto Sans KR', sans-serif;
     font-size: 12px;
+}
+
+.id-list{
+    margin-top: -9px;
+    margin-left: 5px;
+}
+
+.id-list>a{
+    color: black;
+    font-size: 14px;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+#list{
+    position:absolute;
+}
+
+#list>li{
+    border: 1px solid lightgrey;
+    margin-left: 70px;
+    width: 120px;
+    background-color:  rgb(248, 241, 233);
+}
+
+#list>li>a{
+    color: black;
+    font-family: 'Noto Sans KR', sans-serif;
 }
 
 

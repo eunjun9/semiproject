@@ -1,90 +1,103 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8" import="com.soda.member.model.vo.Member"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%
+	// session 객체에 담긴 loginUser 정보를 변수에 담아두기
+	Member loginUser = (Member)session.getAttribute("loginUser");
+%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>emailLogin</title>
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+	integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+	crossorigin="anonymous"></script>
 <!-- 외부 스타일 시트 -->
 <link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/css/loginpage-style.css">
+	href="<%=request.getContextPath()%>/resources/css/member/loginpage-style.css">
 <!-- 외부 폰트 -->
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap"
 	rel="stylesheet">
 </head>
 <body>
-<c:set var="contextPath" value="<%= request.getContextPath()%>"></c:set>  
+	<c:set var="contextPath" value="<%=request.getContextPath()%>"></c:set>
 
 	<div class="login-main">
 
 		<div class="login-bar">
 			<div class="login-logo center">
 				<div class="login-logo center">
-					<a href="${ contextPath }">
-					<img src="${ contextPath }/resources/images/logo.png" width="400"></a>
+					<a href="${ contextPath }"> <img
+						src="${ contextPath }/resources/images/logo.png" width="400"></a>
 				</div>
-			
-			<div class="login-text center">
-				<span class="text"> 나의 일상을 더욱 풍성하게<br> 만들어줄 소셜다이닝
-				</span>
+
+				<div class="login-text center">
+					<span class="text"> 나의 일상을 더욱 풍성하게<br> 만들어줄 소셜다이닝
+					</span>
+				</div>
+
+				<div class="loginArea center">
+					<form class="login-input" action="${ contextPath }/email/login" method="post">
+						<h1>로그인</h1>
+						<h4>이메일</h4>
+						<input type="email" id="email" name="email" placeholder="이메일을 입력해주세요." required>
+						<h4>비밀번호</h4>
+						<input type="password" id="pwd" name="pwd" placeholder="비밀번호를 입력해주세요." required>
+
+						<div class="login-fail-text" id="login-fail">
+							<!-- 로그인 실패 시 텍스트 출력 부분 -->
+						</div>
+
+						<span class="button-text text">
+						<input id="login-button text" class="btn" type="submit" value="로그인하기">
+						</span>
+					</form>
+				</div>
+
+				<div class="login-join-find">
+					<div class="login-join">
+						<a href="${ contextPath }/memberjoin" class="join-text">회원가입</a>
+					</div>
+					<div class="login-find">
+						<a href="${ contextPath }/emailFind" class="email-find"
+							onclick="openPopup('${ contextPath }/emailFind', 'emailFind', 500, 500);">이메일
+							찾기</a> <a href="${ contextPath }/pwdFind" class="pwd-find"
+							onclick="openPopup('${ contextPath }/pwdFind', 'pwdFind', 500, 500);">/
+							비밀번호 찾기</a>
+					</div>
+
+				</div>
+				<br>
+				<hr width="350px" color="lightgray" size="1px">
+				<br>
+
+				<div class="login-button center">
+					<div class="login-kakao">
+						<button id="kakao-button-ep" class="btn" type="button"
+							onclick="kakaoLogin();">
+							<span class="img"> <img
+								src="${ contextPath }/resources/images/minju/kakao-sm.f3f473d5.svg"
+								alt="kakao_icon">
+							</span> <span class="kakao-text text">카카오톡으로 5초만에 로그인하기</span>
+						</button>
+					</div>
+					
+				</div>
 			</div>
-
-			<div class="loginArea center">
-				<form class="login-input" action="${ contextPath }/login" method="post">
-					<h1>로그인</h1>
-					<h4>이메일</h4>
-					<input type="email" id="email" name="email" placeholder="이메일을 입력해주세요." required>
-					<h4>비밀번호</h4>
-					<input type="password" id="pwd" name="pwd" placeholder="비밀번호를 입력해주세요." required>
-				</form>
-				<div class="login-fail-text" id="login-fail">
-					<!-- 로그인 실패 시 텍스트 출력 부분 -->
-				</div>
-
-				<span class="button-text text">
-				<input id="login-button text" class="btn" type="submit">로그인하기
-				</span>
-
-			</div>
-
-			<div class="login-join-find">
-				<div class="login-join">
-					<a href="${ contextPath }/memberJoin"
-						class="join-text">회원가입</a>
-				</div>
-				<div class="login-find">
-					<a href="${ contextPath }/emailFind" class="email-find" 
-					onclick="openPopup('${ contextPath }/emailFind', 'emailFind', 500, 500);">이메일 찾기</a>
-					<a href="${ contextPath }/pwdFind" class="pwd-find" 
-					onclick="openPopup('${ contextPath }/pwdFind', 'pwdFind', 500, 500);">/
-						비밀번호 찾기</a>
-				</div>
-
-			</div>
-			<br>
-			<hr width="350px" color="lightgray" size="1px">
-			<br>
-
-			<div class="login-button center">
-				<div class="login-kakao">
-					<button id="kakao-button" class="btn" type="button"
-						onclick="kakaoLogin();">
-						<span class="img">
-						<img src="${ contextPath }/resources/image/kakao-sm.f3f473d5.svg" alt="kakao_icon">
-						</span> <span class="kakao-text text">카카오톡으로 5초만에 로그인하기</span>
-					</button>
-				</div>
-			</div>
-
-
-			<div class="login-img"></div>
-
 		</div>
-</div>
-</div>
-		<script>
+
+		<!-- 로그인페이지 우측 이미지 부분 -->
+		<div class="login-img"
+			style="background-image: url(../resources/images/minju/loginPhoto2.jpg)"></div>
+
+
+
+	</div>
+
+	<script>
             function openPopup(url, title, width, height) {
                 var left = (document.body.clientWidth/2)-(width/2);
                 left += window.screenLeft;	// 듀얼 모니터
@@ -124,7 +137,7 @@
                         Type:"post",
                         success:function(data){
                         	// 카카오 로그인 성공 시 메인페이지로 이동
-                            location.href="${ contextPath }/main";
+                            location.href="${ contextPath }/mainpage";
                         }
                         
                     });
@@ -158,10 +171,10 @@
             }
           }  
         </script>
-        
-        
-        <!-- 로그인 실패 시 로그인창 하단에 텍스트 노출 -->
-        <script>
+
+
+	<!-- 로그인 실패 시 로그인창 하단에 텍스트 노출 -->
+	<!--   <script>
         	$(function(){
         		$("#login-button").click(function(){
         			$.ajax({
@@ -177,6 +190,6 @@
         			});
         		});
         	});
-        </script>
+        </script>-->
 </body>
 </html>

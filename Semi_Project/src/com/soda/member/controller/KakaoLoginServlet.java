@@ -1,15 +1,12 @@
 package com.soda.member.controller;
 
 import java.io.IOException;
-import java.security.SecureRandom;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.filter.SHA256Util;
 import com.soda.member.model.service.MemberService;
@@ -58,7 +55,8 @@ public class KakaoLoginServlet extends HttpServlet {
 			int kakaoJoin = new MemberService().kakaoJoin(joinMember);
 			
 			if(kakaoJoin > 0) {
-				request.getSession().setAttribute("message", "회원 가입이 완료 되었습니다. 다시 로그인 해주세요.");
+				Member kakaoLoginUser = new MemberService().loginMember(userId);
+				request.getSession().setAttribute("loginUser", kakaoLoginUser);
 				response.sendRedirect(request.getContextPath());
 			}else {
 				System.out.println("카카오 회원가입 실패");

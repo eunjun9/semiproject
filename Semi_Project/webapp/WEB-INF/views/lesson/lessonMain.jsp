@@ -181,7 +181,10 @@
             <a class="paging" href="${ contextPath }/lesson/list?page=${ pi.maxPage }"><img width="16px" src="resources/images/yewon/next.png">
             <img width="16px" src="resources/images/yewon/next.png"></a>
         </div>
+<<<<<<< HEAD
  --%>
+=======
+>>>>>>> branch 'master' of https://github.com/umyewon/semiproject.git
 
     </div>
 

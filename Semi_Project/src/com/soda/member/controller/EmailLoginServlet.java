@@ -8,18 +8,22 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.soda.member.model.service.MemberService;
+import com.soda.member.model.vo.Member;
 
 /**
- * Servlet implementation class LoginServlet
+ * Servlet implementation class EmailLoginServlet
  */
-@WebServlet("/login")
-public class LoginServlet extends HttpServlet {
+@WebServlet("/email/login")
+public class EmailLoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoginServlet() {
+    public EmailLoginServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,7 +32,7 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/member/loginPage.jsp");
+		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/member/emailLoginPage.jsp");
 		view.forward(request, response);
 	}
 
@@ -36,7 +40,21 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
+		String userId = request.getParameter("email");
+		String userPwd = request.getParameter("pwd");
+		
+		Member loginUser = new MemberService().loginMember(userId, userPwd); 
+		
+		if(loginUser != null) {
+			HttpSession session = request.getSession();
+			session.setAttribute("loginUser", loginUser);
+			response.sendRedirect(request.getContextPath() + "/mainpage");
+		} else {
+			RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/common/errorpage.jsp");
+			view.forward(request, response);
+			
+		}
+		
 	}
 
 }

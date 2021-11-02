@@ -31,13 +31,15 @@ a {
 
 .login-logo{
     display: block;
-    margin-bottom: 50px;
+    margin-bottom: 40px;
 }
 
 .login-button {
+	text-align: center;
     font-size: 15px;
     padding-top: 50px;
 }
+
 
 .center {
     display: flex;
@@ -50,6 +52,7 @@ a {
 }
 
 .img{
+	margin-left : -10%;
     height: 24px;
     border: none;
 }
@@ -59,6 +62,7 @@ a {
 }
 
 .kakao-text{
+	text-align: center;
     background-color : #f7e317;
     font-weight: bold;
 }
@@ -68,6 +72,7 @@ a {
     width: 350px;
     cursor: pointer;
 }
+
 #email-button{
     background-color: rgb(218,239,245);
     margin-top: 10px;
@@ -86,6 +91,7 @@ a {
     border: none;
     padding-left: 50px;
     padding-right: 50px;
+    width: 100%;
     background-color: rgb(218,239,245);
   
 }
@@ -94,23 +100,30 @@ a {
 .login-text{
     color: black;
     font-size: 1.5rem;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
 }
 
 /* --------------------------*/
 /* 이메일 로그인 페이지 */
 .login-input, .loginArea{
     font-size: 15px;
-    padding-top: 10px;
-    padding-bottom: 20px;
+    padding-top: 5px;
+    padding-bottom: 10px;
+}
+
+#kakao-button-ep{
+	background-color : #f7e317;
+    width: 310px;
+    cursor: pointer;
+    margin-top : -13%;
 }
 
 #login-button{
     background-color: rgb(218,239,245);
     margin-top: 5px;
     color: black;
-    width: 350px;
     text-decoration: none;
+    cursor: pointer;
 }
 
 #email, #pwd {
@@ -124,6 +137,8 @@ a {
     font-size: 12px;
     color: red;
     margin-bottom: 10px;
+    width : 200px;
+    height : 20px;
 }
 
 /* 회원가입, 이메일 비밀번호 찾기*/
