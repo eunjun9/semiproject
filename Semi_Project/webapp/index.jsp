@@ -19,6 +19,10 @@
 </head>
 
 <body>
+<!-- 변수 선언 -->
+<c:set var="contextPath" value="${ pageContext.servletContext.contextPath }" 
+scope="application"/>
+
 	<div id="home1" class="big-bg" style="background-image:url(resources/images/soda_home1.png)">
 
     <header class="page-header wrapper">
