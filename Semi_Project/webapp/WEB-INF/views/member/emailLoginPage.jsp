@@ -61,11 +61,12 @@
 						<a href="${ contextPath }/memberjoin" class="join-text">회원가입</a>
 					</div>
 					<div class="login-find">
-						<a href="${ contextPath }/emailFind" class="email-find"
-							onclick="openPopup('${ contextPath }/emailFind', 'emailFind', 500, 500);">이메일
-							찾기</a> <a href="${ contextPath }/pwdFind" class="pwd-find"
-							onclick="openPopup('${ contextPath }/pwdFind', 'pwdFind', 500, 500);">/
-							비밀번호 찾기</a>
+						<span class="email-find" style='cursor:pointer;'
+						onclick="openPopup('${ contextPath }/email/find', 'emailFind', 500, 500);">
+						이메일 찾기</span>
+						<span class="pwd-find" style='cursor:pointer;'
+						onclick="openPopup('${ contextPath }/pwd/find', 'pwdFind', 500, 500);">
+						/ 비밀번호 찾기</span>
 					</div>
 
 				</div>
