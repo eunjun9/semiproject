@@ -1,4 +1,4 @@
-package com.soda.lesson.model.vo;
+package com.soda.socialing.model.vo;
 
 public class PageInfo {
 	private int page;				// 사용자가 요청하는 페이지
