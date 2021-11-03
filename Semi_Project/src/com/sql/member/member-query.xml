@@ -62,5 +62,32 @@
 			, ?
 		)
 	</entry>
+	
+	<entry key="insertMember">
+		INSERT
+		  INTO MEMBER_INFO
+		(
+		      USER_ID
+			, USER_NAME
+			, USER_PHONE
+			, USER_PWD
+			, JOIN_DATE
+			, STATUS
+			, USER_GRADE
+			, USER_GENDER
+		)
+		VALUES
+		(
+			  ?
+			, ?
+			, ?
+			, ?
+			, SYSDATE
+			, DEFAULT
+			, DEFAULT
+			, ?
+		)
+	</entry>
+	
 
 </properties>

@@ -200,6 +200,13 @@ img{
     margin-left: 300px;
 }
 
+.view-all{
+    margin-left: 1080px;
+    color: rgb(154, 154, 154);
+    line-height: 7px;
+
+}
+
 .swiper {
     width: 800px;
     height: 250px;
