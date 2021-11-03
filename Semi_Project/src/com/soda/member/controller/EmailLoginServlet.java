@@ -54,7 +54,6 @@ public class EmailLoginServlet extends HttpServlet {
 			HttpSession session = request.getSession();
 			session.setAttribute("loginUser", loginUser);
 			response.sendRedirect(request.getContextPath() + "/mainpage");
-			System.out.println(session);
 		} else {
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter writer = response.getWriter();

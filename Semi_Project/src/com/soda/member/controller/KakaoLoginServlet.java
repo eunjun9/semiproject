@@ -40,9 +40,6 @@ public class KakaoLoginServlet extends HttpServlet {
 		Member loginUser = new MemberService().loginMember(userId);
 		HttpSession session = request.getSession();
 		
-		response.setContentType("application/json; charset=utf-8");
-		response.getWriter().print(loginUser);
-		
 		
 		// 가입된 정보 없으면 가입시켜주기
 		if( loginUser == null ) {
@@ -65,13 +62,16 @@ public class KakaoLoginServlet extends HttpServlet {
 			if(kakaoJoin > 0) {
 				Member kakaoLoginUser = new MemberService().loginMember(userId);
 				session.setAttribute("loginUser", kakaoLoginUser);
-				// response.sendRedirect(request.getContextPath() + "/email/login");
+				response.setCharacterEncoding("UTF-8");
+				response.getWriter().print(loginUser);
 			}else {
 				System.out.println("카카오 회원가입 실패");
 			}
 			
 		}else {
 			session.setAttribute("loginUser", loginUser);
+			response.setCharacterEncoding("UTF-8");
+			response.getWriter().print(loginUser);
 		}
 	} 
 
