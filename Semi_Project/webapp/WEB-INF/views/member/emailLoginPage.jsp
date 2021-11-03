@@ -127,20 +127,25 @@
                         console.log(userEmail);	 				 // 테스트용 콘솔 노출
                         var userName = res.properties.nickname 	// 카카오 닉네임(이름)
                         console.log(userName);					// 테스트용 콘솔 노출
-                        var kakaoId = res.id				// 비밀번호로 사용할 카카오 아이디
-                        console.log(kakaoId);
+                        var kakaoId = res.id					// 비밀번호로 사용할 카카오 아이디
+                        console.log(kakaoId);					// 테스트용 콘솔 노출
+                        var kakaoGender = res.kakao_account.gender;	 // 카카오 성별
+                        console.log(kakaoGender);
 
                        $.ajax({
                         url:"${ contextPath }/kakao/login",
-                        data:{ "userEmail" : userEmail, "userName" : userName, "kakaoId" : kakaoId },
+                        data:{ "userEmail" : userEmail, "userName" : userName, "kakaoId" : kakaoId, "kakaoGedner" : kakaoGender },
                         Type:"post",
                         success:function(data){
-                        	// 카카오 로그인 성공 시 메인페이지로 이동
-                            location.href="${ contextPath }/mainpage";
+                        	location.href="${ contextPath }/mainpage";
+                        	console.log("로그인 성공");
                         }
                         
                     });
-                    
+                       if(Kakao.Auth.getAccessToken()){
+                       	// console.log(Kakao.Auth.getAccessToken() + "토큰이 존재합니다.");
+                       }
+                     Kakao.Auth.setAccessToken(res.access_token);
                   },
     		     
                   fail: function (error) {
