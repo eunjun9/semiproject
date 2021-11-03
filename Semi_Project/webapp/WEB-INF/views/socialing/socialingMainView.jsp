@@ -40,6 +40,7 @@
                 <div class="slide">
                     <div class="swiper mySwiper">
                         <div class="swiper-wrapper">
+                        <!-- 반복문으로 현재 날짜 기준 시작일 2일 이내 소셜링 글 목록 출력 -->
                         <div class="swiper-slide">
                             <div id="thumbox">
                                 <img src="<%= request.getContextPath() %>/resources/images/eunjung/flower1.PNG"><br>
@@ -163,7 +164,7 @@
 		            <!--  (<) 이전 페이지  : 현재 페이지 - 1이니까 -->
 		            <c:choose>
 		             	<c:when test="${ pi.page > 1 }"> <!--  현재 페이지가 1보다 클 때는 이동하고  -->
-		             		<a class="paging" href="${ contextPath }/socialing/main?page=${ pi.page - 1}"><img width="18px" src="${ contextPath }/resources/images/eunjung/previous.png"></a>
+		             		<a class="paging" href="${ contextPath }/socialing/main?page=${ pi.page - 1 }"><img width="18px" src="${ contextPath }/resources/images/eunjung/previous.png"></a>
 		             	</c:when>
 		             	<c:otherwise> <!-- 1이면 현재 페이지에 머뭄 -->
 		             		<a class="paging" href="#"><img width="18px" src="${ contextPath }/resources/images/eunjung/previous.png"></a>
@@ -201,7 +202,7 @@
                 </div>
                 
                 <div id="writebox">
-                    <button id="writing" onclick="location.href='socialing_writing.html'">글 쓰기</button>
+                    <button id="writing" onclick="${ contextPath }/socialing/form">글 쓰기</button>
                 </div>
             </article>
         </div>
@@ -224,6 +225,7 @@
     </script>
 
     <script>
+    	// 찜하기 추가/취소 아이콘 변경
         let like = document.querySelectorAll('#like');
         let like2 = document.querySelectorAll('#like2');
         
@@ -245,6 +247,24 @@
             }
         }
     </script>
+    
+    <c:choose>
+		<c:when test="${ !empty loginUser }">
+			<script>
+				function detailView(nNum){
+					location.href = '${contextPath}/socialing/detail?nNum=' + nNum;
+				}
+			</script>
+		</c:when>
+		<c:otherwise>
+			<script>
+				function detailView(){
+					alert('로그인 후 이용 가능합니다.');
+					location.href='${contextPath}/login';
+				}			
+			</script>
+		</c:otherwise>
+	</c:choose>
 
     <!--footer-->
     <%@ include file="/WEB-INF/views/common/footer.jsp" %>

@@ -66,7 +66,8 @@
                           <li><a href="${ contextPath }/login">로그인</a></li>
                           <% } %>
                         </ul>
-                  </li></ul>
+                  	</li>
+                  </ul>
                 </div>
             </div>
         </div>

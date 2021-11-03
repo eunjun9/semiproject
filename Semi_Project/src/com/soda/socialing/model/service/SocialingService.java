@@ -1,6 +1,9 @@
 package com.soda.socialing.model.service;
 
-import static com.common.JDBCTemplate.*;
+import static com.common.JDBCTemplate.close;
+import static com.common.JDBCTemplate.commit;
+import static com.common.JDBCTemplate.getConnection;
+import static com.common.JDBCTemplate.rollback;
 
 import java.sql.Connection;
 import java.util.HashMap;
@@ -10,6 +13,7 @@ import java.util.Map;
 import com.soda.socialing.model.dao.SocialingDao;
 import com.soda.socialing.model.vo.PageInfo;
 import com.soda.socialing.model.vo.Socialing;
+import com.soda.socialing.model.vo.SodaFile;
 
 public class SocialingService {
 	
@@ -34,6 +38,35 @@ public class SocialingService {
 		returnMap.put("socialingList", socialingList);
 		
 		return returnMap;
+	}
+
+	public int insertSocialing(Socialing socialing) {
+		Connection conn = getConnection();
+		
+		/* Notice 테이블에 삽입 */
+		int NoticeResult = socialingDao.insertNotice(conn, socialing);
+		
+		/* Socialing 테이블에 삽입 */
+		int socialingResult = socialingDao.insertSocialing(conn, socialing);
+		
+		/* File 테이블에 삽입 */
+		int fileResult = 0;
+		for(SodaFile photo : socialing.getPhotoList()) {
+			fileResult += socialingDao.insertFile(conn, photo);
+		}
+		
+		int result = 0;	// 3가지 로직이 모두 잘 수행 되었음을 나타내는 변수
+		if(NoticeResult > 0 && socialingResult > 0 && fileResult == socialing.getPhotoList().size()) {
+			// fileResult = 사진 삽입(insert)이 정상 수행 된 갯수, size() = 실제 첨부 된 사진 갯수
+			commit(conn);
+			result = 1;
+		} else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return result;
 	}
 
 //	public List<Socialing> selectList() {
