@@ -58,14 +58,11 @@
                 <a href="#">CART</a>
                 <ul class="mypage">
                     <li class="mypage">
+                    
                     	<a href="${ contextPath }/mypage/main" >MYPAGE</a>
                         <ul class="mypage_sub">
-                        <% if(loginUser == null) { %>
                           <li><a href="${ contextPath }/mypage/main">마이페이지</a></li>
                           <li><a href="${ contextPath }/logout">로그아웃</a></li>
-                        <% } else { %>
-                          <li><a href="${ contextPath }/login">로그인</a></li>
-                        <% } %>
                         </ul>
                   </li></ul>
                 </div>
