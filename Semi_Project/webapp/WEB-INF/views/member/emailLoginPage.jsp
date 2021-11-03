@@ -1,18 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" import="com.soda.member.model.vo.Member"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%
-	// session 객체에 담긴 loginUser 정보를 변수에 담아두기
-	Member loginUser = (Member)session.getAttribute("loginUser");
-%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>emailLogin</title>
 <!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"
-	integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
 	crossorigin="anonymous"></script>
 <!-- 외부 스타일 시트 -->
 <link rel="stylesheet"
@@ -43,16 +38,20 @@
 					<form class="login-input" action="${ contextPath }/email/login" method="post">
 						<h1>로그인</h1>
 						<h4>이메일</h4>
+						<span class="input_area">
 						<input type="email" id="email" name="email" placeholder="이메일을 입력해주세요." required>
+						</span>
 						<h4>비밀번호</h4>
+						<span class="input_area">
 						<input type="password" id="pwd" name="pwd" placeholder="비밀번호를 입력해주세요." required>
-
+						</span>
+						
 						<div class="login-fail-text" id="login-fail">
-							<!-- 로그인 실패 시 텍스트 출력 부분 -->
 						</div>
 
-						<span class="button-text text">
-						<input id="login-button text" class="btn" type="submit" value="로그인하기">
+						<span class="input_area text">
+						<input id="login-button text" class="btn" type="submit" value="로그인하기"
+						 style='cursor:pointer; border:none;'>
 						</span>
 					</form>
 				</div>
@@ -171,25 +170,8 @@
             }
           }  
         </script>
+        
+	     
 
-
-	<!-- 로그인 실패 시 로그인창 하단에 텍스트 노출 -->
-	<!--   <script>
-        	$(function(){
-        		$("#login-button").click(function(){
-        			$.ajax({
-        				url : "${ contextPath }/login",
-        				data : { userId : $("#email").val(), userPwd : $("#pwd").val()  },
-        				type : "post",
-        				success : function(user) {
-        					console.log("success!");
-        					},
-        				error : function(e){
-        					$("#login-fail").val(e.responseText);
-        				}
-        			});
-        		});
-        	});
-        </script>-->
 </body>
 </html>
