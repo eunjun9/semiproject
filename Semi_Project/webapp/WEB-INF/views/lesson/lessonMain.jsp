@@ -145,12 +145,10 @@
         </div>
         
         <div class="wrapper3">
-        <select>
+        <select name="classSort">
             <option disabled>정렬 방식</option>
-            <option selected >인기순</option>
-            <option>최신순</option>
-            <option>가격 낮은순</option>
-            <option>가격 높은순</option>
+            <option value="pop" selected >인기순</option>
+            <option value="rec">최신순</option>
         </select><br>
         </div>
         

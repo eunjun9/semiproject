@@ -7,6 +7,7 @@ public class Lesson {
 	private int nNum; 			// 게시판 번호 (notice 테이블 참조)
 	private String nTitle;		// 게시글 제목 (notice 테이블 참조)
 	private String nContent;	// 게시글 내용 (notice 테이블 참조)
+	private int nCount;			// 게시판 조회수
 	private String nStatus;		// 상태 (Y, N) (notice 테이블 참조)
 	private String nType;		// 게시판 종류 (클래스, 소셜링, 매거진)
 	private String userId;		// 사용자 아이디 (Member_info 테이블 참조)
@@ -27,13 +28,15 @@ public class Lesson {
 	
 	public Lesson() {}
 
-	public Lesson(int nNum, String nTitle, String nContent, String nStatus, String nType, String userId,
+
+	public Lesson(int nNum, String nTitle, String nContent, int nCount, String nStatus, String nType, String userId,
 			String userName, Date nDate, Date modifyDate, String ctag1, String ctag2, int cPrice, String cType,
 			String cCategogy, Date cSDate, Date cEDate, String cLocation, String cTutor, List<File> photoList) {
 		super();
 		this.nNum = nNum;
 		this.nTitle = nTitle;
 		this.nContent = nContent;
+		this.nCount = nCount;
 		this.nStatus = nStatus;
 		this.nType = nType;
 		this.userId = userId;
@@ -51,6 +54,7 @@ public class Lesson {
 		this.cTutor = cTutor;
 		this.photoList = photoList;
 	}
+
 
 	public int getnNum() {
 		return nNum;
@@ -75,6 +79,18 @@ public class Lesson {
 	public void setnContent(String nContent) {
 		this.nContent = nContent;
 	}
+
+	
+	
+	public int getnCount() {
+		return nCount;
+	}
+
+
+	public void setnCount(int nCount) {
+		this.nCount = nCount;
+	}
+
 
 	public String getnStatus() {
 		return nStatus;
@@ -204,13 +220,16 @@ public class Lesson {
 		this.photoList = photoList;
 	}
 
+
 	@Override
 	public String toString() {
-		return "Lesson [nNum=" + nNum + ", nTitle=" + nTitle + ", nContent=" + nContent + ", nStatus=" + nStatus
-				+ ", nType=" + nType + ", userId=" + userId + ", userName=" + userName + ", nDate=" + nDate
-				+ ", modifyDate=" + modifyDate + ", ctag1=" + ctag1 + ", ctag2=" + ctag2 + ", cPrice=" + cPrice
-				+ ", cType=" + cType + ", cCategogy=" + cCategogy + ", cSDate=" + cSDate + ", cEDate=" + cEDate
-				+ ", cLocation=" + cLocation + ", cTutor=" + cTutor + ", photoList=" + photoList + "]";
+		return "Lesson [nNum=" + nNum + ", nTitle=" + nTitle + ", nContent=" + nContent + ", nCount=" + nCount
+				+ ", nStatus=" + nStatus + ", nType=" + nType + ", userId=" + userId + ", userName=" + userName
+				+ ", nDate=" + nDate + ", modifyDate=" + modifyDate + ", ctag1=" + ctag1 + ", ctag2=" + ctag2
+				+ ", cPrice=" + cPrice + ", cType=" + cType + ", cCategogy=" + cCategogy + ", cSDate=" + cSDate
+				+ ", cEDate=" + cEDate + ", cLocation=" + cLocation + ", cTutor=" + cTutor + ", photoList=" + photoList
+				+ "]";
 	}
+
 
 }
