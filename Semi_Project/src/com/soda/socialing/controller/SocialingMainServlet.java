@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.soda.socialing.model.service.SocialingService;
 import com.soda.socialing.model.vo.Notice;
+import com.soda.socialing.model.vo.Socialing;
 
 /**
  * Servlet implementation class SocialingMainServlet
@@ -31,9 +32,9 @@ public class SocialingMainServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<Notice> noticeList = new SocialingService().selectGalleryList();
+		List<Socialing> socialingList = new SocialingService().selectList();
 		
-//		request.setAttribute("boardList", noticeList);
+		request.setAttribute("socialingList", socialingList);
 		request.getRequestDispatcher("/WEB-INF/views/socialing/socialingMainView.jsp").forward(request, response);
 		
 	}
