@@ -47,9 +47,9 @@ public class KakaoLoginServlet extends HttpServlet {
 			Member joinMember = new Member();
 			joinMember.setUserId(userId);
 			joinMember.setUserName(userName);
-			joinMember.setUserPhone("null");
+			joinMember.setUserPhone(null);
 			joinMember.setGender(kakaoGender);
-			joinMember.setUserAddress("null");
+			joinMember.setUserAddress(null);
 			
 			// 카카오계정 고유ID를 암호화해서 비밀번호로 생성
 			String salt = SHA256Util.generateSalt();
@@ -59,6 +59,7 @@ public class KakaoLoginServlet extends HttpServlet {
 			//카카오 자동 회원가입 로직 실행
 			int kakaoJoin = new MemberService().kakaoJoin(joinMember);
 			
+			// 카카오 자동가입 성공 후 세션에 저장하고 비동기식 전송
 			if(kakaoJoin > 0) {
 				Member kakaoLoginUser = new MemberService().loginMember(userId);
 				session.setAttribute("loginUser", kakaoLoginUser);
@@ -68,6 +69,7 @@ public class KakaoLoginServlet extends HttpServlet {
 				System.out.println("카카오 회원가입 실패");
 			}
 			
+			// 기존에 회원정보가 있었으면 바로 세션에 저장하고 비동기식 전송
 		}else {
 			session.setAttribute("loginUser", loginUser);
 			response.setCharacterEncoding("UTF-8");

@@ -85,9 +85,11 @@
                         }
                         
                     });
-                       if(Kakao.Auth.getAccessToken()){
+                       // 토큰이 받아졌는지 확인
+                       //if(Kakao.Auth.getAccessToken()){
                        	// console.log(Kakao.Auth.getAccessToken() + "토큰이 존재합니다.");
-                       }
+                       //}
+                       
                     // session 역할의 카카오 토큰 할당
                      Kakao.Auth.setAccessToken(res.access_token);
                   },
@@ -103,6 +105,7 @@
               },
             })
           }
+        
         //카카오로그아웃  
         function kakaoLogout() {
             if (Kakao.Auth.getAccessToken()) {
