@@ -232,6 +232,19 @@ img{
     color: rgb(7, 86, 105);
 }
 
+/* 클래스 신청 버튼 */
+#classBtn {
+    height: 30px;
+    width: 100px;
+    border-radius: 5px ;
+    border: 1px solid rgb(185,185,185, 0);
+    cursor: pointer;
+    font-weight: bold;
+    background-color: rgb(218, 239, 245);
+    color: black;
+    margin-left: 800px;
+}
+
 /* 페이징 버튼------------*/
 .wrapper5{
     display: flex;

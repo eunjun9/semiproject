@@ -22,7 +22,7 @@ public class LessonService {
 		
 		// 1. 조회할 게시글 총 개수 구하기 
 		int listCount = lessonDao.getListCount(conn);
-		// System.out.println(listCount);
+		//System.out.println(listCount);
 		
 		// 2. PageInfo 객체 만들기 (목록 5개씩, 한 페이지당 9개 게시글)
 		PageInfo pi = new PageInfo(page, listCount, 5, 9);
