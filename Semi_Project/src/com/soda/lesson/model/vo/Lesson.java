@@ -24,14 +24,14 @@ public class Lesson {
 	private String cLocation;	// 장소
 	private String cTutor;		// 강사 소개
 	
-	private List<File> photoList;  // 첨부파일
+	private List<Attachment> photoList;  // 첨부파일
 	
 	public Lesson() {}
 
 
 	public Lesson(int nNum, String nTitle, String nContent, int nCount, String nStatus, String nType, String userId,
 			String userName, Date nDate, Date modifyDate, String ctag1, String ctag2, int cPrice, String cType,
-			String cCategogy, Date cSDate, Date cEDate, String cLocation, String cTutor, List<File> photoList) {
+			String cCategogy, Date cSDate, Date cEDate, String cLocation, String cTutor, List<Attachment> photoList) {
 		super();
 		this.nNum = nNum;
 		this.nTitle = nTitle;
@@ -212,11 +212,11 @@ public class Lesson {
 		this.cTutor = cTutor;
 	}
 
-	public List<File> getPhotoList() {
+	public List<Attachment> getPhotoList() {
 		return photoList;
 	}
 
-	public void setPhotoList(List<File> photoList) {
+	public void setPhotoList(List<Attachment> photoList) {
 		this.photoList = photoList;
 	}
 

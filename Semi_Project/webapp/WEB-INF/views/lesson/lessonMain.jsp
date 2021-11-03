@@ -160,6 +160,7 @@
                     <img class="cThumbnail" src="${ contextPath }${ lesson.photoList.get(0).route}${ lesson.photoList.get(0).changeName }">
                     <h4 class="cMTitle">${ lesson.nTitle }</h4>
                     <p class="cPrice"><fmt:formatNumber value="${ lesson.cPrice }" type="currency" currencySymbol=""/>원</p>
+                    <P>${ lesson.nCount }번</P>
                <%--  <a onclick="detailView(${lesson.nNum})">
                 </a> --%>
             </div>

@@ -7,19 +7,15 @@
 <title>클래스 상세페이지</title>
 
 	<!--외부 스타일 시트-->
-    <link href="resources/css/lesson/lesson_detail.css" rel="stylesheet">
-    <link href="resources/css/lesson/lesson_datepicker.css" rel="stylesheet">
+    <link href="${ contextPath }/resources/css/lesson/lesson_detail.css" rel="stylesheet">
+    <link href="${ contextPath }/resources/css/lesson/lesson_datepicker.css" rel="stylesheet">
     <!-- font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500&display=swap" rel="stylesheet">
 
     <!-- JQuery-->
-    <script src="resources/js/jquery-3.6.0.min.js"></script>
-
-    <!--슬라이드-->
-    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
 </head>
 <body>
@@ -32,15 +28,15 @@
         <div class="class_detail1">
             <div class="cDetail_h" >
                 <h2 class="cMTitle">펀치니들을 이용한 티프팅 소품 제작법 <hr></h2>
-                <img class="cThumbnail" src="../resources/image/class_ex1.jpg">
+                <img class="cThumbnail" src="${ contextPath }/resources/uploadFiles/class_ex1.jpg">
             </div>
             <h4 class="cTutor">강사</h4> <p>피스오브애플</p>
-            <h4 class="cType">타입</h4> <p>원데이 클래스</p>
+            <h4 class="cType">타입</h4> <p>원데이 클래스 / 오프라인</p>
         </div>
         
         <div class="payment">
             <h4 id="pTitle">펀치니들을 이용한 티프팅 소품 제작법</h4>
-            <p id="pTutor">피스오브애플 <hr></p>
+            <p id="pTime">90시간 <hr></p>
             <h3 id="pPrice">50,000원</h3>
             <button id="selCalBtn">수강하기</button>
         </div>

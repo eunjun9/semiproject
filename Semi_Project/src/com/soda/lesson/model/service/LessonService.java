@@ -6,9 +6,11 @@ import java.util.List;
 import java.util.Map;
 
 import com.soda.lesson.model.dao.LessonDao;
+import com.soda.lesson.model.vo.Attachment;
 import com.soda.lesson.model.vo.Lesson;
 import com.soda.lesson.model.vo.Notice;
 import com.soda.lesson.model.vo.PageInfo;
+import com.soda.socialing.model.vo.File;
 
 import static com.common.JDBCTemplate.*;
 
@@ -42,11 +44,44 @@ public class LessonService {
 		
 		return returnMap;
 	}
-	
-	public List<Notice> selectLessonList() {
-		// TODO Auto-generated method stub
-		return null;
+
+	// 조회수 증가
+	public int increaseCount(int nNum) {
+		Connection conn = getConnection();
+		
+		int result = lessonDao.increaseCount(conn, nNum);
+		
+		if(result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return result;
+	}
+
+	// 사진 게시판 상세페이지 조회
+	public Lesson selectLesson(int nNum) {
+		Connection conn = getConnection();
+		
+		Lesson lesson = lessonDao.selectLesson(conn, nNum);
+		
+		List<Attachment> photoList = lessonDao.selectPhotoList(conn, nNum);
+		lesson.setPhotoList(photoList);
+		
+		/* 문의 사항 추가 필요 */
+		
+		close(conn);
+		return lesson;
 	}
 
 
+	
+	
+	
+	
+	
+	
 }
