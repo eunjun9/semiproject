@@ -116,7 +116,7 @@ html {
 
  
 .body-big{
-    margin-bottom: 150px;
+    margin-bottom: 50px;
 }
 
  .body-inner {
@@ -183,32 +183,16 @@ html {
 }
 
 
-
-/*-------하단 페이징-----------*/
+/* 페이징 버튼------------*/
+.wrapper5{
+    display: flex;
+    margin: 30px 300px;
+}
 .paging{
-    margin-top: 20px;
-    margin-bottom: -90px;
+    margin-left: 10px;
+}
+.paging>img{
+    margin-bottom:5px;
 }
 
-.board_paging {
-    height: 50px;
-    line-height: 50px;
-    display: flex;
-    justify-content: center;
-    list-style: none;
-    width: 480px;
-    margin: auto;
- }
- 
- .board_paging a {
-    text-decoration: none;
-    color: #282A35;
-    width: 40px;
-    display: block;
-    text-align: center;
- }
- 
- .board_paging a.current_page {
-    border-bottom: 2px solid #282A35;
-    font-weight: bold;
- }
+

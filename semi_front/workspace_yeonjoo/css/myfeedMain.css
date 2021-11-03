@@ -34,12 +34,24 @@ html {
    justify-content:center;
 }
 
+.id{
+   display: flex;
+   margin-top:40px;
+   margin-left: 40px;
+}
+
  .id>p{
-    width:930px;
-    margin: 60px;
     color: rgb(7, 86, 105);
     font-weight: bold;
     font-size: 30px;
+    margin-top: -2px;
+    margin-left: 10px;
+ }
+ .id>a{
+   color: rgb(7, 86, 105);
+   font-weight: bold;
+   font-size: 30px;
+
  }
 
  

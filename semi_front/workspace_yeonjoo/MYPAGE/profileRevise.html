@@ -55,6 +55,13 @@
         <div class="body-inner">
             <div class="body-inner-blue">
                 <div class="body-inner2">
+                
+                
+                    <!--마이피드-->
+                <div class="myfeed">
+                    <a href="#">&lt; 마이 피드</a>
+                </div>
+
                     <!--프로필-->
                     <div class="profile">
                         <img src="../image/pro.jpg">
@@ -116,47 +123,47 @@
                     <div class="interest">
                         <div class="interest-title">관심사</div>
                         <div class="career">커리어</div>
-                        <div class="career-checkbox">
-                            <input type="checkbox"><label>마케팅</label>
-                            <input type="checkbox"><label>브랜딩</label>
-                            <input type="checkbox"><label>기획</label>
-                            <input type="checkbox"><label>스타트업</label>
+                        <div class="checkbox">
+                            <input type="checkbox" id="changeColor">마케팅</input>
+                            <input type="checkbox">브랜딩</input>
+                            <input type="checkbox">기획</input>
+                            <input type="checkbox">스타트업</input>
                             <br>
-                            <input type="checkbox"><label>디자인</label>
-                            <input type="checkbox"><label>개발</label>
-                            <input type="checkbox"><label>영상</label>
-                            <input type="checkbox"><label>유튜브</label>
+                            <input type="checkbox">디자인</input>
+                            <input type="checkbox">개발</input>
+                            <input type="checkbox">영상</input>
+                            <input type="checkbox">유튜브</input>
                         </div>
 
-                        <div class="culture">문화예술</div>
-                        <div class="culture-checkbox">
-                            <input type="checkbox"><label>음악</label>
-                            <input type="checkbox"><label>미술</label>
-                            <input type="checkbox"><label>영화</label>
+                        <div class="career">문화예술</div>
+                        <div class="checkbox">
+                            <input type="checkbox">음악</button>
+                            <input type="checkbox">미술</input>
+                            <input type="checkbox">영화</input>
                         </div>
 
-                        <div class="write">글쓰기</div>
-                        <div class="write-checkbox">
-                            <input type="checkbox"><label>시</label>
-                            <input type="checkbox"><label>에세이</label>
-                            <input type="checkbox"><label>소설</label>
+                        <div class="career">글쓰기</div>
+                        <div class="checkbox">
+                            <input type="checkbox">시</input>
+                            <input type="checkbox">에세이</input>
+                            <input type="checkbox">소설</input>
                         </div>
 
-                        <div class="lifestyle">라이프스타일</div>
-                        <div class="lifestyle-checkbox">
-                            <input type="checkbox"><label>힐링</label>
-                            <input type="checkbox"><label>철학</label>
+                        <div class="career">라이프스타일</div>
+                        <div class="checkbox">
+                            <input type="checkbox">힐링</input>
+                            <input type="checkbox">철학</input>
                         </div>
 
-                        <div class="food">푸드&드링크</div>
-                        <div class="food-checkbox">
-                            <input type="checkbox"><label>요리</label>
-                            <input type="checkbox"><label>와인</label>
-                            <input type="checkbox"><label>한국술</label>
+                        <div class="career">푸드&드링크</div>
+                        <div class="checkbox">
+                            <input type="checkbox">요리</input>
+                            <input type="checkbox">와인</input>
+                            <input type="checkbox">한국술</input>
                             <br>
-                            <input type="checkbox"><label>사케</label>
-                            <input type="checkbox"><label>맥주</label>
-                            <input type="checkbox"><label>독립술집</label>
+                            <input type="checkbox">사케</input>
+                            <input type="checkbox">맥주</input>
+                            <input type="checkbox">독립술집</input>
                         </div>
                     </div>
 
@@ -166,8 +173,16 @@
         </div>
     </div>
 
+    <script>
+        function changeColor() {
+            let changeColor= document.getElementById("changeColor");
 
 
+            if(changeColor == "selected"){
+                changeColor.style.background="red";
+            }
+        }
+</script>
 
 
     <!--footer-->
