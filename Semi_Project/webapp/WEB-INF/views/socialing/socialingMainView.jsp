@@ -152,21 +152,49 @@
                     
                 </div>
 
+				<!-- 페이지 로직 (필터링 조건문 추후에 작성) -->
                 <div class="pagebox">
+                
+                	<!-- (<<) 제일 첫 페이지로 이동 -->
                 	<a class="paging" href="${ contextPath }/socialing/main?page=1">
                 	<img width="16px" src="${ contextPath }/resources/images/eunjung/previous.png">
 		            <img width="16px" src="${ contextPath }/resources/images/eunjung/previous.png"></a>
 		            
-		            <a class="paging" href="#"><img width="18px" src="${ contextPath }/resources/images/eunjung/previous.png"></a>
+		            <!--  (<) 이전 페이지  : 현재 페이지 - 1이니까 -->
+		            <c:choose>
+		             	<c:when test="${ pi.page > 1 }"> <!--  현재 페이지가 1보다 클 때는 이동하고  -->
+		             		<a class="paging" href="${ contextPath }/socialing/main?page=${ pi.page - 1}"><img width="18px" src="${ contextPath }/resources/images/eunjung/previous.png"></a>
+		             	</c:when>
+		             	<c:otherwise> <!-- 1이면 현재 페이지에 머뭄 -->
+		             		<a class="paging" href="#"><img width="18px" src="${ contextPath }/resources/images/eunjung/previous.png"></a>
+		             	</c:otherwise>
+		            </c:choose>
 		            
-	                    <a class="paging" href="#"><img width="20px" src="${ contextPath }/resources/images/eunjung/circle_sky.png"></a>
-	                    <a class="paging" href="#"><img width="20px" src="${ contextPath }/resources/images/eunjung/circle_beige.png"></a>
-	                    <a class="paging" href="#"><img width="20px" src="${ contextPath }/resources/images/eunjung/circle_beige.png"></a>
-	                    <a class="paging" href="#"><img width="20px" src="${ contextPath }/resources/images/eunjung/circle_beige.png"></a>
-	                    <a class="paging" href="#"><img width="20px" src="${ contextPath }/resources/images/eunjung/circle_beige.png"></a>
-	                    
-	                <a class="paging" href="#"><img width="18px" src="${ contextPath }/resources/images/eunjung/next.png"></a>
+		            <!-- 최대 5개의 페이지 목록  생성 -->
+		            <c:forEach var="p" begin="${ pi.startPage }" end="${ pi.endPage }">
+		             	<li>
+					 	<c:choose>
+					 		<c:when test="${ p eq pi.page }"> <!-- p와 현재 요청 페이지가 같다면 = 현재 페이지 임을 나타낼 수 있는 색 변경-->
+					 			<a href="#" class="paging"><img width="20px" src="${ contextPath }/resources/images/eunjung/circle_sky.png"></a>
+					 		</c:when>
+					 		<c:otherwise> <!-- 현재 페이지 외에는 페이지 목록 숫자만 출력 -->
+					 			<a class="paging" href="${ contextPath }/socialing/main?page=${ p }"><img width="20px" src="${ contextPath }/resources/images/eunjung/circle_beige.png"></a>
+					 		</c:otherwise>
+					 	</c:choose>
+					 	</li>
+		            </c:forEach>
+		            
+		            <!-- (>) 다음 페이지 : 제일 끝 페이지에서 버튼 누를 것을 고려하여 조건문 사용 -->
+		            <c:choose>
+		            	<c:when test="${ pi.page < pi.maxPage }"> <!-- 현재 페이지가 최대 페이지보다 아래일 때 이동 -->
+		            		<a class="paging" href="${ contextPath }/socialing/main?page=${ pi.page + 1 }"><img width="18px" src="${ contextPath }/resources/images/eunjung/next.png"></a>
+		            	</c:when>
+		            	<c:otherwise>
+		            		<a class="paging" href="#"><img width="18px" src="${ contextPath }/resources/images/eunjung/next.png"></a>
+		            	</c:otherwise>
+		            </c:choose>
 	                
+	                <!-- (>>) 제일 끝 페이지로 이동 -->
 		            <a class="paging" href="${ contextPath }/socialing/main?page=${ pi.maxPage }">
 		            <img width="16px" src="${ contextPath }/resources/images/eunjung/next.png">
 		            <img width="16px" src="${ contextPath }/resources/images/eunjung/next.png"></a>

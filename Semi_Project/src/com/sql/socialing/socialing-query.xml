@@ -2,20 +2,33 @@
 <!DOCTYPE properties SYSTEM
 "http://java.sun.com/dtd/properties.dtd">
 <properties>
-	<entry key="selectList">
+	<entry key="getListCount">
 		SELECT
-		       NOTICE_NUM
-		     , NOTICE_TITLE
-		     , S_PLACE
-		     , S_DATE
-		     , ROUTE
-		     , CHANGE_NAME
-		  FROM NOTICE
-		  JOIN SOCIALING USING(NOTICE_NUM)
-		  JOIN "FILE" USING(NOTICE_NUM)
-		 WHERE NOTICE_TYPE = 'SOCIALING'
-		   AND NOTICE_STATUS = 'N'
-		   AND FILE_LEVEL = 1
-		 ORDER BY NOTICE_NUM DESC
+    		    COUNT(*)
+		   FROM NOTICE
+		  WHERE NOTICE_TYPE = 'SOCIALING'
+            AND NOTICE_STATUS = 'N'
+	</entry>
+	
+	<entry key="selectList">
+		SELECT * 
+		  FROM(SELECT ROWNUM RNUM, A.*
+				 FROM(SELECT
+						     NOTICE_NUM
+						   , NOTICE_TITLE
+		                   , USER_NAME
+						   , S_PLACE
+						   , S_DATE
+						   , ROUTE
+						   , CHANGE_NAME
+						   , F.STATUS
+		                FROM NOTICE
+						JOIN MEMBER_INFO USING(USER_ID)
+						JOIN SOCIALING USING(NOTICE_NUM)
+						JOIN "FILE" F USING(NOTICE_NUM)
+						WHERE NOTICE_TYPE = '소셜링'
+						  AND NOTICE_STATUS = 'N'
+					    ORDER BY NOTICE_NUM DESC) A)
+		WHERE RNUM BETWEEN ? AND ?
 	</entry>
 </properties>
