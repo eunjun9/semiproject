@@ -1,6 +1,7 @@
 package com.soda.member.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -43,16 +44,24 @@ public class EmailLoginServlet extends HttpServlet {
 		String userId = request.getParameter("email");
 		String userPwd = request.getParameter("pwd");
 		
-		Member loginUser = new MemberService().loginMember(userId, userPwd); 
+		// System.out.println(userId + " / " + userPwd);
+		
+		Member loginUser = new MemberService().loginMember(userId, userPwd);
+		
+		// System.out.println(loginUser);
 		
 		if(loginUser != null) {
 			HttpSession session = request.getSession();
 			session.setAttribute("loginUser", loginUser);
 			response.sendRedirect(request.getContextPath() + "/mainpage");
 		} else {
-			RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/common/errorpage.jsp");
-			view.forward(request, response);
-			
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter writer = response.getWriter();
+			writer.println("<script>alert('로그인 정보가 일치하지 않습니다.');</script>");
+			writer.println("<script>history.back();</script>");
+			writer.close();
+
+			// System.out.println("로그인 실패");
 		}
 		
 	}

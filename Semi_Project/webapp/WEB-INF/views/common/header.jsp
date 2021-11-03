@@ -1,7 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" %> 
+    pageEncoding="UTF-8" import="com.soda.member.model.vo.Member"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%
+	// 로그인 여부에 따라 헤더 메뉴바 마이페이지 메뉴 다르게 노출되게 설정함
+ 	// session 객체에 담긴 loginUser 정보를 변수에 담아두기
+ 	Member loginUser = (Member)session.getAttribute("loginUser");
+ %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -56,8 +60,12 @@
                     <li class="mypage">
                     	<a href="${ contextPath }/mypage/main" >MYPAGE</a>
                         <ul class="mypage_sub">
+                        <% if(loginUser == null) { %>
                           <li><a href="${ contextPath }/mypage/main">마이페이지</a></li>
                           <li><a href="${ contextPath }/logout">로그아웃</a></li>
+                        <% } else { %>
+                          <li><a href="${ contextPath }/login">로그인</a></li>
+                        <% } %>
                         </ul>
                   </li></ul>
                 </div>

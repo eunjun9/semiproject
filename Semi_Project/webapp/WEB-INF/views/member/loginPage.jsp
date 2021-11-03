@@ -4,7 +4,6 @@
 <!DOCTYPE html>
 <html>
 <head>
- <link rel="icon" type="image/png" href="http://example.com/myicon.png">
 <meta charset="UTF-8">
 <title>loginPage</title>
 <!-- jQuery -->

@@ -1,3 +1,4 @@
+
 @charset "UTF-8";
 
 /* 로그인 화면 */
@@ -38,6 +39,7 @@ a {
 	text-align: center;
     font-size: 15px;
     padding-top: 50px;
+    cursor: pointer;
 }
 
 
@@ -93,6 +95,7 @@ a {
     padding-right: 50px;
     width: 100%;
     background-color: rgb(218,239,245);
+    cursor: pointer;
   
 }
 
@@ -124,6 +127,10 @@ a {
     color: black;
     text-decoration: none;
     cursor: pointer;
+}
+
+.input_area input[type=submit] {
+	cursor : pointer;
 }
 
 #email, #pwd {
