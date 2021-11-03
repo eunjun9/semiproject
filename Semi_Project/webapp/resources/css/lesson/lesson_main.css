@@ -197,6 +197,8 @@ img{
 }
 .wrapper3 select{
     margin-left: 835px; 
+    border-radius: 5px ;
+    border: 1px solid lightgrey;
 }
 
 /* 클래스 목록---------------- */
