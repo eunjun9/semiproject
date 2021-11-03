@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>이용약관 및 개인정보 페이지</title>
-    <link href="resources/css/common/joincheck.css" rel="stylesheet">
+    <link href="resources/css/member/joincheck.css" rel="stylesheet">
     <link href="resources/css/header_footer.css" rel="stylesheet">
     
     <!-- favicon (Real Favicon Generator)-->
@@ -80,7 +80,7 @@
               <b>위 내용에 모두 동의합니다.</b>
               
               <div class="form-check"> 
-                <button id="register_button" class="btn-joinsoda"> <a class="joinsoda-check" href="memberjoin.html"> 확 인 </a></button> 
+                <button id="register_button" class="btn-joinsoda"> <a class="joinsoda-check" href="<%= request.getContextPath() %>/memberjoin"> 확 인 </a></button> 
             </div>
         </div> 
     </div>
