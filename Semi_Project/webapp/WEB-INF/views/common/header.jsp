@@ -63,7 +63,7 @@
                           <li><a href="${ contextPath }/mypage/main">마이페이지</a></li>
                           <li><a href="${ contextPath }/logout">로그아웃</a></li>
                           <% } else { %>
-                          <li><a href="${ contextPath }/logout">로그인</a></li>
+                          <li><a href="${ contextPath }/login">로그인</a></li>
                           <% } %>
                         </ul>
                   </li></ul>
