@@ -132,17 +132,18 @@
                     </select>
                 </div>
                 <div class="s-container2">
-                	<c:forEach var="notice" items="${ noticeList }">
-                    <div id="s-list2" onclick="detailView(${ notice.nNum })">
+                
+                	<c:forEach var="s" items="${ socialingList }">
+                    <div id="s-list2" onclick="detailView(${ s.nNum })">
                         <div id="thumbox">
-                            <a href="socialing_detail.html"><img id="s-thumbnail" src="<%= request.getContextPath() %>/resources/images/eunjung/thumbnail.png"></a><br>
+                            <a href="#"><img id="s-thumbnail" src="${ contextPath }${ s.photoList.get(0).route }${ s.photoList.get(0).changeName }"></a><br>
                             <img id="like" src="<%= request.getContextPath() %>/resources/images/eunjung/heart_empty.png">
                             <!-- 클릭 시 꽉찬 하트 아이콘으로 변경 + 찜한 소셜링에 추가 -->
                         </div>
                         <a href="#">
                             <div id="titlebox">
-                                <p id="s-thumtitle">${ notice.nTitle }</p><br>
-                                <h5 id="s-thumsub">${ social.splace }${ social.sdate }</h5>
+                                <p id="s-thumtitle">${ s.nTitle }</p><br>
+                                <h5 id="s-thumsub">${ s.splace } ${ s.sdate }</h5>
                                 <a href=""><img id="profile" src="<%= request.getContextPath() %>/resources/images/eunjung/profile.png"></a>
                             </div>
                         </a>

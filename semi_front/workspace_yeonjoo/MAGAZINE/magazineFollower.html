@@ -282,30 +282,22 @@
                     </div>
                 </div>
 
-                <div class=paging>
-                    <ul class="board_paging">
-                        <!-- 맨 처음으로 이동하는 버튼 (<<) -->
-                        <li><a href="${ contextPath }/board/list?page=1${searchParam}">&lt;&lt;</a></li>
-
-                        <!-- 이전 페이지로 (<) -->
-                        <li>
-                            <a href="${ contextPath }/board/list?page=${ pi.page - 1 }${searchParam}">&lt;</a>
-                        </li>
-
-                        <!-- 최대 10개의 페이지 목록 -->
-                        <li>
-                            <a href="#" class="current_page"></a>
-                            <a href="${ contextPath }/board/list?page=${ p }${searchParam}"></a>
-                        </li>
-
-                        <!-- 다음 페이지로 (>) -->
-                        <li>
-                            <a href="${ contextPath }/board/list?page=${ pi.page + 1 }${searchParam}">&gt;</a>
-                        </li>
-
-                        <!-- 맨 끝으로 이동하는 버튼 (>>) -->
-                        <li><a href="${ contextPath }/board/list?page=${ pi.maxPage }${searchParam}">&gt;&gt;</a></li>
-                    </ul>
+                
+                <!-- 페이징 -->
+                <div class="wrapper5">
+                    <a class="paging" href="${ contextPath }/lesson/main?page=1">
+                        <img width="16px" src="../image/previous.png">
+                        <img width="16px" src="../image/previous.png"></a>
+                    <a class="paging" href="#"><img width="18px" src="../image/previous.png"></a>
+                    <a class="paging" href="#"><img width="20px" src="../image/circle_sky.png"></a>
+                    <a class="paging" href="#"><img width="20px" src="../image/circle_beige.png"></a>
+                    <a class="paging" href="#"><img width="20px" src="../image/circle_beige.png"></a>
+                    <a class="paging" href="#"><img width="20px" src="../image/circle_beige.png"></a>
+                    <a class="paging" href="#"><img width="20px" src="../image/circle_beige.png"></a>
+                    <a class="paging" href="#"><img width="18px" src="../image/next.png"></a>
+                    <a class="paging" href="${ contextPath }/board/list?page=${ pi.maxPage }">
+                        <img width="16px" src="../image/next.png">
+                        <img width="16px" src="../image/next.png"></a>
                 </div>
 
 

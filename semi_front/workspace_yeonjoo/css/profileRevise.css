@@ -36,6 +36,16 @@ html {
       width:500px;
       text-align: center;
     }
+
+    .myfeed{
+        margin-top: 20px;
+        margin-left: -190px;
+        text-align: left;
+      }
+    
+    .myfeed>a{
+        color: gray;
+    }
     
     
 .profile{
@@ -171,60 +181,31 @@ html {
 .career{
     border: white 1px solid;
     border-radius: 10px;
-    width: 60px;
+    width: 90px;
     background-color: rgb(248, 241, 233);
     margin-left: 80px;
     margin-top:10px;
+    font-weight: bold;
 }
 
-.career-checkbox{
-    margin-bottom: 15px;
+.checkbox{
+    margin-top: 10px;
+    margin-bottom: 30px;
 }
 
-.culture{
-    border: white 1px solid;
-    border-radius: 10px;
-    width: 70px;
-    background-color: rgb(248, 241, 233);
-    margin-left: 80px;
+button{
+    padding: 3px;
+    border: lightblue 1px solid;
+    background-color: white;
+    font-size: 14px;
+    margin-bottom: 8px;
+    border-radius: 5px;
+    
 }
 
-.culture-checkbox{
-    margin-bottom: 15px;
-}
+/* button:focus {
+    background-color: rgb(218, 239, 245);
+  } */
 
-.write{
-    border: white 1px solid;
-    border-radius: 10px;
-    width: 60px;
-    background-color: rgb(248, 241, 233);
-    margin-left: 80px;
-}
 
-.write-checkbox{
-    margin-bottom: 15px;
-}
 
-.lifestyle{
-    border: white 1px solid;
-    border-radius: 10px;
-    width: 100px;
-    background-color: rgb(248, 241, 233);
-    margin-left: 80px;
-}
-
-.lifestyle-checkbox{
-    margin-bottom: 15px;
-}
-
-.food{
-    border: white 1px solid;
-    border-radius: 10px;
-    width: 100px;
-    background-color: rgb(248, 241, 233);
-    margin-left: 80px;
-}
-
-.food-checkbox{
-    margin-bottom: 15px;
-}
