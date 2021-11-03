@@ -49,12 +49,11 @@
                     <a href="#">MAGAZINE</a>
                 </div>
                 
-                <div class="category2">
+               <div class="category2">
                 <a href="#">CART</a>
                 <ul class="mypage">
                     <li class="mypage">
-                    
-                    	<a href="${ contextPath }/mypage/main" >MYPAGE</a>
+                    <a href="${ contextPath }/mypage/main" >MYPAGE</a>
                         <ul class="mypage_sub">
                           <li><a href="${ contextPath }/mypage/main">마이페이지</a></li>
                           <li><a href="${ contextPath }/logout">로그아웃</a></li>
@@ -65,16 +64,16 @@
         </div>
     </div>
     <!-- 마이페이지 마우스 오버 시 리스트 출력 스크립트 -->
-    <script>
-        $(document).ready(function(){ 
-          $(".mypage").mouseover(function(){ 
-            $(this).children(".mypage_sub").show(300); 
-          }); 
-            $(".mypage").mouseleave(function(){ 
-              $(".mypage_sub").hide(300); 
-            });
+     <script>
+      $(document).ready(function(){ 
+        $(".mypage").mouseover(function(){ 
+          $(this).children(".mypage_sub").show(300); 
+        }); 
+          $(".mypage").mouseleave(function(){ 
+            $(".mypage_sub").hide(300); 
           });
-        
-    </script>
+        });
+      
+  </script>
 </body>
 </html>

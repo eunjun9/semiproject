@@ -10,6 +10,11 @@ body {
 
 a{
     text-decoration: none;
+	color: gray;
+}
+
+a:hover{
+    color :rgb(145, 224, 244);
 }
 
 img{
@@ -57,11 +62,34 @@ img{
      font-family: 'Noto Sans KR', sans-serif;
 }
 
+.category1{
+     margin-left: 15px;
+}
+
 .category2 > a{
      margin-right: 20px;
      color: gray;
      font-family: 'Noto Sans KR', sans-serif;
 }
+
+.category2{
+     margin-right: 10px;
+}
+
+.mypage{
+    list-style: none;
+    width: 90px;
+    margin-top: -32px;
+    margin-left: 15px;
+}
+
+.mypage_sub{
+    list-style: none;
+    display: none;
+    background: rgba(224, 224, 224, 0.11);
+    width: 90px;
+}
+
 
 /*---------------body----------------*/
 
