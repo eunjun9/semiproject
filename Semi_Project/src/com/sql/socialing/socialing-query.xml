@@ -6,7 +6,7 @@
 		SELECT
     		    COUNT(*)
 		   FROM NOTICE
-		  WHERE NOTICE_TYPE = 'SOCIALING'
+		  WHERE NOTICE_TYPE = '소셜링'
             AND NOTICE_STATUS = 'N'
 	</entry>
 	
@@ -21,7 +21,7 @@
 						   , S_DATE
 						   , ROUTE
 						   , CHANGE_NAME
-						   , F.STATUS
+						   , NOTICE_STATUS
 		                FROM NOTICE
 						JOIN MEMBER_INFO USING(USER_ID)
 						JOIN SOCIALING USING(NOTICE_NUM)

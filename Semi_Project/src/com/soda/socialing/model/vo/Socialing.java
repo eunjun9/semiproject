@@ -21,13 +21,13 @@ public class Socialing {
 	private int maxMember;		// 참여 가능 인원
 	private String profile;		// 작성자 프로필사진 (Profile 테이블 참조)
 	
-	private List<File> photoList;  // 사진 첨부 파일
+	private List<SodaFile> photoList;  // 사진 첨부 파일
 	
 	public Socialing() {}
 
 	public Socialing(int nNum, String nTitle, String nContent, String nStatus, String nType, String userId,
 			String userName, Date nDate, Date modifyDate, String splace, Date sdate, String stype, int maxMember,
-			String profile, List<File> photoList) {
+			String profile, List<SodaFile> photoList) {
 		super();
 		this.nNum = nNum;
 		this.nTitle = nTitle;
@@ -158,11 +158,11 @@ public class Socialing {
 		this.profile = profile;
 	}
 
-	public List<File> getPhotoList() {
+	public List<SodaFile> getPhotoList() {
 		return photoList;
 	}
 
-	public void setPhotoList(List<File> photoList) {
+	public void setPhotoList(List<SodaFile> photoList) {
 		this.photoList = photoList;
 	}
 

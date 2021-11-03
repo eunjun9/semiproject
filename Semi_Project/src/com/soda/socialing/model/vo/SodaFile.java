@@ -1,6 +1,6 @@
 package com.soda.socialing.model.vo;
 
-public class File {
+public class SodaFile {
 	private int fileNum;		// 파일 번호 (pk)
 	private int nNum;			// 게시글 번호 (Notice 테이블 참조)
 	private String route;		// 업로드 파일 저장 경로
@@ -9,9 +9,9 @@ public class File {
 	private int fileLevel;		// 썸네일 0, 내용 사진 1
 	private String status;		// 상태 (삭제 여부)
 	
-	public File() {}
+	public SodaFile() {}
 
-	public File(int fileNum, int nNum, String route, String originName, String changeName, int fileLevel,
+	public SodaFile(int fileNum, int nNum, String route, String originName, String changeName, int fileLevel,
 			String status) {
 		super();
 		this.fileNum = fileNum;

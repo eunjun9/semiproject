@@ -58,7 +58,8 @@
                           <li><a href="${ contextPath }/mypage/main">마이페이지</a></li>
                           <li><a href="${ contextPath }/logout">로그아웃</a></li>
                         </ul>
-                  </li></ul>
+                  	</li>
+                  </ul>
                 </div>
             </div>
         </div>

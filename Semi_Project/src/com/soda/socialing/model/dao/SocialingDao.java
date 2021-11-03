@@ -11,9 +11,9 @@ import java.util.List;
 import java.util.Properties;
 import static com.common.JDBCTemplate.close;
 
-import com.soda.socialing.model.vo.File;
 import com.soda.socialing.model.vo.PageInfo;
 import com.soda.socialing.model.vo.Socialing;
+import com.soda.socialing.model.vo.SodaFile;
 
 public class SocialingDao {
 
@@ -41,7 +41,7 @@ public class SocialingDao {
 
 			rset = pstmt.executeQuery();
 
-			if (rset.next()) {
+			if(rset.next()) {
 				listCount = rset.getInt(1);
 			}
 
@@ -80,8 +80,8 @@ public class SocialingDao {
 				socialing.setSplace(rset.getString("s_place"));
 				socialing.setSdate(rset.getDate("s_date"));
 
-				List<File> photoList = new ArrayList<>();
-				File file = new File();
+				List<SodaFile> photoList = new ArrayList<>();
+				SodaFile file = new SodaFile();
 				file.setRoute(rset.getString("route"));
 				file.setChangeName(rset.getString("change_name"));
 				photoList.add(file);
@@ -99,6 +99,23 @@ public class SocialingDao {
 		return socialingList;
 	}
 
+	public int insertNotice(Connection conn, Socialing socialing) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public int insertSocialing(Connection conn, Socialing socialing) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public int insertFile(Connection conn, SodaFile photo) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	
+	
 //	public List<Socialing> selectList(Connection conn) {
 //		PreparedStatement pstmt = null;
 //		ResultSet rset = null;

@@ -23,23 +23,27 @@
     <div class="writing body">
         <div class="body-inner">
             <div class="w-title">
-                <a id="back" href="socialing_main.html">&lt; 소셜링</a>
+                <a id="back" href="${ contextPath }/socialing/main">&lt; 소셜링</a>
                 <p id="main-title">글 작성하기</p>
                 <h3 id="sub-title">모든 입력폼은 필수 영역입니다.</h3>
             </div>
             <article id="wrapper">
-                <form method="post">
+            	<!-- 파일 업로드를 위해서 enctype 지정 -->
+                <form method="post" action="${ contextPath }/socialing/form" enctype="multipart/form-data">
                     <h1 id="w-main-title">어떤 활동을 하는 소셜링인가요?</h1>
                     <h4 id="w-sub-title">제목을 입력해 주세요 (최대 30자)</h4>
-                    <input type="text" id="inputTitle" maxlength="30" placeholder="연희동 카페투어 함께 가요!">
-                    <h3 id="w-sub-title2">설명 (선택)</h3>
+                    <input type="text" id="inputTitle" name="inputTitle" maxlength="30" placeholder="연희동 카페투어 함께 가요!" required>
+                    
+                    <h3 id="w-sub-title2">설명</h3>
                     <h4 id="w-sub-title3">썸네일 이미지를 첨부해주세요</h4>
                     <div class="image_area"></div>
                     <button type="button" id="fileBtn">file</button><br>
                     <input type="file" name="thumbnail" accept="image/gif,image/jpeg,image/png">
-                    <textarea id="content" name="content" placeholder="함께 이야기하고 싶은 주제나 꼭 알려주고 싶은 내용을 입력해 주세요"></textarea>
+                    <textarea id="content" name="content" placeholder="함께 이야기하고 싶은 주제나 꼭 알려주고 싶은 내용을 입력해 주세요" required></textarea>
                     <hr>
+                    
                     <h1 id="w-main-title2">언제 어디서 만나나요?</h1>
+                    <!-- 날짜, 시간 String 타입으로 입력받고 SimpleDateFormat으로 변환하기(java.util.date) -->
                     <h4 id="w-sub-title4">날짜를 선택하세요</h4>
                     <input type="date" name="dateIn">
                     <h4 id="w-sub-title5">시간을 선택하세요</h4>
@@ -49,8 +53,10 @@
                     <label for="offline">오프라인</label>
                     <input type="radio" id="online" name="place" value="on">
                     <label for="online">온라인</label><br>
-                    <input type="text" id="inputPlace" class="postcodify_address postcodify_details" placeholder="여의나루역 5호선 한강공원 / Zoom">&nbsp;&nbsp;
+                    <input type="text" id="inputPlace" name="inputPlace" 
+                    class="postcodify_address postcodify_details" placeholder="여의나루역 5호선 한강공원 / Zoom">&nbsp;&nbsp;
                     <button type="button" class="search" id="postcodify_search_button">검색</button><br>
+                    
                     <h4 id="w-sub-title5">인원 설정 (최소 2명 이상)</h4>
                     <select id="min" name="min">
                         <option value="2">2명</option>
@@ -59,9 +65,10 @@
                         <option value="5">5명</option>
                         <option value="6">6명</option>
                         <option value="7">7명</option>
-                        <option value="7">8명</option>
+                        <option value="8">8명</option>
                     </select>
                     <p id="wave">~</p>
+                    <!-- max 인원이 min보다 적을 경우 경고 alert 출력 후 min과 같은 값으로 변경하기 -->
                     <select id="max" name="max">
                         <option value="2">2명</option>
                         <option value="3">3명</option>
@@ -69,9 +76,9 @@
                         <option value="5">5명</option>
                         <option value="6">6명</option>
                         <option value="7">7명</option>
-                        <option value="7">8명</option>
+                        <option value="8">8명</option>
                     </select><br>
-                    <!-- max 인원이 min보다 적을 경우 경고 alert 출력 후 min과 같은 값으로 -->
+                    
                     <div class="center">
                         <button type="submit" id="w-submit">소셜링 등록</button>
                     </div>
@@ -88,6 +95,7 @@
     <script> $(function() { $("#postcodify_search_button").postcodifyPopUp(); }); </script>
 
     <script>
+    	// 썸네일 이미지 첨부 시 미리보기
         let fileBtn = document.querySelector("#fileBtn");
 
         const fileElements = document.querySelector("[type=file]");

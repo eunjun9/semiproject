@@ -41,7 +41,7 @@
     <div class="head-inner">
         <div class="left-menu">
             <ul class="main-menu">
-                <li><a class="main-logo" href="메인페이지.html"><b>SODA</b></a></li><br>
+                <li><a class="main-logo" href="#"><b>SODA</b></a></li><br>
                 <li><a class="main-menu2" href="${ contextPath }/socialing/main">SOCIALING</a></li>
                 <li><a class="main-menu2" href="${ contextPath }/lesson/main">CLASS</a></li>
                 <li><a class="main-menu2" href="#">MAGAZINE</a></li>
