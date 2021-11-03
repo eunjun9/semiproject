@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="com.soda.member.model.vo.Member"%> 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
  	// session 객체에 담긴 loginUser 정보를 변수에 담아두기
- 	// Member loginUser = (Member)session.getAttribute("loginUser");
+ 	Member loginUser = (Member)session.getAttribute("loginUser");
  %>
 <!DOCTYPE html>
 <html>
