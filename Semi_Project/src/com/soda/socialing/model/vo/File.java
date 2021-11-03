@@ -1,13 +1,13 @@
 package com.soda.socialing.model.vo;
 
 public class File {
-	private int fileNum;		// 파일 번호
-	private int nNum;			// 게시글 번호
+	private int fileNum;		// 파일 번호 (pk)
+	private int nNum;			// 게시글 번호 (Notice 테이블 참조)
 	private String route;		// 업로드 파일 저장 경로
-	private String originName;	// 원본 이름	
-	private String changeName;	// 바뀐 이름
-	private int fileLevel;		// 썸네일 0 내용 사진 1
-	private String status;		// 상태
+	private String originName;	// 원본 파일명
+	private String changeName;	// 변경 파일명
+	private int fileLevel;		// 썸네일 0, 내용 사진 1
+	private String status;		// 상태 (삭제 여부)
 	
 	public File() {}
 
