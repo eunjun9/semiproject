@@ -73,7 +73,7 @@ public class memberjoinServlet extends HttpServlet {
 					
 					// 메인 화면으로 이동, 서버 재요청(sendRedirect)
 					// forward 처리 시 / memberJoin에 대한 요청 남아 있음
-					response.sendRedirect(request.getContextPath()+"/login");
+					response.sendRedirect(request.getContextPath()+"/mainpage");
 				} else {
 					// 회원 가입에 실패 했을 경우 error 페이지로 이동
 					request.setAttribute("message", "회원 가입에 실패하였습니다.");
