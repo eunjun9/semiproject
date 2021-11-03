@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -70,7 +70,7 @@
                     
                     <!-- 조건문으로 대분류 선택에 따른 소분류 목록 출력 -->
                     <!--value=it일때-->
-                    <c:if test="${ param.bigC == 'it' }">
+                    <%-- <c:if test="${ param.bigC == 'it' }">
                     <select name="smallC">
                         <option selected disabled>소분류 선택</option>
                         <option>AI·머신러닝</option>
@@ -127,7 +127,7 @@
                         <option>폴댄스</option>
                         <option>필라테스</option>
                     </select><br> -->
-                    </c:if>
+                    </c:if> --%>
 
                     <label>진행방식</label>
                     <input type="checkbox" value="online" name="online"><label class="ckboxlabel">온라인</label>
@@ -168,34 +168,49 @@
         </div>
 
 		<!-- 페이지 로직 (필터링 조건문 추후에 작성) -->
-        <%-- <div class="wrapper5">
+        <div class="wrapper5">
         	<!-- (<<) 제일 첫 페이지로 이동 -->
-            <a class="paging" href="${ contextPath }/lesson/main?page=1"><img width="16px" src="resources/images/yewon/previous.png">
-            <img width="16px" src="resources/images/yewon/previous.png"></a>
+            <a class="paging" href="${ contextPath }/lesson/main?page=1"><img width="16px" src="${ contextPath }/resources/images/yewon/previous.png">
+            <img width="16px" src="${ contextPath }/resources/images/yewon/previous.png"></a>
              
-             <!--  (<) 이전 페이지  : 현재 페이지 - 1이니까 -->
+             <!--  (<) 이전 페이지  : 현재 페이지 - 1이니까 -->	
              <c:choose>
-             	<!--  현재 페이지가 1보다 클 때는 이동하고  -->
-             	<c:when test="${ pi.page > 1 }">
-             	<a class="paging" href="${ contextPath }/lesson/main?page=${ pi.page - 1}"><img width="18px" src="resources/images/previous.png"></a>
+             	<c:when test="${ pi.page > 1 }"> <!--  현재 페이지가 1보다 클 때는 이동하고  -->
+             	<a class="paging" href="${ contextPath }/lesson/main?page=${ pi.page - 1}"><img width="18px" src="${ contextPath }/resources/images/yewon/previous.png"></a>
              	</c:when>
-             	<!-- 1이면 현재 페이지에 머뭄 -->
-             	<c:otherwise>
-             	<a class="paging" href="#"><img width="18px" src="resources/images/previous.png"></a>
+             	<c:otherwise> <!-- 1이면 현재 페이지에 머뭄 -->
+             	<a class="paging" href="#"><img width="18px" src="${ contextPath }/resources/images/yewon/previous.png"></a>
              	</c:otherwise>
              </c:choose>
-                <a class="paging" href="#"><img width="20px" src="resources/images/yewon/circle_beige.png"></a>
-                <a class="paging" href="#"><img width="20px" src="resources/images/yewon/circle_beige.png"></a>
-                <a class="paging" href="#"><img width="20px" src="resources/images/yewon/circle_beige.png"></a>
-                <a class="paging" href="#"><img width="20px" src="resources/images/yewon/circle_beige.png"></a>
-                <a class="paging" href="#"><img width="20px" src="resources/images/yewon/circle_beige.png"></a>
-            <!--  (>) 다음 페이지 -->
-            <a class="paging" href="#"><img width="18px" src="resources/images/yewon/next.png"></a>
+             	<!-- 최대 5개의 페이지 목록  생성 -->
+             	<c:forEach var="p" begin="${ pi.startPage }" end="${ pi.endPage }">
+             	<li>
+			 	<c:choose>
+			 		<c:when test="${ p eq pi.page }"> <!-- p와 현재 요청 페이지가 같다면 = 현재 페이지 임을 나타낼 수 있는 색 변경-->
+			 		<a href="#" class="paging"><img width="20px" src="${ contextPath }/resources/images/yewon/circle_sky.png"></a>
+			 		</c:when>
+			 		<c:otherwise> <!-- 현재 페이지 외에는 페이지 목록 숫자만 출력 -->
+			 		<a class="paging" href="${ contextPath }/lesson/main?page=${ p }"><img width="20px" src="${ contextPath }/resources/images/yewon/circle_beige.png"></a>
+			 		</c:otherwise>
+			 	</c:choose>
+			 	</li>
+             	</c:forEach>
+            
+            <!--  (>) 다음 페이지 : 제일 끝 페이지에서 버튼 누를 것을 고려하여 조건문 사용 -->
+            <c:choose>
+            	<c:when test="${ pi.page < pi.maxPage }"> <!-- 현재 페이지가 최대 페이지보다 아래일 때 이동 -->
+            	 <a class="paging" href="${ contextPath }/lesson/main?page=${ pi.page + 1 }"><img width="18px" src="${ contextPath }/resources/images/yewon/next.png"></a>
+            	</c:when>
+            	<c:otherwise>
+            	<a class="paging" href="#"><img width="18px" src="${ contextPath }/resources/images/yewon/next.png"></a>
+            	</c:otherwise>
+            </c:choose>
+            
             <!-- (>>) 제일 끝 페이지로 이동 -->
-            <a class="paging" href="${ contextPath }/lesson/list?page=${ pi.maxPage }"><img width="16px" src="resources/images/yewon/next.png">
-            <img width="16px" src="resources/images/yewon/next.png"></a>
+            <a class="paging" href="${ contextPath }/lesson/main?page=${ pi.maxPage }"><img width="16px" src="${ contextPath }/resources/images/yewon/next.png">
+            <img width="16px" src="${ contextPath }/resources/images/yewon/next.png"></a>
         </div>
- --%>
+
 
 
     </div>

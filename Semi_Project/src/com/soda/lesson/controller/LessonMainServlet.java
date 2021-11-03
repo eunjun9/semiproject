@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.soda.lesson.model.service.LessonService;
 import com.soda.lesson.model.vo.Lesson;
-import com.soda.lesson.model.vo.Notice;
 
 /**
  * Servlet implementation class ClassMainServlet
@@ -47,9 +46,10 @@ public class LessonMainServlet extends HttpServlet {
 		
 		/*필터 관련 파라미터 추출  (추후에 수정 )*/
 		
-		
 		//List<Notice> NoticeList = new LessonService().selectLessonList();
 		
+		request.setAttribute("pi", map.get("pi"));
+		request.setAttribute("lessonList", map.get("lessonList"));
 		request.getRequestDispatcher("/WEB-INF/views/lesson/lessonMain.jsp").forward(request, response);
 	
 	}

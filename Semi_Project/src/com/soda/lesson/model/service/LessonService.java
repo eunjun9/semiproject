@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Map;
 
 import com.soda.lesson.model.dao.LessonDao;
-import com.soda.lesson.model.dao.noticeDao;
 import com.soda.lesson.model.vo.Lesson;
 import com.soda.lesson.model.vo.Notice;
 import com.soda.lesson.model.vo.PageInfo;
@@ -33,7 +32,7 @@ public class LessonService {
 		
 		Map<String, Object> returnMap = new HashMap<>();
 		
-		//System.out.println(pi);
+		//System.out.println(pi); 
 		//System.out.println(lessonList);
 		
 		
