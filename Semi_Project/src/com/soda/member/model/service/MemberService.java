@@ -77,6 +77,17 @@ public class MemberService {
 		return findEmail;
 	}
 
+	// 비밀번호 찾기
+	//public String findPwd(String userName, String userEmail) {
+		//Connection conn = getConnection();
+		
+		//String findPwd = memberDao.findPwd(conn, userName, userEmail);
+		
+		//close(conn);
+		
+		//return findPwd;
+	//}
+
 	
 	
 
