@@ -32,14 +32,24 @@ public class KakaoLoginServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		
 		String userId = request.getParameter("userEmail");
 		String userName = request.getParameter("userName");
 		String kakaoId = request.getParameter("kakaoId");
 		String kakaoGender = request.getParameter("kakaoGender");
 		
-		Member loginUser = new MemberService().loginMember(userId);
-		HttpSession session = request.getSession();
+		// kakaoGender 가져오는 값이 영어로 되어 있어 DB 통일성을 위해 변경
+		String f = "여";
+		String m = "남";
+		if(kakaoGender.equals("female")) {
+			kakaoGender = f;
+		} else {
+			kakaoGender = m;
+		}
 		
+		// 카카오 계정으로 이미 가입된 회원이 있는지 조회
+		Member loginUser = new MemberService().loginMember(userId);
 		
 		// 가입된 정보 없으면 가입시켜주기
 		if( loginUser == null ) {
