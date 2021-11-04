@@ -25,10 +25,49 @@
 		                FROM NOTICE
 						JOIN MEMBER_INFO USING(USER_ID)
 						JOIN SOCIALING USING(NOTICE_NUM)
-						JOIN "FILE" F USING(NOTICE_NUM)
+						JOIN TBL_FILE USING(NOTICE_NUM)
 						WHERE NOTICE_TYPE = '소셜링'
 						  AND NOTICE_STATUS = 'N'
 					    ORDER BY NOTICE_NUM DESC) A)
 		WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
+	<entry key="increaseCount">
+		UPDATE NOTICE
+		   SET NCOUNT = NCOUNT + 1
+		 WHERE NOTICE_NUM = ?
+	</entry>
+	
+	<entry key="selectSocialing">
+		SELECT
+			   NOTICE_NUM
+			 , NOTICE_TITLE
+			 , NOTICE_CONTENT
+			 , USER_ID
+			 , USER_NAME
+			 , NCOUNT
+			 , S_PLACE
+			 , S_DATE
+			 , MAX_MEMBER
+			 , MIN_MEMBER
+		  FROM NOTICE
+		  JOIN MEMBER_INFO USING(USER_ID)
+		  JOIN SOCIALING USING(NOTICE_NUM)
+		 WHERE NOTICE_TYPE = '소셜링'
+		   AND NOTICE_STATUS = 'N'
+		   AND NOTICE_NUM = ?
+	</entry>
+	
+	<entry key="selectPhotoList">
+		SELECT
+			   FILE_NUM
+			 , ROUTE
+			 , ORIGIN_NAME
+			 , CHANGE_NAME
+			 , FILE_LEVEL
+		  FROM TBL_FILE
+		 WHERE NOTICE_NUM = ?
+		   AND STATUS = 'Y'
+		 ORDER BY FILE_NUM
 	</entry>
 </properties>

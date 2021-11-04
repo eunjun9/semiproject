@@ -9,8 +9,8 @@
 <title>소셜링_상세페이지</title>
 
 <!-- 외부 스타일 시트 -->
-<link href="/resources/css/socialing/socialing_detail.css" rel="stylesheet">
-<link href="/resources/css/socialing/socialing_check.css" rel="stylesheet">
+<link href="<%= request.getContextPath() %>/resources/css/socialing/socialing_detail.css" rel="stylesheet">
+<link href="<%= request.getContextPath() %>/resources/css/socialing/socialing_check.css" rel="stylesheet">
 
 <!-- 글꼴 (Noto Sans) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -28,24 +28,21 @@
     <div class="page body">
         <div class="body-inner">
             <div class="wrapper1">
-                <p id="title">한강에서 치맥 하실분~!</p>
+                <p id="title">${ socialing.nTitle }</p>
                 <hr>
-                <h3 id="subTitle">장소</h3><p id="subTitle2">여의나루역 5호선</p><br>
-                <h3 id="subTitle">날짜</h3><p id="subTitle2">10.30(토) 오후 2시 0분</p>
+                <h3 id="subTitle">장소</h3><p id="subTitle2">${ socialing.splace }</p><br>
+                <h3 id="subTitle">날짜</h3><p id="subTitle2"><fmt:formatDate value="${ socialing.sdate }" type="both" pattern="M.dd(E) a h시 m분"/></p>
             </div>
             <div class="wrapper2">
-                <img src="<%= request.getContextPath() %>/resources/images/eunjung/thumbnail.png">
+                <img src="${ contextPath }${ socialing.photoList.get(0).route }${ socialing.photoList.get(0).changeName }">
             </div>
             <div class="wrapper3">
-                <p id="content">
-		                    날도 좋은데 한강에서 자전거 타고 같이 치맥 하실 분~~
-		                    돗자리랑 블투스피커 가져갈 수 있어요!!
-                </p>
+                <p id="content">${ socialing.nContent }</p>
             </div>
             <div class="wrapper4">
                 <div class="profileBox">
                     <img id="p-image" src="<%= request.getContextPath() %>/resources/images/eunjung/profile.png"><br>
-                    <p id="p-name">홍길동</p><br>
+                    <p id="p-name">${ socialing.userName }</p><br>
                     <!-- if문으로 일반 회원 : 참여하기 버튼 / 작성자 : 참여확인 버튼 출력되게 -->
                     <c:choose>
 						<c:when test="${ loginUser.userId == socialing.userId }">
@@ -64,7 +61,7 @@
                 <a href="#"> <!-- 참여자 피드로 이동 -->
                     <img id="s-image" src="<%= request.getContextPath() %>/resources/images/eunjung/profile.png">
                     <div class="subWrap2">
-                        <p id="s-name">홍길동</p>
+                        <p id="s-name">${ socialing.userName }</p>
                         <p id="s-intro">사람들 만나고 사귀는 걸 좋아해요!</p>
                     </div>
                 </a>
@@ -99,11 +96,11 @@
             <h3 id="subTitle4">자세한 정보를 알려드릴게요</h3>
             <div class="subWrap3">
                 <img id="icon" src="<%= request.getContextPath() %>/resources/images/eunjung/user.png">
-                <p id="detail">최소 2명 ~ 최대 4명</p>
+                <p id="detail">최소 ${ socialing.minMember }명 ~ 최대 ${ socialing.maxMember }명</p>
             </div>
             <div class="subWrap3">
                 <img id="icon" src="<%= request.getContextPath() %>/resources/images/eunjung/pin.png">
-                <p id="detail">여의나루역 5호선 (서울특별시 영등포구 여의동로 지하 343)</p>
+                <p id="detail">${ socialing.splace } (서울특별시 영등포구 여의동로 지하 343)</p>
             </div>
             <div class="subWrap3">
                 <img id="icon" src="<%= request.getContextPath() %>/resources/images/eunjung/time.png">

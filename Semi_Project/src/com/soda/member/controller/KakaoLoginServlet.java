@@ -39,15 +39,6 @@ public class KakaoLoginServlet extends HttpServlet {
 		String kakaoId = request.getParameter("kakaoId");
 		String kakaoGender = request.getParameter("kakaoGender");
 		
-		// kakaoGender 가져오는 값이 영어로 되어 있어 DB 통일성을 위해 변경
-		String f = "여";
-		String m = "남";
-		if(kakaoGender.equals("female")) {
-			kakaoGender = f;
-		} else {
-			kakaoGender = m;
-		}
-		
 		// 카카오 계정으로 이미 가입된 회원이 있는지 조회
 		Member loginUser = new MemberService().loginMember(userId);
 		

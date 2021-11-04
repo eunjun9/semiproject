@@ -98,7 +98,103 @@ public class SocialingDao {
 
 		return socialingList;
 	}
+	
+	// 게시물 조회수 증가
+	public int increaseCount(Connection conn, int nNum) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = socialingQuery.getProperty("increaseCount");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, nNum);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+	
+	// 게시글 상세페이지 읽어오기
+	public Socialing selectSocialing(Connection conn, int nNum) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		Socialing socialing = null;
+		String sql = socialingQuery.getProperty("selectSocialing");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, nNum);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				socialing = new Socialing();
+				socialing.setnNum(rset.getInt("notice_num"));
+				socialing.setnTitle(rset.getString("notice_title"));
+				socialing.setnContent(rset.getString("notice_content"));
+				socialing.setUserId(rset.getString("user_id"));
+				socialing.setUserName(rset.getString("user_name"));
+				socialing.setnCount(rset.getInt("ncount"));
+				socialing.setSplace(rset.getString("s_place"));
+				socialing.setSdate(rset.getTimestamp("s_date"));
+				socialing.setMaxMember(rset.getInt("max_member"));
+				socialing.setMinMember(rset.getInt("min_member"));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return socialing;
+	}
+	
+	public List<SodaFile> selectPhotoList(Connection conn, int nNum) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		List<SodaFile> photoList = new ArrayList<>();
+		String sql = socialingQuery.getProperty("selectPhotoList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, nNum);
+			
+			rset = pstmt.executeQuery();
+			
+			// 썸네일 사진 1개 (프로필사진 여기로 추가해야되면 while문으로 변경)
+			if(rset.next()) {
+				SodaFile file = new SodaFile();
+				file.setFileNum(rset.getInt("file_num"));
+				file.setRoute(rset.getString("route"));
+				file.setOriginName(rset.getString("origin_name"));
+				file.setChangeName(rset.getString("change_name"));
+				file.setFileLevel(rset.getInt("file_level"));
+				
+				photoList.add(file);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return photoList;
+	}
 
+	// 게시글 추가하기 (notice, socialing, file 테이블 insert)
 	public int insertNotice(Connection conn, Socialing socialing) {
 		// TODO Auto-generated method stub
 		return 0;
@@ -114,6 +210,9 @@ public class SocialingDao {
 		return 0;
 	}
 
+
+	
+	
 	
 	
 //	public List<Socialing> selectList(Connection conn) {

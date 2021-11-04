@@ -141,8 +141,21 @@
                         console.log(userName);					// 테스트용 콘솔 노출
                         var kakaoId = res.id					// 비밀번호로 사용할 카카오 아이디
                         console.log(kakaoId);					// 테스트용 콘솔 노출
-                        var kakaoGender = res.kakao_account.gender;	 // 카카오 성별
+                        
+                       var kakaoGender = res.kakao_account.gender;	 // 카카오 성별
+                       if( kakaoGender != null) {
+                    	   if (kakaoGender == 'female') {
+                    		   kakaoGender = kakaoGender.replaceAll(res.kakao_account.gender, "female", "여");
+                        } else {
+                        	kakaoGender = kakaoGender.replaceAll(res.kakao_account.gender, "male", "남");
+                        }
+                       }else{
+                    	    kakaoGender = "null";
+                       }
+                       
+                        
                         console.log(kakaoGender);
+                  
 
                        $.ajax({
                         url:"${ contextPath }/kakao/login",
@@ -171,21 +184,7 @@
               },
             })
           }
-        //카카오로그아웃  
-        function kakaoLogout() {
-            if (Kakao.Auth.getAccessToken()) {
-              Kakao.API.request({
-                url: '/v1/user/unlink',
-                success: function (res) {
-                    console.log(res)
-                },
-                fail: function (error) {
-                  console.log(error)
-                },
-              })
-              Kakao.Auth.setAccessToken(undefined)
-            }
-          }  
+     
         </script>
         
 	     

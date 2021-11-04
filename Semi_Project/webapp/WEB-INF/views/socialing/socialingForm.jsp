@@ -8,7 +8,7 @@
 <title>소셜링_글 작성</title>
 
 <!-- 외부 스타일 시트 -->
-<link href="/resources/css/socialing/socialing_form.css" rel="stylesheet">
+<link href="<%= request.getContextPath() %>/resources/css/socialing/socialing_form.css" rel="stylesheet">
 
 <!-- 글꼴 (Noto Sans) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -35,7 +35,7 @@
                     <h4 id="w-sub-title">제목을 입력해 주세요 (최대 30자)</h4>
                     <input type="text" id="inputTitle" name="inputTitle" maxlength="30" placeholder="연희동 카페투어 함께 가요!" required>
                     
-                    <h3 id="w-sub-title2">설명</h3>
+                    <h2 id="w-sub-title2">설명</h2>
                     <h4 id="w-sub-title3">썸네일 이미지를 첨부해주세요</h4>
                     <div class="image_area"></div>
                     <button type="button" id="fileBtn">file</button><br>
@@ -54,20 +54,20 @@
                     <label for="offline">오프라인</label>
                     <input type="radio" id="online" name="place" value="on">
                     <label for="online">온라인</label><br>
-                    <c:choose>
-						<c:when test="${ param.place == 'off' }">
-							<!-- 오프라인 선택 시 출력 -->
-		                    <input type="text" id="inputPlace" name="inputPlace" 
-		                    class="postcodify_address" placeholder="ex. 서울특별시 강남구 테헤란로">&nbsp;&nbsp;
-		                    <button type="button" class="search" id="postcodify_search_button">검색</button><br>
-		                    <input type="text" id="inputPlace" name="inputPlace" 
-		                    class="postcodify_details" placeholder="상세 주소를 입력해 주세요"><br>
-						</c:when>
-						<c:otherwise>
-							<!-- 온라인 선택 시 출력 -->
-                    		<input type="text" id="inputPlace" placeholder="Zoom / GoogleMeet">
-						</c:otherwise>
-					</c:choose>
+                    
+					<!-- 오프라인 선택 시 출력(첫화면 기본) -->
+					<div class="placeArea1"> <!-- display : none <-> block 자바스크립트로 구현 -->
+		            <input type="text" id="inputPlace" name="inputPlace" 
+		            class="postcodify_address" placeholder="ex. 서울특별시 강남구 테헤란로">&nbsp;&nbsp;
+		            <button type="button" class="search" id="postcodify_search_button">검색</button><br>
+		            <input type="text" id="inputPlace2" name="inputPlace" 
+		            class="postcodify_details" placeholder="상세 주소를 입력해 주세요"><br>
+					</div>
+		            
+		            <!-- 온라인 선택 시 출력 -->
+		            <div class="placeArea2">
+		            <input type="text" id="inputPlace" placeholder="Zoom / GoogleMeet">
+		            </div>
                     
                     <h4 id="w-sub-title5">인원 설정</h4>
                     <select id="min" name="min">

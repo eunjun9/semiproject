@@ -39,6 +39,37 @@ public class SocialingService {
 		
 		return returnMap;
 	}
+	
+	public int increaseCount(int nNum) {
+		Connection conn = getConnection();
+		
+		int result = socialingDao.increaseCount(conn, nNum);
+		
+		if(result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return result;
+	}
+	
+	public Socialing selectSocialing(int nNum) {
+		Connection conn = getConnection();
+		
+		/* Notice + Socialing 테이블 정보 조회 */
+		Socialing socialing = socialingDao.selectSocialing(conn, nNum);
+		
+		/* File 테이블 정보 조회 */
+		List<SodaFile> photoList = socialingDao.selectPhotoList(conn, nNum);
+		socialing.setPhotoList(photoList);
+		
+		close(conn);
+		
+		return socialing;
+	}
 
 	public int insertSocialing(Socialing socialing) {
 		Connection conn = getConnection();
