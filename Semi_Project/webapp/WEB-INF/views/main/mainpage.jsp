@@ -8,8 +8,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="resources/css/common/mainpage.css">
-    <title>메인메인</title>
+    <title>SODA 메인페이지</title>
 
+	<%-- session에 담긴 message 있을 경우 alert 하는 script --%>
+	<% if(session.getAttribute("message") != null) { %>
+	<script>
+	alert('<%= session.getAttribute("message") %>');
+	</script>
+	<% 
+			session.removeAttribute("message");
+		} 
+	%>
+	
     <!-- 글꼴 (Noto Sans) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,7 +41,7 @@
     <div class="head-inner">
         <div class="left-menu">
             <ul class="main-menu">
-                <li><a class="main-logo" href="메인페이지.html"><b>SODA</b></a></li><br>
+                <li><a class="main-logo" href="#"><b>SODA</b></a></li><br>
                 <li><a class="main-menu2" href="${ contextPath }/socialing/main">SOCIALING</a></li>
                 <li><a class="main-menu2" href="${ contextPath }/lesson/main">CLASS</a></li>
                 <li><a class="main-menu2" href="${ contextPath }/magazine/main">MAGAZINE</a></li>
@@ -193,6 +203,7 @@
      <div class="socialing-content">
         <div>
             <h3 class="content-title">취향이 통하는 친구와 원데이 소셜링</h3>
+            <h5><a class="view-all" href="#">전체보기</a></h5>
         </div>
 
         <article>
@@ -314,6 +325,7 @@
      <div class="onedayclass-content">
         <div>
             <h3 class="content-title">취향을 더 깊이있게 알아가는 원데이클래스</h3>
+            <h5><a class="view-all" href="#">전체보기</a></h5>
         </div>
         <article>
                 <div class="slide">

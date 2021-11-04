@@ -16,6 +16,7 @@
 			FROM(SELECT
 			       NOTICE_NUM
 			     , NOTICE_TITLE
+			     , NCOUNT
 			     , NOTICE_STATUS
 			     , NOTICE_DATE
 			     , USER_NAME
@@ -35,6 +36,12 @@
 			  AND NOTICE_STATUS = 'N'
 			  ORDER BY NOTICE_NUM DESC) A)
 		WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
+	<entry key="increaseCount">
+		UPDATE NOTICE
+		   SET NCOUNT = NCOUNT+1
+		 WHERE NOTICE_NUM = ?
 	</entry>
 
 </properties>

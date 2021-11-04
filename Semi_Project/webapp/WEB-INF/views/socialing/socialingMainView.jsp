@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,6 +41,7 @@
                 <div class="slide">
                     <div class="swiper mySwiper">
                         <div class="swiper-wrapper">
+                        <!-- 반복문으로 현재 날짜(date) 기준 시작일(sdate) 2일 이내로 남은 소셜링 글 목록 출력 (최대 6개) -->
                         <div class="swiper-slide">
                             <div id="thumbox">
                                 <img src="<%= request.getContextPath() %>/resources/images/eunjung/flower1.PNG"><br>
@@ -84,12 +86,12 @@
                 </div>
 
                 <div class="button1">
-                    <!-- If we need navigation buttons -->
-                    <div class="button-prev"><img width="30px" src="<%= request.getContextPath() %>/resources/images/eunjung/prev_b.png"></div>
+                    <div class="button-prev">
+                    <img width="30px" src="<%= request.getContextPath() %>/resources/images/eunjung/prev_b.png"></div>
                 </div>
-                
                 <div class="button2">
-                    <div class="button-next"><img width="30px" src="<%= request.getContextPath() %>/resources/images/eunjung/next_b.png"></div>
+                    <div class="button-next">
+                    <img width="30px" src="<%= request.getContextPath() %>/resources/images/eunjung/next_b.png"></div>
                 </div>
             </article>
             <article>
@@ -98,7 +100,8 @@
                     <form>
                         <div id="search">
                             <img id="searchIcon" src="<%= request.getContextPath() %>/resources/images/eunjung/search.png">
-                            <input type="text" name="keyword" size="31" maxlength="20" placeholder="검색할 키워드를 입력해주세요"><br><br>
+                            <input type="search" name="keyword" size="31" maxlength="20" placeholder="검색할 키워드를 입력해주세요"
+                            value="${ param.keyword }"><br><br>
                         </div>
                         <label id="flabel">지역</label>
                         <!-- local 선택에 따라 local-details 내용 변경 -->
@@ -113,7 +116,9 @@
                             <option value="">동작구</option>
                             <option value="">서초구</option>
                             <option value="">강남구</option>
-                        </select><br><br>
+                        </select>
+                        
+                        <br><br>
                         <label id="flabel">날짜</label>
                         <input type="date" name="dateIn"><br><br>
                         <label id="flabel">온오프라인</label>
@@ -132,18 +137,23 @@
                     </select>
                 </div>
                 <div class="s-container2">
-                	<c:forEach var="notice" items="${ noticeList }">
-                    <div id="s-list2" onclick="detailView(${ notice.nNum })">
+                
+                	<c:forEach var="s" items="${ socialingList }">
+                    <div id="s-list2">
                         <div id="thumbox">
-                            <a href="socialing_detail.html"><img id="s-thumbnail" src="<%= request.getContextPath() %>/resources/images/eunjung/thumbnail.png"></a><br>
-                            <img id="like" src="<%= request.getContextPath() %>/resources/images/eunjung/heart_empty.png">
-                            <!-- 클릭 시 꽉찬 하트 아이콘으로 변경 + 찜한 소셜링에 추가 -->
+                            <img id="s-thumbnail" onclick="detailView(${ s.nNum })" 
+                            src="${ contextPath }${ s.photoList.get(0).route }${ s.photoList.get(0).changeName }"><br>
+                            <!-- empty : 클릭 시 꽉찬 하트 아이콘으로 변경 + 관심 소셜링에 추가, full : 클릭 시 빈 하트 아이콘으로 변경 + 관심 소셜링에서 제거 -->
+                            <!-- 관심 소셜링에 sNum 포함 여부에 따라 src 변경(if문) -->
+                            <img id="like" src="<%= request.getContextPath() %>/resources/images/eunjung/heart_empty.png"
+                            onclick="likeSocialing(${ s.nNum })">
                         </div>
                         <a href="#">
                             <div id="titlebox">
-                                <p id="s-thumtitle">${ notice.nTitle }</p><br>
-                                <h5 id="s-thumsub">${ social.splace }${ social.sdate }</h5>
-                                <a href=""><img id="profile" src="<%= request.getContextPath() %>/resources/images/eunjung/profile.png"></a>
+                                <p id="s-thumtitle">${ s.nTitle }</p><br>
+                                <h5 id="s-thumsub">${ s.splace } 
+                                <fmt:formatDate value="${ s.sdate }" type="both" pattern="M.dd(E) a h:mm"/></h5>
+                                <a href="#"><img id="profile" src="<%= request.getContextPath() %>/resources/images/eunjung/profile.png"></a>
                             </div>
                         </a>
                     </div>
@@ -151,28 +161,56 @@
                     
                 </div>
 
+				<!-- 페이지 로직 (필터링 조건문 추후에 작성) -->
                 <div class="pagebox">
+                
+                	<!-- (<<) 제일 첫 페이지로 이동 -->
                 	<a class="paging" href="${ contextPath }/socialing/main?page=1">
                 	<img width="16px" src="${ contextPath }/resources/images/eunjung/previous.png">
 		            <img width="16px" src="${ contextPath }/resources/images/eunjung/previous.png"></a>
 		            
-		            <a class="paging" href="#"><img width="18px" src="${ contextPath }/resources/images/eunjung/previous.png"></a>
+		            <!--  (<) 이전 페이지  : 현재 페이지 - 1이니까 -->
+		            <c:choose>
+		             	<c:when test="${ pi.page > 1 }"> <!--  현재 페이지가 1보다 클 때는 이동하고  -->
+		             		<a class="paging" href="${ contextPath }/socialing/main?page=${ pi.page - 1 }"><img width="18px" src="${ contextPath }/resources/images/eunjung/previous.png"></a>
+		             	</c:when>
+		             	<c:otherwise> <!-- 1이면 현재 페이지에 머뭄 -->
+		             		<a class="paging" href="#"><img width="18px" src="${ contextPath }/resources/images/eunjung/previous.png"></a>
+		             	</c:otherwise>
+		            </c:choose>
 		            
-	                    <a class="paging" href="#"><img width="20px" src="${ contextPath }/resources/images/eunjung/circle_sky.png"></a>
-	                    <a class="paging" href="#"><img width="20px" src="${ contextPath }/resources/images/eunjung/circle_beige.png"></a>
-	                    <a class="paging" href="#"><img width="20px" src="${ contextPath }/resources/images/eunjung/circle_beige.png"></a>
-	                    <a class="paging" href="#"><img width="20px" src="${ contextPath }/resources/images/eunjung/circle_beige.png"></a>
-	                    <a class="paging" href="#"><img width="20px" src="${ contextPath }/resources/images/eunjung/circle_beige.png"></a>
-	                    
-	                <a class="paging" href="#"><img width="18px" src="${ contextPath }/resources/images/eunjung/next.png"></a>
+		            <!-- 최대 5개의 페이지 목록  생성 -->
+		            <c:forEach var="p" begin="${ pi.startPage }" end="${ pi.endPage }">
+		             	<li>
+					 	<c:choose>
+					 		<c:when test="${ p eq pi.page }"> <!-- p와 현재 요청 페이지가 같다면 = 현재 페이지 임을 나타낼 수 있는 색 변경-->
+					 			<a href="#" class="paging"><img width="20px" src="${ contextPath }/resources/images/eunjung/circle_sky.png"></a>
+					 		</c:when>
+					 		<c:otherwise> <!-- 현재 페이지 외에는 페이지 목록 숫자만 출력 -->
+					 			<a class="paging" href="${ contextPath }/socialing/main?page=${ p }"><img width="20px" src="${ contextPath }/resources/images/eunjung/circle_beige.png"></a>
+					 		</c:otherwise>
+					 	</c:choose>
+					 	</li>
+		            </c:forEach>
+		            
+		            <!-- (>) 다음 페이지 : 제일 끝 페이지에서 버튼 누를 것을 고려하여 조건문 사용 -->
+		            <c:choose>
+		            	<c:when test="${ pi.page < pi.maxPage }"> <!-- 현재 페이지가 최대 페이지보다 아래일 때 이동 -->
+		            		<a class="paging" href="${ contextPath }/socialing/main?page=${ pi.page + 1 }"><img width="18px" src="${ contextPath }/resources/images/eunjung/next.png"></a>
+		            	</c:when>
+		            	<c:otherwise>
+		            		<a class="paging" href="#"><img width="18px" src="${ contextPath }/resources/images/eunjung/next.png"></a>
+		            	</c:otherwise>
+		            </c:choose>
 	                
+	                <!-- (>>) 제일 끝 페이지로 이동 -->
 		            <a class="paging" href="${ contextPath }/socialing/main?page=${ pi.maxPage }">
 		            <img width="16px" src="${ contextPath }/resources/images/eunjung/next.png">
 		            <img width="16px" src="${ contextPath }/resources/images/eunjung/next.png"></a>
                 </div>
                 
                 <div id="writebox">
-                    <button id="writing" onclick="location.href='socialing_writing.html'">글 쓰기</button>
+                    <button id="writing" onclick="${ contextPath }/socialing/form">글 쓰기</button>
                 </div>
             </article>
         </div>
@@ -195,6 +233,7 @@
     </script>
 
     <script>
+    	// 찜하기 추가/취소 아이콘 변경
         let like = document.querySelectorAll('#like');
         let like2 = document.querySelectorAll('#like2');
         
@@ -216,6 +255,29 @@
             }
         }
     </script>
+    
+    <!-- 로그인 여부에 따른 스크립트 -->
+    <c:choose>
+		<c:when test="${ !empty loginUser }">
+			<script>
+				function detailView(nNum){
+					location.href = '${contextPath}/socialing/detail?nNum=' + nNum;
+				}
+				
+				function likeSocialing(nNum) {
+		        	// 관심 소셜링에 추가 (프로필정보에 관심 소셜링 컬럼 추가(게시글번호 - 구분자 이용해서 여러 글 추가되게))
+		        }
+			</script>
+		</c:when>
+		<c:otherwise>
+			<script>
+				function detailView(nNum){
+					alert('로그인 후 이용 가능합니다.');
+					location.href = '${contextPath}/login';
+				}			
+			</script>
+		</c:otherwise>
+	</c:choose>
 
     <!--footer-->
     <%@ include file="/WEB-INF/views/common/footer.jsp" %>

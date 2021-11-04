@@ -1,18 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" import="com.soda.member.model.vo.Member"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%
-	// session 객체에 담긴 loginUser 정보를 변수에 담아두기
-	Member loginUser = (Member)session.getAttribute("loginUser");
-%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>emailLogin</title>
 <!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"
-	integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
 	crossorigin="anonymous"></script>
 <!-- 외부 스타일 시트 -->
 <link rel="stylesheet"
@@ -43,16 +38,20 @@
 					<form class="login-input" action="${ contextPath }/email/login" method="post">
 						<h1>로그인</h1>
 						<h4>이메일</h4>
+						<span class="input_area">
 						<input type="email" id="email" name="email" placeholder="이메일을 입력해주세요." required>
+						</span>
 						<h4>비밀번호</h4>
+						<span class="input_area">
 						<input type="password" id="pwd" name="pwd" placeholder="비밀번호를 입력해주세요." required>
-
+						</span>
+						
 						<div class="login-fail-text" id="login-fail">
-							<!-- 로그인 실패 시 텍스트 출력 부분 -->
 						</div>
 
-						<span class="button-text text">
-						<input id="login-button text" class="btn" type="submit" value="로그인하기">
+						<span class="input_area text">
+						<input id="login-button text" class="btn" type="submit" value="로그인하기"
+						 style='cursor:pointer; border:none;'>
 						</span>
 					</form>
 				</div>
@@ -62,11 +61,12 @@
 						<a href="${ contextPath }/memberjoin" class="join-text">회원가입</a>
 					</div>
 					<div class="login-find">
-						<a href="${ contextPath }/emailFind" class="email-find"
-							onclick="openPopup('${ contextPath }/emailFind', 'emailFind', 500, 500);">이메일
-							찾기</a> <a href="${ contextPath }/pwdFind" class="pwd-find"
-							onclick="openPopup('${ contextPath }/pwdFind', 'pwdFind', 500, 500);">/
-							비밀번호 찾기</a>
+						<span class="email-find" style='cursor:pointer;'
+						onclick="openPopup('${ contextPath }/email/find', 'emailFind', 500, 500);">
+						이메일 찾기</span>
+						<span class="pwd-find" style='cursor:pointer;'
+						onclick="openPopup('${ contextPath }/pwd/find', 'pwdFind', 500, 500);">
+						/ 비밀번호 찾기</span>
 					</div>
 
 				</div>
@@ -128,20 +128,25 @@
                         console.log(userEmail);	 				 // 테스트용 콘솔 노출
                         var userName = res.properties.nickname 	// 카카오 닉네임(이름)
                         console.log(userName);					// 테스트용 콘솔 노출
-                        var kakaoId = res.id				// 비밀번호로 사용할 카카오 아이디
-                        console.log(kakaoId);
+                        var kakaoId = res.id					// 비밀번호로 사용할 카카오 아이디
+                        console.log(kakaoId);					// 테스트용 콘솔 노출
+                        var kakaoGender = res.kakao_account.gender;	 // 카카오 성별
+                        console.log(kakaoGender);
 
                        $.ajax({
                         url:"${ contextPath }/kakao/login",
-                        data:{ "userEmail" : userEmail, "userName" : userName, "kakaoId" : kakaoId },
+                        data:{ "userEmail" : userEmail, "userName" : userName, "kakaoId" : kakaoId, "kakaoGedner" : kakaoGender },
                         Type:"post",
                         success:function(data){
-                        	// 카카오 로그인 성공 시 메인페이지로 이동
-                            location.href="${ contextPath }/mainpage";
+                        	location.href="${ contextPath }/mainpage";
+                        	console.log("로그인 성공");
                         }
                         
                     });
-                    
+                       if(Kakao.Auth.getAccessToken()){
+                       	// console.log(Kakao.Auth.getAccessToken() + "토큰이 존재합니다.");
+                       }
+                     Kakao.Auth.setAccessToken(res.access_token);
                   },
     		     
                   fail: function (error) {
@@ -171,25 +176,8 @@
             }
           }  
         </script>
+        
+	     
 
-
-	<!-- 로그인 실패 시 로그인창 하단에 텍스트 노출 -->
-	<!--   <script>
-        	$(function(){
-        		$("#login-button").click(function(){
-        			$.ajax({
-        				url : "${ contextPath }/login",
-        				data : { userId : $("#email").val(), userPwd : $("#pwd").val()  },
-        				type : "post",
-        				success : function(user) {
-        					console.log("success!");
-        					},
-        				error : function(e){
-        					$("#login-fail").val(e.responseText);
-        				}
-        			});
-        		});
-        	});
-        </script>-->
 </body>
 </html>

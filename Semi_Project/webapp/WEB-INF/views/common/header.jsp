@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="com.soda.member.model.vo.Member"%> 
+    pageEncoding="UTF-8" import="com.soda.member.model.vo.Member"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
- 	// session 객체에 담긴 loginUser 정보를 변수에 담아두기
- 	Member loginUser = (Member)session.getAttribute("loginUser");
- %>
+	// session 객체에 담긴 loginUser 정보를 변수에 담아두기
+	Member loginUser = (Member)session.getAttribute("loginUser");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -53,31 +53,36 @@
                     <a href="#">MAGAZINE</a>
                 </div>
                 
-                <div class="category2">
+               <div class="category2">
                 <a href="#">CART</a>
                 <ul class="mypage">
                     <li class="mypage">
-                    	<a href="${ contextPath }/mypage/main" >MYPAGE</a>
+                    <a href="${ contextPath }/mypage/main" >MYPAGE</a>
                         <ul class="mypage_sub">
+                        <% if(loginUser != null) { %>
                           <li><a href="${ contextPath }/mypage/main">마이페이지</a></li>
                           <li><a href="${ contextPath }/logout">로그아웃</a></li>
+                          <% } else { %>
+                          <li><a href="${ contextPath }/login">로그인</a></li>
+                          <% } %>
                         </ul>
-                  </li></ul>
+                  	</li>
+                  </ul>
                 </div>
             </div>
         </div>
     </div>
     <!-- 마이페이지 마우스 오버 시 리스트 출력 스크립트 -->
-    <script>
-        $(document).ready(function(){ 
-          $(".mypage").mouseover(function(){ 
-            $(this).children(".mypage_sub").show(300); 
-          }); 
-            $(".mypage").mouseleave(function(){ 
-              $(".mypage_sub").hide(300); 
-            });
+     <script>
+      $(document).ready(function(){ 
+        $(".mypage").mouseover(function(){ 
+          $(this).children(".mypage_sub").show(300); 
+        }); 
+          $(".mypage").mouseleave(function(){ 
+            $(".mypage_sub").hide(300); 
           });
-        
-    </script>
+        });
+      
+  </script>
 </body>
 </html>

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -144,28 +145,31 @@
         </div>
         
         <div class="wrapper3">
-        <select>
+        <select name="classSort">
             <option disabled>정렬 방식</option>
-            <option selected >인기순</option>
-            <option>최신순</option>
-            <option>가격 낮은순</option>
-            <option>가격 높은순</option>
+            <option value="pop" selected >인기순</option>
+            <option value="rec">최신순</option>
         </select><br>
         </div>
         
         <div class="wrapper4">
         <!-- 게시글 반복문으로 삽입  -->
-       <%--  <c:forEach var="" items="">
-            <div class="cItem" >
+      <c:forEach var="lesson" items="${ lessonList }">
+            <div class="cItem" onclick="detailView(${lesson.nNum})">
             	<!-- a태그에 제목, 사진, 가격 넣어서 클릭 시 해당 페이지로 이동 nNum으로 구분  (아래 href 코드 수정 필요)-->
-                <a href="${ contextPath }/lesson/detail?nNum=">
-                    <img class="cThumbnail" src="">
-                    <h4 class="cMTitle"></h4>
-                    <p class="cPrice"></p>
-                </a>
+                    <img class="cThumbnail" src="${ contextPath }${ lesson.photoList.get(0).route}${ lesson.photoList.get(0).changeName }">
+                    <h4 class="cMTitle">${ lesson.nTitle }</h4>
+                    <p class="cPrice"><fmt:formatNumber value="${ lesson.cPrice }" type="currency" currencySymbol=""/>원</p>
+                    <P>${ lesson.nCount }번</P>
+               <%--  <a onclick="detailView(${lesson.nNum})">
+                </a> --%>
             </div>
-        </c:forEach> --%>
+        </c:forEach>
         </div>
+        
+        <c:if test="${ loginUser.userGrade == '강사' }">
+        <button id="classBtn" onclick="location.href='${ contextPath }/lesson/insert'">클래스 등록</button>
+        </c:if>
 
 		<!-- 페이지 로직 (필터링 조건문 추후에 작성) -->
         <div class="wrapper5">
@@ -210,15 +214,31 @@
             <a class="paging" href="${ contextPath }/lesson/main?page=${ pi.maxPage }"><img width="16px" src="${ contextPath }/resources/images/yewon/next.png">
             <img width="16px" src="${ contextPath }/resources/images/yewon/next.png"></a>
         </div>
-
-
-
     </div>
-
-
 
 	<!-- footer -->
 	<%@ include file="/WEB-INF/views/common/footer.jsp" %>
+	
+
+	<!-- 클래스 상세 페이지 스크립트 -->	
+	<c:choose>
+		<c:when test="${ !empty loginUser }"> <!-- 로그인 했을 때 볼 수 있게 -->
+			<script>
+				function detailView(nNum){
+					location.href = '${contextPath}/lesson/detail?nNum=' + nNum;
+				}
+			</script>
+		</c:when>
+		<c:otherwise>	<!-- 로그인 안 했을 때 -->
+			<script>
+				function detailView(){
+					alert('로그인 후 이용 가능합니다. 로그인 해주세요.');
+					location.href='${ contextPath }/login';
+				}			
+			</script>
+		</c:otherwise>
+	</c:choose>
+	
 	
 </body>
 </html>

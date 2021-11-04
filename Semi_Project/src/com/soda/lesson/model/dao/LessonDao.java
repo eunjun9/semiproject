@@ -10,9 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
-import com.soda.lesson.model.vo.File;
+import com.soda.lesson.model.vo.Attachment;
 import com.soda.lesson.model.vo.Lesson;
-import com.soda.lesson.model.vo.Notice;
 import com.soda.lesson.model.vo.PageInfo;
 
 import static com.common.JDBCTemplate.*;
@@ -81,14 +80,15 @@ public class LessonDao {
 				Lesson lesson = new Lesson();
 				lesson.setnNum(rset.getInt("notice_num"));
 				lesson.setnTitle(rset.getNString("notice_title"));
+				lesson.setnCount(rset.getInt("nCount"));
 				lesson.setnStatus(rset.getString("notice_status"));
 				lesson.setnDate(rset.getDate("notice_date"));
 				lesson.setUserId(rset.getString("user_name"));
 				lesson.setModifyDate(rset.getDate("modify_date"));
 				lesson.setcPrice(rset.getInt("c_price"));
 				
-				List<File> photoList = new ArrayList<>();
-				File photo = new File();
+				List<Attachment> photoList = new ArrayList<>();
+				Attachment photo = new Attachment();
 				photo.setFileNum(rset.getInt("file_num"));
 				photo.setOriginName(rset.getString("origin_name"));
 				photo.setChangeName(rset.getString("change_name"));
@@ -110,6 +110,36 @@ public class LessonDao {
 		}
 		
 		return lessonList;
+	}
+
+	// 조회수 증가
+	public int increaseCount(Connection conn, int nNum) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = lessonQuery.getProperty("increaseCount");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, nNum);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
+	public Lesson selectLesson(Connection conn, int nNum) {
+		
+		return null;
+	}
+
+	public List<Attachment> selectPhotoList(Connection conn, int nNum) {
+
+		return null;
 	}
 
 }

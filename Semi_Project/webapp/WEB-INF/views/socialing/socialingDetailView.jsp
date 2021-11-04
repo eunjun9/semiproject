@@ -48,7 +48,7 @@
                     <p id="p-name">홍길동</p><br>
                     <!-- if문으로 일반 회원 : 참여하기 버튼 / 작성자 : 참여확인 버튼 출력되게 -->
                     <c:choose>
-						<c:when test="${ loginUser.userId == notice.userId }">
+						<c:when test="${ loginUser.userId == socialing.userId }">
 							<button type="button" id="p-button2">소셜링 참여확인</button>
 						</c:when>
 						<c:otherwise>
@@ -107,10 +107,10 @@
             </div>
             <div class="subWrap3">
                 <img id="icon" src="<%= request.getContextPath() %>/resources/images/eunjung/time.png">
-                <p id="detail">10.30(토) 오후 2시 0분</p>
+                <p id="detail"><fmt:formatDate value="${ socialing.sdate }" type="both" pattern="M.dd(E) a h시 m분"/></p>
             </div>
             <div class="buttons"> <!-- 삭제, 수정은 작성자/관리자만 표시 -->
-            <c:if test="${ loginUser.userId == notice.userId || loginUser.userId.equals('admin') }">
+            <c:if test="${ loginUser.userId == socialing.userId || loginUser.userId.equals('admin') }">
             	<button type="button" id="delete" onclick="deleteBoard()">삭제</button>
                 <button type="button" id="update">수정</button>
             </c:if>
@@ -121,14 +121,17 @@
 
     <div class="checkPop" style="display:none;">
         <h2 id="chk_title">참여 회원 체크</h2>
-        <form name="checking" action="" method="post">
+        <form name="checking" action="${ contextPath }/socialing/detail" method="post">
             <div class="checkArea">
-                <!-- 체크 후 submit 하면 체크 유지되게 (checked) -->
-                <input type="checkbox" id="person1" name="check" value="person1">
+                <!-- 체크 후 submit 하면 체크 유지되게 (checked) -> 나중에 반복문으로 수정 -->
+                <input type="checkbox" id="person1" name="check" value="person1"
+                <c:if test="${ param.check == 'person1' }">checked</c:if>>
                 <label for="person1">구웅</label><br>
-                <input type="checkbox" id="person2" name="check" value="person2">
+                <input type="checkbox" id="person2" name="check" value="person2"
+                <c:if test="${ param.check == 'person2' }">checked</c:if>>
                 <label for="person2">유미</label><br>
-                <input type="checkbox" id="person3" name="check" value="person3">
+                <input type="checkbox" id="person3" name="check" value="person3"
+                <c:if test="${ param.check == 'person3' }">checked</c:if>>
                 <label for="person3">루비</label><br>
             </div><br>
             <div class="btnArea">

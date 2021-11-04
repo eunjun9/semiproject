@@ -111,7 +111,7 @@ public class MemberDao {
 			pstmt.setString(3, joinMember.getUserPhone());
 			pstmt.setString(4, joinMember.getUserPwd());
 			pstmt.setString(5, joinMember.getUserAddress());
-			pstmt.setString(6, null);
+			pstmt.setString(6, joinMember.getGender());
 		
 			result = pstmt.executeUpdate();
 			
@@ -120,6 +120,56 @@ public class MemberDao {
 		}finally {
 			close(pstmt);
 		}
+		return result;
+	}
+	
+	public int insertMember(Connection conn, Member member) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = memberQuery.getProperty("insertMember");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, member.getUserId());
+			pstmt.setString(2, member.getUserName());
+			pstmt.setString(3, member.getUserPhone());
+			pstmt.setString(4, member.getUserPwd());
+			pstmt.setString(5, member.getGender());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	public int insertMember(Connection conn, Member member) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = memberQuery.getProperty("insertMember");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, member.getUserId());
+			pstmt.setString(2, member.getUserName());
+			pstmt.setString(3, member.getUserPhone());
+			pstmt.setString(4, member.getUserPwd());
+			pstmt.setString(5, member.getGender());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
 		return result;
 	}
 

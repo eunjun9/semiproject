@@ -1,121 +1,177 @@
 package com.soda.socialing.model.vo;
 
 import java.util.Date;
+import java.util.List;
 
 public class Socialing {
 	// notice
-	private int noticeNum;		// 게시판 번호 (pfk - Notice 테이블 noticeNum 참조 값)
+	private int nNum;			// 게시글 번호 (pk)
+	private String nTitle;		// 게시글 제목
+	private String nContent;	// 게시글 내용
+	private String nStatus;		// 등록 상태 (Y/N)
+	private String nType;		// 게시판 종류 (클래스, 소셜링, 매거진)
+	private String userId;		// 작성자 아이디 (Member_info 테이블 참조)
+	private String userName; 	// 작성자명 (Member_info 테이블 참조)
+	private Date nDate;			// 작성 날짜
+	private Date modifyDate;	// 수정 날짜
+	// socialing
 	private String splace;		// 모임 장소
 	private Date sdate;			// 모임 날짜
-	private Date stime;			// 모임 시간
 	private String stype;		// 온오프라인 여부 (ON/OFF)
 	private int maxMember;		// 참여 가능 인원
-	private String userName;	// 작성자명 (Member 테이블 join 결과 값)
-	private String profile;		// 작성자 프로필사진 (Profile 테이블 join 결과 값)
+	private String profile;		// 작성자 프로필사진 (Profile 테이블 참조)
 	
+	private List<SodaFile> photoList;  // 사진 첨부 파일
 	
 	public Socialing() {}
 
-
-	public Socialing(int noticeNum, String splace, Date sdate, Date stime, String stype, int maxMember, String userName,
-			String profile) {
+	public Socialing(int nNum, String nTitle, String nContent, String nStatus, String nType, String userId,
+			String userName, Date nDate, Date modifyDate, String splace, Date sdate, String stype, int maxMember,
+			String profile, List<SodaFile> photoList) {
 		super();
-		this.noticeNum = noticeNum;
-		this.splace = splace;
-		this.sdate = sdate;
-		this.stime = stime;
-		this.stype = stype;
-		this.maxMember = maxMember;
+		this.nNum = nNum;
+		this.nTitle = nTitle;
+		this.nContent = nContent;
+		this.nStatus = nStatus;
+		this.nType = nType;
+		this.userId = userId;
 		this.userName = userName;
-		this.profile = profile;
-	}
-
-
-	public int getNoticeNum() {
-		return noticeNum;
-	}
-
-
-	public void setNoticeNum(int noticeNum) {
-		this.noticeNum = noticeNum;
-	}
-
-
-	public String getSplace() {
-		return splace;
-	}
-
-
-	public void setSplace(String splace) {
+		this.nDate = nDate;
+		this.modifyDate = modifyDate;
 		this.splace = splace;
-	}
-
-
-	public Date getSdate() {
-		return sdate;
-	}
-
-
-	public void setSdate(Date sdate) {
 		this.sdate = sdate;
-	}
-
-
-	public Date getStime() {
-		return stime;
-	}
-
-
-	public void setStime(Date stime) {
-		this.stime = stime;
-	}
-
-
-	public String getStype() {
-		return stype;
-	}
-
-
-	public void setStype(String stype) {
 		this.stype = stype;
-	}
-
-
-	public int getMaxMember() {
-		return maxMember;
-	}
-
-
-	public void setMaxMember(int maxMember) {
 		this.maxMember = maxMember;
+		this.profile = profile;
+		this.photoList = photoList;
 	}
 
+	public int getnNum() {
+		return nNum;
+	}
+
+	public void setnNum(int nNum) {
+		this.nNum = nNum;
+	}
+
+	public String getnTitle() {
+		return nTitle;
+	}
+
+	public void setnTitle(String nTitle) {
+		this.nTitle = nTitle;
+	}
+
+	public String getnContent() {
+		return nContent;
+	}
+
+	public void setnContent(String nContent) {
+		this.nContent = nContent;
+	}
+
+	public String getnStatus() {
+		return nStatus;
+	}
+
+	public void setnStatus(String nStatus) {
+		this.nStatus = nStatus;
+	}
+
+	public String getnType() {
+		return nType;
+	}
+
+	public void setnType(String nType) {
+		this.nType = nType;
+	}
+
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
 
 	public String getUserName() {
 		return userName;
 	}
 
-
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
 
+	public Date getnDate() {
+		return nDate;
+	}
+
+	public void setnDate(Date nDate) {
+		this.nDate = nDate;
+	}
+
+	public Date getModifyDate() {
+		return modifyDate;
+	}
+
+	public void setModifyDate(Date modifyDate) {
+		this.modifyDate = modifyDate;
+	}
+
+	public String getSplace() {
+		return splace;
+	}
+
+	public void setSplace(String splace) {
+		this.splace = splace;
+	}
+
+	public Date getSdate() {
+		return sdate;
+	}
+
+	public void setSdate(Date sdate) {
+		this.sdate = sdate;
+	}
+
+	public String getStype() {
+		return stype;
+	}
+
+	public void setStype(String stype) {
+		this.stype = stype;
+	}
+
+	public int getMaxMember() {
+		return maxMember;
+	}
+
+	public void setMaxMember(int maxMember) {
+		this.maxMember = maxMember;
+	}
 
 	public String getProfile() {
 		return profile;
 	}
 
-
 	public void setProfile(String profile) {
 		this.profile = profile;
 	}
 
+	public List<SodaFile> getPhotoList() {
+		return photoList;
+	}
+
+	public void setPhotoList(List<SodaFile> photoList) {
+		this.photoList = photoList;
+	}
 
 	@Override
 	public String toString() {
-		return "Socialing [noticeNum=" + noticeNum + ", splace=" + splace + ", sdate=" + sdate + ", stime=" + stime
-				+ ", stype=" + stype + ", maxMember=" + maxMember + ", userName=" + userName + ", profile=" + profile
-				+ "]";
+		return "Socialing [nNum=" + nNum + ", nTitle=" + nTitle + ", nContent=" + nContent + ", nStatus=" + nStatus
+				+ ", nType=" + nType + ", userId=" + userId + ", userName=" + userName + ", nDate=" + nDate
+				+ ", modifyDate=" + modifyDate + ", splace=" + splace + ", sdate=" + sdate + ", stype=" + stype
+				+ ", maxMember=" + maxMember + ", profile=" + profile + ", photoList=" + photoList + "]";
 	}
 
 }
