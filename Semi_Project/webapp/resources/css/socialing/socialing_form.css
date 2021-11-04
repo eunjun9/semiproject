@@ -168,7 +168,8 @@ label {
     cursor: pointer;
 }
 
-#inputPlace {
+#inputPlace,
+#inputPlace2 {
     border: 1px solid lightgray;
     font-size: 1.02rem;
     width: 500px;

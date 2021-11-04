@@ -14,11 +14,13 @@ public class Socialing {
 	private String userName; 	// 작성자명 (Member_info 테이블 참조)
 	private Date nDate;			// 작성 날짜
 	private Date modifyDate;	// 수정 날짜
+	private int nCount;			// 게시글 조회수
 	// socialing
 	private String splace;		// 모임 장소
 	private Date sdate;			// 모임 날짜
 	private String stype;		// 온오프라인 여부 (ON/OFF)
-	private int maxMember;		// 참여 가능 인원
+	private int maxMember;		// 최대 참여 인원
+	private int minMember;		// 최소 참여 인원
 	private String profile;		// 작성자 프로필사진 (Profile 테이블 참조)
 	
 	private List<SodaFile> photoList;  // 사진 첨부 파일
@@ -26,8 +28,8 @@ public class Socialing {
 	public Socialing() {}
 
 	public Socialing(int nNum, String nTitle, String nContent, String nStatus, String nType, String userId,
-			String userName, Date nDate, Date modifyDate, String splace, Date sdate, String stype, int maxMember,
-			String profile, List<SodaFile> photoList) {
+			String userName, Date nDate, Date modifyDate, int nCount, String splace, Date sdate, String stype,
+			int maxMember, int minMember, String profile, List<SodaFile> photoList) {
 		super();
 		this.nNum = nNum;
 		this.nTitle = nTitle;
@@ -38,10 +40,12 @@ public class Socialing {
 		this.userName = userName;
 		this.nDate = nDate;
 		this.modifyDate = modifyDate;
+		this.nCount = nCount;
 		this.splace = splace;
 		this.sdate = sdate;
 		this.stype = stype;
 		this.maxMember = maxMember;
+		this.minMember = minMember;
 		this.profile = profile;
 		this.photoList = photoList;
 	}
@@ -118,6 +122,14 @@ public class Socialing {
 		this.modifyDate = modifyDate;
 	}
 
+	public int getnCount() {
+		return nCount;
+	}
+
+	public void setnCount(int nCount) {
+		this.nCount = nCount;
+	}
+
 	public String getSplace() {
 		return splace;
 	}
@@ -150,6 +162,14 @@ public class Socialing {
 		this.maxMember = maxMember;
 	}
 
+	public int getMinMember() {
+		return minMember;
+	}
+
+	public void setMinMember(int minMember) {
+		this.minMember = minMember;
+	}
+
 	public String getProfile() {
 		return profile;
 	}
@@ -170,8 +190,9 @@ public class Socialing {
 	public String toString() {
 		return "Socialing [nNum=" + nNum + ", nTitle=" + nTitle + ", nContent=" + nContent + ", nStatus=" + nStatus
 				+ ", nType=" + nType + ", userId=" + userId + ", userName=" + userName + ", nDate=" + nDate
-				+ ", modifyDate=" + modifyDate + ", splace=" + splace + ", sdate=" + sdate + ", stype=" + stype
-				+ ", maxMember=" + maxMember + ", profile=" + profile + ", photoList=" + photoList + "]";
+				+ ", modifyDate=" + modifyDate + ", nCount=" + nCount + ", splace=" + splace + ", sdate=" + sdate
+				+ ", stype=" + stype + ", maxMember=" + maxMember + ", minMember=" + minMember + ", profile=" + profile
+				+ ", photoList=" + photoList + "]";
 	}
 
 }
