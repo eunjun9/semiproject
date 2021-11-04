@@ -7,7 +7,7 @@
 <title>소다소개</title>
 
 	<!-- 외부 스타일 시트 -->
-    <link href="resources/css/footer/footer_aboutsoda.css" rel="stylesheet">
+    <link href="${ contextPath }/resources/css/footer/content.css" rel="stylesheet">
 
     <!-- 글꼴 (Noto Sans) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,7 +22,7 @@
 	
     <!-- 소다 소개 본문 -->
     <div id="about_soda">
-        <img src="resources/image/aboutsoda.jpg">
+        <img src="${ contextPath }/resources/images/yewon/aboutsoda.jpg">
         <h1>S O D A</h1>
         <h4 id="title1">좋아하는 취향에서부터</h4>
         <h4 id="title2">좋아하게 될 사람들까지</h4>

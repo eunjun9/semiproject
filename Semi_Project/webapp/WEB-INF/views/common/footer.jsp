@@ -37,7 +37,7 @@
                 <ul>영업시간 : 월-금 오후 2시-7시</ul>
             </div>
             <div class="foot-category foot-all">
-                <ul><a href="#">소다소개</a></ul>
+                <ul><a href="${ contextPath }/footer/content">소다소개</a></ul>
                 <ul><a href="#">공지사항 </a></ul>
                 <ul><a href="https://forms.gle/Nf4z3FqR5zrg8WtU8">강사신청</a></ul>
                 <ul><a href="#">자주묻는질문</a></ul>
