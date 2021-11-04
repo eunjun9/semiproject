@@ -9,8 +9,8 @@
 <title>소셜링_상세페이지</title>
 
 <!-- 외부 스타일 시트 -->
-<link href="<%= request.getContextPath() %>/resources/css/socialing/socialing_detail.css" rel="stylesheet">
-<link href="<%= request.getContextPath() %>/resources/css/socialing/socialing_check.css" rel="stylesheet">
+<link href="${ contextPath }/resources/css/socialing/socialing_detail.css?1" rel="stylesheet">
+<link href="${ contextPath }/resources/css/socialing/socialing_check.css?1" rel="stylesheet">
 
 <!-- 글꼴 (Noto Sans) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -111,7 +111,8 @@
             	<button type="button" id="delete" onclick="deleteBoard()">삭제</button>
                 <button type="button" id="update">수정</button>
             </c:if>
-                <button type="button" id="report" onclick="openPopup('report.html', 'report', 370, 500)">신고</button>
+                <button type="button" id="report" 
+                onclick="openPopup('${ contextPath }/reportForm', 'reportForm', 370, 500)">신고</button>
             </div>
         </div>
     </div>
