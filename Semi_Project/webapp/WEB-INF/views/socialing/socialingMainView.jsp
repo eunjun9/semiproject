@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,7 +41,7 @@
                 <div class="slide">
                     <div class="swiper mySwiper">
                         <div class="swiper-wrapper">
-                        <!-- 반복문으로 현재 날짜 기준 시작일 2일 이내 소셜링 글 목록 출력 -->
+                        <!-- 반복문으로 현재 날짜(date) 기준 시작일(sdate) 2일 이내로 남은 소셜링 글 목록 출력 (최대 6개) -->
                         <div class="swiper-slide">
                             <div id="thumbox">
                                 <img src="<%= request.getContextPath() %>/resources/images/eunjung/flower1.PNG"><br>
@@ -85,12 +86,12 @@
                 </div>
 
                 <div class="button1">
-                    <!-- If we need navigation buttons -->
-                    <div class="button-prev"><img width="30px" src="<%= request.getContextPath() %>/resources/images/eunjung/prev_b.png"></div>
+                    <div class="button-prev">
+                    <img width="30px" src="<%= request.getContextPath() %>/resources/images/eunjung/prev_b.png"></div>
                 </div>
-                
                 <div class="button2">
-                    <div class="button-next"><img width="30px" src="<%= request.getContextPath() %>/resources/images/eunjung/next_b.png"></div>
+                    <div class="button-next">
+                    <img width="30px" src="<%= request.getContextPath() %>/resources/images/eunjung/next_b.png"></div>
                 </div>
             </article>
             <article>
@@ -99,7 +100,8 @@
                     <form>
                         <div id="search">
                             <img id="searchIcon" src="<%= request.getContextPath() %>/resources/images/eunjung/search.png">
-                            <input type="text" name="keyword" size="31" maxlength="20" placeholder="검색할 키워드를 입력해주세요"><br><br>
+                            <input type="search" name="keyword" size="31" maxlength="20" placeholder="검색할 키워드를 입력해주세요"
+                            value="${ param.keyword }"><br><br>
                         </div>
                         <label id="flabel">지역</label>
                         <!-- local 선택에 따라 local-details 내용 변경 -->
@@ -114,7 +116,9 @@
                             <option value="">동작구</option>
                             <option value="">서초구</option>
                             <option value="">강남구</option>
-                        </select><br><br>
+                        </select>
+                        
+                        <br><br>
                         <label id="flabel">날짜</label>
                         <input type="date" name="dateIn"><br><br>
                         <label id="flabel">온오프라인</label>
@@ -135,17 +139,21 @@
                 <div class="s-container2">
                 
                 	<c:forEach var="s" items="${ socialingList }">
-                    <div id="s-list2" onclick="detailView(${ s.nNum })">
+                    <div id="s-list2">
                         <div id="thumbox">
-                            <a href="#"><img id="s-thumbnail" src="${ contextPath }${ s.photoList.get(0).route }${ s.photoList.get(0).changeName }"></a><br>
-                            <img id="like" src="<%= request.getContextPath() %>/resources/images/eunjung/heart_empty.png">
-                            <!-- 클릭 시 꽉찬 하트 아이콘으로 변경 + 찜한 소셜링에 추가 -->
+                            <img id="s-thumbnail" onclick="detailView(${ s.nNum })" 
+                            src="${ contextPath }${ s.photoList.get(0).route }${ s.photoList.get(0).changeName }"><br>
+                            <!-- empty : 클릭 시 꽉찬 하트 아이콘으로 변경 + 관심 소셜링에 추가, full : 클릭 시 빈 하트 아이콘으로 변경 + 관심 소셜링에서 제거 -->
+                            <!-- 관심 소셜링에 sNum 포함 여부에 따라 src 변경(if문) -->
+                            <img id="like" src="<%= request.getContextPath() %>/resources/images/eunjung/heart_empty.png"
+                            onclick="likeSocialing(${ s.nNum })">
                         </div>
                         <a href="#">
                             <div id="titlebox">
                                 <p id="s-thumtitle">${ s.nTitle }</p><br>
-                                <h5 id="s-thumsub">${ s.splace } ${ s.sdate }</h5>
-                                <a href=""><img id="profile" src="<%= request.getContextPath() %>/resources/images/eunjung/profile.png"></a>
+                                <h5 id="s-thumsub">${ s.splace } 
+                                <fmt:formatDate value="${ s.sdate }" type="both" pattern="M.dd(E) a h:mm"/></h5>
+                                <a href="#"><img id="profile" src="<%= request.getContextPath() %>/resources/images/eunjung/profile.png"></a>
                             </div>
                         </a>
                     </div>
@@ -248,19 +256,24 @@
         }
     </script>
     
+    <!-- 로그인 여부에 따른 스크립트 -->
     <c:choose>
 		<c:when test="${ !empty loginUser }">
 			<script>
 				function detailView(nNum){
 					location.href = '${contextPath}/socialing/detail?nNum=' + nNum;
 				}
+				
+				function likeSocialing(nNum) {
+		        	// 관심 소셜링에 추가 (프로필정보에 관심 소셜링 컬럼 추가(게시글번호 - 구분자 이용해서 여러 글 추가되게))
+		        }
 			</script>
 		</c:when>
 		<c:otherwise>
 			<script>
-				function detailView(){
+				function detailView(nNum){
 					alert('로그인 후 이용 가능합니다.');
-					location.href='${contextPath}/login';
+					location.href = '${contextPath}/login';
 				}			
 			</script>
 		</c:otherwise>

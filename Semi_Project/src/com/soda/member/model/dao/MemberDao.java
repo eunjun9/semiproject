@@ -26,7 +26,7 @@ public class MemberDao {
 		}
 	}
 	
-	// 로그인
+	// 이메일 로그인
 	public Member loginMember(Connection conn, String userId, String userPwd) {
 		PreparedStatement pstmt = null;
 		Member loginUser = null;
@@ -123,6 +123,7 @@ public class MemberDao {
 		return result;
 	}
 	
+	// 회원가입
 	public int insertMember(Connection conn, Member member) {
 		int result = 0;
 		PreparedStatement pstmt = null;
@@ -148,6 +149,34 @@ public class MemberDao {
 		return result;
 	}
 
-	
+
+	// 이메일 계정 찾기
+	public String findEmail(Connection conn, String userName, String userPhone) {
+		PreparedStatement pstmt = null;
+		String findEmail = null;
+		ResultSet rset = null;
+		String sql = memberQuery.getProperty("findEmail");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, userName);
+			pstmt.setString(2, userPhone);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				findEmail = rset.getString("user_id");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return findEmail;
+	}
 
 }

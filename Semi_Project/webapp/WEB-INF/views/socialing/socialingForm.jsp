@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -53,11 +54,22 @@
                     <label for="offline">오프라인</label>
                     <input type="radio" id="online" name="place" value="on">
                     <label for="online">온라인</label><br>
-                    <input type="text" id="inputPlace" name="inputPlace" 
-                    class="postcodify_address postcodify_details" placeholder="여의나루역 5호선 한강공원 / Zoom">&nbsp;&nbsp;
-                    <button type="button" class="search" id="postcodify_search_button">검색</button><br>
+                    <c:choose>
+						<c:when test="${ param.place == 'off' }">
+							<!-- 오프라인 선택 시 출력 -->
+		                    <input type="text" id="inputPlace" name="inputPlace" 
+		                    class="postcodify_address" placeholder="ex. 서울특별시 강남구 테헤란로">&nbsp;&nbsp;
+		                    <button type="button" class="search" id="postcodify_search_button">검색</button><br>
+		                    <input type="text" id="inputPlace" name="inputPlace" 
+		                    class="postcodify_details" placeholder="상세 주소를 입력해 주세요"><br>
+						</c:when>
+						<c:otherwise>
+							<!-- 온라인 선택 시 출력 -->
+                    		<input type="text" id="inputPlace" placeholder="Zoom / GoogleMeet">
+						</c:otherwise>
+					</c:choose>
                     
-                    <h4 id="w-sub-title5">인원 설정 (최소 2명 이상)</h4>
+                    <h4 id="w-sub-title5">인원 설정</h4>
                     <select id="min" name="min">
                         <option value="2">2명</option>
                         <option value="3">3명</option>
