@@ -7,7 +7,7 @@
 <title>클래스 등록</title>
 
     <!--외부 스타일 시트-->
-    <link href="resources/css/lesson/lesson_form.css" rel="stylesheet">
+    <link href="${ contextPath }/resources/css/lesson/lesson_form.css" rel="stylesheet">
 
     <!-- 썸머노트 -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
@@ -78,6 +78,8 @@
                     <label>타입</label> 
                     <input type="radio" name="class_type" value="oneday" id="oneday" checked><label for="oneday" class="btnlabel">원데이 클래스</label>
                     <input type="radio" name="class_type" value="vod" id="vod"><label for="vod" class="btnlabel">VOD 클래스</label><br>
+              		<input type="radio" name="class_onoff" value="online" id="online" checked><label for="onlline" class="btnlabel">온라인</label>
+                    <input type="radio" name="class_onoff" value="offline" id="offline"><label for="offline" class="btnlabel">오프라인</label><br>
                 </div> 
 
                 <div id="form_body">
@@ -96,9 +98,7 @@
                 <h4>시간을 선택하세요</h4>
                 <input type="time" name="class_time1"> &nbsp;부터  &nbsp;<input type="time" name="class_time2"> &nbsp;까지
 
-                <h4>클래스 진행방식과 위치를 입력하세요</h4> <!--조건문으로 오프라인 클릭 시 위치 입력 readonly + api 사용-->
-                <input type="radio" name="class_onoff" value="online" id="online" checked><label for="onlline" class="btnlabel">온라인</label>
-                <input type="radio" name="class_onoff" value="offline" id="offline"><label for="offline" class="btnlabel">오프라인</label><br>
+                <h4>클래스 위치를 입력하세요</h4> <!--조건문으로 오프라인 클릭 시 위치 입력 readonly + api 사용-->
                 <input type="text" name="class_location" placeholder="온라인 클래스는 장소 입력이 불가능합니다." readonly>
                 <button id="location_Btn"type="button">검색</button><br>
                 <input type="text" name="location_detail" placeholder="상세주소를 입력하세요" ><br>

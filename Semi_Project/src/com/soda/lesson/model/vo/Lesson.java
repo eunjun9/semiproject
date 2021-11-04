@@ -1,6 +1,6 @@
 package com.soda.lesson.model.vo;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 
 public class Lesson {
@@ -21,6 +21,8 @@ public class Lesson {
 	private String cCategogy;	// 카테고리 (원데이 vod)
 	private Date cSDate;		// 시작 날짜
 	private Date cEDate;		// 종료날짜
+	private String cTime1;		// 클래스 시간1
+	private String cTime2;		// 클래스 시간2
 	private String cLocation;	// 장소
 	private String cTutor;		// 강사 소개
 	
@@ -28,10 +30,10 @@ public class Lesson {
 	
 	public Lesson() {}
 
-
 	public Lesson(int nNum, String nTitle, String nContent, int nCount, String nStatus, String nType, String userId,
 			String userName, Date nDate, Date modifyDate, String ctag1, String ctag2, int cPrice, String cType,
-			String cCategogy, Date cSDate, Date cEDate, String cLocation, String cTutor, List<Attachment> photoList) {
+			String cCategogy, Date cSDate, Date cEDate, String cTime1, String cTime2, String cLocation, String cTutor,
+			List<Attachment> photoList) {
 		super();
 		this.nNum = nNum;
 		this.nTitle = nTitle;
@@ -50,6 +52,8 @@ public class Lesson {
 		this.cCategogy = cCategogy;
 		this.cSDate = cSDate;
 		this.cEDate = cEDate;
+		this.cTime1 = cTime1;
+		this.cTime2 = cTime2;
 		this.cLocation = cLocation;
 		this.cTutor = cTutor;
 		this.photoList = photoList;
@@ -80,7 +84,6 @@ public class Lesson {
 		this.nContent = nContent;
 	}
 
-	
 	
 	public int getnCount() {
 		return nCount;
@@ -196,6 +199,26 @@ public class Lesson {
 		this.cEDate = cEDate;
 	}
 
+	public String getcTime1() {
+		return cTime1;
+	}
+
+
+	public void setcTime1(String cTime1) {
+		this.cTime1 = cTime1;
+	}
+
+
+	public String getcTime2() {
+		return cTime2;
+	}
+
+
+	public void setcTime2(String cTime2) {
+		this.cTime2 = cTime2;
+	}
+
+
 	public String getcLocation() {
 		return cLocation;
 	}
@@ -220,16 +243,14 @@ public class Lesson {
 		this.photoList = photoList;
 	}
 
-
 	@Override
 	public String toString() {
 		return "Lesson [nNum=" + nNum + ", nTitle=" + nTitle + ", nContent=" + nContent + ", nCount=" + nCount
 				+ ", nStatus=" + nStatus + ", nType=" + nType + ", userId=" + userId + ", userName=" + userName
 				+ ", nDate=" + nDate + ", modifyDate=" + modifyDate + ", ctag1=" + ctag1 + ", ctag2=" + ctag2
 				+ ", cPrice=" + cPrice + ", cType=" + cType + ", cCategogy=" + cCategogy + ", cSDate=" + cSDate
-				+ ", cEDate=" + cEDate + ", cLocation=" + cLocation + ", cTutor=" + cTutor + ", photoList=" + photoList
-				+ "]";
+				+ ", cEDate=" + cEDate + ", cTime1=" + cTime1 + ", cTime2=" + cTime2 + ", cLocation=" + cLocation
+				+ ", cTutor=" + cTutor + ", photoList=" + photoList + "]";
 	}
-
 
 }

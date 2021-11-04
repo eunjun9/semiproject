@@ -43,5 +43,55 @@
 		   SET NCOUNT = NCOUNT+1
 		 WHERE NOTICE_NUM = ?
 	</entry>
+	
+	<entry key="selectLesson">
+		SELECT 
+		        NOTICE_NUM
+		      , NOTICE_TITLE
+		      , USER_NAME
+		      , C_WRITER
+		      , C_TYPE
+		      , C_CATEGORY
+		      , C_PRICE
+		      , NOTICE_CONTENT
+		      , C_TAG1
+		      , C_TAG2
+		      , C_SDATE
+		      , C_EDATE
+		      , C_TIME1
+		      , C_TIME2
+		      , C_LOCATION
+		      , C_TUTOR
+		      , NOTICE_DATE
+		      , MODIFY_DATE
+		      , NOTICE_STATUS
+		FROM CLASS 
+		JOIN NOTICE USING(NOTICE_NUM)
+		JOIN MEMBER_INFO M ON (M.USER_ID = C_WRITER)
+		WHERE NOTICE_STATUS = 'N'
+		AND NOTICE_NUM = ?
+	</entry>
+	
+	<entry key="selectPhotoList">
+	 SELECT
+	        FILE_NUM
+	      , ORIGIN_NAME
+	      , CHANGE_NAME
+	      , ROUTE
+	      , FILE_LEVEL
+	  FROM "FILE"
+	  WHERE NOTICE_NUM = ?
+	    AND STATUS = 'Y'
+   ORDER BY FILE_NUM
+	</entry>
+
+
+
+
+
+
+
+
+
 
 </properties>

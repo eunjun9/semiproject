@@ -131,15 +131,84 @@ public class LessonDao {
 		}
 		return result;
 	}
-
+	
+	// 클래스 상세페이지 조회
 	public Lesson selectLesson(Connection conn, int nNum) {
+		PreparedStatement pstmt = null;
+		Lesson lesson = null;
+		ResultSet rset = null;
+		String sql = lessonQuery.getProperty("selectLesson");
 		
-		return null;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, nNum);
+	
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				lesson = new Lesson();
+				lesson.setnNum(rset.getInt("notice_num"));
+				lesson.setnTitle(rset.getString("notice_title"));
+				lesson.setUserName(rset.getString("user_name"));
+				lesson.setUserId(rset.getString("c_writer"));
+				lesson.setcType(rset.getString("c_type"));
+				lesson.setcCategogy(rset.getString("c_category"));
+				lesson.setcPrice(rset.getInt("c_price"));
+				lesson.setnContent(rset.getString("notice_content"));
+				lesson.setCtag1(rset.getString("c_tag1"));
+				lesson.setCtag2(rset.getString("c_tag2"));
+				lesson.setcSDate(rset.getDate("c_sdate"));  // 시작-종료 날짜는 날짜만
+				lesson.setcEDate(rset.getDate("c_edate"));
+				lesson.setcTime1(rset.getString("c_time1"));
+				lesson.setcTime2(rset.getString("c_time2"));
+				lesson.setcLocation(rset.getString("c_location"));
+				lesson.setcTutor(rset.getString("c_tutor"));
+				lesson.setnDate(rset.getTimestamp("notice_date")); // 작성-수정 날짜는 시간까지
+				lesson.setModifyDate(rset.getTimestamp("modify_date"));
+				lesson.setnStatus(rset.getString("notice_status"));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return lesson;
 	}
 
 	public List<Attachment> selectPhotoList(Connection conn, int nNum) {
-
-		return null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		List<Attachment> photoList = new ArrayList<>();
+		String sql = lessonQuery.getProperty("selectPhotoList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, nNum);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()){
+				Attachment attachment = new Attachment();
+				attachment.setFileNum(rset.getInt("file_num"));
+				attachment.setOriginName(rset.getString("origin_name"));
+				attachment.setChangeName(rset.getString("change_name"));
+				attachment.setRoute(rset.getString("route"));
+				attachment.setFileLevel(rset.getInt("file_level"));
+				
+				photoList.add(attachment);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return photoList;
 	}
 
 }

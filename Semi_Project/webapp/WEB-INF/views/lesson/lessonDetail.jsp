@@ -27,7 +27,7 @@
         <!-- 클래스 상세 페이지 헤더-->
         <div class="class_detail1">
             <div class="cDetail_h" >
-                <h2 class="cMTitle">펀치니들을 이용한 티프팅 소품 제작법 <hr></h2>
+                <h2 class="cMTitle">${ lesson.nTitle }<hr></h2>
                 <img class="cThumbnail" src="${ contextPath }/resources/uploadFiles/class_ex1.jpg">
             </div>
             <h4 class="cTutor">강사</h4> <p>피스오브애플</p>

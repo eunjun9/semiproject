@@ -177,6 +177,10 @@ input[name=cPrice]{
     margin-left: 10px;
 }
 
+#online{
+    margin-left: 45px;
+}
+
 /* 상세페이지 바디 */
 #form_body{
     margin-top: -60px;
@@ -209,10 +213,6 @@ input[type=time]{
     border-radius: 5px;
     width: 180px;
     height: 30px;
-}
-
-input[name=class_onoff]{
-    margin-left: 10px;
 }
 
 input[name=class_location]{

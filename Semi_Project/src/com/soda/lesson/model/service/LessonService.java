@@ -8,9 +8,7 @@ import java.util.Map;
 import com.soda.lesson.model.dao.LessonDao;
 import com.soda.lesson.model.vo.Attachment;
 import com.soda.lesson.model.vo.Lesson;
-import com.soda.lesson.model.vo.Notice;
 import com.soda.lesson.model.vo.PageInfo;
-import com.soda.socialing.model.vo.File;
 
 import static com.common.JDBCTemplate.*;
 
@@ -74,6 +72,7 @@ public class LessonService {
 		/* 문의 사항 추가 필요 */
 		
 		close(conn);
+		
 		return lesson;
 	}
 }
