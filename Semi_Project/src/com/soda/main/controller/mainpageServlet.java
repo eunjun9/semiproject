@@ -10,16 +10,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class mainpage
+ * Servlet implementation class mainpageServlet
  */
 @WebServlet("/mainpage")
-public class mainpage extends HttpServlet {
+public class mainpageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public mainpage() {
+    public mainpageServlet() {
         super();
         // TODO Auto-generated constructor stub
     }

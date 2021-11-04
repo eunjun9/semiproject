@@ -149,6 +149,7 @@ public class MemberDao {
 		return result;
 	}
 
+
 	// 이메일 계정 찾기
 	public String findEmail(Connection conn, String userName, String userPhone) {
 		PreparedStatement pstmt = null;
