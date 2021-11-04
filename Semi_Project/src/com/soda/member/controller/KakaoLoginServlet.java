@@ -47,7 +47,7 @@ public class KakaoLoginServlet extends HttpServlet {
 			Member joinMember = new Member();
 			joinMember.setUserId(userId);
 			joinMember.setUserName(userName);
-			joinMember.setUserPhone(null);
+			joinMember.setUserPhone("데이터없음");
 			joinMember.setGender(kakaoGender);
 			joinMember.setUserAddress(null);
 			
