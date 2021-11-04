@@ -34,7 +34,7 @@
                 <li><a class="main-logo" href="메인페이지.html"><b>SODA</b></a></li><br>
                 <li><a class="main-menu2" href="${ contextPath }/socialing/main">SOCIALING</a></li>
                 <li><a class="main-menu2" href="${ contextPath }/lesson/main">CLASS</a></li>
-                <li><a class="main-menu2" href="#">MAGAZINE</a></li>
+                <li><a class="main-menu2" href="${ contextPath }/magazine/main">MAGAZINE</a></li>
                 <li><a class="main-menu2" href="#"><img class="icon" src="resources/images/장바구니.png"></img></a></li>
                 <li><a class="main-menu2" href="${ contextPath }/mypage/main"><img class="icon2" src="resources/images/사람아이콘3.png"></img></a></li>
             </ul>
