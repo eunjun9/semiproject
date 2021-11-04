@@ -71,7 +71,7 @@ public class LessonDetailServlet extends HttpServlet {
 		
 		// 게시글 조회 로직
 		Lesson lesson = lessonService.selectLesson(nNum);
-		System.out.println(lesson);
+		//System.out.println(lesson);
 		if(lesson != null) {
 			request.setAttribute("lesson", lesson);
 			request.getRequestDispatcher("/WEB-INF/views/lesson/lessonDetail.jsp").forward(request, response);

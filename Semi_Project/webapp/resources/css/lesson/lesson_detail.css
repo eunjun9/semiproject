@@ -20,7 +20,7 @@ img{
 /* 상세 페이지 헤더--------------------*/
 .cDetail_h{
     display: flex; 
-    justify-content :space-around;
+    justify-content:space-around;
     margin: 20px auto;
 }
 
@@ -31,7 +31,7 @@ img{
 
 .cMTitle{
     margin-top: 130px;
-    margin-left: -5px;
+    margin-left: 5px;
     width: 350px;
 }
 
@@ -69,6 +69,7 @@ img{
     color : rgba(77, 77, 77);
     text-align: center;
     margin-top: 10px;
+    margin-left: -160px;
 }
 
 #pTime{

@@ -7,7 +7,7 @@
 <title>클래스 상세페이지</title>
 
 	<!--외부 스타일 시트-->
-    <link href="${ contextPath }/resources/css/lesson/lesson_detail.css" rel="stylesheet">
+    <link href="${ contextPath }/resources/css/lesson/lesson_detail.css?1" rel="stylesheet">
     <link href="${ contextPath }/resources/css/lesson/lesson_datepicker.css" rel="stylesheet">
     <!-- font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -28,41 +28,54 @@
         <div class="class_detail1">
             <div class="cDetail_h" >
                 <h2 class="cMTitle">${ lesson.nTitle }<hr></h2>
-                <img class="cThumbnail" src="${ contextPath }/resources/uploadFiles/class_ex1.jpg">
+                <img class="cThumbnail" src="${ contextPath }${ lesson.photoList.get(0).route }${ lesson.photoList.get(0).changeName }">
             </div>
-            <h4 class="cTutor">강사</h4> <p>피스오브애플</p>
-            <h4 class="cType">타입</h4> <p>원데이 클래스 / 오프라인</p>
+            <h4 class="cTutor">강사</h4><p>${ lesson.userName }</p>
+            <h4 class="cType">타입</h4><p>${ lesson.cCategory } 클래스 / ${ lesson.cType }</p>
         </div>
         
-        <div class="payment">
-            <h4 id="pTitle">펀치니들을 이용한 티프팅 소품 제작법</h4>
-            <p id="pTime">90시간 <hr></p>
-            <h3 id="pPrice">50,000원</h3>
-            <button id="selCalBtn">수강하기</button>
-        </div>
-        
-        <script>
-            $(function(){ 
-                $("#selCalBtn").click(function(){ 
-                    $(".modal").fadeIn(); 
-                }); 
-                
-                 $("#payBtn").click(function(){ 
-                    if(confirm('결제화면으로 이동하시겠습니까?')){
-                        // 결제화면으로 이동
-                    }  else {
-                        $(".modal").fadeOut(); 
-                    }
-                 }); 
-                 $("#cartBtn").click(function(){ 
-                    if(confirm('장바구니로 이동하시겠습니까?')){
-                        // 장바구니로 이동                       
-                    } else {
-                        $(".modal").fadeOut(); 
-                    }
-                 }); 
-            });
-            </script>
+        <c:choose>
+        	<c:when test="${ lesson.cType eq '온라인' || lesson.cType eq 'online'}" >
+        			<div class="payment">
+			            <h4 id="pTitle">${ lesson.nTitle }</h4>
+			            <p id="pTime">${ lesson.cTime1 } 시간 <hr></p>
+			            <h3 id="pPrice">50,000원</h3>
+			            <button id="selCalBtn">수강하기</button>
+					</div>
+        	</c:when>
+        	
+        	<c:when test="${ lesson.cType eq '오프라인' || lesson.cType eq 'offline'}" >
+       				 <div class="payment">
+			            <h4 id="pTitle">${ lesson.nTitle }</h4>
+			            <p id="pTime">${ lesson.cTime1 } ~ ${ lesson.cTime2 } <hr></p>
+			            <h3 id="pPrice">50,000원</h3>
+			            <button id="selCalBtn">수강하기</button>
+	    			</div>
+	    			 <script>
+			            $(function(){ 
+			                $("#selCalBtn").click(function(){ 
+			                    $(".modal").fadeIn(); 
+			                }); 
+			                
+			                 $("#payBtn").click(function(){ 
+			                    if(confirm('결제화면으로 이동하시겠습니까?')){
+			                        // 결제화면으로 이동
+			                    }  else {
+			                        $(".modal").fadeOut(); 
+			                    }
+			                 }); 
+			                 $("#cartBtn").click(function(){ 
+			                    if(confirm('장바구니로 이동하시겠습니까?')){
+			                        // 장바구니로 이동                       
+			                    } else {
+			                        $(".modal").fadeOut(); 
+			                    }
+			                 }); 
+			            });
+			            </script>
+        	</c:when>
+        </c:choose>
+       
 
 
     <div class="modal">
@@ -249,15 +262,15 @@
     <hr>
     <h4>클래스 소개</h4>
     <div class="cDetail_b">
-        <h3 name="cBodyText1" id="cBodyText1">비싼 터프팅건 없이, <br>집에서 감각적인 소품을 만들어볼까요?</h3>
+        <h3  id="cBodyText1">비싼 터프팅건 없이, <br>집에서 감각적인 소품을 만들어볼까요?</h3>
         <img name="cBodyImg1"  class="cBodyImg" src="../resources/image/body1.JPG">
-        <pre name="cBodyText2" class="cBodyText2">안녕하세요, 터프팅 작업 기법을 이용해 러그를 비롯해 다양한 실생활 소품을 만들고 있는 피스오브애플입니다. 
+        <pre class="cBodyText2">안녕하세요, 터프팅 작업 기법을 이용해 러그를 비롯해 다양한 실생활 소품을 만들고 있는 피스오브애플입니다. 
             터프팅이라는 말이 생소한 분들도 있을 거예요. 
             터프팅건이라는 총 모양의 기계를 이용해 원단에 실을 쏘아 모양을 만들어 내는 작업입니다.
         </pre>
         <br>
         <img name="cBodyImg2"  class="cBodyImg" src="../resources/image/body2.JPG">
-        <pre name="cBodyText2" class="cBodyText2">안녕하세요, 터프팅 작업 기법을 이용해 러그를 비롯해 다양한 실생활 소품을 만들고 있는 피스오브애플입니다. 
+        <pre class="cBodyText2">안녕하세요, 터프팅 작업 기법을 이용해 러그를 비롯해 다양한 실생활 소품을 만들고 있는 피스오브애플입니다. 
             터프팅이라는 말이 생소한 분들도 있을 거예요. 
             터프팅건이라는 총 모양의 기계를 이용해 원단에 실을 쏘아 모양을 만들어 내는 작업입니다.
         </pre>
