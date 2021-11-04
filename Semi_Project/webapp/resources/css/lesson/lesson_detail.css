@@ -237,17 +237,22 @@ p.cAnswer{
 }
 
 .btnArea{
-    margin-left: 280px;
+    width: 40%;
+    display: flex;
+    justify-content:space-evenly;
+    margin-left: 250px;
 }
 
-.btnArea input{
+.btnArea button{
     border-radius: 5px ;
     border: 1px solid rgb(197, 197, 197);
     background-color: rgb(7, 86, 105);
     color: rgb(255, 255, 255);
     width: 70px;
-    height: 25px;
-    margin: 50px 10px 20px 10px;
+    height: 30px;
+    font-size: 10pt;
+    margin-top : 35px;
     cursor: pointer;
 }
+
 
