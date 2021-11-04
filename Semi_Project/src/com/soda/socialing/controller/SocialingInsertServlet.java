@@ -28,13 +28,13 @@ import com.sun.xml.internal.ws.api.message.Attachment;
  * Servlet implementation class SocialingFormServlet
  */
 @WebServlet("/socialing/form")
-public class SocialingFormServlet extends HttpServlet {
+public class SocialingInsertServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SocialingFormServlet() {
+    public SocialingInsertServlet() {
         super();
         // TODO Auto-generated constructor stub
     }

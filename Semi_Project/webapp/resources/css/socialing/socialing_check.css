@@ -1,24 +1,24 @@
 @charset "UTF-8";
 
-html {
-    font-size : 100%;
-    font-family: 'Noto Sans KR', sans-serif;
-}
-
-.body {
-    display: flex;
-    position: relative;
-    align-items: center;
-    flex-direction: column;
-}
-
-#title {
+#chk_title {
     color: rgb(7,86,105);
+    text-align: center;
+}
+
+.checkPop {
+    position: fixed;
+    left: 55%;
+    top: 200px; 
+    width: 300px; 
+    min-height: 300px;
+    border: 6px solid rgb(218,239,245);
+    background-color: white;
+    z-index: 1;
 }
 
 .checkArea {
-    margin-left: 30px;
-    margin-bottom: 30px;
+    margin-left: 80px;
+    margin-bottom: 10px;
 }
 
 label {
@@ -28,7 +28,9 @@ label {
 }
 
 .btnArea {
-    display: block;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 25px;
 }
 
 input[type="checkbox"] {
@@ -70,8 +72,7 @@ input[type="checkbox"]:checked::before {
 }
 
 #cancel {
-    margin-left: 10px;
-    margin-right: 10px;
+    margin-left: 35px;
     background-color: lightgray;
     color: black;
     padding: 6px;
@@ -84,8 +85,7 @@ input[type="checkbox"]:checked::before {
 }
 
 #sub {
-    margin-left: 10px;
-    margin-right: 10px;
+    margin-right: 35px;
     background-color: rgb(7,86,105);
     color: white;
     padding: 6px;
