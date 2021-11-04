@@ -10,6 +10,12 @@ body {
 
 a{
     text-decoration: none;
+    color: gray; 	/* 이거 빼면 마이페이지 마우스 오버 했을 때 색 적용이 안 돼요ㅜㅜ */
+    
+}
+
+a:hover{
+    color :rgb(145, 224, 244);
 }
 
 img{
