@@ -4,36 +4,104 @@
 <properties>
 	<entry key="getListCount">
 		SELECT
-    		    COUNT(*)
-		   FROM NOTICE
-		  WHERE NOTICE_TYPE = '매거진'
-            AND NOTICE_STATUS = 'N'
+		COUNT(*)
+		FROM NOTICE
+		WHERE NOTICE_TYPE = '매거진'
+		AND
+		NOTICE_STATUS = 'N'
 	</entry>
-	
+
 	<entry key="selectList">
-			SELECT * 
+		SELECT *
 		FROM(SELECT ROWNUM RNUM, A.*
-			FROM(SELECT
-			       NOTICE_NUM
-			     , NOTICE_TITLE
-			     , NOTICE_STATUS
-			     , NOTICE_DATE
-			     , USER_NAME
-			     , MODIFY_DATE
-			     , FILE_NUM
-			     , ORIGIN_NAME
-			     , CHANGE_NAME
-			     , ROUTE
-			     , FILE_LEVEL
-			     , F.STATUS
-			FROM NOTICE N
-			JOIN MEMBER_INFO USING(USER_ID)
-			JOIN CLASS USING(NOTICE_NUM)
-			JOIN "FILE" F USING(NOTICE_NUM)
-			WHERE NOTICE_TYPE = '매거진'
-			  AND NOTICE_STATUS = 'N'
-			  ORDER BY NOTICE_NUM DESC) A)
-		WHERE RNUM BETWEEN ? AND ?
+		FROM(SELECT
+		NOTICE_NUM
+		, NOTICE_TITLE
+		, NOTICE_STATUS
+		, NOTICE_DATE
+		, USER_NAME
+		,
+		MODIFY_DATE
+		, FILE_NUM
+		, ORIGIN_NAME
+		, CHANGE_NAME
+		, ROUTE
+		, FILE_LEVEL
+		,
+		F.STATUS
+		FROM NOTICE N
+		JOIN MEMBER_INFO USING(USER_ID)
+		JOIN CLASS
+		USING(NOTICE_NUM)
+		JOIN "FILE" F USING(NOTICE_NUM)
+		WHERE NOTICE_TYPE =
+		'매거진'
+		AND NOTICE_STATUS = 'N'
+		ORDER BY NOTICE_NUM DESC) A)
+		WHERE RNUM
+		BETWEEN ? AND ?
+
+
+	</entry>
+
+	<entry key="insertMagazine">
+
+		<!-- NOTICE_NUM NOTICE_TITLE NOTICE_CONTENT NOTICE_DATE NOTICE_STATUS NOTICE_TYPE 
+			USER_ID MODIFY_DATE NOTICE_SELF_NUM NCOUNT -->
+
+		INSERT
+		INTO NOTICE
+		(
+		NOTICE_NUM,
+		NOTICE_TITLE,
+		NOTICE_CONTENT,
+		NOTICE_DATE,
+		NOTICE_STATUS,
+		NOTICE_TYPE,
+		USER_ID,
+		MODIFY_DATE,
+		NOTICE_SELF_NUM,
+		NCOUNT
+		)
+		VALUES
+		(
+		SEQ_NOTICE_NUM.NEXTVAL
+		, ?
+		, ?
+		, SYSDATE
+		, DEFAULT
+		, ?
+		, ?
+		, SYSDATE
+		, '매거진'
+		, 0
+		)
+	</entry>
+
+
+	<entry key="insertFile">
+
+		INSERT
+		INTO TBL_FILE
+		(
+		FILE_NUM,
+		NOTICE_NUM,
+		ROUTE,
+		ORIGIN_NAME,
+		FILE_LEVEL,
+		CHANGE_NAME,
+		STATUS
+		)
+		VALUES
+		(
+		  SEQ_FILE_NUM.NEXTVAL
+		, SEQ_NOTICE_NUM.CURRVAL
+		, ?
+		, ?
+		, DEFAULT
+		, ?
+		, DEFAULT
+		)
 	</entry>
 
 </properties>

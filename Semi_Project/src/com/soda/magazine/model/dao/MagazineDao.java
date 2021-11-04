@@ -12,11 +12,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
-import com.soda.lesson.model.dao.LessonDao;
-import com.soda.lesson.model.vo.File;
-import com.soda.lesson.model.vo.Lesson;
-import com.soda.lesson.model.vo.PageInfo;
-import com.soda.magazine.model.vo.Notice;
+import com.soda.magazine.model.vo.MagazineFile;
+import com.soda.magazine.model.vo.Magazine;
+import com.soda.magazine.model.vo.PageInfo;
+
+
 
 public class MagazineDao {
 	
@@ -26,7 +26,7 @@ public class MagazineDao {
 	public MagazineDao() { 
 		magazineQuery = new Properties();
 		// 작성한 쿼리문(xml) 경로 읽어오기
-		String fileName = LessonDao.class.getResource("/com/sql/magazine/magazine-query.xml").getPath();
+		String fileName = MagazineDao.class.getResource("/com/sql/magazine/magazine-query.xml").getPath();
 		try {
 			// 읽어온 경로를 FileInputStream을 이용해서 쿼리문의 entry를 프로퍼티인 memberQuery로 로드
 			magazineQuery.loadFromXML(new FileInputStream(fileName));
@@ -63,11 +63,11 @@ public class MagazineDao {
 
 
 	// 게시물 리스트 조회
-		public List<Notice> selectList(Connection conn, PageInfo pi) {
+		public List<Magazine> selectList(Connection conn, PageInfo pi) {
 			PreparedStatement pstmt = null;
 			ResultSet rset = null;
 			String sql = magazineQuery.getProperty("selectList");
-			List<Notice> noticeList = new ArrayList<>();
+			List<Magazine> magazineList = new ArrayList<>();
 			
 			try {
 				pstmt = conn.prepareStatement(sql);
@@ -81,16 +81,16 @@ public class MagazineDao {
 				rset = pstmt.executeQuery();
 				
 				while(rset.next()) {
-					Notice notice = new Notice();
-					notice.setnNum(rset.getInt("notice_num"));
-					notice.setnTitle(rset.getNString("notice_title"));
-					notice.setnStatus(rset.getString("notice_status"));
-					notice.setnDate(rset.getDate("notice_date"));
-					notice.setUserId(rset.getString("user_name"));
-					notice.setModifyDate(rset.getDate("modify_date"));
+					Magazine magazine = new Magazine();
+					magazine.setnNum(rset.getInt("magazine_num"));
+					magazine.setnTitle(rset.getNString("magazine_title"));
+					magazine.setnStatus(rset.getString("magazine_status"));
+					magazine.setnDate(rset.getDate("magazine_date"));
+					magazine.setUserId(rset.getString("user_name"));
+					magazine.setModifyDate(rset.getDate("modify_date"));
 					
-					List<File> photoList = new ArrayList<>();
-					File photo = new File();
+					List<MagazineFile> photoList = new ArrayList<>();
+					MagazineFile photo = new MagazineFile();
 					photo.setFileNum(rset.getInt("file_num"));
 					photo.setOriginName(rset.getString("origin_name"));
 					photo.setChangeName(rset.getString("change_name"));
@@ -100,9 +100,9 @@ public class MagazineDao {
 					
 					photoList.add(photo);
 					
-					notice.setPhotoList(photoList);
+					magazine.setPhotoList(photoList);
 					
-					noticeList.add(notice);
+					magazineList.add(magazine);
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -111,7 +111,61 @@ public class MagazineDao {
 				close(pstmt);
 			}
 			
-			return noticeList;
+			return magazineList;
 		}
+
+
+		
+		public int insertMagazine(Connection conn, Magazine magazine) {
+			 PreparedStatement pstmt = null;
+		      int result = 0;
+		      String sql = magazineQuery.getProperty("insertMagazine");
+		      
+		      try {
+		         pstmt = conn.prepareStatement(sql);
+		         pstmt.setString(1, magazine.getnTitle());
+		         pstmt.setString(2, magazine.getnContent());
+		         pstmt.setString(3, magazine.getnType());
+		         pstmt.setString(4, magazine.getUserId());
+		         
+		         result = pstmt.executeUpdate();
+		         
+		      } catch (SQLException e) {
+		         e.printStackTrace();
+		      } finally {
+		         close(pstmt);
+		      }
+		      
+		      return result;
+		   }
+		
+		
+		public int insertFile(Connection conn, MagazineFile photoList) {
+			   PreparedStatement pstmt = null;
+	            int result = 0;
+	            String sql = magazineQuery.getProperty("insertFile");
+	            
+	            try {
+	               pstmt = conn.prepareStatement(sql);
+	               
+	               pstmt.setString(1,  photoList.getRoute());
+	               pstmt.setString(2,  photoList.getOriginName());
+	               pstmt.setString(3,  photoList.getChangeName());
+	               
+	               result = pstmt.executeUpdate();
+	               
+	               System.out.println(result);
+	               System.out.println(pstmt);
+	               
+	            } catch (SQLException e) {
+	               e.printStackTrace();
+	            } finally {
+	               close(pstmt);
+	            }
+	            
+	            return result;
+	         }
+
+
 		
 	}
