@@ -9,7 +9,7 @@
 <title>소셜링</title>
 
 <!-- 외부 스타일 시트 -->
-<link href="<%= request.getContextPath() %>/resources/css/socialing/socialing_main.css" rel="stylesheet">
+<link href="${ contextPath }/resources/css/socialing/socialing_main.css" rel="stylesheet">
 
 <!-- 글꼴 (Noto Sans) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">

@@ -143,6 +143,8 @@
                         console.log(kakaoId);					// 테스트용 콘솔 노출
                         
                        var kakaoGender = res.kakao_account.gender;	 // 카카오 성별
+                       
+                       // 카카오 성별 데이터 영어 값으로 넘어와서 한글로 바꿔주기
                        if( kakaoGender != null) {
                     	   if (kakaoGender == 'female') {
                     		   kakaoGender = kakaoGender.replaceAll(res.kakao_account.gender, "female", "여");
@@ -152,8 +154,6 @@
                        }else{
                     	    kakaoGender = "null";
                        }
-                       
-                        
                         console.log(kakaoGender);
                   
 
