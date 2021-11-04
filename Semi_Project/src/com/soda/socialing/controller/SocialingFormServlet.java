@@ -88,8 +88,6 @@ public class SocialingFormServlet extends HttpServlet {
 		int sectime = Integer.parseInt(stime.substring(6));
 		// sdate, stime 합쳐서 Date 타입으로 파싱
 		Calendar formatDate = new GregorianCalendar(ydate, mdate, ddate, htime, mtime, sectime);
-		// 날짜 포맷 ex.10.30(토) 오후 2시 0분
-		SimpleDateFormat sdf = new SimpleDateFormat("M.dd(E) a h시 m분");
 		
 		Socialing socialing = new Socialing();
 		socialing.setnTitle(stitle);

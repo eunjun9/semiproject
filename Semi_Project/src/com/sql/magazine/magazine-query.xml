@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM
+"http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<entry key="getListCount">
+		SELECT
+    		    COUNT(*)
+		   FROM NOTICE
+		  WHERE NOTICE_TYPE = '매거진'
+            AND NOTICE_STATUS = 'N'
+	</entry>
+	
+	<entry key="selectList">
+			SELECT * 
+		FROM(SELECT ROWNUM RNUM, A.*
+			FROM(SELECT
+			       NOTICE_NUM
+			     , NOTICE_TITLE
+			     , NOTICE_STATUS
+			     , NOTICE_DATE
+			     , USER_NAME
+			     , MODIFY_DATE
+			     , FILE_NUM
+			     , ORIGIN_NAME
+			     , CHANGE_NAME
+			     , ROUTE
+			     , FILE_LEVEL
+			     , F.STATUS
+			FROM NOTICE N
+			JOIN MEMBER_INFO USING(USER_ID)
+			JOIN CLASS USING(NOTICE_NUM)
+			JOIN "FILE" F USING(NOTICE_NUM)
+			WHERE NOTICE_TYPE = '매거진'
+			  AND NOTICE_STATUS = 'N'
+			  ORDER BY NOTICE_NUM DESC) A)
+		WHERE RNUM BETWEEN ? AND ?
+	</entry>
+
+</properties>

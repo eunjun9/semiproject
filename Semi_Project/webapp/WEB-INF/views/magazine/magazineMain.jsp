@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -10,8 +10,7 @@
   <title>매거진 메인</title>
 
   <!-- 외부 스타일 시트 -->
-  <link href="../css/magazineMain.css" rel="stylesheet">
-  <link href="../css/Headerfooter.css" rel="stylesheet">
+ <link href="<%= request.getContextPath() %>/resources/css/magazine/magazineMain.css" rel="stylesheet">
 
   <!-- favicon (Real Favicon Generator)-->
   <link rel="icon" type="image/x-icon" href="resources/image/khfavicon.ico">
@@ -40,33 +39,13 @@
 <body>
   <!--header-->
 
-  <div class="header">
-    <div class="head-inner">
-
-      <div class="logo">
-        <img src="../image/logo.png">
-      </div>
-
-      <div class="big-category">
-        <div class="category1">
-          <a href="#">SOCIALING</a>
-          <a href="#">CLASS</a>
-          <a href="#">MAGAZINE</a>
-        </div>
-        <div class="category2">
-          <a href="#">CART</a>
-          <a href="#">MYPAGE</a>
-        </div>
-      </div>
-
-    </div>
-  </div>
+  <%@ include file="/WEB-INF/views/common/header.jsp" %>
 
   <!--body-->
 
   <div class="board">
     <div class="board-inner">
-      <div class="magazine">
+      <div class="magazine" style="background-image:url(../resources/images/yeonjoo/turkey.jpg)">
         <div class="title">매거진</div>
         <div class="word">자신만의 스토리와 철학을 가진<br>
           다양한 사람들의 다양한 이야기</div>
@@ -83,8 +62,8 @@
         <div class="tit">
           <div class="b-title">다른 이들과 나누는 우리들의 이야기! 모임 후기 게시판</div>
           <div class="view1">
-            <a href="#">전체보기</a>
-            <a href="#">글쓰기</a>
+            <a href="<%= request.getContextPath() %>/magazine/user">전체보기</a>
+            <a href="<%= request.getContextPath() %>/magazine/write">글쓰기</a>
           </div>
         </div>
       </div>
@@ -98,14 +77,14 @@
         <div class="swiper-wrapper">
 
           <div class="swiper-slide">
-            <img src="../image/white.jpg">
+            <img src="<%= request.getContextPath() %>/resources/images/yeonjoo/white.jpg">
             <div class=all-title>
               <a href="#" class=first-title>제가 만든 향수 어떤가요?</a><br>
               <a href="#" class=name>Jennieisback</a>
             </div>
           </div>
           <div class="swiper-slide">
-            <img src="../image/white.jpg">
+            <img src="<%= request.getContextPath() %>/resources/images/yeonjoo/white.jpg">
             <div class=all-title>
               <a href="#" class=first-title>남한산성 다녀왔어요</a><br>
               <a href="#" class=name>Ilovemountain</a>
@@ -113,14 +92,14 @@
 
           </div>
           <div class="swiper-slide">
-            <img src="../image/white.jpg">
+            <img src="<%= request.getContextPath() %>/resources/images/yeonjoo/white.jpg">
             <div class=all-title>
               <a href="#" class=first-title>제주 서핑클래스 짱 좋아요</a><br>
               <a href="#" class=name>surfingismylife</a>
             </div>
           </div>
           <div class="swiper-slide">
-            <img src="../image/white.jpg">
+            <img src="<%= request.getContextPath() %>/resources/images/yeonjoo/white.jpg">
             <div class=all-title>
               <a href="#" class=first-title>토익 수업듣고 930점 맞았어요</a><br>
               <a href="#" class=name>IhateTOEIC</a>
@@ -184,28 +163,28 @@
       <div class="swiper mySwiper2">
         <div class="swiper-wrapper">
           <div class="swiper-slide">
-            <img src="../image/white.jpg">
+            <img src="<%= request.getContextPath() %>/resources/images/yeonjoo/white.jpg">
             <div class=all-title>
               <a href="#" class=first-title>요알못, 요리왕으로 거듭나다</a><br>
               <a href="#" class=name>SODA</a>
             </div>
           </div>
           <div class="swiper-slide">
-            <img src="../image/white.jpg">
+            <img src="<%= request.getContextPath() %>/resources/images/yeonjoo/white.jpg">
             <div class=all-title>
               <a href="#" class=first-title>경기 광주 숨은 맛집 탐방</a><br>
               <a href="#" class=name>SODA</a>
             </div>
           </div>
           <div class="swiper-slide">
-            <img src="../image/white.jpg">
+            <img src="<%= request.getContextPath() %>/resources/images/yeonjoo/white.jpg">
             <div class=all-title>
               <a href="#" class=first-title>다도 체험기</a><br>
               <a href="#" class=name>SODA</a>
             </div>
           </div>
           <div class="swiper-slide">
-            <img src="../image/white.jpg">
+            <img src="<%= request.getContextPath() %>/resources/images/yeonjoo/white.jpg">
             <div class=all-title>
               <a href="#" class=first-title>할 수 있다! 번지점프</a><br>
               <a href="#" class=name>SODA</a>
@@ -264,28 +243,28 @@
       <div class="swiper mySwiper3">
         <div class="swiper-wrapper">
           <div class="swiper-slide">
-            <img src="../image/white.jpg">
+            <img src="<%= request.getContextPath() %>/resources/images/yeonjoo/white.jpg">
             <div class=all-title>
               <a href="#" class=first-title>퍼퓸 클래스 후기</a><br>
               <a href="#" class=name>perfume1004</a>
             </div>
           </div>
           <div class="swiper-slide">
-            <img src="../image/white.jpg">
+            <img src="<%= request.getContextPath() %>/resources/images/yeonjoo/white.jpg">
             <div class=all-title>
               <a href="#" class=first-title>이태원 핫플, brewery</a><br>
               <a href="#" class=name>itawonzzang</a>
             </div>
           </div>
           <div class="swiper-slide">
-            <img src="../image/white.jpg">
+            <img src="<%= request.getContextPath() %>/resources/images/yeonjoo/white.jpg">
             <div class=all-title>
               <a href="#" class=first-title>경기 광주 숨은 맛집 탐방</a><br>
               <a href="#" class=name>SODA</a>
             </div>
           </div>
           <div class="swiper-slide">
-            <img src="../image/white.jpg">
+            <img src="<%= request.getContextPath() %>/resources/images/yeonjoo/white.jpg">
             <div class=all-title>
               <a href="#" class=first-title>할 수 있다! 번지점프</a><br>
               <a href="#" class=name>SODA</a>
@@ -325,39 +304,10 @@
 
 
 
+  </div>
 
   <!--footer-->
-  <div class="footer">
-    <div class="foot-inner">
-      <div class="foot-logo">
-        S O D A</div>
-      <div class="information">
-        <ul>주식회사 소셜 다이닝</ul>
-        <ul>대표 : 홍길동 | 개인정보관리책임자 : 홍길동 | 전화 : 02-123-4567 | 이메일 : soda@gmail.com</ul>
-        <ul>주소 : 서울 강남구 테헤란로 14길 6 남도빌딩 2층 | 사업자등록번호 : 000-00-00000</ul>
-        <ul> 통신판매 : 제 2021-서울강남-0000호</ul>
-        <ul>영업시간 : 월-금 오후 2시-7시</ul>
-      </div>
-      <div class="foot-category">
-        <ul><a href="#">소다소개</a></ul>
-        <ul><a href="#">공지사항 </a></ul>
-        <ul><a href="#">강사신청</a></ul>
-        <ul><a href="#">자주묻는질문</a></ul>
-      </div>
-
-
-    </div>
-  </div>
-  <div class="final">
-    <div class="foot-final">
-      <a href="#">이용약관 | </a>
-      <a href="#">개인정보처리방침 | </a>
-      <a href="#">사업자정보확인</a>
-    </div>
-  </div>
-
-  </div>
-
+   <%@ include file="/WEB-INF/views/common/footer.jsp" %>
 
 
 </body>
