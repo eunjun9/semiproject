@@ -52,13 +52,19 @@
 
 	 	/* 입력한 휴대폰번호가 13자리가 아닐 경우 alert 창 */
 		if(form.userPhone.value.length != 13) {
-			  alert("휴대폰번호를 정확하게 입력해주세요.");
-			  return false;
+			
+			// 휴대폰번호 검증하는 정규식
+			var regPhone = /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/;
+			
+			if(emailVal.match(regExp) == null) {
+				alert("휴대폰번호를 정확하게 입력해주세요.");
+			  	return false;
+			}
+			  
 		 }
 		return true;
 	 }
     </script>
-    
 
 </body>
 </html>
