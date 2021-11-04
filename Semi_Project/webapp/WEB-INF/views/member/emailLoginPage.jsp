@@ -6,6 +6,17 @@
 <head>
 <meta charset="UTF-8">
 <title>emailLogin</title>
+
+<%-- session에 담긴 message 있을 경우 alert 하는 script --%>
+	<% if(session.getAttribute("message") != null) { %>
+	<script>
+	alert('<%= session.getAttribute("message") %>');
+	</script>
+	<% 
+			session.removeAttribute("message");
+		} 
+	%>
+
 <!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
 	crossorigin="anonymous"></script>
@@ -126,7 +137,7 @@
                   success: function (res) {
                         var userEmail = res.kakao_account.email; // 카카오 email
                         console.log(userEmail);	 				 // 테스트용 콘솔 노출
-                        var userName = res.properties.nickname 	// 카카오 닉네임(이름)
+                        var userName = res.properties.nickname; 	// 카카오 닉네임(이름)
                         console.log(userName);					// 테스트용 콘솔 노출
                         var kakaoId = res.id					// 비밀번호로 사용할 카카오 아이디
                         console.log(kakaoId);					// 테스트용 콘솔 노출
@@ -135,7 +146,7 @@
 
                        $.ajax({
                         url:"${ contextPath }/kakao/login",
-                        data:{ "userEmail" : userEmail, "userName" : userName, "kakaoId" : kakaoId, "kakaoGedner" : kakaoGender },
+                        data:{ "userEmail" : userEmail, "userName" : userName, "kakaoId" : kakaoId, "kakaoGender" : kakaoGender },
                         Type:"post",
                         success:function(data){
                         	location.href="${ contextPath }/mainpage";

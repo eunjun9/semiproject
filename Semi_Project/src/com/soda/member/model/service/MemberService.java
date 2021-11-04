@@ -49,6 +49,7 @@ public class MemberService {
 		return result;
 	}
 
+	// 회원가입
 	public int insertMember(Member member) {
 		Connection conn = getConnection();
 
@@ -63,6 +64,17 @@ public class MemberService {
 		close(conn);
 		
 		return result;
+	}
+
+	// 이메일 계정 찾기
+	public String findEmail(String userName, String userPhone) {
+		Connection conn = getConnection();
+		
+		String findEmail = memberDao.findEmail(conn, userName, userPhone);
+		
+		close(conn);
+		
+		return findEmail;
 	}
 
 	

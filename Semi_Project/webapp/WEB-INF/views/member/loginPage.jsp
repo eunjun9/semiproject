@@ -68,16 +68,16 @@
                   success: function (res) {
                         var userEmail = res.kakao_account.email; // 카카오 email
                         console.log(userEmail);	 				 // 테스트용 콘솔 노출
-                        var userName = res.properties.nickname 	// 카카오 닉네임(이름)
+                        var userName = res.properties.nickname; 	// 카카오 닉네임(이름)
                         console.log(userName);					// 테스트용 콘솔 노출
                         var kakaoId = res.id					// 비밀번호로 사용할 카카오 아이디
                         console.log(kakaoId);					// 테스트용 콘솔 노출
                         var kakaoGender = res.kakao_account.gender;	 // 카카오 성별
-                        console.log(kakaoGender);
+                        console.log(kakaoGender);				
 
                        $.ajax({
                         url:"${ contextPath }/kakao/login",
-                        data:{ "userEmail" : userEmail, "userName" : userName, "kakaoId" : kakaoId, "kakaoGedner" : kakaoGender },
+                        data:{ "userEmail" : userEmail, "userName" : userName, "kakaoId" : kakaoId, "kakaoGender" : kakaoGender },
                         Type:"post",
                         success:function(data){
                         	location.href="${ contextPath }/mainpage";
