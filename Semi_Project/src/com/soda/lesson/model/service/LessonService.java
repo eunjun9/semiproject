@@ -76,12 +76,4 @@ public class LessonService {
 		close(conn);
 		return lesson;
 	}
-
-
-	
-	
-	
-	
-	
-	
 }

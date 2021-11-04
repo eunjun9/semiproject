@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+   pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -7,23 +7,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>∏≈∞≈¡¯ ªÁøÎ¿⁄ »ƒ±‚</title>
+    <title>Main</title>
 
-    <!-- ø‹∫Œ Ω∫≈∏¿œ Ω√∆Æ -->
-    <link href="../css/magazineUser.css" rel="stylesheet">
-    <link href="../css/Headerfooter.css" rel="stylesheet">
+    <!-- Ïô∏Î∂Ä Ïä§ÌÉÄÏùº ÏãúÌä∏ -->
+ <link href="<%= request.getContextPath() %>/resources/css/magazine/magazineUser.css" rel="stylesheet">
+
 
     <!-- favicon (Real Favicon Generator)-->
     <link rel="icon" type="image/x-icon" href="resources/image/khfavicon.ico">
 
-    <!-- ±€≤√ -->
+    <!-- Í∏ÄÍº¥ -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
     <!--font-family: 'Noto Sans KR', sans-serif;-->
 
     <!-- JQuery-->
     <script src="../js/jquery-3.6.0.min.js"></script>
 
-    <!--ΩΩ∂Û¿ÃµÂ-->
+    <!--Ïä¨ÎùºÏù¥Îìú-->
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
@@ -40,38 +40,18 @@
 <body>
     <!--header-->
 
-    <div class="header">
-        <div class="head-inner">
-
-            <div class="logo">
-                <img src="../image/logo.png">
-            </div>
-
-            <div class="big-category">
-                <div class="category1">
-                    <a href="#">SOCIALING</a>
-                    <a href="#">CLASS</a>
-                    <a href="#">MAGAZINE</a>
-                </div>
-                <div class="category2">
-                    <a href="#">CART</a>
-                    <a href="#">MYPAGE</a>
-                </div>
-            </div>
-
-        </div>
-    </div>
+   <%@ include file="/WEB-INF/views/common/header.jsp" %>
 
 
     <div class="body-super">
         <div class="board">
             <div class="board-inner">
                 <div class="title-big">
-                    <div class="title">øÏ∏ÆµÈ¿« ¿Ãæﬂ±‚</div>
-                    <div class="word">¥Ÿ∏• ¿ÃµÈ∞˙ ≥™¥©¥¬ øÏ∏Æ ¿Ãæﬂ±‚</div>
+                    <div class="title">Ïö∞Î¶¨Îì§Ïùò Ïù¥ÏïºÍ∏∞</div>
+                    <div class="word">Îã§Î•∏ Ïù¥Îì§Í≥º ÎÇòÎàÑÎäî Ïö∞Î¶¨ Ïù¥ÏïºÍ∏∞</div>
                 </div>
                 <div class="view1">
-                    <a href="#">±€æ≤±‚</a>
+                    <a href="<%= request.getContextPath() %>/magazine/write">Í∏ÄÏì∞Í∏∞</a>
                 </div>
             </div>
         </div>
@@ -82,33 +62,33 @@
 
                 <div class=first>
                     <div class=pics>
-                        <img src="../image/white.jpg">
+                        <img src="<%= request.getContextPath() %>/resources/images/yeonjoo/white.jpg">
                         <div class=all-title>
-                            <a href="#" class=first-title>±€¡¶∏Ò</a><br>
+                            <a href="#" class=first-title>Í∏ÄÏ†úÎ™©</a><br>
                             <a href="#" class=name>Jennieisback</a>
                         </div>
                     </div>
 
                     <div class=pics>
-                        <img src="../image/white.jpg">
+                        <img src="<%= request.getContextPath() %>/resources/images/yeonjoo/white.jpg">
                         <div class=all-title>
-                            <a href="#" class=first-title>±€¡¶∏Ò</a><br>
+                            <a href="#" class=first-title>Í∏ÄÏ†úÎ™©</a><br>
                             <a href="#" class=name>Jennieisback</a>
                         </div>
                     </div>
 
                     <div class=pics>
-                        <img src="../image/white.jpg">
+                        <img src="<%= request.getContextPath() %>/resources/images/yeonjoo/white.jpg">
                         <div class=all-title>
-                            <a href="#" class=first-title>±€¡¶∏Ò</a><br>
+                            <a href="#" class=first-title>Í∏ÄÏ†úÎ™©</a><br>
                             <a href="#" class=name>Jennieisback</a>
                         </div>
                     </div>
 
                     <div class=pics>
-                        <img src="../image/white.jpg">
+                        <img src="<%= request.getContextPath() %>/resources/images/yeonjoo/white.jpg">
                         <div class=all-title>
-                            <a href="#" class=first-title>±€¡¶∏Ò</a><br>
+                            <a href="#" class=first-title>Í∏ÄÏ†úÎ™©</a><br>
                             <a href="#" class=name>Jennieisback</a>
                         </div>
                     </div>
@@ -117,33 +97,33 @@
 
                 <div class=second>
                     <div class=pics>
-                        <img src="../image/white.jpg">
+                        <img src="<%= request.getContextPath() %>/resources/images/yeonjoo/white.jpg">
                         <div class=all-title>
-                            <a href="#" class=first-title>±€¡¶∏Ò</a><br>
+                            <a href="#" class=first-title>Í∏ÄÏ†úÎ™©</a><br>
                             <a href="#" class=name>Jennieisback</a>
                         </div>
                     </div>
 
                     <div class=pics>
-                        <img src="../image/white.jpg">
+                        <img src="<%= request.getContextPath() %>/resources/images/yeonjoo/white.jpg">
                         <div class=all-title>
-                            <a href="#" class=first-title>±€¡¶∏Ò</a><br>
+                            <a href="#" class=first-title>Í∏ÄÏ†úÎ™©</a><br>
                             <a href="#" class=name>Jennieisback</a>
                         </div>
                     </div>
 
                     <div class=pics>
-                        <img src="../image/white.jpg">
+                        <img src="<%= request.getContextPath() %>/resources/images/yeonjoo/white.jpg">
                         <div class=all-title>
-                            <a href="#" class=first-title>±€¡¶∏Ò</a><br>
+                            <a href="#" class=first-title>Í∏ÄÏ†úÎ™©</a><br>
                             <a href="#" class=name>Jennieisback</a>
                         </div>
                     </div>
 
                     <div class=pics>
-                        <img src="../image/white.jpg">
+                        <img src="<%= request.getContextPath() %>/resources/images/yeonjoo/white.jpg">
                         <div class=all-title>
-                            <a href="#" class=first-title>±€¡¶∏Ò</a><br>
+                            <a href="#" class=first-title>Í∏ÄÏ†úÎ™©</a><br>
                             <a href="#" class=name>Jennieisback</a>
                         </div>
                     </div>
@@ -153,33 +133,33 @@
 
                 <div class=third>
                     <div class=pics>
-                        <img src="../image/white.jpg">
+                        <img src="<%= request.getContextPath() %>/resources/images/yeonjoo/white.jpg">
                         <div class=all-title>
-                            <a href="#" class=first-title>±€¡¶∏Ò</a><br>
+                            <a href="#" class=first-title>Í∏ÄÏ†úÎ™©</a><br>
                             <a href="#" class=name>Jennieisback</a>
                         </div>
                     </div>
 
                     <div class=pics>
-                        <img src="../image/white.jpg">
+                        <img src="<%= request.getContextPath() %>/resources/images/yeonjoo/white.jpg">
                         <div class=all-title>
-                            <a href="#" class=first-title>±€¡¶∏Ò</a><br>
+                            <a href="#" class=first-title>Í∏ÄÏ†úÎ™©</a><br>
                             <a href="#" class=name>Jennieisback</a>
                         </div>
                     </div>
 
                     <div class=pics>
-                        <img src="../image/white.jpg">
+                        <img src="<%= request.getContextPath() %>/resources/images/yeonjoo/white.jpg">
                         <div class=all-title>
-                            <a href="#" class=first-title>±€¡¶∏Ò</a><br>
+                            <a href="#" class=first-title>Í∏ÄÏ†úÎ™©</a><br>
                             <a href="#" class=name>Jennieisback</a>
                         </div>
                     </div>
 
                     <div class=pics>
-                        <img src="../image/white.jpg">
+                        <img src="<%= request.getContextPath() %>/resources/images/yeonjoo/white.jpg">
                         <div class=all-title>
-                            <a href="#" class=first-title>±€¡¶∏Ò</a><br>
+                            <a href="#" class=first-title>Í∏ÄÏ†úÎ™©</a><br>
                             <a href="#" class=name>Jennieisback</a>
                         </div>
                     </div>
@@ -188,109 +168,96 @@
 
                 <div class=fourth>
                     <div class=pics>
-                        <img src="../image/white.jpg">
+                        <img src="<%= request.getContextPath() %>/resources/images/yeonjoo/white.jpg">
                         <div class=all-title>
-                            <a href="#" class=first-title>±€¡¶∏Ò</a><br>
+                            <a href="#" class=first-title>Í∏ÄÏ†úÎ™©</a><br>
                             <a href="#" class=name>Jennieisback</a>
                         </div>
                     </div>
 
                     <div class=pics>
-                        <img src="../image/white.jpg">
+                        <img src="<%= request.getContextPath() %>/resources/images/yeonjoo/white.jpg">
                         <div class=all-title>
-                            <a href="#" class=first-title>±€¡¶∏Ò</a><br>
+                            <a href="#" class=first-title>Í∏ÄÏ†úÎ™©</a><br>
                             <a href="#" class=name>Jennieisback</a>
                         </div>
                     </div>
 
                     <div class=pics>
-                        <img src="../image/white.jpg">
+                        <img src="<%= request.getContextPath() %>/resources/images/yeonjoo/white.jpg">
                         <div class=all-title>
-                            <a href="#" class=first-title>±€¡¶∏Ò</a><br>
+                            <a href="#" class=first-title>Í∏ÄÏ†úÎ™©</a><br>
                             <a href="#" class=name>Jennieisback</a>
                         </div>
                     </div>
 
                     <div class=pics>
-                        <img src="../image/white.jpg">
+                        <img src="<%= request.getContextPath() %>/resources/images/yeonjoo/white.jpg">
                         <div class=all-title>
-                            <a href="#" class=first-title>±€¡¶∏Ò</a><br>
+                            <a href="#" class=first-title>Í∏ÄÏ†úÎ™©</a><br>
                             <a href="#" class=name>Jennieisback</a>
                         </div>
                     </div>
                 </div>
 
-                <div class=paging>
-                    <ul class="board_paging">
-                        <!-- ∏« √≥¿Ω¿∏∑Œ ¿Ãµø«œ¥¬ πˆ∆∞ (<<) -->
-                        <li><a href="${ contextPath }/board/list?page=1${searchParam}">&lt;&lt;</a></li>
 
-                        <!-- ¿Ã¿¸ ∆‰¿Ã¡ˆ∑Œ (<) -->
-                        <li>
-                            <a href="${ contextPath }/board/list?page=${ pi.page - 1 }${searchParam}">&lt;</a>
-                        </li>
+          <!-- ÌéòÏù¥ÏßÄ Î°úÏßÅ (ÌïÑÌÑ∞ÎßÅ Ï°∞Í±¥Î¨∏ Ï∂îÌõÑÏóê ÏûëÏÑ±) -->
+        <div class="wrapper5">
+        	<!-- (<<) Ï†úÏùº Ï≤´ ÌéòÏù¥ÏßÄÎ°ú Ïù¥Îèô -->
+            <a class="paging" href="${ contextPath }/magazine/main?page=1"><img width="16px" src="${ contextPath }/resources/images/yewon/previous.png">
+            <img width="16px" src="${ contextPath }/resources/images/yewon/previous.png"></a>
+             
+             <!--  (<) Ïù¥Ï†Ñ ÌéòÏù¥ÏßÄ  : ÌòÑÏû¨ ÌéòÏù¥ÏßÄ - 1Ïù¥ÎãàÍπå -->	
+             <c:choose>
+             	<c:when test="${ pi.page > 1 }"> <!--  ÌòÑÏû¨ ÌéòÏù¥ÏßÄÍ∞Ä 1Î≥¥Îã§ ÌÅ¥ ÎïåÎäî Ïù¥ÎèôÌïòÍ≥†  -->
+             	<a class="paging" href="${ contextPath }/magazine/user?page=${ pi.page - 1}"><img width="18px" src="${ contextPath }/resources/images/yewon/previous.png"></a>
+             	</c:when>
+             	<c:otherwise> <!-- 1Ïù¥Î©¥ ÌòÑÏû¨ ÌéòÏù¥ÏßÄÏóê Î®∏Î≠Ñ -->
+             	<a class="paging" href="#"><img width="18px" src="${ contextPath }/resources/images/yewon/previous.png"></a>
+             	</c:otherwise>
+             </c:choose>
+             	<!-- ÏµúÎåÄ 5Í∞úÏùò ÌéòÏù¥ÏßÄ Î™©Î°ù  ÏÉùÏÑ± -->
+             	<c:forEach var="p" begin="${ pi.startPage }" end="${ pi.endPage }">
+             	<li>
+			 	<c:choose>
+			 		<c:when test="${ p eq pi.page }"> <!-- pÏôÄ ÌòÑÏû¨ ÏöîÏ≤≠ ÌéòÏù¥ÏßÄÍ∞Ä Í∞ôÎã§Î©¥ = ÌòÑÏû¨ ÌéòÏù¥ÏßÄ ÏûÑÏùÑ ÎÇòÌÉÄÎÇº Ïàò ÏûàÎäî ÏÉâ Î≥ÄÍ≤Ω-->
+			 		<a href="#" class="paging"><img width="20px" src="${ contextPath }/resources/images/yewon/circle_sky.png"></a>
+			 		</c:when>
+			 		<c:otherwise> <!-- ÌòÑÏû¨ ÌéòÏù¥ÏßÄ Ïô∏ÏóêÎäî ÌéòÏù¥ÏßÄ Î™©Î°ù Ïà´ÏûêÎßå Ï∂úÎ†• -->
+			 		<a class="paging" href="${ contextPath }/magazine/user?page=${ p }"><img width="20px" src="${ contextPath }/resources/images/yewon/circle_beige.png"></a>
+			 		</c:otherwise>
+			 	</c:choose>
+			 	</li>
+             	</c:forEach>
+            
+            <!--  (>) Îã§Ïùå ÌéòÏù¥ÏßÄ : Ï†úÏùº ÎÅù ÌéòÏù¥ÏßÄÏóêÏÑú Î≤ÑÌäº ÎàÑÎ•º Í≤ÉÏùÑ Í≥†Î†§ÌïòÏó¨ Ï°∞Í±¥Î¨∏ ÏÇ¨Ïö© -->
+            <c:choose>
+            	<c:when test="${ pi.page < pi.maxPage }"> <!-- ÌòÑÏû¨ ÌéòÏù¥ÏßÄÍ∞Ä ÏµúÎåÄ ÌéòÏù¥ÏßÄÎ≥¥Îã§ ÏïÑÎûòÏùº Îïå Ïù¥Îèô -->
+            	 <a class="paging" href="${ contextPath }/magazine/user?page=${ pi.page + 1 }"><img width="18px" src="${ contextPath }/resources/images/yewon/next.png"></a>
+            	</c:when>
+            	<c:otherwise>
+            	<a class="paging" href="#"><img width="18px" src="${ contextPath }/resources/images/yewon/next.png"></a>
+            	</c:otherwise>
+            </c:choose>
+            
+            <!-- (>>) Ï†úÏùº ÎÅù ÌéòÏù¥ÏßÄÎ°ú Ïù¥Îèô -->
+            <a class="paging" href="${ contextPath }/magazine/user?page=${ pi.maxPage }"><img width="16px" src="${ contextPath }/resources/images/yewon/next.png">
+            <img width="16px" src="${ contextPath }/resources/images/yewon/next.png"></a>
+        </div>
 
-                        <!-- √÷¥Î 10∞≥¿« ∆‰¿Ã¡ˆ ∏Ò∑œ -->
-                        <li>
-                            <a href="#" class="current_page"></a>
-                            <a href="${ contextPath }/board/list?page=${ p }${searchParam}"></a>
-                        </li>
 
-                        <!-- ¥Ÿ¿Ω ∆‰¿Ã¡ˆ∑Œ (>) -->
-                        <li>
-                            <a href="${ contextPath }/board/list?page=${ pi.page + 1 }${searchParam}">&gt;</a>
-                        </li>
-                        
-                        <!-- ∏« ≥°¿∏∑Œ ¿Ãµø«œ¥¬ πˆ∆∞ (>>) -->
-                        <li><a href="${ contextPath }/board/list?page=${ pi.maxPage }${searchParam}">&gt;&gt;</a></li>
-                    </ul>
-                </div>
-                
-                
             </div>
         </div>
     </div>
-</div>
-    
-    
-    
+    </div>
+
+
+
 
 
     <!--footer-->
-    <div class="footer">
-        <div class="foot-inner">
-            <div class="foot-logo foot-all">
-                S O D A</div>
-            <div class="information foot-all">
-                <ul>¡÷Ωƒ»∏ªÁ º“º» ¥Ÿ¿Ã¥◊</ul>
-                <ul>¥Î«• : »´±Êµø | ∞≥¿Œ¡§∫∏∞¸∏Æ√•¿”¿⁄ : »´±Êµø | ¿¸»≠ : 02-123-4567 | ¿Ã∏ﬁ¿œ : soda@gmail.com</ul>
-                <ul>¡÷º“ : º≠øÔ ∞≠≥≤±∏ ≈◊«Ï∂ı∑Œ 14±Ê 6 ≥≤µµ∫Ùµ˘ 2√˛ | ªÁæ˜¿⁄µÓ∑œπ¯»£ : 000-00-00000</ul>
-                <ul> ≈ÎΩ≈∆«∏≈ : ¡¶ 2021-º≠øÔ∞≠≥≤-0000»£</ul>
-                <ul>øµæ˜Ω√∞£ : ø˘-±› ø¿»ƒ 2Ω√-7Ω√</ul>
-            </div>
-            <div class="foot-category foot-all">
-                <ul><a href="#">º“¥Ÿº“∞≥</a></ul>
-                <ul><a href="#">∞¯¡ˆªÁ«◊ </a></ul>
-                <ul><a href="#">∞≠ªÁΩ≈√ª</a></ul>
-                <ul><a href="#">¿⁄¡÷πØ¥¬¡˙πÆ</a></ul>
-            </div>
-
-
-        </div>
+     <%@ include file="/WEB-INF/views/common/footer.jsp" %>
     </div>
-    <div class="final">
-        <div class="foot-final">
-            <a href="#">¿ÃøÎæ‡∞¸ | </a>
-            <a href="#">∞≥¿Œ¡§∫∏√≥∏ÆπÊƒß | </a>
-            <a href="#">ªÁæ˜¿⁄¡§∫∏»Æ¿Œ</a>
-        </div>
-    </div>
-
-
-
-
-
-
 
 
 </body>

@@ -1,182 +1,141 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+   pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 
 <head>
    <meta charset="UTF-8">
-   <title>¸Å°ÅÁø °Ô½Ã±Û ÀÛ¼º</title>
+   <title>ë§¤ê±°ì§„ ê²Œì‹œê¸€ ì‘ì„±</title>
 
-   <!-- ¿ÜºÎ ½ºÅ¸ÀÏ ½ÃÆ® -->
-   <link href="../css/magazineWrite.css" rel="stylesheet">
-   <link href="../css/Headerfooter.css" rel="stylesheet">
+   <!-- ì™¸ë¶€ ìŠ¤íƒ€ì¼ ì‹œíŠ¸ -->
+  <link href="<%= request.getContextPath() %>/resources/css/magazine/magazineWrite.css" rel="stylesheet">
 
    <!-- favicon (Real Favicon Generator)-->
    <link rel="icon" type="image/x-icon" href="resources/image/khfavicon.ico">
 
-   <!-- ±Û²Ã -->
+   <!-- ê¸€ê¼´ -->
    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
    <!--font-family: 'Noto Sans KR', sans-serif;-->
 
    <!-- JQuery-->
    <script src="../js/jquery-3.6.0.min.js"></script>
 
-   <!-- ½æ¸Ó³ëÆ® -->
-   <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
-   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-   <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-   <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
-   <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
-   <script src="lang/summernote-ko-KR.js"></script>
 </head>
 
 
 <body>
 
    <!--header-->
+  <%@ include file="/WEB-INF/views/common/header.jsp" %>
+ 
 
-   <div class="header">
-      <div class="head-inner">
-
-         <div class="logo">
-            <img src="../image/logo.png">
-         </div>
-
-         <div class="big-category">
-            <div class="category1">
-               <a href="#">SOCIALING</a>
-               <a href="#">CLASS</a>
-               <a href="#">MAGAZINE</a>
-            </div>
-            <div class="category2">
-               <a href="#">CART</a>
-               <a href="#">MYPAGE</a>
-            </div>
-         </div>
-
-      </div>
-   </div>
-
+<!-- body -->
+  
    <div class="body-super">
       <div class="body-inner">
 
          <div class="board_content">
             <!-- 
-               ÆÄÀÏ ¾÷·Îµå¸¦ À§ÇØ¼­´Â ¹İ.µå.½Ã enctypeÀ» ÁöÁ¤ÇØÁÖ¾î¾ß ÇÔ : ÀÎÄÚµù Å¸ÀÔ ÁöÁ¤
+               íŒŒì¼ ì—…ë¡œë“œë¥¼ ìœ„í•´ì„œëŠ” ë°˜.ë“œ.ì‹œ enctypeì„ ì§€ì •í•´ì£¼ì–´ì•¼ í•¨ : ì¸ì½”ë”© íƒ€ì… ì§€ì •
                application/x-www-form-urlencoded
-               : ±âº»°ª, ¸ğµç ¹®ÀÚµéÀº ¼­¹ö·Î º¸³»Áö±â Àü¿¡ ÀÎÄÚµù µÊÀ» ¸í½Ã
+               : ê¸°ë³¸ê°’, ëª¨ë“  ë¬¸ìë“¤ì€ ì„œë²„ë¡œ ë³´ë‚´ì§€ê¸° ì „ì— ì¸ì½”ë”© ë¨ì„ ëª…ì‹œ
                multipart/form-data
-               : ¸ğµç ¹®ÀÚµéÀ» ÀÎÄÚµùÇÏÁö ¾ÊÀ½À» ¸í½Ã
-               ÀÌ ¹æ½ÄÀº form ¿ä¼Ò°¡ ÆÄÀÏÀÌ³ª ÀÌ¹ÌÁö¸¦ ¼­¹ö·Î Àü¼ÛÇÒ ¶§ »ç¿ë
+               : ëª¨ë“  ë¬¸ìë“¤ì„ ì¸ì½”ë”©í•˜ì§€ ì•ŠìŒì„ ëª…ì‹œ
+               ì´ ë°©ì‹ì€ form ìš”ì†Œê°€ íŒŒì¼ì´ë‚˜ ì´ë¯¸ì§€ë¥¼ ì„œë²„ë¡œ ì „ì†¡í•  ë•Œ ì‚¬ìš©
                text/plain
-               : °ø¹é ¹®ÀÚ(¸¸)´Â "+" ±âÈ£·Î º¯È¯ÇÏÁö¸¸, ³ª¸ÓÁö ¹®ÀÚ´Â ¸ğµÎ ÀÎÄÚµù µÇÁö ¾ÊÀ½À» ¸í½Ã
+               : ê³µë°± ë¬¸ì(ë§Œ)ëŠ” "+" ê¸°í˜¸ë¡œ ë³€í™˜í•˜ì§€ë§Œ, ë‚˜ë¨¸ì§€ ë¬¸ìëŠ” ëª¨ë‘ ì¸ì½”ë”© ë˜ì§€ ì•ŠìŒì„ ëª…ì‹œ
              -->
-            <form method="post" action="${ contextPath }/gallery/insert" enctype="multipart/form-data">
 
                <div class="title-big">
-                  <div class="title">ÀÛ¼ºÇÏ±â</div>
+                  <div class="title">ì‘ì„±í•˜ê¸°</div>
                </div>
                <div class="content">
                   <h4>
-                     <span class="title_span">&nbsp;</span> Ä«Å×°í¸®
+                     <span class="title_span">&nbsp;</span> ì¹´í…Œê³ ë¦¬
                   </h4>
                   <span class="input_area"> <select name="category">
-                        <option value="10">¼Ò¼È¸µ</option>
-                        <option value="20">¿øµ¥ÀÌÅ¬·¡½º</option>
+                        <option value="10">ì†Œì…œë§</option>
+                        <option value="20">ì›ë°ì´í´ë˜ìŠ¤</option>
                         <option value="30">VOD</option>
-                        <option value="40">±âÅ¸</option>
+                        <option value="40">ê¸°íƒ€</option>
                      </select>
                   </span>
                   <h4>
                      <br>
-                     <span class="title_span">&nbsp;</span> Á¦¸ñ
+                     <span class="title_span">&nbsp;</span> ì œëª©
                   </h4>
                   <span class="input_area"> <input type="text" name="title" required>
                   </span>
-
+                  
                   <h4>
                      <br>
-                     <span class="title_span">&nbsp;</span> ³»¿ë
+                     <span class="title_span">&nbsp;</span> ë‚´ìš©
                   </h4>
-                  <div id="form_body">
-                     <!--½æ¸Ó³ëÆ®-->
-                     <textarea class="summernote" name="editordata"></textarea>
+
+                  <textarea class="textarea" rows="20" cols="100" name="content"
+                        required></textarea>
+
+                     <h4>
+                        <span class="title_span">&nbsp;</span> ëŒ€í‘œ ì´ë¯¸ì§€ ì²¨ë¶€
+                     </h4>
+
+                     <div class="image_area"></div>
+
+                     <div class="filebox">
+                     <label class="file-label" for="file">ì²¨ë¶€íŒŒì¼</label>
+                     <input class="upload-name" id="file" type="file" style="display:none" name="thumbnail" 
+                     accept="image/gif, image/jpeg, image/png" required>
+                     </div>
+
+                     <h4>
+                        <span class="title_span">&nbsp;</span> ì¶”ê°€ ì´ë¯¸ì§€ ì²¨ë¶€(ìµœëŒ€ 3ê°œ)
+                     </h4>
+
+                     <div class="image_area"></div>
+                     <div class="image_area"></div>
+
+
+                     <div class="filebox-par">
+                     <div class="filebox">
+                        <label for="file">ì²¨ë¶€íŒŒì¼</label>
+                        <input class="upload-name" name="contentImg1" id="file" type="file" style="display:none" name="thumbnail" 
+                        accept="image/gif, image/jpeg, image/png">
+                     </div>
+                     <div class="filebox">
+                        <label for="file">ì²¨ë¶€íŒŒì¼</label>
+                        <input class="upload-name" name="contentImg2" id="file" type="file" style="display:none" name="thumbnail" 
+                        accept="image/gif, image/jpeg, image/png">
+                     </div>  
+                     <div class="filebox">
+                        <label for="file">ì²¨ë¶€íŒŒì¼</label>
+                        <input class="upload-name" name="contentImg3" id="file" type="file" style="display:none" name="thumbnail" 
+                        accept="image/gif, image/jpeg, image/png">
+                     </div>
                   </div>
+
+                  </div>
+                 
                </div>
+            </div>
 
-               <div class="btn_area">
-                  <button class="button" type="button">¸ñ·ÏÀ¸·Î</button>
-                  <button class="submit" type="submit">ÀÛ¼ºÇÏ±â</button>
-               </div>
-            </form>
-         </div>
+                  <div class="btn_area">
+                     <button class="button" type="button">ëª©ë¡ìœ¼ë¡œ</button>
+                     <button class="submit" type="submit">ì‘ì„±í•˜ê¸°</button>
+                  </div>
+                  
       </div>
    </div>
-   </div>
 
-   <script src="${ contextPath }/resources/js/imagePreview.js"></script>
-
-
-    <!-- ½æ¸Ó³ëÆ® ½ºÅ©¸³Æ® -->
-    <script>
-      $(document).ready(function(){
-          $('.summernote').summernote({
-              height : 300,
-              minHeight :null,
-              maxHeight: null,
-              focus:true,
-              lang:'ko-KR',
-              toolbar: [
-                  // [groupName, [list of button]]
-                  ['fontname', ['fontname']]
-                  , ['fontsize', ['fontsize']]
-                  , ['style', ['bold', 'italic', 'underline', 'strikethrough', 'clear']]
-                  , ['color', ['forecolor', 'color']]
-                  , ['table', ['table']]
-                  , ['para', ['ul', 'ol', 'paragraph']]
-                  , ['height', ['height']]
-                  , ['insert', ['picture', 'link', 'video']]
-                  , ['view', ['fullscreen', 'help']]
-              ] , 
-              fontNames: ['Arial', 'Araial Black', 'Comic Sans MS', 'Courier New', '¸¼Àº °íµñ', '±Ã¼­', 
-              '±¼¸²Ã¼', '±¼¸²', 'µ¸¿òÃ¼','¹ÙÅÁÃ¼'] ,
-              fontSizes: ['8', '9', '10', '11', '12', '14', '16', '18', '20', '22', '24', '28', '30', '36'
-                  , '40', '48', '50', '60', '72']
-          })
-          
-      });
-  </script>
+   <script>
+   $("#file").on('change',function(){
+      var fileName = $("#file").val();
+      $(".upload-name").val(fileName);
+    });
+</script>
 
 
-   <!--footer-->
-   <div class="footer">
-      <div class="foot-inner">
-         <div class="foot-logo">
-            S O D A</div>
-         <div class="information">
-            <ul>ÁÖ½ÄÈ¸»ç ¼Ò¼È ´ÙÀÌ´×</ul>
-            <ul>´ëÇ¥ : È«±æµ¿ | °³ÀÎÁ¤º¸°ü¸®Ã¥ÀÓÀÚ : È«±æµ¿ | ÀüÈ­ : 02-123-4567 | ÀÌ¸ŞÀÏ : soda@gmail.com</ul>
-            <ul>ÁÖ¼Ò : ¼­¿ï °­³²±¸ Å×Çì¶õ·Î 14±æ 6 ³²µµºôµù 2Ãş | »ç¾÷ÀÚµî·Ï¹øÈ£ : 000-00-00000</ul>
-            <ul> Åë½ÅÆÇ¸Å : Á¦ 2021-¼­¿ï°­³²-0000È£</ul>
-            <ul>¿µ¾÷½Ã°£ : ¿ù-±İ ¿ÀÈÄ 2½Ã-7½Ã</ul>
-         </div>
-         <div class="foot-category">
-            <ul><a href="#">¼Ò´Ù¼Ò°³</a></ul>
-            <ul><a href="#">°øÁö»çÇ× </a></ul>
-            <ul><a href="#">°­»ç½ÅÃ»</a></ul>
-            <ul><a href="#">ÀÚÁÖ¹¯´ÂÁú¹®</a></ul>
-         </div>
-
-
-      </div>
-   </div>
-   <div class="final">
-      <div class="foot-final">
-         <a href="#">ÀÌ¿ë¾à°ü | </a>
-         <a href="#">°³ÀÎÁ¤º¸Ã³¸®¹æÄ§ | </a>
-         <a href="#">»ç¾÷ÀÚÁ¤º¸È®ÀÎ</a>
-      </div>
-   </div>
+    <!--footer-->
+   <%@ include file="/WEB-INF/views/common/footer.jsp" %>
 
 </body>
 
