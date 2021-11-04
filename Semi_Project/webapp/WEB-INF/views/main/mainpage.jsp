@@ -203,7 +203,7 @@
      <div class="socialing-content">
         <div>
             <h3 class="content-title">취향이 통하는 친구와 원데이 소셜링</h3>
-            <h5><a class="view-all" href="#">전체보기</a></h5>
+            <h5><a class="view-all" href="${ contextPath }/socialing/main">전체보기</a></h5>
         </div>
 
         <article>
@@ -325,7 +325,7 @@
      <div class="onedayclass-content">
         <div>
             <h3 class="content-title">취향을 더 깊이있게 알아가는 원데이클래스</h3>
-            <h5><a class="view-all" href="#">전체보기</a></h5>
+            <h5><a class="view-all" href="${ contextPath }/lesson/main">전체보기</a></h5>
         </div>
         <article>
                 <div class="slide">
