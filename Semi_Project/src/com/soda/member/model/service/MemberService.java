@@ -77,6 +77,24 @@ public class MemberService {
 		return findEmail;
 	}
 
+	// 비밀번호 찾기 - 임시비밀번호 발급받아 비밀번호 수정
+	public Member sendPwd(String userId, int random) {
+		Connection conn = getConnection();
+		Member sendPwd = null;
+		
+		int result = memberDao.sendPwd(conn, userId, random);
+		
+		if(result > 0) {
+			sendPwd = memberDao.loginMember(conn, userId);
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		close(conn);
+		
+		return sendPwd;
+	}
+
 
 	
 	

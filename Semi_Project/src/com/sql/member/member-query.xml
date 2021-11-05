@@ -104,5 +104,13 @@
 	      AND STATUS = 'Y'
 	</entry>
 	
+	<!-- 비밀번호 찾기하면 임시비밀번호로 변경 -->
+	<entry key="sendPwd">
+		UPDATE
+		       MEMBER_INFO
+		   SET USER_PWD = ?
+		 WHERE USER_ID = ?
+	</entry>
+	
 
 </properties>
