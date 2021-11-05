@@ -100,6 +100,23 @@ public class SocialingService {
 		return result;
 	}
 
+	public int insertMember(int nNum, String userId) {
+		Connection conn = getConnection();
+		
+		int result = socialingDao.insertMember(conn, nNum, userId);
+		
+		if(result > 0) {
+			commit(conn);
+			System.out.println("소셜링 참여 신청 완료");
+		} else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return result;
+	}
+
 //	public List<Socialing> selectList() {
 //		Connection conn = getConnection();
 //		

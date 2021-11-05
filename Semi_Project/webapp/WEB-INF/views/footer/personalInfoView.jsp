@@ -7,7 +7,7 @@
 <title>개인정보 취급 방침</title>
 
 <!-- 외부 스타일 시트 -->
-<link href="/resources/css/footer/terms_style.css" rel="stylesheet">
+<link href="${ contextPath }/resources/css/footer/terms_style.css" rel="stylesheet">
 
 <!-- 글꼴 (Noto Sans) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
