@@ -41,7 +41,8 @@
             </div>
             <div class="wrapper4">
                 <div class="profileBox">
-                    <img id="p-image" src="<%= request.getContextPath() %>/resources/images/eunjung/profile.png"><br>
+                	<!-- 프로필 이미지 border-radius로 동그랗게 출력 -->
+                    <img id="p-image" src="${ contextPath }/resources/images/eunjung/profile.png"><br>
                     <p id="p-name">${ socialing.userName }</p><br>
                     <!-- if문으로 일반 회원 : 참여하기 버튼 / 작성자 : 참여확인 버튼 출력되게 -->
                     <c:choose>
@@ -59,7 +60,7 @@
             <!-- 회원이 참여하기 버튼 누르면 비동기통신으로 멤버 목록 바로 갱신(시간 남으면) -->
             <div class="subWrap">
                 <a href="#"> <!-- 참여자 피드로 이동 -->
-                    <img id="s-image" src="<%= request.getContextPath() %>/resources/images/eunjung/profile.png">
+                    <img id="s-image" src="${ contextPath }/resources/images/eunjung/profile.png">
                     <div class="subWrap2">
                         <p id="s-name">${ socialing.userName }</p>
                         <p id="s-intro">사람들 만나고 사귀는 걸 좋아해요!</p>
@@ -68,7 +69,7 @@
             </div>
             <div class="subWrap">
                 <a href="#">
-                    <img id="s-image" src="<%= request.getContextPath() %>/resources/images/eunjung/profile.png">
+                    <img id="s-image" src="${ contextPath }/resources/images/eunjung/profile.png">
                     <div class="subWrap2">
                         <p id="s-name">유미</p>
                         <p id="s-intro">글쓰기가 취미이고 맛있는거 먹는 걸 좋아해요~</p>
@@ -77,7 +78,7 @@
             </div>
             <div class="subWrap">
                 <a href="#">
-                    <img id="s-image" src="<%= request.getContextPath() %>/resources/images/eunjung/profile.png">
+                    <img id="s-image" src="${ contextPath }/resources/images/eunjung/profile.png">
                     <div class="subWrap2">
                         <p id="s-name">구웅</p>
                         <p id="s-intro">토끼 티셔츠를 좋아합니다</p>
@@ -86,7 +87,7 @@
             </div>
             <div class="subWrap">
                 <a href="#">
-                    <img id="s-image" src="<%= request.getContextPath() %>/resources/images/eunjung/profile.png">
+                    <img id="s-image" src="${ contextPath }/resources/images/eunjung/profile.png">
                     <div class="subWrap2">
                         <p id="s-name">루비</p>
                         <p id="s-intro">패션에 관심 많아요! ootd 구경오세요&gt;&lt;</p>
@@ -95,22 +96,28 @@
             </div>
             <h3 id="subTitle4">자세한 정보를 알려드릴게요</h3>
             <div class="subWrap3">
-                <img id="icon" src="<%= request.getContextPath() %>/resources/images/eunjung/user.png">
+                <img id="icon" src="${ contextPath }/resources/images/eunjung/user.png">
                 <p id="detail">최소 ${ socialing.minMember }명 ~ 최대 ${ socialing.maxMember }명</p>
             </div>
             <div class="subWrap3">
-                <img id="icon" src="<%= request.getContextPath() %>/resources/images/eunjung/pin.png">
-                <p id="detail">${ socialing.splace } (서울특별시 영등포구 여의동로 지하 343)</p>
+                <img id="icon" src="${ contextPath }/resources/images/eunjung/pin.png">
+                <p id="detail">${ socialing.splace } (서울특별시 도봉구 창동 343)</p>
             </div>
             <div class="subWrap3">
-                <img id="icon" src="<%= request.getContextPath() %>/resources/images/eunjung/time.png">
+                <img id="icon" src="${ contextPath }/resources/images/eunjung/time.png">
                 <p id="detail"><fmt:formatDate value="${ socialing.sdate }" type="both" pattern="M.dd(E) a h시 m분"/></p>
             </div>
             <div class="buttons"> <!-- 삭제, 수정은 작성자/관리자만 표시 -->
             <c:if test="${ loginUser.userId == socialing.userId || loginUser.userId.equals('admin') }">
             	<button type="button" id="delete" onclick="deleteBoard()">삭제</button>
-                <button type="button" id="update">수정</button>
+                <button type="button" id="update" onclick="updateBoard()">수정</button>
             </c:if>
+            	<!-- 신고 팝업에 글번호 값 보내기 -->
+            	<div style="display: none">
+	            	<jsp:include page="/WEB-INF/views/common/reportFormPopup.jsp">
+						<jsp:param name="nNum" value="${ socialing.nNum }"/>
+					</jsp:include>
+            	</div>
                 <button type="button" id="report" 
                 onclick="openPopup('${ contextPath }/reportForm', 'reportForm', 370, 500)">신고</button>
             </div>
@@ -138,47 +145,68 @@
             </div>
         </form>
     </div>
-
-    <script>
-        function openPopup(url, title, width, height) {
-            let left = (document.body.clientWidth/2)-(width/2);
-            left += window.screenLeft;
-            let top = (screen.availHeight/2)-(height/2);
-                
-            let options = "width="+width+",height="+height+",left="+left+",top="+top;
-                
-            window.open(url, title, options);
-        }
-
-        function join() {
-            if(confirm('모임에 참여하시겠습니까?')) {
-                // 참여회원 테이블에 id 추가
-            }
-        }
-
-        function checkSub() {
-            if(confirm('참석 처리 하시겠습니까?')) {
-                // 참여 여부 'Y'로 변경
-                document.forms.checking.submit();
-            }
-        }
-
-        function deleteBoard() {
-            if(confirm('이 게시글을 삭제하시겠습니까?')) {
-                // 글 삭제 후 목록으로 이동
-            }
-        }
-
-        $(document).ready(function() {
-            $('#p-button2').click(function() {
-                $('.checkPop').show();
-            });
-
-            $('#cancel').click(function() {
-                $('.checkPop').hide();
-            });
-        });
-    </script>
+    
+    <c:choose>
+		<c:when test="${ !empty loginUser }">
+			<form name="memberForm" method="post">
+				<input type="hidden" name="nNum" value="${ socialing.nNum }">
+			</form>
+			<script>
+				function openPopup(url, title, width, height) {
+		            let left = (document.body.clientWidth/2)-(width/2);
+		            left += window.screenLeft;
+		            let top = (screen.availHeight/2)-(height/2);
+		                
+		            let options = "width="+width+",height="+height+",left="+left+",top="+top;
+		                
+		            window.open(url, title, options);
+		        }
+	
+		        function join() {
+		            if(confirm('모임에 참여하시겠습니까?')) {
+		                // 참여회원 테이블에 id 추가
+		            	document.forms.memberForm.action = "${contextPath}/socialingMember";
+		    			document.forms.memberForm.submit();
+		            }
+		        }
+	
+		        function checkSub() {
+		            if(confirm('참석 처리 하시겠습니까?')) {
+		                // 참여 여부 'Y'로 변경
+		                document.forms.checking.submit();
+		            }
+		        }
+		        
+		        function updateBoard() {
+		        	// 글 작성 페이지로 이동
+		        }
+	
+		        function deleteBoard() {
+		            if(confirm('이 게시글을 삭제하시겠습니까?')) {
+		                // 글 삭제 후 목록으로 이동
+		            }
+		        }
+	
+		        $(document).ready(function() {
+		            $('#p-button2').click(function() {
+		                $('.checkPop').show();
+		            });
+	
+		            $('#cancel').click(function() {
+		                $('.checkPop').hide();
+		            });
+		        });
+			</script>
+		</c:when>
+		<c:otherwise>
+			<script>
+				function detailView(nNum){
+					alert('로그인 후 이용 가능합니다.');
+					location.href = '${contextPath}/login';
+				}			
+			</script>
+		</c:otherwise>
+	</c:choose>
 
     <!--footer-->
     <%@ include file="/WEB-INF/views/common/footer.jsp" %>

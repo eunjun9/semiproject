@@ -9,7 +9,7 @@
 <title>소셜링</title>
 
 <!-- 외부 스타일 시트 -->
-<link href="${ contextPath }/resources/css/socialing/socialing_main.css" rel="stylesheet">
+<link href="${ contextPath }/resources/css/socialing/socialing_main.css?1" rel="stylesheet">
 
 <!-- 글꼴 (Noto Sans) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -44,40 +44,40 @@
                         <!-- 반복문으로 현재 날짜(date) 기준 시작일(sdate) 2일 이내로 남은 소셜링 글 목록 출력 (최대 6개) -->
                         <div class="swiper-slide">
                             <div id="thumbox">
-                                <img src="<%= request.getContextPath() %>/resources/images/eunjung/flower1.PNG"><br>
-                                <img id="like2" src="<%= request.getContextPath() %>/resources/images/eunjung/heart_empty.png">
+                                <img src="${ contextPath }/resources/images/eunjung/flower1.PNG"><br>
+                                <img id="like2" src="${ contextPath }/resources/images/eunjung/heart_empty.png">
                             </div>
                             <a href="#">
                                 <div id="titlebox">
                                     <p id="s-thumtitle">할로윈 같이 즐겨요</p><br>
                                     <h5 id="s-thumsub">이태원역 6호선 10.31(일) 오후 6:00</h5>
-                                    <a href=""><img id="profile2" src="<%= request.getContextPath() %>/resources/images/eunjung/profile.png"></a>
+                                    <a href=""><img id="profile2" src="${ contextPath }/resources/images/eunjung/profile.png"></a>
                                 </div>
                             </a>
                         </div>
                         <div class="swiper-slide">
                             <div id="thumbox">
-                                <img src="<%= request.getContextPath() %>/resources/images/eunjung/flower1.PNG"><br>
-                                <img id="like2" src="<%= request.getContextPath() %>/resources/images/eunjung/heart_empty.png">
+                                <img src="${ contextPath }/resources/images/eunjung/flower1.PNG"><br>
+                                <img id="like2" src="${ contextPath }/resources/images/eunjung/heart_empty.png">
                             </div>
                             <a href="#">
                                 <div id="titlebox">
                                     <p id="s-thumtitle">아침에 공원에서 산책하실 분!</p><br>
                                     <h5 id="s-thumsub">평촌 중앙공원 10.20(수) 오전 9:00</h5>
-                                    <a href=""><img id="profile2" src="<%= request.getContextPath() %>/resources/images/eunjung/profile.png"></a>
+                                    <a href=""><img id="profile2" src="${ contextPath }/resources/images/eunjung/profile.png"></a>
                                 </div>
                             </a>
                         </div>
                         <div class="swiper-slide">
                             <div id="thumbox">
-                                <img src="<%= request.getContextPath() %>/resources/images/eunjung/flower1.PNG"><br>
-                                <img id="like2" src="<%= request.getContextPath() %>/resources/images/eunjung/heart_empty.png">
+                                <img src="${ contextPath }/resources/images/eunjung/flower1.PNG"><br>
+                                <img id="like2" src="${ contextPath }/resources/images/eunjung/heart_empty.png">
                             </div>
                             <a href="#">
                                 <div id="titlebox">
                                     <p id="s-thumtitle">이터널스 같이 보러가요</p><br>
                                     <h5 id="s-thumsub">CGV 용산아이파크몰 11.20(토) 오...</h5>
-                                    <a href=""><img id="profile2" src="<%= request.getContextPath() %>/resources/images/eunjung/profile.png"></a>
+                                    <a href=""><img id="profile2" src="${ contextPath }/resources/images/eunjung/profile.png"></a>
                                 </div>
                             </a>
                         </div>
@@ -87,11 +87,11 @@
 
                 <div class="button1">
                     <div class="button-prev">
-                    <img width="30px" src="<%= request.getContextPath() %>/resources/images/eunjung/prev_b.png"></div>
+                    <img width="30px" src="${ contextPath }/resources/images/eunjung/prev_b.png"></div>
                 </div>
                 <div class="button2">
                     <div class="button-next">
-                    <img width="30px" src="<%= request.getContextPath() %>/resources/images/eunjung/next_b.png"></div>
+                    <img width="30px" src="${ contextPath }/resources/images/eunjung/next_b.png"></div>
                 </div>
             </article>
             <article>
@@ -104,7 +104,8 @@
                             value="${ param.keyword }"><br><br>
                         </div>
                         <label id="flabel">지역</label>
-                        <!-- local 선택에 따라 local-details 내용 변경 -->
+                        <!-- local 선택에 따라 local-details 내용 변경 *hrd 홈페이지 직업훈련목록 필터링 참고 -->
+                        <!-- api 찾아보기 -->
                         <select name="local">
                             <option value="seoul">서울</option>
                             <option value="gyeonggi">경기</option>
@@ -132,12 +133,11 @@
                 </div>
                 <div id="lineupbox">
                     <select name="lineup">
-                        <option value="">최신순</option>
-                        <option value="">인기순</option>
+                        <option value="">최신순</option> <!-- 작성일 순 -->
+                        <option value="">인기순</option> <!-- 조회수 순 or 참여 인원 순 -->
                     </select>
                 </div>
                 <div class="s-container2">
-                
                 	<c:forEach var="s" items="${ socialingList }">
                     <div id="s-list2">
                         <div id="thumbox">
@@ -158,7 +158,6 @@
                         </a>
                     </div>
                 	</c:forEach>
-                    
                 </div>
 
 				<!-- 페이지 로직 (필터링 조건문 추후에 작성) -->

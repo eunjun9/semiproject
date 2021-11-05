@@ -193,6 +193,28 @@ public class SocialingDao {
 		
 		return photoList;
 	}
+	
+	public int insertMember(Connection conn, int nNum, String userId) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = socialingQuery.getProperty("insertMember");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, nNum);
+			pstmt.setString(2, userId);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
 
 	// 게시글 추가하기 (notice, socialing, file 테이블 insert)
 	public int insertNotice(Connection conn, Socialing socialing) {

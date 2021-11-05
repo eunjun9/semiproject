@@ -44,7 +44,6 @@
                     <hr>
                     
                     <h1 id="w-main-title2">언제 어디서 만나나요?</h1>
-                    <!-- 날짜, 시간 String 타입으로 입력받고 SimpleDateFormat으로 변환하기(java.util.date) -->
                     <h4 id="w-sub-title4">날짜를 선택하세요</h4>
                     <input type="date" name="dateIn">
                     <h4 id="w-sub-title5">시간을 선택하세요</h4>
