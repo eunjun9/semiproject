@@ -21,7 +21,7 @@
 	%>
 
     <!-- 외부 스타일 시트 -->
-    <link href="${ contextPath }/resources/css/common/header_footer.css" rel="stylesheet">
+    <link href="${ contextPath }/resources/css/common/header_footer.css?1" rel="stylesheet">
     <!-- favicon (Real Favicon Generator)-->
     <link rel="icon" type="image/x-icon" href="${ contextPath }/resources/images/khfavicon.ico">
     <!-- 글꼴 -->
@@ -31,7 +31,7 @@
     <!--font-family: 'Noto Sans KR', sans-serif;-->
 
     <!-- JQuery-->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+ <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
 
 </head>

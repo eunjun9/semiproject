@@ -17,7 +17,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500&display=swap" rel="stylesheet">
 
     <!-- JQuery-->
-    <script src="${ contextPath }/resources/js/jquery-3.6.0.min.js"></script>
+   <%--  <script src="${ contextPath }/resources/js/jquery-3.6.0.min.js"></script> --%>
 
 </head>
 <body>

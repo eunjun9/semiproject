@@ -59,8 +59,8 @@
 			                
 			                 $("#payBtn").click(function(){ 
 			                    if(confirm('결제화면으로 이동하시겠습니까?')){
-			                    	// 결제 화면
-			                        // location.href = "${contextPath}";
+			                    	// 결제 화면 
+			                        // location.href = "${contextPath}/";
 			                    }  else {
 			                        $(".modal").fadeOut(); 
 			                    }
