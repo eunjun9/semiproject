@@ -63,7 +63,7 @@ public class MemberDao {
 		return loginUser;
 	}
 
-	// 카카오 로그인 회원 조회
+	// 카카오 로그인 회원 조회, 비밀번호 찾기할 때 회원 조회
 	public Member loginMember(Connection conn, String userId) {
 		PreparedStatement pstmt = null;
 		Member loginUser = null;

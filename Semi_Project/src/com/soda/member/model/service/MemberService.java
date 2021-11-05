@@ -22,7 +22,7 @@ public class MemberService {
 		return loginMember;
 	}
 
-	// 카카오 로그인 회원 정보 확인
+	// 카카오 로그인 회원 정보 확인, 비밀번호 찾기할 때 회원 정보 확인
 	public Member loginMember(String userId) {
 		Connection conn = getConnection();
 		
@@ -76,6 +76,7 @@ public class MemberService {
 		
 		return findEmail;
 	}
+
 
 	
 	

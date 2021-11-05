@@ -9,7 +9,7 @@
 <title>소셜링</title>
 
 <!-- 외부 스타일 시트 -->
-<link href="<%= request.getContextPath() %>/resources/css/socialing/socialing_main.css" rel="stylesheet">
+<link href="${ contextPath }/resources/css/socialing/socialing_main.css" rel="stylesheet">
 
 <!-- 글꼴 (Noto Sans) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -148,7 +148,7 @@
                             <img id="like" src="<%= request.getContextPath() %>/resources/images/eunjung/heart_empty.png"
                             onclick="likeSocialing(${ s.nNum })">
                         </div>
-                        <a href="#">
+                        <a href="${ contextPath }/socialing/detail?nNum=${ s.nNum }">
                             <div id="titlebox">
                                 <p id="s-thumtitle">${ s.nTitle }</p><br>
                                 <h5 id="s-thumsub">${ s.splace } 
@@ -209,9 +209,11 @@
 		            <img width="16px" src="${ contextPath }/resources/images/eunjung/next.png"></a>
                 </div>
                 
-                <div id="writebox">
-                    <button id="writing" onclick="${ contextPath }/socialing/form">글 쓰기</button>
-                </div>
+                <c:if test="${ !empty loginUser }">
+	                <div id="writebox">
+	                    <button id="writing" onclick="location.href='${ contextPath }/socialing/form'">글 쓰기</button>
+	                </div>
+                </c:if>
             </article>
         </div>
     </div>
@@ -231,30 +233,6 @@
             },
         });
     </script>
-
-    <script>
-    	// 찜하기 추가/취소 아이콘 변경
-        let like = document.querySelectorAll('#like');
-        let like2 = document.querySelectorAll('#like2');
-        
-        for(let i = 0; i < like.length; i++) {
-            like[i].onclick = function() {
-                if(like[i].src.indexOf('_empty') == -1) {
-                    like[i].src = like[i].src.replace('.png', '_empty.png');
-                } else {
-                    like[i].src = like[i].src.replace('_empty.png', '.png');
-                }
-            }
-
-            like2[i].onclick = function() {
-                if(like2[i].src.indexOf('_empty') == -1) {
-                    like2[i].src = like2[i].src.replace('.png', '_empty.png');
-                } else {
-                    like2[i].src = like2[i].src.replace('_empty.png', '.png');
-                }
-            }
-        }
-    </script>
     
     <!-- 로그인 여부에 따른 스크립트 -->
     <c:choose>
@@ -264,8 +242,31 @@
 					location.href = '${contextPath}/socialing/detail?nNum=' + nNum;
 				}
 				
+				// 관심 소셜링에 추가 (프로필정보에 관심 소셜링 컬럼 추가(게시글번호 - 구분자 이용해서 여러 글 추가되게))
 				function likeSocialing(nNum) {
-		        	// 관심 소셜링에 추가 (프로필정보에 관심 소셜링 컬럼 추가(게시글번호 - 구분자 이용해서 여러 글 추가되게))
+					
+					let like = document.querySelectorAll('#like');
+			        let like2 = document.querySelectorAll('#like2');
+			        
+			        for(let i = 0; i < like.length; i++) {
+			            like[i].onclick = function() {
+			                if(like[i].src.indexOf('_empty') == -1) {
+			                    like[i].src = like[i].src.replace('.png', '_empty.png');
+			                } else {
+			                	alert('관심 소셜링에 추가 되었습니다.');
+			                    like[i].src = like[i].src.replace('_empty.png', '.png');
+			                }
+			            }
+
+			            like2[i].onclick = function() {
+			                if(like2[i].src.indexOf('_empty') == -1) {
+			                    like2[i].src = like2[i].src.replace('.png', '_empty.png');
+			                } else {
+			                	alert('관심 소셜링에 추가 되었습니다.');
+			                    like2[i].src = like2[i].src.replace('_empty.png', '.png');
+			                }
+			            }
+			        }
 		        }
 			</script>
 		</c:when>

@@ -7,7 +7,7 @@
 <title>마이페이지_모임내역</title>
 
 	<!--외부 스타일 시트-->
-    <link href="resources/css/mypage/mypage_socialingList.css" rel="stylesheet">
+    <link href="${ contextPath }/resources/css/mypage/mypage_socialingList.css" rel="stylesheet">
 
      <!-- font -->
      <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,10 +17,9 @@
   	<!--슬라이드-->
   	<link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
   	<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-
-    <!-- JQuery -->
-    <script src="resources/js/jquery-3.6.0.min.js"></script> 
-
+    
+	  <!-- JQuery-->
+     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 </head>
 <body>
     <!-- header -->

@@ -153,7 +153,7 @@ public class LessonDao {
 				lesson.setUserName(rset.getString("user_name"));
 				lesson.setUserId(rset.getString("c_writer"));
 				lesson.setcType(rset.getString("c_type"));
-				lesson.setcCategogy(rset.getString("c_category"));
+				lesson.setcCategory(rset.getString("c_category"));
 				lesson.setcPrice(rset.getInt("c_price"));
 				lesson.setnContent(rset.getString("notice_content"));
 				lesson.setCtag1(rset.getString("c_tag1"));

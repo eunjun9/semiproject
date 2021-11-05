@@ -76,10 +76,10 @@
                     <hr>
                     <label for="c_tutor">강사</label><input area="text" name="c_tutor" id="c_tutor" placeholder="강사명을 입력하세요(최대 10자)"><br>
                     <label>타입</label> 
-                    <input type="radio" name="class_type" value="oneday" id="oneday" checked><label for="oneday" class="btnlabel">원데이 클래스</label>
+                    <input type="radio" name="class_type" value="원데이" id="oneday" checked><label for="oneday" class="btnlabel">원데이 클래스</label>
                     <input type="radio" name="class_type" value="vod" id="vod"><label for="vod" class="btnlabel">VOD 클래스</label><br>
-              		<input type="radio" name="class_onoff" value="online" id="online" checked><label for="onlline" class="btnlabel">온라인</label>
-                    <input type="radio" name="class_onoff" value="offline" id="offline"><label for="offline" class="btnlabel">오프라인</label><br>
+              		<input type="radio" name="class_onoff" value="온라인" id="online" checked><label for="onlline" class="btnlabel">온라인</label>
+                    <input type="radio" name="class_onoff" value="오프라인" id="offline"><label for="offline" class="btnlabel">오프라인</label><br>
                 </div> 
 
                 <div id="form_body">

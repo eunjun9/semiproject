@@ -18,7 +18,7 @@ public class Lesson {
 	private String ctag2;		// 카테고리 소분류
 	private int cPrice;			// 가격
 	private String cType;		// 타입 (온 오프라인)
-	private String cCategogy;	// 카테고리 (원데이 vod)
+	private String cCategory;	// 카테고리 (원데이 vod)
 	private Date cSDate;		// 시작 날짜
 	private Date cEDate;		// 종료날짜
 	private String cTime1;		// 클래스 시간1
@@ -32,7 +32,7 @@ public class Lesson {
 
 	public Lesson(int nNum, String nTitle, String nContent, int nCount, String nStatus, String nType, String userId,
 			String userName, Date nDate, Date modifyDate, String ctag1, String ctag2, int cPrice, String cType,
-			String cCategogy, Date cSDate, Date cEDate, String cTime1, String cTime2, String cLocation, String cTutor,
+			String cCategory, Date cSDate, Date cEDate, String cTime1, String cTime2, String cLocation, String cTutor,
 			List<Attachment> photoList) {
 		super();
 		this.nNum = nNum;
@@ -49,7 +49,7 @@ public class Lesson {
 		this.ctag2 = ctag2;
 		this.cPrice = cPrice;
 		this.cType = cType;
-		this.cCategogy = cCategogy;
+		this.cCategory = cCategory;
 		this.cSDate = cSDate;
 		this.cEDate = cEDate;
 		this.cTime1 = cTime1;
@@ -175,12 +175,12 @@ public class Lesson {
 		this.cType = cType;
 	}
 
-	public String getcCategogy() {
-		return cCategogy;
+	public String getcCategory() {
+		return cCategory;
 	}
 
-	public void setcCategogy(String cCategogy) {
-		this.cCategogy = cCategogy;
+	public void setcCategory(String cCategory) {
+		this.cCategory = cCategory;
 	}
 
 	public Date getcSDate() {
@@ -248,7 +248,7 @@ public class Lesson {
 		return "Lesson [nNum=" + nNum + ", nTitle=" + nTitle + ", nContent=" + nContent + ", nCount=" + nCount
 				+ ", nStatus=" + nStatus + ", nType=" + nType + ", userId=" + userId + ", userName=" + userName
 				+ ", nDate=" + nDate + ", modifyDate=" + modifyDate + ", ctag1=" + ctag1 + ", ctag2=" + ctag2
-				+ ", cPrice=" + cPrice + ", cType=" + cType + ", cCategogy=" + cCategogy + ", cSDate=" + cSDate
+				+ ", cPrice=" + cPrice + ", cType=" + cType + ", cCategogy=" + cCategory + ", cSDate=" + cSDate
 				+ ", cEDate=" + cEDate + ", cTime1=" + cTime1 + ", cTime2=" + cTime2 + ", cLocation=" + cLocation
 				+ ", cTutor=" + cTutor + ", photoList=" + photoList + "]";
 	}

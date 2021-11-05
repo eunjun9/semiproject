@@ -7,7 +7,7 @@
 <title>클래스 상세페이지</title>
 
 	<!--외부 스타일 시트-->
-    <link href="${ contextPath }/resources/css/lesson/lesson_detail.css" rel="stylesheet">
+    <link href="${ contextPath }/resources/css/lesson/lesson_detail.css?1" rel="stylesheet">
     <link href="${ contextPath }/resources/css/lesson/lesson_datepicker.css" rel="stylesheet">
     <!-- font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,7 +15,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500&display=swap" rel="stylesheet">
 
     <!-- JQuery-->
-     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
 </head>
 <body>
@@ -28,41 +28,56 @@
         <div class="class_detail1">
             <div class="cDetail_h" >
                 <h2 class="cMTitle">${ lesson.nTitle }<hr></h2>
-                <img class="cThumbnail" src="${ contextPath }/resources/uploadFiles/class_ex1.jpg">
+                <img class="cThumbnail" src="${ contextPath }${ lesson.photoList.get(0).route }${ lesson.photoList.get(0).changeName }">
             </div>
-            <h4 class="cTutor">강사</h4> <p>피스오브애플</p>
-            <h4 class="cType">타입</h4> <p>원데이 클래스 / 오프라인</p>
+            <h4 class="cTutor">강사</h4><p>${ lesson.userName }</p>
+            <h4 class="cType">타입</h4><p>${ lesson.cCategory } 클래스 / ${ lesson.cType }</p>
         </div>
         
-        <div class="payment">
-            <h4 id="pTitle">펀치니들을 이용한 티프팅 소품 제작법</h4>
-            <p id="pTime">90시간 <hr></p>
-            <h3 id="pPrice">50,000원</h3>
-            <button id="selCalBtn">수강하기</button>
-        </div>
-        
-        <script>
-            $(function(){ 
-                $("#selCalBtn").click(function(){ 
-                    $(".modal").fadeIn(); 
-                }); 
-                
-                 $("#payBtn").click(function(){ 
-                    if(confirm('결제화면으로 이동하시겠습니까?')){
-                        // 결제화면으로 이동
-                    }  else {
-                        $(".modal").fadeOut(); 
-                    }
-                 }); 
-                 $("#cartBtn").click(function(){ 
-                    if(confirm('장바구니로 이동하시겠습니까?')){
-                        // 장바구니로 이동                       
-                    } else {
-                        $(".modal").fadeOut(); 
-                    }
-                 }); 
-            });
-            </script>
+        <c:choose>
+        	<c:when test="${ lesson.cType eq '온라인' || lesson.cType eq 'online'}" >
+        			<div class="payment">
+			            <h4 id="pTitle">${ lesson.nTitle }</h4>
+			            <p id="pTime">${ lesson.cTime1 } 시간 <hr></p>
+			            <h3 id="pPrice">50,000원</h3>
+			            <button id="selCalBtn">수강하기</button>
+					</div>
+        	</c:when>
+        	
+        	<c:when test="${ lesson.cType eq '오프라인' || lesson.cType eq 'offline'}" >
+       				 <div class="payment">
+			            <h4 id="pTitle">${ lesson.nTitle }</h4>
+			            <p id="pTime">${ lesson.cTime1 } ~ ${ lesson.cTime2 } <hr></p>
+			            <h3 id="pPrice">50,000원</h3>
+			            <button id="selCalBtn">수강하기</button>
+	    			</div>
+	    			 <script>
+			            $(function(){ 
+			                $("#selCalBtn").click(function(){ 
+			                    $(".modal").fadeIn(); 
+			                }); 
+			                
+			                 $("#payBtn").click(function(){ 
+			                    if(confirm('결제화면으로 이동하시겠습니까?')){
+			                    	// 결제 화면
+			                        // location.href = "${contextPath}";
+			                    }  else {
+			                        $(".modal").fadeOut(); 
+			                    }
+			                 }); 
+			                 $("#cartBtn").click(function(){ 
+			                    if(confirm('장바구니로 이동하시겠습니까?')){
+			                        // 장바구니로 이동            
+			                        // location.href = "${contextPath}";
+			                    } else {
+			                        $(".modal").fadeOut(); 
+			                    }
+			                 }); 
+			            });
+			            </script>
+        	</c:when>
+        </c:choose>
+       
 
 
     <div class="modal">
@@ -249,18 +264,20 @@
     <hr>
     <h4>클래스 소개</h4>
     <div class="cDetail_b">
-        <h3 name="cBodyText1" id="cBodyText1">비싼 터프팅건 없이, <br>집에서 감각적인 소품을 만들어볼까요?</h3>
+       <!--  <h3  id="cBodyText1">비싼 터프팅건 없이, <br>집에서 감각적인 소품을 만들어볼까요?</h3>
         <img name="cBodyImg1"  class="cBodyImg" src="../resources/image/body1.JPG">
-        <pre name="cBodyText2" class="cBodyText2">안녕하세요, 터프팅 작업 기법을 이용해 러그를 비롯해 다양한 실생활 소품을 만들고 있는 피스오브애플입니다. 
+        <pre class="cBodyText2">안녕하세요, 터프팅 작업 기법을 이용해 러그를 비롯해 다양한 실생활 소품을 만들고 있는 피스오브애플입니다. 
             터프팅이라는 말이 생소한 분들도 있을 거예요. 
             터프팅건이라는 총 모양의 기계를 이용해 원단에 실을 쏘아 모양을 만들어 내는 작업입니다.
         </pre>
         <br>
         <img name="cBodyImg2"  class="cBodyImg" src="../resources/image/body2.JPG">
-        <pre name="cBodyText2" class="cBodyText2">안녕하세요, 터프팅 작업 기법을 이용해 러그를 비롯해 다양한 실생활 소품을 만들고 있는 피스오브애플입니다. 
+        <pre class="cBodyText2">안녕하세요, 터프팅 작업 기법을 이용해 러그를 비롯해 다양한 실생활 소품을 만들고 있는 피스오브애플입니다. 
             터프팅이라는 말이 생소한 분들도 있을 거예요. 
             터프팅건이라는 총 모양의 기계를 이용해 원단에 실을 쏘아 모양을 만들어 내는 작업입니다.
-        </pre>
+        </pre> -->
+         <pre class="cBodyText2">${ lesson.nContent }</pre>
+        
         <hr>
     </div>
 </div>
@@ -268,20 +285,15 @@
 <!-- 클래스 상세 페이지 푸터-->
 <div class="class_detail3">
     <h4>강사 소개</h4>
-    <pre id="cTutorIntro">안녕하세요. 을지로에서 터프팅건을 이용한 작업을 전개하고 있는 피스오브애플입니다. 이렇게 소다에서 여러분들을 만나뵙게 되어 
-        반가운 마음이에요. 제 작업의 시작점이자 목표는 만든이가 받은 위안을 보는이로 하여금 다시 느끼게되는 작업을 하는거에요. 
-        매번 작업을 하면서 힘이 들때도 있지만 위로받고 위안을 받을 때가 더 많아요. 특히나 마음이 힘들때에는 더욱이 그랬던 것 같아요. 
-        제가 작업도중 느꼈던 평화로움을 그리고 그 작업물들을 공유하는것도 의미가 있었지만, 그 과정의 경험을 공유하는 것은 
-        정말 큰 의미가 있을것 같아요. 손재주가 참 없던 공예과 학생이었던 제가, 시행착오를 겪으며 제게 잘 맞게 연구하고 쌓은 노하우들로 
-        꼼꼼히 알려드릴게요. 손재주가 없으신 분들도 저를 믿고 따라 오시다보면 어느새 무언가가 완성 되어있을거에요! 여러분 꼭 만나요:)                
-    </pre> <hr>
+    <pre id="cTutorIntro">${ lesson.cTutor }</pre> <hr>
     
     <h4>위치</h4>
-    <p id="cPlace">서울 중구 을지로3가 65-14</p><hr>
+    <p id="cPlace">${ lesson.cLocation }</p><hr>
     <h4>환불 정책</h4>
     <p>환불 정책에 따라 클래스 수강일로부터 7일 전 까지 전액 환불이 가능합니다.</p><hr>
     
-    <h4>문의 사항</h4>
+    <!-- 문의사항 나중에 처리 -->
+    <!-- <h4>문의 사항</h4>
     <div class="cQnA">
         <form>
             <input type="text" name="cQuestion" placeholder=" 강사님께 문의하실 내용을 입력해주세요." size="110">
@@ -289,7 +301,7 @@
             <div class="outer">
                 <p class="cQuestion1"> 가져가야 될 준비물이 있을까요?</p>
                 <p class="aStatus">답변 대기</p>
-                <!-- 작성자 본인만 가능 -->
+                작성자 본인만 가능
                 <textarea class="cAnswer" placeholder="답변을 작성해주세요."></textarea>
                 <button name="aSubmit" class="aBtn">등록</button> 
             </div>
@@ -308,17 +320,19 @@
                 <p class="aStatus">답변 완료</p> 
                 <p class="cAnswer" >아니요 준비물은 없습니다.</p>
             </div>
+        </form> -->
 
             <div class="btnArea">
-              <input type="button" value="목록보기">
+              <button onclick="location.href='${ contextPath }/lesson/main'">목록보기</button>
               <!-- 작성자 본인만 가능 -->
-              <!-- <input type="button" value="수정하기">
-              <input type="button" value="삭제하기"> -->
+              <c:if test="${ loginUser.userId == lesson.userId }">
+              <button onclick="updateLessonView();">수정하기</button>
+              <button onclick="deleteLesson();">삭제하기</button>
+              </c:if>
             </div>
-
-        </form>
     </div>
     
+    <!-- 문의사항 스크립트 -->
     <script>
         $('.cQuestion2').click(function(){
             if($(this).siblings('.cAnswer').css('display') == 'none'){ // question다음의 컨텐츠 영역이 display=none일 때
@@ -329,16 +343,29 @@
             }
         });
         </script>
-
-
-	</div>
-
-
-
+	
 	<!-- footer -->
 	<%@ include file="/WEB-INF/views/common/footer.jsp" %>
-    
 </div>
+	
+	<c:if test="${ loginUser.userId == lesson.userId }">
+		<form name="lessonForm" method="post">
+			<input type="hidden" name="nNum" value="${ lesson.nNum }">
+		</form>
+		<script>
+			function updateLessonView(){
+				document.forms.lessonForm.action = "${ contextPath }/lesson/updateView";
+				document.forms.lessonForm.submit();
+			}
+			
+			function deleteLesson(){
+				if(confirm("이 게시글을 삭제하시겠습니까?")){
+					document.forms.lessonForm.action = "${ contextPath }/lesson/delete";
+					document.forms.lessonForm.submit();
+				}
+			}
+		</script>
+	</c:if>
 
 </body>
 </html>

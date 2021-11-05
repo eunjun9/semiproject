@@ -28,13 +28,13 @@ import com.sun.xml.internal.ws.api.message.Attachment;
  * Servlet implementation class SocialingFormServlet
  */
 @WebServlet("/socialing/form")
-public class SocialingFormServlet extends HttpServlet {
+public class SocialingInsertServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SocialingFormServlet() {
+    public SocialingInsertServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -62,7 +62,7 @@ public class SocialingFormServlet extends HttpServlet {
 		
 		/* 2. 웹 서버 컨테이너 경로 추출 후 파일이 실제 저장 될 경로 지정 */
 		String root = request.getSession().getServletContext().getRealPath("/"); // E:\Server\workspace\JSPProject\webapp\
-		String savePath = root + "resources\\uploadFiles\\"; // \는 이스케이프 처리
+		String savePath = root + "resources\\uploadFiles\\";
 		
 		/* HttpServletRequest => MultipartRequest 타입으로 변경 */
 		MultipartRequest multiRequest 
