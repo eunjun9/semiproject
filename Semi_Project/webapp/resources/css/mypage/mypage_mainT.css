@@ -38,6 +38,8 @@ img{
 }
 .info h2{
     color : rgb(7, 86, 105);
+    margin-left : 20px;
+    margin-top : 5px;
 }
 
 /* 알림 */
