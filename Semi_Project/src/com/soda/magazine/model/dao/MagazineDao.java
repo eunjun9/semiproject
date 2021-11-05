@@ -36,30 +36,30 @@ public class MagazineDao {
 	}
 	
 	
-	// 게시물 개수 조회
-	public int getListCount(Connection conn) {
-		PreparedStatement pstmt = null;
-		ResultSet rset = null;
-		String sql = magazineQuery.getProperty("getListCount");
-		int listCount = 0;
-		
-		try {
-			pstmt = conn.prepareStatement(sql);
-			
-			rset = pstmt.executeQuery();
-			
-			if(rset.next()) {
-				listCount = rset.getInt(1);
-			}
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close(pstmt);
-			close(rset);
-		}
-		return listCount;
-	}
+//	// 게시물 개수 조회
+//	public int getListCount(Connection conn) {
+//		PreparedStatement pstmt = null;
+//		ResultSet rset = null;
+//		String sql = magazineQuery.getProperty("getListCount");
+//		int listCount = 0;
+//		
+//		try {
+//			pstmt = conn.prepareStatement(sql);
+//			
+//			rset = pstmt.executeQuery();
+//			
+//			if(rset.next()) {
+//				listCount = rset.getInt(1);
+//			}
+//			
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		} finally {
+//			close(pstmt);
+//			close(rset);
+//		}
+//		return listCount;
+//	}
 
 
 	// 게시물 리스트 조회
@@ -154,8 +154,8 @@ public class MagazineDao {
 	               
 	               result = pstmt.executeUpdate();
 	               
-	               System.out.println(result);
-	               System.out.println(pstmt);
+//	               System.out.println(result);
+//	               System.out.println(pstmt);
 	               
 	            } catch (SQLException e) {
 	               e.printStackTrace();
@@ -167,5 +167,54 @@ public class MagazineDao {
 	         }
 
 
+		public static Magazine selectMagazine(Connection conn, String userId) {
+			PreparedStatement pstmt = null;
+		      ResultSet rset = null;
+		      Magazine magazine = null;
+		      String sql = magazineQuery.getProperty("selectMagazine");
+		      
+		      try {
+		         pstmt = conn.prepareStatement(sql);
+		         pstmt.setString(1, userId);
+		         rset = pstmt.executeQuery();
+		         
+		         
+		         if(rset.next()) {
+		        	magazine = new Magazine();
+		        	magazine.setNnum(rset.getInt("notice_num"));
+		        	magazine.setNtitle(rset.getString("notice_title"));
+		        	magazine.setNcontent(rset.getString("notice_content"));
+		        	magazine.setNdate(rset.getDate("notice_date"));
+		        	magazine.setNstatus(rset.getString("notice_status"));
+		        	magazine.setNtype(rset.getString("notice_type"));
+		        	magazine.setUserId(rset.getString("user_id"));
+		        	magazine.setNdate(rset.getDate("modify_date"));
+		        	magazine.setSelfNum(rset.getString("notice_self_num"));
+		        	magazine.setNcount(rset.getInt("ncount"));
+		         }
+		         
+		      } catch (SQLException e) {
+		         e.printStackTrace();
+		      } finally {
+		         close(rset);
+		         close(pstmt);
+		      }
+		      
+		      return magazine;
+		}
+
+
+		public List<MagazineFile> selectPhotoList(Connection conn, String userId) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+
+
 		
-	}
+
+
+		}
+
+
+		

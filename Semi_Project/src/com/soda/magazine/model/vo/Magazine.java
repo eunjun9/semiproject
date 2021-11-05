@@ -9,31 +9,64 @@ public class Magazine {
 	private int nNum;			// 게시글 번호 pk
 	private String nTitle;		// 게시글 제목
 	private String nContent;	// 게시글 내용
+	private Date nDate;			// 작성 날짜
 	private String nStatus;		// 상태 (Y, N)
 	private String nType;		// 게시판 종류 (클래스, 소셜링, 매거진)
 	private String userId;		// 사용자 아이디 (Member_info 테이블 참조)
 	private String userName; 	// 사용자 이름 (Member_info 테이블 참조)
-	private Date nDate;			// 작성 날짜
 	private Date modifyDate;	// 수정 날짜
+	
+	private String selfNum;		// 셀프 참조
+	private String nCount;		// 조회수
 	
 	private List<MagazineFile> photoList;  // 첨부파일
 	
 	public Magazine() {}
 
-	public Magazine(int nNum, String nTitle, String nContent, String nStatus, String nType, String userId,
-			String userName, Date nDate, Date modifyDate, List<MagazineFile> photoList) {
+
+
+	public Magazine(int nNum, String nTitle, String nContent, Date nDate, String nStatus, String nType, String userId,
+			String userName, Date modifyDate, String selfNum, String ncount, List<MagazineFile> photoList) {
 		super();
 		this.nNum = nNum;
 		this.nTitle = nTitle;
 		this.nContent = nContent;
+		this.nDate = nDate;
 		this.nStatus = nStatus;
 		this.nType = nType;
 		this.userId = userId;
 		this.userName = userName;
-		this.nDate = nDate;
 		this.modifyDate = modifyDate;
+		this.selfNum = selfNum;
+		this.ncount = ncount;
 		this.photoList = photoList;
 	}
+
+
+
+	public String getSelfNum() {
+		return selfNum;
+	}
+
+
+
+	public void setSelfNum(String selfNum) {
+		this.selfNum = selfNum;
+	}
+
+
+
+	public String getNcount() {
+		return ncount;
+	}
+
+
+
+	public void setNcount(String ncount) {
+		this.ncount = ncount;
+	}
+
+
 
 	public int getnNum() {
 		return nNum;
@@ -115,13 +148,17 @@ public class Magazine {
 		this.photoList = photoList;
 	}
 
+
+
 	@Override
 	public String toString() {
-		return "Magazine [nNum=" + nNum + ", nTitle=" + nTitle + ", nContent=" + nContent + ", nStatus=" + nStatus
-				+ ", nType=" + nType + ", userId=" + userId + ", userName=" + userName + ", nDate=" + nDate
-				+ ", modifyDate=" + modifyDate + ", photoList=" + photoList + "]";
+		return "Magazine [nNum=" + nNum + ", nTitle=" + nTitle + ", nContent=" + nContent + ", nDate=" + nDate
+				+ ", nStatus=" + nStatus + ", nType=" + nType + ", userId=" + userId + ", userName=" + userName
+				+ ", modifyDate=" + modifyDate + ", selfNum=" + selfNum + ", ncount=" + ncount + ", photoList="
+				+ photoList + "]";
 	}
 
+	
 	
 
 
