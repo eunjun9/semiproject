@@ -104,7 +104,7 @@
             </div>
             <div class="common-form" id="agree"> 
                 <div class="form-check mb-2"> 
-                    <input class="form-check-input" type="checkbox" name="n_agree" id="n_agree" value="체크"> 
+                    <input class="form-check-input" type="checkbox" name="n_agree" id="n_agree" value="체크" required> 
                     <label class="form-check-label" for="n_agree"> [필수] 
                         <a class="link" href="<%= request.getContextPath() %>/joincheck">이용약관</a>과 <a class="link" href="<%= request.getContextPath() %>/joincheck">개인정보처리방침</a>에 동의 
                     </label> 
