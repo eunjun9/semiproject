@@ -70,4 +70,15 @@
 		   AND STATUS = 'Y'
 		 ORDER BY FILE_NUM
 	</entry>
+	
+	<entry key="insertMember">
+		INSERT
+		  INTO SOCIALING_MEMBER
+		VALUES
+		(
+			?
+		  , ?
+		  , DEFAULT
+		)
+	</entry>
 </properties>
