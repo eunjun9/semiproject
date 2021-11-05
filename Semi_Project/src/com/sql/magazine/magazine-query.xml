@@ -73,7 +73,8 @@
 		, ?
 		, ?
 		, SYSDATE
-		, '매거진'
+		,
+		'매거진'
 		, 0
 		)
 	</entry>
@@ -94,7 +95,7 @@
 		)
 		VALUES
 		(
-		  SEQ_FILE_NUM.NEXTVAL
+		SEQ_FILE_NUM.NEXTVAL
 		, SEQ_NOTICE_NUM.CURRVAL
 		, ?
 		, ?
@@ -102,6 +103,25 @@
 		, ?
 		, DEFAULT
 		)
+	</entry>
+
+
+	<entry key="selectMagazine">
+		SELECT
+		NOTICE_NUM,
+		NOTICE_TITLE,
+		NOTICE_CONTENT,
+		NOTICE_DATE,
+		NOTICE_STATUS,
+		NOTICE_TYPE,
+		USER_ID,
+		MODIFY_DATE,
+		NOTICE_SELF_NUM,
+		NCOUNT
+		FROM NOTICE N
+		JOIN MEMBER_INFO USING(USER_ID)
+		WHERE N.STATUS='Y'
+		AND USER_ID = ?
 	</entry>
 
 </properties>

@@ -111,8 +111,8 @@ public class MagazineWriteServlet extends HttpServlet {
 	      /* magazine에 만들어진 attachment 데이터 설정 */
 	      magazine.setPhotoList(photoList);
 	      
-	      System.out.println(magazine);
-	      System.out.println(photoList);
+//	      System.out.println(magazine);
+//	      System.out.println(photoList);
 	      
 	      
 	      
