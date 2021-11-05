@@ -25,20 +25,20 @@
     <div class="wrapper1">
         <div class="info">
             <h2>마이 페이지</h2>
-            <a class="notice" href="#"><img width="7%" src="../resources/icon/bell.png"></a>
+            <a class="notice" href="#"><img width="7%" src="${ contextPath }/resources/images/yewon/bell.png"></a>
             <a class="notice" href="#"><p>알림</p></a>
             
             <div class="profile">
-                <a href="#"><img width="45%" src="../resources/icon/프로필.png"></a>
+                <a href="#"><img width="45%" src="${ contextPath }/resources/images/yewon/profile.png"></a>
                 <p id="name">김철수</p>
                 <p id="level">강사</p>
                 <p id="mail">kh@gmail.com</p>
-                <a id="myfeed" href="#">내 피드 <img width="5%" src="../resources/icon/next.png"></a>
+                <a id="myfeed" href="#">내 피드 <img width="5%" src="${ contextPath }/resources/images/yewon/next.png"></a>
             </div>
 
             <ul class="move">
-                <li><a class="mv" id="modify" href="#">정보수정 <img class="pmv" width="5%" src="../resources/icon/next.png"> </a></li>
-                <li><a class="mv" id="logout" href="#">로그아웃 <img class="pmv" width="5%" src="../resources/icon/next.png"> </a> </li>
+                <li><a class="mv" id="modify" href="#">정보수정 <img class="pmv" width="5%" src="${ contextPath }/resources/images/yewon/next.png"> </a></li>
+                <li><a class="mv" id="logout" href="#">로그아웃 <img class="pmv" width="5%" src="${ contextPath }/resources/images/yewon/next.png"> </a> </li>
             </ul>
         </div>
     </div> 
@@ -55,42 +55,42 @@
                 <div class="swiper mySwiper1 socialing">
                     <div class="swiper-wrapper sw">
                         <div class="swiper-slide">
-                            <a href="#"><img class="ipic" width="92%" height="20%" src="../resources/icon/friend.jpg"></a>
+                            <a href="#"><img class="ipic" width="92%" height="20%" src="${ contextPath }/resources/images/yewon/friend.jpg"></a>
                             <a id="stitle" href="#">오일 파스텔 원데이 클래스</a>
                             <p id="stime">사당역 10/8 토요일 오전 10시</p>
                         </div>
                         <div class="swiper-slide">
-                            <a href="#"><img class="ipic" width="92%" height="70%" src="../resources/icon/friend.jpg"></a>
+                            <a href="#"><img class="ipic" width="92%" height="70%" src="${ contextPath }/resources/images/yewon/friend.jpg"></a>
                             <a id="stitle" href="#">도자기 공방 원데이 클래스</a>
                             <p id="stime">망원역 11/8 토요일 오전 12시</p>
                         </div>
                         <div class="swiper-slide">
-                            <a href="#"><img class="ipic" width="92%" height="70%" src="../resources/icon/friend.jpg"></a>
+                            <a href="#"><img class="ipic" width="92%" height="70%" src="${ contextPath }/resources/images/yewon/friend.jpg"></a>
                             <a id="stitle" href="#">오일 파스텔 원데이 클래스</a>
                             <p id="stime">사당역 10/8 토요일 오전 10시</p>
                         </div>
                         <div class="swiper-slide">
-                            <a href="#"><img class="ipic" width="92%" height="70%" src="../resources/icon/friend.jpg"></a>
+                            <a href="#"><img class="ipic" width="92%" height="70%" src="${ contextPath }/resources/images/yewon/friend.jpg"></a>
                             <a id="stitle" href="#">위빙 원데이 클래스</a>
                             <p id="stime">성수역 11/12 토요일 오전 10시</p>
                         </div>
                         <div class="swiper-slide">
-                            <a href="#"><img class="ipic" width="92%" height="70%" src="../resources/icon/friend.jpg"></a>
+                            <a href="#"><img class="ipic" width="92%" height="70%" src="${ contextPath }/resources/images/yewon/friend.jpg"></a>
                             <a id="stitle" href="#">오일 파스텔 원데이 클래스</a>
                             <p id="stime">사당역 10/8 토요일 오전 10시</p>
                         </div>
                         <div class="swiper-slide">
-                            <a href="#"><img class="ipic" width="92%" height="70%" src="../resources/icon/friend.jpg"></a>
+                            <a href="#"><img class="ipic" width="92%" height="70%" src="${ contextPath }/resources/images/yewon/friend.jpg"></a>
                             <a id="stitle" href="#">위빙 원데이 클래스</a>
                             <p id="stime">성수역 11/12 토요일 오전 10시</p>
                         </div>
                         <div class="swiper-slide">
-                            <a href="#"><img class="ipic" width="92%" height="70%" src="../resources/icon/friend.jpg"></a>
+                            <a href="#"><img class="ipic" width="92%" height="70%" src="${ contextPath }/resources/images/yewon/friend.jpg"></a>
                             <a id="stitle" href="#">오일 파스텔 원데이 클래스</a>
                             <p id="stime">사당역 10/8 토요일 오전 10시</p>
                         </div>
                         <div class="swiper-slide">
-                            <a href="#"><img class="ipic" width="92%" height="70%" src="../resources/icon/friend.jpg"></a>
+                            <a href="#"><img class="ipic" width="92%" height="70%" src="${ contextPath }/resources/images/yewon/friend.jpg"></a>
                             <a id="stitle" href="#">스콘 베이킹 원데이 클래스</a>
                             <p id="stime">홍대입구 11/10 일요일 오전 10시</p>
                         </div>
@@ -102,12 +102,12 @@
                 <!-- 슬라이드 버튼 설정 -->
                 <div class=button1>
                     <!-- If we need navigation buttons -->
-                    <div class="but1"><img width="20px" src="../resources/icon/prev_b.png"></div>
+                    <div class="but1"><img width="20px" src="${ contextPath }/resources/images/yewon/prev_b.png"></div>
                 </div>
                 
 
                 <div class=button2>
-                    <div class="but2"><img width="20px" src="../resources/icon/next_b.png"></div>
+                    <div class="but2"><img width="20px" src="${ contextPath }/resources/images/yewon/next_b.png"></div>
                 </div>
                 
             </div> 
@@ -141,32 +141,32 @@
                     <div class="swiper mySwiper2 socialing">
                         <div class="swiper-wrapper sw">
                             <div class="swiper-slide">
-                                <a href="#"><img class="ipic" width="92%" height="70%" src="../resources/icon/friend.jpg"></a>
+                                <a href="#"><img class="ipic" width="92%" height="70%" src="${ contextPath }/resources/images/yewon/friend.jpg"></a>
                                 <a id="stitle" href="#">오일 파스텔 원데이 클래스</a>
                                 <p id="stime">사당역 10/8 토요일 오전 10시</p>
                             </div>
                             <div class="swiper-slide">
-                                <a href="#"><img class="ipic" width="92%" height="70%" src="../resources/icon/friend.jpg"></a>
+                                <a href="#"><img class="ipic" width="92%" height="70%" src="${ contextPath }/resources/images/yewon/friend.jpg"></a>
                                 <a id="stitle" href="#">도자기 공방 원데이 클래스</a>
                                 <p id="stime">망원역 11/8 토요일 오전 12시</p>
                             </div>
                             <div class="swiper-slide">
-                                <a href="#"><img class="ipic" width="92%" height="70%" src="../resources/icon/friend.jpg"></a>
+                                <a href="#"><img class="ipic" width="92%" height="70%" src="${ contextPath }/resources/images/yewon/friend.jpg"></a>
                                 <a id="stitle" href="#">위빙 원데이 클래스</a>
                                 <p id="stime">성수역 11/12 토요일 오전 10시</p>
                             </div>
                             <div class="swiper-slide">
-                                <a href="#"><img class="ipic" width="92%" height="70%" src="../resources/icon/friend.jpg"></a>
+                                <a href="#"><img class="ipic" width="92%" height="70%" src="${ contextPath }/resources/images/yewon/friend.jpg"></a>
                                 <a id="stitle" href="#">오일 파스텔 원데이 클래스</a>
                                 <p id="stime">사당역 10/8 토요일 오전 10시</p>
                             </div>
                             <div class="swiper-slide">
-                                <a href="#"><img class="ipic" width="92%" height="70%" src="../resources/icon/friend.jpg"></a>
+                                <a href="#"><img class="ipic" width="92%" height="70%" src="${ contextPath }/resources/images/yewon/friend.jpg"></a>
                                 <a id="stitle" href="#">위빙 원데이 클래스</a>
                                 <p id="stime">성수역 11/12 토요일 오전 10시</p>
                             </div>
                             <div class="swiper-slide">
-                                <a href="#"><img class="ipic" width="92%" height="70%" src="../resources/icon/friend.jpg"></a>
+                                <a href="#"><img class="ipic" width="92%" height="70%" src="${ contextPath }/resources/images/yewon/friend.jpg"></a>
                                 <a id="stitle" href="#">스콘 베이킹 원데이 클래스</a>
                                 <p id="stime">홍대입구 11/10 일요일 오전 10시</p>
                             </div>
@@ -176,11 +176,11 @@
                     <!-- 슬라이드 버튼 설정 -->
                     <div class=button3>
                         <!-- If we need navigation buttons -->
-                        <div class="but3"><img width="20px" src="../resources/icon/prev_b.png"></div>
+                        <div class="but3"><img width="20px" src="${ contextPath }/resources/images/yewon/prev_b.png"></div>
                     </div>
                     
                     <div class=button4>
-                        <div class="but4"><img width="20px" src="../resources/icon/next_b.png"></div>
+                        <div class="but4"><img width="20px" src="${ contextPath }/resources/images/yewon/next_b.png"></div>
                     </div>
                     
                 </div> 

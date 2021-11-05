@@ -60,7 +60,14 @@
                     <a href="${ contextPath }/mypage/main" >MYPAGE</a>
                         <ul class="mypage_sub">
                         <% if(loginUser != null) { %>
-                          <li><a href="${ contextPath }/mypage/main">마이페이지</a></li>
+                          <c:choose>
+                          	<c:when test="${ loginUser.userGrade == '회원' }">
+                          		<li><a href="${ contextPath }/mypage/main">마이페이지</a></li>
+                          	</c:when>
+                          	<c:when test="${ loginUser.userGrade == '강사' }">
+                          		<li><a href="${ contextPath }/mypage/tutormain">마이페이지</a></li>
+                          	</c:when>
+                          </c:choose>
                           <li><a href="${ contextPath }/logout">로그아웃</a></li>
                           <% } else { %>
                           <li><a href="${ contextPath }/login">로그인</a></li>
