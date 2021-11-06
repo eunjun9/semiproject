@@ -2,6 +2,7 @@ package com.soda.order.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -32,28 +33,44 @@ public class WishListAddServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("utf-8");
-		// 세션에서 userId 가져오기
-		HttpSession session = request.getSession();
+		// 장바구니에 클래스 추가하는 서블릿
 		
-		WishList lessonAdd = new WishList();
-		lessonAdd.setnNum(Integer.parseInt(request.getParameter("nNum")));
-		lessonAdd.setUserId((String)session.getAttribute("userId"));
+		int nNum = Integer.parseInt(request.getParameter("nNum"));
+		HttpSession session = request.getSession();
+		String userId = (String)session.getAttribute("userId");
+		
+		// 테스트
+		System.out.println(nNum);
+		System.out.println(userId);
+		
+		WishList wishlist = new WishList();
+		wishlist.setnNum(nNum);
+		wishlist.setUserId(userId);
+		
 		
 		// 장바구니에 insert하는 로직
-		int wishListAdd = new WishListService().wishListAdd(lessonAdd);
-		
-		PrintWriter out = response.getWriter();
-		out.println(wishListAdd);
+		int result = new WishListService().wishListAdd(wishlist);
 		
 
+		// insert 성공 시
+		if(result > 0) {
+			request.setAttribute("message", "장바구니 담기가 완료되었습니다.");
+			response.sendRedirect(request.getContextPath() + "/wishlist");
+		}
+		// insert 실패 시
+		else {
+			request.setAttribute("message", "장바구니 조회에 실패하였습니다. 다시 시도해주세요.");
+			PrintWriter writer = response.getWriter();
+			writer.println("<script>history.back();</script>");
+			writer.close();
+		}
+		
 	}
 
 }

@@ -66,9 +66,13 @@
 			                    }
 			                 }); 
 			                 $("#cartBtn").click(function(){ 
-			                    if(confirm('장바구니로 이동하시겠습니까?')){
-			                        // 장바구니로 이동            
-			                        // location.href = "${contextPath}";
+			                	var confirm = confirm('장바구니에 추가하시겠습니까?');
+			                    if(confirm == true){
+			                        // 확인 눌렀을 때 장바구니로 이동     
+			                    	location.href = "${contextPath}/wishlist/add";
+			                    }else if(confirm == false){
+			                    	// 취소 눌렀을 때 
+			                    	 $(".modal").fadeOut(); 
 			                    } else {
 			                        $(".modal").fadeOut(); 
 			                    }
