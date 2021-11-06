@@ -17,16 +17,14 @@ public class Magazine {
 	private Date modifyDate;	// 수정 날짜
 	
 	private String selfNum;		// 셀프 참조
-	private String nCount;		// 조회수
+	private int nCount;		// 조회수
 	
 	private List<MagazineFile> photoList;  // 첨부파일
 	
 	public Magazine() {}
 
-
-
 	public Magazine(int nNum, String nTitle, String nContent, Date nDate, String nStatus, String nType, String userId,
-			String userName, Date modifyDate, String selfNum, String ncount, List<MagazineFile> photoList) {
+			String userName, Date modifyDate, String selfNum, int nCount, List<MagazineFile> photoList) {
 		super();
 		this.nNum = nNum;
 		this.nTitle = nTitle;
@@ -38,35 +36,9 @@ public class Magazine {
 		this.userName = userName;
 		this.modifyDate = modifyDate;
 		this.selfNum = selfNum;
-		this.ncount = ncount;
+		this.nCount = nCount;
 		this.photoList = photoList;
 	}
-
-
-
-	public String getSelfNum() {
-		return selfNum;
-	}
-
-
-
-	public void setSelfNum(String selfNum) {
-		this.selfNum = selfNum;
-	}
-
-
-
-	public String getNcount() {
-		return ncount;
-	}
-
-
-
-	public void setNcount(String ncount) {
-		this.ncount = ncount;
-	}
-
-
 
 	public int getnNum() {
 		return nNum;
@@ -90,6 +62,14 @@ public class Magazine {
 
 	public void setnContent(String nContent) {
 		this.nContent = nContent;
+	}
+
+	public Date getnDate() {
+		return nDate;
+	}
+
+	public void setnDate(Date nDate) {
+		this.nDate = nDate;
 	}
 
 	public String getnStatus() {
@@ -124,20 +104,28 @@ public class Magazine {
 		this.userName = userName;
 	}
 
-	public Date getnDate() {
-		return nDate;
-	}
-
-	public void setnDate(Date nDate) {
-		this.nDate = nDate;
-	}
-
 	public Date getModifyDate() {
 		return modifyDate;
 	}
 
 	public void setModifyDate(Date modifyDate) {
 		this.modifyDate = modifyDate;
+	}
+
+	public String getSelfNum() {
+		return selfNum;
+	}
+
+	public void setSelfNum(String selfNum) {
+		this.selfNum = selfNum;
+	}
+
+	public int getnCount() {
+		return nCount;
+	}
+
+	public void setnCount(int nCount) {
+		this.nCount = nCount;
 	}
 
 	public List<MagazineFile> getPhotoList() {
@@ -148,13 +136,11 @@ public class Magazine {
 		this.photoList = photoList;
 	}
 
-
-
 	@Override
 	public String toString() {
 		return "Magazine [nNum=" + nNum + ", nTitle=" + nTitle + ", nContent=" + nContent + ", nDate=" + nDate
 				+ ", nStatus=" + nStatus + ", nType=" + nType + ", userId=" + userId + ", userName=" + userName
-				+ ", modifyDate=" + modifyDate + ", selfNum=" + selfNum + ", ncount=" + ncount + ", photoList="
+				+ ", modifyDate=" + modifyDate + ", selfNum=" + selfNum + ", nCount=" + nCount + ", photoList="
 				+ photoList + "]";
 	}
 
@@ -162,5 +148,4 @@ public class Magazine {
 	
 
 
-	
 }
