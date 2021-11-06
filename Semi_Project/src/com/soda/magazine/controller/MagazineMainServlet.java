@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.soda.lesson.model.service.LessonService;
 import com.soda.magazine.model.service.MagazineService;
+import com.soda.magazine.model.vo.Magazine;
 import com.soda.socialing.model.service.SocialingService;
 import com.soda.socialing.model.vo.Notice;
 
@@ -34,6 +35,10 @@ public class MagazineMainServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		List<Magazine> magazineList = new MagazineService().selectMagazineList();
+		
+		request.setAttribute("magazineList", magazineList);
+		
 		request.getRequestDispatcher("/WEB-INF/views/magazine/magazineMain.jsp").forward(request, response);
 
 	}	

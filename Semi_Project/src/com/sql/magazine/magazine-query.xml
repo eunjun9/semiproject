@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE properties SYSTEM
 "http://java.sun.com/dtd/properties.dtd">
+
 <properties>
+
 	<entry key="getListCount">
 		SELECT
 		COUNT(*)
@@ -10,6 +12,7 @@
 		AND
 		NOTICE_STATUS = 'N'
 	</entry>
+
 
 	<entry key="selectList">
 		SELECT *
@@ -46,8 +49,7 @@
 
 	<entry key="insertMagazine">
 
-		<!-- NOTICE_NUM NOTICE_TITLE NOTICE_CONTENT NOTICE_DATE NOTICE_STATUS NOTICE_TYPE 
-			USER_ID MODIFY_DATE NOTICE_SELF_NUM NCOUNT -->
+
 
 		INSERT
 		INTO NOTICE
@@ -99,7 +101,7 @@
 		, SEQ_NOTICE_NUM.CURRVAL
 		, ?
 		, ?
-		, DEFAULT
+		, ?
 		, ?
 		, DEFAULT
 		)
@@ -118,10 +120,42 @@
 		MODIFY_DATE,
 		NOTICE_SELF_NUM,
 		NCOUNT
-		FROM NOTICE N
-		JOIN MEMBER_INFO USING(USER_ID)
-		WHERE N.STATUS='Y'
-		AND USER_ID = ?
+		FROM NOTICE
+		WHERE NOTICE_STATUS='N'
+		AND NOTICE_NUM = ?
 	</entry>
-
-</properties>
+	
+		<entry key="selectPhotoList">
+	 SELECT
+	        FILE_NUM
+	      , ORIGIN_NAME
+	      , CHANGE_NAME
+	      , ROUTE
+	      , FILE_LEVEL
+	  FROM TBL_FILE T
+	  WHERE NOTICE_NUM = ?
+	    AND T.STATUS = 'N'
+   ORDER BY FILE_NUM
+	</entry>
+	
+	
+	<entry key="selectMagazineList">
+	   SELECT
+          NOTICE_NUM
+        , NOTICE_TYPE
+        , NOTICE_TITLE
+        , USER_ID
+        , NCOUNT
+        , ROUTE
+        , CHANGE_NAME
+        , file_level
+     FROM NOTICE
+     JOIN MEMBER_INFO USING(USER_ID)
+     JOIN TBL_FILE USING(NOTICE_NUM)
+    WHERE NOTICE_STATUS = 'N'
+    AND FILE_LEVEL = 1
+    ORDER BY NOTICE_NUM DESC
+    </entry>
+	
+	
+	</properties>

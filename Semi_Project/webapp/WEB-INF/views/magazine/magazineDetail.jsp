@@ -11,8 +11,9 @@
 <title>매거진 상세 페이지</title>
 
 <!-- 외부 스타일 시트 -->
-<link href="../css/magazineDetail.css" rel="stylesheet">
-<link href="../css/Headerfooter.css" rel="stylesheet">
+<link
+	href="<%= request.getContextPath() %>/resources/css/magazine/magazineDetail.css"
+	rel="stylesheet">
 
 <!-- favicon (Real Favicon Generator)-->
 <link rel="icon" type="image/x-icon"
@@ -33,6 +34,7 @@
 
 
 <!--header-->
+<%@ include file="/WEB-INF/views/common/header.jsp"%>
 
 
 <!--body-->
@@ -49,6 +51,19 @@
 					onclick="openPopup('Report_popup.html', 'checking', 450, 650)">신고</button>
 			</div>
 
+		</div>
+
+
+		<div class="subject">
+			<span> 글번호 : ${ magazine.nNum }</span> 
+			<span> 조회수 : ${ magazine.nCount }</span>
+			<span> 작성자 : ${ magazine.userId }</span> 
+			<span> 작성일 : <fmt:formatDate
+					value="${ magazine.nDate }" type="both"
+					pattern="yyy.MM.dd HH:mm:ss" />
+			</span> 
+			<span> 수정일 : <fmt:formatDate value="${ magazine.modifyDate }"
+					type="both" pattern="yyy.MM.dd HH:mm:ss" /></span>
 		</div>
 
 
@@ -76,6 +91,8 @@
 						</div>
 					</div>
 
+
+
 					<div class="myinfo2">
 						<div class="follow">
 							<button>팔로워 추가</button>
@@ -101,7 +118,7 @@
 				<h4>
 					<span class="title_span">&nbsp;</span> 내용
 				</h4>
-				<pre class="content">${ magazine.ncontent }</pre>
+				<pre class="content">${ magazine.nContent }</pre>
 			</div>
 		</div>
 	</div>
@@ -192,8 +209,8 @@
 
 <!--footer-->
 <%@ include file="/WEB-INF/views/common/footer.jsp"%>
-</div>
 
+</div>
 
 
 
@@ -210,6 +227,9 @@
       }
 
    </script>
+
+
+
 
 </body>
 
