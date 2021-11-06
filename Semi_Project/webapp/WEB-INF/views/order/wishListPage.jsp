@@ -111,7 +111,7 @@
 				$("#wish-class").css("display", "block");
 				}
 			
-		}); -->
-	</script>
+		}); 
+	</script>-->
 </body>
 </html>

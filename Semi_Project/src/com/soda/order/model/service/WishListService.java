@@ -4,10 +4,8 @@ import static com.common.JDBCTemplate.*;
 import static com.common.JDBCTemplate.getConnection;
 
 import java.sql.Connection;
-import java.util.ArrayList;
 import java.util.List;
 
-import com.soda.member.model.vo.Member;
 import com.soda.order.model.dao.WishListDao;
 import com.soda.order.model.vo.WishList;
 
@@ -15,27 +13,13 @@ public class WishListService {
 	
 	private WishListDao wishListDao = new WishListDao();
 
-	// 장바구니 중복 체크
-	public int wishListCheck(int nNum, String userId) {
-		Connection conn = getConnection();
-		
-		int result = wishListDao.wishListCheck(conn, nNum, userId);
-		
-		if(result > 0) {
-			commit(conn);
-		}else {
-			rollback(conn);
-		}
-		close(conn);
-		
-		return result;
-	}
 
 	// 클래스를 장바구니에 추가
-	public int wishListAdd(WishList lessonAdd) {
+	public int wishListAdd(WishList wishlist) {
 		Connection conn = getConnection();
 		
-		int result = wishListDao.wishListAdd(conn, lessonAdd);
+		// 장바구니에 클래스 insert 결과
+		int result = wishListDao.wishListAdd(conn, wishlist);
 		
 		if(result > 0) {
 			commit(conn);
@@ -56,5 +40,6 @@ public class WishListService {
 		
 		return wishlist;
 	}
+
 
 }

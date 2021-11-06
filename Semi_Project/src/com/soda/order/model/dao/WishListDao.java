@@ -28,59 +28,33 @@ public class WishListDao {
 		}
 	}
 
-	// 장바구니 중복 체크
-	public int wishListCheck(Connection conn, int nNum, String userId) {
-		PreparedStatement pstmt = null;
-		ResultSet rset = null;
-		int result = 0;
-		String sql = wishlistQuery.getProperty("wishListCheck");
-		
-		try {
-			pstmt = conn.prepareStatement(sql);
-			
-			pstmt.setString(1, userId);
-			pstmt.setInt(2, nNum);
-			
-			rset = pstmt.executeQuery();
-			
-			if(rset.next()) {
-				result = rset.getInt(1);
-			}
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}finally {
-			close(rset);
-			close(pstmt);
-		}
-		
-		return result;
-	}
 
 	// 클래스를 장바구니에 추가
-	public int wishListAdd(Connection conn, WishList lessonAdd) {
+	public int wishListAdd(Connection conn, WishList wishlist) {
 		PreparedStatement pstmt = null;
 		int result = 0;
+		ResultSet rset = null;
 		String sql = wishlistQuery.getProperty("wishListAdd");
-		
-		try {
-			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setInt(1, lessonAdd.getnNum());
-			pstmt.setString(2, lessonAdd.getUserId());
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, wishlist.getnNum());
+				pstmt.setString(2, wishlist.getUserId());
+				
+				result = pstmt.executeUpdate();
 			
-			result = pstmt.executeUpdate();
 			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close(pstmt);
-		}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally{
+				close(rset);
+				close(pstmt);
+			}
 		
 		return result;
 	}
 
-	
+	// 장바구니 리스트 조회
 	public List<WishList> wishlistList(Connection conn, String userId) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;

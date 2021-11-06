@@ -34,7 +34,7 @@ public class WishListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("utf-8");
+		// 장바구니 리스트 출력 화면 서블릿
 		
 		HttpSession session = request.getSession();
 		String userId = (String) session.getAttribute("userId"); 

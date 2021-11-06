@@ -1,14 +1,9 @@
 package com.soda.order.model.vo;
 
-import java.util.List;
-
-import com.soda.lesson.model.vo.Attachment;
 
 public class WishList {
 	private String userId;
 	private int nNum;
-	
-	private List<Attachment> photoList;	// 사진 첨부 리스트
 	
 	/*
 	USER_ID	VARCHAR2(30 BYTE)
