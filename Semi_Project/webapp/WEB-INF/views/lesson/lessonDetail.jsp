@@ -32,7 +32,7 @@
                 <img class="cThumbnail" src="${ contextPath }${ lesson.photoList.get(0).route }${ lesson.photoList.get(0).changeName }">
             </div>
             <h4 class="cTutor">강사</h4><p>${ lesson.userName }</p>
-            <h4 class="cType">타입</h4><p>${ lesson.cCategory } 클래스</p>
+            <h4 class="cCategory">타입</h4><p>${ lesson.cCategory } 클래스</p>
         </div>
         
         <c:choose>

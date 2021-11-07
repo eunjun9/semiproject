@@ -229,7 +229,7 @@ input[name=cPrice]{
 }
 
 
-input[name=class_date1]{
+input[name=class_date]{
     border: 1px solid lightgray;
     border-radius: 5px;
     width: 180px;

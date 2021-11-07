@@ -49,18 +49,17 @@
                     
                      <select name="smallC" id="smallC" required>
                         <option id="small" selected disabled>소분류 선택</option>
-                        <option value="1" class="artS">드로잉</option>
-                        <option value="2" class="artS">악기</option>
-                        <option value="3" class="artS">일러스트</option>
-                        <option value="4" class="foodS">베이킹</option>
-                        <option value="5" class="foodS">양식</option>
-                        <option value="6" class="foodS">일식</option>
-                        <option value="7" class="foodS">중식</option>
-                        <option value="8" class="foodS">한식</option>
-                        <option value="9" class="sportS">근력운동</option>
-                        <option value="10" class="sportS">요가</option>
-                        <option value="11" class="sportS">유산소운동</option>
-                        <option value="12" class="sportS">필라테스</option>
+                        <option value="10" class="artS">드로잉</option>
+                        <option value="20" class="artS">악기</option>
+                        <option value="30" class="artS">일러스트</option>
+                        <option value="40" class="foodS">베이킹</option>
+                        <option value="50" class="foodS">양식</option>
+                        <option value="60" class="foodS">일식</option>
+                        <option value="70" class="foodS">중식</option>
+                        <option value="80" class="foodS">한식</option>
+                        <option value="90" class="sportS">근력운동</option>
+                        <option value="100" class="sportS">요가</option>
+                        <option value="110" class="sportS">필라테스</option>
                     </select><br>
                     
                     <script>
@@ -123,11 +122,12 @@
                     <textarea class="summernote" name="editordata"></textarea>
 					<div class="image_area2"></div>
                     <button type="button" id="fileBtn2">file</button><br>
-                    <input type="file" name="infofile" accept="image/gif,image/jpeg,image/png" id="imageinfo1">
+                    <input type="file" name="contentImg1" accept="image/gif,image/jpeg,image/png" id="imageinfo1">
                     <div id="img">
                     <div class="image_area3"></div>
                     <button type="button" id="fileBtn3">file</button><br>
-                    <input type="file" name="infofile" accept="image/gif,image/jpeg,image/png" id="imageinfo2">
+                    <input type="file" name="contentImg
+                    lesso2" accept="image/gif,image/jpeg,image/png" id="imageinfo2">
                     </div>
   				</div>
 
@@ -223,13 +223,13 @@
                 <!-- 원데이 클래스 일때 -->
                 <div class="offdate">
                 <h4>날짜를 선택하세요</h4>
-                <input type="date" name="class_date1" required><br>
+                <input type="date" name="class_date" required><br>
                 </div>
                 
                 <!-- vod 클래스 일때 -->
                 <div class="ondate">
                 	<h4>기간을 입력하세요</h4>
-                	<input type="text" name="class_date1"><label>&nbsp;일</label>
+                	<input type="text" name="class_date"><label>&nbsp;일</label>
                 </div>
                 
                 <!-- 타입이 오프라인일때 -->
@@ -240,7 +240,7 @@
                 
 				<div class="location">
                 <h4>클래스 위치를 입력하세요</h4>
-                 <input type="text" name="postcode" class="postcodify_postcode5" placeholder="우편번호" readonly>
+                <input type="text" name="postcode" class="postcodify_postcode5" placeholder="우편번호" readonly>
                 <input type="text" name="address" class="postcodify_address" placeholder="검색버튼을 클릭하세요." readonly>
                 <button id="location_Btn" type="button">검색</button><br>
                 <input type="text" class="postcodify_details" name="detailaddress" placeholder="상세주소를 입력하세요" ><br>

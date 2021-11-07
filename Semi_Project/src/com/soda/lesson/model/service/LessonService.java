@@ -60,12 +60,14 @@ public class LessonService {
 		return result;
 	}
 
-	// 사진 게시판 상세페이지 조회
+	// 클래스  상세페이지 조회
 	public Lesson selectLesson(int nNum) {
 		Connection conn = getConnection();
 		
+		// 글
 		Lesson lesson = lessonDao.selectLesson(conn, nNum);
 		
+		// 사진
 		List<Attachment> photoList = lessonDao.selectPhotoList(conn, nNum);
 		lesson.setPhotoList(photoList);
 		
@@ -74,5 +76,31 @@ public class LessonService {
 		close(conn);
 		
 		return lesson;
+	}
+
+	// 클래스 글 추가
+	public int insertLesson(Lesson lesson) {
+		Connection conn = getConnection();
+		
+		// 글 
+		int lessonResult = lessonDao.insertLesson(conn, lesson);
+		
+		int attachmentResult = 0;
+		
+		for(Attachment photo : lesson.getPhotoList()) { // 첨부파일은 최소 1개에서 최대 3개가 삽입 되기 때문에 반복문 사용헤서 
+			// 사진
+			attachmentResult += lessonDao.insertAttachment(conn, photo);		// 데이터를 쌓음
+		}
+		
+		int result = 0; 	// (board, attachment) 2가지 로직이 모두 잘 수행 되었음을 나타내는 변수
+		if(lessonResult > 0 && attachmentResult == lesson.getPhotoList().size()) {
+			commit(conn);
+			result = 1;
+		} else {
+			rollback(conn);
+		}
+		close(conn);
+		
+		return result;
 	}
 }
