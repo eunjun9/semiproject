@@ -75,7 +75,7 @@
         	
         	<c:when test="${ lesson.cCategory == '원데이'}" >
         	<!-- 원데이 클래스는 수강하기 버튼만 있고 클릭 시 , 날짜 선택 모달창 -> 장바구니 / 결제하기로 넘어갈 수 있음 -->
-       				 <div class="payment">
+       				<div class="payment">
         				<form name="testForm" method="get">
 						<input type="hidden" name="noticeNum" value="${ lesson.nNum }">
 			            <h4 id="pTitle">${ lesson.nTitle }</h4>
@@ -86,74 +86,39 @@
 			            <button type="submit" id="apply">결제하기</button>
 						</form>
 	    			</div>
-<<<<<<< HEAD
 	    			
 	    			<script>
-        	$(function(){
-        		 $("#apply").click(function(){ 
-	        			 if($("#pDate").val() == ""){
-	        				 alert('날짜를 선택하세요');
-	        				 $("#pDate").focus();
-	        				 return false;
-	        			 } else {
-=======
-
-	    			 <script>
-			            $(function(){ 
-			                $("#selCalBtn").click(function(){ 
-			                    $(".modal").fadeIn(); 
-			                }); 
-			                
-			                 $("#payBtn").click(function(){ 
->>>>>>> branch 'master' of https://github.com/umyewon/semiproject.git
-			                    if(confirm('결제화면으로 이동하시겠습니까?')){
-<<<<<<< HEAD
-			                        //document.forms.orderForm.action = "${ contextPath }/order/";
-					                //document.forms.orderForm.submit();
-			                    }else {
-			                    	return false;
-			                    } 
-	 	       			 }
-	                }); 
-        		 $("#cart").click(function(){ 
-        			 if($("#pDate").val() == ""){
-        				 alert('날짜를 선택하세요');
-        				 $("#pDate").focus();
-        				 return false;
-        			 } else {
-		                    if(confirm('장바구니로 이동하시겠습니까?')){
-		                        document.forms.testForm.action = "${ contextPath }/order/add";
-				                document.forms.testForm.submit();
-		                    }else {
-		                    	return false;
-		                    } 
- 	       			 }
-                }); 
-        	})
-        </script>
-=======
-			                    	// 결제 화면 
-			                        // location.href = "${contextPath}/";
-			                    }  else {
-			                        $(".modal").fadeOut(); 
-			                    }
-			                 }); 
-			                 $("#cartBtn").click(function(){ 
-			                	var confirm = confirm('장바구니에 추가하시겠습니까?');
-			                    if(confirm == true){
-			                        // 확인 눌렀을 때 장바구니로 이동
-			                        var nNum = ${'#nNum'}.val();
-			                    	location.href = "${contextPath}/wishlist/add?nNum="+ nNum;
-			                    }else if(confirm == false){
-			                    	// 취소 눌렀을 때 
-			                    	 $(".modal").fadeOut(); 
-			                    } else {
-			                        $(".modal").fadeOut(); 
-			                    }
-			                 }); 
-			            });
-			            </script>
->>>>>>> branch 'master' of https://github.com/umyewon/semiproject.git
+		        	$(function(){
+		        		 $("#apply").click(function(){ 
+			        			 if($("#pDate").val() == ""){
+			        				 alert('날짜를 선택하세요');
+			        				 $("#pDate").focus();
+			        				 return false;
+			        			 } else {
+					                    if(confirm('결제화면으로 이동하시겠습니까?')){
+					                        //document.forms.orderForm.action = "${ contextPath }/order/";
+							                //document.forms.orderForm.submit();
+					                    }else {
+					                    	return false;
+					                    } 
+			                } 
+		        		 })
+		        		 $("#cart").click(function(){ 
+		        			 if($("#pDate").val() == ""){
+		        				 alert('날짜를 선택하세요');
+		        				 $("#pDate").focus();
+		        				 return false;
+		        			 } else {
+				                    if(confirm('장바구니로 이동하시겠습니까?')){
+				                        document.forms.testForm.action = "${ contextPath }/order/add";
+						                document.forms.testForm.submit();
+				                    }else {
+				                    	return false;
+				                    } 
+		 	       			 }
+		                }); 
+		        	});
+        	</script>
         	</c:when>
         </c:choose>
         
