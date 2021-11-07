@@ -2,6 +2,7 @@ package com.soda.order.model.vo;
 
 import java.sql.Date;
 
+
 public class WishList {
 	private String userId;
 	private int nNum;
@@ -37,6 +38,27 @@ public class WishList {
 		this.wishNum = wishNum;
 		this.wishStatus = wishStatus;
 	}
+	
+	// 전체
+	public WishList(String userId, int nNum, int wishNum, String wishStatus, String nTitle, int cPrice,
+			String cCategory, Date cSDate, Date cEDate, String cTime1, String cTime2, String cLocation, String route,
+			String changeName) {
+		super();
+		this.userId = userId;
+		this.nNum = nNum;
+		this.wishNum = wishNum;
+		this.wishStatus = wishStatus;
+		this.nTitle = nTitle;
+		this.cPrice = cPrice;
+		this.cCategory = cCategory;
+		this.cSDate = cSDate;
+		this.cEDate = cEDate;
+		this.cTime1 = cTime1;
+		this.cTime2 = cTime2;
+		this.cLocation = cLocation;
+		this.route = route;
+		this.changeName = changeName;
+	}
 
 
 	// 장바구니 리스트 조회
@@ -54,6 +76,24 @@ public class WishList {
 		this.route = route;
 		this.changeName = changeName;
 	}
+	
+
+	public WishList(int nNum, int wishNum, String wishStatus, String nTitle, int cPrice, String cCategory, Date cSDate,
+			Date cEDate, String cTime1, String cTime2, String cLocation) {
+		super();
+		this.nNum = nNum;
+		this.wishNum = wishNum;
+		this.wishStatus = wishStatus;
+		this.nTitle = nTitle;
+		this.cPrice = cPrice;
+		this.cCategory = cCategory;
+		this.cSDate = cSDate;
+		this.cEDate = cEDate;
+		this.cTime1 = cTime1;
+		this.cTime2 = cTime2;
+		this.cLocation = cLocation;
+	}
+
 
 	public String getUserId() {
 		return userId;
@@ -173,6 +213,7 @@ public class WishList {
 	public void setChangeName(String changeName) {
 		this.changeName = changeName;
 	}
+
 
 
 	@Override
