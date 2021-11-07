@@ -9,7 +9,7 @@
 
 <!-- 외부 스타일 시트 -->
 <link
-	href="<%=request.getContextPath()%>/resources/css/magazine/magazineWrite.css"
+	href="<%=request.getContextPath()%>/resources/css/magazine/magazineInsert.css"
 	rel="stylesheet">
 
 <!-- favicon (Real Favicon Generator)-->
@@ -56,7 +56,7 @@
 				</div>
 
 
-				<form method="post" action="${ contextPath }/magazine/write"
+				<form method="post" action="${ contextPath }/magazine/insert"
 					enctype="multipart/form-data">
 					<div class="content">
 						<h4>
@@ -72,8 +72,7 @@
 						<h4>
 							<br> <span class="title_span">&nbsp;</span> 제목
 						</h4>
-						<span class="input_area"> <input type="text" name="title"
-							required>
+						<span class="input_area"> <input type="text" name="title" required>
 						</span>
 
 						<h4>

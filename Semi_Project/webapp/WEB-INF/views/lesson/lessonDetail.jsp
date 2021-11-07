@@ -51,6 +51,7 @@
 			            <h3 id="pPrice">50,000원</h3>
 			            <button id="selCalBtn">수강하기</button>
 	    			</div>
+<<<<<<< HEAD
 	
 			           
 
@@ -77,6 +78,36 @@
             });
             </script>
 			            
+=======
+	    			 <script>
+			            $(function(){ 
+			                $("#selCalBtn").click(function(){ 
+			                    $(".modal").fadeIn(); 
+			                }); 
+			                
+			                 $("#payBtn").click(function(){ 
+			                    if(confirm('결제화면으로 이동하시겠습니까?')){
+			                    	// 결제 화면 
+			                        // location.href = "${contextPath}/";
+			                    }  else {
+			                        $(".modal").fadeOut(); 
+			                    }
+			                 }); 
+			                 $("#cartBtn").click(function(){ 
+			                	var confirm = confirm('장바구니에 추가하시겠습니까?');
+			                    if(confirm == true){
+			                        // 확인 눌렀을 때 장바구니로 이동     
+			                    	location.href = "${contextPath}/wishlist/add";
+			                    }else if(confirm == false){
+			                    	// 취소 눌렀을 때 
+			                    	 $(".modal").fadeOut(); 
+			                    } else {
+			                        $(".modal").fadeOut(); 
+			                    }
+			                 }); 
+			            });
+			            </script>
+>>>>>>> branch 'master' of https://github.com/umyewon/semiproject.git
         	</c:when>
         </c:choose>
        

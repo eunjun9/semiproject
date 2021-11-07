@@ -1,9 +1,6 @@
 package com.soda.magazine.model.service;
 
 import static com.common.JDBCTemplate.*;
-import static com.common.JDBCTemplate.commit;
-import static com.common.JDBCTemplate.getConnection;
-import static com.common.JDBCTemplate.rollback;
 
 import java.sql.Connection;
 import java.util.HashMap;
@@ -76,14 +73,14 @@ public class MagazineService {
 			
 		}
 
-		public Magazine selectMagazine(String userId) {
+		public Magazine selectMagazine(int nNum) {
 		    Connection conn = getConnection();
 		      
-		      /* Board 테이블 정보 조회 */
-		      Magazine magazine = MagazineDao.selectMagazine(conn, userId);
+		      /* magazine 테이블 정보 조회 */
+		      Magazine magazine = magazineDao.selectMagazine(conn, nNum);
 		      
-		      /* Attachment 테이블 정보 조회 */
-		      List<MagazineFile> photoList = magazineDao.selectPhotoList(conn, userId);
+		      /* magazineFile 테이블 정보 조회 */
+		      List<MagazineFile> photoList = magazineDao.selectPhotoList(conn, nNum);
 		      magazine.setPhotoList(photoList);
 		      
 		      close(conn);
@@ -91,4 +88,38 @@ public class MagazineService {
 		      return magazine;
 
 		}
+
+		// 조회수 증가
+		public int increaseCount(int nNum) {
+			Connection conn = getConnection();
+			
+			int result = magazineDao.increaseCount(conn, nNum);
+			
+			if(result > 0) {
+				commit(conn);
+			} else {
+				rollback(conn);
+			}
+			
+			close(conn);
+			
+			return result;
+		}
+
+		public List<Magazine> selectMagazineList() {
+			 Connection conn = getConnection();
+		      
+		      List<Magazine> magazineList = magazineDao.selectMagazineList(conn);
+		      // System.out.println(conn);
+		      close(conn);
+		      
+		      return magazineList;
+		   }
+		
+		
+		
+		
+		
+		
+		
 		}

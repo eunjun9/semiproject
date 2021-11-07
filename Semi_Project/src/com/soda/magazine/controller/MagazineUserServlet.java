@@ -1,6 +1,7 @@
 package com.soda.magazine.controller;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.soda.magazine.model.service.MagazineService;
+import com.soda.magazine.model.vo.Magazine;
 
 /**
  * Servlet implementation class MagazineUserServlet
@@ -52,7 +54,14 @@ public class MagazineUserServlet extends HttpServlet {
 //	/* 필터 관련 파라미터 추출 (추후에 수정 ) */
 //	request.setAttribute("pi",map.get("pi"));
 //	request.setAttribute("noticeList",map.get("noticeList"));
-	request.getRequestDispatcher("/WEB-INF/views/magazine/magazineUser.jsp").forward(request,response);
+	List<Magazine> magazineList = new MagazineService().selectMagazineList();
+	
+//	System.out.println(boardList);
+	
+	request.setAttribute("magazineList", magazineList);
+	request.getRequestDispatcher("/WEB-INF/views/magazine/magazineUser.jsp").forward(request, response);
+//	System.out.println(magazineList);
+	
 	}
 
 
