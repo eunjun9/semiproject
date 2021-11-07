@@ -69,19 +69,21 @@ public class WishListDao {
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {
-				WishList w = new WishList(rset.getString("notice_title"),
-										  rset.getInt("c_price"),
-										  rset.getString("c_category"),
-										  rset.getDate("c_sdate"),
-										  rset.getDate("c_edate"),
-										  rset.getString("c_location"),
-										  rset.getString("c_time1"),
-										  rset.getString("c_time2"),
-										  rset.getString("route"),
-										  rset.getString("change_name"));
+				WishList w = new WishList();
+				w.setnTitle(rset.getString("notice_title"));
+				w.setnNum(rset.getInt("notice_num"));
+				w.setcPrice(rset.getInt("c_price"));
+				w.setcCategory(rset.getString("c_category"));
+				w.setcSDate(rset.getDate("c_sdate"));
+				w.setcEDate(rset.getDate("c_edate"));
+				w.setcLocation(rset.getString("c_location"));
+				w.setcTime1(rset.getString("c_time1"));
+				w.setcTime2(rset.getString("c_time2"));
+				w.setWishNum(rset.getInt("wish_num"));
+				//w.setRoute(rset.getString("route"));
+				//w.setChangeName(rset.getString("change_name"));
 				
 				wishlist.add(w);
-				
 			}
 			
 			

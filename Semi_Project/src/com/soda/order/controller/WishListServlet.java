@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.soda.member.model.vo.Member;
 import com.soda.order.model.service.WishListService;
 import com.soda.order.model.vo.WishList;
 
@@ -32,22 +33,28 @@ public class WishListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/WEB-INF/views/order/wishListPage.jsp").forward(request, response);
+		HttpSession session = request.getSession();
+		Member loginUser = (Member)session.getAttribute("loginUser");
+		String userId = loginUser.getUserId();
+		
+		// 테스트
+		//System.out.println(userId);
+		
+		List<WishList> wishList = new WishListService().wishlistList(userId);
+
+		if(wishList != null) {
+			request.setAttribute("wishList", wishList);
+			request.getRequestDispatcher("/WEB-INF/views/order/wishListPage.jsp").forward(request, response);
+		} else {
+			request.setAttribute("message", "장바구니 조회에 실패하였습니다.");
+			request.getRequestDispatcher("/WEB-INF/views/common/errorpage.jsp").forward(request, response);
+		}
 	}
+	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 장바구니 리스트 출력 화면 서블릿
-		
-		HttpSession session = request.getSession();
-		String userId = (String) session.getAttribute("userId"); 
-				
-		List<WishList> wishlist = new WishListService().wishlistList(userId);
-
-		request.setAttribute("wishlist", wishlist);
-		request.getRequestDispatcher("/WEB-INF/views/order/wishListPage.jsp").forward(request, response);
 	}
-
-}
+	}
