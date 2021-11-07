@@ -40,24 +40,60 @@
                 <h3>어떤 클래스인가요?</h3>
                                 
                 <h4 id="sub_title1">카테고리를 선택하세요</h4>
-                    <select name="bigC" required>
-                        <option selected disabled>대분류 선택</option>
-                        <option value="it">IT</option>
-                        <option value="craft">공예</option>
-                        <option value="art">예술</option>
-                        <option value="food">음식</option>
-                        <option value="sport">운동</option>
+                    <select id="bigC" name="bigC" required>
+                        <option value="big" selected disabled>대분류 선택</option>
+                        <option value="art" id="art">예술</option>
+                        <option value="food" id="food">음식</option>
+                        <option value="sport" id="sport">운동</option>
                     </select>
-                 <!--value=it일때-->
-                    <select name="smallC" required>
-                        <option selected disabled>소분류 선택</option>
-                        <option>AI·머신러닝</option>
-                        <option>게임 개발</option>
-                        <option>데이터 분석</option>
-                        <option>모바일 App개발</option>
-                        <option>서버·백엔드</option>
-                        <option>프론트엔드</option>
+                    
+                     <select name="smallC" id="smallC" required>
+                        <option id="small" selected disabled>소분류 선택</option>
+                        <option value="1" class="artS">드로잉</option>
+                        <option value="2" class="artS">악기</option>
+                        <option value="3" class="artS">일러스트</option>
+                        <option value="4" class="foodS">베이킹</option>
+                        <option value="5" class="foodS">양식</option>
+                        <option value="6" class="foodS">일식</option>
+                        <option value="7" class="foodS">중식</option>
+                        <option value="8" class="foodS">한식</option>
+                        <option value="9" class="sportS">근력운동</option>
+                        <option value="10" class="sportS">요가</option>
+                        <option value="11" class="sportS">유산소운동</option>
+                        <option value="12" class="sportS">필라테스</option>
                     </select><br>
+                    
+                    <script>
+                    	$('#small').show();
+	           			$('.artS').hide();
+	           		 	$('.foodS').hide();
+	           		 	$('.sportS').hide();
+                     $(document).on('change', '#bigC', changeoption);
+                     
+                     function changeoption(){
+                    	 if($(this).val() == 'big'){
+                    		 $('#small').show();
+                    		 $('.artS').hide();
+                    		 $('.foodS').hide();
+                    		 $('.sportS').hide();
+                    	 } else if($(this).val() == 'art'){
+                    		 $('.artS').show();
+                    		 $('.foodS').hide();
+                    		 $('.sportS').hide();
+                    		 $('#small').hide();
+                    	 } else if($(this).val() == 'food'){
+                    		 $('.foodS').show();
+                    		 $('.artS').hide();
+                    		 $('.sportS').hide();
+                    		 $('#small').hide();
+                    	 } else if($(this).val() == 'sport'){
+                    		 $('.sportS').show();
+                    		 $('.artS').hide();
+                    		 $('.foodS').hide();
+                    		 $('#small').hide();
+                    	 } 
+                     }
+                    </script>
                     
                 <h4 id="sub_title4">가격을 입력해주세요</h4> 
                 <input type="text" name="cPrice" placeholder="'원' 빼고 입력" required>원
@@ -78,11 +114,6 @@
                     <label>타입</label> 
                     <input type="radio" name="class_type" value="원데이" id="oneday"><label for="oneday" class="btnlabel">원데이 클래스</label>
                     <input type="radio" name="class_type" value="vod" id="vod"><label for="vod" class="btnlabel">VOD 클래스</label><br>
-              		
-              		<!-- <div>
-              		<input type="radio" name="class_onoff" value="온라인" id="online"><label for="onlline" class="btnlabel">온라인</label>
-                    <input type="radio" name="class_onoff" value="오프라인" id="offline"><label for="offline" class="btnlabel">오프라인</label><br>
-              		</div> -->
                 </div> 
                 
                 
@@ -90,10 +121,73 @@
                     <hr><br>
                     <h4>클래스 소개를 작성하세요</h4>
                     <textarea class="summernote" name="editordata"></textarea>
+					<div class="image_area2"></div>
+                    <button type="button" id="fileBtn2">file</button><br>
+                    <input type="file" name="infofile" accept="image/gif,image/jpeg,image/png" id="imageinfo1">
+                    <div id="img">
+                    <div class="image_area3"></div>
+                    <button type="button" id="fileBtn3">file</button><br>
+                    <input type="file" name="infofile" accept="image/gif,image/jpeg,image/png" id="imageinfo2">
+                    </div>
   				</div>
 
+ 				<script>
+                    let fileBtn2 = document.querySelector("#fileBtn2");
+                
+                    const fileElements2 = document.querySelectorAll("#imageinfo1");
+                    const image_area2 = document.querySelectorAll(".image_area2");
+                    /* 버튼 클릭했을 때 input type file 오픈 */
+                    fileBtn2.onclick = function() {
+                        fileElements2[0].click(); 
+                    }
+                
+                    /* input type file 요소에 change 이벤트 발생 시 (파일 첨부 발생) */
+                    fileElements2.forEach(item => item.addEventListener('change', preview2));
+                
+                    function preview2(){
+                        let index2 = Array.from(fileElements2).indexOf(this);
+
+                        if(this.files && this.files[0]) {
+                            let reader2 = new FileReader();
+                            reader2.readAsDataURL(this.files[0]);
+                            reader2.onload = function(){
+                                image_area2[index2].innerHTML = "<img src='" + reader2.result + "'>";
+                            }
+                        }
+
+                    }
+                </script>
+                <script>
+                    let fileBtn3 = document.querySelector("#fileBtn3");
+                
+                    const fileElements3 = document.querySelectorAll("#imageinfo2");
+                    const image_area3 = document.querySelectorAll(".image_area3");
+                
+                    /* 버튼 클릭했을 때 input type file 오픈 */
+                    fileBtn3.onclick = function() {
+                        fileElements3[0].click(); 
+                    }
+                
+                    /* input type file 요소에 change 이벤트 발생 시 (파일 첨부 발생) */
+                    fileElements3.forEach(item => item.addEventListener('change', preview3));
+                
+                    function preview3(){
+                        let index3 = Array.from(fileElements3).indexOf(this);
+
+                        if(this.files && this.files[0]) {
+                            let reader3 = new FileReader();
+                            reader3.readAsDataURL(this.files[0]);
+                            reader3.onload = function(){
+                                image_area3[index3].innerHTML = "<img src='" + reader3.result + "'>";
+                            }
+                        }
+
+                    }
+                </script>
+
+
                  <!-- 썸머노트 스크립트 -->
-    <script>
+   	 <script>
         $(document).ready(function(){
             $('.summernote').summernote({
                 height : 300,
@@ -101,20 +195,6 @@
                 maxHeight: null,
                 focus:true,
                 lang:'ko-KR',
-                callbacks: {	//여기 부분이 이미지를 첨부하는 부분
-					onImageUpload : function(files) {
-						uploadSummernoteImageFile(files[0],this);
-					},
-					onPaste: function (e) {
-						var clipboardData = e.originalEvent.clipboardData;
-						if (clipboardData && clipboardData.items && clipboardData.items.length) {
-							var item = clipboardData.items[0];
-							if (item.kind === 'file' && item.type.indexOf('image/') !== -1) {
-								e.preventDefault();
-							}
-						}
-					}
-				},
                 toolbar: [
                     // [groupName, [list of button]]
                     ['fontname', ['fontname']]
@@ -134,25 +214,6 @@
             })
         });
            
-            /**
-	* 이미지 파일 업로드
-	*/
-	function uploadSummernoteImageFile(file, editor) {
-		data = new FormData();
-		data.append("file", file);
-		$.ajax({
-			data : data,
-			type : "POST",
-			url : "/uploadSummernoteImageFile",
-			contentType : false,
-			processData : false,
-			success : function(data) {
-            	//항상 업로드된 파일의 url이 있어야 한다.
-				$(editor).summernote('insertImage', data.url);
-			}
-		});
-	}
-            
     </script> 
                 
                 <hr>  
@@ -176,12 +237,6 @@
 					<h4>시간을 선택하세요</h4>
                 	<input type="time" name="class_time1"> <label>&nbsp;부터  &nbsp;</label><input type="time" name="class_time2" > <label>&nbsp;까지</label><br>
                 </div>
-                
-                <!-- 타입이 온라인일때 -->
-                <!-- <div class="ontime">
-                	<h4>시간을 입력하세요</h4>
-                	<input type="text" name="class_time1"><label>&nbsp;시간</label>
-                </div>-->
                 
 				<div class="location">
                 <h4>클래스 위치를 입력하세요</h4>

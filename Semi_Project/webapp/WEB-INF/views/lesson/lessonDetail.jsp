@@ -101,7 +101,7 @@
 					                    }else {
 					                    	return false;
 					                    } 
-			                } 
+			                	} 
 		        		 })
 		        		 $("#cart").click(function(){ 
 		        			 if($("#pDate").val() == ""){
@@ -122,9 +122,6 @@
         	</c:when>
         </c:choose>
         
-        
-
-
 <!-- 클래스 상세 페이지 바디-->
 <div class="class_detail2">
     <hr>
@@ -143,7 +140,6 @@
             터프팅건이라는 총 모양의 기계를 이용해 원단에 실을 쏘아 모양을 만들어 내는 작업입니다.
         </pre> -->
          <pre class="cBodyText2">${ lesson.nContent }</pre>
-        
         <hr>
     </div>
 </div>

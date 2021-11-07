@@ -167,15 +167,6 @@ input[name=cPrice]{
     margin-bottom: 10px;
 }
 
-#c_tutor{
-    border: 1px solid lightgray;
-    border-radius: 5px;
-    height: 30px;
-    width: 250px;
-    margin-left: 10px;
-    font-size: 11pt;
-}
-
 .btnlabel{
     margin-left: 5px;
 }
@@ -198,6 +189,36 @@ input[name=cPrice]{
     margin-bottom: 30px;
 }
 
+#form_body img {
+    width: 400px;
+    height: 300px;
+}
+.image_area2, .image_area3{
+	border: 1px solid lightgray;
+    width: 400px;
+    height: 300px;
+}
+
+ #img{
+	margin-top : -344px;
+	margin-left : 480px;	
+}
+
+#fileBtn2,
+#fileBtn3 {
+    background-color: rgb(7,86,105);
+    color: white;
+    padding: 1px;
+    font-weight: bold;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    width: 70px;
+    height : 30px;
+    cursor: pointer;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
 #tutor_intro{
     border: 1px solid lightgray;
     border-radius: 5px;
@@ -207,7 +228,8 @@ input[name=cPrice]{
     height: 60px;
 }
 
-input[type=date]{
+
+input[name=class_date1]{
     border: 1px solid lightgray;
     border-radius: 5px;
     width: 180px;
@@ -217,13 +239,6 @@ input[type=date]{
 
 input[type=time]{
     border: 1px solid lightgray;
-    border-radius: 5px;
-    width: 180px;
-    height: 30px;
-}
-
-.ontime input{
-	border: 1px solid lightgray;
     border-radius: 5px;
     width: 180px;
     height: 30px;
@@ -241,7 +256,15 @@ input[type=time]{
     margin-top: 10px;
     border: 1px solid lightgray;
     border-radius: 5px;
-    width: 430px;
+    width: 400px;
+    height: 30px;
+}
+
+.postcodify_details{
+    margin-top: 5px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    width: 500px;
     height: 30px;
 }
 
