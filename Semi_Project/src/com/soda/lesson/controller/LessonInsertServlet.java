@@ -36,6 +36,9 @@ public class LessonInsertServlet extends HttpServlet {
 	// 작성 폼에서 작성 후 작성한 글 상세페이지로 넘어가는 서블렛
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		
+		
+		
 	}
 
 }

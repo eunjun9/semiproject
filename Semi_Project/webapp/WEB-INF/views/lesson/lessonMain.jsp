@@ -9,7 +9,7 @@
 <title>클래스_메인</title>
 
 	<!--외부 스타일 시트-->
-    <link href="${ contextPath }/resources/css/lesson/lesson_main.css" rel="stylesheet">
+    <link href="${ contextPath }/resources/css/lesson/lesson_main.css?1" rel="stylesheet">
 
     <!-- font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -130,9 +130,9 @@
                     </select><br> -->
                     </c:if> --%>
 
-                    <label>진행방식</label>
+<!--                     <label>진행방식</label>
                     <input type="checkbox" value="online" name="online"><label class="ckboxlabel">온라인</label>
-                    <input type="checkbox" value="offline" name="offline"><label class="ckboxlabel">오프라인</label><br>
+                    <input type="checkbox" value="offline" name="offline"><label class="ckboxlabel">오프라인</label><br> -->
 
                     <label>클래스 타입</label>
                     <input type="checkbox" value="oneday" name="oneday"><label class="ckboxlabel">원데이 클래스</label>

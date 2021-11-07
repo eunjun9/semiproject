@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,8 +8,8 @@
 <title>클래스 상세페이지</title>
 
 	<!--외부 스타일 시트-->
-    <link href="${ contextPath }/resources/css/lesson/lesson_detail.css?1" rel="stylesheet">
-    <link href="${ contextPath }/resources/css/lesson/lesson_datepicker.css" rel="stylesheet">
+    <link href="${ contextPath }/resources/css/lesson/lesson_detail.css?4" rel="stylesheet">
+	
     <!-- font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,266 +32,98 @@
                 <img class="cThumbnail" src="${ contextPath }${ lesson.photoList.get(0).route }${ lesson.photoList.get(0).changeName }">
             </div>
             <h4 class="cTutor">강사</h4><p>${ lesson.userName }</p>
-            <h4 class="cType">타입</h4><p>${ lesson.cCategory } 클래스 / ${ lesson.cType }</p>
+            <h4 class="cType">타입</h4><p>${ lesson.cCategory } 클래스</p>
         </div>
         
         <c:choose>
-        	<c:when test="${ lesson.cCategory eq '온라인' || lesson.cType eq 'online'}" >
+        	<c:when test="${ lesson.cCategory == 'vod'}" >
+	        	<form name="orderForm" method="get">
+					<input type="hidden" name="noticeNum" value="${ lesson.nNum }">
         			<div class="payment">
+       				 <!-- vod 클래스는 날짜 선택이 필요없기 때문에 모달창이 뜨지 않고 / 장바구니 결제하기 버튼이 바로 생성되어 있음 
+       				 -> 각각 클릭 시 nNum과 함께 각 페이지로 이동  -->
 			            <h4 id="pTitle">${ lesson.nTitle }</h4>
 			            <p id="pTime">${ lesson.cTime1 } 시간 <hr></p>
 			            <h3 id="pPrice">50,000원</h3>
-			            <button id="selCalBtn">수강하기</button>
+			            <div width="100%">
+			            <button id="cart">장바구니</button>
+			            <button id="apply">결제하기</button>
+			            </div>
 					</div>
+				</form>
+				<script>
+	            $(function(){ 
+	                 $("#apply").click(function(){ 
+	                    if(confirm('결제화면으로 이동하시겠습니까?')){
+	                        document.forms.orderForm.action = "${ contextPath }/leseson/test";
+			                document.forms.orderForm.submit();
+	                    } else {
+	                    	return false;
+	                    } 
+	                 }); 
+	                 $("#cart").click(function(){ 
+		                 if(confirm('장바구니에 추가하시겠습니까?')){
+		                   document.forms.orderForm.action = "${ contextPath }/order/add";
+		                   document.forms.orderForm.submit();
+		                } else {
+		                	return false;
+		                }
+	                }); 
+	           });
+	          </script> 
         	</c:when>
         	
-        	<c:when test="${ lesson.cType eq '오프라인' || lesson.cType eq 'offline'}" >
+        	<c:when test="${ lesson.cCategory == '원데이'}" >
+        	<!-- 원데이 클래스는 수강하기 버튼만 있고 클릭 시 , 날짜 선택 모달창 -> 장바구니 / 결제하기로 넘어갈 수 있음 -->
        				 <div class="payment">
+        				<form name="testForm" method="get">
+						<input type="hidden" name="noticeNum" value="${ lesson.nNum }">
 			            <h4 id="pTitle">${ lesson.nTitle }</h4>
+			            <input type="date" id="pDate" name="selDate">
 			            <p id="pTime">${ lesson.cTime1 } ~ ${ lesson.cTime2 } <hr></p>
 			            <h3 id="pPrice">50,000원</h3>
-			            <button id="selCalBtn">수강하기</button>
+			            <button type="submit" id="cart">장바구니</button>
+			            <button type="submit" id="apply">결제하기</button>
+						</form>
 	    			</div>
-<<<<<<< HEAD
-	
-			           
-
-			<script>
-            $(function(){ 
-                $("#selCalBtn").click(function(){ 
-                    $(".modal").fadeIn(); 
-                }); 
-                
-                 $("#payBtn").click(function(){ 
-                    if(confirm('결제화면으로 이동하시겠습니까?')){
-                        // 결제화면으로 이동
-                    }  else {
-                        $(".modal").fadeOut(); 
-                    }
-                 }); 
-                 $("#cartBtn").click(function(){ 
-                    if(confirm('장바구니로 이동하시겠습니까?')){
-                        // 장바구니로 이동                       
-                    } else {
-                        $(".modal").fadeOut(); 
-                    }
-                 }); 
-            });
-            </script>
-			            
-=======
-	    			 <script>
-			            $(function(){ 
-			                $("#selCalBtn").click(function(){ 
-			                    $(".modal").fadeIn(); 
-			                }); 
-			                
-			                 $("#payBtn").click(function(){ 
+	    			
+	    			<script>
+        	$(function(){
+        		 $("#apply").click(function(){ 
+	        			 if($("#pDate").val() == ""){
+	        				 alert('날짜를 선택하세요');
+	        				 $("#pDate").focus();
+	        				 return false;
+	        			 } else {
 			                    if(confirm('결제화면으로 이동하시겠습니까?')){
-			                    	// 결제 화면 
-			                        // location.href = "${contextPath}/";
-			                    }  else {
-			                        $(".modal").fadeOut(); 
-			                    }
-			                 }); 
-			                 $("#cartBtn").click(function(){ 
-			                	var confirm = confirm('장바구니에 추가하시겠습니까?');
-			                    if(confirm == true){
-			                        // 확인 눌렀을 때 장바구니로 이동     
-			                    	location.href = "${contextPath}/wishlist/add";
-			                    }else if(confirm == false){
-			                    	// 취소 눌렀을 때 
-			                    	 $(".modal").fadeOut(); 
-			                    } else {
-			                        $(".modal").fadeOut(); 
-			                    }
-			                 }); 
-			            });
-			            </script>
->>>>>>> branch 'master' of https://github.com/umyewon/semiproject.git
+			                        //document.forms.orderForm.action = "${ contextPath }/order/";
+					                //document.forms.orderForm.submit();
+			                    }else {
+			                    	return false;
+			                    } 
+	 	       			 }
+	                }); 
+        		 $("#cart").click(function(){ 
+        			 if($("#pDate").val() == ""){
+        				 alert('날짜를 선택하세요');
+        				 $("#pDate").focus();
+        				 return false;
+        			 } else {
+		                    if(confirm('장바구니로 이동하시겠습니까?')){
+		                        document.forms.testForm.action = "${ contextPath }/order/add";
+				                document.forms.testForm.submit();
+		                    }else {
+		                    	return false;
+		                    } 
+ 	       			 }
+                }); 
+        	})
+        </script>
         	</c:when>
         </c:choose>
-       
+        
+        
 
-
-    <div class="modal">
-            <div class="container">
-                <div class="my-calendar clearfix">
-                  <div class="clicked-date">
-                    <div class="cal-day"></div>
-                    <div class="cal-date"></div>
-                  </div>
-                  <div class="calendar-box">
-                    <div class="ctr-box clearfix">
-                      <button type="button" title="prev" class="btn-cal prev">
-                      </button>
-                      <span class="cal-month"></span>
-                      <span class="cal-year"></span>
-                      <button type="button" title="next" class="btn-cal next">
-                      </button>
-                    </div>
-                    <table class="cal-table">
-                      <thead>
-                        <tr>
-                          <th>일</th>
-                          <th>월</th>
-                          <th>화</th>
-                          <th>수</th>
-                          <th>목</th>
-                          <th>금</th>
-                          <th>토</th>
-                        </tr>
-                      </thead>
-                      <tbody class="cal-body"></tbody>
-                    </table>
-                  </div>
-                </div>
-            </div>
-              
-            <div class="cPayBtn">
-                <button id="cartBtn">장바구니</button>
-                <button id="payBtn">결제하기</button>
-            </div> 
-
-    </div>
-
-    <script>
-    const init = {
-      monList: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
-      dayList: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'],
-      today: new Date(),
-      monForChange: new Date().getMonth(),
-      activeDate: new Date(),
-      getFirstDay: (yy, mm) => new Date(yy, mm, 1),
-      getLastDay: (yy, mm) => new Date(yy, mm + 1, 0),
-      nextMonth: function () {
-        let d = new Date();
-        d.setDate(1);
-        d.setMonth(++this.monForChange);
-        this.activeDate = d;
-        return d;
-      },
-      prevMonth: function () {
-        let d = new Date();
-        d.setDate(1);
-        d.setMonth(--this.monForChange);
-        this.activeDate = d;
-        return d;
-      },
-      addZero: (num) => (num < 10) ? '0' + num : num,
-      activeDTag: null,
-      getIndex: function (node) {
-        let index = 0;
-        while (node = node.previousElementSibling) {
-          index++;
-        }
-        return index;
-      }
-    };
-    
-    const $calBody = document.querySelector('.cal-body');
-    const $btnNext = document.querySelector('.btn-cal.next');
-    const $btnPrev = document.querySelector('.btn-cal.prev');
-    
-    /**
-     * @param {number} date
-     * @param {number} dayIn
-    */
-    function loadDate (date, dayIn) {
-      document.querySelector('.cal-date').textContent = date;
-      document.querySelector('.cal-day').textContent = init.dayList[dayIn];
-    }
-    
-    /**
-     * @param {date} fullDate
-     */
-    function loadYYMM (fullDate) {
-      let yy = fullDate.getFullYear();
-      let mm = fullDate.getMonth();
-      let firstDay = init.getFirstDay(yy, mm);
-      let lastDay = init.getLastDay(yy, mm);
-      let markToday;  // for marking today date
-   
-      if (mm === init.today.getMonth() && yy === init.today.getFullYear()) {
-        markToday = init.today.getDate();
-      }
-    
-      document.querySelector('.cal-month').textContent = init.monList[mm];
-      document.querySelector('.cal-year').textContent = yy;
-    
-      let trtd = '';
-      let startCount;
-      let countDay = 0;
-      for (let i = 0; i < 6; i++) {
-        trtd += '<tr>';
-        for (let j = 0; j < 7; j++) {
-          if (i === 0 && !startCount && j === firstDay.getDay()) {
-            startCount = 1;
-          }
-          if (!startCount) {
-            trtd += '<td>'
-          } else {
-            let fullDate = yy + '.' + init.addZero(mm + 1) + '.' + init.addZero(countDay + 1);
-            trtd += '<td class="day';
-            trtd += (markToday && markToday === countDay + 1) ? ' today" ' : '"';
-            trtd += ` data-date="${countDay + 1}" data-fdate="${fullDate}">`;
-          }
-          trtd += (startCount) ? ++countDay : '';
-          if (countDay === lastDay.getDate()) { 
-            startCount = 0; 
-          }
-          trtd += '</td>';
-        }
-        trtd += '</tr>';
-      }
-      $calBody.innerHTML = trtd;
-    }
-    
-    /**
-     * @param {string} val
-     */
-    function createNewList (val) {
-      let id = new Date().getTime() + '';
-      let yy = init.activeDate.getFullYear();
-      let mm = init.activeDate.getMonth() + 1;
-      let dd = init.activeDate.getDate();
-      const $target = $calBody.querySelector(`.day[data-date="${dd}"]`);
-     
-      let date = yy + '.' + init.addZero(mm) + '.' + init.addZero(dd);
-    
-      let eventData = {};
-      eventData['date'] = date;
-      eventData['memo'] = val;
-      eventData['complete'] = false;
-      eventData['id'] = id;
-      init.event.push(eventData);
-      $todoList.appendChild(createLi(id, val, date));
-    }
-    
-    
-    loadYYMM(init.today);
-    loadDate(init.today.getDate(), init.today.getDay());
-    
-    $btnNext.addEventListener('click', () => loadYYMM(init.nextMonth()));
-    $btnPrev.addEventListener('click', () => loadYYMM(init.prevMonth()));
-    
-    $calBody.addEventListener('click', (e) => {
-      if (e.target.classList.contains('day')) {
-        if (init.activeDTag) {
-          init.activeDTag.classList.remove('day-active');
-        }
-        let day = Number(e.target.textContent);
-        loadDate(day, e.target.cellIndex);
-        e.target.classList.add('day-active');
-        console.log(day);
-        init.activeDTag = e.target;
-        init.activeDate.setDate(day);
-        reloadTodo();
-    }
-});
-</script>
-    
-    
 
 <!-- 클래스 상세 페이지 바디-->
 <div class="class_detail2">

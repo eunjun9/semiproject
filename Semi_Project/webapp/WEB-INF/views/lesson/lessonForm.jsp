@@ -76,13 +76,13 @@
                     <textarea name="nTitle" id="sub_title6" placeholder="클래스 제목을 입력하세요(최대25자)" required></textarea>
                     <hr>
                     <label>타입</label> 
-                    <input type="radio" name="class_type" value="원데이" id="oneday" checked><label for="oneday" class="btnlabel">원데이 클래스</label>
+                    <input type="radio" name="class_type" value="원데이" id="oneday"><label for="oneday" class="btnlabel">원데이 클래스</label>
                     <input type="radio" name="class_type" value="vod" id="vod"><label for="vod" class="btnlabel">VOD 클래스</label><br>
               		
-              		<div>
-              		<input type="radio" name="class_onoff" value="온라인" id="online" checked><label for="onlline" class="btnlabel">온라인</label>
+              		<!-- <div>
+              		<input type="radio" name="class_onoff" value="온라인" id="online"><label for="onlline" class="btnlabel">온라인</label>
                     <input type="radio" name="class_onoff" value="오프라인" id="offline"><label for="offline" class="btnlabel">오프라인</label><br>
-              		</div>
+              		</div> -->
                 </div> 
                 
                 
@@ -159,20 +159,30 @@
                 <h4>강사 소개를 작성하세요</h4>
                 <textarea name="tutor_intro" id="tutor_intro" required></textarea>
                 
+                <!-- 원데이 클래스 일때 -->
+                <div class="offdate">
                 <h4>날짜를 선택하세요</h4>
-                <input type="date" name="class_date1"> &nbsp;부터 &nbsp;<input type="date" name="class_date2" required> &nbsp;까지<br>
+                <input type="date" name="class_date1" required><br>
+                </div>
+                
+                <!-- vod 클래스 일때 -->
+                <div class="ondate">
+                	<h4>기간을 입력하세요</h4>
+                	<input type="text" name="class_date1"><label>&nbsp;일</label>
+                </div>
                 
                 <!-- 타입이 오프라인일때 -->
                 <div class="offtime">
 					<h4>시간을 선택하세요</h4>
                 	<input type="time" name="class_time1"> <label>&nbsp;부터  &nbsp;</label><input type="time" name="class_time2" > <label>&nbsp;까지</label><br>
                 </div>
+                
                 <!-- 타입이 온라인일때 -->
-                <div class="ontime">
+                <!-- <div class="ontime">
                 	<h4>시간을 입력하세요</h4>
                 	<input type="text" name="class_time1"><label>&nbsp;시간</label>
-                </div>
-
+                </div>-->
+                
 				<div class="location">
                 <h4>클래스 위치를 입력하세요</h4>
                  <input type="text" name="postcode" class="postcodify_postcode5" placeholder="우편번호" readonly>
@@ -195,20 +205,25 @@
             
             	<script>
                 	$(document).ready(function(){
-                		$(".offtime").css("display", "none");  // 오프라인 시간
-                		$(".ontime").css("display", "none");   // 온라인 시간
-                		$(".location").css("display", "none"); // 장소 
+                		$(".offdate").css("display", "none");    // 원데이 날짜
+                		$(".ondate").css("display", "none");     // vod 날짜
+                		$(".offtime").css("display", "none");    // 원데이 시간
+                		$(".location").css("display", "none");   // 장소 
                 		 
-                    	$("#online").change(function(){
-                    		$(".offtime").show(300);
-                            $(".ontime").hide(300);
-                            $(".location").hide(300);
-                    	});
-                    	$("#offline").change(function(){
-                    		$(".offtime").hide(300);
-                            $(".ontime").show(300);
+                		$("#oneday").change(function(){
+                			$(".offdate").show(300);
+                			$(".ondate").hide(300);
+                			$(".offtime").show(300);
                             $(".location").show(300);
-                    	});
+                		});
+                		
+                		$("#vod").change(function(){
+                			$(".ondate").show(300);
+                			$(".offdate").hide(300);
+                			$(".offtime").hide(300);
+                            $(".location").hide(300);
+                		});
+                		
                 	});
                 </script>	
             
