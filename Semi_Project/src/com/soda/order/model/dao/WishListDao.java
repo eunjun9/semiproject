@@ -61,11 +61,38 @@ public class WishListDao {
 		List<WishList> wishlist = new ArrayList<>();
 		String sql = wishlistQuery.getProperty("wishlist");
 		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, userId);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				WishList w = new WishList(rset.getString("notice_title"),
+										  rset.getInt("c_price"),
+										  rset.getString("c_category"),
+										  rset.getDate("c_sdate"),
+										  rset.getDate("c_edate"),
+										  rset.getString("c_location"),
+										  rset.getString("c_time1"),
+										  rset.getString("c_time2"),
+										  rset.getString("route"),
+										  rset.getString("change_name"));
+				
+				wishlist.add(w);
+				
+			}
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
 		
-		
-		
-		
-		return null;
+		return wishlist;
 	}
 	
 }
