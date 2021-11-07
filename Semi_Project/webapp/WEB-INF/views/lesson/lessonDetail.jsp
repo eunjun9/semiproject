@@ -51,34 +51,7 @@
 			            <h3 id="pPrice">50,000원</h3>
 			            <button id="selCalBtn">수강하기</button>
 	    			</div>
-<<<<<<< HEAD
-	
-			           
 
-			<script>
-            $(function(){ 
-                $("#selCalBtn").click(function(){ 
-                    $(".modal").fadeIn(); 
-                }); 
-                
-                 $("#payBtn").click(function(){ 
-                    if(confirm('결제화면으로 이동하시겠습니까?')){
-                        // 결제화면으로 이동
-                    }  else {
-                        $(".modal").fadeOut(); 
-                    }
-                 }); 
-                 $("#cartBtn").click(function(){ 
-                    if(confirm('장바구니로 이동하시겠습니까?')){
-                        // 장바구니로 이동                       
-                    } else {
-                        $(".modal").fadeOut(); 
-                    }
-                 }); 
-            });
-            </script>
-			            
-=======
 	    			 <script>
 			            $(function(){ 
 			                $("#selCalBtn").click(function(){ 
@@ -107,7 +80,6 @@
 			                 }); 
 			            });
 			            </script>
->>>>>>> branch 'master' of https://github.com/umyewon/semiproject.git
         	</c:when>
         </c:choose>
        
