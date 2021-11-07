@@ -3,14 +3,14 @@
 "http://java.sun.com/dtd/properties.dtd">
 <properties>
 
-	<!-- 장바구니 중복 체크 조회  -->
+	<!-- 장바구니 중복 체크 조회  
 	<entry key="wishListCheck">
 		SELECT
 			   COUNT(*)
 		  FROM WISHLIST
 		 WHERE USER_ID = ?
 		   AND NOTICE_NUM = ?
-	</entry>
+	</entry>-->
 
 	<!-- 장바구니 담기 추가 -->
 	<entry key="wishListAdd">
@@ -19,11 +19,15 @@
 			  (
 			  	NOTICE_NUM
 			  , USER_ID
+			  , WISH_NUM
+			  , WISH_STATUS
 			  )
 			  VALUES
 			  (
 			    ?
 			  , ?
+			  , WISH_NUM.NEXTVAL
+			  , DEFAULT
 			  )
 	</entry>
 	
@@ -44,12 +48,11 @@
 		 JOIN NOTICE USING (NOTICE_NUM)
 		 JOIN CLASS USING (NOTICE_NUM)
 		 JOIN TBL_FILE USING (NOTICE_NUM)
-		WHERE NOTICE_STATUS = 'Y'
+		WHERE WISH_STATUS = 'N'
 		  AND NOTICE_TYPE = '클래스'
 		  AND FILE_LEVEL = '0'
 		  AND W.USER_ID = ?
-		  AND W.NOTICE_NUM = ?
-		ORDER BY W.NOTICE_NUM DESC
+		ORDER BY W.WISH_NUM DESC
 	</entry> 
 	
 	<!-- 장바구니 클래스 중복으로 담을 때 업데이트 처리 
