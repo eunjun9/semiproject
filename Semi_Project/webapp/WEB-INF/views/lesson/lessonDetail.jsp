@@ -35,7 +35,7 @@
         </div>
         
         <c:choose>
-        	<c:when test="${ lesson.cType eq '온라인' || lesson.cType eq 'online'}" >
+        	<c:when test="${ lesson.cCategory eq '온라인' || lesson.cType eq 'online'}" >
         			<div class="payment">
 			            <h4 id="pTitle">${ lesson.nTitle }</h4>
 			            <p id="pTime">${ lesson.cTime1 } 시간 <hr></p>
@@ -51,30 +51,32 @@
 			            <h3 id="pPrice">50,000원</h3>
 			            <button id="selCalBtn">수강하기</button>
 	    			</div>
-	    			 <script>
-			            $(function(){ 
-			                $("#selCalBtn").click(function(){ 
-			                    $(".modal").fadeIn(); 
-			                }); 
-			                
-			                 $("#payBtn").click(function(){ 
-			                    if(confirm('결제화면으로 이동하시겠습니까?')){
-			                    	// 결제 화면 
-			                        // location.href = "${contextPath}/";
-			                    }  else {
-			                        $(".modal").fadeOut(); 
-			                    }
-			                 }); 
-			                 $("#cartBtn").click(function(){ 
-			                    if(confirm('장바구니로 이동하시겠습니까?')){
-			                        // 장바구니로 이동            
-			                        // location.href = "${contextPath}";
-			                    } else {
-			                        $(".modal").fadeOut(); 
-			                    }
-			                 }); 
-			            });
-			            </script>
+	
+			           
+
+			<script>
+            $(function(){ 
+                $("#selCalBtn").click(function(){ 
+                    $(".modal").fadeIn(); 
+                }); 
+                
+                 $("#payBtn").click(function(){ 
+                    if(confirm('결제화면으로 이동하시겠습니까?')){
+                        // 결제화면으로 이동
+                    }  else {
+                        $(".modal").fadeOut(); 
+                    }
+                 }); 
+                 $("#cartBtn").click(function(){ 
+                    if(confirm('장바구니로 이동하시겠습니까?')){
+                        // 장바구니로 이동                       
+                    } else {
+                        $(".modal").fadeOut(); 
+                    }
+                 }); 
+            });
+            </script>
+			            
         	</c:when>
         </c:choose>
        

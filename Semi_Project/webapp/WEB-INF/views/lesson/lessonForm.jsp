@@ -30,12 +30,13 @@
  	<!-- 글 작성 폼 -->
     <div class="class_form">
         <div class="cForm_title">
-            <a id="back" href="class_main.html">&lt; 클래스</a>
+            <a id="back" href="${ contextPath }/lesson/main">&lt; 클래스</a>
             <h2 id="main-title">클래스 등록</h2>
             <h4 id="sub-title">모든 입력폼은 필수 영역입니다.</h4>
         </div>
         <div id="cForm_wrapper">
-            <form method="post">
+            <form method="post" action="${ contextPath }/lesson/insert"
+					enctype="multipart/form-data">
                 <h3>어떤 클래스인가요?</h3>
                                 
                 <h4 id="sub_title1">카테고리를 선택하세요</h4>
@@ -72,7 +73,7 @@
                 </div>
 
                 <div id="form_head">
-                    <textarea id="sub_title6" placeholder="클래스 제목을 입력하세요(최대25자)" required></textarea>
+                    <textarea name="nTitle" id="sub_title6" placeholder="클래스 제목을 입력하세요(최대25자)" required></textarea>
                     <hr>
                     <label>타입</label> 
                     <input type="radio" name="class_type" value="원데이" id="oneday" checked><label for="oneday" class="btnlabel">원데이 클래스</label>
@@ -100,6 +101,20 @@
                 maxHeight: null,
                 focus:true,
                 lang:'ko-KR',
+                callbacks: {	//여기 부분이 이미지를 첨부하는 부분
+					onImageUpload : function(files) {
+						uploadSummernoteImageFile(files[0],this);
+					},
+					onPaste: function (e) {
+						var clipboardData = e.originalEvent.clipboardData;
+						if (clipboardData && clipboardData.items && clipboardData.items.length) {
+							var item = clipboardData.items[0];
+							if (item.kind === 'file' && item.type.indexOf('image/') !== -1) {
+								e.preventDefault();
+							}
+						}
+					}
+				},
                 toolbar: [
                     // [groupName, [list of button]]
                     ['fontname', ['fontname']]
@@ -117,8 +132,27 @@
                 fontSizes: ['8', '9', '10', '11', '12', '14', '16', '18', '20', '22', '24', '28', '30', '36'
                     , '40', '48', '50', '60', '72']
             })
-            
         });
+           
+            /**
+	* 이미지 파일 업로드
+	*/
+	function uploadSummernoteImageFile(file, editor) {
+		data = new FormData();
+		data.append("file", file);
+		$.ajax({
+			data : data,
+			type : "POST",
+			url : "/uploadSummernoteImageFile",
+			contentType : false,
+			processData : false,
+			success : function(data) {
+            	//항상 업로드된 파일의 url이 있어야 한다.
+				$(editor).summernote('insertImage', data.url);
+			}
+		});
+	}
+            
     </script> 
                 
                 <hr>  
@@ -141,10 +175,10 @@
 
 				<div class="location">
                 <h4>클래스 위치를 입력하세요</h4>
-                 <input type="text" name="class_location" class="postcodify_postcode5" placeholder="우편번호" readonly>
-                <input type="text" name="class_location" class="postcodify_address" placeholder="검색버튼을 클릭하세요." readonly>
+                 <input type="text" name="postcode" class="postcodify_postcode5" placeholder="우편번호" readonly>
+                <input type="text" name="address" class="postcodify_address" placeholder="검색버튼을 클릭하세요." readonly>
                 <button id="location_Btn" type="button">검색</button><br>
-                <input type="text" class="postcodify_details" name="location_detail" placeholder="상세주소를 입력하세요" ><br>
+                <input type="text" class="postcodify_details" name="detailaddress" placeholder="상세주소를 입력하세요" ><br>
 				</div>
             	
             		<!-- 주소 api -->

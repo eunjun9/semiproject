@@ -25,6 +25,7 @@ public class LessonInsertServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+    // 작성 폼으로 넘어가는 서블렛
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.getRequestDispatcher("/WEB-INF/views/lesson/lessonForm.jsp").forward(request, response);
 	}
@@ -32,9 +33,9 @@ public class LessonInsertServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
+	// 작성 폼에서 작성 후 작성한 글 상세페이지로 넘어가는 서블렛
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		
 	}
 
 }
