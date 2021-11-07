@@ -86,6 +86,7 @@
 			            <button type="submit" id="apply">결제하기</button>
 						</form>
 	    			</div>
+<<<<<<< HEAD
 	    			
 	    			<script>
         	$(function(){
@@ -95,7 +96,18 @@
 	        				 $("#pDate").focus();
 	        				 return false;
 	        			 } else {
+=======
+
+	    			 <script>
+			            $(function(){ 
+			                $("#selCalBtn").click(function(){ 
+			                    $(".modal").fadeIn(); 
+			                }); 
+			                
+			                 $("#payBtn").click(function(){ 
+>>>>>>> branch 'master' of https://github.com/umyewon/semiproject.git
 			                    if(confirm('결제화면으로 이동하시겠습니까?')){
+<<<<<<< HEAD
 			                        //document.forms.orderForm.action = "${ contextPath }/order/";
 					                //document.forms.orderForm.submit();
 			                    }else {
@@ -119,6 +131,29 @@
                 }); 
         	})
         </script>
+=======
+			                    	// 결제 화면 
+			                        // location.href = "${contextPath}/";
+			                    }  else {
+			                        $(".modal").fadeOut(); 
+			                    }
+			                 }); 
+			                 $("#cartBtn").click(function(){ 
+			                	var confirm = confirm('장바구니에 추가하시겠습니까?');
+			                    if(confirm == true){
+			                        // 확인 눌렀을 때 장바구니로 이동
+			                        var nNum = ${'#nNum'}.val();
+			                    	location.href = "${contextPath}/wishlist/add?nNum="+ nNum;
+			                    }else if(confirm == false){
+			                    	// 취소 눌렀을 때 
+			                    	 $(".modal").fadeOut(); 
+			                    } else {
+			                        $(".modal").fadeOut(); 
+			                    }
+			                 }); 
+			            });
+			            </script>
+>>>>>>> branch 'master' of https://github.com/umyewon/semiproject.git
         	</c:when>
         </c:choose>
         
