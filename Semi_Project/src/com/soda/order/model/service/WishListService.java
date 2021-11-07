@@ -15,20 +15,22 @@ public class WishListService {
 
 
 	// 클래스를 장바구니에 추가
-	public int wishListAdd(WishList wishlist) {
+	public List<WishList> wishListAdd(WishList wishlist) {
 		Connection conn = getConnection();
+		List<WishList> listResult = null;
 		
 		// 장바구니에 클래스 insert 결과
 		int result = wishListDao.wishListAdd(conn, wishlist);
 		
 		if(result > 0) {
 			commit(conn);
+			listResult = wishListDao.wishlistList(conn, wishlist.getUserId());
 		} else {
 			rollback(conn);
 		}
 		close(conn);
 		
-		return result;
+		return listResult;
 	}
 
 	public List<WishList> wishlistList(String userId) {

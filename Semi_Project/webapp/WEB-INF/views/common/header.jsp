@@ -54,7 +54,7 @@
                 </div>
                 
                <div class="category2">
-                <a href="#">CART</a>
+                <a href="${ contextPath }/wishlist">CART</a>
                 <ul class="mypage">
                     <li class="mypage">
                     <c:choose>
