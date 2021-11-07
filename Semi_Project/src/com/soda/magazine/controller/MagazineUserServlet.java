@@ -16,7 +16,7 @@ import com.soda.magazine.model.vo.Magazine;
 /**
  * Servlet implementation class MagazineUserServlet
  */
-@WebServlet("/magazine/user")
+@WebServlet("/user/list")
 public class MagazineUserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -54,11 +54,11 @@ public class MagazineUserServlet extends HttpServlet {
 //	/* 필터 관련 파라미터 추출 (추후에 수정 ) */
 //	request.setAttribute("pi",map.get("pi"));
 //	request.setAttribute("noticeList",map.get("noticeList"));
-	List<Magazine> magazineList = new MagazineService().selectMagazineList();
+	List<Magazine> userList = new MagazineService().selectUserList();
 	
 //	System.out.println(boardList);
 	
-	request.setAttribute("magazineList", magazineList);
+	request.setAttribute("userList", userList);
 	request.getRequestDispatcher("/WEB-INF/views/magazine/magazineUser.jsp").forward(request, response);
 //	System.out.println(magazineList);
 	

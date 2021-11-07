@@ -7,7 +7,7 @@ html {
 }
 
 .body-super{
-    width: 100%;
+    width: 1000px;
     margin : 0 auto;
     height: auto;
     font-family: 'Noto Sans KR', sans-serif;
@@ -16,7 +16,7 @@ html {
  }
  
  .body-inner-blue{
-   width:930px;
+   width:1000px;
    height: auto;
    border: 6px solid rgb(218, 239, 245);
    background-color: white;
@@ -93,18 +93,20 @@ font-family: 'Noto Sans KR', sans-serif;
 }
 
 .id{
-   margin-top: 32px;
+   margin-top:30px;
    margin-right: 15px;
    margin-left: 10px;
 }
 
-.id>p{
+.id>a{
    font-size: 17px;
-   color:black;
+   color:grey;
+   top:20px;
 }
 
 .date{
-   margin-top: 32px;
+   margin-top:13px;
+   color:grey;
 }
 
 .date>p{
@@ -125,14 +127,15 @@ font-family: 'Noto Sans KR', sans-serif;
   border-color: grey;
 }
 
-.comment-count{
-   margin-top: 60px;
-   margin-left: 20px;
-   margin-bottom: 13px;
+.content{
+	margin-bottom:70px;
 }
 
 
+
+
 .comment{
+	width :1010px;
    background-color: rgb(237, 237, 237);
    display: grid;
  
@@ -141,7 +144,7 @@ font-family: 'Noto Sans KR', sans-serif;
 
 .comment-title{
    margin-top:20px;
-   margin-left: 25px;
+   margin-left: 50px;
    color:rgb(7, 86, 105);
    font-weight: bold;
    font-size: 23px;

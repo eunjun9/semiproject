@@ -53,7 +53,7 @@ public class EmailLoginServlet extends HttpServlet {
 
 		 //System.out.println(userId + " / " + userPwd);
 		
-		Member loginUser = new MemberService().loginMember(userId, userPwd);
+//		Member loginUser = new MemberService().loginMember(userId, userPwd);
 		
 		// System.out.println(loginUser);
 

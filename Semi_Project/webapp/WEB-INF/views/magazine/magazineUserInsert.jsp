@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 
@@ -56,8 +57,7 @@
 				</div>
 
 
-				<form method="post" action="${ contextPath }/magazine/insert"
-					enctype="multipart/form-data">
+				<form method="post" name="insertForm" action="${contextPath }/user/insert" enctype="multipart/form-data">
 					<div class="content">
 						<h4>
 							<span class="title_span">&nbsp;</span> 카테고리
@@ -119,7 +119,8 @@
 						</div>
 						<div class="btn_area">
 							<button class="button" type="button">목록으로</button>
-							<button class="submit" type="submit">작성하기</button>
+							<button class="submit" type="submit" onclick="action();">작성하기</button>
+							
 						</div>
 				</form>
 			</div>

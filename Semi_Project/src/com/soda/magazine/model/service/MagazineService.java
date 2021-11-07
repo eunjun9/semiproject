@@ -12,12 +12,10 @@ import com.soda.magazine.model.vo.MagazineFile;
 import com.soda.magazine.model.vo.Magazine;
 import com.soda.magazine.model.vo.PageInfo;
 
-
-
 public class MagazineService {
 
-	 private MagazineDao magazineDao = new MagazineDao();
-	   
+	private MagazineDao magazineDao = new MagazineDao();
+
 //	 /* 페이징 : 페이지와 게시글리스트를 리턴*/
 //		public Map<String, Object> selectList(int page) {
 //			Connection conn = getConnection();
@@ -45,81 +43,115 @@ public class MagazineService {
 //			return returnMap;
 //		}
 
-		public int insertMagazine(Magazine magazine) {
-			Connection conn = getConnection();
-			
-			/* Magazine 테이블에 삽입 */
-			int MagazineResult = magazineDao.insertMagazine(conn, magazine);
-			
-			/* File 테이블에 삽입 */
-			int fileResult = 0;
-			for(MagazineFile photo : magazine.getPhotoList()) {
-				fileResult += magazineDao.insertFile(conn, photo);
-			}
-			
-			int result = 0;	// 3가지 로직이 모두 잘 수행 되었음을 나타내는 변수
-			if(MagazineResult > 0 && fileResult == magazine.getPhotoList().size()) {
-				// fileResult = 사진 삽입(insert)이 정상 수행 된 갯수, size() = 실제 첨부 된 사진 갯수
-				commit(conn);
-				result = 1;
-			} else {
-				rollback(conn);
-			}
-			
-			close(conn);
-			
-			
-			return result;
-			
+	
+	// 유저 작성하기
+	public int insertUser(Magazine user) {
+		Connection conn = getConnection();
+
+		/* Magazine 테이블에 삽입 */
+		int UserResult = magazineDao.insertUser(conn, user);
+
+		/* File 테이블에 삽입 */
+		int fileResult = 0;
+		for (MagazineFile photo : user.getPhotoList()) {
+			fileResult += magazineDao.insertFile(conn, photo);
 		}
 
-		public Magazine selectMagazine(int nNum) {
-		    Connection conn = getConnection();
-		      
-		      /* magazine 테이블 정보 조회 */
-		      Magazine magazine = magazineDao.selectMagazine(conn, nNum);
-		      
-		      /* magazineFile 테이블 정보 조회 */
-		      List<MagazineFile> photoList = magazineDao.selectPhotoList(conn, nNum);
-		      magazine.setPhotoList(photoList);
-		      
-		      close(conn);
-		      
-		      return magazine;
-
+		int result = 0; // 3가지 로직이 모두 잘 수행 되었음을 나타내는 변수
+		if (UserResult > 0 && fileResult == user.getPhotoList().size()) {
+			// fileResult = 사진 삽입(insert)이 정상 수행 된 갯수, size() = 실제 첨부 된 사진 갯수
+			commit(conn);
+			result = 1;
+		} else {
+			rollback(conn);
 		}
 
-		// 조회수 증가
-		public int increaseCount(int nNum) {
-			Connection conn = getConnection();
-			
-			int result = magazineDao.increaseCount(conn, nNum);
-			
-			if(result > 0) {
-				commit(conn);
-			} else {
-				rollback(conn);
-			}
-			
-			close(conn);
-			
-			return result;
+		close(conn);
+
+		return result;
+
+	}
+
+	public Magazine selectMagazine(int nNum) {
+		Connection conn = getConnection();
+
+		/* magazine 테이블 정보 조회 */
+		Magazine magazine = magazineDao.selectMagazine(conn, nNum);
+
+		/* magazineFile 테이블 정보 조회 */
+		List<MagazineFile> photoList = magazineDao.selectPhotoList(conn, nNum);
+		magazine.setPhotoList(photoList);
+
+		close(conn);
+
+		return magazine;
+
+	}
+
+	// 조회수 증가
+	public int increaseCount(int nNum) {
+		Connection conn = getConnection();
+
+		int result = magazineDao.increaseCount(conn, nNum);
+
+		if (result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
 		}
 
-		public List<Magazine> selectMagazineList() {
-			 Connection conn = getConnection();
-		      
-		      List<Magazine> magazineList = magazineDao.selectMagazineList(conn);
-		      // System.out.println(conn);
-		      close(conn);
-		      
-		      return magazineList;
-		   }
-		
-		
-		
-		
-		
-		
-		
+		close(conn);
+
+		return result;
+	}
+
+	// 매거진 전체 메인 화면 불러오기
+	public List<Magazine> selectUserList() {
+		Connection conn = getConnection();
+
+		List<Magazine> userList = magazineDao.selectUserList(conn);
+		// System.out.println(conn);
+		close(conn);
+
+		return userList;
+	}
+
+	// 관리자 작성하기
+	public int insertAdmin(Magazine admin) {
+		Connection conn = getConnection();
+
+		/* Magazine 테이블에 삽입 */
+		int adminResult = magazineDao.insertAdmin(conn, admin);
+
+		/* File 테이블에 삽입 */
+		int fileResult = 0;
+		for (MagazineFile photo : admin.getPhotoList()) {
+			fileResult += magazineDao.insertFile(conn, photo);
 		}
+
+		int result = 0; // 3가지 로직이 모두 잘 수행 되었음을 나타내는 변수
+		if (adminResult > 0 && fileResult == admin.getPhotoList().size()) {
+			// fileResult = 사진 삽입(insert)이 정상 수행 된 갯수, size() = 실제 첨부 된 사진 갯수
+			commit(conn);
+			result = 1;
+		} else {
+			rollback(conn);
+		}
+
+		close(conn);
+
+		return result;
+	}
+
+	// 관리자 메인 페이지 조회
+	public List<Magazine> selectAdminList() {
+		Connection conn = getConnection();
+
+		List<Magazine> magazineAdminList = magazineDao.selectAdminList(conn);
+		// System.out.println(conn);
+		close(conn);
+
+		return magazineAdminList;
+	}
+
+}

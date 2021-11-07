@@ -23,14 +23,14 @@ import com.soda.member.model.vo.Member;
 /**
  * Servlet implementation class MagazineWrite
  */
-@WebServlet("/magazine/insert")
-public class MagazineInsertServlet extends HttpServlet {
+@WebServlet("/user/insert")
+public class MagazineUserInsertServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MagazineInsertServlet() {
+    public MagazineUserInsertServlet() {
         super();
     }
 
@@ -38,7 +38,7 @@ public class MagazineInsertServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		 request.getRequestDispatcher("/WEB-INF/views/magazine/magazineInsert.jsp").forward(request, response);
+		 request.getRequestDispatcher("/WEB-INF/views/magazine/magazineUserInsert.jsp").forward(request, response);
 	   }
 
 	/**
@@ -74,11 +74,11 @@ public class MagazineInsertServlet extends HttpServlet {
 			
 	
 		
-		Magazine magazine = new Magazine();
-		magazine.setnType(mCategory);
-		magazine.setnTitle(mtitle);
-		magazine.setnContent(mcontent);
-		magazine.setUserId(mwriter);
+		Magazine user = new Magazine();
+		user.setnType(mCategory);
+		user.setnTitle(mtitle);
+		user.setnContent(mcontent);
+		user.setUserId(mwriter);
 		
 		
 		// 첨부파일 썸네일로 받아오기
@@ -110,24 +110,23 @@ public class MagazineInsertServlet extends HttpServlet {
 	      }
 	      
 	      /* magazine에 만들어진 attachment 데이터 설정 */
-	      magazine.setPhotoList(photoList);
+	      user.setPhotoList(photoList);
 	      
-//	      System.out.println(magazine);
+	      System.out.println(photoList.get(0).getChangeName());
 //	      System.out.println(photoList);
+//	      System.out.println(user);
 	      
 	      
 	      
 	      /* 사진 게시판 작성 비즈니스 로직 처리할 서비스 요청 */
-	      int result = new MagazineService().insertMagazine(magazine);
+	      int result = new MagazineService().insertUser(user);
 	      
 	     
 	      
 	      if(result > 0) {
 	    	  
-	  
-	    	  
 	    	  // 사진 게시판 목록 재요청
-	    	  response.sendRedirect(request.getContextPath() + "/magazine/user");
+	    	  response.sendRedirect(request.getContextPath() + "/user/list");
 	    	  
 	      } else {
 	    	

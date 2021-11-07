@@ -70,9 +70,10 @@
 				<div class="tit">
 					<div class="b-title">다른 이들과 나누는 우리들의 이야기! 모임 후기 게시판</div>
 					<div class="view1">
-						<a href="<%= request.getContextPath() %>/magazine/user">전체보기</a> 
+						<a href="<%= request.getContextPath() %>/user/list">전체보기</a> 
+						
 						<c:if test="${ !empty loginUser }">
-						<a href="<%= request.getContextPath() %>/magazine/insert">글쓰기</a>
+						<a href="<%= request.getContextPath() %>/user/insert">글쓰기</a>
 						</c:if>
 					</div>
 				</div>
@@ -87,12 +88,12 @@
 				<div class="swiper-wrapper">
 
 
-					<c:forEach var="magazine" items="${ magazineList }">
+					<c:forEach var="magazine" items="${userList}">
 						<div class="swiper-slide">
 							<ul class="board_list">
 								<div class="box">
 									<div class="pics" onclick="detailView(${ magazine.nNum })">
-										<img src=${ contextPath }${ magazine.photoList.get(0).route }${ magazine.photoList.get(0).changeName }>
+										<img src="${ contextPath }${ magazine.photoList.get(0).route }${ magazine.photoList.get(0).changeName }">
 										<p class="category">[${ magazine.nType }]</p>
 										<p class="list-title">${ magazine.nTitle }</p>
 										<br>
@@ -147,9 +148,9 @@
 				<div class="tit">
 					<div class="b-title">소다만의 STORY를 공개합니다</div>
 					<div class="view1">
-						<a href="#">전체보기</a>
-						<c:if test="${ !empty loginUser && userId == 'y7230_@naver.com'}">
-						<a href="<%= request.getContextPath() %>/magazine/insert">글쓰기</a>
+						<a href="<%= request.getContextPath() %>/admin/list">전체보기</a>
+						<c:if test="${ !empty loginUser && loginUser.userId == 'admin@gmail.com'}">
+						<a href="<%= request.getContextPath() %>/admin/insert">글쓰기</a>
 						</c:if>
 					</div>
 				</div>
@@ -162,14 +163,24 @@
 		<div class="slide2">
 			<div class="swiper mySwiper2">
 				<div class="swiper-wrapper">
-					<div class="swiper-slide">
-						<img
-							src="<%= request.getContextPath() %>/resources/images/yeonjoo/white.jpg">
-						<div class=all-title>
-							<a href="#" class=first-title>요알못, 요리왕으로 거듭나다</a><br> <a
-								href="#" class=name>SODA</a>
+				
+					<c:forEach var="magazine" items="${ magazineAdminList }">
+						<div class="swiper-slide">
+							<ul class="board_list">
+								<div class="box">
+									<div class="pics" onclick="detailView(${ magazine.nNum })">
+										<img src=${ contextPath }${ magazine.photoList.get(0).route }${ magazine.photoList.get(0).changeName }>
+										<p class="category">[${ magazine.nType }]</p>
+										<p class="list-title">${ magazine.nTitle }</p>
+										<br>
+									</div>
+									<div class="writer-par">
+										<a href="#" class="writer">${ magazine.userId }</a>
+									</div>
+								</div>
+							</ul>
 						</div>
-					</div>
+					</c:forEach>
 					
 
 

@@ -117,17 +117,17 @@ public class MagazineDao {
 
 
 		
-		public int insertMagazine(Connection conn, Magazine magazine) {
+		public int insertUser(Connection conn, Magazine user) {
 			 PreparedStatement pstmt = null;
 		      int result = 0;
-		      String sql = magazineQuery.getProperty("insertMagazine");
+		      String sql = magazineQuery.getProperty("insertUser");
 		      
 		      try {
 		         pstmt = conn.prepareStatement(sql);
-		         pstmt.setString(1, magazine.getnTitle());
-		         pstmt.setString(2, magazine.getnContent());
-		         pstmt.setString(3, magazine.getnType());
-		         pstmt.setString(4, magazine.getUserId());
+		         pstmt.setString(1, user.getnTitle());
+		         pstmt.setString(2, user.getnContent());
+		         pstmt.setString(3, user.getnType());
+		         pstmt.setString(4, user.getUserId());
 		         
 		         result = pstmt.executeUpdate();
 		         
@@ -257,40 +257,38 @@ public class MagazineDao {
 		         close(rset);
 		         close(pstmt);
 		      }
-		      
-		      
-		      System.out.println(magazine);
 		      return magazine;
 		}
 
 		
 		// 매거진 메인 화면
-		public List<Magazine> selectMagazineList(Connection conn) {
+		public List<Magazine> selectUserList(Connection conn) {
 			   PreparedStatement pstmt = null;
 		         ResultSet rset = null;
-		         List<Magazine> magazineList = new ArrayList<>();
-		         String sql = magazineQuery.getProperty("selectMagazineList");
+		         List<Magazine> userList = new ArrayList<>();
+		         String sql = magazineQuery.getProperty("selectUserList");
 		         
 		            try {
 		               pstmt = conn.prepareStatement(sql);
 		               rset = pstmt.executeQuery();
 		               
 		               while(rset.next()) {   // next() : 다음 행
-		                  Magazine magazine = new Magazine();
-		                  magazine.setnNum(rset.getInt("notice_num"));
-		                  magazine.setnType(rset.getString("notice_type"));
-		                  magazine.setnTitle(rset.getString("notice_title"));
-		                  magazine.setUserId(rset.getString("user_id"));
-		                  magazine.setnCount(rset.getInt("ncount"));
+		                  Magazine user = new Magazine();
+		                  user.setnNum(rset.getInt("notice_num"));
+		                  user.setnType(rset.getString("notice_type"));
+		                  user.setnTitle(rset.getString("notice_title"));
+		                  user.setUserId(rset.getString("user_id"));
+		                  user.setnCount(rset.getInt("ncount"));
 		                  
 		                  List<MagazineFile> photoList = new ArrayList<>();
 		                  MagazineFile photo = new MagazineFile();
 		                  photo.setRoute(rset.getString("route"));
 		                  photo.setChangeName(rset.getString("change_name"));
+		                  photo.setFileLevel(rset.getInt("file_level"));
 		                  photoList.add(photo);
-		                  magazine.setPhotoList(photoList);
+		                  user.setPhotoList(photoList);
 		                  
-		                  magazineList.add(magazine);
+		                  userList.add(user);
 		               }
 		               
 		            } catch (SQLException e) {
@@ -301,8 +299,76 @@ public class MagazineDao {
 		            }
 		            
 		         
-		         return magazineList;
+		         return userList;
 		      }
+
+
+		public int insertAdmin(Connection conn, Magazine admin) {
+			 PreparedStatement pstmt = null;
+		      int result = 0;
+		      String sql = magazineQuery.getProperty("insertAdmin");
+		      
+		      try {
+		         pstmt = conn.prepareStatement(sql);
+		         pstmt.setString(1, admin.getnTitle());
+		         pstmt.setString(2, admin.getnContent());
+		         pstmt.setString(3, admin.getnType());
+		         pstmt.setString(4, admin.getUserId());
+		         
+		         result = pstmt.executeUpdate();
+		         
+		      } catch (SQLException e) {
+		         e.printStackTrace();
+		      } finally {
+		         close(pstmt);
+		      }
+		      
+		      return result;
+		   }
+
+		
+		
+		// 관리자 메인 페이지 조회
+		public List<Magazine> selectAdminList(Connection conn) {
+			PreparedStatement pstmt = null;
+	         ResultSet rset = null;
+	         List<Magazine> magazineAdminList = new ArrayList<>();
+	         String sql = magazineQuery.getProperty("selectAdminList");
+	         
+	            try {
+	               pstmt = conn.prepareStatement(sql);
+	               rset = pstmt.executeQuery();
+	               
+	               while(rset.next()) {   // next() : 다음 행
+	                  Magazine admin = new Magazine();
+	                  admin.setnNum(rset.getInt("notice_num"));
+	                  admin.setnType(rset.getString("notice_type"));
+	                  admin.setnTitle(rset.getString("notice_title"));
+	                  admin.setUserId(rset.getString("user_id"));
+	                  admin.setnCount(rset.getInt("ncount"));
+	                  
+	                  List<MagazineFile> photoList = new ArrayList<>();
+	                  MagazineFile photo = new MagazineFile();
+	                  photo.setRoute(rset.getString("route"));
+	                  photo.setChangeName(rset.getString("change_name"));
+	                  photo.setFileLevel(rset.getInt("file_level"));
+	                  photoList.add(photo);
+	                  admin.setPhotoList(photoList);
+	                  
+	                  magazineAdminList.add(admin);
+	               }
+	               
+	            } catch (SQLException e) {
+	               e.printStackTrace();
+	            } finally {
+	               close(rset);
+	               close(pstmt);
+	            }
+	            
+	         
+	         return magazineAdminList;
+	      }
+
 
 		
 		

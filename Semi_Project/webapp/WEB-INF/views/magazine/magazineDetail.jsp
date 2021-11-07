@@ -42,7 +42,7 @@
 	<div class="body-inner-blue">
 		<div class="buttons">
 			<div class="back">
-				<button>back</button>
+				<button><a href="${ contextPath }/magazine/main">back</a></button>
 			</div>
 			<div class="admin">
 				<button>삭제</button>
@@ -52,25 +52,6 @@
 			</div>
 
 		</div>
-
-
-		<div class="subject">
-			<span> 글번호 : ${ magazine.nNum }</span> 
-			<span> 조회수 : ${ magazine.nCount }</span>
-			<span> 작성자 : ${ magazine.userId }</span> 
-			<span> 작성일 : <fmt:formatDate
-					value="${ magazine.nDate }" type="both"
-					pattern="yyy.MM.dd HH:mm:ss" />
-			</span> 
-			<span> 수정일 : <fmt:formatDate value="${ magazine.modifyDate }"
-					type="both" pattern="yyy.MM.dd HH:mm:ss" /></span>
-		</div>
-
-
-		<h4>
-			<span class="title_span">&nbsp;</span> 분류
-		</h4>
-		<p>${ magazine.nType }</p>
 
 		<div class="title">
 			<p>${magazine.nTitle }</p>
@@ -84,10 +65,11 @@
 							<img src="../image/pro.jpg">
 						</div>
 						<div class="id">
-							<p>${ magazine.userId }</p>
+							<a href="#">${ magazine.userId }</a>
 						</div>
 						<div class="date">
-							<p>2시간 전</p>
+							<p><fmt:formatDate value="${ magazine.nDate }"
+						type="both" pattern="yyy.MM.dd HH:mm:ss" /></p>
 						</div>
 					</div>
 
@@ -123,13 +105,59 @@
 		</div>
 	</div>
 
-	<div class="comment-count">댓글 3</div>
+	
 	<div class="comment">
 		<div class="comment-title">
-			<p>댓글</p>
+			<p>댓글 3</p>
 		</div>
 
 		<div class="comment-each">
+			<div class="com-front">
+				<div class="comment-pro">
+					<img src="../image/pro2.png">
+				</div>
+				
+				 <div class="reply_list">
+                  <c:forEach items="${ board.replyList }" var="reply">
+                     <ul class="reply_ul">
+                        <li class="rwriter">${ reply.userName }</li>
+                        <li class="rcontent">${ reply.rcontent }</li>
+                        <li class="rdate">
+                        <fmt:formatDate value="${ reply.createDate }" type="both"
+                        pattern="yyyy.MM.dd HH:mm:ss"/>
+                        </li>
+                     </ul>
+                  </c:forEach>
+                  </div>
+				
+				
+			</div>
+			<div class="admin com-button">
+				<button>삭제</button>
+				<button>수정</button>
+				<button type="button" class="report-button"
+					onclick="openPopup('Report_popup.html', 'checking', 450, 650)">신고</button>
+			</div>
+		</div>
+		<div>
+			<hr class="hr2">
+		</div>
+
+		 <div class="reply_list">
+                  <c:forEach items="${ board.replyList }" var="reply">
+                     <ul class="reply_ul">
+                        <li class="rwriter">${ reply.userName }</li>
+                        <li class="rcontent">${ reply.rcontent }</li>
+                        <li class="rdate">
+                        <fmt:formatDate value="${ reply.createDate }" type="both"
+                        pattern="yyyy.MM.dd HH:mm:ss"/>
+                        </li>
+                     </ul>
+                  </c:forEach>
+                  </div>
+
+
+	<!-- <div class="comment-each">
 			<div class="com-front">
 				<div class="comment-pro">
 					<img src="../image/pro2.png">
@@ -149,51 +177,8 @@
 		</div>
 		<div>
 			<hr class="hr2">
-		</div>
+		</div> -->
 
-		<div class="comment-each">
-			<div class="com-front">
-				<div class="comment-pro">
-					<img src="../image/pro2.png">
-				</div>
-				<div class="comment-info">
-					<a href class="com-id">Ilovemountain</a>
-					<p class="com-con">향수도 좋지만 등산은 어떠세요? :)</p>
-					<p class="com-date">2021.10.30</p>
-				</div>
-			</div>
-			<div class="admin com-button">
-				<button>삭제</button>
-				<button>수정</button>
-				<button type="button" class="report-button"
-					onclick="openPopup('Report_popup.html', 'checking', 450, 650)">신고</button>
-			</div>
-		</div>
-		<div>
-			<hr class="hr2">
-		</div>
-
-		<div class="comment-each">
-			<div class="com-front">
-				<div class="comment-pro">
-					<img src="../image/pro2.png">
-				</div>
-				<div class="comment-info">
-					<a href class="com-id">Ilovemountain</a>
-					<p class="com-con">향수도 좋지만 등산은 어떠세요? :)</p>
-					<p class="com-date">2021.10.30</p>
-				</div>
-			</div>
-			<div class="admin com-button">
-				<button>삭제</button>
-				<button>수정</button>
-				<button type="button" class="report-button"
-					onclick="openPopup('Report_popup.html', 'checking', 450, 650)">신고</button>
-			</div>
-		</div>
-		<div>
-			<hr class="hr2">
-		</div>
 
 
 		<div class="reply_write">

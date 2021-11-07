@@ -47,10 +47,7 @@
 
 	</entry>
 
-	<entry key="insertMagazine">
-
-
-
+	<entry key="insertUser">
 		INSERT
 		INTO NOTICE
 		(
@@ -75,8 +72,7 @@
 		, ?
 		, ?
 		, SYSDATE
-		,
-		'매거진'
+		, 'USER'
 		, 0
 		)
 	</entry>
@@ -107,6 +103,35 @@
 		)
 	</entry>
 
+<entry key="insertAdmin">
+	INSERT
+		INTO NOTICE
+		(
+		NOTICE_NUM,
+		NOTICE_TITLE,
+		NOTICE_CONTENT,
+		NOTICE_DATE,
+		NOTICE_STATUS,
+		NOTICE_TYPE,
+		USER_ID,
+		MODIFY_DATE,
+		NOTICE_SELF_NUM,
+		NCOUNT
+		)
+		VALUES
+		(
+		SEQ_NOTICE_NUM.NEXTVAL
+		, ?
+		, ?
+		, SYSDATE
+		, DEFAULT
+		, ?
+		, ?
+		, SYSDATE
+		, 'ADMIN'
+		, 0
+		)
+		</entry>
 
 	<entry key="selectMagazine">
 		SELECT
@@ -139,7 +164,7 @@
 	</entry>
 	
 	
-	<entry key="selectMagazineList">
+	<entry key="selectUserList">
 	   SELECT
           NOTICE_NUM
         , NOTICE_TYPE
@@ -149,13 +174,36 @@
         , ROUTE
         , CHANGE_NAME
         , file_level
+        , NOTICE_SELF_NUM
      FROM NOTICE
      JOIN MEMBER_INFO USING(USER_ID)
      JOIN TBL_FILE USING(NOTICE_NUM)
     WHERE NOTICE_STATUS = 'N'
     AND FILE_LEVEL = 1
+    AND NOTICE_SELF_NUM = 'USER'
     ORDER BY NOTICE_NUM DESC
     </entry>
 	
+	
+	<entry key="selectAdminList">
+	       SELECT
+          NOTICE_NUM
+        , NOTICE_TYPE
+        , NOTICE_TITLE
+        , USER_ID
+        , NCOUNT
+        , ROUTE
+        , CHANGE_NAME
+        , file_level
+        , NOTICE_SELF_NUM
+     FROM NOTICE
+     JOIN MEMBER_INFO USING(USER_ID)
+     JOIN TBL_FILE USING(NOTICE_NUM)
+    WHERE NOTICE_STATUS = 'N'
+    AND FILE_LEVEL = 1
+    AND USER_ID = 'admin@gmail.com'
+    AND NOTICE_SELF_NUM = 'ADMIN'
+    ORDER BY NOTICE_NUM DESC
+    </entry>
 	
 	</properties>
