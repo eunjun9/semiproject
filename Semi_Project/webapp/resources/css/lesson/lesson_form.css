@@ -185,6 +185,14 @@ input[name=cPrice]{
     margin-bottom: 50px;
 }
 
+.summernote{
+	resize : none;
+    width: 99%;
+    height: 200px;
+    font-size: 13pt;
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
 #form_body h4{
     margin-bottom: 30px;
 }

@@ -8,7 +8,7 @@
 <title>클래스 상세페이지</title>
 
 	<!--외부 스타일 시트-->
-    <link href="${ contextPath }/resources/css/lesson/lesson_detail.css?4" rel="stylesheet">
+    <link href="${ contextPath }/resources/css/lesson/lesson_detail.css?5" rel="stylesheet">
 	
     <!-- font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -140,6 +140,11 @@
             터프팅건이라는 총 모양의 기계를 이용해 원단에 실을 쏘아 모양을 만들어 내는 작업입니다.
         </pre> -->
          <pre class="cBodyText2">${ lesson.nContent }</pre>
+         <c:forEach items="${ lesson.photoList }" var="photo">
+			<div class="photoList">
+				<img src="${ contextPath }${ photo.route}${ photo.changeName }">
+			</div>
+		</c:forEach>
         <hr>
     </div>
 </div>

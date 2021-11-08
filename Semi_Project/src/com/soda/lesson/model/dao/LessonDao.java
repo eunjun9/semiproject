@@ -3,6 +3,7 @@ package com.soda.lesson.model.dao;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -246,12 +247,13 @@ public class LessonDao {
 			pstmt.setString(2, lesson.getCtag2());
 			pstmt.setInt(3, lesson.getcPrice());
 			pstmt.setString(4, lesson.getcCategory());
-			pstmt.setString(5, lesson.getcSDate());
+			pstmt.setString(5,lesson.getcSDate());
 			pstmt.setString(6, lesson.getcLocation());
 			pstmt.setString(7, lesson.getcTutor());
 			pstmt.setString(8, lesson.getUserId());
 			pstmt.setString(9, lesson.getcTime1());
 			pstmt.setString(10, lesson.getcTime2());
+			
 			
 			result = pstmt.executeUpdate();
 			

@@ -8,7 +8,7 @@
 <title>클래스 등록</title>
 
     <!--외부 스타일 시트-->
-    <link href="${ contextPath }/resources/css/lesson/lesson_form.css?4" rel="stylesheet">
+    <link href="${ contextPath }/resources/css/lesson/lesson_form.css?5" rel="stylesheet">
 
     <!-- font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,9 +24,7 @@
 <body>
     <!-- header -->
      <%@ include file="/WEB-INF/views/common/header.jsp" %> 
-         <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
- 		 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script> 
-		 <script src="${ contextPath }resources/js/summernote-ko-KR.js"></script> 
+
  	<!-- 글 작성 폼 -->
     <div class="class_form">
         <div class="cForm_title">
@@ -185,37 +183,6 @@
                     }
                 </script>
 
-
-                 <!-- 썸머노트 스크립트 -->
-   	 <script>
-        $(document).ready(function(){
-            $('.summernote').summernote({
-                height : 300,
-                minHeight :null,
-                maxHeight: null,
-                focus:true,
-                lang:'ko-KR',
-                toolbar: [
-                    // [groupName, [list of button]]
-                    ['fontname', ['fontname']]
-                    , ['fontsize', ['fontsize']]
-                    , ['style', ['bold', 'italic', 'underline', 'strikethrough', 'clear']]
-                    , ['color', ['forecolor', 'color']]
-                    , ['table', ['table']]
-                    , ['para', ['ul', 'ol', 'paragraph']]
-                    , ['height', ['height']]
-                    , ['insert', ['picture', 'link', 'video']]
-                    , ['view', ['fullscreen', 'help']]
-                ] , 
-                fontNames: ['Arial', 'Araial Black', 'Comic Sans MS', 'Courier New', '맑은 고딕', '궁서', 
-                '굴림체', '굴림', '돋움체','바탕체'] ,
-                fontSizes: ['8', '9', '10', '11', '12', '14', '16', '18', '20', '22', '24', '28', '30', '36'
-                    , '40', '48', '50', '60', '72']
-            })
-        });
-           
-    </script> 
-                
                 <hr>  
                 <h4>강사 소개를 작성하세요</h4>
                 <textarea name="tutor_intro" id="tutor_intro" required></textarea>
@@ -223,7 +190,7 @@
                 <!-- 원데이 클래스 일때 -->
                 <div class="offdate">
                 <h4>날짜를 선택하세요</h4>
-                <input type="date" name="class_date" required><br>
+                <input type="date" name="class_date"><br>
                 </div>
                 
                 <!-- vod 클래스 일때 -->

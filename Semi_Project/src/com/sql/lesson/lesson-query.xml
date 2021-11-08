@@ -34,6 +34,7 @@
 			JOIN "FILE" F USING(NOTICE_NUM)
 			WHERE NOTICE_TYPE = '클래스'
 			  AND NOTICE_STATUS = 'N'
+			  AND FILE_LEVEL= 1
 			  ORDER BY NOTICE_NUM DESC) A)
 		WHERE RNUM BETWEEN ? AND ?
 	</entry>
@@ -107,7 +108,7 @@
           , DEFAULT
       )
 	</entry>
-
+	
 	<entry key="insertLesson">
       INSERT INTO CLASS (
       		NOTICE_NUM
@@ -124,7 +125,7 @@
     ) 
     VALUES (
     		SEQ_NOTICE_NUM.CURRVAL
-          , ?
+    	  , ?
           , ?
           , ?
           , ?
@@ -136,6 +137,7 @@
           , ?
     )
 	</entry>      
+	
 
 	<entry key="insertAttachment">
 		INSERT INTO "FILE"

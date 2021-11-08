@@ -2,6 +2,8 @@ package com.soda.lesson.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -69,8 +71,15 @@ public class LessonInsertServlet extends HttpServlet {
 		String nTitle = multiRequest.getParameter("nTitle");
 		String cCategory = multiRequest.getParameter("class_type");
 		String nContent = multiRequest.getParameter("editordata");
-		String tInfo = multiRequest.getParameter("tutor_info");
+		String tInfo = multiRequest.getParameter("tutor_intro");
 		String cDate = multiRequest.getParameter("class_date");
+		
+		/*
+		 * SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); Date cDate = null;
+		 * try { cDate = sdf.parse(multiRequest.getParameter("class_date")); } catch
+		 * (ParseException e) { e.printStackTrace(); }
+		 */
+		
 		String ctime1 = multiRequest.getParameter("class_time1");
 		String ctime2 = multiRequest.getParameter("class_time2");
 		String cLocation = multiRequest.getParameter("postcode") 
@@ -134,7 +143,7 @@ public class LessonInsertServlet extends HttpServlet {
 					failedFile.delete();	// 메모리상에 저장된 파일 delete()메소드로 삭제 가능
 				}
 				// 사진 삭제 후 에러페이지로 이동
-				request.setAttribute("message", "사진 게시판 게시글 등록에 실패하였습니다.");
+				request.setAttribute("message", "클래스 등록에 실패하였습니다.");
 				request.getRequestDispatcher("/WEB-INF/views/common/errorpage.jsp").forward(request, response);
 			}
 	}

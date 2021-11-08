@@ -19,7 +19,6 @@ public class Lesson {
 	private int cPrice;			// 가격
 	private String cCategory;	// 카테고리 (원데이 vod)
 	private String cSDate;		// 시작 날짜
-	private Date cEDate;		// 종료날짜
 	private String cTime1;		// 클래스 시간1
 	private String cTime2;		// 클래스 시간2
 	private String cLocation;	// 장소
@@ -31,7 +30,7 @@ public class Lesson {
 
 	public Lesson(int nNum, String nTitle, String nContent, int nCount, String nStatus, String nType, String userId,
 			String userName, Date nDate, Date modifyDate, String ctag1, String ctag2, int cPrice,
-			String cCategory, String cSDate, Date cEDate, String cTime1, String cTime2, String cLocation, String cTutor,
+			String cCategory, String cSDate, String cTime1, String cTime2, String cLocation, String cTutor,
 			List<Attachment> photoList) {
 		super();
 		this.nNum = nNum;
@@ -49,7 +48,6 @@ public class Lesson {
 		this.cPrice = cPrice;
 		this.cCategory = cCategory;
 		this.cSDate = cSDate;
-		this.cEDate = cEDate;
 		this.cTime1 = cTime1;
 		this.cTime2 = cTime2;
 		this.cLocation = cLocation;
@@ -181,14 +179,6 @@ public class Lesson {
 		this.cSDate = cSDate;
 	}
 
-	public Date getcEDate() {
-		return cEDate;
-	}
-
-	public void setcEDate(Date cEDate) {
-		this.cEDate = cEDate;
-	}
-
 	public String getcTime1() {
 		return cTime1;
 	}
@@ -239,7 +229,7 @@ public class Lesson {
 				+ ", nStatus=" + nStatus + ", nType=" + nType + ", userId=" + userId + ", userName=" + userName
 				+ ", nDate=" + nDate + ", modifyDate=" + modifyDate + ", ctag1=" + ctag1 + ", ctag2=" + ctag2
 				+ ", cPrice=" + cPrice + ", cCategogy=" + cCategory + ", cSDate=" + cSDate
-				+ ", cEDate=" + cEDate + ", cTime1=" + cTime1 + ", cTime2=" + cTime2 + ", cLocation=" + cLocation
+				+ ", cTime1=" + cTime1 + ", cTime2=" + cTime2 + ", cLocation=" + cLocation
 				+ ", cTutor=" + cTutor + ", photoList=" + photoList + "]";
 	}
 
