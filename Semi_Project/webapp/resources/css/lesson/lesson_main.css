@@ -81,7 +81,7 @@ img{
 
 #search{
     position: relative;
-    margin-top: -20px;
+    margin-top: 30px;
 }
 
 .filtering label:not(.ckboxlabel){
@@ -98,7 +98,7 @@ img{
     border-bottom: 1px solid rgb(185,185,185);
     text-align: center;
     background-color: #ffffff00;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
 .filtering input[name=price1]{
@@ -176,7 +176,7 @@ img{
 
 .filtering button[name=reSel]{
     background-color: rgb(248, 241, 233);
-    margin-top: 35px;
+    margin-top: 30px;
     margin-bottom: 20px;
     margin-left: 40px;
     color: rgb(7, 86, 105);
@@ -185,7 +185,7 @@ img{
 .filtering button[name=selEnd]{
     background-color: rgb(7, 86, 105);
     color: white;
-    margin-top: 35px;
+    margin-top: 30px;
     margin-bottom: 20px;
     margin-left: 40px;
 }

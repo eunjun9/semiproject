@@ -36,8 +36,7 @@
 		<div class="login-bar">
 			<div class="login-logo center">
 				<div class="login-logo center">
-					<a href="${ contextPath }"> <img
-						src="${ contextPath }/resources/images/logo.png" width="400"></a>
+					<a href="${ contextPath }"> <img src="${ contextPath }/resources/images/logo.png" width="400"></a>
 				</div>
 
 				<div class="login-text center">
@@ -54,7 +53,7 @@
 						</span>
 						<h4>비밀번호</h4>
 						<span class="input_area">
-						<input type="password" id="pwd" name="pwd" placeholder="비밀번호를 입력해주세요." required>
+						<input type="password" id="pwd" name="userPwd" placeholder="비밀번호를 입력해주세요." required>
 						</span>
 						
 						<div class="login-fail-text" id="login-fail">

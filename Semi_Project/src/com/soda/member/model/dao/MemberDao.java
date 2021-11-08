@@ -46,7 +46,6 @@ public class MemberDao {
 										rset.getString("user_name"),
 										rset.getString("user_phone"),
 										rset.getString("user_pwd"),
-										rset.getString("user_address"),
 										rset.getDate("join_date"),
 										rset.getString("status"),
 										rset.getString("user_grade"),
@@ -80,7 +79,6 @@ public class MemberDao {
 										rset.getString("user_name"),
 										rset.getString("user_phone"),
 										rset.getString("user_pwd"),
-										rset.getString("user_address"),
 										rset.getDate("join_date"),
 										rset.getString("status"),
 										rset.getString("user_grade"),
@@ -110,8 +108,7 @@ public class MemberDao {
 			pstmt.setString(2, joinMember.getUserName());
 			pstmt.setString(3, joinMember.getUserPhone());
 			pstmt.setString(4, joinMember.getUserPwd());
-			pstmt.setString(5, joinMember.getUserAddress());
-			pstmt.setString(6, joinMember.getGender());
+			pstmt.setString(5, joinMember.getGender());
 		
 			result = pstmt.executeUpdate();
 			
@@ -179,7 +176,7 @@ public class MemberDao {
 		return findEmail;
 	}
 
-	// 비밀번호 찾기 - 임시비밀번호 발급받아 비밀번호 수정
+  // 비밀번호 찾기 - 임시비밀번호 발급받아 비밀번호 수정
 	public int sendPwd(Connection conn, String userId, int random) {
 		PreparedStatement pstmt = null;
 		int result = 0;
@@ -199,6 +196,134 @@ public class MemberDao {
 			close(pstmt);
 		}
 		
+		return result;
+	}
+
+	// 아이디 체크
+	public int idCheck(Connection conn, String userId) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		int result = 0;
+		String sql = memberQuery.getProperty("idCheck");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, userId);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				result = rset.getInt(1);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	// 회원정보수정
+	public int updateMember(Connection conn, Member member) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = memberQuery.getProperty("updateMember");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, member.getUserName());
+			pstmt.setString(2, member.getUserPhone());
+			pstmt.setString(3, member.getUserId());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	// 회원조회
+	public Member selectMember(Connection conn, String userId) {
+		Member updatedMember = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = memberQuery.getProperty("selectMember");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, userId);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				updatedMember = new Member(rset.getString("user_id"),
+										rset.getString("user_name"),
+										rset.getString("user_phone"),
+										rset.getString("user_pwd"),
+										rset.getDate("join_date"),
+										rset.getString("status"),
+										rset.getString("user_grade"),
+										rset.getString("user_gender"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+
+		return updatedMember;
+	}
+
+	// 비밀번호 변경
+	public int updatePwd(Connection conn, String userId, String userPwd, String newPwd) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = memberQuery.getProperty("updatePwd");
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, newPwd);
+			pstmt.setString(2, userId);
+			pstmt.setString(3, userPwd);
+
+      result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	// 회원탈퇴
+	public int deleteAccount(Connection conn, String userId) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = memberQuery.getProperty("deleteAccount");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, userId);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+
 		return result;
 	}
 

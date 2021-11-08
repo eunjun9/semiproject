@@ -12,7 +12,9 @@ import java.util.Properties;
 import static com.common.JDBCTemplate.close;
 
 import com.soda.socialing.model.vo.PageInfo;
+import com.soda.socialing.model.vo.Search;
 import com.soda.socialing.model.vo.Socialing;
+import com.soda.socialing.model.vo.SocialingMember;
 import com.soda.socialing.model.vo.SodaFile;
 
 public class SocialingDao {
@@ -55,17 +57,39 @@ public class SocialingDao {
 	}
 
 	// 게시물 리스트 조회
-	public List<Socialing> selectList(Connection conn, PageInfo pi) {
+	public List<Socialing> selectList(Connection conn, PageInfo pi/*, Search search*/) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		String sql = socialingQuery.getProperty("selectList");
 		List<Socialing> socialingList = new ArrayList<>();
+		
+		// 검색 시 수행할 쿼리문 변경
+//		if(search.getKeyword() != null && search.getLocal() != null && search.getDateIn() != null && search.getOnoff() != null) {
+//			if(search.getSearchCondition().equals("title")) {
+//				sql = socialingQuery.getProperty("selectTitleList");
+//			} else if(search.getSearchCondition().equals("content")) {
+//				sql = socialingQuery.getProperty("selectContentList");
+//			} else if(search.getSearchCondition().equals("writer")) {
+//				sql = socialingQuery.getProperty("selectWriterList");
+//			}
+//		}
 
 		try {
 			pstmt = conn.prepareStatement(sql);
 
 			int startRow = (pi.getPage() - 1) * pi.getBoardLimit() + 1;
 			int endRow = startRow + pi.getBoardLimit() - 1;
+			
+//			int index = 1;
+//			// 검색 sql 실행 시
+//			if(search.getSearchCondition() != null && search.getSearchValue() != null) {
+//				pstmt.setString(index++, search.getSearchValue());
+//			}
+//			
+//			// if문에 안 걸림(검색X) : 1 -> 2
+//			// if문에 걸림(검색O) : if문 안의 index가 1 / 2 -> 3
+//			pstmt.setInt(index++, startRow);
+//			pstmt.setInt(index, endRow);
 
 			pstmt.setInt(1, startRow);
 			pstmt.setInt(2, endRow);
@@ -147,6 +171,8 @@ public class SocialingDao {
 				socialing.setSdate(rset.getTimestamp("s_date"));
 				socialing.setMaxMember(rset.getInt("max_member"));
 				socialing.setMinMember(rset.getInt("min_member"));
+				socialing.setProfile(rset.getString("profile"));
+				socialing.setIntroduction(rset.getString("introduction"));
 			}
 			
 		} catch (SQLException e) {
@@ -194,10 +220,66 @@ public class SocialingDao {
 		return photoList;
 	}
 	
+	public List<SocialingMember> selectMember(Connection conn, int nNum) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		List<SocialingMember> memberList = new ArrayList<>();
+		String sql = socialingQuery.getProperty("selectMember");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, nNum);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				SocialingMember sMember = new SocialingMember();
+				sMember.setMemberId(rset.getString("user_id"));
+				sMember.setStatus(rset.getString("s_status"));
+				sMember.setMemberName(rset.getString("user_name"));
+				sMember.setMemberProfile(rset.getString("profile"));
+				sMember.setIntroduction(rset.getString("introduction"));
+				
+				memberList.add(sMember);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return memberList;
+	}
+	
 	public int insertMember(Connection conn, int nNum, String userId) {
 		PreparedStatement pstmt = null;
 		int result = 0;
 		String sql = socialingQuery.getProperty("insertMember");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, nNum);
+			pstmt.setString(2, userId);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+	
+	public int updateMember(Connection conn, int nNum, String userId) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = socialingQuery.getProperty("updateMember");
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -231,6 +313,8 @@ public class SocialingDao {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
+
 
 
 	

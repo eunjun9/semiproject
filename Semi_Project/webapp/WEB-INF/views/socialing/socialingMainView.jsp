@@ -9,7 +9,7 @@
 <title>소셜링</title>
 
 <!-- 외부 스타일 시트 -->
-<link href="${ contextPath }/resources/css/socialing/socialing_main.css?1" rel="stylesheet">
+<link href="${ contextPath }/resources/css/socialing/socialing_main.css?2" rel="stylesheet">
 
 <!-- 글꼴 (Noto Sans) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -104,26 +104,32 @@
                             value="${ param.keyword }"><br><br>
                         </div>
                         <label id="flabel">지역</label>
-                        <!-- local 선택에 따라 local-details 내용 변경 *hrd 홈페이지 직업훈련목록 필터링 참고 -->
-                        <!-- api 찾아보기 -->
                         <select name="local">
+                        	<option value="" selected>지역 선택</option>
                             <option value="seoul">서울</option>
-                            <option value="gyeonggi">경기</option>
+                            <option value="busan">부산</option>
+                            <option value="daegu">대구</option>
                             <option value="incheon">인천</option>
+                            <option value="gwanju">광주</option>
+                            <option value="daejeon">대전</option>
+                            <option value="ulsan">울산</option>
+                            <option value="sejong">세종</option>
+                            <option value="gyeonggi">경기</option>
                             <option value="gangwon">강원</option>
-                        </select>
-                        <select name="local-details">
-                            <option value="">관악구</option>
-                            <option value="">동작구</option>
-                            <option value="">서초구</option>
-                            <option value="">강남구</option>
+                            <option value="chungbuk">충북</option>
+                            <option value="chungnam">충남</option>
+                            <option value="jeonbuk">전북</option>
+                            <option value="jeonnam">전남</option>
+                            <option value="gyeongbuk">경북</option>
+                            <option value="gyeongnam">경남</option>
+                            <option value="jeju">제주</option>
                         </select>
                         
                         <br><br>
                         <label id="flabel">날짜</label>
                         <input type="date" name="dateIn"><br><br>
                         <label id="flabel">온오프라인</label>
-                        <input type="radio" id="offline" name="onoff" value="offline" checked>
+                        <input type="radio" id="offline" name="onoff" value="offline">
                         <label for="offline">오프라인</label>&nbsp;
                         <input type="radio" id="online" name="onoff" value="online">
                         <label for="online">온라인</label>
@@ -134,7 +140,7 @@
                 <div id="lineupbox">
                     <select name="lineup">
                         <option value="">최신순</option> <!-- 작성일 순 -->
-                        <option value="">인기순</option> <!-- 조회수 순 or 참여 인원 순 -->
+                        <option value="">인기순</option> <!-- 참여 인원 순 -->
                     </select>
                 </div>
                 <div class="s-container2">

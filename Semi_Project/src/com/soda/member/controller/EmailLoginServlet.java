@@ -17,7 +17,7 @@ import com.soda.member.model.vo.Member;
 /**
  * Servlet implementation class EmailLoginServlet
  */
-@WebServlet("/email/login")
+@WebServlet(name="EmailLoginServlet", urlPatterns="/email/login")
 public class EmailLoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -42,10 +42,8 @@ public class EmailLoginServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String userId = request.getParameter("email");
-		String userPwd = request.getParameter("pwd");
+		String userPwd = request.getParameter("userPwd");
 		
-
-//		 System.out.println(userId + " / " + userPwd);
 		
 		Member loginUser = new MemberService().loginMember(userId, userPwd);
 		

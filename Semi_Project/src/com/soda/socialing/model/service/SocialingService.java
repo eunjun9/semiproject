@@ -12,7 +12,9 @@ import java.util.Map;
 
 import com.soda.socialing.model.dao.SocialingDao;
 import com.soda.socialing.model.vo.PageInfo;
+import com.soda.socialing.model.vo.Search;
 import com.soda.socialing.model.vo.Socialing;
+import com.soda.socialing.model.vo.SocialingMember;
 import com.soda.socialing.model.vo.SodaFile;
 
 public class SocialingService {
@@ -20,7 +22,7 @@ public class SocialingService {
 	private SocialingDao socialingDao = new SocialingDao();
 	
 	/* 페이징 : 페이지와 게시글리스트를 리턴*/
-	public Map<String, Object> selectList(int page) {
+	public Map<String, Object> selectList(int page/*, Search search*/) {
 		Connection conn = getConnection();
 		
 		// 1. 조회할 게시글 총 개수 구하기 
@@ -30,7 +32,7 @@ public class SocialingService {
 		PageInfo pi = new PageInfo(page, listCount, 5, 9);
 		
 		// 3. 페이징 처리 된 게시글 목록 조회
-		List<Socialing> socialingList = socialingDao.selectList(conn, pi);
+		List<Socialing> socialingList = socialingDao.selectList(conn, pi/*, search*/);
 		
 		Map<String, Object> returnMap = new HashMap<>();
 		
@@ -70,6 +72,17 @@ public class SocialingService {
 		
 		return socialing;
 	}
+	
+	public List<SocialingMember> selectMember(int nNum) {
+		Connection conn = getConnection();
+		
+		/* Socialing_member 테이블 정보 조회 */
+		List<SocialingMember> socialing = socialingDao.selectMember(conn, nNum);
+		
+		close(conn);
+		
+		return socialing;
+	}
 
 	public int insertSocialing(Socialing socialing) {
 		Connection conn = getConnection();
@@ -103,11 +116,27 @@ public class SocialingService {
 	public int insertMember(int nNum, String userId) {
 		Connection conn = getConnection();
 		
+		// 중복참여 방지 로직 추가해야 함
 		int result = socialingDao.insertMember(conn, nNum, userId);
 		
 		if(result > 0) {
 			commit(conn);
-			System.out.println("소셜링 참여 신청 완료");
+		} else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return result;
+	}
+
+	public int updateMember(int nNum, String userId) {
+		Connection conn = getConnection();
+		
+		int result = socialingDao.updateMember(conn, nNum, userId);
+		
+		if(result > 0) {
+			commit(conn);
 		} else {
 			rollback(conn);
 		}

@@ -15,7 +15,7 @@ import com.soda.member.model.vo.Member;
 /**
  * Servlet implementation class memberjoinServlet
  */
-@WebServlet("/memberjoin")
+@WebServlet(name="memberjoinServlet", urlPatterns="/memberjoin")
 public class memberjoinServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

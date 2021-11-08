@@ -57,7 +57,14 @@
                 <a href="${ contextPath }/wishlist">CART</a>
                 <ul class="mypage">
                     <li class="mypage">
+                    <c:choose>
+                    <c:when test="${ loginUser.userGrade == '회원' }">
                     <a href="${ contextPath }/mypage/main" >MYPAGE</a>
+                    </c:when>
+                    <c:when test="${ loginUser.userGrade == '강사' }">
+                    <a href="${ contextPath }/mypage/tutormain">MYPAGE</a>
+                    </c:when>
+                    </c:choose>
                         <ul class="mypage_sub">
                         <% if(loginUser != null) { %>
                           <c:choose>

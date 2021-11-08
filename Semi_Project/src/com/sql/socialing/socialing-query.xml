@@ -50,9 +50,12 @@
 			 , S_DATE
 			 , MAX_MEMBER
 			 , MIN_MEMBER
+			 , PROFILE
+			 , INTRODUCTION
 		  FROM NOTICE
 		  JOIN MEMBER_INFO USING(USER_ID)
 		  JOIN SOCIALING USING(NOTICE_NUM)
+		  JOIN PROFILE USING(USER_ID)
 		 WHERE NOTICE_TYPE = '소셜링'
 		   AND NOTICE_STATUS = 'N'
 		   AND NOTICE_NUM = ?
@@ -71,6 +74,19 @@
 		 ORDER BY FILE_NUM
 	</entry>
 	
+	<entry key="selectMember">
+		SELECT
+			   USER_ID
+			 , S_STATUS
+	         , USER_NAME
+	         , PROFILE
+	         , INTRODUCTION
+	      FROM SOCIALING_MEMBER
+	      JOIN MEMBER_INFO USING(USER_ID)
+	      JOIN PROFILE USING(USER_ID)
+	     WHERE NOTICE_NUM = ?
+	</entry>
+	
 	<entry key="insertMember">
 		INSERT
 		  INTO SOCIALING_MEMBER
@@ -80,5 +96,12 @@
 		  , ?
 		  , DEFAULT
 		)
+	</entry>
+	
+	<entry key="updateMember">
+		UPDATE SOCIALING_MEMBER
+		   SET S_STATUS = 'Y'
+		 WHERE NOTICE_NUM = ?
+		   AND USER_ID = ?
 	</entry>
 </properties>

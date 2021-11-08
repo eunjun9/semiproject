@@ -1,9 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>	
-<%
-	String userId = (String)session.getAttribute("userId"); 
-%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,44 +34,45 @@
 			<hr>
 		</div>
 
-		<c:forEach var="wishlist" items="${ wishlist }">
+		<c:forEach var="wishList" items="${ wishList }">
 		<form name="classForm" action="${ contextPath }/payment" method="post">
 		<div class="wish-class" id="wish-class">
 			<div class="wish-content">
 
 				<!-- 체크박스 -->
 				<div class="class-checkbox">
-					<input type="checkbox" class="order-check" id="order1" name="checkClass">
+					<input type="checkbox" class="order-check" id="order1" name="checkClass" value="${ wishList.wishNum }">
 				</div>
 				
 				<!-- 클래스 썸네일 이미지 -->
 				<div class="wish-class img">
-					<img src="${ contextPath }${ wishlist.photoList.get(0).filePath }${ wishlist.photoList.get(0).changeName }"
-						width="200px" height="150px">
+					<!--  <img src="${ contextPath }${ wishList.route }${ wishList.changeName }"
+						width="200px" height="150px"> -->
 				</div>
 			</div>
 
 			<!-- 장바구니 추가한 클래스 정보 가져올 영역 -->
 			<div class="wish-class-info">
-				<p class="category">${ wishlist.ccategory }</p>
-				<p class="title">${ wishlist.ntitle }</p>
+				<p class="category">${ wishList.cCategory }</p>
+				<p class="title">${ wishList.nTitle }</p>
 			</div>
 			
 			<c:choose>
-			<c:when test="${ wishlist.ccategory eq 'vod' }">
+			<c:when test="${ wishList.cCategory eq 'vod' }">
 				<div class="wish-class-date">
-					<p class="date">${ wishlist.ctime1 } ~ ${ wishlist.ctime2 }</p>
+					<p class="date">${ wishList.cTime1 } ~ ${ wishList.cTime2 }</p>
 				</div>
 			</c:when>
-			<c:when test="${ wishlist.ccategory eq '원데이' }">
+			<c:when test="${ wishList.cCategory eq '원데이' }">
 				<div class="wish-class-date">
-					<p class="date">${ wishlist.csdate } ~ ${ wishlist.cedate }</p>
+					<p class="date"><fmt:formatDate value="${ wishList.cSDate }" pattern="yyyy/MM/dd" /> 
+					~ <fmt:formatDate value="${ wishList.cEDate }" pattern="yyyy/MM/dd" /></p>
 				</div>
 			</c:when>
 			</c:choose>
 
 			<div class="wish-class-price">
-				<p class="price">${ wishlist.cprice }</p>
+				<p class="price">${ wishList.cPrice }</p>
 			</div>
 
 			<!-- 신청하기(결제페이지로 이동) 버튼 -->
@@ -84,6 +83,7 @@
 		</div>
 		</form>
 	</c:forEach>
+
 	
 	
 	<!-- 선택버튼 / 총결제금액 표시 부분 -->

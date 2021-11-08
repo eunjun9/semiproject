@@ -34,23 +34,15 @@
 	<!-- 장바구니 리스트 조회 -->
 	<entry key="wishlist">
 		SELECT
-		      NOTICE_TITLE
-		    , C_PRICE
-			, C_CATEGORY
-			, C_SDATE
-			, C_EDATE
-			, C_LOCATION
-			, C_TIME1
-			, C_TIME2
-			, ROUTE
-			, CHANGE_NAME
-		 FROM WISHLIST W
-		 JOIN NOTICE USING (NOTICE_NUM)
-		 JOIN CLASS USING (NOTICE_NUM)
-		 JOIN TBL_FILE USING (NOTICE_NUM)
-		WHERE WISH_STATUS = 'N'
+		      *
+      <!--  , T.ROUTE
+			, T.CHANGE_NAME 파일 가져올 때 수정할 것  --> 
+		 FROM NOTICE N, CLASS C, WISHLIST W <!-- , TBL_FILE T -->
+		WHERE N.NOTICE_NUM = C.NOTICE_NUM
+          AND N.NOTICE_NUM = W.NOTICE_NUM
+    <!--  AND C.NOTICE_NUM = T.NOTICE_NUM --> 
+		  AND WISH_STATUS = 'N'
 		  AND NOTICE_TYPE = '클래스'
-		  AND FILE_LEVEL = '0'
 		  AND W.USER_ID = ?
 		ORDER BY W.WISH_NUM DESC
 	</entry> 

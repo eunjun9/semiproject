@@ -34,6 +34,7 @@
 			JOIN "FILE" F USING(NOTICE_NUM)
 			WHERE NOTICE_TYPE = '클래스'
 			  AND NOTICE_STATUS = 'N'
+			  AND FILE_LEVEL= 1
 			  ORDER BY NOTICE_NUM DESC) A)
 		WHERE RNUM BETWEEN ? AND ?
 	</entry>
@@ -50,14 +51,12 @@
 		      , NOTICE_TITLE
 		      , USER_NAME
 		      , C_WRITER
-		      , C_TYPE
 		      , C_CATEGORY
 		      , C_PRICE
 		      , NOTICE_CONTENT
 		      , C_TAG1
 		      , C_TAG2
 		      , C_SDATE
-		      , C_EDATE
 		      , C_TIME1
 		      , C_TIME2
 		      , C_LOCATION
@@ -85,8 +84,82 @@
    ORDER BY FILE_NUM
 	</entry>
 
+	<entry key="insertNotice">
+		INSERT INTO NOTICE(
+            NOTICE_NUM
+          , NOTICE_TITLE
+          , NOTICE_CONTENT
+          , NOTICE_DATE
+          , NOTICE_STATUS
+          , NOTICE_TYPE
+          , USER_ID
+          , MODIFY_DATE
+          , NCOUNT
+      )
+  	  VALUES(
+            SEQ_NOTICE_NUM.NEXTVAL
+          , ?
+          , ?
+          , SYSDATE
+          , DEFAULT
+          , ?
+          , ?
+          , SYSDATE
+          , DEFAULT
+      )
+	</entry>
+	
+	<entry key="insertLesson">
+      INSERT INTO CLASS (
+      		NOTICE_NUM
+          , C_TAG1
+          , C_TAG2
+          , C_PRICE
+          , C_CATEGORY
+          , C_SDATE
+          , C_LOCATION
+          , C_TUTOR
+          , C_WRITER
+          , C_TIME1
+          , C_TIME2
+    ) 
+    VALUES (
+    		SEQ_NOTICE_NUM.CURRVAL
+    	  , ?
+          , ?
+          , ?
+          , ?
+          , ?
+          , ?
+          , ?
+          , ?
+          , ?
+          , ?
+    )
+	</entry>      
+	
 
-
+	<entry key="insertAttachment">
+		INSERT INTO "FILE"
+	  (
+	  	 FILE_NUM
+	   , NOTICE_NUM
+	   , ROUTE
+	   , ORIGIN_NAME
+	   , CHANGE_NAME
+	   , FILE_LEVEL
+	   , STATUS
+	  )  VALUES 
+	  (
+	  	 SEQ_FID_NUM.NEXTVAL
+	   , SEQ_NOTICE_NUM.CURRVAL
+	   , ?
+	   , ?
+	   , ?
+	   , ?
+	   , DEFAULT
+	  )
+	</entry>
 
 
 

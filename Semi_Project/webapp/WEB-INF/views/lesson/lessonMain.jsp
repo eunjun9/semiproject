@@ -9,7 +9,7 @@
 <title>클래스_메인</title>
 
 	<!--외부 스타일 시트-->
-    <link href="${ contextPath }/resources/css/lesson/lesson_main.css" rel="stylesheet">
+    <link href="${ contextPath }/resources/css/lesson/lesson_main.css?1" rel="stylesheet">
 
     <!-- font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -56,83 +56,64 @@
                     <!-- 조건문으로 설정하기 -->
 
                     <label>카테고리</label>
-                    <select name="bigC">
-                        <option selected disabled>대분류 선택</option>
-                        <option value="it">IT</option>
-                        <option value="craft">공예</option>
-                        <option value="art">예술</option>
-                        <option value="food">음식</option>
-                        <option value="sport">운동</option>
+                    <select id="bigC" name="bigC" required>
+                        <option value="big" selected disabled>대분류 선택</option>
+                        <option value="art" id="art">예술</option>
+                        <option value="food" id="food">음식</option>
+                        <option value="sport" id="sport">운동</option>
                     </select>
-
-					<select name="smallC">
-                        <option selected disabled>소분류 선택</option>
+                    
+                     <select name="smallC" id="smallC" required>
+                        <option id="small" selected disabled>소분류 선택</option>
+                        <option value="1" class="artS">드로잉</option>
+                        <option value="2" class="artS">악기</option>
+                        <option value="3" class="artS">일러스트</option>
+                        <option value="4" class="foodS">베이킹</option>
+                        <option value="5" class="foodS">양식</option>
+                        <option value="6" class="foodS">일식</option>
+                        <option value="7" class="foodS">중식</option>
+                        <option value="8" class="foodS">한식</option>
+                        <option value="9" class="sportS">근력운동</option>
+                        <option value="10" class="sportS">요가</option>
+                        <option value="11" class="sportS">유산소운동</option>
+                        <option value="12" class="sportS">필라테스</option>
                     </select><br>
                     
-                    <!-- 조건문으로 대분류 선택에 따른 소분류 목록 출력 -->
-                    <!--value=it일때-->
-                    <%-- <c:if test="${ param.bigC == 'it' }">
-                    <select name="smallC">
-                        <option selected disabled>소분류 선택</option>
-                        <option>AI·머신러닝</option>
-                        <option>게임 개발</option>
-                        <option>데이터 분석</option>
-                        <option>모바일 App개발</option>
-                        <option>서버·백엔드</option>
-                        <option>프론트엔드</option>
-                    </select><br>
-                    </c:if>
+                    <script>
+                      $('#small').show();
+           			  $('.artS').hide();
+           		 	  $('.foodS').hide();
+           		 	  $('.sportS').hide();
+                     $(document).on('change', '#bigC', changeoption);
+                     
+                     function changeoption(){
+                    	 if($(this).val() == 'big'){
+                    		 $('#small').show();
+                    		 $('.artS').hide();
+                    		 $('.foodS').hide();
+                    		 $('.sportS').hide();
+                    	 } else if($(this).val() == 'art'){
+                    		 $('.artS').show();
+                    		 $('.foodS').hide();
+                    		 $('.sportS').hide();
+                    		 $('#small').hide();
+                    	 } else if($(this).val() == 'food'){
+                    		 $('.foodS').show();
+                    		 $('.artS').hide();
+                    		 $('.sportS').hide();
+                    		 $('#small').hide();
+                    	 } else if($(this).val() == 'sport'){
+                    		 $('.sportS').show();
+                    		 $('.artS').hide();
+                    		 $('.foodS').hide();
+                    		 $('#small').hide();
+                    	 } 
+                     }
+                    </script>
 
-                    <!--value=craft일때-->
-                     <c:if test="${ param.bigC == 'craft' }">
-                    <!-- <select name="smallC">
-                        <option selected disabled>소분류 선택</option>
-                        <option>도자기</option>
-                        <option>뜨개질</option>
-                        <option>레진아트</option>
-                        <option>위빙</option>
-                    </select><br> -->
-                    </c:if>
-
-                    <!--value=art일때-->
-                    <c:if test="${ param.bigC == 'art' }">
-                    <!-- <select name="smallC">
-                        <option selected disabled>소분류 선택</option>
-                        <option>드로잉</option>
-                        <option>악기</option>
-                        <option>일러스트</option>
-                    </select><br> -->
-                    </c:if>
-
-                    <!--value=food일때-->
-                    <c:if test="${ param.bigC == 'food' }">
-                    <!-- <select name="smallC">
-                        <option selected disabled>소분류 선택</option>
-                        <option>베이킹</option>
-                        <option>양식</option>
-                        <option>와인</option>
-                        <option>일식</option>
-                        <option>중식</option>
-                        <option>커피</option>
-                        <option>한식</option>
-                    </select><br> -->
-                    </c:if>
-
-                    <!--value=sport일때-->
-                    <c:if test="${ param.bigC == 'sport' }">
-                    <!-- <select name="smallC">
-                        <option selected disabled>소분류 선택</option>
-                        <option>근력운동</option>
-                        <option>요가</option>
-                        <option>유산소운동</option>
-                        <option>폴댄스</option>
-                        <option>필라테스</option>
-                    </select><br> -->
-                    </c:if> --%>
-
-                    <label>진행방식</label>
+<!--                     <label>진행방식</label>
                     <input type="checkbox" value="online" name="online"><label class="ckboxlabel">온라인</label>
-                    <input type="checkbox" value="offline" name="offline"><label class="ckboxlabel">오프라인</label><br>
+                    <input type="checkbox" value="offline" name="offline"><label class="ckboxlabel">오프라인</label><br> -->
 
                     <label>클래스 타입</label>
                     <input type="checkbox" value="oneday" name="oneday"><label class="ckboxlabel">원데이 클래스</label>

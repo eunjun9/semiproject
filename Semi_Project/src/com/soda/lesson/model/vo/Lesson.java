@@ -17,10 +17,8 @@ public class Lesson {
 	private String ctag1;		// 카테고리 대분류
 	private String ctag2;		// 카테고리 소분류
 	private int cPrice;			// 가격
-	private String cType;		// 타입 (온 오프라인)
 	private String cCategory;	// 카테고리 (원데이 vod)
-	private Date cSDate;		// 시작 날짜
-	private Date cEDate;		// 종료날짜
+	private String cSDate;		// 시작 날짜
 	private String cTime1;		// 클래스 시간1
 	private String cTime2;		// 클래스 시간2
 	private String cLocation;	// 장소
@@ -31,8 +29,8 @@ public class Lesson {
 	public Lesson() {}
 
 	public Lesson(int nNum, String nTitle, String nContent, int nCount, String nStatus, String nType, String userId,
-			String userName, Date nDate, Date modifyDate, String ctag1, String ctag2, int cPrice, String cType,
-			String cCategory, Date cSDate, Date cEDate, String cTime1, String cTime2, String cLocation, String cTutor,
+			String userName, Date nDate, Date modifyDate, String ctag1, String ctag2, int cPrice,
+			String cCategory, String cSDate, String cTime1, String cTime2, String cLocation, String cTutor,
 			List<Attachment> photoList) {
 		super();
 		this.nNum = nNum;
@@ -48,10 +46,8 @@ public class Lesson {
 		this.ctag1 = ctag1;
 		this.ctag2 = ctag2;
 		this.cPrice = cPrice;
-		this.cType = cType;
 		this.cCategory = cCategory;
 		this.cSDate = cSDate;
-		this.cEDate = cEDate;
 		this.cTime1 = cTime1;
 		this.cTime2 = cTime2;
 		this.cLocation = cLocation;
@@ -167,14 +163,6 @@ public class Lesson {
 		this.cPrice = cPrice;
 	}
 
-	public String getcType() {
-		return cType;
-	}
-
-	public void setcType(String cType) {
-		this.cType = cType;
-	}
-
 	public String getcCategory() {
 		return cCategory;
 	}
@@ -183,20 +171,12 @@ public class Lesson {
 		this.cCategory = cCategory;
 	}
 
-	public Date getcSDate() {
+	public String getcSDate() {
 		return cSDate;
 	}
 
-	public void setcSDate(Date cSDate) {
+	public void setcSDate(String cSDate) {
 		this.cSDate = cSDate;
-	}
-
-	public Date getcEDate() {
-		return cEDate;
-	}
-
-	public void setcEDate(Date cEDate) {
-		this.cEDate = cEDate;
 	}
 
 	public String getcTime1() {
@@ -248,8 +228,8 @@ public class Lesson {
 		return "Lesson [nNum=" + nNum + ", nTitle=" + nTitle + ", nContent=" + nContent + ", nCount=" + nCount
 				+ ", nStatus=" + nStatus + ", nType=" + nType + ", userId=" + userId + ", userName=" + userName
 				+ ", nDate=" + nDate + ", modifyDate=" + modifyDate + ", ctag1=" + ctag1 + ", ctag2=" + ctag2
-				+ ", cPrice=" + cPrice + ", cType=" + cType + ", cCategogy=" + cCategory + ", cSDate=" + cSDate
-				+ ", cEDate=" + cEDate + ", cTime1=" + cTime1 + ", cTime2=" + cTime2 + ", cLocation=" + cLocation
+				+ ", cPrice=" + cPrice + ", cCategogy=" + cCategory + ", cSDate=" + cSDate
+				+ ", cTime1=" + cTime1 + ", cTime2=" + cTime2 + ", cLocation=" + cLocation
 				+ ", cTutor=" + cTutor + ", photoList=" + photoList + "]";
 	}
 
