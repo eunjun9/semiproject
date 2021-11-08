@@ -73,7 +73,7 @@ public class LessonInsertServlet extends HttpServlet {
 		String nContent = multiRequest.getParameter("editordata");
 		String tInfo = multiRequest.getParameter("tutor_intro");
 		String cDate = multiRequest.getParameter("class_date");
-		
+
 		/*
 		 * SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); Date cDate = null;
 		 * try { cDate = sdf.parse(multiRequest.getParameter("class_date")); } catch
