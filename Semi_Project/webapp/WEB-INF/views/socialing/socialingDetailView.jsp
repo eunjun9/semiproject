@@ -9,7 +9,7 @@
 <title>소셜링_상세페이지</title>
 
 <!-- 외부 스타일 시트 -->
-<link href="${ contextPath }/resources/css/socialing/socialing_detail.css?1" rel="stylesheet">
+<link href="${ contextPath }/resources/css/socialing/socialing_detail.css?2" rel="stylesheet">
 <link href="${ contextPath }/resources/css/socialing/socialing_check.css?1" rel="stylesheet">
 
 <!-- 글꼴 (Noto Sans) -->
@@ -57,43 +57,28 @@
             </div>
             <hr>
             <h3 id="subTitle3">함께하는 멤버</h3>
-            <!-- 회원이 참여하기 버튼 누르면 비동기통신으로 멤버 목록 바로 갱신(시간 남으면) -->
             <div class="subWrap">
                 <a href="#"> <!-- 참여자 피드로 이동 -->
                     <img id="s-image" src="${ contextPath }/resources/images/eunjung/profile.png">
                     <div class="subWrap2">
                         <p id="s-name">${ socialing.userName }</p>
-                        <p id="s-intro">사람들 만나고 사귀는 걸 좋아해요!</p>
+                        <p id="s-intro">사람들 만나고 사귀는 걸 좋아해요!<!-- ${ socialing.introduction } --></p>
                     </div>
                 </a>
             </div>
+            <!-- 회원이 참여하기 버튼 누르면 비동기통신으로 멤버 목록 바로 갱신(시간 남으면) -->
+            <c:forEach var="m" items="${ memberList }">
             <div class="subWrap">
                 <a href="#">
                     <img id="s-image" src="${ contextPath }/resources/images/eunjung/profile.png">
                     <div class="subWrap2">
-                        <p id="s-name">유미</p>
-                        <p id="s-intro">글쓰기가 취미이고 맛있는거 먹는 걸 좋아해요~</p>
+                        <p id="s-name">${ m.memberName }</p>
+                        <p id="s-intro">${ m.introduction }</p>
                     </div>
                 </a>
             </div>
-            <div class="subWrap">
-                <a href="#">
-                    <img id="s-image" src="${ contextPath }/resources/images/eunjung/profile.png">
-                    <div class="subWrap2">
-                        <p id="s-name">구웅</p>
-                        <p id="s-intro">토끼 티셔츠를 좋아합니다</p>
-                    </div>
-                </a>
-            </div>
-            <div class="subWrap">
-                <a href="#">
-                    <img id="s-image" src="${ contextPath }/resources/images/eunjung/profile.png">
-                    <div class="subWrap2">
-                        <p id="s-name">루비</p>
-                        <p id="s-intro">패션에 관심 많아요! ootd 구경오세요&gt;&lt;</p>
-                    </div>
-                </a>
-            </div>
+            </c:forEach>
+            
             <h3 id="subTitle4">자세한 정보를 알려드릴게요</h3>
             <div class="subWrap3">
                 <img id="icon" src="${ contextPath }/resources/images/eunjung/user.png">
@@ -127,17 +112,15 @@
     <div class="checkPop" style="display:none;">
         <h2 id="chk_title">참여 회원 체크</h2>
         <form name="checking" action="${ contextPath }/socialing/detail" method="post">
+        	<input type="hidden" name="nNum" value="${ socialing.nNum }">
             <div class="checkArea">
-                <!-- 체크 후 submit 하면 체크 유지되게 (checked) -> 나중에 반복문으로 수정 -->
-                <input type="checkbox" id="person1" name="check" value="person1"
-                <c:if test="${ param.check == 'person1' }">checked</c:if>>
-                <label for="person1">구웅</label><br>
-                <input type="checkbox" id="person2" name="check" value="person2"
-                <c:if test="${ param.check == 'person2' }">checked</c:if>>
-                <label for="person2">유미</label><br>
-                <input type="checkbox" id="person3" name="check" value="person3"
-                <c:if test="${ param.check == 'person3' }">checked</c:if>>
-                <label for="person3">루비</label><br>
+                <!-- 체크 후 submit 하면 체크 유지되게 (checked) -->
+	            <c:forEach var="m" items="${ memberList }">
+		        	<input type="hidden" name="mId" value="${ m.memberId }">
+		            <input type="checkbox" id="${ m.memberId }" name="check" value="person${ m.memberId }"
+		            <c:if test="${ m.status == 'Y' }">checked</c:if>>
+		            <label for="person1">${ m.memberName }</label><br>
+	            </c:forEach>
             </div><br>
             <div class="btnArea">
                 <button type="button" id="cancel">취소</button>
@@ -173,6 +156,7 @@
 		        function checkSub() {
 		            if(confirm('참석 처리 하시겠습니까?')) {
 		                // 참여 여부 'Y'로 변경
+		                document.forms.checking.action = "${contextPath}/socialingMember/update";
 		                document.forms.checking.submit();
 		            }
 		        }

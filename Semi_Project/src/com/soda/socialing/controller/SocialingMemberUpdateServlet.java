@@ -1,7 +1,6 @@
 package com.soda.socialing.controller;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,16 +11,16 @@ import com.soda.member.model.vo.Member;
 import com.soda.socialing.model.service.SocialingService;
 
 /**
- * Servlet implementation class SocialingMemberServlet
+ * Servlet implementation class SocialingMemberUpdateServlet
  */
-@WebServlet("/socialingMember")
-public class SocialingMemberServlet extends HttpServlet {
+@WebServlet("/socialingMember/update")
+public class SocialingMemberUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SocialingMemberServlet() {
+    public SocialingMemberUpdateServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -38,16 +37,17 @@ public class SocialingMemberServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// 참여 회원 체크 팝업 로직
 		int nNum = Integer.parseInt(request.getParameter("nNum"));
-		String userId = ((Member)request.getSession().getAttribute("loginUser")).getUserId();
+		String userId = request.getParameter("mId");
 		
-		int result = new SocialingService().insertMember(nNum, userId);
+		int result = new SocialingService().updateMember(nNum, userId);
 		
 		if(result > 0) {
-			request.getSession().setAttribute("message", "소셜링 참여 완료 되었습니다.");
+			request.getSession().setAttribute("message", "참여 확인 처리 되었습니다.");
 			response.sendRedirect(request.getContextPath() + "/socialing/main");
 		} else {
-			request.setAttribute("message", "소셜링 참여에 실패하였습니다.");
+			request.setAttribute("message", "참여 확인 처리에 실패하였습니다.");
 			request.getRequestDispatcher("/WEB-INF/views/common/errorpage.jsp").forward(request, response);
 		}
 	}

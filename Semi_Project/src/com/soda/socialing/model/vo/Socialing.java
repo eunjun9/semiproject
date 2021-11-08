@@ -4,7 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 public class Socialing {
-	// notice
+	// Notice
 	private int nNum;			// 게시글 번호 (pk)
 	private String nTitle;		// 게시글 제목
 	private String nContent;	// 게시글 내용
@@ -15,21 +15,23 @@ public class Socialing {
 	private Date nDate;			// 작성 날짜
 	private Date modifyDate;	// 수정 날짜
 	private int nCount;			// 게시글 조회수
-	// socialing
+	// Socialing
 	private String splace;		// 모임 장소
 	private Date sdate;			// 모임 날짜
 	private String stype;		// 온오프라인 여부 (ON/OFF)
 	private int maxMember;		// 최대 참여 인원
 	private int minMember;		// 최소 참여 인원
 	private String profile;		// 작성자 프로필사진 (Profile 테이블 참조)
-	
+	private String introduction;// 작성자 자기소개 (Profile 테이블 참조)
+
+	// SodaFile
 	private List<SodaFile> photoList;  // 사진 첨부 파일
 	
 	public Socialing() {}
 
 	public Socialing(int nNum, String nTitle, String nContent, String nStatus, String nType, String userId,
 			String userName, Date nDate, Date modifyDate, int nCount, String splace, Date sdate, String stype,
-			int maxMember, int minMember, String profile, List<SodaFile> photoList) {
+			int maxMember, int minMember, String profile, String introduction, List<SodaFile> photoList) {
 		super();
 		this.nNum = nNum;
 		this.nTitle = nTitle;
@@ -47,6 +49,7 @@ public class Socialing {
 		this.maxMember = maxMember;
 		this.minMember = minMember;
 		this.profile = profile;
+		this.introduction = introduction;
 		this.photoList = photoList;
 	}
 
@@ -184,6 +187,14 @@ public class Socialing {
 
 	public void setPhotoList(List<SodaFile> photoList) {
 		this.photoList = photoList;
+	}
+
+	public String getIntroduction() {
+		return introduction;
+	}
+
+	public void setIntroduction(String introduction) {
+		this.introduction = introduction;
 	}
 
 	@Override
