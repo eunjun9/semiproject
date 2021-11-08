@@ -79,7 +79,7 @@
         				<form name="testForm" method="get">
 						<input type="hidden" name="noticeNum" value="${ lesson.nNum }">
 			            <h4 id="pTitle">${ lesson.nTitle }</h4>
-			            <input type="date" id="pDate" name="selDate">
+			            <input type="date" id="pDate" min="${ lesson.oDate1 }" max="${ lesson.oDate2 }" name="selDate">
 			            <p id="pTime">${ lesson.cTime1 } ~ ${ lesson.cTime2 } <hr></p>
 			            <h3 id="pPrice">50,000원</h3>
 			            <button type="submit" id="cart">장바구니</button>
@@ -127,18 +127,6 @@
     <hr>
     <h4>클래스 소개</h4>
     <div class="cDetail_b">
-       <!--  <h3  id="cBodyText1">비싼 터프팅건 없이, <br>집에서 감각적인 소품을 만들어볼까요?</h3>
-        <img name="cBodyImg1"  class="cBodyImg" src="../resources/image/body1.JPG">
-        <pre class="cBodyText2">안녕하세요, 터프팅 작업 기법을 이용해 러그를 비롯해 다양한 실생활 소품을 만들고 있는 피스오브애플입니다. 
-            터프팅이라는 말이 생소한 분들도 있을 거예요. 
-            터프팅건이라는 총 모양의 기계를 이용해 원단에 실을 쏘아 모양을 만들어 내는 작업입니다.
-        </pre>
-        <br>
-        <img name="cBodyImg2"  class="cBodyImg" src="../resources/image/body2.JPG">
-        <pre class="cBodyText2">안녕하세요, 터프팅 작업 기법을 이용해 러그를 비롯해 다양한 실생활 소품을 만들고 있는 피스오브애플입니다. 
-            터프팅이라는 말이 생소한 분들도 있을 거예요. 
-            터프팅건이라는 총 모양의 기계를 이용해 원단에 실을 쏘아 모양을 만들어 내는 작업입니다.
-        </pre> -->
          <pre class="cBodyText2">${ lesson.nContent }</pre>
          <c:forEach items="${ lesson.photoList }" var="photo">
 			<div class="photoList">
