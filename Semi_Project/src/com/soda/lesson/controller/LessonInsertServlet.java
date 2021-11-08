@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
@@ -73,8 +74,8 @@ public class LessonInsertServlet extends HttpServlet {
 		String ctime1 = multiRequest.getParameter("class_time1");
 		String ctime2 = multiRequest.getParameter("class_time2");
 		String cLocation = multiRequest.getParameter("postcode") 
-						+ multiRequest.getParameter("address") 
-						+ multiRequest.getParameter("detailaddress");
+						+ " " + multiRequest.getParameter("address") 
+						+ " " + multiRequest.getParameter("detailaddress");
 		String cwriter = ((Member)request.getSession().getAttribute("loginUser")).getUserId();
 		
 		Lesson lesson = new Lesson();
@@ -119,12 +120,12 @@ public class LessonInsertServlet extends HttpServlet {
 		}
 		
 			lesson.setPhotoList(photoList);
-			// System.out.println(lesson);
+			System.out.println(lesson);
 			
 			int result = new LessonService().insertLesson(lesson);
 			
 			if(result > 0 ) {
-				// 사진 게시판 목록 재요청
+				// 클래스 메인 재요청
 				response.sendRedirect(request.getContextPath() + "/lesson/main");
 			} else {
 				// 실패 시 저장된 사진 삭제 : 경로와 변경된 이름 필요
@@ -132,12 +133,9 @@ public class LessonInsertServlet extends HttpServlet {
 					File failedFile = new File(savePath + photo.getChangeName());   // java.io 임포트
 					failedFile.delete();	// 메모리상에 저장된 파일 delete()메소드로 삭제 가능
 				}
-				
 				// 사진 삭제 후 에러페이지로 이동
 				request.setAttribute("message", "사진 게시판 게시글 등록에 실패하였습니다.");
 				request.getRequestDispatcher("/WEB-INF/views/common/errorpage.jsp").forward(request, response);
-		
 			}
-
 	}
 }

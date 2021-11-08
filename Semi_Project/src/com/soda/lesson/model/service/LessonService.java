@@ -82,8 +82,9 @@ public class LessonService {
 	public int insertLesson(Lesson lesson) {
 		Connection conn = getConnection();
 		
-		// 글 
+		// 글 : notice, class
 		int lessonResult = lessonDao.insertLesson(conn, lesson);
+		int noticeResult = lessonDao.insertNotice(conn, lesson);
 		
 		int attachmentResult = 0;
 		
@@ -92,8 +93,8 @@ public class LessonService {
 			attachmentResult += lessonDao.insertAttachment(conn, photo);		// 데이터를 쌓음
 		}
 		
-		int result = 0; 	// (board, attachment) 2가지 로직이 모두 잘 수행 되었음을 나타내는 변수
-		if(lessonResult > 0 && attachmentResult == lesson.getPhotoList().size()) {
+		int result = 0; // 3가지 로직이 모두 잘 수행 되었음을 나타내는 변수
+		if(lessonResult > 0 && noticeResult > 0 && attachmentResult == lesson.getPhotoList().size()) {
 			commit(conn);
 			result = 1;
 		} else {

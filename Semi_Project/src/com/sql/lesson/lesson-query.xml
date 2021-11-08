@@ -56,7 +56,6 @@
 		      , C_TAG1
 		      , C_TAG2
 		      , C_SDATE
-		      , C_EDATE
 		      , C_TIME1
 		      , C_TIME2
 		      , C_LOCATION
@@ -84,7 +83,7 @@
    ORDER BY FILE_NUM
 	</entry>
 
-	<entry key="insertLesson">
+	<entry key="insertNotice">
 		INSERT INTO NOTICE(
             NOTICE_NUM
           , NOTICE_TITLE
@@ -94,6 +93,7 @@
           , NOTICE_TYPE
           , USER_ID
           , MODIFY_DATE
+          , NCOUNT
       )
   	  VALUES(
             SEQ_NOTICE_NUM.NEXTVAL
@@ -104,21 +104,28 @@
           , ?
           , ?
           , SYSDATE
+          , DEFAULT
       )
-      
+	</entry>
+
+	<entry key="insertLesson">
       INSERT INTO CLASS (
-            C_TAG1
+      		NOTICE_NUM
+          , C_TAG1
           , C_TAG2
           , C_PRICE
           , C_CATEGOFY
           , C_SDATE
           , C_LOCATION
           , C_TUTOR
+          , C_WRITER
           , C_TIME1
           , C_TIME2
     ) 
     VALUES (
-            ?
+    		SEQ_NOTICE_NUM.CURRVAL
+          , ?
+          , ?
           , ?
           , ?
           , ?
@@ -128,8 +135,29 @@
           , ?
           , ?
     )
-	</entry>
+	</entry>      
 
+	<entry key="insertAttachment">
+		INSERT INTO "FILE"
+	  (
+	  	 FILE_NUM
+	   , NOTICE_NUM
+	   , ROUTE
+	   , ORIGIN_NAME
+	   , CHANGE_NAME
+	   , FILE_LEVEL
+	   , STATUS
+	  )  VALUES 
+	  (
+	  	 SEQ_FILE_NUM.NEXTVAL
+	   , SEQ_NOTICE_NUM.CURRVAL
+	   , ?
+	   , ?
+	   , ?
+	   , ?
+	   , DEFAULT
+	  )
+	</entry>
 
 
 
