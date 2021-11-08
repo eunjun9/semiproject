@@ -45,7 +45,7 @@ public class SocialingMemberServlet extends HttpServlet {
 		
 		if(result > 0) {
 			request.getSession().setAttribute("message", "소셜링 참여 완료 되었습니다.");
-			response.sendRedirect(request.getContextPath() + "/socialing/main");
+			response.sendRedirect(request.getContextPath() + "/socialing/detail?nNum=" + nNum);
 		} else {
 			request.setAttribute("message", "소셜링 참여에 실패하였습니다.");
 			request.getRequestDispatcher("/WEB-INF/views/common/errorpage.jsp").forward(request, response);

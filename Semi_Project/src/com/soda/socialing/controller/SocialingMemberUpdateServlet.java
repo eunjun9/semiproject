@@ -45,7 +45,7 @@ public class SocialingMemberUpdateServlet extends HttpServlet {
 		
 		if(result > 0) {
 			request.getSession().setAttribute("message", "참여 확인 처리 되었습니다.");
-			response.sendRedirect(request.getContextPath() + "/socialing/main");
+			response.sendRedirect(request.getContextPath() + "/socialing/detail?nNum=" + nNum);
 		} else {
 			request.setAttribute("message", "참여 확인 처리에 실패하였습니다.");
 			request.getRequestDispatcher("/WEB-INF/views/common/errorpage.jsp").forward(request, response);
