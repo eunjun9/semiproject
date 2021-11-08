@@ -209,7 +209,31 @@ public class LessonDao {
 		return photoList;
 	}
 
-	// 글 삽입
+	// 글 삽입 - notice 테이블
+	public int insertNotice(Connection conn, Lesson lesson) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = lessonQuery.getProperty("insertNotice");
+		
+		try {
+			pstmt =conn.prepareStatement(sql);
+			
+			pstmt.setString(1, lesson.getnTitle());
+			pstmt.setString(2, lesson.getnContent());
+			pstmt.setString(3, lesson.getnType());
+			pstmt.setString(4, lesson.getUserId());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	// 클 삽입 - lesson 테이블
 	public int insertLesson(Connection conn, Lesson lesson) {
 		int result = 0;
 		PreparedStatement pstmt = null;
@@ -217,18 +241,50 @@ public class LessonDao {
 		
 		try {
 			pstmt =conn.prepareStatement(sql);
+			
+			pstmt.setString(1, lesson.getCtag1());
+			pstmt.setString(2, lesson.getCtag2());
+			pstmt.setInt(3, lesson.getcPrice());
+			pstmt.setString(4, lesson.getcCategory());
+			pstmt.setString(5, lesson.getcSDate());
+			pstmt.setString(6, lesson.getcLocation());
+			pstmt.setString(7, lesson.getcTutor());
+			pstmt.setString(8, lesson.getUserId());
+			pstmt.setString(9, lesson.getcTime1());
+			pstmt.setString(10, lesson.getcTime2());
+			
+			result = pstmt.executeUpdate();
+			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			close(pstmt);
 		}
-		
 		return result;
 	}
 	
 	// 사진 삽입
 	public int insertAttachment(Connection conn, Attachment photo) {
-		// TODO Auto-generated method stub
-		return 0;
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = lessonQuery.getProperty("insertAttachment");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, photo.getRoute());
+			pstmt.setString(2, photo.getOriginName());
+			pstmt.setString(3, photo.getChangeName());
+			pstmt.setInt(4, photo.getFileLevel());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
 	}
+
 
 }
