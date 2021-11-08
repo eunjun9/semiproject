@@ -77,6 +77,27 @@ public class MemberService {
 		return findEmail;
 	}
 
+  // 비밀번호 찾기 - 임시비밀번호 발급받아 비밀번호 수정
+	public Member sendPwd(String userId, int random) {
+		Connection conn = getConnection();
+		Member sendPwd = null;
+		
+		int result = memberDao.sendPwd(conn, userId, random);
+		
+		if(result > 0) {
+			sendPwd = memberDao.loginMember(conn, userId);
+
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+    
+    close(conn);
+		
+		return sendPwd;
+	}
+
+
 	public int idCheck(String userId) {
 		Connection conn = getConnection();
 		
@@ -97,7 +118,7 @@ public class MemberService {
 		// 2. 수정이 잘 되었다면 수정된 정보의 member 객체 select
 		if(result > 0) {
 			updatedMember = memberDao.selectMember(conn, member.getUserId());
-			commit(conn);
+      commit(conn);
 		} else {
 			rollback(conn);
 		}
@@ -119,9 +140,8 @@ public class MemberService {
 		} else {
 			rollback(conn);
 		}
-
-		
-		return null;
+  
+			return null;
 	}
 
 	public Member deleteAccount(String userId) {

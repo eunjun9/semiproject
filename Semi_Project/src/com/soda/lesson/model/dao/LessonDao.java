@@ -152,14 +152,12 @@ public class LessonDao {
 				lesson.setnTitle(rset.getString("notice_title"));
 				lesson.setUserName(rset.getString("user_name"));
 				lesson.setUserId(rset.getString("c_writer"));
-				lesson.setcType(rset.getString("c_type"));
 				lesson.setcCategory(rset.getString("c_category"));
 				lesson.setcPrice(rset.getInt("c_price"));
 				lesson.setnContent(rset.getString("notice_content"));
 				lesson.setCtag1(rset.getString("c_tag1"));
 				lesson.setCtag2(rset.getString("c_tag2"));
-				lesson.setcSDate(rset.getDate("c_sdate"));  // 시작-종료 날짜는 날짜만
-				lesson.setcEDate(rset.getDate("c_edate"));
+				lesson.setcSDate(rset.getString("c_sdate"));  // 시작 날짜는 날짜만
 				lesson.setcTime1(rset.getString("c_time1"));
 				lesson.setcTime2(rset.getString("c_time2"));
 				lesson.setcLocation(rset.getString("c_location"));
@@ -209,6 +207,28 @@ public class LessonDao {
 			close(pstmt);
 		}
 		return photoList;
+	}
+
+	// 글 삽입
+	public int insertLesson(Connection conn, Lesson lesson) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = lessonQuery.getProperty("insertLesson");
+		
+		try {
+			pstmt =conn.prepareStatement(sql);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+	
+	// 사진 삽입
+	public int insertAttachment(Connection conn, Attachment photo) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

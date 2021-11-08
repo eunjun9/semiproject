@@ -7,7 +7,7 @@
 <title>신고하기</title>
 
 <!-- 외부 스타일 시트 -->
-<link href="${ contextPath }/resources/css/common/report_style.css?1" rel="stylesheet">
+<link href="${ contextPath }/resources/css/common/report_style.css?2" rel="stylesheet">
 
 <!-- 글꼴 (Noto Sans) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -39,13 +39,14 @@
 %>
 </head>
 <body>
+	
 	<div class="page body">
-        <h2 id="title">신고하기</h2>
+        <h2 id="r_title">신고하기</h2>
         <form id="report" action="" method="post">
-        	<input type="hidden" name="nNum" value="${ socialing.nNum }"> <!-- 값이 가져와지는지 확인 필요 -->
+        	<input type="hidden" name="nNum" value="${ param.nNum }"> <!-- 값이 가져와지는지 확인 필요 -->
             <div class="radioArea">
-                <p id="subTitle">신고 사유</p>
-                <input type="radio" id="rep1" name="rep-reason" value="개인정보 노출">
+                <p id="r_subTitle">신고 사유</p>
+                <input type="radio" id="rep1" name="rep-reason" value="개인정보 노출" checked>
                 <label for="rep1">개인정보 노출</label><br>
                 <input type="radio" id="rep2" name="rep-reason" value="불법성">
                 <label for="rep2">불법성</label><br>
@@ -55,14 +56,29 @@
                 <label for="rep4">명예훼손</label><br>
                 <input type="radio" id="rep5" name="rep-reason" value="기타">
                 <label for="rep5">기타</label><br>
-                <!-- 신고 사유 입력은 기타 선택시에만 활성화 되게 -->
-                <textarea id="detail" name="detail" placeholder="신고 사유를 구체적으로 기재해 주세요."></textarea>
+                <textarea id="r_detail" name="detail" placeholder="신고 사유를 구체적으로 기재해 주세요." disabled="disabled"></textarea>
             </div><br>
-            <div class="btnArea">
-                <button type="button" id="cancel" onclick="window.close()">취소</button>
-                <button type="submit" id="sub">신고</button>
+            <div class="r_btnArea">
+                <button type="button" id="r_cancel" onclick="window.close()">취소</button>
+                <button type="submit" id="r_sub">신고</button>
             </div>
         </form>
     </div>
+    
+    <script>
+    	// 신고사유 기타 선택시에만 textarea 활성화 (수정해야함)
+    	$(function(){
+    		var reason = $('input[name=rep-reason]:checked').val();
+    		
+    		if(reason == '기타') {
+    			$('#r_detail').prop('disabled', false);
+    		} else {
+    			$('#r_detail').prop('disabled', true);
+    		}
+    	} 
+    		
+    	});
+    </script>
+    
 </body>
 </html>

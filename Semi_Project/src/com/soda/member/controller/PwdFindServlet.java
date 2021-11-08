@@ -110,12 +110,22 @@ public class PwdFindServlet extends HttpServlet {
 			} catch (MessagingException e) {
 				e.printStackTrace();
 			}
-
+			
 			// 발급된 임시비밀번호로 비밀번호 변경해주는 로직 만들어야함 !!
-			// 이메일 전송 성공하면 alert 창 뜨게 해야함!!
+			Member sendPwd = new MemberService().sendPwd(userId, random);
+
+			System.out.println(sendPwd);
 			
+			if(sendPwd != null) {
+				writer.println("<script>alert('이메일로 임시 비밀번호가 전송되었습니다.');</script>");
+				writer.println("<script>history.back();</script>");
+				writer.close();
+	            return;
+			}else {
+				System.out.println("임시비밀번호 변경 실패");
+			}
 			
-	      }
+		 }
 
 	}
 

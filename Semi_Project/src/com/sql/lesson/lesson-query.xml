@@ -50,7 +50,6 @@
 		      , NOTICE_TITLE
 		      , USER_NAME
 		      , C_WRITER
-		      , C_TYPE
 		      , C_CATEGORY
 		      , C_PRICE
 		      , NOTICE_CONTENT
@@ -85,7 +84,51 @@
    ORDER BY FILE_NUM
 	</entry>
 
-
+	<entry key="insertLesson">
+		INSERT INTO NOTICE(
+            NOTICE_NUM
+          , NOTICE_TITLE
+          , NOTICE_CONTENT
+          , NOTICE_DATE
+          , NOTICE_STATUS
+          , NOTICE_TYPE
+          , USER_ID
+          , MODIFY_DATE
+      )
+  	  VALUES(
+            SEQ_NOTICE_NUM.NEXTVAL
+          , ?
+          , ?
+          , SYSDATE
+          , DEFAULT
+          , ?
+          , ?
+          , SYSDATE
+      )
+      
+      INSERT INTO CLASS (
+            C_TAG1
+          , C_TAG2
+          , C_PRICE
+          , C_CATEGOFY
+          , C_SDATE
+          , C_LOCATION
+          , C_TUTOR
+          , C_TIME1
+          , C_TIME2
+    ) 
+    VALUES (
+            ?
+          , ?
+          , ?
+          , ?
+          , ?
+          , ?
+          , ?
+          , ?
+          , ?
+    )
+	</entry>
 
 
 

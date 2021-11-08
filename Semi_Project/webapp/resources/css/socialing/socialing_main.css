@@ -94,6 +94,7 @@ hr {
 }
 
 #s-thumtitle {
+	color: black;
     margin-top: 5px;
     font-weight: bold;
     cursor: pointer;
@@ -266,6 +267,7 @@ label[for=online] {
     justify-content: center;
     position : relative;
     margin-top: 50px;
+    margin-bottom: 30px;
 }
 
 .paging{
@@ -276,7 +278,7 @@ label[for=online] {
 #writebox {
     display: flex;
     justify-content: flex-end;
-    margin-top: -30px;
+    margin-top: -65px;
     margin-bottom: 60px;
 }
 

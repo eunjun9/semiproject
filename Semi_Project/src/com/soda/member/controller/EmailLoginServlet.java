@@ -44,11 +44,13 @@ public class EmailLoginServlet extends HttpServlet {
 		String userId = request.getParameter("email");
 		String userPwd = request.getParameter("userPwd");
 		
-		 //System.out.println(userId + " / " + userPwd);
+
+//		 System.out.println(userId + " / " + userPwd);
 		
 		Member loginUser = new MemberService().loginMember(userId, userPwd);
 		
-		// System.out.println(loginUser);
+//		 System.out.println(loginUser);
+
 		
 		if(loginUser != null) {
 			HttpSession session = request.getSession();

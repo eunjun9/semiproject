@@ -23,14 +23,14 @@ import com.soda.member.model.vo.Member;
 /**
  * Servlet implementation class MagazineWrite
  */
-@WebServlet("/magazine/write")
-public class MagazineWriteServlet extends HttpServlet {
+@WebServlet("/magazine/insert")
+public class MagazineInsertServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MagazineWriteServlet() {
+    public MagazineInsertServlet() {
         super();
     }
 
@@ -38,7 +38,7 @@ public class MagazineWriteServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		 request.getRequestDispatcher("/WEB-INF/views/magazine/magazineWrite.jsp").forward(request, response);
+		 request.getRequestDispatcher("/WEB-INF/views/magazine/magazineInsert.jsp").forward(request, response);
 	   }
 
 	/**
@@ -72,6 +72,7 @@ public class MagazineWriteServlet extends HttpServlet {
 		String mcontent = multiRequest.getParameter("content");
 		String mwriter = ((Member)request.getSession().getAttribute("loginUser")).getUserId();
 			
+	
 		
 		Magazine magazine = new Magazine();
 		magazine.setnType(mCategory);
@@ -100,9 +101,9 @@ public class MagazineWriteServlet extends HttpServlet {
 	         file.setChangeName(multiRequest.getFilesystemName(fileNames[i]));
 	         /* thumbnail file_level => 0, contentImg file_level => 1 */
 	         if(i == 0)
-	        	 file.setFileLevel(0);
-	         else
 	        	 file.setFileLevel(1);
+	         else
+	        	 file.setFileLevel(2);
 	         
 	         /* 파일이 첨부 된 개수만큼 attachment 객체가 photoList에 담김 */
 	         photoList.add(file);
@@ -111,15 +112,19 @@ public class MagazineWriteServlet extends HttpServlet {
 	      /* magazine에 만들어진 attachment 데이터 설정 */
 	      magazine.setPhotoList(photoList);
 	      
-	      System.out.println(magazine);
-	      System.out.println(photoList);
+//	      System.out.println(magazine);
+//	      System.out.println(photoList);
 	      
 	      
 	      
 	      /* 사진 게시판 작성 비즈니스 로직 처리할 서비스 요청 */
 	      int result = new MagazineService().insertMagazine(magazine);
 	      
+	     
+	      
 	      if(result > 0) {
+	    	  
+	  
 	    	  
 	    	  // 사진 게시판 목록 재요청
 	    	  response.sendRedirect(request.getContextPath() + "/magazine/user");

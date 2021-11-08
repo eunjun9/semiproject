@@ -120,66 +120,71 @@ html {
 }
 
  .body-inner {
-     max-width: 930px;
+     width: 1030px;
      margin : 0 auto;
      height: auto;
+     
     
  }
 
-.title-big{
-    position:sticky;
-    transform: translate(50px, 25px); 
+
+.list_div {
+   width : 100%;
+}
+
+.board_list {
+ width : 100%;
+ margin:0 0;
+   display : grid;
+   grid-template-columns: 1fr 1fr 1fr 1fr;
+       padding-inline-start: 0px;
+}
+
+.board_list .box:hover {
+   cursor : pointer;
+   transform:scale(1.05);
+}
+.board_list .category {
+   font-size : 0.8rem;
+}
+
+.board_list .list-title{
+margin-top:-20px;
+   font-weight : bold;
+   text-align:center;
+   overflow: hidden;
+   text-overflow: ellipsis;
+   white-space: nowrap;
+}
+
+.board_list img {
+   max-width : 180px;
+   height : 150px;
 }
 
 .pics{
-    width: 200px;
-    margin-bottom: 50px;
+	text-align:center;
+	margin-bottom:-58px;
 }
 
- .first{
-    display: flex;
-    justify-content: space-between;
- }
- .second{
-    display: flex;
-    justify-content: space-between;
- }
-
- .third{
-    display: flex;
-    justify-content: space-between;
- }
- .fourth{
-    display: flex;
-    justify-content: space-between;
- }
-
-
-
-
-
-
-.all-title{
-    position:relative; 
+.pics>p{
+	text-align:left;
 }
 
-.first-title{
-    position: absolute;
-    color: black;
-    font-family: 'Noto Sans KR', sans-serif;
-    font-size: 16px;
-    font-weight: bold;
-    margin-left: 7px;
-    margin-top: 0px;
+.box{
+	width:180px;
+	margin-bottom:30px;
 }
 
-.name{
-    position: absolute;
-    color: black;
-    font-family: 'Noto Sans KR', sans-serif;
-    font-size: 12px;
-    margin-top: -5px;
-    margin-left: 7px;
+.writer-par>a{
+	text-align:center;
+	 color:grey;
+}
+
+.writer-par{
+	text-align:center;
+	 text-decoration: underline;
+	
 }
 
 

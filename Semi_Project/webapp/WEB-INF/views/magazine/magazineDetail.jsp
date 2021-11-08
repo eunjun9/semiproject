@@ -1,243 +1,221 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 
 <head>
-   <meta charset="UTF-8">
-   <title>¸Å°ÅÁø »ó¼¼ ÆäÀÌÁö</title>
+<meta charset="UTF-8">
+<title>ë§¤ê±°ì§„ ìƒì„¸ íŽ˜ì´ì§€</title>
 
-   <!-- ¿ÜºÎ ½ºÅ¸ÀÏ ½ÃÆ® -->
-   <link href="../css/magazineDetail.css" rel="stylesheet">
-   <link href="../css/Headerfooter.css" rel="stylesheet">
+<!-- ì™¸ë¶€ ìŠ¤íƒ€ì¼ ì‹œíŠ¸ -->
+<link
+	href="<%= request.getContextPath() %>/resources/css/magazine/magazineDetail.css"
+	rel="stylesheet">
 
-   <!-- favicon (Real Favicon Generator)-->
-   <link rel="icon" type="image/x-icon" href="resources/image/khfavicon.ico">
+<!-- favicon (Real Favicon Generator)-->
+<link rel="icon" type="image/x-icon"
+	href="resources/image/khfavicon.ico">
 
-   <!-- ±Û²Ã -->
-   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
-   <!--font-family: 'Noto Sans KR', sans-serif;-->
+<!-- ê¸€ê¼´ -->
+<link
+	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap"
+	rel="stylesheet">
+<!--font-family: 'Noto Sans KR', sans-serif;-->
 
-   <!-- JQuery-->
-   <script src="../js/jquery-3.6.0.min.js"></script>
+<!-- JQuery-->
+<script src="../js/jquery-3.6.0.min.js"></script>
 
-   <!-- ½æ¸Ó³ëÆ® -->
-   <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
-   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-   <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-   <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
-   <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
-   <script src="lang/summernote-ko-KR.js"></script>
 </head>
 
 
 
 
-   <!--header-->
-
-   <div class="header">
-      <div class="head-inner">
-
-         <div class="logo">
-            <img src="../image/logo.png">
-         </div>
-
-         <div class="big-category">
-            <div class="category1">
-               <a href="#">SOCIALING</a>
-               <a href="#">CLASS</a>
-               <a href="#">MAGAZINE</a>
-            </div>
-            <div class="category2">
-               <a href="#">CART</a>
-               <a href="#">MYPAGE</a>
-            </div>
-         </div>
-
-      </div>
-   </div>
+<!--header-->
+<%@ include file="/WEB-INF/views/common/header.jsp"%>
 
 
-   <!--body-->
-   <div class="body-super">
-      <div class="body-inner-blue">
-         <div class="buttons">
-            <div class="back">
-               <button>back</button>
-            </div>
-            <div class="admin">
-               <button>»èÁ¦</button>
-               <button>¼öÁ¤</button>
-               <button type="button" class="report-button"
-                  onclick="openPopup('Report_popup.html', 'checking', 450, 650)">½Å°í</button>
-            </div>
+<!--body-->
+<div class="body-super">
+	<div class="body-inner-blue">
+		<div class="buttons">
+			<div class="back">
+				<button>back</button>
+			</div>
+			<div class="admin">
+				<button>ì‚­ì œ</button>
+				<button>ìˆ˜ì •</button>
+				<button type="button" class="report-button"
+					onclick="openPopup('Report_popup.html', 'checking', 450, 650)">ì‹ ê³ </button>
+			</div>
 
-         </div>
-
-
-         <div class="title">
-            <p>Á¦°¡ ¸¸µç Çâ¼ö ¾î¶²°¡¿ä?</p>
-         </div>
-
-         <div class="write">
-            <div class="content-inner">
-               <div class="myinfo">
-                  <div class="myinfo1">
-                     <div class="profile">
-                        <img src="../image/pro.jpg">
-                     </div>
-                     <div class="id">
-                        <p>Jennieisback</p>
-                     </div>
-                     <div class="date">
-                        <p>2½Ã°£ Àü</p>
-                     </div>
-                  </div>
-
-                  <div class="myinfo2">
-                     <div class="follow">
-                        <button>ÆÈ·Î¿ö Ãß°¡</button>
-                     </div>
-                  </div>
-               </div>
-
-               <hr class="hr1">
-
-               <div class="contexnt">
-                  <p>
-                     Áö³­ ÁÖ¸» ÆÛÇ¾ ¿øµ¥ÀÌ Å¬·¡½º¿¡ Âü°¡Çß¾î¿ä. <br>
-                     Ã³À½À¸·Î Àú¸¸ÀÇ Çâ¼ö¸¦ ¸¸µé¾îºÃ´Âµ¥ ³Ê¹« ³Ê¹« »ÑµíÇÏ°í ÁÁ³×¿ä. ÃßÃµÇÕ´Ï´Ù!<br><br>
-
-                     ÁÖ¼Ò : ¼­¿ïÆ¯º°½Ã °­³²±¸ Ã»´ãµ¿ A½ºÆ©µð¿À<br>
-                     ÀüÈ­¹ø¼Ò 02-123-2345<br>
-                     °¡°Ý : 3½Ã°£ 6¸¸¿ø<br>
-                  </p>
-               </div>
-            </div>
-         </div>
-
-         <div class="comment-count">
-            ´ñ±Û 3
-         </div>
-         <div class="comment">
-            <div class="comment-title">
-               <p>´ñ±Û</p>
-            </div>
-
-            <div class="comment-each">
-               <div class="com-front">
-                  <div class="comment-pro">
-                     <img src="../image/pro2.png">
-                  </div>
-                  <div class="comment-info">
-                     <a href="#">Sodaisthebest</a>
-                     <p class="com-con">¿ª½Ã Á¦´Ï´Ô¤» ÃÖ°í¿¹¿ä!</p>
-                     <p class="com-date">2021.10.30</p>
-                  </div>
-               </div>
-               <div class="admin com-button">
-                  <button>»èÁ¦</button>
-                  <button>¼öÁ¤</button>
-                  <button type="button" class="report-button"
-                     onclick="openPopup('Report_popup.html', 'checking', 450, 650)">½Å°í</button>
-               </div>
-            </div>
-            <div>
-               <hr class="hr2">
-            </div>
-
-            <div class="comment-each">
-               <div class="com-front">
-                  <div class="comment-pro">
-                     <img src="../image/pro2.png">
-                  </div>
-                  <div class="comment-info">
-                     <a href class="com-id">Ilovemountain</a>
-                     <p class="com-con">Çâ¼öµµ ÁÁÁö¸¸ µî»êÀº ¾î¶°¼¼¿ä? :)</p>
-                     <p class="com-date">2021.10.30</p>
-                  </div>
-               </div>
-               <div class="admin com-button">
-                  <button>»èÁ¦</button>
-                  <button>¼öÁ¤</button>
-                  <button type="button" class="report-button"
-                     onclick="openPopup('Report_popup.html', 'checking', 450, 650)">½Å°í</button>
-               </div>
-            </div>
-            <div>
-               <hr class="hr2">
-            </div>
-
-            <div class="comment-each">
-               <div class="com-front">
-                  <div class="comment-pro">
-                     <img src="../image/pro2.png">
-                  </div>
-                  <div class="comment-info">
-                     <a href class="com-id">Ilovemountain</a>
-                     <p class="com-con">Çâ¼öµµ ÁÁÁö¸¸ µî»êÀº ¾î¶°¼¼¿ä? :)</p>
-                     <p class="com-date">2021.10.30</p>
-                  </div>
-               </div>
-               <div class="admin com-button">
-                  <button>»èÁ¦</button>
-                  <button>¼öÁ¤</button>
-                  <button type="button" class="report-button"
-                     onclick="openPopup('Report_popup.html', 'checking', 450, 650)">½Å°í</button>
-               </div>
-            </div>
-            <div>
-               <hr class="hr2">
-            </div>
+		</div>
 
 
-            <div class="reply_write">
-               <textarea class="reply_content"></textarea>
-               <button>´ñ±Ûµî·Ï</button>
-            </div>
+		<div class="subject">
+			<span> ê¸€ë²ˆí˜¸ : ${ magazine.nNum }</span> 
+			<span> ì¡°íšŒìˆ˜ : ${ magazine.nCount }</span>
+			<span> ìž‘ì„±ìž : ${ magazine.userId }</span> 
+			<span> ìž‘ì„±ì¼ : <fmt:formatDate
+					value="${ magazine.nDate }" type="both"
+					pattern="yyy.MM.dd HH:mm:ss" />
+			</span> 
+			<span> ìˆ˜ì •ì¼ : <fmt:formatDate value="${ magazine.modifyDate }"
+					type="both" pattern="yyy.MM.dd HH:mm:ss" /></span>
+		</div>
 
 
-         </div>
-      </div>
-      
-      
-      
-      
-      <!--footer-->
-      <div class="footer">
-      <div class="foot-inner">
-         <div class="foot-logo">
-            S O D A</div>
-            <div class="information">
-               <ul>ÁÖ½ÄÈ¸»ç ¼Ò¼È ´ÙÀÌ´×</ul>
-               <ul>´ëÇ¥ : È«±æµ¿ | °³ÀÎÁ¤º¸°ü¸®Ã¥ÀÓÀÚ : È«±æµ¿ | ÀüÈ­ : 02-123-4567 | ÀÌ¸ÞÀÏ : soda@gmail.com</ul>
-               <ul>ÁÖ¼Ò : ¼­¿ï °­³²±¸ Å×Çì¶õ·Î 14±æ 6 ³²µµºôµù 2Ãþ | »ç¾÷ÀÚµî·Ï¹øÈ£ : 000-00-00000</ul>
-               <ul> Åë½ÅÆÇ¸Å : Á¦ 2021-¼­¿ï°­³²-0000È£</ul>
-               <ul>¿µ¾÷½Ã°£ : ¿ù-±Ý ¿ÀÈÄ 2½Ã-7½Ã</ul>
-            </div>
-            <div class="foot-category">
-               <ul><a href="#">¼Ò´Ù¼Ò°³</a></ul>
-               <ul><a href="#">°øÁö»çÇ× </a></ul>
-               <ul><a href="#">°­»ç½ÅÃ»</a></ul>
-               <ul><a href="#">ÀÚÁÖ¹¯´ÂÁú¹®</a></ul>
-            </div>
-            
-            
-         </div>
-      </div>
-      <div class="final">
-         <div class="foot-final">
-            <a href="#">ÀÌ¿ë¾à°ü | </a>
-            <a href="#">°³ÀÎÁ¤º¸Ã³¸®¹æÄ§ | </a>
-            <a href="#">»ç¾÷ÀÚÁ¤º¸È®ÀÎ</a>
-         </div>
-      </div>
-      
-   </div>
-      
-   
-   <!--°Ô½Ã¹° ½Å°í ÆË¾÷-->
-   <script>
+		<h4>
+			<span class="title_span">&nbsp;</span> ë¶„ë¥˜
+		</h4>
+		<p>${ magazine.nType }</p>
+
+		<div class="title">
+			<p>${magazine.nTitle }</p>
+		</div>
+
+		<div class="write">
+			<div class="content-inner">
+				<div class="myinfo">
+					<div class="myinfo1">
+						<div class="profile">
+							<img src="../image/pro.jpg">
+						</div>
+						<div class="id">
+							<p>${ magazine.userId }</p>
+						</div>
+						<div class="date">
+							<p>2ì‹œê°„ ì „</p>
+						</div>
+					</div>
+
+
+
+					<div class="myinfo2">
+						<div class="follow">
+							<button>íŒ”ë¡œì›Œ ì¶”ê°€</button>
+						</div>
+					</div>
+				</div>
+
+				<hr class="hr1">
+
+				<h4>
+					<span class="title_span">&nbsp;</span> ì‚¬ì§„
+				</h4>
+
+				<c:forEach items="${ magazine.photoList}" var="photo">
+					<div class="photoList">
+						<img src="${ contextPath }${photo.route}${photo.changeName}">
+						<p>${ photo.originName }</p>
+						<p>
+					</div>
+
+
+				</c:forEach>
+				<h4>
+					<span class="title_span">&nbsp;</span> ë‚´ìš©
+				</h4>
+				<pre class="content">${ magazine.nContent }</pre>
+			</div>
+		</div>
+	</div>
+
+	<div class="comment-count">ëŒ“ê¸€ 3</div>
+	<div class="comment">
+		<div class="comment-title">
+			<p>ëŒ“ê¸€</p>
+		</div>
+
+		<div class="comment-each">
+			<div class="com-front">
+				<div class="comment-pro">
+					<img src="../image/pro2.png">
+				</div>
+				<div class="comment-info">
+					<a href="#">Sodaisthebest</a>
+					<p class="com-con">ì—­ì‹œ ì œë‹ˆë‹˜ã…‹ ìµœê³ ì˜ˆìš”!</p>
+					<p class="com-date">2021.10.30</p>
+				</div>
+			</div>
+			<div class="admin com-button">
+				<button>ì‚­ì œ</button>
+				<button>ìˆ˜ì •</button>
+				<button type="button" class="report-button"
+					onclick="openPopup('Report_popup.html', 'checking', 450, 650)">ì‹ ê³ </button>
+			</div>
+		</div>
+		<div>
+			<hr class="hr2">
+		</div>
+
+		<div class="comment-each">
+			<div class="com-front">
+				<div class="comment-pro">
+					<img src="../image/pro2.png">
+				</div>
+				<div class="comment-info">
+					<a href class="com-id">Ilovemountain</a>
+					<p class="com-con">í–¥ìˆ˜ë„ ì¢‹ì§€ë§Œ ë“±ì‚°ì€ ì–´ë– ì„¸ìš”? :)</p>
+					<p class="com-date">2021.10.30</p>
+				</div>
+			</div>
+			<div class="admin com-button">
+				<button>ì‚­ì œ</button>
+				<button>ìˆ˜ì •</button>
+				<button type="button" class="report-button"
+					onclick="openPopup('Report_popup.html', 'checking', 450, 650)">ì‹ ê³ </button>
+			</div>
+		</div>
+		<div>
+			<hr class="hr2">
+		</div>
+
+		<div class="comment-each">
+			<div class="com-front">
+				<div class="comment-pro">
+					<img src="../image/pro2.png">
+				</div>
+				<div class="comment-info">
+					<a href class="com-id">Ilovemountain</a>
+					<p class="com-con">í–¥ìˆ˜ë„ ì¢‹ì§€ë§Œ ë“±ì‚°ì€ ì–´ë– ì„¸ìš”? :)</p>
+					<p class="com-date">2021.10.30</p>
+				</div>
+			</div>
+			<div class="admin com-button">
+				<button>ì‚­ì œ</button>
+				<button>ìˆ˜ì •</button>
+				<button type="button" class="report-button"
+					onclick="openPopup('Report_popup.html', 'checking', 450, 650)">ì‹ ê³ </button>
+			</div>
+		</div>
+		<div>
+			<hr class="hr2">
+		</div>
+
+
+		<div class="reply_write">
+			<textarea class="reply_content"></textarea>
+			<button>ëŒ“ê¸€ë“±ë¡</button>
+		</div>
+
+
+	</div>
+</div>
+
+
+
+<!--footer-->
+<%@ include file="/WEB-INF/views/common/footer.jsp"%>
+
+</div>
+
+
+
+<!--ê²Œì‹œë¬¼ ì‹ ê³  íŒì—…-->
+<script>
       function openPopup(url, title, width, height) {
          let left = (document.body.clientWidth / 2) - (width / 2);
          left += window.screenLeft;
@@ -249,6 +227,9 @@
       }
 
    </script>
+
+
+
 
 </body>
 

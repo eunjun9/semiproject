@@ -179,6 +179,29 @@ public class MemberDao {
 		return findEmail;
 	}
 
+  // 비밀번호 찾기 - 임시비밀번호 발급받아 비밀번호 수정
+	public int sendPwd(Connection conn, String userId, int random) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = memberQuery.getProperty("sendPwd");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, random);
+			pstmt.setString(2, userId);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
 	public int idCheck(Connection conn, String userId) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -270,8 +293,8 @@ public class MemberDao {
 			pstmt.setString(1, newPwd);
 			pstmt.setString(2, userId);
 			pstmt.setString(3, userPwd);
-			
-			result = pstmt.executeUpdate();
+
+      result = pstmt.executeUpdate();
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -280,7 +303,7 @@ public class MemberDao {
 		}
 		
 		return result;
-	}
+	
 
 	public int deleteAccount(Connection conn, String userId) {
 		int result = 0;
