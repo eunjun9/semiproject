@@ -33,6 +33,7 @@ public class WishListService {
 		return listResult;
 	}
 
+	// 장바구니 조회
 	public List<WishList> wishlistList(String userId) {
 		Connection conn = getConnection();
 		
@@ -41,6 +42,21 @@ public class WishListService {
 		close(conn);
 		
 		return wishlist;
+	}
+
+	// 장바구니 삭제
+	public int deleteWishlist(int deleteList, String userId) {
+		Connection conn = getConnection();
+		int result = wishListDao.deleteWishlist(conn, deleteList, userId);
+		
+		if(result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		close(conn);
+		
+		return result;
 	}
 
 

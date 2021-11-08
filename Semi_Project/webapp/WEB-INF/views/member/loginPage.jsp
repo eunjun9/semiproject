@@ -75,12 +75,12 @@
                         
                        var kakaoGender = res.kakao_account.gender;	 // 카카오 성별
                        
-                       // 카카오 성별 데이터 영어 값으로 넘어와서 한글로 바꿔주기
+                       // 카카오 자동가입 시 추가되는 성별 DB 통일성을 위해 변경
                        if( kakaoGender != null) {
                     	   if (kakaoGender == 'female') {
-                    		   kakaoGender = kakaoGender.replaceAll(res.kakao_account.gender, "female", "여");
+                    		   kakaoGender = kakaoGender.replaceAll(res.kakao_account.gender, "female", "F");
                         } else {
-                        	kakaoGender = kakaoGender.replaceAll(res.kakao_account.gender, "male", "남");
+                        	kakaoGender = kakaoGender.replaceAll(res.kakao_account.gender, "male", "M");
                         }
                        }else{
                     	    kakaoGender = "null";

@@ -42,14 +42,25 @@ public class WishListServlet extends HttpServlet {
 		
 		List<WishList> wishList = new WishListService().wishlistList(userId);
 
-		if(wishList != null) {
-			request.setAttribute("wishList", wishList);
-			request.getRequestDispatcher("/WEB-INF/views/order/wishListPage.jsp").forward(request, response);
-		} else {
-			request.setAttribute("message", "장바구니 조회에 실패하였습니다.");
-			request.getRequestDispatcher("/WEB-INF/views/common/errorpage.jsp").forward(request, response);
+		// 장바구니 총 합계 금액
+		int totalPrice = 0;
+		for(WishList cart : wishList) {
+		    int price = cart.getcPrice();
+		    totalPrice += price;
+		  }
+		// 테스트
+		// System.out.println(totalPrice);
+
+			if(wishList != null) {
+				request.setAttribute("wishList", wishList);
+				request.setAttribute("totalPrice", totalPrice);
+				request.getRequestDispatcher("/WEB-INF/views/order/wishListPage.jsp").forward(request, response);
+			} else {
+				request.setAttribute("message", "장바구니 조회에 실패하였습니다.");
+				request.getRequestDispatcher("/WEB-INF/views/common/errorpage.jsp").forward(request, response);
+			}
 		}
-	}
+	
 	
 
 	/**
