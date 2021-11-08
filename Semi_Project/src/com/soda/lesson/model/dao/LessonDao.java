@@ -288,5 +288,44 @@ public class LessonDao {
 		return result;
 	}
 
+	public int deleteLesson(Connection conn, int nNum) {
+		PreparedStatement pstmt = null;
+		String sql = lessonQuery.getProperty("deleteLesson");
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, nNum);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
+	public int deletePhoto(Connection conn, int nNum) {
+		PreparedStatement pstmt = null;
+		String sql = lessonQuery.getProperty("deletePhoto");
+		int result = 0;
+		
+			try {
+				pstmt = conn.prepareStatement(sql);
+				
+				pstmt.setInt(1, nNum);
+				
+				result = pstmt.executeUpdate();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				close(pstmt);
+			}
+		return result;
+	}
+
 
 }

@@ -43,7 +43,7 @@
        				 <!-- vod 클래스는 날짜 선택이 필요없기 때문에 모달창이 뜨지 않고 / 장바구니 결제하기 버튼이 바로 생성되어 있음 
        				 -> 각각 클릭 시 nNum과 함께 각 페이지로 이동  -->
 			            <h4 id="pTitle">${ lesson.nTitle }</h4>
-			            <p id="pTime">${ lesson.cTime1 } 시간 <hr></p>
+			            <p id="pTime">${ lesson.cSDate } 일 <hr></p>
 			            <h3 id="pPrice">50,000원</h3>
 			            <div width="100%">
 			            <button id="cart">장바구니</button>

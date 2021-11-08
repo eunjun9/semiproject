@@ -104,4 +104,24 @@ public class LessonService {
 		
 		return result;
 	}
+
+	// 클래스 삭제
+	public List<Attachment> deleteLesson(int nNum) {
+		Connection conn = getConnection();
+		
+		List<Attachment> deletedPhotoList = lessonDao.selectPhotoList(conn, nNum);
+		
+		int lessonResult = lessonDao.deleteLesson(conn, nNum);
+		int photoResult = lessonDao.deletePhoto(conn, nNum);
+		
+		if(lessonResult > 0 && photoResult == deletedPhotoList.size()) {
+			commit(conn);
+		} else {
+			rollback(conn);
+			deletedPhotoList = null;
+		}
+		close(conn);
+		
+		return deletedPhotoList;
+	}
 }

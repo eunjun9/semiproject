@@ -161,6 +161,17 @@
 	  )
 	</entry>
 
+	<entry key="deleteLesson">
+		UPDATE NOTICE
+		   SET NOTICE_STATUS = 'Y'
+		 WHERE NOTICE_NUM = ?
+	</entry>
+	
+	<entry key="deletePhoto">
+		UPDATE "FILE"
+	        SET STATUS = 'N'
+	      WHERE NOTICE_NUM =?
+	</entry>
 
 
 

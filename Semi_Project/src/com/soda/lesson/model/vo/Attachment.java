@@ -6,19 +6,21 @@ public class Attachment {
 	private String route;		// 업로드 파일 저장 경로
 	private String originName;	// 원본 이름	
 	private String changeName;	// 바뀐 이름
+	private String deletedName;     // 삭제 시 파일명
 	private int fileLevel;		// 썸네일 0 내용 사진 1
 	private String status;		// 상태
 	
 	public Attachment(){}
 
-	public Attachment(int fileNum, int nNum, String route, String originName, String changeName, int fileLevel,
-			String status) {
+	public Attachment(int fileNum, int nNum, String route, String originName, String changeName, String deletedName,
+			int fileLevel, String status) {
 		super();
 		this.fileNum = fileNum;
 		this.nNum = nNum;
 		this.route = route;
 		this.originName = originName;
 		this.changeName = changeName;
+		this.deletedName = deletedName;
 		this.fileLevel = fileLevel;
 		this.status = status;
 	}
@@ -63,6 +65,14 @@ public class Attachment {
 		this.changeName = changeName;
 	}
 
+	public String getDeletedName() {
+		return deletedName;
+	}
+
+	public void setDeletedName(String deletedName) {
+		this.deletedName = deletedName;
+	}
+
 	public int getFileLevel() {
 		return fileLevel;
 	}
@@ -81,9 +91,9 @@ public class Attachment {
 
 	@Override
 	public String toString() {
-		return "File [fileNum=" + fileNum + ", nNum=" + nNum + ", route=" + route + ", originName=" + originName
-				+ ", changeName=" + changeName + ", fileLevel=" + fileLevel + ", status=" + status + "]";
-	};
-	
-	
+		return "Attachment [fileNum=" + fileNum + ", nNum=" + nNum + ", route=" + route + ", originName=" + originName
+				+ ", changeName=" + changeName + ", deletedName=" + deletedName + ", fileLevel=" + fileLevel
+				+ ", status=" + status + "]";
+	}
+
 }
