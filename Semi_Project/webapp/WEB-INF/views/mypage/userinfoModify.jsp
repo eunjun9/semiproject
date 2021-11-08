@@ -1,6 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.*"%>
- 
+    pageEncoding="UTF-8" import="java.util.*" import="com.soda.member.model.vo.Member"%>
+
+<%
+	// session 객체에 담긴 loginUser 정보를 변수에 담아두기
+	Member loginUser = (Member)session.getAttribute("loginUser");
+%>
+
+
   
 <!DOCTYPE html>
 <html lang="ko">
@@ -11,9 +17,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>회원정보수정 페이지</title>
 
+    <%-- session에 담긴 message 있을 경우 alert 하는 script --%>
+	<% if(session.getAttribute("message") != null) { %>
+	<script>
+	alert('<%= session.getAttribute("message") %>');
+	</script>
+	<% 
+			session.removeAttribute("message");
+		} 
+	%>
     
     <!-- 외부 스타일 시트 -->
-    <link href="resources/css/mypage_userinfomodify.css" rel="stylesheet">
+    
+    <link href="resources/css/mypage/mypage_userinfoModify.css" rel="stylesheet">
+   
     <!-- favicon (Real Favicon Generator)-->
     <link rel="icon" type="image/x-icon" href="resources/image/khfavicon.ico">
     <!-- 글꼴 -->
@@ -22,17 +39,16 @@
     <!-- JQuery-->
     <script src="../js/jquery-3.6.0.min.js"></script>
 
-
+	
 
 
 </head>
 
 <body>
-
-	<%@ include file="/WEB-INF/views/main/mainpage.jsp" %>
+	
 
     <!--header-->
-
+    
     <div class="header">
         <div class="head-inner">
 
@@ -92,18 +108,7 @@
                     placeholder="전화번호를 입력해주세요" size="25" value="<%= loginUser.getUserPhone() != null ? loginUser.getUserPhone() : "" %>">
                 </div>
             </div>
-            <div class="common-form"> 
-                <div class="form-group"> 
-                    <label class="form-label">성별</label> 
-                    <div class="row" id="gender_box"> 
-                        <label for="male">남자</label>&nbsp;
-                        <input type="radio" id="female" name="gender" value="M" checked>&nbsp;&nbsp;&nbsp;
-                        <label for="female">여자</label>&nbsp; 
-                        <input type="radio" id="female" name="gender" value="F" checked>
-
-                    </div> 
-                </div> 
-            </div>
+            
                 <div class="form-check"> 
                     <button id="btn-modify">수정하기</button>
                     <button id="btn-delete" type="button"
@@ -112,14 +117,6 @@
             </div> 
         </form>
     </div>
-    
-    <!-- jQuery와 Postcodify를 로딩한다 -->
-	<!-- api 주소 연결 -->
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-	<script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
-	
-	<!-- "검색" 단추를 누르면 팝업 레이어가 열리도록 설정한다 -->
-	<script> $(function() { $("#postcodify_search_button").postcodifyPopUp(); }); </script>
 	
 	<script>
 		// 일단 생략 (서버로 제출하기 전에 유효성 검사를 하는데 자바스크립트에서 하니까 여기서는 넘어감) -> 우리가 자바스크립로 알아서 구현해라
