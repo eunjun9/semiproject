@@ -158,13 +158,15 @@ public class LessonDao {
 				lesson.setnContent(rset.getString("notice_content"));
 				lesson.setCtag1(rset.getString("c_tag1"));
 				lesson.setCtag2(rset.getString("c_tag2"));
-				lesson.setcSDate(rset.getString("c_sdate"));  // 시작 날짜는 날짜만
+				lesson.setvDate(rset.getString("v_date")); // 시작 날짜는 날짜만
+				lesson.setoDate1(rset.getDate("o_date1"));
+				lesson.setoDate2(rset.getDate("o_date2"));
 				lesson.setcTime1(rset.getString("c_time1"));
 				lesson.setcTime2(rset.getString("c_time2"));
 				lesson.setcLocation(rset.getString("c_location"));
 				lesson.setcTutor(rset.getString("c_tutor"));
-				lesson.setnDate(rset.getTimestamp("notice_date")); // 작성-수정 날짜는 시간까지
-				lesson.setModifyDate(rset.getTimestamp("modify_date"));
+				lesson.setnDate(rset.getDate("notice_date")); // 작성-수정 날짜는 시간까지
+				lesson.setModifyDate(rset.getDate("modify_date"));
 				lesson.setnStatus(rset.getString("notice_status"));
 			}
 			
@@ -247,12 +249,14 @@ public class LessonDao {
 			pstmt.setString(2, lesson.getCtag2());
 			pstmt.setInt(3, lesson.getcPrice());
 			pstmt.setString(4, lesson.getcCategory());
-			pstmt.setString(5,lesson.getcSDate());
-			pstmt.setString(6, lesson.getcLocation());
-			pstmt.setString(7, lesson.getcTutor());
-			pstmt.setString(8, lesson.getUserId());
-			pstmt.setString(9, lesson.getcTime1());
-			pstmt.setString(10, lesson.getcTime2());
+			pstmt.setString(5,lesson.getvDate());
+			pstmt.setDate(6, (Date) lesson.getoDate1());
+			pstmt.setDate(7, (Date) lesson.getoDate2());
+			pstmt.setString(8, lesson.getcLocation());
+			pstmt.setString(9, lesson.getcTutor());
+			pstmt.setString(10, lesson.getUserId());
+			pstmt.setString(11, lesson.getcTime1());
+			pstmt.setString(12, lesson.getcTime2());
 			
 			
 			result = pstmt.executeUpdate();

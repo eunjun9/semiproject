@@ -237,12 +237,21 @@ input[name=cPrice]{
 }
 
 
-input[name=class_date]{
+input[name=o_date1],
+input[name=o_date2]{
     border: 1px solid lightgray;
     border-radius: 5px;
     width: 180px;
     height: 30px;
 }
+
+input[name=v_date]{
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    width: 180px;
+    height: 30px;
+}
+
 
 
 input[type=time]{

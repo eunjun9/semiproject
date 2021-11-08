@@ -1,6 +1,6 @@
 package com.soda.lesson.model.vo;
 
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 public class Lesson {
@@ -18,7 +18,9 @@ public class Lesson {
 	private String ctag2;		// 카테고리 소분류
 	private int cPrice;			// 가격
 	private String cCategory;	// 카테고리 (원데이 vod)
-	private String cSDate;		// 시작 날짜
+	private String vDate;		// vod 날짜
+	private Date oDate1;		// 원데이 날짜 1
+	private Date oDate2;		// 원데이 날짜 2
 	private String cTime1;		// 클래스 시간1
 	private String cTime2;		// 클래스 시간2
 	private String cLocation;	// 장소
@@ -29,8 +31,8 @@ public class Lesson {
 	public Lesson() {}
 
 	public Lesson(int nNum, String nTitle, String nContent, int nCount, String nStatus, String nType, String userId,
-			String userName, Date nDate, Date modifyDate, String ctag1, String ctag2, int cPrice,
-			String cCategory, String cSDate, String cTime1, String cTime2, String cLocation, String cTutor,
+			String userName, Date nDate, Date modifyDate, String ctag1, String ctag2, int cPrice, String cCategory,
+			String vDate, Date oDate1, Date oDate2, String cTime1, String cTime2, String cLocation, String cTutor,
 			List<Attachment> photoList) {
 		super();
 		this.nNum = nNum;
@@ -47,14 +49,15 @@ public class Lesson {
 		this.ctag2 = ctag2;
 		this.cPrice = cPrice;
 		this.cCategory = cCategory;
-		this.cSDate = cSDate;
+		this.vDate = vDate;
+		this.oDate1 = oDate1;
+		this.oDate2 = oDate2;
 		this.cTime1 = cTime1;
 		this.cTime2 = cTime2;
 		this.cLocation = cLocation;
 		this.cTutor = cTutor;
 		this.photoList = photoList;
 	}
-
 
 	public int getnNum() {
 		return nNum;
@@ -80,16 +83,13 @@ public class Lesson {
 		this.nContent = nContent;
 	}
 
-	
 	public int getnCount() {
 		return nCount;
 	}
 
-
 	public void setnCount(int nCount) {
 		this.nCount = nCount;
 	}
-
 
 	public String getnStatus() {
 		return nStatus;
@@ -171,33 +171,45 @@ public class Lesson {
 		this.cCategory = cCategory;
 	}
 
-	public String getcSDate() {
-		return cSDate;
+	public String getvDate() {
+		return vDate;
 	}
 
-	public void setcSDate(String cSDate) {
-		this.cSDate = cSDate;
+	public void setvDate(String vDate) {
+		this.vDate = vDate;
+	}
+
+	public Date getoDate1() {
+		return oDate1;
+	}
+
+	public void setoDate1(Date oDate1) {
+		this.oDate1 = oDate1;
+	}
+
+	public Date getoDate2() {
+		return oDate2;
+	}
+
+	public void setoDate2(Date oDate2) {
+		this.oDate2 = oDate2;
 	}
 
 	public String getcTime1() {
 		return cTime1;
 	}
 
-
 	public void setcTime1(String cTime1) {
 		this.cTime1 = cTime1;
 	}
-
 
 	public String getcTime2() {
 		return cTime2;
 	}
 
-
 	public void setcTime2(String cTime2) {
 		this.cTime2 = cTime2;
 	}
-
 
 	public String getcLocation() {
 		return cLocation;
@@ -228,9 +240,11 @@ public class Lesson {
 		return "Lesson [nNum=" + nNum + ", nTitle=" + nTitle + ", nContent=" + nContent + ", nCount=" + nCount
 				+ ", nStatus=" + nStatus + ", nType=" + nType + ", userId=" + userId + ", userName=" + userName
 				+ ", nDate=" + nDate + ", modifyDate=" + modifyDate + ", ctag1=" + ctag1 + ", ctag2=" + ctag2
-				+ ", cPrice=" + cPrice + ", cCategogy=" + cCategory + ", cSDate=" + cSDate
-				+ ", cTime1=" + cTime1 + ", cTime2=" + cTime2 + ", cLocation=" + cLocation
+				+ ", cPrice=" + cPrice + ", cCategory=" + cCategory + ", vDate=" + vDate + ", oDate1=" + oDate1
+				+ ", oDate2=" + oDate2 + ", cTime1=" + cTime1 + ", cTime2=" + cTime2 + ", cLocation=" + cLocation
 				+ ", cTutor=" + cTutor + ", photoList=" + photoList + "]";
 	}
 
+	
 }
+

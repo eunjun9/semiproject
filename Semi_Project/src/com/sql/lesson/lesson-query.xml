@@ -56,7 +56,9 @@
 		      , NOTICE_CONTENT
 		      , C_TAG1
 		      , C_TAG2
-		      , C_SDATE
+		      , V_DATE
+		      , O_DATE1
+		      , O_DATE2
 		      , C_TIME1
 		      , C_TIME2
 		      , C_LOCATION
@@ -116,7 +118,9 @@
           , C_TAG2
           , C_PRICE
           , C_CATEGORY
-          , C_SDATE
+          , V_DATE
+          , O_DATE1
+          , O_DATE2
           , C_LOCATION
           , C_TUTOR
           , C_WRITER
@@ -126,6 +130,8 @@
     VALUES (
     		SEQ_NOTICE_NUM.CURRVAL
     	  , ?
+          , ?
+          , ?
           , ?
           , ?
           , ?

@@ -30,9 +30,9 @@ img{
 }
 
 .cMTitle{
-    margin-top: 130px;
+    margin-top: 100px;
     margin-left: 5px;
-    width: 350px;
+    width: 340px;
 }
 
 .cTutor{
@@ -69,7 +69,7 @@ img{
     color : rgba(77, 77, 77);
     text-align: center;
     margin-top: 10px;
-    margin-left: -160px;
+    margin-right: -15px
 }
 
 #pDate{
@@ -307,6 +307,7 @@ p.cAnswer{
     height: 30px;
     font-size: 10pt;
     margin-top : 35px;
+    margin-bottom: 30px;
     cursor: pointer;
     font-weight : bold;
 }

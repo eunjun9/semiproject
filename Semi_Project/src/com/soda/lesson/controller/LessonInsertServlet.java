@@ -72,13 +72,29 @@ public class LessonInsertServlet extends HttpServlet {
 		String cCategory = multiRequest.getParameter("class_type");
 		String nContent = multiRequest.getParameter("editordata");
 		String tInfo = multiRequest.getParameter("tutor_intro");
-		String cDate = multiRequest.getParameter("class_date");
-
-		/*
-		 * SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); Date cDate = null;
-		 * try { cDate = sdf.parse(multiRequest.getParameter("class_date")); } catch
-		 * (ParseException e) { e.printStackTrace(); }
-		 */
+		String vDate = multiRequest.getParameter("v_date");
+		
+		// String으로 받아온 oneday클래스 날짜를 Date로 형변환
+		String str1 = multiRequest.getParameter("o_date1");
+		String str2 = multiRequest.getParameter("o_date2");
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd"); 
+		
+		 
+	    java.sql.Date oDate1 = null;
+	    java.sql.Date oDate2 = null;
+		try {
+			Date d1 = df.parse(str1);
+			Date d2 = df.parse(str2);
+			
+			long ch1 = d1.getTime();
+			long ch2 = d2.getTime();
+			
+			oDate1 = new java.sql.Date(ch1);
+		    oDate2 = new java.sql.Date(ch2);
+			
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
 		
 		String ctime1 = multiRequest.getParameter("class_time1");
 		String ctime2 = multiRequest.getParameter("class_time2");
@@ -96,7 +112,9 @@ public class LessonInsertServlet extends HttpServlet {
 		lesson.setcCategory(cCategory);
 		lesson.setnContent(nContent);
 		lesson.setcTutor(tInfo);
-		lesson.setcSDate(cDate);
+		lesson.setvDate(vDate);
+		lesson.setoDate1(oDate1);
+		lesson.setoDate2(oDate2);
 		lesson.setcTime1(ctime1);
 		lesson.setcTime2(ctime2);
 		lesson.setcLocation(cLocation);

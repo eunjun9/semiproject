@@ -190,13 +190,13 @@
                 <!-- 원데이 클래스 일때 -->
                 <div class="offdate">
                 <h4>날짜를 선택하세요</h4>
-                <input type="date" name="class_date"><br>
+                <input type="date" name="o_date1"><label>&nbsp;부터  &nbsp;</label><input type="date" name="o_date2"><label>&nbsp;까지</label><br>
                 </div>
                 
                 <!-- vod 클래스 일때 -->
                 <div class="ondate">
                 	<h4>기간을 입력하세요</h4>
-                	<input type="text" name="class_date"><label>&nbsp;일</label>
+                	<input type="text" name="v_date"><label>&nbsp;일</label>
                 </div>
                 
                 <!-- 타입이 오프라인일때 -->

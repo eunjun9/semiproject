@@ -8,7 +8,7 @@
 <title>클래스 상세페이지</title>
 
 	<!--외부 스타일 시트-->
-    <link href="${ contextPath }/resources/css/lesson/lesson_detail.css?5" rel="stylesheet">
+    <link href="${ contextPath }/resources/css/lesson/lesson_detail.css?7" rel="stylesheet">
 	
     <!-- font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -43,7 +43,7 @@
        				 <!-- vod 클래스는 날짜 선택이 필요없기 때문에 모달창이 뜨지 않고 / 장바구니 결제하기 버튼이 바로 생성되어 있음 
        				 -> 각각 클릭 시 nNum과 함께 각 페이지로 이동  -->
 			            <h4 id="pTitle">${ lesson.nTitle }</h4>
-			            <p id="pTime">${ lesson.cSDate } 일 <hr></p>
+			            <p id="pTime">${ lesson.vDate } 일 <hr></p>
 			            <h3 id="pPrice">50,000원</h3>
 			            <div width="100%">
 			            <button id="cart">장바구니</button>
@@ -154,13 +154,15 @@
     <h4>강사 소개</h4>
     <pre id="cTutorIntro">${ lesson.cTutor }</pre> <hr>
     
+    <c:if test="${ lesson.cCategory == '원데이'}" >
     <h4>위치</h4>
     <p id="cPlace">${ lesson.cLocation }</p><hr>
+    </c:if>
     <h4>환불 정책</h4>
     <p>환불 정책에 따라 클래스 수강일로부터 7일 전 까지 전액 환불이 가능합니다.</p><hr>
     
     <!-- 문의사항 나중에 처리 -->
-    <!-- <h4>문의 사항</h4>
+   <h4>문의 사항</h4>
     <div class="cQnA">
         <form>
             <input type="text" name="cQuestion" placeholder=" 강사님께 문의하실 내용을 입력해주세요." size="110">
@@ -168,7 +170,6 @@
             <div class="outer">
                 <p class="cQuestion1"> 가져가야 될 준비물이 있을까요?</p>
                 <p class="aStatus">답변 대기</p>
-                작성자 본인만 가능
                 <textarea class="cAnswer" placeholder="답변을 작성해주세요."></textarea>
                 <button name="aSubmit" class="aBtn">등록</button> 
             </div>
@@ -187,7 +188,7 @@
                 <p class="aStatus">답변 완료</p> 
                 <p class="cAnswer" >아니요 준비물은 없습니다.</p>
             </div>
-        </form> -->
+        </form> 
 
             <div class="btnArea">
               <button onclick="location.href='${ contextPath }/lesson/main'">목록보기</button>
@@ -211,9 +212,9 @@
         });
         </script>
 	
+</div>
 	<!-- footer -->
 	<%@ include file="/WEB-INF/views/common/footer.jsp" %>
-</div>
 	
 	<c:if test="${ loginUser.userId == lesson.userId }">
 		<form name="lessonForm" method="post">
