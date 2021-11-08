@@ -64,7 +64,6 @@
 			            class="postcodify_details" placeholder="상세 주소를 입력해 주세요"><br>
 		            </span>
 					</div>
-
                     
                     <h4 id="w-sub-title5">인원 설정</h4>
                     <select id="min" name="min">
