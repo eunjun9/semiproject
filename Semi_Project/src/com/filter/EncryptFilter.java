@@ -18,12 +18,17 @@ import com.wrapper.EncryptWrapper;
  */
 
 // 암호화가 필요한 서블릿 적용 (생성하는 서블릿에 따라 서블릿네임 변경하기!)
-@WebFilter(filterName="encrypt", servletNames= {"LoginServlet", "memberjoinServlet", "KakaoLoginServlet", "PwdFindServlet"})
+@WebFilter(filterName="encrypt", servletNames= {"LoginServlet"
+											  , "memberjoinServlet"
+											  , "KakaoLoginServlet"
+											  , "PwdFindServlet"
+											  , "EmailLoginServlet"
+											  , "PwdModifyServlet"})
 public class EncryptFilter implements Filter {
 
     /**
      * Default constructor. 
-     */
+     */ 
     public EncryptFilter() {
         // TODO Auto-generated constructor stub
     }

@@ -80,7 +80,7 @@
                 <div class="form-group">
                     <label class="form-label">이름</label><br>
                     <input class="form-control" id="name" type="text" name="userName" 
-                    placeholder="이름을 입력해주세요" size="25">
+                    placeholder="이름을 입력해주세요" size="25" >
                 </div>
             </div>
             <div class="common-form">
@@ -124,6 +124,9 @@
         </form>
     </div>
     
+    <!-- jQuery와 Postcodify를 로딩한다 -->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	<script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
     
     <script>
 		// 사용자 입력 값 유효성 검사용 함수

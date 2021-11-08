@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="java.util.*"%>
+ 
+  
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -11,7 +13,7 @@
 
     
     <!-- 외부 스타일 시트 -->
-    <link href="resources/css/mypage_userinfoModify.css" rel="stylesheet">
+    <link href="resources/css/mypage_userinfomodify.css" rel="stylesheet">
     <!-- favicon (Real Favicon Generator)-->
     <link rel="icon" type="image/x-icon" href="resources/image/khfavicon.ico">
     <!-- 글꼴 -->
@@ -26,13 +28,16 @@
 </head>
 
 <body>
+
+	<%@ include file="/WEB-INF/views/main/mainpage.jsp" %>
+
     <!--header-->
 
     <div class="header">
         <div class="head-inner">
 
           <div class="logo">
-            <img src="semi/image/logo.png">
+            <img src="resources/images/logo.png">
           </div>
 
             <div class="big-category">
@@ -51,43 +56,40 @@
     </div>
 
     <div class="joinInfoArea" id="register_row">
-        <form id="register_form">
+        <form id="register_form" action="<%= request.getContextPath() %>/mypage/userinfomodify"
+        method="post" onsubmit="return validate();">
             <div class="common-form title">
                 <h2 class="firstjoin">회원 정보 수정</h2>
             </div>
             <div class="common-form">
                 <div class="form-group">
                     <label class="form-label">이메일</label><br>
-                    <input class="form-control" id="email" type="email" name="email" 
-                    maxlength="30" placeholder="이메일을 입력해주세요" size="25" required>
+                    <input class="form-control" id="email" type="email" name="userId" 
+                    maxlength="30" placeholder="이메일을 입력해주세요" size="25" value="<%= loginUser.getUserId() %>" readonly>
                 </div>
             </div>
             <div class="common-form">
                 <div class="form-group">
                     <label class="form-label">비밀번호</label><br>
-                    <input class="form-control" id="password" type="password" name="password" 
-                    maxlength="20" size="25" required>
+                    <input class="form-control" id="password" type="password" name="userPwd" 
+                    maxlength="20" size="25" readonly>
+                    <button id="pwdUpdateBtn" type="button" 
+	                onclick = "openPopup('<%= request.getContextPath() %>/pwdModify', 'pwdModify', 500, 500);">비밀번호 변경</button>
                 </div>
             </div>
-            <div class="common-form">
-                <div class="form-group">
-                    <label class="form-label">비밀번호 확인</label><br>
-                    <input class="form-control" id="password_check" type="password" name="password_check" 
-                    maxlength="20" placeholder="비밀번호를 다시 입력해주세요" size="25" required>
-                </div>
-            </div>
+        
             <div class="common-form">
                 <div class="form-group">
                     <label class="form-label">이름</label><br>
-                    <input class="form-control" id="name" type="text" name="name" 
-                    placeholder="이름을 입력해주세요" size="25">
+                    <input class="form-control" id="name" type="text" name="userName" 
+                    placeholder="이름을 입력해주세요" size="25" value="<%= loginUser.getUserName() %>" required>
                 </div>
             </div>
             <div class="common-form">
                 <div class="form-group">
                     <label class="form-label">연락처</label><br>
-                    <input class="form-control" id="phone_num" type="text" name="phoneNumber" 
-                    placeholder="전화번호를 입력해주세요" size="25">
+                    <input class="form-control" id="phone_num" type="text" name="userPhone" 
+                    placeholder="전화번호를 입력해주세요" size="25" value="<%= loginUser.getUserPhone() != null ? loginUser.getUserPhone() : "" %>">
                 </div>
             </div>
             <div class="common-form"> 
@@ -103,13 +105,53 @@
                 </div> 
             </div>
                 <div class="form-check"> 
-                    <button class="btn-cancel">취소하기</button>
-                    <button class="btn-modify">저장하기</button>
+                    <button id="btn-modify">수정하기</button>
+                    <button id="btn-delete" type="button"
+					onclick="confirmAccountDelete();">탈퇴하기</button>
                 </div>
             </div> 
         </form>
     </div>
     
+    <!-- jQuery와 Postcodify를 로딩한다 -->
+	<!-- api 주소 연결 -->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	<script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
+	
+	<!-- "검색" 단추를 누르면 팝업 레이어가 열리도록 설정한다 -->
+	<script> $(function() { $("#postcodify_search_button").postcodifyPopUp(); }); </script>
+	
+	<script>
+		// 일단 생략 (서버로 제출하기 전에 유효성 검사를 하는데 자바스크립트에서 하니까 여기서는 넘어감) -> 우리가 자바스크립로 알아서 구현해라
+		// 사용자 입력 값 유효성 검사용 함수
+		function validate(){
+			// 알맞은 값 입력 시 넘어가게 js로 구현
+			return true;
+		}
+	
+	// 비밀번호 변경 팝업창 호출
+	function openPopup(url, title, width, height) {
+		
+		var left = (document.body.clientWidth/2) - (width/2);
+		left += window.screenLeft;	// 듀얼 모니터
+		// clientWidth : 듀얼 모니터 사용 시 주 모니터 확인
+		var top = (screen.availHeight/2) - (height/2);
+		
+		var options = "width="+width+",height="+height+",left="+left+",top="+top;
+		// 문자열로 합쳐서 보냄
+			
+		window.open(url, title, options);
+		// 팝업창 열 때 (주소, 팝업창 이름, 속성값 문자열)
+	}
+	
+	function confirmAccountDelete() {
+		if(confirm("정말로 탈퇴하시겠습니까?"))
+			// confirm : 확인 취소 버튼 달린 확인 메세지창
+			// location : 새로운 페이지로 이동되는 기능 (객체 속성)
+			location.href='<%= request.getContextPath() %>/accountDelete';
+	}
+	</script>
+
 
     <!--footer-->
     <div class="footer">

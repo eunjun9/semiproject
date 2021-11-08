@@ -16,7 +16,7 @@ import com.soda.member.model.vo.Member;
 /**
  * Servlet implementation class KakaoLoginServlet
  */
-@WebServlet("/kakao/login")
+@WebServlet(name="KakaoLoginServlet", urlPatterns="/kakao/login")
 public class KakaoLoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

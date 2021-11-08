@@ -24,7 +24,7 @@ import com.soda.member.model.vo.Member;
 /**
  * Servlet implementation class PwdFindServlet
  */
-@WebServlet("/pwd/find")
+@WebServlet(name="PwdFindServlet", urlPatterns="/pwd/find")
 public class PwdFindServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

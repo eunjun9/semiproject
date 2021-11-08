@@ -89,12 +89,12 @@ div{
 }
 
 .joinInfoArea{
-    max-width: 1200px;
+    max-width: 400px;
     width: 100%;
     padding-right: 0;
     padding-left: 0;
     margin-top: 50px;
-    margin-left: 39%;
+    margin-left: 36.5%;
     margin-bottom: 3rem!important;
     
 }
@@ -193,26 +193,30 @@ body, html{
     display: flex;
 }
 
-.btn-cancel{
+#pwdUpdateBtn{
+    border-radius: 3px;
+}
+
+#btn-modify{
     width: 100px;
     margin-top: 25px;
     margin-left: 52px;
     padding: 9px;
     border-radius: 20px;
-    border: 1px solid lightgray;
-    background-color: lightgray;
+    border: 1px solid #DAEFF5;
+    background-color: #DAEFF5;
     font-size: 1rem;
     font-weight: 700;
 }
 
-.btn-modify{
+#btn-delete{
     width: 100px;
     margin-top: 30px;
     margin-left: 12px;
     padding: 9px;
     border-radius: 20px;
-    border: 1px solid #DAEFF5;
-    background-color: #DAEFF5;
+    border: 1px solid red;
+    background-color: red;
     font-size: 1rem;
     font-weight: 700;
 }

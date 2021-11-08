@@ -77,7 +77,68 @@ public class MemberService {
 		return findEmail;
 	}
 
+	public int idCheck(String userId) {
+		Connection conn = getConnection();
+		
+		int result = memberDao.idCheck(conn, userId);
+		
+		close(conn);
+		
+		return result;
+	}
 
+	public Member updateMember(Member member) {
+		Connection conn = getConnection();
+		Member updatedMember = null;
+		
+		// 1. 수정하려는 정보가 담신 member 객체를 가지고 updateMember
+		int result = memberDao.updateMember(conn, member);
+		
+		// 2. 수정이 잘 되었다면 수정된 정보의 member 객체 select
+		if(result > 0) {
+			updatedMember = memberDao.selectMember(conn, member.getUserId());
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return updatedMember;
+	}
+
+	public Member updatePwd(String userId, String userPwd, String newPwd) {
+		Connection conn = getConnection();
+		Member updatedMember = null;
+		
+		int result = memberDao.updatePwd(conn, userId, userPwd, newPwd);
+			
+		if(result > 0) {
+			updatedMember = memberDao.selectMember(conn, userId);
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+
+		
+		return null;
+	}
+
+	public Member deleteAccount(String userId) {
+		Connection conn = getConnection();
+		
+		int result = memberDao.deleteAccount(conn, userId);
+		
+		if(result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return result;
+	}
 	
 	
 

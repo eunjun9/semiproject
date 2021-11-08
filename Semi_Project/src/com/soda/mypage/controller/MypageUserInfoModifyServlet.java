@@ -1,7 +1,6 @@
-package com.soda.member.controller;
+package com.soda.mypage.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,22 +8,21 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.soda.member.model.service.MemberService;
 import com.soda.member.model.vo.Member;
 
 /**
- * Servlet implementation class EmailLoginServlet
+ * Servlet implementation class MypageUserInfoModifyServlet
  */
-@WebServlet(name="EmailLoginServlet", urlPatterns="/email/login")
-public class EmailLoginServlet extends HttpServlet {
+@WebServlet("/mypage/userinfomodify")
+public class MypageUserInfoModifyServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public EmailLoginServlet() {
+    public MypageUserInfoModifyServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,7 +31,8 @@ public class EmailLoginServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/member/emailLoginPage.jsp");
+		// TODO Auto-generated method stub
+		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/mypage/userinfoModify.jsp");
 		view.forward(request, response);
 	}
 
@@ -41,29 +40,27 @@ public class EmailLoginServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String userId = request.getParameter("email");
-		String userPwd = request.getParameter("userPwd");
 		
-		 //System.out.println(userId + " / " + userPwd);
+		request.setCharacterEncoding("UTF-8");
 		
-		Member loginUser = new MemberService().loginMember(userId, userPwd);
+		String userName = request.getParameter("userName");
+		String userPhone = request.getParameter("userPhone");
 		
-		// System.out.println(loginUser);
+		Member member = new Member(userName, userPhone);
 		
-		if(loginUser != null) {
-			HttpSession session = request.getSession();
-			session.setAttribute("loginUser", loginUser);
+		Member updatedMember = new MemberService().updateMember(member);
+		
+		if(updatedMember != null) {
+			
+			request.getSession().setAttribute("message", "회원 정보 수정이 완료되었습니다.");
+			request.getSession().setAttribute("loginUser", updatedMember);
 			response.sendRedirect(request.getContextPath() + "/mainpage");
-		} else {
-			response.setContentType("text/html; charset=UTF-8");
-			PrintWriter writer = response.getWriter();
-			writer.println("<script>alert('로그인 정보가 일치하지 않습니다.');</script>");
-			writer.println("<script>history.back();</script>");
-			writer.close();
-
-			// System.out.println("로그인 실패");
-		}
 		
+		} else { /* 회원 정보 수정 실패 시 */
+			request.setAttribute("message", "회원 정보 수정에 실패하였습니다.");
+			RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/common/errorpage.jsp");
+			view.forward(request, response);
+		}
 	}
 
 }
