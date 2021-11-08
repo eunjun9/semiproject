@@ -110,9 +110,9 @@ public class LessonInsertServlet extends HttpServlet {
 			attachment.setChangeName(multiRequest.getFilesystemName(fileNames[i]));
 			/* thumbnail file_level => 0, contentImg file_level => 1 */
 			if( i == 0 ) {
-				attachment.setFileLevel(0);
-			} else {
 				attachment.setFileLevel(1);
+			} else {
+				attachment.setFileLevel(2);
 			}
 			
 			/* 파일이 첨부된 개수만큼 attachment 객체가 photoList에 담김 */
