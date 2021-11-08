@@ -148,6 +148,8 @@ public class SocialingDao {
 				socialing.setSdate(rset.getTimestamp("s_date"));
 				socialing.setMaxMember(rset.getInt("max_member"));
 				socialing.setMinMember(rset.getInt("min_member"));
+				socialing.setProfile(rset.getString("profile"));
+				socialing.setIntroduction(rset.getString("introduction"));
 			}
 			
 		} catch (SQLException e) {

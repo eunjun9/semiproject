@@ -32,6 +32,7 @@
                 <hr>
                 <h3 id="subTitle">장소</h3><p id="subTitle2">${ socialing.splace }</p><br>
                 <h3 id="subTitle">날짜</h3><p id="subTitle2"><fmt:formatDate value="${ socialing.sdate }" type="both" pattern="M.dd(E) a h시 m분"/></p>
+                <!-- 조회수 추가....? -->
             </div>
             <div class="wrapper2">
                 <img src="${ contextPath }${ socialing.photoList.get(0).route }${ socialing.photoList.get(0).changeName }">
@@ -57,16 +58,17 @@
             </div>
             <hr>
             <h3 id="subTitle3">함께하는 멤버</h3>
+            <!-- 작성자 프로필(기본) -->
             <div class="subWrap">
                 <a href="#"> <!-- 참여자 피드로 이동 -->
                     <img id="s-image" src="${ contextPath }/resources/images/eunjung/profile.png">
                     <div class="subWrap2">
                         <p id="s-name">${ socialing.userName }</p>
-                        <p id="s-intro">사람들 만나고 사귀는 걸 좋아해요!<!-- ${ socialing.introduction } --></p>
+                        <p id="s-intro">${ socialing.introduction }</p>
                     </div>
                 </a>
             </div>
-            <!-- 회원이 참여하기 버튼 누르면 비동기통신으로 멤버 목록 바로 갱신(시간 남으면) -->
+            <!-- 참여 회원 목록 -->
             <c:forEach var="m" items="${ memberList }">
             <div class="subWrap">
                 <a href="#">
@@ -117,7 +119,7 @@
                 <!-- 체크 후 submit 하면 체크 유지되게 (checked) -->
 	            <c:forEach var="m" items="${ memberList }">
 		        	<input type="hidden" name="mId" value="${ m.memberId }">
-		            <input type="checkbox" id="${ m.memberId }" name="check" value="person${ m.memberId }"
+		            <input type="checkbox" id="${ m.memberId }" name="check" value="${ m.memberId }"
 		            <c:if test="${ m.status == 'Y' }">checked</c:if>>
 		            <label for="person1">${ m.memberName }</label><br>
 	            </c:forEach>
