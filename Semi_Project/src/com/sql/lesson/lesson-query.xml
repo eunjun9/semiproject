@@ -114,7 +114,7 @@
           , C_TAG1
           , C_TAG2
           , C_PRICE
-          , C_CATEGOFY
+          , C_CATEGORY
           , C_SDATE
           , C_LOCATION
           , C_TUTOR
@@ -149,7 +149,7 @@
 	   , STATUS
 	  )  VALUES 
 	  (
-	  	 SEQ_FILE_NUM.NEXTVAL
+	  	 SEQ_FID_NUM.NEXTVAL
 	   , SEQ_NOTICE_NUM.CURRVAL
 	   , ?
 	   , ?
