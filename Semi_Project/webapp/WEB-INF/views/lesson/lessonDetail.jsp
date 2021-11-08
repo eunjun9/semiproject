@@ -63,7 +63,7 @@
 	                 }); 
 	                 $("#cart").click(function(){ 
 		                 if(confirm('장바구니에 추가하시겠습니까?')){
-		                   document.forms.orderForm.action = "${ contextPath }/order/add";
+		                   document.forms.orderForm.action = "${ contextPath }/wishlist/add";
 		                   document.forms.orderForm.submit();
 		                } else {
 		                	return false;
@@ -110,7 +110,7 @@
 		        				 return false;
 		        			 } else {
 				                    if(confirm('장바구니로 이동하시겠습니까?')){
-				                        document.forms.testForm.action = "${ contextPath }/order/add";
+				                        document.forms.testForm.action = "${ contextPath }/wishlist/add";
 						                document.forms.testForm.submit();
 				                    }else {
 				                    	return false;
