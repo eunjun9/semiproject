@@ -106,6 +106,7 @@
                         <label id="flabel">지역</label>
                         <!-- local 선택에 따라 local-details 내용 변경 *hrd 홈페이지 직업훈련목록 필터링 참고 -->
                         <!-- api 찾아보기 -->
+                        <!-- detail 빼기,,,,,,,, 대분류만,, -->
                         <select name="local">
                             <option value="seoul">서울</option>
                             <option value="gyeonggi">경기</option>
