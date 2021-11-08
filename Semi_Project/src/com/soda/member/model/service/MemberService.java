@@ -143,8 +143,10 @@ public class MemberService {
 		} else {
 			rollback(conn);
 		}
+		
+		close(conn);
   
-			return null;
+		return updatedMember;
 	}
 
 	// 회원탈퇴

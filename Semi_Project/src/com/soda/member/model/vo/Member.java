@@ -51,8 +51,9 @@ public class Member {
 		this.gender = gender;
 	}
 
-	public Member(String userName, String userPhone) {
+	public Member(String userId, String userName, String userPhone) {
 		super();
+		this.userId = userId;
 		this.userName = userName;
 		this.userPhone = userPhone;
 	}
