@@ -46,7 +46,6 @@ public class MemberDao {
 										rset.getString("user_name"),
 										rset.getString("user_phone"),
 										rset.getString("user_pwd"),
-										rset.getString("user_address"),
 										rset.getDate("join_date"),
 										rset.getString("status"),
 										rset.getString("user_grade"),
@@ -80,7 +79,6 @@ public class MemberDao {
 										rset.getString("user_name"),
 										rset.getString("user_phone"),
 										rset.getString("user_pwd"),
-										rset.getString("user_address"),
 										rset.getDate("join_date"),
 										rset.getString("status"),
 										rset.getString("user_grade"),
@@ -110,8 +108,7 @@ public class MemberDao {
 			pstmt.setString(2, joinMember.getUserName());
 			pstmt.setString(3, joinMember.getUserPhone());
 			pstmt.setString(4, joinMember.getUserPwd());
-			pstmt.setString(5, joinMember.getUserAddress());
-			pstmt.setString(6, joinMember.getGender());
+			pstmt.setString(5, joinMember.getGender());
 		
 			result = pstmt.executeUpdate();
 			
@@ -202,6 +199,7 @@ public class MemberDao {
 		return result;
 	}
 
+	// 아이디 체크
 	public int idCheck(Connection conn, String userId) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -228,6 +226,7 @@ public class MemberDao {
 		return result;
 	}
 
+	// 회원정보수정
 	public int updateMember(Connection conn, Member member) {
 		int result = 0;
 		PreparedStatement pstmt = null;
@@ -249,6 +248,7 @@ public class MemberDao {
 		return result;
 	}
 
+	// 회원조회
 	public Member selectMember(Connection conn, String userId) {
 		Member updatedMember = null;
 		PreparedStatement pstmt = null;
@@ -266,7 +266,6 @@ public class MemberDao {
 										rset.getString("user_name"),
 										rset.getString("user_phone"),
 										rset.getString("user_pwd"),
-										rset.getString("user_address"),
 										rset.getDate("join_date"),
 										rset.getString("status"),
 										rset.getString("user_grade"),
@@ -282,6 +281,7 @@ public class MemberDao {
 		return updatedMember;
 	}
 
+	// 비밀번호 변경
 	public int updatePwd(Connection conn, String userId, String userPwd, String newPwd) {
 		int result = 0;
 		PreparedStatement pstmt = null;
@@ -305,6 +305,7 @@ public class MemberDao {
 		return result;
 	}
 
+	// 회원탈퇴
 	public int deleteAccount(Connection conn, String userId) {
 		int result = 0;
 		PreparedStatement pstmt = null;
