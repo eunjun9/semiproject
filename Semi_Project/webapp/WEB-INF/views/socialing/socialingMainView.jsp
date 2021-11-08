@@ -104,19 +104,24 @@
                             value="${ param.keyword }"><br><br>
                         </div>
                         <label id="flabel">지역</label>
-                        <!-- local 선택에 따라 local-details 내용 변경 *hrd 홈페이지 직업훈련목록 필터링 참고 -->
-                        <!-- api 찾아보기 -->
                         <select name="local">
                             <option value="seoul">서울</option>
-                            <option value="gyeonggi">경기</option>
+                            <option value="busan">부산</option>
+                            <option value="daegu">대구</option>
                             <option value="incheon">인천</option>
+                            <option value="gwanju">광주</option>
+                            <option value="daejeon">대전</option>
+                            <option value="ulsan">울산</option>
+                            <option value="sejong">세종</option>
+                            <option value="gyeonggi">경기</option>
                             <option value="gangwon">강원</option>
-                        </select>
-                        <select name="local-details">
-                            <option value="">관악구</option>
-                            <option value="">동작구</option>
-                            <option value="">서초구</option>
-                            <option value="">강남구</option>
+                            <option value="chungbuk">충북</option>
+                            <option value="chungnam">충남</option>
+                            <option value="jeonbuk">전북</option>
+                            <option value="jeonnam">전남</option>
+                            <option value="gyeongbuk">경북</option>
+                            <option value="gyeongnam">경남</option>
+                            <option value="jeju">제주</option>
                         </select>
                         
                         <br><br>

@@ -13,6 +13,7 @@ import java.util.Map;
 import com.soda.socialing.model.dao.SocialingDao;
 import com.soda.socialing.model.vo.PageInfo;
 import com.soda.socialing.model.vo.Socialing;
+import com.soda.socialing.model.vo.SocialingMember;
 import com.soda.socialing.model.vo.SodaFile;
 
 public class SocialingService {
@@ -70,6 +71,17 @@ public class SocialingService {
 		
 		return socialing;
 	}
+	
+	public List<SocialingMember> selectMember(int nNum) {
+		Connection conn = getConnection();
+		
+		/* Socialing_member 테이블 정보 조회 */
+		List<SocialingMember> socialing = socialingDao.selectMember(conn, nNum);
+		
+		close(conn);
+		
+		return socialing;
+	}
 
 	public int insertSocialing(Socialing socialing) {
 		Connection conn = getConnection();
@@ -103,11 +115,27 @@ public class SocialingService {
 	public int insertMember(int nNum, String userId) {
 		Connection conn = getConnection();
 		
+		// 중복참여 방지 로직 추가해야 함
 		int result = socialingDao.insertMember(conn, nNum, userId);
 		
 		if(result > 0) {
 			commit(conn);
-			System.out.println("소셜링 참여 신청 완료");
+		} else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return result;
+	}
+
+	public int updateMember(int nNum, String userId) {
+		Connection conn = getConnection();
+		
+		int result = socialingDao.updateMember(conn, nNum, userId);
+		
+		if(result > 0) {
+			commit(conn);
 		} else {
 			rollback(conn);
 		}

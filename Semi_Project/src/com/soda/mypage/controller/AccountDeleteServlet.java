@@ -30,21 +30,23 @@ public class AccountDeleteServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+    
+    // 오류때문에 임시로 Member를 int로 수정했습니다(memberDao 포함) - 민주
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		/* 탈퇴 유저에 대해서 처리할 수 있는 값 추출 */
 		String userId = ((Member)request.getSession().getAttribute("loginUser")).getUserId();
 		
 		/* DB에서 status 값  Y -> N으로 update
 		 * MemberService 클래스에 deleteAccount 라는 메소드 호출 */
-		Member deletedMember = new MemberService().deleteAccount(userId);
+		// Member deletedMember = new MemberService().deleteAccount(userId);
 		
-		// int result = new MemberService().deleteAccount(userNo);
+		int result = new MemberService().deleteAccount(userId);
 		
 		/* 수행 결과에 따라서 성공한 경우 로그인 세션 정보 삭제 후 메인 페이지로 이동
 		 * "회원 탈퇴가 완료되었습니다." alert 처리  */
 		/* 실패한 경우 "회원 탈퇴에 실패하였습니다." 메시지 가지고 에러 페이지 이동 */
-		if(deletedMember == null) {		// 성공했을 때 null 값을 받아옴
-	//  if(result > 0) {
+		//	if(deletedMember == null) {		// 성공했을 때 null 값을 받아옴
+		if(result > 0) {
 			HttpSession session = request.getSession();
 			session.removeAttribute("loginUser");
 			request.getSession().setAttribute("message", "회원탈퇴에 성공하였습니다.");

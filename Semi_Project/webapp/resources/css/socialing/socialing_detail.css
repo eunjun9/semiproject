@@ -154,13 +154,14 @@ hr {
 
 #s-name {
     font-weight: bold;
+    font-size: 1.05rem;
+    color: black;
     margin-left: 15px;
     margin-bottom: -15px;
     cursor: pointer;
 }
 
 #s-intro {
-    font-weight: bold;
     color: rgb(153,153,153);
     margin-left: 15px;
 }

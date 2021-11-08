@@ -98,6 +98,7 @@ public class MemberService {
 	}
 
 
+	// 아이디 체크
 	public int idCheck(String userId) {
 		Connection conn = getConnection();
 		
@@ -108,6 +109,7 @@ public class MemberService {
 		return result;
 	}
 
+	// 회원정보 변경
 	public Member updateMember(Member member) {
 		Connection conn = getConnection();
 		Member updatedMember = null;
@@ -128,6 +130,7 @@ public class MemberService {
 		return updatedMember;
 	}
 
+	// 비밀번호 변경
 	public Member updatePwd(String userId, String userPwd, String newPwd) {
 		Connection conn = getConnection();
 		Member updatedMember = null;
@@ -144,7 +147,8 @@ public class MemberService {
 			return null;
 	}
 
-	public Member deleteAccount(String userId) {
+	// 회원탈퇴
+	public int deleteAccount(String userId) {
 		Connection conn = getConnection();
 		
 		int result = memberDao.deleteAccount(conn, userId);
