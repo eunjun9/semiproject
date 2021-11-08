@@ -2,6 +2,8 @@
 <!DOCTYPE properties SYSTEM
 "http://java.sun.com/dtd/properties.dtd">
 <properties>
+
+	<!-- 로그인 -->
 	<entry key="loginMember">
 		SELECT
 			  USER_ID
@@ -19,6 +21,7 @@
 	      AND STATUS = 'Y'
 	</entry>
 	
+	<!-- 카카오로그인 -->
 	<entry key="kakaoLoginMember">
 		SELECT
 			  USER_ID
@@ -35,6 +38,7 @@
 	      AND STATUS = 'Y'
 	</entry>
 	
+	<!-- 카카오 자동가입 -->
 	<entry key="kakaoJoin">
 		INSERT
 		  INTO MEMBER_INFO
@@ -63,6 +67,7 @@
 		)
 	</entry>
 	
+	<!-- 회원가입 -->
 	<entry key="insertMember">
 		INSERT
 		  INTO MEMBER_INFO
@@ -87,6 +92,24 @@
 			, DEFAULT
 			, ?
 		)
+	</entry>
+	
+	<!-- 이메일 계정 찾기 -->
+	<entry key="findEmail">
+		SELECT
+			  USER_ID
+		 FROM MEMBER_INFO
+	    WHERE USER_NAME = ?
+	      AND USER_PHONE = ?
+	      AND STATUS = 'Y'
+	</entry>
+	
+	<!-- 비밀번호 찾기하면 임시비밀번호로 변경 -->
+	<entry key="sendPwd">
+		UPDATE
+		       MEMBER_INFO
+		   SET USER_PWD = ?
+		 WHERE USER_ID = ?
 	</entry>
 	
 

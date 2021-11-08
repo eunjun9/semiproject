@@ -57,6 +57,7 @@ public class EmailLoginServlet extends HttpServlet {
 		
 		// System.out.println(loginUser);
 
+
 		
 		if(loginUser != null) {
 			HttpSession session = request.getSession();

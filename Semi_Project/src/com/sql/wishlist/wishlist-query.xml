@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM
+"http://java.sun.com/dtd/properties.dtd">
+<properties>
+
+	<!-- 장바구니 중복 체크 조회  
+	<entry key="wishListCheck">
+		SELECT
+			   COUNT(*)
+		  FROM WISHLIST
+		 WHERE USER_ID = ?
+		   AND NOTICE_NUM = ?
+	</entry>-->
+
+	<!-- 장바구니 담기 추가 -->
+	<entry key="wishListAdd">
+		INSERT
+			  INTO WISHLIST
+			  (
+			  	NOTICE_NUM
+			  , USER_ID
+			  , WISH_NUM
+			  , WISH_STATUS
+			  )
+			  VALUES
+			  (
+			    ?
+			  , ?
+			  , WISH_NUM.NEXTVAL
+			  , DEFAULT
+			  )
+	</entry>
+	
+	<!-- 장바구니 리스트 조회 -->
+	<entry key="wishlist">
+		SELECT
+		      NOTICE_TITLE
+		    , C_PRICE
+			, C_CATEGORY
+			, C_SDATE
+			, C_EDATE
+			, C_LOCATION
+			, C_TIME1
+			, C_TIME2
+			, ROUTE
+			, CHANGE_NAME
+		 FROM WISHLIST W
+		 JOIN NOTICE USING (NOTICE_NUM)
+		 JOIN CLASS USING (NOTICE_NUM)
+		 JOIN TBL_FILE USING (NOTICE_NUM)
+		WHERE WISH_STATUS = 'N'
+		  AND NOTICE_TYPE = '클래스'
+		  AND FILE_LEVEL = '0'
+		  AND W.USER_ID = ?
+		ORDER BY W.WISH_NUM DESC
+	</entry> 
+	
+	<!-- 장바구니 클래스 중복으로 담을 때 업데이트 처리 
+	<entry key="updateAdd">
+		UPDATE WISHLIST
+		   SET NOTICE_NUM = ?
+		 WHERE USER_ID = ?
+	</entry>-->
+	
+
+</properties>

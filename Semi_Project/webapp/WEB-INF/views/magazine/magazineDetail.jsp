@@ -42,15 +42,26 @@
 	<div class="body-inner-blue">
 		<div class="buttons">
 			<div class="back">
-				<button><a href="${ contextPath }/magazine/main">back</a></button>
+				<button>
+					<a href="${ contextPath }/magazine/main">back</a>
+				</button>
 			</div>
 			<div class="admin">
-				<button>삭제</button>
-				<button>수정</button>
-				<button type="button" class="report-button"
-					onclick="openPopup('Report_popup.html', 'checking', 450, 650)">신고</button>
+				<c:if test="${ loginUser.userId == magazine.userId || loginUser.userId == 'admin@gmail.com' }">
+					<button onclick="deleteDetail();">삭제</button>
+					<button onclick="updateDetail();">수정</button>
+				</c:if>
+				<c:if
+					test="${ !empty loginUser && loginUser.userId == 'admin@gmail.com'}">
+					<button type="button" class="report-button"
+						onclick="openPopup('Report_popup.html', 'checking', 450, 650)">신고</button>
+				</c:if>
 			</div>
 
+		</div>
+		<div class="ntype">
+			<p>[${magazine.nType }]
+			<p>
 		</div>
 
 		<div class="title">
@@ -68,8 +79,10 @@
 							<a href="#">${ magazine.userId }</a>
 						</div>
 						<div class="date">
-							<p><fmt:formatDate value="${ magazine.nDate }"
-						type="both" pattern="yyy.MM.dd HH:mm:ss" /></p>
+							<p>
+								<fmt:formatDate value="${ magazine.nDate }" type="both"
+									pattern="yyy.MM.dd HH:mm:ss" />
+							</p>
 						</div>
 					</div>
 
@@ -91,7 +104,6 @@
 				<c:forEach items="${ magazine.photoList}" var="photo">
 					<div class="photoList">
 						<img src="${ contextPath }${photo.route}${photo.changeName}">
-						<p>${ photo.originName }</p>
 						<p>
 					</div>
 
@@ -100,64 +112,53 @@
 				<h4>
 					<span class="title_span">&nbsp;</span> 내용
 				</h4>
-				<pre class="content">${ magazine.nContent }</pre>
+				<pre class="content" name="content">${ magazine.nContent }</pre>
 			</div>
 		</div>
 	</div>
 
-	
+
+
+
 	<div class="comment">
 		<div class="comment-title">
-			<p>댓글 3</p>
+			<p>댓글</p>
 		</div>
 
 		<div class="comment-each">
 			<div class="com-front">
-				<div class="comment-pro">
-					<img src="../image/pro2.png">
+				<div class="reply_list">
+					<c:forEach items="${ magazine.replyList }" var="reply">
+						<ul class="reply_ul">
+							<a href class="rwriter">${ magazine.userId }</a>
+							<li class="rcontent">${ reply.rContent }</li>
+							<li class="rdate"><fmt:formatDate value="${ reply.rDate }"
+									type="both" pattern="yyyy.MM.dd" /></li>
+						</ul>
+
+
+
+					</c:forEach>
+				
+			
+					
 				</div>
-				
-				 <div class="reply_list">
-                  <c:forEach items="${ board.replyList }" var="reply">
-                     <ul class="reply_ul">
-                        <li class="rwriter">${ reply.userName }</li>
-                        <li class="rcontent">${ reply.rcontent }</li>
-                        <li class="rdate">
-                        <fmt:formatDate value="${ reply.createDate }" type="both"
-                        pattern="yyyy.MM.dd HH:mm:ss"/>
-                        </li>
-                     </ul>
-                  </c:forEach>
-                  </div>
-				
-				
+			
 			</div>
-			<div class="admin com-button">
-				<button>삭제</button>
-				<button>수정</button>
-				<button type="button" class="report-button"
-					onclick="openPopup('Report_popup.html', 'checking', 450, 650)">신고</button>
-			</div>
-		</div>
-		<div>
-			<hr class="hr2">
+
+			
+			
+
+
+
+
+
 		</div>
 
-		 <div class="reply_list">
-                  <c:forEach items="${ board.replyList }" var="reply">
-                     <ul class="reply_ul">
-                        <li class="rwriter">${ reply.userName }</li>
-                        <li class="rcontent">${ reply.rcontent }</li>
-                        <li class="rdate">
-                        <fmt:formatDate value="${ reply.createDate }" type="both"
-                        pattern="yyyy.MM.dd HH:mm:ss"/>
-                        </li>
-                     </ul>
-                  </c:forEach>
-                  </div>
 
 
-	<!-- <div class="comment-each">
+
+		<!-- <div class="comment-each">
 			<div class="com-front">
 				<div class="comment-pro">
 					<img src="../image/pro2.png">
@@ -178,12 +179,24 @@
 		<div>
 			<hr class="hr2">
 		</div> -->
+		
+		
+		
+	<%-- 	<div class="admin com-button">
+				<button>삭제</button>
+				<button>수정</button>
+				<c:if
+					test="${ !empty loginUser && loginUser.userId == 'admin@gmail.com'}">
+					<button type="button" class="report-button"
+						onclick="openPopup('Report_popup.html', 'checking', 450, 650)">신고</button>
+				</c:if>
+			</div> --%>
 
 
 
 		<div class="reply_write">
 			<textarea class="reply_content"></textarea>
-			<button>댓글등록</button>
+			<button onclick="addReply(${ magazine.nNum });">댓글등록</button>
 		</div>
 
 
@@ -214,6 +227,66 @@
    </script>
 
 
+<!--  게시물 삭제 수정 -->
+
+<c:if test="${ loginUser.userId == magazine.userId || loginIser.userId =='admin@gmail.com'}">
+	<form name="detailForm" method="post">
+		<input type="hidden" name="nNum" value="${magazine.nNum }">
+	</form>
+
+
+<script>
+		function updateDetail(){
+			document.forms.detailForm.action="${contextPath}/magazine/updateView";
+			document.forms.detailForm.submit();
+		}
+	
+		function deleteDetail(){
+			if(confirm("이 게시글을 삭제하시겠습니까?")){
+				document.forms.detailForm.action="${contextPath}/magazine/delete";
+				document.forms.detailForm.submit();
+			}
+		}
+	</script>
+
+</c:if>
+
+
+
+
+<script>
+      /* 댓글달기 버튼 클릭 시 Reply 테이블에 insert 기능 수행 후 
+      비동기적으로 새로 갱신된 댓글 목록을 Reply 테이블에서 select해서 화면에 적용시키는 기능 */
+      function addReply(nNum) {
+         $.ajax({
+            url : "${ contextPath }/magazine/insertReply",
+            type : "post",
+            dataType : "json",
+            data : { nNum : nNum, rContent : $(".reply_content").val() },
+            success : function(data) {
+               console.log(data);
+               
+               var html = '';
+               
+               for(var i in data) {         // index를 뽑아가며 data 완성시키기
+                  html += '<ul class="reply_ul"><a href="#" class="rwriter">'
+                       + data[i].rWriter + '</a><li class="rcontent">'
+                       + data[i].rContent + '</li><li class="rdate">'
+                       + data[i].rDate + '</li></ul>'
+                       ;
+               }
+               
+               /* 갱신된 replyList를 테이블에 다시 적용 */
+               $(".reply_list").html(html);      // 뽑아준 리스트를 해당 div에 다시 적용
+               /* 댓글 작성 부분 리셋 */
+               $(".reply_content").val("");
+            },
+            error : function(e) {
+               console.log(e);
+            }
+         });
+      };
+   </script>
 
 
 </body>

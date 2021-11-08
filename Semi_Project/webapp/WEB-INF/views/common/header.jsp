@@ -21,7 +21,7 @@
 	%>
 
     <!-- 외부 스타일 시트 -->
-    <link href="${ contextPath }/resources/css/common/header_footer.css" rel="stylesheet">
+    <link href="${ contextPath }/resources/css/common/header_footer.css?10" rel="stylesheet">
     <!-- favicon (Real Favicon Generator)-->
     <link rel="icon" type="image/x-icon" href="${ contextPath }/resources/images/khfavicon.ico">
     <!-- 글꼴 -->
@@ -31,7 +31,7 @@
     <!--font-family: 'Noto Sans KR', sans-serif;-->
 
     <!-- JQuery-->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+ <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
 
 </head>
@@ -54,13 +54,20 @@
                 </div>
                 
                <div class="category2">
-                <a href="#">CART</a>
+                <a href="${ contextPath }/wishlist">CART</a>
                 <ul class="mypage">
                     <li class="mypage">
                     <a href="${ contextPath }/mypage/main" >MYPAGE</a>
                         <ul class="mypage_sub">
                         <% if(loginUser != null) { %>
-                          <li><a href="${ contextPath }/mypage/main">마이페이지</a></li>
+                          <c:choose>
+                          	<c:when test="${ loginUser.userGrade == '회원' }">
+                          		<li><a href="${ contextPath }/mypage/main">마이페이지</a></li>
+                          	</c:when>
+                          	<c:when test="${ loginUser.userGrade == '강사' }">
+                          		<li><a href="${ contextPath }/mypage/tutormain">마이페이지</a></li>
+                          	</c:when>
+                          </c:choose>
                           <li><a href="${ contextPath }/logout">로그아웃</a></li>
                           <% } else { %>
                           <li><a href="${ contextPath }/login">로그인</a></li>

@@ -12,12 +12,12 @@ html {
     flex-direction: column;
 }
 
-#title {
+#r_title {
     color: rgb(7,86,105);
     margin-bottom: 15px;
 }
 
-#subTitle {
+#r_subTitle {
     font-weight: bold;
     font-size: 1.04rem;
     margin-bottom: 5px;
@@ -39,7 +39,7 @@ label {
     cursor: pointer;
 }
 
-#detail {
+#r_detail {
     resize: none;
     border: 1px solid lightgray;
     width: 260px;
@@ -51,12 +51,12 @@ label {
     font-family: 'Noto Sans KR', sans-serif;
 }
 
-.btnArea {
+.r_btnArea {
     display: flex;
     justify-content: space-around;
 }
 
-#cancel {
+#r_cancel {
     background-color: rgb(248,241,233);
     color: black;
     padding: 6px;
@@ -69,7 +69,7 @@ label {
     cursor: pointer;
 }
 
-#sub {
+#r_sub {
     background-color: rgb(7,86,105);
     color: white;
     padding: 6px;

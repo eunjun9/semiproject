@@ -205,5 +205,105 @@
     AND NOTICE_SELF_NUM = 'ADMIN'
     ORDER BY NOTICE_NUM DESC
     </entry>
+    
+    
+    <entry key="deleteMagazine">
+         UPDATE NOTICE
+            SET NOTICE_STATUS = 'Y'
+          WHERE NOTICE_NUM = ?
+   </entry>
+   
+   
+    <entry key="deletePhoto">
+       UPDATE TBL_FILE
+          SET STATUS = 'Y'
+        WHERE NOTICE_NUM = ?
+    </entry>
+    
+     <entry key="updateMagazine">
+         UPDATE NOTICE
+            SET NOTICE_TYPE = ?
+              , NOTICE_TITLE = ?
+              , NOTICE_CONTENT = ?
+              , MODIFY_DATE = SYSDATE
+          WHERE NOTICE_NUM = ?
+   </entry>
+    
+    
+     <entry key="updatePhoto">
+       UPDATE TBL_FILE
+          SET ORIGIN_NAME = ?
+            , CHANGE_NAME = ?
+        WHERE CHANGE_NAME = ?
+    </entry>
+    
+    <entry key="insertAddedPhoto">
+         INSERT
+           INTO TBL_FILE
+           ( 
+        FILE_NUM,
+		NOTICE_NUM,
+		ROUTE,
+		ORIGIN_NAME,
+		FILE_LEVEL,
+		CHANGE_NAME,
+		STATUS
+           )
+           VALUES
+           (
+               SEQ_FILE_NUM.NEXTVAL
+             , ?
+             , ?
+             , ?
+             , ?
+             , ?
+             , DEFAULT
+           )
+    </entry>
+    
+    
+    <entry key="insertReply">
+    
+  INSERT INTO REPLY
+         (
+REPLY_NUM,
+REPLY_CONTENT,
+REPLY_DATE,
+NOTICE_NUM,
+REPLY_SELF_NUM,
+RWRITER,
+REPLY_STATUS,
+REPLY_MODIFYDATE
+         )
+         VALUES
+         (
+         SEQ_REPLY_NUM.NEXTVAL
+         , ?
+         , DEFAULT
+         , ?
+         , 1
+         , ?
+         , DEFAULT
+         , DEFAULT
+         )
+    
+    </entry>
+    
+     <entry key="selectReplyList">
+       SELECT
+             REPLY_NUM,
+REPLY_CONTENT,
+REPLY_DATE,
+NOTICE_NUM,
+REPLY_SELF_NUM,
+RWRITER,
+REPLY_STATUS,
+REPLY_MODIFYDATE
+        FROM REPLY R
+        JOIN MEMBER_INFO ON (RWRITER = USER_ID)
+       WHERE REPLY_STATUS = 'N'
+         AND NOTICE_NUM = ?
+       ORDER BY REPLY_NUM DESC
+    </entry>
 	
 	</properties>

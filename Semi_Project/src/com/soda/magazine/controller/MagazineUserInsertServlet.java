@@ -112,10 +112,7 @@ public class MagazineUserInsertServlet extends HttpServlet {
 	      /* magazine에 만들어진 attachment 데이터 설정 */
 	      user.setPhotoList(photoList);
 	      
-	      System.out.println(photoList.get(0).getChangeName());
-//	      System.out.println(photoList);
-//	      System.out.println(user);
-	      
+
 	      
 	      
 	      /* 사진 게시판 작성 비즈니스 로직 처리할 서비스 요청 */

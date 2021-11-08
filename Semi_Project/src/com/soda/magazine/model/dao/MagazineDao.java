@@ -16,6 +16,7 @@ import com.soda.magazine.model.vo.MagazineFile;
 import com.soda.lesson.model.vo.Attachment;
 import com.soda.magazine.model.vo.Magazine;
 import com.soda.magazine.model.vo.PageInfo;
+import com.soda.magazine.model.vo.Reply;
 
 
 
@@ -203,25 +204,25 @@ public class MagazineDao {
 	}
 
 
-		// 조회수 증가
-		public int increaseCount(Connection conn, int nNum) {
-			PreparedStatement pstmt = null;
-			int result = 0;
-			String sql = magazineQuery.getProperty("increaseCount");
-			
-			try {
-				pstmt = conn.prepareStatement(sql);
-				
-				pstmt.setInt(1, nNum);
-				
-				result = pstmt.executeUpdate();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			} finally {
-				close(pstmt);
-			}
-			return result;
-		}
+//		// 조회수 증가
+//		public int increaseCount(Connection conn, int nNum) {
+//			PreparedStatement pstmt = null;
+//			int result = 0;
+//			String sql = magazineQuery.getProperty("increaseCount");
+//			
+//			try {
+//				pstmt = conn.prepareStatement(sql);
+//				
+//				pstmt.setInt(1, nNum);
+//				
+//				result = pstmt.executeUpdate();
+//			} catch (SQLException e) {
+//				e.printStackTrace();
+//			} finally {
+//				close(pstmt);
+//			}
+//			return result;
+//		}
 		
 		
 		// 매거진 상세 페이지 조회
@@ -257,6 +258,7 @@ public class MagazineDao {
 		         close(rset);
 		         close(pstmt);
 		      }
+		      
 		      return magazine;
 		}
 
@@ -369,6 +371,187 @@ public class MagazineDao {
 	         return magazineAdminList;
 	      }
 
+
+		public int deleteMagazine(Connection conn, int nNum) {
+			PreparedStatement pstmt = null;
+		      int result = 0;
+		      String sql = magazineQuery.getProperty("deleteMagazine");
+		      
+		      try {
+		         pstmt = conn.prepareStatement(sql);
+		         pstmt.setInt(1, nNum);
+		         
+		         result = pstmt.executeUpdate();   
+		      } catch (SQLException e) {
+		         e.printStackTrace();
+		      } finally {
+		         close(pstmt);
+		      }
+		            
+		      return result;
+		   }
+
+
+		public int deletePhoto(Connection conn, int nNum) {
+			 PreparedStatement pstmt = null;
+		      int result = 0;
+		      String sql = magazineQuery.getProperty("deletePhoto");      
+		      
+		      try {
+		         pstmt = conn.prepareStatement(sql);
+		         
+		         pstmt.setInt(1, nNum);
+		         
+		         result = pstmt.executeUpdate();
+		      } catch (SQLException e) {
+		         e.printStackTrace();
+		      } finally {
+		         close(pstmt);
+		      }
+		      return result;
+		}
+
+
+		public int updateMagazine(Connection conn, Magazine magazine) {
+			 PreparedStatement pstmt = null;
+		      int result = 0;
+		      String sql = magazineQuery.getProperty("updateMagazine");
+		      
+		      try {
+		         pstmt = conn.prepareStatement(sql);
+		         
+		         pstmt.setString(1, magazine.getnType());
+		         pstmt.setString(2, magazine.getnTitle());
+		         pstmt.setString(3, magazine.getnContent());
+		         pstmt.setInt(4, magazine.getnNum());
+		         
+		         result = pstmt.executeUpdate();
+		      } catch (SQLException e) {
+		         e.printStackTrace();
+		      } finally {
+		         close(pstmt);
+		      }
+		      
+		      return result;
+		   }
+
+
+
+		public int updatePhoto(Connection conn, MagazineFile photo) {
+			 PreparedStatement pstmt = null;
+		      int result = 0;
+		      String sql = magazineQuery.getProperty("updatePhoto");
+		      
+		      try {
+		         pstmt = conn.prepareStatement(sql);
+		         
+		         pstmt.setString(1, photo.getOriginName());
+		         pstmt.setString(2, photo.getChangeName());
+		         pstmt.setString(3, photo.getDeletedName());
+		         
+		         result = pstmt.executeUpdate();
+		      } catch (SQLException e) {
+		         e.printStackTrace();
+		      } finally {
+		         close(pstmt);
+		      }
+		      
+		      return result;
+		   }
+
+
+		public int insertAddedPhoto(Connection conn, int getnNum, MagazineFile photo) {
+			PreparedStatement pstmt = null;
+		      int result = 0;
+		      String sql = magazineQuery.getProperty("insertAddedPhoto");
+		      
+		      try {
+		         pstmt = conn.prepareStatement(sql);
+		         
+		            pstmt.setInt(1,  photo.getnNum());
+		            pstmt.setString(2, photo.getRoute());
+		            pstmt.setString(3,  photo.getOriginName());
+		            pstmt.setInt(4, photo.getFileLevel());
+		            pstmt.setString(5,  photo.getChangeName());
+		            
+		            result = pstmt.executeUpdate();
+		      } catch (SQLException e) {
+		         e.printStackTrace();
+		      } finally {
+		         close(pstmt);
+		      }
+		      return result;
+		   }
+
+
+		public int insertReply(Connection conn, Reply reply) {
+			PreparedStatement pstmt = null;
+			ResultSet rset = null;
+			int result = 0;
+			String sql = magazineQuery.getProperty("insertReply");
+			
+			
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, reply.getrContent());
+				pstmt.setInt(2, reply.getnNum());
+				pstmt.setString(3, reply.getrWriter());
+				
+				result = pstmt.executeUpdate();
+				
+				
+//				System.out.println(result);
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				close(pstmt);
+			}
+			
+			
+			return result;
+		}
+
+
+		public List<Reply> selectReplyList(Connection conn, int nNum) {
+
+			PreparedStatement pstmt = null;
+			ResultSet rset = null;
+			List<Reply> replyList = new ArrayList<>();
+			String sql = magazineQuery.getProperty("selectReplyList");
+			
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1,  nNum);
+				
+				rset = pstmt.executeQuery();
+			
+				
+				
+				while(rset.next()) {
+					Reply reply = new Reply();
+				
+					reply.setrNum(rset.getInt("reply_num"));
+					reply.setrContent(rset.getString("reply_content"));
+					reply.setrDate(rset.getDate("reply_date"));
+					reply.setnNum(rset.getInt("notice_num"));
+					reply.setrWriter(rset.getString("rwriter"));
+					reply.setrStatus(rset.getString("reply_status"));
+					reply.setrModifyDate(rset.getDate("reply_modifydate"));
+					
+					replyList.add(reply);
+				}
+				
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				close(rset);
+				close(pstmt);
+			}
+			
+			return replyList;
+		}
 
 		
 		

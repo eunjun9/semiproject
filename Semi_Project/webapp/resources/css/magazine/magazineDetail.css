@@ -160,31 +160,28 @@ font-family: 'Noto Sans KR', sans-serif;
    margin-left: 20px;
 }
 
-.comment-pro>img{
-   width:70px;
-   height: 70px;
-   margin-top: 20px;
-   margin-left: 30px;
+
+.reply_list>ul{
+   list-style:none;
+   padding-left:0px;
+   }
+   
+.reply_ul>a{
+	margin-left:40px;
+	margin-top:60px;
 }
 
-.comment-info{
-   margin-left: 13px;
-   margin-top: 20px;
+.rcontent{
+	margin-left:220px;
+	margin-top:-30px;
 }
 
-.comment-info>a{
-   margin-bottom: 4px;
-   font-size: 17px;
-   font-weight: bold;
+.rdate{
+	margin-left:750px;
+	margin-top:-30px;
 }
 
-.com-con{
-   margin-bottom: 4px;
-}
 
-.com-date{
-   color: grey;
-}
 
 .com-button{
    margin-top : 40px;
@@ -217,4 +214,13 @@ font-family: 'Noto Sans KR', sans-serif;
    font-family: 'Noto Sans KR', sans-serif;
    border-radius: 10px;
    border:1px lightgray solid;
+}
+
+
+.ntype{
+	margin-top:50px;
+	margin-bottom: -20px;
+	margin-left : 150px;
+	color:grey;
+	font-family: 'Noto Sans KR', sans-serif;
 }

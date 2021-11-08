@@ -11,6 +11,7 @@ import com.soda.magazine.model.dao.MagazineDao;
 import com.soda.magazine.model.vo.MagazineFile;
 import com.soda.magazine.model.vo.Magazine;
 import com.soda.magazine.model.vo.PageInfo;
+import com.soda.magazine.model.vo.Reply;
 
 public class MagazineService {
 
@@ -72,6 +73,7 @@ public class MagazineService {
 
 	}
 
+	// 디테일 뷰
 	public Magazine selectMagazine(int nNum) {
 		Connection conn = getConnection();
 
@@ -81,29 +83,33 @@ public class MagazineService {
 		/* magazineFile 테이블 정보 조회 */
 		List<MagazineFile> photoList = magazineDao.selectPhotoList(conn, nNum);
 		magazine.setPhotoList(photoList);
+		
+		// 댓글 조회 추가
+	      magazine.setReplyList(magazineDao.selectReplyList(conn, nNum));
 
 		close(conn);
+		
 
 		return magazine;
 
 	}
 
-	// 조회수 증가
-	public int increaseCount(int nNum) {
-		Connection conn = getConnection();
-
-		int result = magazineDao.increaseCount(conn, nNum);
-
-		if (result > 0) {
-			commit(conn);
-		} else {
-			rollback(conn);
-		}
-
-		close(conn);
-
-		return result;
-	}
+//	// 조회수 증가
+//	public int increaseCount(int nNum) {
+//		Connection conn = getConnection();
+//
+//		int result = magazineDao.increaseCount(conn, nNum);
+//
+//		if (result > 0) {
+//			commit(conn);
+//		} else {
+//			rollback(conn);
+//		}
+//
+//		close(conn);
+//
+//		return result;
+//	}
 
 	// 매거진 전체 메인 화면 불러오기
 	public List<Magazine> selectUserList() {
@@ -152,6 +158,87 @@ public class MagazineService {
 		close(conn);
 
 		return magazineAdminList;
+	}
+
+	// 디테일 삭제
+	public List<MagazineFile> deleteMagazine(int nNum) {
+		 Connection conn = getConnection();
+	      
+	      List<MagazineFile> deletedPhotoList = magazineDao.selectPhotoList(conn, nNum);   /* 게시물 번호에 해당하는 이미지파일을 정보 얻어옴 */
+	      
+	      int boardResult = magazineDao.deleteMagazine(conn, nNum);   /* 게시글 지우기 */
+	      
+	      int photoResult = magazineDao.deletePhoto(conn, nNum);   /* 이미지 지우기 */
+	      
+	      if(boardResult > 0 && photoResult == deletedPhotoList.size()) {   /* 보드테이블 삭제 & 이미지 삭제 1 ~ 3행 */
+	         commit(conn);
+	      } else {
+	         rollback(conn);
+	         deletedPhotoList = null;   /* 실패 시 이미지 삭제 방지 */
+	      }
+	      
+	      close(conn);
+	      
+	      return deletedPhotoList;
+	}
+
+	public int updateMagazine(Magazine magazine) {
+		 Connection conn = getConnection();
+	      
+	      /* Board 테이블 수정 */
+	      int updateResult = magazineDao.updateMagazine(conn, magazine);
+	      
+	      // 실행 결과
+	      int updatePhotoResult = 0;
+	      int insertPhotoResult = 0;
+	      // 수행 해야할 리스트 갯수
+	      int updateListCount = 0;
+	      int insertListCount = 0;
+	      
+	      /* Attachment 테이블 수정 */
+	      for(MagazineFile photo : magazine.getPhotoList()) {
+	         if(photo.getDeletedName() != null) {
+	            /* 기존에 있던 파일을 덮어쓰기 - update */
+	            updatePhotoResult += magazineDao.updatePhoto(conn, photo);
+	            updateListCount++;
+	         }else {
+	            /* 새로 첨부 된 파일을 추가하기 - insert */
+	            insertPhotoResult += magazineDao.insertAddedPhoto(conn, magazine.getnNum(), photo);
+	            insertListCount++;
+	         }
+	      }
+	      
+	      int result = 0;
+	      if(updateResult > 0 
+	            && updatePhotoResult == updateListCount 
+	            && insertPhotoResult == insertListCount) {
+	         result = 1;
+	         commit(conn);
+	      }else {
+	         rollback(conn);
+	      }
+	      
+	      return result;
+	   }
+
+	public List<Reply> insertReply(Reply reply) {
+		Connection conn = getConnection();
+		List<Reply> replyList = null;
+		
+		// 댓글 입력
+		int result = magazineDao.insertReply(conn, reply);
+		
+		if(result > 0) {
+			commit(conn);
+			// 갱신된 댓글 목록 조회
+			replyList = magazineDao.selectReplyList(conn, reply.getnNum());
+		} else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return replyList;
 	}
 
 }

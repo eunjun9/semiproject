@@ -4,79 +4,126 @@ import java.util.Date;
 
 public class Reply {
 
-	/*
-	 * COMMENT_NUM NUMBER No 1 댓글번호 
-	 * COMMENT_CONTENT VARCHAR2(50 BYTE) No 2 댓글내용
-	 * CONMENT_DATE DATE No "SYSDATE	" 3 댓글작성일시
-	 *  NOTICE_NUM NUMBER No 4 게시판번호
-	 * COMMENT_SELF_NUM NUMBER No 5 대댓글
-	 */
+//	REPLY_NUM
+//	REPLY_CONTENT
+//	RWRITER
+//	NOTICE_NUM
+//	REPLY_DATE
+//	REPLY_MODIFYDATE
+//	REPLY_STATUS
+//	REPLY_SELF_NUM
 	
-	private int commentNum;
-	private String commentContent;
-	private Date commentDate;
-	private int noticeNum;
-	private int commentSelfNum;
-	
+	private int rNum;
+	private String rContent;
+	private String rWriter;
+	private int nNum;
+	private String UserId;
+	private Date rDate;
+	private Date rModifyDate;
+	private String rStatus;
+	private int rSelfNum;
 	
 	public Reply(){}
-	
-	
-	
-	
-	public Reply(int commentNum, String commentContent, Date commentDate, int noticeNum, int commentSelfNum) {
+
+	public Reply(int rNum, String rContent, String rWriter, int nNum, String userId, Date rDate, Date rModifyDate,
+			String rStatus, int rSelfNum) {
 		super();
-		this.commentNum = commentNum;
-		this.commentContent = commentContent;
-		this.commentDate = commentDate;
-		this.noticeNum = noticeNum;
-		this.commentSelfNum = commentSelfNum;
+		this.rNum = rNum;
+		this.rContent = rContent;
+		this.rWriter = rWriter;
+		this.nNum = nNum;
+		UserId = userId;
+		this.rDate = rDate;
+		this.rModifyDate = rModifyDate;
+		this.rStatus = rStatus;
+		this.rSelfNum = rSelfNum;
 	}
 
 
-
-
-	public int getCommentNum() {
-		return commentNum;
-	}
-	public void setCommentNum(int commentNum) {
-		this.commentNum = commentNum;
-	}
-	public String getCommentContent() {
-		return commentContent;
-	}
-	public void setCommentContent(String commentContent) {
-		this.commentContent = commentContent;
-	}
-	public Date getCommentDate() {
-		return commentDate;
-	}
-	public void setCommentDate(Date commentDate) {
-		this.commentDate = commentDate;
-	}
-	public int getNoticeNum() {
-		return noticeNum;
-	}
-	public void setNoticeNum(int noticeNum) {
-		this.noticeNum = noticeNum;
-	}
-	public int getCommentSelfNum() {
-		return commentSelfNum;
-	}
-	public void setCommentSelfNum(int commentSelfNum) {
-		this.commentSelfNum = commentSelfNum;
+	public int getrNum() {
+		return rNum;
 	}
 
+	public void setrNum(int rNum) {
+		this.rNum = rNum;
+	}
 
+	public String getrContent() {
+		return rContent;
+	}
 
+	public void setrContent(String rContent) {
+		this.rContent = rContent;
+	}
+
+	public String getrWriter() {
+		return rWriter;
+	}
+
+	public void setrWriter(String rWriter) {
+		this.rWriter = rWriter;
+	}
+
+	public int getnNum() {
+		return nNum;
+	}
+
+	public void setnNum(int nNum) {
+		this.nNum = nNum;
+	}
+
+	public String getUserId() {
+		return UserId;
+	}
+
+	public void setUserId(String userId) {
+		UserId = userId;
+	}
+
+	public Date getrDate() {
+		return rDate;
+	}
+
+	public void setrDate(Date rDate) {
+		this.rDate = rDate;
+	}
+
+	public Date getrModifyDate() {
+		return rModifyDate;
+	}
+
+	public void setrModifyDate(Date rModifyDate) {
+		this.rModifyDate = rModifyDate;
+	}
+
+	public String getrStatus() {
+		return rStatus;
+	}
+
+	public void setrStatus(String rStatus) {
+		this.rStatus = rStatus;
+	}
+
+	public int getrSelfNum() {
+		return rSelfNum;
+	}
+
+	public void setrSelfNnum(int rSelfNum) {
+		this.rSelfNum = rSelfNum;
+	}
 
 	@Override
 	public String toString() {
-		return "Reply [commentNum=" + commentNum + ", commentContent=" + commentContent + ", commentDate=" + commentDate
-				+ ", noticeNum=" + noticeNum + ", commentSelfNum=" + commentSelfNum + "]";
+		return "Reply [rNum=" + rNum + ", rContent=" + rContent + ", rWriter=" + rWriter + ", nNum=" + nNum
+				+ ", UserId=" + UserId + ", rDate=" + rDate + ", rModifyDate=" + rModifyDate + ", rStatus=" + rStatus
+				+ ", rSelfNnum=" + rSelfNum + "]";
 	}
+
 	
 	
 	
 	
+	
+	
+
 }

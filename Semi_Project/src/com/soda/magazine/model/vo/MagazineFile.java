@@ -10,13 +10,16 @@ public class MagazineFile {
 	private String changeName;	// 변경 파일명
 	private int fileLevel;		// 썸네일 0, 내용 사진 1
 	private String status;		// 상태 (삭제 여부)
-	
+	private String deletedName;		// 삭제시 파일명
 	
 	public MagazineFile(){}
+
+	
+	
 	
 	
 	public MagazineFile(int fileNum, int nNum, String route, String originName, String changeName, int fileLevel,
-			String status) {
+			String status, String deletedName) {
 		super();
 		this.fileNum = fileNum;
 		this.nNum = nNum;
@@ -25,6 +28,7 @@ public class MagazineFile {
 		this.changeName = changeName;
 		this.fileLevel = fileLevel;
 		this.status = status;
+		this.deletedName = deletedName;
 	}
 
 
@@ -143,11 +147,29 @@ public class MagazineFile {
 
 
 
+	public String getDeletedName() {
+		return deletedName;
+	}
+
+
+
+
+
+	public void setDeletedName(String deletedName) {
+		this.deletedName = deletedName;
+	}
+
+
+
+
+
 	@Override
 	public String toString() {
 		return "MagazineFile [fileNum=" + fileNum + ", nNum=" + nNum + ", route=" + route + ", originName=" + originName
-				+ ", changeName=" + changeName + ", fileLevel=" + fileLevel + ", status=" + status + "]";
+				+ ", changeName=" + changeName + ", fileLevel=" + fileLevel + ", status=" + status + ", deletedName="
+				+ deletedName + "]";
 	}
+	
 	
 	
 	

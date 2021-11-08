@@ -21,10 +21,27 @@ public class Magazine {
 	
 	private List<MagazineFile> photoList;  // 첨부파일
 	
+	  private List<Reply> replyList;
+	
 	public Magazine() {}
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	public Magazine(int nNum, String nTitle, String nContent, Date nDate, String nStatus, String nType, String userId,
-			String userName, Date modifyDate, String selfNum, int nCount, List<MagazineFile> photoList) {
+			String userName, Date modifyDate, String selfNum, int nCount, List<MagazineFile> photoList,
+			List<Reply> replyList) {
 		super();
 		this.nNum = nNum;
 		this.nTitle = nTitle;
@@ -38,112 +55,500 @@ public class Magazine {
 		this.selfNum = selfNum;
 		this.nCount = nCount;
 		this.photoList = photoList;
+		this.replyList = replyList;
 	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	public int getnNum() {
 		return nNum;
 	}
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	public void setnNum(int nNum) {
 		this.nNum = nNum;
 	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	public String getnTitle() {
 		return nTitle;
 	}
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	public void setnTitle(String nTitle) {
 		this.nTitle = nTitle;
 	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	public String getnContent() {
 		return nContent;
 	}
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	public void setnContent(String nContent) {
 		this.nContent = nContent;
 	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	public Date getnDate() {
 		return nDate;
 	}
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	public void setnDate(Date nDate) {
 		this.nDate = nDate;
 	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	public String getnStatus() {
 		return nStatus;
 	}
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	public void setnStatus(String nStatus) {
 		this.nStatus = nStatus;
 	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	public String getnType() {
 		return nType;
 	}
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	public void setnType(String nType) {
 		this.nType = nType;
 	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	public String getUserId() {
 		return userId;
 	}
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	public String getUserName() {
 		return userName;
 	}
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	public Date getModifyDate() {
 		return modifyDate;
 	}
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	public void setModifyDate(Date modifyDate) {
 		this.modifyDate = modifyDate;
 	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	public String getSelfNum() {
 		return selfNum;
 	}
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	public void setSelfNum(String selfNum) {
 		this.selfNum = selfNum;
 	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	public int getnCount() {
 		return nCount;
 	}
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	public void setnCount(int nCount) {
 		this.nCount = nCount;
 	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	public List<MagazineFile> getPhotoList() {
 		return photoList;
 	}
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	public void setPhotoList(List<MagazineFile> photoList) {
 		this.photoList = photoList;
 	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	public List<Reply> getReplyList() {
+		return replyList;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	public void setReplyList(List<Reply> replyList) {
+		this.replyList = replyList;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	@Override
 	public String toString() {
 		return "Magazine [nNum=" + nNum + ", nTitle=" + nTitle + ", nContent=" + nContent + ", nDate=" + nDate
 				+ ", nStatus=" + nStatus + ", nType=" + nType + ", userId=" + userId + ", userName=" + userName
 				+ ", modifyDate=" + modifyDate + ", selfNum=" + selfNum + ", nCount=" + nCount + ", photoList="
-				+ photoList + "]";
+				+ photoList + ", replyList=" + replyList + "]";
 	}
 
+	
 	
 	
 
