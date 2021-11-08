@@ -73,7 +73,7 @@ public class SocialingInsertServlet extends HttpServlet {
 		String stitle = multiRequest.getParameter("inputTitle");				// 글 제목
 		String scontent = multiRequest.getParameter("content");					// 본문
 		String sdate = multiRequest.getParameter("dateIn");						// 모임 날짜 ex. 2021-11-03
-		String stime = multiRequest.getParameter("timeIn");						// 모임 시간 ex. 13:10:20 (오후 1:10:20)
+		String stime = multiRequest.getParameter("timeIn");						// 모임 시간 ex. 13:10 (오후 1:10)
 		String stype = multiRequest.getParameter("type");						// 온라인/오프라인
 		String[] splaceArr = multiRequest.getParameterValues("inputPlace");		// 모임 장소
 		int minMember = Integer.parseInt(multiRequest.getParameter("min"));		// 최소 참여 인원
@@ -93,9 +93,8 @@ public class SocialingInsertServlet extends HttpServlet {
 		int ddate = Integer.parseInt(sdate.substring(8));
 		int htime = Integer.parseInt(stime.substring(0,2));
 		int mtime = Integer.parseInt(stime.substring(3,5));
-		int sectime = Integer.parseInt(stime.substring(6));
 		// sdate, stime 합쳐서 Date 타입으로 파싱
-		Calendar formatDate = new GregorianCalendar(ydate, mdate, ddate, htime, mtime, sectime);
+		Calendar formatDate = new GregorianCalendar(ydate, mdate, ddate, htime, mtime);
 		
 		Socialing socialing = new Socialing();
 		socialing.setnTitle(stitle);
@@ -118,6 +117,8 @@ public class SocialingInsertServlet extends HttpServlet {
 		thumbnail.setOriginName(multiRequest.getOriginalFileName(fileName));
 		/* getFilesystemName() : MyRenamePolicy의 rename 메소드에서 작성한대로 rename 된 파일명 */
 		thumbnail.setChangeName(multiRequest.getFilesystemName(fileName));
+		/* 썸네일만 첨부 */
+		thumbnail.setFileLevel(1);
 		
 		/* socialing에 만들어진 File 데이터 설정 */
 		socialing.setPhotoList(photo);

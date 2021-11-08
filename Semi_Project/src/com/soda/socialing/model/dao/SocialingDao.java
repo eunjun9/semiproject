@@ -300,18 +300,76 @@ public class SocialingDao {
 
 	// 게시글 추가하기 (notice, socialing, file 테이블 insert)
 	public int insertNotice(Connection conn, Socialing socialing) {
-		// TODO Auto-generated method stub
-		return 0;
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = socialingQuery.getProperty("insertNotice");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, socialing.getnTitle());
+			pstmt.setString(2, socialing.getnContent());
+			pstmt.setString(3, socialing.getUserId());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
 	}
 
 	public int insertSocialing(Connection conn, Socialing socialing) {
-		// TODO Auto-generated method stub
-		return 0;
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = socialingQuery.getProperty("insertSocialing");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, socialing.getSplace());
+			pstmt.setDate(2, new java.sql.Date(socialing.getSdate().getTime()));
+			// pstmt.setDate(4, new java.sql.Date(java.util.Date.getTime()));
+			pstmt.setString(3, socialing.getStype());
+			pstmt.setInt(4, socialing.getMaxMember());
+			pstmt.setInt(5, socialing.getMinMember());
+
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
 	}
 
 	public int insertFile(Connection conn, SodaFile photo) {
-		// TODO Auto-generated method stub
-		return 0;
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = socialingQuery.getProperty("insertFile");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, photo.getRoute());
+			pstmt.setString(2, photo.getOriginName());
+			pstmt.setInt(3, photo.getFileLevel());
+			pstmt.setString(4, photo.getChangeName());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
 	}
 
 
