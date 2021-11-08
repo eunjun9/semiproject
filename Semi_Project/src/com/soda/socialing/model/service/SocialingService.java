@@ -12,6 +12,7 @@ import java.util.Map;
 
 import com.soda.socialing.model.dao.SocialingDao;
 import com.soda.socialing.model.vo.PageInfo;
+import com.soda.socialing.model.vo.Search;
 import com.soda.socialing.model.vo.Socialing;
 import com.soda.socialing.model.vo.SocialingMember;
 import com.soda.socialing.model.vo.SodaFile;
@@ -21,7 +22,7 @@ public class SocialingService {
 	private SocialingDao socialingDao = new SocialingDao();
 	
 	/* 페이징 : 페이지와 게시글리스트를 리턴*/
-	public Map<String, Object> selectList(int page) {
+	public Map<String, Object> selectList(int page/*, Search search*/) {
 		Connection conn = getConnection();
 		
 		// 1. 조회할 게시글 총 개수 구하기 
@@ -31,7 +32,7 @@ public class SocialingService {
 		PageInfo pi = new PageInfo(page, listCount, 5, 9);
 		
 		// 3. 페이징 처리 된 게시글 목록 조회
-		List<Socialing> socialingList = socialingDao.selectList(conn, pi);
+		List<Socialing> socialingList = socialingDao.selectList(conn, pi/*, search*/);
 		
 		Map<String, Object> returnMap = new HashMap<>();
 		

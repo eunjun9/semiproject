@@ -1,6 +1,8 @@
 package com.soda.socialing.controller;
 
 import java.io.IOException;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Map;
 
@@ -12,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.soda.lesson.model.service.LessonService;
 import com.soda.socialing.model.service.SocialingService;
+import com.soda.socialing.model.vo.Search;
 import com.soda.socialing.model.vo.Socialing;
 
 /**
@@ -42,19 +45,29 @@ public class SocialingMainServlet extends HttpServlet {
 			page = Integer.parseInt(request.getParameter("page"));
 		}
 		
-		// 페이징과 관련된 데이터, 조회 된 게시판List를 담아서 map에 리턴
+		/* 필터 관련 파라미터 추출 */
+//		String keyword = request.getParameter("keyword");	// 키워드 검색
+//		String local = request.getParameter("local");		// 지역
+//		String date = request.getParameter("dateIn");		// 날짜 (ex. 2021-11-03)
+//		String onoff = request.getParameter("onoff");		// 온/오프라인
+//		
+//		// date 년월일 잘라내기
+//		int ydate = Integer.parseInt(date.substring(0,4));
+//		int mdate = Integer.parseInt(date.substring(5,7));
+//		int ddate = Integer.parseInt(date.substring(8));
+//		// 합쳐서 Date 타입으로 파싱
+//		Calendar dateIn = new GregorianCalendar(ydate, mdate, ddate);
+		
+		// 페이징과 관련된 데이터, 조회 된 게시판 List를 담아서 map에 리턴
 		Map<String, Object> map = new SocialingService().selectList(page);
-		
-		/* 필터 관련 파라미터 추출  (추후에 수정 ) */
-		
-		
-		
-//		List<Socialing> socialingList = new SocialingService().selectList();
-//		request.setAttribute("socialingList", socialingList);
+//		Map<String, Object> map = new SocialingService().selectList(page, new Search(keyword, local, dateIn.getTime(), onoff));
 		
 		request.setAttribute("pi", map.get("pi"));
 		request.setAttribute("socialingList", map.get("socialingList"));
 		request.getRequestDispatcher("/WEB-INF/views/socialing/socialingMainView.jsp").forward(request, response);
+		
+//		List<Socialing> socialingList = new SocialingService().selectList();
+//		request.setAttribute("socialingList", socialingList);
 	}
 
 	/**
