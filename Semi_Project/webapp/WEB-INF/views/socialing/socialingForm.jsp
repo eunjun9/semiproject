@@ -8,7 +8,7 @@
 <title>소셜링_글 작성</title>
 
 <!-- 외부 스타일 시트 -->
-<link href="${ contextPath }/resources/css/socialing/socialing_form.css" rel="stylesheet">
+<link href="${ contextPath }/resources/css/socialing/socialing_form.css?1" rel="stylesheet">
 
 <!-- 글꼴 (Noto Sans) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -39,34 +39,32 @@
                     <h4 id="w-sub-title3">썸네일 이미지를 첨부해주세요</h4>
                     <div class="image_area"></div>
                     <button type="button" id="fileBtn">file</button><br>
-                    <input type="file" name="thumbnail" accept="image/gif,image/jpeg,image/png">
+                    <input type="file" name="thumbnail" accept="image/gif,image/jpeg,image/png" required>
                     <textarea id="content" name="content" placeholder="함께 이야기하고 싶은 주제나 꼭 알려주고 싶은 내용을 입력해 주세요" required></textarea>
                     <hr>
                     
                     <h1 id="w-main-title2">언제 어디서 만나나요?</h1>
                     <h4 id="w-sub-title4">날짜를 선택하세요</h4>
-                    <input type="date" name="dateIn">
+                    <input type="date" name="dateIn" required>
                     <h4 id="w-sub-title5">시간을 선택하세요</h4>
-                    <input type="time" name="timeIn">
+                    <input type="time" name="timeIn" required>
                     <h4 id="w-sub-title5">장소를 입력하세요</h4>
-                    <input type="radio" id="offline" name="place" value="off" checked>
+                    <input type="radio" id="offline" name="type" value="off" checked>
                     <label for="offline">오프라인</label>
-                    <input type="radio" id="online" name="place" value="on">
+                    <input type="radio" id="online" name="type" value="on">
                     <label for="online">온라인</label><br>
                     
-					<!-- 오프라인 선택 시 출력(첫화면 기본) -->
-					<div class="placeArea1"> <!-- display : none <-> block 자바스크립트로 구현 -->
-		            <input type="text" id="inputPlace" name="inputPlace" 
-		            class="postcodify_address" placeholder="ex. 서울특별시 강남구 테헤란로">&nbsp;&nbsp;
-		            <button type="button" class="search" id="postcodify_search_button">검색</button><br>
-		            <input type="text" id="inputPlace2" name="inputPlace" 
-		            class="postcodify_details" placeholder="상세 주소를 입력해 주세요"><br>
+					<div class="placeArea1">
+			            <input type="text" id="inputPlace" name="inputPlace" 
+			            class="postcodify_address" placeholder="ex. 서울특별시 강남구 테헤란로 / Zoom" required>&nbsp;&nbsp;
+		            <!-- 오프라인 선택 시 출력(첫화면 기본) / 온라인 선택 시 숨김 -->
+		            <span class="placeArea2">
+			            <button type="button" class="search" id="postcodify_search_button">검색</button><br>
+			            <input type="text" id="inputPlace2" name="inputPlace" 
+			            class="postcodify_details" placeholder="상세 주소를 입력해 주세요"><br>
+		            </span>
 					</div>
-		            
-		            <!-- 온라인 선택 시 출력 -->
-		            <div class="placeArea2">
-		            <input type="text" id="inputPlace" placeholder="Zoom / GoogleMeet">
-		            </div>
+
                     
                     <h4 id="w-sub-title5">인원 설정</h4>
                     <select id="min" name="min">
@@ -127,6 +125,21 @@
                 }
             }
         }
+    </script>
+    
+    <script>
+    	// 온라인, 오프라인 선택에 따른 입력창 변경
+    	$(function(){
+    		$("input:radio").change(checkedChange);
+    	});
+    	
+    	function checkedChange() {
+            if($(this).val() == 'on') {
+    			$(".placeArea2").css("display", "none");	
+            } else {
+    			$(".placeArea2").css("display", "inline");
+            }
+    	}
     </script>
 
     <!--footer-->

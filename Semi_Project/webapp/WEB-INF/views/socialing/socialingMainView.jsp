@@ -9,7 +9,7 @@
 <title>소셜링</title>
 
 <!-- 외부 스타일 시트 -->
-<link href="${ contextPath }/resources/css/socialing/socialing_main.css?1" rel="stylesheet">
+<link href="${ contextPath }/resources/css/socialing/socialing_main.css?2" rel="stylesheet">
 
 <!-- 글꼴 (Noto Sans) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -105,6 +105,7 @@
                         </div>
                         <label id="flabel">지역</label>
                         <select name="local">
+                        	<option value="" selected>지역 선택</option>
                             <option value="seoul">서울</option>
                             <option value="busan">부산</option>
                             <option value="daegu">대구</option>
@@ -128,7 +129,7 @@
                         <label id="flabel">날짜</label>
                         <input type="date" name="dateIn"><br><br>
                         <label id="flabel">온오프라인</label>
-                        <input type="radio" id="offline" name="onoff" value="offline" checked>
+                        <input type="radio" id="offline" name="onoff" value="offline">
                         <label for="offline">오프라인</label>&nbsp;
                         <input type="radio" id="online" name="onoff" value="online">
                         <label for="online">온라인</label>
@@ -139,7 +140,7 @@
                 <div id="lineupbox">
                     <select name="lineup">
                         <option value="">최신순</option> <!-- 작성일 순 -->
-                        <option value="">인기순</option> <!-- 조회수 순 or 참여 인원 순 -->
+                        <option value="">인기순</option> <!-- 참여 인원 순 -->
                     </select>
                 </div>
                 <div class="s-container2">

@@ -271,9 +271,13 @@ label[for=online] {
 }
 
 .paging{
-    margin-left: 5px; 
-    margin-right: 5px;
-} 
+    margin-left: 10px; 
+    margin-right: 10px;
+}
+
+li {
+	list-style-type: none;
+}
 
 #writebox {
     display: flex;

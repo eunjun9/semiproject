@@ -70,14 +70,22 @@ public class SocialingInsertServlet extends HttpServlet {
 		// 요청, 저장할 경로, 최대 용량, 인코딩 타입, 파일의 리네임 규칙에 따라 리네임하는 객체(cos.jar)
 		
 		/* DB에 데이터 저장 */
-		String stitle = multiRequest.getParameter("inputTitle");
-		String scontent = multiRequest.getParameter("content");
-		String sdate = multiRequest.getParameter("dateIn");		// ex. 2021-11-03
-		String stime = multiRequest.getParameter("timeIn");		// ex. 13:10:20 (오후 1:10:20)
-		String stype = multiRequest.getParameter("place");
-		String splace = multiRequest.getParameter("inputPlace");
-		int maxMember = Integer.parseInt(multiRequest.getParameter("max"));
-		String bwriter = ((Member)request.getSession().getAttribute("loginUser")).getUserId();
+		String stitle = multiRequest.getParameter("inputTitle");				// 글 제목
+		String scontent = multiRequest.getParameter("content");					// 본문
+		String sdate = multiRequest.getParameter("dateIn");						// 모임 날짜 ex. 2021-11-03
+		String stime = multiRequest.getParameter("timeIn");						// 모임 시간 ex. 13:10:20 (오후 1:10:20)
+		String stype = multiRequest.getParameter("type");						// 온라인/오프라인
+		String[] splaceArr = multiRequest.getParameterValues("inputPlace");		// 모임 장소
+		int minMember = Integer.parseInt(multiRequest.getParameter("min"));		// 최소 참여 인원
+		int maxMember = Integer.parseInt(multiRequest.getParameter("max"));		// 최대 참여 인원
+		String swriter = ((Member)request.getSession().getAttribute("loginUser")).getUserId();	// 작성자 아이디
+		
+		// 주소 문자열 합치기
+		String splace = "";
+		if(splaceArr != null && !splaceArr[0].equals("") && !splaceArr[1].equals(""))
+			splace = String.join("|", splaceArr);
+		else
+			splace = splaceArr[0];
 		
 		// 년월일시분초 잘라내기
 		int ydate = Integer.parseInt(sdate.substring(0,4));
@@ -96,6 +104,9 @@ public class SocialingInsertServlet extends HttpServlet {
 		socialing.setStype(stype);
 		socialing.setSplace(splace);
 		socialing.setnType("소셜링");
+		socialing.setMinMember(minMember);
+		socialing.setMaxMember(maxMember);
+		socialing.setUserId(swriter);
 		
 		// 첨부파일 썸네일로 받아오기
 		List<SodaFile> photo = new ArrayList<>();
