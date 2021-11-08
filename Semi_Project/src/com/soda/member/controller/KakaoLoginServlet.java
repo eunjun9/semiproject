@@ -50,7 +50,7 @@ public class KakaoLoginServlet extends HttpServlet {
 			joinMember.setUserName(userName);
 			joinMember.setUserPhone("데이터없음");
 			joinMember.setGender(kakaoGender);
-			joinMember.setUserAddress(null);
+			//joinMember.setUserAddress(null);
 			
 			// 카카오계정 고유ID를 암호화해서 비밀번호로 생성
 			String salt = SHA256Util.generateSalt();
