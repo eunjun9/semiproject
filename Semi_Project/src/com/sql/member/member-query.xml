@@ -10,7 +10,6 @@
 			, USER_NAME
 			, USER_PHONE
 			, USER_PWD
-			, USER_ADDRESS
 			, JOIN_DATE
 			, STATUS
 			, USER_GRADE
@@ -28,7 +27,6 @@
 			, USER_NAME
 			, USER_PHONE
 			, USER_PWD
-			, USER_ADDRESS
 			, JOIN_DATE
 			, STATUS
 			, USER_GRADE
@@ -47,7 +45,6 @@
 			, USER_NAME
 			, USER_PHONE
 			, USER_PWD
-			, USER_ADDRESS
 			, JOIN_DATE
 			, STATUS
 			, USER_GRADE
@@ -110,9 +107,9 @@
 		       MEMBER_INFO
 		   SET USER_PWD = ?
 		 WHERE USER_ID = ?
-		   AND USER_PWD = ?
 	</entry>
   
+  <!-- 아이디 체크 -->
   <entry key="idCheck">
 		SELECT
 		       COUNT(*)
@@ -120,6 +117,7 @@
 		 WHERE USER_ID = ?
 	</entry>
   
+  <!-- 회원정보 수정 -->
   <entry key="updateMember">
 		UPDATE
 		      MEMBER_INFO
@@ -129,13 +127,13 @@
 		WHERE USER_ID = ?
 	</entry>
   
+  <!-- 회원 조회 -->
   <entry key="selectMember">
 		SELECT
 			  USER_ID
 			, USER_NAME
 			, USER_PHONE
 			, USER_PWD
-			, USER_ADDRESS
 			, JOIN_DATE
 			, STATUS
 			, USER_GRADE
@@ -145,6 +143,7 @@
 		  AND STATUS = 'Y'
 	</entry>
   
+  <!-- 비밀번호 변경 -->
   <entry key="updatePwd">
 		UPDATE
 		       MEMBER_INFO
@@ -153,6 +152,7 @@
 		   AND USER_PWD = ?
 	</entry>
   
+  <!-- 회원탈퇴 -->
   <entry key="deleteMember">
 		UPDATE
 		       MEMBER_INFO

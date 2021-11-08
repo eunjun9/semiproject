@@ -36,8 +36,7 @@
 		<div class="login-bar">
 			<div class="login-logo center">
 				<div class="login-logo center">
-					<a href="${ contextPath }"> <img
-						src="${ contextPath }/resources/images/logo.png" width="400"></a>
+					<a href="${ contextPath }"> <img src="${ contextPath }/resources/images/logo.png" width="400"></a>
 				</div>
 
 				<div class="login-text center">
