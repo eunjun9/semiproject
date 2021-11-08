@@ -1,0 +1,62 @@
+package com.soda.order.controller;
+
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.soda.member.model.vo.Member;
+import com.soda.order.model.service.WishListService;
+
+/**
+ * Servlet implementation class WishListDeleteServlet
+ */
+@WebServlet("/wishlist/delete")
+public class WishListDeleteServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public WishListDeleteServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String[] deleteArr = request.getParameterValues("checkArr");		
+
+		HttpSession session = request.getSession();
+		Member loginUser = (Member)session.getAttribute("loginUser");
+		String userId = loginUser.getUserId();
+		
+		// String "arr" 배열 길이만큼 int 배열 선언하고 반복문으로 넣어줌
+		int[] deleteList = new int[deleteArr.length];
+		
+		int result = 0;
+		for(int i = 0; i < deleteList.length; i++) {
+			deleteList[i] = Integer.parseInt(deleteArr[i]);
+			//System.out.println(deleteList[i]);
+			result = new WishListService().deleteWishlist(deleteList[i], userId);
+		}
+
+		response.setCharacterEncoding("UTF-8");
+		response.getWriter().print(result);
+		
+	
+	}
+}

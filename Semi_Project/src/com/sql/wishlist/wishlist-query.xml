@@ -54,5 +54,14 @@
 		 WHERE USER_ID = ?
 	</entry>-->
 	
+	
+	<!-- 장바구니 삭제 -->
+	<entry key="deleteWishlist">
+		UPDATE WISHLIST
+		   SET WISH_STATUS = 'Y'
+		 WHERE USER_ID = ?
+		   AND WISH_NUM = ?
+	</entry>
+	
 
 </properties>

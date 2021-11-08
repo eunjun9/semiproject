@@ -75,7 +75,6 @@ public class WishListDao {
 				w.setcPrice(rset.getInt("c_price"));
 				w.setcCategory(rset.getString("c_category"));
 				w.setcSDate(rset.getDate("c_sdate"));
-				w.setcEDate(rset.getDate("c_edate"));
 				w.setcLocation(rset.getString("c_location"));
 				w.setcTime1(rset.getString("c_time1"));
 				w.setcTime2(rset.getString("c_time2"));
@@ -95,6 +94,29 @@ public class WishListDao {
 		}
 		
 		return wishlist;
+	}
+
+	// 장바구니 삭제
+	public int deleteWishlist(Connection conn, int deleteList, String userId) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = wishlistQuery.getProperty("deleteWishlist");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, userId);
+			pstmt.setInt(2, deleteList);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
 	}
 	
 }
