@@ -93,8 +93,8 @@
 			, ?
 		)
 	</entry>
-	
-	<!-- 이메일 계정 찾기 -->
+  
+  <!-- 이메일 계정 찾기 -->
 	<entry key="findEmail">
 		SELECT
 			  USER_ID
@@ -103,14 +103,63 @@
 	      AND USER_PHONE = ?
 	      AND STATUS = 'Y'
 	</entry>
-	
-	<!-- 비밀번호 찾기하면 임시비밀번호로 변경 -->
+  
+  	<!-- 비밀번호 찾기하면 임시비밀번호로 변경 -->
 	<entry key="sendPwd">
 		UPDATE
 		       MEMBER_INFO
 		   SET USER_PWD = ?
 		 WHERE USER_ID = ?
+		   AND USER_PWD = ?
+	</entry>
+  
+  <entry key="idCheck">
+		SELECT
+		       COUNT(*)
+		  FROM MEMBER_INFO
+		 WHERE USER_ID = ?
+	</entry>
+  
+  <entry key="updateMember">
+		UPDATE
+		      MEMBER_INFO
+		  SET USER_NAME = ?
+		    , USER_PHONE = ?
+		    , MODIFY_DATE = SYSDATE
+		WHERE USER_ID = ?
+	</entry>
+  
+  <entry key="selectMember">
+		SELECT
+			  USER_ID
+			, USER_NAME
+			, USER_PHONE
+			, USER_PWD
+			, USER_ADDRESS
+			, JOIN_DATE
+			, STATUS
+			, USER_GRADE
+			, USER_GENDER
+		 FROM MEMBER_INFO
+		WHERE USER_ID = ?
+		  AND STATUS = 'Y'
+	</entry>
+  
+  <entry key="updatePwd">
+		UPDATE
+		       MEMBER_INFO
+		   SET USER_PWD = ?
+		 WHERE USER_ID = ?
+		   AND USER_PWD = ?
+	</entry>
+  
+  <entry key="deleteMember">
+		UPDATE
+		       MEMBER_INFO
+		   SET STATUS = 'N'
+		 WHERE USER_ID = ?
 	</entry>
 	
+
 
 </properties>

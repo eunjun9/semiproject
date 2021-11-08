@@ -54,6 +54,12 @@ public class Member {
 		this.gender = gender;
 	}
 
+	public Member(String userName, String userPhone) {
+		super();
+		this.userName = userName;
+		this.userPhone = userPhone;
+	}
+
 	public String getUserId() {
 		return userId;
 	}

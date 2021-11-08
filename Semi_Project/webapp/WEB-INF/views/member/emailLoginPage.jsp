@@ -54,7 +54,7 @@
 						</span>
 						<h4>비밀번호</h4>
 						<span class="input_area">
-						<input type="password" id="pwd" name="pwd" placeholder="비밀번호를 입력해주세요." required>
+						<input type="password" id="pwd" name="userPwd" placeholder="비밀번호를 입력해주세요." required>
 						</span>
 						
 						<div class="login-fail-text" id="login-fail">
