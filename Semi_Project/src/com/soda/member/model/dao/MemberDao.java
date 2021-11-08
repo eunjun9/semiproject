@@ -303,7 +303,7 @@ public class MemberDao {
 		}
 		
 		return result;
-	
+	}
 
 	public int deleteAccount(Connection conn, String userId) {
 		int result = 0;

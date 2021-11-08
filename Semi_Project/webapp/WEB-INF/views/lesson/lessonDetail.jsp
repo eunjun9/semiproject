@@ -55,8 +55,8 @@
 	            $(function(){ 
 	                 $("#apply").click(function(){ 
 	                    if(confirm('결제화면으로 이동하시겠습니까?')){
-	                        document.forms.orderForm.action = "${ contextPath }/leseson/test";
-			                document.forms.orderForm.submit();
+	                        //document.forms.orderForm.action = "${ contextPath }/order/";
+			                //document.forms.orderForm.submit();
 	                    } else {
 	                    	return false;
 	                    } 
