@@ -18,6 +18,7 @@ public class Socialing {
 	// Socialing
 	private String splace;		// 모임 장소
 	private Date sdate;			// 모임 날짜
+	private String stime;		// 모임 시간
 	private String stype;		// 온오프라인 여부 (ON/OFF)
 	private int maxMember;		// 최대 참여 인원
 	private int minMember;		// 최소 참여 인원
@@ -30,8 +31,8 @@ public class Socialing {
 	public Socialing() {}
 
 	public Socialing(int nNum, String nTitle, String nContent, String nStatus, String nType, String userId,
-			String userName, Date nDate, Date modifyDate, int nCount, String splace, Date sdate, String stype,
-			int maxMember, int minMember, String profile, String introduction, List<SodaFile> photoList) {
+			String userName, Date nDate, Date modifyDate, int nCount, String splace, Date sdate, String stime,
+			String stype, int maxMember, int minMember, String profile, String introduction, List<SodaFile> photoList) {
 		super();
 		this.nNum = nNum;
 		this.nTitle = nTitle;
@@ -45,6 +46,7 @@ public class Socialing {
 		this.nCount = nCount;
 		this.splace = splace;
 		this.sdate = sdate;
+		this.stime = stime;
 		this.stype = stype;
 		this.maxMember = maxMember;
 		this.minMember = minMember;
@@ -149,6 +151,14 @@ public class Socialing {
 		this.sdate = sdate;
 	}
 
+	public String getStime() {
+		return stime;
+	}
+
+	public void setStime(String stime) {
+		this.stime = stime;
+	}
+
 	public String getStype() {
 		return stype;
 	}
@@ -202,8 +212,8 @@ public class Socialing {
 		return "Socialing [nNum=" + nNum + ", nTitle=" + nTitle + ", nContent=" + nContent + ", nStatus=" + nStatus
 				+ ", nType=" + nType + ", userId=" + userId + ", userName=" + userName + ", nDate=" + nDate
 				+ ", modifyDate=" + modifyDate + ", nCount=" + nCount + ", splace=" + splace + ", sdate=" + sdate
-				+ ", stype=" + stype + ", maxMember=" + maxMember + ", minMember=" + minMember + ", profile=" + profile
-				+ ", photoList=" + photoList + "]";
+				+ ", stime=" + stime + ", stype=" + stype + ", maxMember=" + maxMember + ", minMember=" + minMember
+				+ ", profile=" + profile + ", introduction=" + introduction + ", photoList=" + photoList + "]";
 	}
 
 }

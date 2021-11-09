@@ -103,6 +103,8 @@ public class SocialingDao {
 				socialing.setUserName(rset.getString("user_name"));
 				socialing.setSplace(rset.getString("s_place"));
 				socialing.setSdate(rset.getDate("s_date"));
+				socialing.setStime(rset.getString("s_time"));
+				socialing.setStype(rset.getString("s_type"));
 
 				List<SodaFile> photoList = new ArrayList<>();
 				SodaFile file = new SodaFile();
@@ -169,6 +171,8 @@ public class SocialingDao {
 				socialing.setnCount(rset.getInt("ncount"));
 				socialing.setSplace(rset.getString("s_place"));
 				socialing.setSdate(rset.getTimestamp("s_date"));
+				socialing.setStime(rset.getString("s_time"));
+				socialing.setStype(rset.getString("s_type"));
 				socialing.setMaxMember(rset.getInt("max_member"));
 				socialing.setMinMember(rset.getInt("min_member"));
 				socialing.setProfile(rset.getString("profile"));
@@ -336,6 +340,7 @@ public class SocialingDao {
 			pstmt.setString(3, socialing.getStype());
 			pstmt.setInt(4, socialing.getMaxMember());
 			pstmt.setInt(5, socialing.getMinMember());
+			pstmt.setString(6, socialing.getStime());
 
 			result = pstmt.executeUpdate();
 			

@@ -131,7 +131,15 @@
 			<div class="photoList">
 					<c:if test="${ lesson.photoList.size() > 1 }">
 						<img  src="${ contextPath }${ lesson.photoList.get(1).route }${ lesson.photoList.get(1).changeName }">
+<<<<<<< HEAD
 					</c:if>
+=======
+					</c:when>
+					<c:when test="${ lesson.photoList.size() > 2 }">
+						<img  src="${ contextPath }${ lesson.photoList.get(2).route }${ lesson.photoList.get(2).changeName }">
+					</c:when>
+				</c:choose>
+>>>>>>> branch 'master' of https://github.com/umyewon/semiproject.git
 			</div>
         <hr>
     </div>

@@ -40,6 +40,7 @@ public class WishListDao {
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setInt(1, wishlist.getnNum());
 				pstmt.setString(2, wishlist.getUserId());
+				pstmt.setString(3, wishlist.getlessonDate());
 				
 				result = pstmt.executeUpdate();
 			
@@ -70,17 +71,18 @@ public class WishListDao {
 			
 			while(rset.next()) {
 				WishList w = new WishList();
-				w.setnTitle(rset.getString("notice_title"));
 				w.setnNum(rset.getInt("notice_num"));
+				w.setWishNum(rset.getInt("wish_num"));
+				w.setlessonDate(rset.getString("lesson_date"));
+				w.setnTitle(rset.getString("notice_title"));
 				w.setcPrice(rset.getInt("c_price"));
 				w.setcCategory(rset.getString("c_category"));
-				w.setvDate(rset.getString("v_date"));
 				w.setcLocation(rset.getString("c_location"));
 				w.setcTime1(rset.getString("c_time1"));
 				w.setcTime2(rset.getString("c_time2"));
-				w.setWishNum(rset.getInt("wish_num"));
-				//w.setRoute(rset.getString("route"));
-				//w.setChangeName(rset.getString("change_name"));
+				w.setvDate(rset.getString("v_date"));
+				w.setRoute(rset.getString("route"));
+				w.setChangeName(rset.getString("change_name"));
 				
 				wishlist.add(w);
 			}

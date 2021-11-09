@@ -19,6 +19,8 @@
 		                   , USER_NAME
 						   , S_PLACE
 						   , S_DATE
+						   , S_TIME
+						   , S_TYPE
 						   , ROUTE
 						   , CHANGE_NAME
 						   , NOTICE_STATUS
@@ -48,6 +50,8 @@
 			 , NCOUNT
 			 , S_PLACE
 			 , S_DATE
+			 , S_TIME
+			 , S_TYPE
 			 , MAX_MEMBER
 			 , MIN_MEMBER
 			 , PROFILE
@@ -143,10 +147,12 @@
 		  , S_TYPE
 		  , MAX_MEMBER
 		  , MIN_MEMBER
+		  , S_TIME
 		)
 		VALUES
 		(
 			SEQ_BNUM.CURRVAL
+		  , ?
 		  , ?
 		  , ?
 		  , ?
