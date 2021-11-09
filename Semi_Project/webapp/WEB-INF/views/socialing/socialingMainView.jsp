@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
@@ -9,7 +9,7 @@
 <title>소셜링</title>
 
 <!-- 외부 스타일 시트 -->
-<link href="${ contextPath }/resources/css/socialing/socialing_main.css?2" rel="stylesheet">
+<link href="${ contextPath }/resources/css/socialing/socialing_main.css?3" rel="stylesheet">
 
 <!-- 글꼴 (Noto Sans) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -143,6 +143,17 @@
                         <option value="">인기순</option> <!-- 참여 인원 순 -->
                     </select>
                 </div>
+                
+                <!-- 
+				 	String[] place;
+				 	if(socialingList.getSplace() != null) {
+				 		place = socialingList.getSplace().split("\\|");
+				 	} else {
+				 		place = new String[] {"", ""};
+				 	}
+				 -->
+                
+                <!-- 글 목록 출력 -->
                 <div class="s-container2">
                 	<c:forEach var="s" items="${ socialingList }">
                     <div id="s-list2">
@@ -157,7 +168,7 @@
                         <a href="${ contextPath }/socialing/detail?nNum=${ s.nNum }">
                             <div id="titlebox">
                                 <p id="s-thumtitle">${ s.nTitle }</p><br>
-                                <h5 id="s-thumsub">${ s.splace } 
+                                <h5 id="s-thumsub">${ s.splace.split("\\|")[1] } 
                                 <fmt:formatDate value="${ s.sdate }" type="both" pattern="M.dd(E) a h:mm"/></h5>
                                 <a href="#"><img id="profile" src="<%= request.getContextPath() %>/resources/images/eunjung/profile.png"></a>
                             </div>

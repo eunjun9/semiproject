@@ -30,7 +30,7 @@
             <div class="wrapper1">
                 <p id="title">${ socialing.nTitle }</p>
                 <hr>
-                <h3 id="subTitle">장소</h3><p id="subTitle2">${ socialing.splace }</p><br>
+                <h3 id="subTitle">장소</h3><p id="subTitle2">${ socialing.splace.split("\\|")[1] }</p><br>
                 <h3 id="subTitle">날짜</h3><p id="subTitle2"><fmt:formatDate value="${ socialing.sdate }" type="both" pattern="M.dd(E) a h시 m분"/></p>
                 <!-- 조회수 추가....? -->
             </div>
@@ -88,7 +88,7 @@
             </div>
             <div class="subWrap3">
                 <img id="icon" src="${ contextPath }/resources/images/eunjung/pin.png">
-                <p id="detail">${ socialing.splace } (서울특별시 도봉구 창동 343)</p>
+                <p id="detail">${ socialing.splace.split("\\|")[1] } (${ socialing.splace.split("\\|")[0] })</p>
             </div>
             <div class="subWrap3">
                 <img id="icon" src="${ contextPath }/resources/images/eunjung/time.png">
