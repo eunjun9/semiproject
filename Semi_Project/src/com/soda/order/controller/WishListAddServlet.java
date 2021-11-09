@@ -2,6 +2,7 @@ package com.soda.order.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -38,16 +39,21 @@ public class WishListAddServlet extends HttpServlet {
 		// 장바구니에 클래스 추가하는 서블릿
 		HttpSession session = request.getSession();
 		int nNum = Integer.parseInt(request.getParameter("nNum"));
+		// 원데이클래스는 사용자가 직접 원하는 날짜 선택하기때문에 선택한 날짜 받아오기
+		String selDate = request.getParameter("selDate");
+		
 		Member loginUser = (Member)session.getAttribute("loginUser");
 		String userId = loginUser.getUserId();
 
 		// 테스트
 		System.out.println(nNum);
 		System.out.println(userId);
+		System.out.println(selDate);
 
 		WishList wishlist = new WishList();
 		wishlist.setnNum(nNum);
 		wishlist.setUserId(userId);
+		wishlist.setoDate(selDate);
 
 		// 장바구니에 insert하고 바로 리스트 조회해오기
 		List<WishList> wishList = new WishListService().wishListAdd(wishlist);

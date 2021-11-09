@@ -33,9 +33,7 @@ public class WishListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
-		Member loginUser = (Member)session.getAttribute("loginUser");
-		String userId = loginUser.getUserId();
+		String userId = ((Member)request.getSession().getAttribute("loginUser")).getUserId();
 		
 		// 테스트
 		//System.out.println(userId);

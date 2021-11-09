@@ -56,7 +56,6 @@
 			, ?
 			, ?
 			, ?
-			, ?
 			, SYSDATE
 			, DEFAULT
 			, DEFAULT

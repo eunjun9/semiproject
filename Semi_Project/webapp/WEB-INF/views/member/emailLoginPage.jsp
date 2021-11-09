@@ -146,19 +146,18 @@
                     // 카카오 자동가입 시 추가되는 성별 DB 통일성을 위해 변경
                        if( kakaoGender != null) {
                     	   if (kakaoGender == 'female') {
-                    		   kakaoGender = kakaoGender.replaceAll(res.kakao_account.gender, "female", "F");
+                    		   kakaoGender = kakaoGender.replaceAll("female", "F");
                         } else {
-                        	kakaoGender = kakaoGender.replaceAll(res.kakao_account.gender, "male", "M");
+                        		kakaoGender = kakaoGender.replaceAll("male", "M");
                         }
                        }else{
                     	    kakaoGender = "null";
                        }
-                        console.log(kakaoGender);
                   
 
                        $.ajax({
                         url:"${ contextPath }/kakao/login",
-                        data:{ "userEmail" : userEmail, "userName" : userName, "kakaoId" : kakaoId, "kakaoGender" : kakaoGender },
+                        data:{ userEmail : userEmail, userName : userName, kakaoId : kakaoId, kakaoGender : kakaoGender },
                         Type:"post",
                         success:function(data){
                         	location.href="${ contextPath }/mainpage";

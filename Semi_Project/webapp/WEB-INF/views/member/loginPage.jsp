@@ -14,6 +14,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
 </head>
 <body>
+<%-- session에 담긴 message 있을 경우 alert 하는 script --%>
+	<% if(session.getAttribute("message") != null) {%>
+	<script>
+		alert('<%= session.getAttribute("message") %>');	
+	</script>
+	<% 
+		session.removeAttribute("message");
+		} 
+	%>
 <c:set var="contextPath" value="<%= request.getContextPath()%>"></c:set>
 
 	<div class="login-main">
@@ -72,25 +81,23 @@
                         console.log(userName);					// 테스트용 콘솔 노출
                         var kakaoId = res.id					// 비밀번호로 사용할 카카오 아이디
                         console.log(kakaoId);					// 테스트용 콘솔 노출
-                        
                        var kakaoGender = res.kakao_account.gender;	 // 카카오 성별
                        
-                       // 카카오 자동가입 시 추가되는 성별 DB 통일성을 위해 변경
+                    // 카카오 자동가입 시 추가되는 성별 DB 통일성을 위해 변경
                        if( kakaoGender != null) {
                     	   if (kakaoGender == 'female') {
-                    		   kakaoGender = kakaoGender.replaceAll(res.kakao_account.gender, "female", "F");
+                    		   kakaoGender = kakaoGender.replaceAll("female", "F");
                         } else {
-                        	kakaoGender = kakaoGender.replaceAll(res.kakao_account.gender, "male", "M");
-                        }
+                        		kakaoGender = kakaoGender.replaceAll("male", "M");
+                        	}
                        }else{
                     	    kakaoGender = "null";
                        }
-                        console.log(kakaoGender);
-                  
+                  		console.log(kakaoGender);
 
                        $.ajax({
                         url:"${ contextPath }/kakao/login",
-                        data:{ "userEmail" : userEmail, "userName" : userName, "kakaoId" : kakaoId, "kakaoGender" : kakaoGender },
+                        data:{ userEmail : userEmail, userName : userName, kakaoId : kakaoId, kakaoGender : kakaoGender },
                         Type:"post",
                         success:function(data){
                         	location.href="${ contextPath }/mainpage";

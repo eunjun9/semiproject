@@ -61,12 +61,12 @@
 			<c:choose>
 			<c:when test="${ wishList.cCategory eq 'vod' }">
 				<div class="wish-class-date">
-					<p class="date">${ wishList.cTime1 }</p>
+					<p class="date">${ wishList.vDate } 일</p>
 				</div>
 			</c:when>
 			<c:when test="${ wishList.cCategory eq '원데이' }">
 				<div class="wish-class-date">
-					<p class="date"><fmt:formatDate value="${ wishList.cSDate }" pattern="yyyy/MM/dd" /><br>
+					<p class="date"><fmt:formatDate value="${ wishList.oDate }" pattern="yyyy/MM/dd" /><br>
 					${ wishList.cTime1 } ~ ${ wishList.cTime2 }</p>
 				</div>
 			</c:when>
