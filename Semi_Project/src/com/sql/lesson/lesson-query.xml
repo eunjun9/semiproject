@@ -80,7 +80,7 @@
 	      , CHANGE_NAME
 	      , ROUTE
 	      , FILE_LEVEL
-	  FROM "FILE"
+	  FROM "TBL_FILE"
 	  WHERE NOTICE_NUM = ?
 	    AND STATUS = 'Y'
    ORDER BY FILE_NUM
@@ -146,7 +146,7 @@
 	
 
 	<entry key="insertAttachment">
-		INSERT INTO "FILE"
+		INSERT INTO "TBL_FILE"
 	  (
 	  	 FILE_NUM
 	   , NOTICE_NUM
@@ -174,7 +174,7 @@
 	</entry>
 	
 	<entry key="deletePhoto">
-		UPDATE "FILE"
+		UPDATE "TBL_FILE"
 	        SET STATUS = 'N'
 	      WHERE NOTICE_NUM =?
 	</entry>
