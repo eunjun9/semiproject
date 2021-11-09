@@ -146,14 +146,4 @@ public class SocialingService {
 		return result;
 	}
 
-//	public List<Socialing> selectList() {
-//		Connection conn = getConnection();
-//		
-//		List<Socialing> socialingList = socialingDao.selectList(conn);
-//		
-//		close(conn);
-//		
-//		return socialingList;
-//	}
-
 }

@@ -87,8 +87,6 @@ public class SocialingDetailServlet extends HttpServlet {
 		/* 참여자 리스트 조회 */
 		List<SocialingMember> memberList = socialingService.selectMember(nNum);
 		
-		System.out.println(memberList);
-		
 		if(socialing != null) {
 			request.setAttribute("socialing", socialing);
 			request.setAttribute("memberList", memberList);
