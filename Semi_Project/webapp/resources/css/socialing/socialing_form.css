@@ -210,7 +210,8 @@ label {
     margin-right: 20px;
 }
 
-#w-submit {
+#w-submit,
+#w-submit2 {
     background-color: rgb(7,86,105);
     color: white;
     padding: 8px;
