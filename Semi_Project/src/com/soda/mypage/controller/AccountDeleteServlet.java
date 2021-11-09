@@ -47,14 +47,14 @@ public class AccountDeleteServlet extends HttpServlet {
 		/* 실패한 경우 "회원 탈퇴에 실패하였습니다." 메시지 가지고 에러 페이지 이동 */
 		//	if(deletedMember == null) {		// 성공했을 때 null 값을 받아옴
 		if(result > 0) {
-			HttpSession session = request.getSession();
-			session.removeAttribute("loginUser");
-			request.getSession().setAttribute("message", "회원탈퇴에 성공하였습니다.");
-			response.sendRedirect(request.getContextPath() + "/index");
+			// HttpSession session = request.getSession();
+			// session.removeAttribute("loginUser");
+			// request.getSession().setAttribute("message", "회원탈퇴에 성공하였습니다.");
+			// response.sendRedirect(request.getContextPath() + "/index");
 			
-			// request.getSession().removeAttribute("loginUser"); -> 로그인 세션 정보 삭제
-			// request.getSession().setAttribute("message", "회원 탈퇴에 완료되었습니다."); -> 메뉴바에서 alert
-			// response.sendRedirect(request.getContextPath()); -> 메인 페이지 이동
+			 request.getSession().removeAttribute("loginUser"); 					//-> 로그인 세션 정보 삭제
+			 request.getSession().setAttribute("message", "회원 탈퇴에 완료되었습니다."); 	//-> 메뉴바에서 alert
+			 response.sendRedirect(request.getContextPath()); 			//-> 메인 페이지 이동
 		} else {
 			request.setAttribute("message", "회원 탈퇴에 실패하였습니다.");
 			RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/common/errorpage.jsp");

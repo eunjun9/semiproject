@@ -49,11 +49,11 @@ public class MypageUserInfoModifyServlet extends HttpServlet {
 		
 		Member member = new Member(userId, userName, userPhone);
 		
-		System.out.println("수정할 정보 : " + member);
+		// System.out.println("수정할 정보 : " + member);
 		
 		Member updatedMember = new MemberService().updateMember(member);
 		
-		System.out.println("수정 된 정보 : " + updatedMember);
+		// System.out.println("수정 된 정보 : " + updatedMember);
 		
 		if(updatedMember != null) {
 			
