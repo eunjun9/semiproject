@@ -21,29 +21,42 @@
 			  , USER_ID
 			  , WISH_NUM
 			  , WISH_STATUS
+			  , LESSON_DATE
 			  )
 			  VALUES
 			  (
 			    ?
 			  , ?
-			  , WISH_NUM.NEXTVAL
+			  , WISH_SEQ.NEXTVAL
 			  , DEFAULT
+			  , ?
 			  )
 	</entry>
 	
 	<!-- 장바구니 리스트 조회 -->
 	<entry key="wishlist">
 		SELECT
-		      *
-      <!--  , T.ROUTE
-			, T.CHANGE_NAME 파일 가져올 때 수정할 것  --> 
-		 FROM NOTICE N, CLASS C, WISHLIST W <!-- , TBL_FILE T -->
+		      W.NOTICE_NUM
+		    , W.WISH_NUM
+		    , W.LESSON_DATE
+		    , N.NOTICE_TITLE
+		    , C.C_PRICE
+		    , C.C_CATEGORY
+		    , C.C_LOCATION
+		    , C.C_TIME1
+		    , C.C_TIME2
+		    , C.V_DATE
+      		, T.ROUTE
+			, T.CHANGE_NAME
+		 FROM NOTICE N, CLASS C, WISHLIST W, TBL_FILE T
 		WHERE N.NOTICE_NUM = C.NOTICE_NUM
           AND N.NOTICE_NUM = W.NOTICE_NUM
-    <!--  AND C.NOTICE_NUM = T.NOTICE_NUM --> 
-		  AND WISH_STATUS = 'N'
-		  AND NOTICE_TYPE = '클래스'
+     	  AND C.NOTICE_NUM = T.NOTICE_NUM
+		  AND W.WISH_STATUS = 'N'
+		  AND N.NOTICE_TYPE = '클래스'
+		  AND N.NOTICE_STATUS = 'N'
 		  AND W.USER_ID = ?
+		  AND T.FILE_LEVEL = 1
 		ORDER BY W.WISH_NUM DESC
 	</entry> 
 	

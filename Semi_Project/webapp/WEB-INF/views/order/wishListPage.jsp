@@ -46,9 +46,8 @@
 				
 				<!-- 클래스 썸네일 이미지 / 클래스 등록하기 완료되면 수정할 예정 -->
 				<div class="wish-class img">
-				<img src="#" width="200px" height="150px">
-					<!--  <img src="${ contextPath }${ wishList.route }${ wishList.changeName }"
-						width="200px" height="150px"> -->
+					<img src="${ contextPath }${ wishList.route }${ wishList.changeName }"
+						width="200px" height="150px">
 				</div>
 			</div>
 
@@ -66,7 +65,7 @@
 			</c:when>
 			<c:when test="${ wishList.cCategory eq '원데이' }">
 				<div class="wish-class-date">
-					<p class="date"><fmt:formatDate value="${ wishList.oDate }" pattern="yyyy/MM/dd" /><br>
+					<p class="date">${ wishList.lessonDate }<br>
 					${ wishList.cTime1 } ~ ${ wishList.cTime2 }</p>
 				</div>
 			</c:when>
@@ -116,10 +115,13 @@
 				<br>
 			</div>
 		</div>
+	
 	</div>
-
+</div>
 	<!-- 푸터 가져오기 -->
 	<%@ include file="/WEB-INF/views/common/footer.jsp"%>
+
+	
 	
 	
 	<script>
@@ -169,6 +171,5 @@
 	</script>
 	
 
-</div>
 </body>
 </html>
