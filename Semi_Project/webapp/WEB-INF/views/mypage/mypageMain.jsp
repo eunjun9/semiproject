@@ -30,7 +30,7 @@
                 <p id="name">홍길동</p>
                 <p id="level">회원</p>
                 <p id="mail">kh@gmail.com</p>
-                <a id="myfeed" href="#">내 피드 <img width="5%" src="${ contextPath }/resources/images/yewon/next.png"></a>
+                <a id="myfeed" href="${contextPath }/myfeed">내 피드 <img width="5%" src="${ contextPath }/resources/images/yewon/next.png"></a>
             </div>
 
             <ul class="move">
