@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>클래스 등록</title>
+<title>클래스 수정</title>
 
     <!--외부 스타일 시트-->
     <link href="${ contextPath }/resources/css/lesson/lesson_form.css?6" rel="stylesheet">
@@ -24,35 +24,40 @@
     <div class="class_form">
         <div class="cForm_title">
             <a id="back" href="${ contextPath }/lesson/main">&lt; 클래스</a>
-            <h2 id="main-title">클래스 등록</h2>
+            <h2 id="main-title">클래스 수정</h2>
             <h4 id="sub-title">모든 입력폼은 필수 영역입니다.</h4>
         </div>
         <div id="cForm_wrapper">
-            <form method="post" action="${ contextPath }/lesson/insert"
+            <form method="post" action="${ contextPath }/lesson/update"
 					enctype="multipart/form-data">
+				<input type="hidden" name="bid" value="${ board.bid }"> 
+					<c:forEach items="${ board.photoList }" var="photo"> <!-- bid와 함께 (수정 전 원래)사진의 unique값인 changeName도 같이 넘김 -->
+					<input type="hidden" name="changeName" value="${ photo.changeName }">
+					</c:forEach>	
+					
                 <h3>어떤 클래스인가요?</h3>
                                 
                 <h4 id="sub_title1">카테고리를 선택하세요</h4>
                     <select id="bigC" name="bigC" required>
-                        <option value="big" selected disabled>대분류 선택</option>
-                        <option value="art" id="art">예술</option>
-                        <option value="food" id="food">음식</option>
-                        <option value="sport" id="sport">운동</option>
+                        <option value="big" disabled>대분류 선택</option>
+                        <option value="art" id="art" <c:if test="${ lesson.ctag1 == 'art'}">selected</c:if>>예술</option>
+                        <option value="food" id="food" <c:if test="${ lesson.ctag1 == 'food'}">selected</c:if>>음식</option>
+                        <option value="sport" id="sport" <c:if test="${ lesson.ctag1 == 'sport'}">selected</c:if>>운동</option>
                     </select>
                     
                      <select name="smallC" id="smallC" required>
-                        <option id="small" selected disabled>소분류 선택</option>
-                        <option value="10" class="artS">드로잉</option>
-                        <option value="20" class="artS">악기</option>
-                        <option value="30" class="artS">일러스트</option>
-                        <option value="40" class="foodS">베이킹</option>
-                        <option value="50" class="foodS">양식</option>
-                        <option value="60" class="foodS">일식</option>
-                        <option value="70" class="foodS">중식</option>
-                        <option value="80" class="foodS">한식</option>
-                        <option value="90" class="sportS">근력운동</option>
-                        <option value="100" class="sportS">요가</option>
-                        <option value="110" class="sportS">필라테스</option>
+                        <option id="small" disabled>소분류 선택</option>
+                        <option value="10" class="artS" <c:if test="${ lesson.ctag2 == 10}">selected</c:if>>드로잉</option>
+                        <option value="20" class="artS" <c:if test="${ lesson.ctag2 == 20}">selected</c:if>>악기</option>
+                        <option value="30" class="artS" <c:if test="${ lesson.ctag2 == 30}">selected</c:if>>일러스트</option>
+                        <option value="40" class="foodS" <c:if test="${ lesson.ctag2 == 40}">selected</c:if>>베이킹</option>
+                        <option value="50" class="foodS" <c:if test="${ lesson.ctag2 == 50}">selected</c:if>>양식</option>
+                        <option value="60" class="foodS" <c:if test="${ lesson.ctag2 == 60}">selected</c:if>>일식</option>
+                        <option value="70" class="foodS" <c:if test="${ lesson.ctag2 == 70}">selected</c:if>>중식</option>
+                        <option value="80" class="foodS" <c:if test="${ lesson.ctag2 == 80}">selected</c:if>>한식</option>
+                        <option value="90" class="sportS" <c:if test="${ lesson.ctag2 == 90}">selected</c:if>>근력운동</option>
+                        <option value="100" class="sportS" <c:if test="${ lesson.ctag2 == 100}">selected</c:if>>요가</option>
+                        <option value="110" class="sportS" <c:if test="${ lesson.ctag2 == 110}">selected</c:if>>필라테스</option>
                     </select><br>
                     
                     <script>
@@ -88,25 +93,54 @@
                     </script>
                     
                 <h4 id="sub_title4">가격을 입력해주세요</h4> 
-                <input type="text" name="cPrice" placeholder="'원' 빼고 입력" required>원
+                <input type="text" name="cPrice" value="${ lesson.cPrice }" placeholder="'원' 빼고 입력" required>원
                 <hr>
                 
                 <h3>상세페이지를 작성해주세요</h3>
                 
                 <div id="img_wrapper">
                     <h4 id="sub_title5">썸네일/메인 이미지를 첨부해주세요</h4>
-                    <div class="image_area"></div>
+                    <div class="image_area"><img src="${ contextPath }${ lesson.photoList.get(0).route }${ lesson.photoList.get(0).changeName }"></div>
                     <button type="button" id="fileBtn">file</button><br>
                     <input type="file" name="cThumbnail" accept="image/gif,image/jpeg,image/png" required>
                 </div>
+                
+                <!-- 파일 버튼 스크립트 -->
+			    <script>
+			        let fileBtn = document.querySelector("#fileBtn");
+			
+			        const fileElements = document.querySelectorAll("[type=file]");
+			        const imageArea = document.querySelectorAll(".image_area");
+			
+			        /* 버튼 클릭했을 때 input type file 오픈 */
+			        fileBtn.onclick = function() {
+			            fileElements[0].click();
+			        }
+			
+			        /* input type file 요소에 change 이벤트 발생 시 (파일 첨부 발생) */
+			        fileElements.forEach(item => item.addEventListener('change', preview));
+			
+			        function preview(){
+			            let index = Array.from(fileElements).indexOf(this);
+			            
+			            if(this.files && this.files[0]) {
+			                let reader = new FileReader();
+			                reader.readAsDataURL(this.files[0]);
+			                reader.onload = function(){
+			                    imageArea[index].innerHTML = "<img src='" + reader.result + "'>";
+			                }
+			            }
+			        }
+			    </script>
+                
 
                 <div id="form_head">
-                    <textarea name="nTitle" id="sub_title6" placeholder="클래스 제목을 입력하세요(최대20자)" required></textarea>
+                    <textarea name="nTitle" id="sub_title6" placeholder="클래스 제목을 입력하세요(최대20자)"required>${ lesson.nTitle }</textarea>
                     <p id="lengthck"></p>
                     <hr>
                     <label>타입</label> 
-                    <input type="radio" name="class_type" value="원데이" id="oneday"><label for="oneday" class="btnlabel">원데이 클래스</label>
-                    <input type="radio" name="class_type" value="vod" id="vod"><label for="vod" class="btnlabel">VOD 클래스</label><br>
+                    <input type="radio" name="class_type" value="원데이" id="oneday" <c:if test="${ lesson.cCategory == '원데이' }">checked</c:if>><label for="oneday" class="btnlabel">원데이 클래스</label>
+                    <input type="radio" name="class_type" value="vod" id="vod" <c:if test="${ lesson.cCategory == 'vod' }">checked</c:if>><label for="vod" class="btnlabel">VOD 클래스</label><br>
                 </div> 
                 
                 <script>
@@ -125,8 +159,10 @@
  				 <div id="form_body">
                     <hr><br>
                     <h4>클래스 소개를  작성해주세요</h4>
-                    <textarea class="summernote" name="editordata"></textarea>
-					<div class="image_area2"></div>
+                    <textarea class="summernote" name="editordata">${ lesson.nContent }</textarea>
+					<c:if test="${ lesson.photoList.size() > 1 }">
+							<img src="${ contextPath }${ lesson.photoList.get(1).route }${ lesson.photoList.get(1).changeName}">
+					</c:if>
                     <button type="button" id="fileBtn2">file</button><br>
                     <input type="file" name="contentImg1" accept="image/gif,image/jpeg,image/png" id="imageinfo1">
   				</div>
@@ -159,33 +195,36 @@
                 </script>
                 <hr>  
                 <h4>강사 소개를  작성해주세요</h4>
-                <textarea name="tutor_intro" id="tutor_intro" required></textarea>
+                <textarea name="tutor_intro" id="tutor_intro" required>${ lesson.cTutor }</textarea>
                 
                 <!-- 원데이 클래스 일때 -->
                 <div class="offdate">
                 <h4>날짜를 선택하세요</h4>
-                <input type="date" name="o_date1"><label>&nbsp;부터  &nbsp;</label><input type="date" name="o_date2"><label>&nbsp;까지</label><br>
+                <input type="date" name="o_date1"  value="${ lesson.oDate1 }"><label>&nbsp;부터  &nbsp;</label><input type="date" name="o_date2" value="${ lesson.oDate2 }"><label>&nbsp;까지</label><br>
                 </div>
                 
                 <!-- vod 클래스 일때 -->
                 <div class="ondate">
                 	<h4>기간을 입력하세요</h4>
-                	<input type="text" name="v_date"><label>&nbsp;일</label>
+                	<input type="text" name="v_date" value="${ lesson.vDate }"><label>&nbsp;일</label>
                 </div>
                 
                 <!-- 타입이 오프라인일때 -->
                 <div class="offtime">
 					<h4>시간을 선택하세요</h4>
-                	<input type="time" name="class_time1"> <label>&nbsp;부터  &nbsp;</label><input type="time" name="class_time2" > <label>&nbsp;까지</label><br>
+                	<input type="time" name="class_time1" value="${ lesson.cTime1 }"> <label>&nbsp;부터  &nbsp;</label><input type="time" name="class_time2" value="${ lesson.cTime2 }"> <label>&nbsp;까지</label><br>
                 </div>
                 
-				<div class="location">
-                <h4>클래스 위치를 입력하세요</h4>
-                <input type="text" name="postcode" class="postcodify_postcode5" placeholder="우편번호" readonly>
-                <input type="text" name="address" class="postcodify_address" placeholder="검색버튼을 클릭하세요." readonly>
-                <button id="location_Btn" type="button">검색</button><br>
-                <input type="text" class="postcodify_details" name="detailaddress" placeholder="상세주소를 입력하세요" ><br>
-				</div>
+                
+				 	<c:if test="${lesson.getcLocation() != null }">
+						<div class="location">
+						 <h4>클래스 위치를 입력하세요</h4>
+		                 <input type="text" name="postcode" class="postcodify_postcode5" placeholder="우편번호" readonly>
+		                 <input type="text" name="address" class="postcodify_address" placeholder="검색버튼을 클릭하세요." readonly>
+		                 <button id="location_Btn" type="button">검색</button><br>
+		                 <input type="text" class="postcodify_details" name="detailaddress" placeholder="상세주소를 입력하세요" ><br>
+						</div>
+				 	</c:if>
             	
             		<!-- 주소 api -->
 					<!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script> -->
@@ -227,34 +266,6 @@
             </form>
         </div>
     </div>
-
-    <!-- 파일 버튼 스크립트 -->
-    <script>
-        let fileBtn = document.querySelector("#fileBtn");
-
-        const fileElements = document.querySelectorAll("[type=file]");
-        const imageArea = document.querySelectorAll(".image_area");
-
-        /* 버튼 클릭했을 때 input type file 오픈 */
-        fileBtn.onclick = function() {
-            fileElements[0].click();
-        }
-
-        /* input type file 요소에 change 이벤트 발생 시 (파일 첨부 발생) */
-        fileElements.forEach(item => item.addEventListener('change', preview));
-
-        function preview(){
-            let index = Array.from(fileElements).indexOf(this);
-            
-            if(this.files && this.files[0]) {
-                let reader = new FileReader();
-                reader.readAsDataURL(this.files[0]);
-                reader.onload = function(){
-                    imageArea[index].innerHTML = "<img src='" + reader.result + "'>";
-                }
-            }
-        }
-    </script>
 
 	<!-- footer -->
    <%@ include file="/WEB-INF/views/common/footer.jsp" %> 
