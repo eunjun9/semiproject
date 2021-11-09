@@ -8,7 +8,7 @@
 <title>소셜링_글 작성</title>
 
 <!-- 외부 스타일 시트 -->
-<link href="${ contextPath }/resources/css/socialing/socialing_form.css?1" rel="stylesheet">
+<link href="${ contextPath }/resources/css/socialing/socialing_form.css?2" rel="stylesheet">
 
 <!-- 글꼴 (Noto Sans) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -38,7 +38,7 @@
                 
                     <h1 id="w-main-title">어떤 활동을 하는 소셜링인가요?</h1>
                     <h4 id="w-sub-title">제목을 입력해 주세요 (최대 30자)</h4>
-                    <input type="text" id="inputTitle" name="inputTitle" maxlength="30" placeholder="연희동 카페투어 함께 가요!"
+                    <input type="text" id="inputTitle" name="inputTitle" placeholder="연희동 카페투어 함께 가요!" 
                     value="${ soclaling.nTitle }" required>
                     
                     <h2 id="w-sub-title2">설명</h2>
@@ -65,8 +65,8 @@
 					<div class="placeArea1">
 			            <input type="text" id="inputPlace" name="inputPlace" class="postcodify_address" 
 			            placeholder="ex. 서울특별시 강남구 테헤란로 / Zoom" value='${ socialing.splace.split("\\|")[0] }' required>&nbsp;&nbsp;
-		            <!-- 오프라인 선택 시 출력(첫화면 기본) / 온라인 선택 시 숨김 -->
-		            <span class="placeArea2">
+		            <!-- 오프라인 선택 시 출력 / 온라인 선택 시 숨김 -->
+		            <span class="placeArea2" <c:if test='${ socialing.stype == "ON" }'>style="display:none"</c:if>>
 			            <button type="button" class="search" id="postcodify_search_button">검색</button><br>
 			            <input type="text" id="inputPlace2" name="inputPlace" class="postcodify_details" 
 			            placeholder="상세 주소를 입력해 주세요" value='${ socialing.splace.split("\\|")[1] }'><br>

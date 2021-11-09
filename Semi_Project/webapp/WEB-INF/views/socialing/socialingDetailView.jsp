@@ -188,6 +188,8 @@
 		        
 		        function updateBoard() {
 		        	// 글 작성 페이지로 이동
+		        	document.forms.memberForm.action = "${contextPath}/socialing/updateView";
+	    			document.forms.memberForm.submit();
 		        }
 	
 		        function deleteBoard() {
