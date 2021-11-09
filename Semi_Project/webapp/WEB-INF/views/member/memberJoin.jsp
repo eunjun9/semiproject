@@ -19,7 +19,24 @@
     <!--font-family: 'Noto Sans KR', sans-serif;-->
     <!-- JQuery-->
     <script src="../js/jquery-3.6.0.min.js"></script>
-
+	<style>
+		.firstjoin{
+		    margin-left: 90px;
+		    font-size: 1.5rem;
+		    font-weight: 500px
+		}
+		
+		.form-label{
+		    font-size: 13px;
+		    color: #000;
+		    font-weight: 500;
+		    line-height: 1.54;
+		    letter-spacing: -.31px;
+		    margin-bottom: .25rem!important;
+		    width: 100px;
+		    font-size: 0.9rem;
+		}
+	</style>
 
 </head>
 
