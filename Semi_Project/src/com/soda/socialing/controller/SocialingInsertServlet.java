@@ -83,23 +83,14 @@ public class SocialingInsertServlet extends HttpServlet {
 		else
 			splace = splaceArr[0]; // 온라인 모임일 경우 (상세 주소 x)
 		
-		// 모임 날짜+시간 String -> Date로 변경
-//		String from = sdate + " " + stime;
-//		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd HH:mm");
-//		
-//		java.util.Date tempDate = null;
-//		try {
-//			tempDate = sdf.parse(from);
-//		} catch (ParseException e) {
-//			e.printStackTrace();
-//		}
-		
+		// 모임 날짜 String -> Date로 변경
 		Date date = Date.valueOf(sdate);
 		
 		Socialing socialing = new Socialing();
 		socialing.setnTitle(stitle);
 		socialing.setnContent(scontent);
 		socialing.setSdate(date);
+		socialing.setStime(stime);
 		socialing.setStype(stype);
 		socialing.setSplace(splace);
 		socialing.setnType("소셜링");
