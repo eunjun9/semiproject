@@ -74,7 +74,7 @@ public class WishListDao {
 				w.setnNum(rset.getInt("notice_num"));
 				w.setcPrice(rset.getInt("c_price"));
 				w.setcCategory(rset.getString("c_category"));
-				w.setcSDate(rset.getDate("c_sdate"));
+				w.setvDate(rset.getString("v_date"));
 				w.setcLocation(rset.getString("c_location"));
 				w.setcTime1(rset.getString("c_time1"));
 				w.setcTime2(rset.getString("c_time2"));
