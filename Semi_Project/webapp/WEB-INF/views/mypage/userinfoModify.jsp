@@ -1,13 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="java.util.*" import="com.soda.member.model.vo.Member"%>
 
-<%
-	// session 객체에 담긴 loginUser 정보를 변수에 담아두기
-	Member loginUser = (Member)session.getAttribute("loginUser");
-%>
 
-
-  
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -39,7 +33,163 @@
     <!-- JQuery-->
     <script src="../js/jquery-3.6.0.min.js"></script>
 
-	
+	<style>
+		/* 배너 */
+.board {
+    width: 100%;
+    display: flex;
+ }
+ 
+ .board-inner {
+     max-width: 1000px;
+     margin : 0 auto;
+ }
+
+ *{
+    box-sizing: border-box;
+   
+}
+
+div{
+    display: block;
+}
+
+.joinInfoArea{
+    max-width: 400px;
+    width: 100%;
+    padding-right: 0;
+    padding-left: 0;
+    margin-left: 38%;
+    margin-bottom: 3rem!important;
+    
+}
+
+
+
+form{
+    display: block;
+    margin-top: 0em;
+}
+
+body{
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    text-align: left;
+    background-color: #fff;
+}
+ 
+html{
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body, html{
+    font-family: Noto Sans KR;
+    letter-spacing: -.4px;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: left;
+}
+
+.firstjoin{
+    font-size: 1.5rem;
+    font-weight: 500px;
+    margin-left: 60px;
+    
+}
+
+.common-form{
+    position: relative;
+    width: 400px;
+    height: 100%;
+    min-height: 1px;
+    padding-right: 0;
+    padding-left: 0;
+    margin-left: 50px;
+    margin-bottom: .5rem!important;
+    flex: 0 0 100%;
+    max-width: 100%;
+    display: block;
+    
+}
+
+#idCheck{
+    margin-left: 5px;
+}
+
+.form-group{
+    margin-bottom: 0;
+    margin: 0;
+}
+
+.form-label{
+    font-size: 13px;
+    color: #000;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.54;
+    letter-spacing: -.31px;
+    margin-bottom: .25rem!important;
+    width: 100px;
+    font-size: 0.9rem;
+    
+}
+
+.form-control{
+    border-radius: 5px;
+    width: 270px;
+    height: 35px;
+    border: 1px solid lightgray;
+}
+
+.form-check{
+    position: relative;
+    display: block;
+    padding-left: 1.25rem;
+}
+
+.form-check-input{
+    position: absolute;
+    margin-top: .3rem;
+    margin-left: -1.25rem;
+    overflow: visible;
+    display: flex;
+}
+
+#pwdUpdateBtn{
+    border-radius: 3px;
+    margin-left: 5px;
+}
+
+#btn-modify{
+    width: 100px;
+    margin-top: 25px;
+    margin-left: 52px;
+    padding: 9px;
+    border-radius: 20px;
+    border: 1px solid #DAEFF5;
+    background-color: #DAEFF5;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+#btn-delete{
+    width: 100px;
+    margin-top: 30px;
+    margin-left: 12px;
+    padding: 9px;
+    border-radius: 20px;
+    border: 1px solid red;
+    background-color: red;
+    font-size: 1rem;
+    font-weight: 700;
+}
+	</style>
 
 
 </head>
@@ -48,34 +198,14 @@
 	
 
     <!--header-->
-    
-    <div class="header">
-        <div class="head-inner">
-
-          <div class="logo">
-            <img src="resources/images/logo.png">
-          </div>
-
-            <div class="big-category">
-                <div class="category1">
-                    <a href="#">SOCIALING</a>
-                    <a href="#">CLASS</a>
-                    <a href="#">MAGAZINE</a>
-                </div>
-                <div class="category2">
-                    <a href="#">CART</a>
-                    <a href="#">MYPAGE</a>
-                </div>
-            </div>
-
-        </div>
-    </div>
+    <%@ include file="/WEB-INF/views/common/header.jsp" %>
+   
 
     <div class="joinInfoArea" id="register_row">
         <form id="register_form" action="<%= request.getContextPath() %>/mypage/userinfomodify"
         method="post" onsubmit="return validate();">
             <div class="common-form title">
-                <h2 class="firstjoin">회원 정보 수정</h2>
+                <p class="firstjoin">회원 정보 수정</p>
             </div>
             <div class="common-form">
                 <div class="form-group">
@@ -151,34 +281,8 @@
 
 
     <!--footer-->
-    <div class="footer">
-        <div class="foot-inner">
-            <div class="foot-logo foot-all">
-                S O D A</div>
-            <div class="information foot-all">
-                <ul>주식회사 소셜 다이닝</ul>
-                <ul>대표 : 홍길동 | 개인정보관리책임자 : 홍길동 | 전화 : 02-123-4567 | 이메일 : soda@gmail.com</ul>
-                <ul>주소 : 서울 강남구 테헤란로 14길 6 남도빌딩 2층 | 사업자등록번호 : 000-00-00000</ul>
-                <ul> 통신판매 : 제 2021-서울강남-0000호</ul>
-                <ul>영업시간 : 월-금 오후 2시-7시</ul>
-            </div>
-            <div class="foot-category foot-all">
-                <ul><a href="#">소다소개</a></ul>
-                <ul><a href="#">공지사항 </a></ul>
-                <ul><a href="#">강사신청</a></ul>
-                <ul><a href="#">자주묻는질문</a></ul>
-            </div>
-
-
-        </div>
-    </div>
-    <div class="final">
-        <div class="foot-final">
-            <a href="#">이용약관 | </a>
-            <a href="#">개인정보처리방침 | </a>
-            <a href="#">사업자정보확인</a>
-        </div>
-    </div>
+	<%@ include file="/WEB-INF/views/common/footer.jsp"%>
+	
 </body>
 
 </html>

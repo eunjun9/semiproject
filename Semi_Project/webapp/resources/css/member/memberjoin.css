@@ -52,14 +52,11 @@ div{
     padding-right: 0;
     padding-left: 0;
     margin-top: 30px;
-    margin-left: 37.5%;
+    margin-left: 38%;
     margin-bottom: 3rem!important;
 }
 
-.firstjoin{
-    margin-left: 100px;
-    
-}
+
 
 form{
     display: block;
@@ -83,6 +80,12 @@ body, html{
     font-weight: 400;
     line-height: 1.5;
     text-align: left;
+}
+
+.firstjoin{
+    margin-left: 100px;
+    font-size: 1.5rem;
+    font-weight: 500px;
 }
 
 .common-form{
@@ -117,7 +120,6 @@ body, html{
     letter-spacing: -.31px;
     margin-bottom: .25rem!important;
     width: 100px;
-    font-weight: 700;
     font-size: 0.9rem;
 }
 

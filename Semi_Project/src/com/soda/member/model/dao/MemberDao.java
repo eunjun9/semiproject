@@ -309,7 +309,7 @@ public class MemberDao {
 	public int deleteAccount(Connection conn, String userId) {
 		int result = 0;
 		PreparedStatement pstmt = null;
-		String sql = memberQuery.getProperty("deleteAccount");
+		String sql = memberQuery.getProperty("deleteMember");
 		
 		try {
 			pstmt = conn.prepareStatement(sql);

@@ -12,6 +12,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Full Screen Site">
     <title>시작페이지</title>
+    
+    <%-- session에 담긴 message 있을 경우 alert 하는 script --%>
+	<% if(session.getAttribute("message") != null) { %>
+	<script>
+	alert('<%= session.getAttribute("message") %>');
+	</script>
+	<% 
+			session.removeAttribute("message");
+		} 
+	%>
+    
     <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
     <link href="resources/css/common/startpage.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">

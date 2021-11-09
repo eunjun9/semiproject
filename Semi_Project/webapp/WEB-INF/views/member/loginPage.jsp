@@ -6,6 +6,17 @@
 <head>
 <meta charset="UTF-8">
 <title>loginPage</title>
+
+<%-- session에 담긴 message 있을 경우 alert 하는 script --%>
+	<% if(session.getAttribute("message") != null) { %>
+	<script>
+	alert('<%= session.getAttribute("message") %>');
+	</script>
+	<% 
+			session.removeAttribute("message");
+		} 
+	%>
+
 <!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <!-- 외부 스타일시트 -->
