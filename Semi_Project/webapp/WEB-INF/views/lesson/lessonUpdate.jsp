@@ -30,22 +30,22 @@
         <div id="cForm_wrapper">
             <form method="post" action="${ contextPath }/lesson/update"
 					enctype="multipart/form-data">
-				<input type="hidden" name="bid" value="${ board.bid }"> 
-					<c:forEach items="${ board.photoList }" var="photo"> <!-- bid와 함께 (수정 전 원래)사진의 unique값인 changeName도 같이 넘김 -->
+					<input type="hidden" name="nNum" value="${ lesson.nNum }"> 
+					<c:forEach items="${ lesson.photoList }" var="photo"> <!-- bid와 함께 (수정 전 원래)사진의 unique값인 changeName도 같이 넘김 -->
 					<input type="hidden" name="changeName" value="${ photo.changeName }">
 					</c:forEach>	
 					
                 <h3>어떤 클래스인가요?</h3>
                                 
                 <h4 id="sub_title1">카테고리를 선택하세요</h4>
-                    <select id="bigC" name="bigC" required>
+                    <select id="bigC" name="bigC">
                         <option value="big" disabled>대분류 선택</option>
                         <option value="art" id="art" <c:if test="${ lesson.ctag1 == 'art'}">selected</c:if>>예술</option>
                         <option value="food" id="food" <c:if test="${ lesson.ctag1 == 'food'}">selected</c:if>>음식</option>
                         <option value="sport" id="sport" <c:if test="${ lesson.ctag1 == 'sport'}">selected</c:if>>운동</option>
                     </select>
                     
-                     <select name="smallC" id="smallC" required>
+                     <select name="smallC" id="smallC">
                         <option id="small" disabled>소분류 선택</option>
                         <option value="10" class="artS" <c:if test="${ lesson.ctag2 == 10}">selected</c:if>>드로잉</option>
                         <option value="20" class="artS" <c:if test="${ lesson.ctag2 == 20}">selected</c:if>>악기</option>
@@ -93,7 +93,7 @@
                     </script>
                     
                 <h4 id="sub_title4">가격을 입력해주세요</h4> 
-                <input type="text" name="cPrice" value="${ lesson.cPrice }" placeholder="'원' 빼고 입력" required>원
+                <input type="text" name="cPrice" value="${ lesson.cPrice }" placeholder="'원' 빼고 입력" >원
                 <hr>
                 
                 <h3>상세페이지를 작성해주세요</h3>
@@ -102,7 +102,7 @@
                     <h4 id="sub_title5">썸네일/메인 이미지를 첨부해주세요</h4>
                     <div class="image_area"><img src="${ contextPath }${ lesson.photoList.get(0).route }${ lesson.photoList.get(0).changeName }"></div>
                     <button type="button" id="fileBtn">file</button><br>
-                    <input type="file" name="cThumbnail" accept="image/gif,image/jpeg,image/png" required>
+                    <input type="file" name="cThumbnail" accept="image/gif,image/jpeg,image/png">
                 </div>
                 
                 <!-- 파일 버튼 스크립트 -->
@@ -135,12 +135,12 @@
                 
 
                 <div id="form_head">
-                    <textarea name="nTitle" id="sub_title6" placeholder="클래스 제목을 입력하세요(최대20자)"required>${ lesson.nTitle }</textarea>
+                    <textarea name="nTitle" id="sub_title6" placeholder="클래스 제목을 입력하세요(최대20자)">${ lesson.nTitle }</textarea>
                     <p id="lengthck"></p>
                     <hr>
                     <label>타입</label> 
-                    <input type="radio" name="class_type" value="원데이" id="oneday" <c:if test="${ lesson.cCategory == '원데이' }">checked</c:if>><label for="oneday" class="btnlabel">원데이 클래스</label>
-                    <input type="radio" name="class_type" value="vod" id="vod" <c:if test="${ lesson.cCategory == 'vod' }">checked</c:if>><label for="vod" class="btnlabel">VOD 클래스</label><br>
+                    <input type="radio" name="class_type" value="원데이" id="oneday"><label for="oneday" class="btnlabel">원데이 클래스</label>
+                    <input type="radio" name="class_type" value="vod" id="vod"><label for="vod" class="btnlabel">VOD 클래스</label><br>
                 </div> 
                 
                 <script>
@@ -160,9 +160,7 @@
                     <hr><br>
                     <h4>클래스 소개를  작성해주세요</h4>
                     <textarea class="summernote" name="editordata">${ lesson.nContent }</textarea>
-					<c:if test="${ lesson.photoList.size() > 1 }">
-							<img src="${ contextPath }${ lesson.photoList.get(1).route }${ lesson.photoList.get(1).changeName}">
-					</c:if>
+					<div class="image_area2"><img src="${ contextPath }${ lesson.photoList.get(1).route }${ lesson.photoList.get(1).changeName}"></div>	
                     <button type="button" id="fileBtn2">file</button><br>
                     <input type="file" name="contentImg1" accept="image/gif,image/jpeg,image/png" id="imageinfo1">
   				</div>
@@ -193,9 +191,37 @@
 
                     }
                 </script>
+                
+                <script>
+                    let fileBtn3 = document.querySelector("#fileBtn3");
+                
+                    const fileElements3 = document.querySelectorAll("#imageinfo2");
+                    const image_area3 = document.querySelectorAll(".image_area3");
+                    /* 버튼 클릭했을 때 input type file 오픈 */
+                    fileBtn3.onclick = function() {
+                        fileElements3[0].click(); 
+                    }
+                
+                    /* input type file 요소에 change 이벤트 발생 시 (파일 첨부 발생) */
+                    fileElements3.forEach(item => item.addEventListener('change', preview3));
+                
+                    function preview3(){
+                        let index3 = Array.from(fileElements3).indexOf(this);
+
+                        if(this.files && this.files[0]) {
+                            let reader3 = new FileReader();
+                            reader3.readAsDataURL(this.files[0]);
+                            reader3.onload = function(){
+                                image_area3[index3].innerHTML = "<img src='" + reader3.result + "'>";
+                            }
+                        }
+
+                    }
+                </script>
+                
                 <hr>  
                 <h4>강사 소개를  작성해주세요</h4>
-                <textarea name="tutor_intro" id="tutor_intro" required>${ lesson.cTutor }</textarea>
+                <textarea name="tutor_intro" id="tutor_intro">${ lesson.cTutor }</textarea>
                 
                 <!-- 원데이 클래스 일때 -->
                 <div class="offdate">

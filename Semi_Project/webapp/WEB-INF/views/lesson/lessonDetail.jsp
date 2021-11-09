@@ -129,14 +129,9 @@
     <div class="cDetail_b">
          <pre class="cBodyText2">${ lesson.nContent }</pre>
 			<div class="photoList">
-				<c:choose>
-					<c:when test="${ lesson.photoList.size() > 1 }">
+					<c:if test="${ lesson.photoList.size() > 1 }">
 						<img  src="${ contextPath }${ lesson.photoList.get(1).route }${ lesson.photoList.get(1).changeName }">
-					</c:when>
-					<c:when test="${ lesson.photoList.size() >  }">
-						<img  src="${ contextPath }${ lesson.photoList.get(2).route }${ lesson.photoList.get(2).changeName }">
-					</c:when>
-				</c:choose>
+					</c:if>
 			</div>
         <hr>
     </div>

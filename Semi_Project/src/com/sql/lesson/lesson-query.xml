@@ -174,14 +174,54 @@
 	</entry>
 	
 	<entry key="deletePhoto">
-		UPDATE "TBL_FILE"
+		UPDATE TBL_FILE
 	        SET STATUS = 'N'
 	      WHERE NOTICE_NUM =?
 	</entry>
+	
+	<entry key="updateLesson">
+		UPDATE CLASS
+		   SET C_TAG1 = ?, C_TAG2 = ?, C_PRICE = ?, C_CATEGORY = ?, 
+		   	   V_DATE = ?, O_DATE1 = ?, O_DATE2 = ?, C_LOCATION = ?,
+		   	   C_TUTOR = ?, C_TIME1 = ?, C_TIME2 = ?
+		 WHERE NOTICE_NUM = ? 
+ 	</entry>
 
+	<entry key="updateNotice">
+		UPDATE NOTICE
+		   SET NOTICE_TITLE = ?, NOTICE_CONTENT = ?, MODIFY_DATE = SYSDATE
+		 WHERE NOTICE_NUM = ? 
+	</entry>
+	
+	<entry key="updatePhoto">
+		UPDATE TBL_FILE
+		   SET ORIGIN_NAME = ?, CHANGE_NAME =?
+		 WHERE CHANGE_NAME = ?
+	</entry>
 
-
-
+	<entry key="insertAddedPhoto">
+		INSERT 
+		  INTO TBL_FILE
+		(
+			FILE_NUM
+		  , NOTICE_NUM
+		  , ROUTE
+		  , ORIGIN_NAME
+		  , CHANGE_NAME
+		  , FILE_LEVEL
+		  , STATUS
+		)
+		VALUES
+		(
+			SEQ_FID_NUM.NEXTVAL
+		  , ?
+		  , ?
+		  , ?
+		  , ?
+		  , ?
+		  , DEFAULT
+		)
+	</entry>
 
 
 </properties>

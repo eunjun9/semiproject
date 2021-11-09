@@ -8,7 +8,7 @@
 <title>클래스 등록</title>
 
     <!--외부 스타일 시트-->
-    <link href="${ contextPath }/resources/css/lesson/lesson_form.css?6" rel="stylesheet">
+    <link href="${ contextPath }/resources/css/lesson/lesson_form.css?7" rel="stylesheet">
 
     <!-- font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -111,7 +111,6 @@
                 
                 <script>
                 	$("#sub_title6").keyup(function(e){
-                		console.log("키업");
                 		var content = $(this).val();
                 		$("#lengthck").val(content.length +"/");
                 		if(content.length > 20){

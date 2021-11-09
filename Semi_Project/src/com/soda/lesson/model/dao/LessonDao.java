@@ -179,7 +179,8 @@ public class LessonDao {
 		
 		return lesson;
 	}
-
+	
+	// 클래스 조회
 	public List<Attachment> selectPhotoList(Connection conn, int nNum) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -212,7 +213,7 @@ public class LessonDao {
 		return photoList;
 	}
 
-	// 글 삽입 - notice 테이블
+	// 클래스 삽입 : 글 (notice 테이블)
 	public int insertNotice(Connection conn, Lesson lesson) {
 		int result = 0;
 		PreparedStatement pstmt = null;
@@ -236,7 +237,7 @@ public class LessonDao {
 		return result;
 	}
 	
-	// 클 삽입 - lesson 테이블
+	// 클래스 삽입 : 글 (lesson 테이블)
 	public int insertLesson(Connection conn, Lesson lesson) {
 		int result = 0;
 		PreparedStatement pstmt = null;
@@ -269,7 +270,7 @@ public class LessonDao {
 		return result;
 	}
 	
-	// 사진 삽입
+	// 클래스 삽입 : 사진 
 	public int insertAttachment(Connection conn, Attachment photo) {
 		int result = 0;
 		PreparedStatement pstmt = null;
@@ -291,7 +292,8 @@ public class LessonDao {
 		}
 		return result;
 	}
-
+	
+	// 클래스 삭제 : 글
 	public int deleteLesson(Connection conn, int nNum) {
 		PreparedStatement pstmt = null;
 		String sql = lessonQuery.getProperty("deleteLesson");
@@ -312,6 +314,7 @@ public class LessonDao {
 		return result;
 	}
 
+	// 클래스 삭제 : 사진
 	public int deletePhoto(Connection conn, int nNum) {
 		PreparedStatement pstmt = null;
 		String sql = lessonQuery.getProperty("deletePhoto");
@@ -328,6 +331,106 @@ public class LessonDao {
 			} finally {
 				close(pstmt);
 			}
+		return result;
+	}
+	
+	// 클래스 수정 : 글 (lesson 테이블)
+	public int updateLesson(Connection conn, Lesson lesson) {
+		PreparedStatement pstmt = null;
+		String sql = lessonQuery.getProperty("updateLesson");
+		int result = 0;
+		
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, lesson.getCtag1());
+			pstmt.setString(2, lesson.getCtag2());
+			pstmt.setInt(3, lesson.getcPrice());
+			pstmt.setString(4, lesson.getcCategory());
+			pstmt.setString(5,lesson.getvDate());
+			pstmt.setDate(6, (Date) lesson.getoDate1());
+			pstmt.setDate(7, (Date) lesson.getoDate2());
+			pstmt.setString(8, lesson.getcLocation());
+			pstmt.setString(9, lesson.getcTutor());
+			pstmt.setString(10, lesson.getcTime1());
+			pstmt.setString(11, lesson.getcTime2());
+			pstmt.setInt(12, lesson.getnNum());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	// 클래스 수정 : 글 (notice 테이블)
+	public int updateNotice(Connection conn, Lesson lesson) {
+		PreparedStatement pstmt = null;
+		String sql = lessonQuery.getProperty("updateNotice");
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, lesson.getnTitle());
+			pstmt.setString(2, lesson.getnContent());
+			pstmt.setInt(3, lesson.getnNum());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	// 클래스 수정 : 기존 사진 변경
+	public int updatePhoto(Connection conn, Attachment photo) {
+		PreparedStatement pstmt = null;
+		String sql = lessonQuery.getProperty("updatePhoto");
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, photo.getOriginName());
+			pstmt.setString(2, photo.getChangeName());
+			pstmt.setString(3, photo.getDeletedName());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
+	// 클래스 수정 : 사진 추가
+	public int insertAddedPhoto(Connection conn, int nNum, Attachment photo) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = lessonQuery.getProperty("insertAddedPhoto");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, nNum);
+			pstmt.setString(2, photo.getRoute());
+			pstmt.setString(3, photo.getOriginName());
+			pstmt.setString(4, photo.getChangeName());
+			pstmt.setInt(5, photo.getFileLevel());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
 		return result;
 	}
 
