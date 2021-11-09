@@ -128,11 +128,16 @@
     <h4>클래스 소개</h4>
     <div class="cDetail_b">
          <pre class="cBodyText2">${ lesson.nContent }</pre>
-         <c:forEach items="${ lesson.photoList }" var="photo">
 			<div class="photoList">
-				<img src="${ contextPath }${ photo.route}${ photo.changeName }">
+				<c:choose>
+					<c:when test="${ lesson.photoList.size() > 1 }">
+						<img  src="${ contextPath }${ lesson.photoList.get(1).route }${ lesson.photoList.get(1).changeName }">
+					</c:when>
+					<c:when test="${ lesson.photoList.size() >  }">
+						<img  src="${ contextPath }${ lesson.photoList.get(2).route }${ lesson.photoList.get(2).changeName }">
+					</c:when>
+				</c:choose>
 			</div>
-		</c:forEach>
         <hr>
     </div>
 </div>
