@@ -146,4 +146,38 @@ public class SocialingService {
 		return result;
 	}
 
+	public int updateSocialing(Socialing socialing) {
+		Connection conn = getConnection();
+		
+		/* Notice 테이블 수정 */
+		int noticeResult = socialingDao.updateNotice(conn, socialing);
+		
+		/* Socialing 테이블 수정 */
+		int socialingResult = socialingDao.updateSocialing(conn, socialing);
+		
+		/* 실제 수행 값을 담을 변수 */
+		int updatePhotoResult = 0;
+		/* 수행 해야 될 리스트의 갯수를 담을 변수 */
+		int updateListCount = 0;
+		
+		/* Attachment 테이블 수정 및 삽입 */
+		for(SodaFile photo : socialing.getPhotoList()) {
+			if(photo.getDeletedName() != null) {
+				/* 기존에 있던 파일을 덮어쓰기 - update */
+				updatePhotoResult += socialingDao.updatePhoto(conn, photo);
+				updateListCount++;
+			}
+		}
+		
+		int result = 0;
+		if(noticeResult > 0 && socialingResult > 0 && updatePhotoResult == updateListCount) {
+			commit(conn);
+			result = 1;
+		} else {
+			rollback(conn);
+		}
+		
+		return result;
+	}
+
 }

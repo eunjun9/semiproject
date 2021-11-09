@@ -377,4 +377,76 @@ public class SocialingDao {
 		return result;
 	}
 
+	public int updateNotice(Connection conn, Socialing socialing) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = socialingQuery.getProperty("updateNotice");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, socialing.getnTitle());
+			pstmt.setString(2, socialing.getnContent());
+			pstmt.setString(3, socialing.getnType());
+			pstmt.setInt(4, socialing.getnNum());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+	
+	public int updateSocialing(Connection conn, Socialing socialing) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = socialingQuery.getProperty("updateSocialing");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setDate(1, new java.sql.Date(socialing.getSdate().getTime()));
+			pstmt.setString(2, socialing.getStime());
+			pstmt.setString(3, socialing.getStype());
+			pstmt.setString(4, socialing.getSplace());
+			pstmt.setInt(5, socialing.getMinMember());
+			pstmt.setInt(6, socialing.getMaxMember());
+			pstmt.setInt(7, socialing.getnNum());
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	public int updatePhoto(Connection conn, SodaFile photo) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = socialingQuery.getProperty("updatePhoto");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, photo.getOriginName());
+			pstmt.setString(2, photo.getChangeName());
+			pstmt.setString(3, photo.getDeletedName());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
 }

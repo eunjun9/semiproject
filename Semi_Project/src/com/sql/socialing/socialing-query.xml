@@ -184,4 +184,30 @@
 		  , 'Y'
 		)
 	</entry>
+	
+	<entry key="updateNotice">
+		UPDATE NOTICE
+		   SET NOTICE_TITLE = ?
+		   	 , NOTICE_CONTENT = ?
+		   	 , NOTICE_TYPE = ?
+		 WHERE NOTICE_NUM = ?
+	</entry>
+	
+	<entry key="updateSocialing">
+		UPDATE SOCIALING
+		   SET S_DATE = ?
+		     , S_TIME = ?
+		     , S_TYPE = ?
+		     , S_PLACE = ?
+		     , MIN_MEMBER = ?
+		     , MAX_MEMBER = ?
+		 WHERE NOTICE_NUM = ?
+	</entry>
+	
+	<entry key="updatePhoto">
+		UPDATE TBL_FILE
+		   SET ORIGIN_NAME = ?
+		     , CHANGE_NAME = ?
+		 WHERE CHANGE_NAME = ?
+	</entry>
 </properties>
