@@ -37,7 +37,8 @@ public class KakaoLoginServlet extends HttpServlet {
 		String kakaoId = request.getParameter("kakaoId");
 		String kakaoGender = request.getParameter("kakaoGender");
 		
-		System.out.println(userId + "/" + userName + "/" + kakaoId + "/" + kakaoGender);
+		// 테스트
+		// System.out.println(userId + "/" + userName + "/" + kakaoId + "/" + kakaoGender);
 		
 		// 카카오 계정으로 이미 가입된 회원이 있는지 조회
 		Member loginUser = new MemberService().loginMember(userId);

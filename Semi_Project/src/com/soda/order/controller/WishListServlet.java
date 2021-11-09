@@ -46,6 +46,7 @@ public class WishListServlet extends HttpServlet {
 		    int price = cart.getcPrice();
 		    totalPrice += price;
 		  }
+		
 		// 테스트
 		// System.out.println(totalPrice);
 
@@ -58,7 +59,6 @@ public class WishListServlet extends HttpServlet {
 				request.getRequestDispatcher("/WEB-INF/views/common/errorpage.jsp").forward(request, response);
 			}
 		}
-	
 	
 
 	/**

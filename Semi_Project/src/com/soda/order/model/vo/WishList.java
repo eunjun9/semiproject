@@ -13,7 +13,7 @@ public class WishList {
 	private String vDate;		// 시작 날짜 (class 테이블 참조)
 	private String cTime1;		// 클래스 시간1 (class 테이블 참조)
 	private String cTime2;		// 클래스 시간2 (class 테이블 참조)
-	private String oDate;		// 원데이 선택 날짜
+	private String lessonDate;	// 원데이 선택 날짜
 	
 	private String cLocation;	// 장소 (class 테이블 참조)
 	private String route;		// 업로드 파일 저장 경로 (tbl_file 테이블 참조)
@@ -56,7 +56,7 @@ public class WishList {
 
 	// 전체
 	public WishList(String userId, int nNum, int wishNum, String wishStatus, String nTitle, int cPrice,
-			String cCategory, String vDate, String cTime1, String cTime2, String oDate, String cLocation,
+			String cCategory, String vDate, String cTime1, String cTime2, String lessonDate, String cLocation,
 			String route, String changeName) {
 		super();
 		this.userId = userId;
@@ -69,7 +69,7 @@ public class WishList {
 		this.vDate = vDate;
 		this.cTime1 = cTime1;
 		this.cTime2 = cTime2;
-		this.oDate = oDate;
+		this.lessonDate = lessonDate;
 		this.cLocation = cLocation;
 		this.route = route;
 		this.changeName = changeName;
@@ -181,13 +181,13 @@ public class WishList {
 	
 	
 
-	public String getoDate() {
-		return oDate;
+	public String getlessonDate() {
+		return lessonDate;
 	}
 
 
-	public void setoDate(String oDate) {
-		this.oDate = oDate;
+	public void setlessonDate(String lessonDate) {
+		this.lessonDate = lessonDate;
 	}
 
 
@@ -220,7 +220,7 @@ public class WishList {
 	public String toString() {
 		return "WishList [userId=" + userId + ", nNum=" + nNum + ", wishNum=" + wishNum + ", wishStatus=" + wishStatus
 				+ ", nTitle=" + nTitle + ", cPrice=" + cPrice + ", cCategory=" + cCategory + ", vDate=" + vDate
-				+ ", cTime1=" + cTime1 + ", cTime2=" + cTime2 + ", oDate=" + oDate
+				+ ", cTime1=" + cTime1 + ", cTime2=" + cTime2 + ", lessonDate=" + lessonDate
 				+ ", cLocation=" + cLocation + ", route=" + route + ", changeName=" + changeName + "]";
 	}
 
