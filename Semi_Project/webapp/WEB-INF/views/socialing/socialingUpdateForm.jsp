@@ -25,65 +25,73 @@
         <div class="body-inner">
             <div class="w-title">
                 <a id="back" href="${ contextPath }/socialing/main">&lt; 소셜링</a>
-                <p id="main-title">글 작성하기</p>
+                <p id="main-title">글 수정하기</p>
                 <h3 id="sub-title">모든 입력폼은 필수 영역입니다.</h3>
             </div>
             <article id="wrapper">
             	<!-- 파일 업로드를 위해서 enctype 지정 -->
-                <form method="post" action="${ contextPath }/socialing/form" enctype="multipart/form-data">
+                <form method="post" action="${ contextPath }/socialing/update" enctype="multipart/form-data">
+                	<input type="hidden" name="nNum" value="${ socialing.nNum }">
+				<c:forEach items="${ socialing.photoList }" var="photo">
+					<input type="hidden" name="changeName" value="${ photo.changeName }">
+				</c:forEach>
+                
                     <h1 id="w-main-title">어떤 활동을 하는 소셜링인가요?</h1>
                     <h4 id="w-sub-title">제목을 입력해 주세요 (최대 30자)</h4>
-                    <input type="text" id="inputTitle" name="inputTitle" maxlength="30" placeholder="연희동 카페투어 함께 가요!" required>
+                    <input type="text" id="inputTitle" name="inputTitle" maxlength="30" placeholder="연희동 카페투어 함께 가요!"
+                    value="${ soclaling.nTitle }" required>
                     
                     <h2 id="w-sub-title2">설명</h2>
                     <h4 id="w-sub-title3">썸네일 이미지를 첨부해주세요</h4>
-                    <div class="image_area"></div>
+                    <div class="image_area">
+                    <img src="${ contextPath }${ socialing.photoList.get(0).route }${ socialing.photoList.get(0).changeName }"></div>
                     <button type="button" id="fileBtn">file</button><br>
                     <input type="file" name="thumbnail" accept="image/gif,image/jpeg,image/png" required>
-                    <textarea id="content" name="content" placeholder="함께 이야기하고 싶은 주제나 꼭 알려주고 싶은 내용을 입력해 주세요" required></textarea>
+                    <textarea id="content" name="content" placeholder="함께 이야기하고 싶은 주제나 꼭 알려주고 싶은 내용을 입력해 주세요"
+                     required>${ socialing.nContent }</textarea>
                     <hr>
                     
                     <h1 id="w-main-title2">언제 어디서 만나나요?</h1>
                     <h4 id="w-sub-title4">날짜를 선택하세요</h4>
-                    <input type="date" name="dateIn" required>
+                    <input type="date" name="dateIn" value="${ socialing.sdate }" required>
                     <h4 id="w-sub-title5">시간을 선택하세요</h4>
-                    <input type="time" name="timeIn" required>
+                    <input type="time" name="timeIn" value="${ socialing.stime }" required>
                     <h4 id="w-sub-title5">장소를 입력하세요</h4>
-                    <input type="radio" id="offline" name="type" value="OFF" checked>
+                    <input type="radio" id="offline" name="type" value="OFF" <c:if test='${ socialing.stype == "OFF" }'>checked</c:if>>
                     <label for="offline">오프라인</label>
-                    <input type="radio" id="online" name="type" value="ON">
+                    <input type="radio" id="online" name="type" value="ON" <c:if test='${ socialing.stype == "ON" }'>checked</c:if>>
                     <label for="online">온라인</label><br>
                     
 					<div class="placeArea1">
-			            <input type="text" id="inputPlace" name="inputPlace" 
-			            class="postcodify_address" placeholder="ex. 서울특별시 강남구 테헤란로 / Zoom" required>&nbsp;&nbsp;
+			            <input type="text" id="inputPlace" name="inputPlace" class="postcodify_address" 
+			            placeholder="ex. 서울특별시 강남구 테헤란로 / Zoom" value='${ socialing.splace.split("\\|")[0] }' required>&nbsp;&nbsp;
 		            <!-- 오프라인 선택 시 출력(첫화면 기본) / 온라인 선택 시 숨김 -->
 		            <span class="placeArea2">
 			            <button type="button" class="search" id="postcodify_search_button">검색</button><br>
-			            <input type="text" id="inputPlace2" name="inputPlace" 
-			            class="postcodify_details" placeholder="상세 주소를 입력해 주세요"><br>
+			            <input type="text" id="inputPlace2" name="inputPlace" class="postcodify_details" 
+			            placeholder="상세 주소를 입력해 주세요" value='${ socialing.splace.split("\\|")[1] }'><br>
 		            </span>
 					</div>
                     
                     <h4 id="w-sub-title5">인원 설정</h4>
                     <select id="min" name="min">
-                        <option value="2">2명</option>
-                        <option value="3">3명</option>
-                        <option value="4">4명</option>
-                        <option value="5">5명</option>
-                        <option value="6">6명</option>
-                        <option value="7">7명</option>
-                        <option value="8">8명</option>
+                        <option value="2" <c:if test="${ socialing.minMember == 2 }">selected</c:if>>2명</option>
+                        <option value="3" <c:if test="${ socialing.minMember == 3 }">selected</c:if>>3명</option>
+                        <option value="4" <c:if test="${ socialing.minMember == 4 }">selected</c:if>>4명</option>
+                        <option value="5" <c:if test="${ socialing.minMember == 5 }">selected</c:if>>5명</option>
+                        <option value="6" <c:if test="${ socialing.minMember == 6 }">selected</c:if>>6명</option>
+                        <option value="7" <c:if test="${ socialing.minMember == 7 }">selected</c:if>>7명</option>
+                        <option value="8" <c:if test="${ socialing.minMember == 8 }">selected</c:if>>8명</option>
                     </select>
                     <p id="wave">~</p>
                     <select id="max" name="max">
-                        <option value="2">2명</option>
-                        <option value="3">3명</option>
-                        <option value="4">4명</option>
-                        <option value="5">5명</option>
-                        <option value="6">6명</option>
-                        <option value="7">7명</option>
-                        <option value="8">8명</option>
+                        <option value="2" <c:if test="${ socialing.maxMember == 2 }">selected</c:if>>2명</option>
+                        <option value="3" <c:if test="${ socialing.maxMember == 3 }">selected</c:if>>3명</option>
+                        <option value="4" <c:if test="${ socialing.maxMember == 4 }">selected</c:if>>4명</option>
+                        <option value="5" <c:if test="${ socialing.maxMember == 5 }">selected</c:if>>5명</option>
+                        <option value="6" <c:if test="${ socialing.maxMember == 6 }">selected</c:if>>6명</option>
+                        <option value="7" <c:if test="${ socialing.maxMember == 7 }">selected</c:if>>7명</option>
+                        <option value="8" <c:if test="${ socialing.maxMember == 8 }">selected</c:if>>8명</option>
                     </select><br>
                     
                     <div class="center">
