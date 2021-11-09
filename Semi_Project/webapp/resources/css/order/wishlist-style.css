@@ -16,7 +16,6 @@ body {
 .text {
     display: inline-block;
     align-items: center;
-    padding-right: 12%;
     margin-top: -10px;
     margin-bottom: -10px;
     text-align: center;
@@ -30,7 +29,7 @@ ul {
 
  .class-info{
     padding-left: 18%;
-    padding-right: 26%;
+    padding-right: 10%;
     
  }
 

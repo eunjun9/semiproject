@@ -16,23 +16,32 @@ body {
 .text {
     display: inline-block;
     align-items: center;
-    padding-right: 10%;
     margin-top: -10px;
     margin-bottom: -10px;
     text-align: center;
+    font-size : 20px;
  }
+ 
+ul {
+	list-style-type : none;
+}
+
 
  .class-info{
-    padding-left: 15%;
-    padding-right: 35%;
+    padding-left: 10%;
+    padding-right: 33%;
     
+ }
+ 
+ .class-date{
+ 	padding-left: 7%;	
  }
 
  .class-price{
-     padding-left: 120px;
+     padding-left: 17%;	
  }
 
-s
+
  hr{
      background-color: gray;
      height: 1px;
@@ -171,20 +180,10 @@ s
     width:  300px;
 }
 
-.total-price{
-    display: flex;
-    margin-left: 10%;
-    flex-direction:row;
-    font-size: 18px;
-    margin-top: -5%;
-    margin-bottom: -3%;
-}
 .total-price-last {
-    display: flex;
+    display: block;
     margin-left: 10%;
-    flex-direction:row;
-    font-size: 20px;
-    font-weight: bold;
+    font-size: 25px;
 }
 
 .totalPrice, .discountPrice{
@@ -192,8 +191,7 @@ s
     font-size: 18px;
 }
 .orderPrice{
-    margin-left: 10%;
-    font-size: 20px;
+    font-size: 30px;
     font-weight: bold;
 }
 
@@ -268,3 +266,8 @@ s
     border-radius: 1rem;
     font-size: 15px;
  }
+ 
+.order-name{
+	font-size : 20px;
+	margin-bottom : 5%;
+}

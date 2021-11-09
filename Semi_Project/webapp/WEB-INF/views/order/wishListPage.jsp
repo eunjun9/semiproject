@@ -38,13 +38,13 @@
 		<form name="classForm" action="${ contextPath }/payment" method="post">
 		<div class="wish-class" id="wish-class">
 			<div class="wish-content">
-
+				<input type="hidden" name="nNum" value="${ wishList.nNum }">
 				<!-- 체크박스 -->
 				<div class="class-checkbox">
-					<input type="checkbox" class="order-check" id="order1" name="checkClass" value="${ wishList.wishNum }">
+					<input type="checkbox" class="order-check" id="order" name="checkClass" value="${ wishList.wishNum }">
 				</div>
 				
-				<!-- 클래스 썸네일 이미지 / 클래스 등록하기 완료되면 수정할 예정 -->
+				<!-- 클래스 썸네일 이미지  -->
 				<div class="wish-class img">
 					<img src="${ contextPath }${ wishList.route }${ wishList.changeName }"
 						width="200px" height="150px">
@@ -79,7 +79,7 @@
 			
 			<!-- 신청하기(결제페이지로 이동) 버튼 -->
 			<div class="wish-class-btn">
-				<button type="button" class="order-button" type="submit">신청하기</button>
+				<button type="submit" class="order-button">신청하기</button>
 			</div>
 			<hr class="hr-line">
 		</div>
@@ -162,7 +162,7 @@
 				});
 			}
 		}
-	</script>
+		</script>
 	
 	<script>
 	function back(){
