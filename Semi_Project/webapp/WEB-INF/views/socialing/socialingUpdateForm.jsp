@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,12 +40,13 @@
                     <h1 id="w-main-title">어떤 활동을 하는 소셜링인가요?</h1>
                     <h4 id="w-sub-title">제목을 입력해 주세요 (최대 30자)</h4>
                     <input type="text" id="inputTitle" name="inputTitle" placeholder="연희동 카페투어 함께 가요!" 
-                    value="${ soclaling.nTitle }" required>
+                    value="${ socialing.nTitle }" required>
                     
                     <h2 id="w-sub-title2">설명</h2>
                     <h4 id="w-sub-title3">썸네일 이미지를 첨부해주세요</h4>
                     <div class="image_area">
-                    <img src="${ contextPath }${ socialing.photoList.get(0).route }${ socialing.photoList.get(0).changeName }"></div>
+                    <img src="${ contextPath }${ socialing.photoList.get(0).route }${ socialing.photoList.get(0).changeName }">
+                    </div>
                     <button type="button" id="fileBtn">file</button><br>
                     <input type="file" name="thumbnail" accept="image/gif,image/jpeg,image/png" required>
                     <textarea id="content" name="content" placeholder="함께 이야기하고 싶은 주제나 꼭 알려주고 싶은 내용을 입력해 주세요"
@@ -53,7 +55,8 @@
                     
                     <h1 id="w-main-title2">언제 어디서 만나나요?</h1>
                     <h4 id="w-sub-title4">날짜를 선택하세요</h4>
-                    <input type="date" name="dateIn" value="${ socialing.sdate }" required>
+                    <input type="date" name="dateIn" 
+                    value='<fmt:formatDate value="${ socialing.sdate }" type="date" pattern="yyyy-MM-dd"/>' required>
                     <h4 id="w-sub-title5">시간을 선택하세요</h4>
                     <input type="time" name="timeIn" value="${ socialing.stime }" required>
                     <h4 id="w-sub-title5">장소를 입력하세요</h4>
@@ -95,7 +98,7 @@
                     </select><br>
                     
                     <div class="center">
-                        <button type="submit" id="w-submit">소셜링 등록</button>
+                        <button type="submit" id="w-submit2">소셜링 수정</button>
                     </div>
                 </form>
             </article>

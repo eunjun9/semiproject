@@ -202,7 +202,7 @@ public class SocialingDao {
 			
 			rset = pstmt.executeQuery();
 			
-			// 썸네일 사진 1개 (프로필사진 여기로 추가해야되면 while문으로 변경)
+			// 썸네일 사진 1개 (사진 추가해야 되면 while문으로 변경)
 			if(rset.next()) {
 				SodaFile file = new SodaFile();
 				file.setFileNum(rset.getInt("file_num"));
@@ -437,6 +437,48 @@ public class SocialingDao {
 			pstmt.setString(1, photo.getOriginName());
 			pstmt.setString(2, photo.getChangeName());
 			pstmt.setString(3, photo.getDeletedName());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	public int deleteSocialing(Connection conn, int nNum) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = socialingQuery.getProperty("deleteSocialing");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, nNum);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	public int deletePhoto(Connection conn, int nNum) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = socialingQuery.getProperty("deletePhoto");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, nNum);
 			
 			result = pstmt.executeUpdate();
 			

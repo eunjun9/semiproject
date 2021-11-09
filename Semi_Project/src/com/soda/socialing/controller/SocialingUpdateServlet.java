@@ -40,8 +40,7 @@ public class SocialingUpdateServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
 	}
 
 	/**
@@ -64,6 +63,7 @@ public class SocialingUpdateServlet extends HttpServlet {
 		
 		/* Notice + Socialing 테이블 수정 값 설정 */
 		Socialing socialing = new Socialing();
+		socialing.setnNum(Integer.parseInt(request.getParameter("nNum")));
 		socialing.setnTitle(multiRequest.getParameter("inputTitle"));
 		socialing.setnContent(multiRequest.getParameter("content"));
 		

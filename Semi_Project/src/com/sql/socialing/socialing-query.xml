@@ -210,4 +210,16 @@
 		     , CHANGE_NAME = ?
 		 WHERE CHANGE_NAME = ?
 	</entry>
+	
+	<entry key="deleteSocialing">
+		UPDATE NOTICE
+		   SET NOTICE_STATUS = 'Y'
+		 WHERE NOTICE_NUM = ?
+	</entry>
+	
+	<entry key="deletePhoto">
+		UPDATE TBL_FILE
+		   SET STATUS = 'N'
+		 WHERE NOTICE_NUM = ?
+	</entry>
 </properties>

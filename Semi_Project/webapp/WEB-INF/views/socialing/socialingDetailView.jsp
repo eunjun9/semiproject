@@ -195,6 +195,8 @@
 		        function deleteBoard() {
 		            if(confirm('이 게시글을 삭제하시겠습니까?')) {
 		                // 글 삭제 후 목록으로 이동
+		            	document.forms.memberForm.action = "${contextPath}/socialing/delete";
+		    			document.forms.memberForm.submit();
 		            }
 		        }
 	
