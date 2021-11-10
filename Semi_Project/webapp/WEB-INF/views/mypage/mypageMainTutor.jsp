@@ -29,8 +29,19 @@
            <%--  <a class="notice" href="#"><img width="7%" src="${ contextPath }/resources/images/yewon/bell.png"></a>
           <a class="notice" href="#"><p>알림</p></a>  --%>
             
+            <!-- 프로필  -->
             <div class="profile">
-                <a href="#" id="profileimg"><img width="45%" src="${ contextPath }/resources/images/yewon/profile.png"></a>
+                <c:choose>
+					<c:when test="!empty ${profile}">
+		                <a href="#">
+		                <img width="45%" src="${ contextPath }${ profile.profileFile.get(0).route}${profile.profileFile.get(0).changeName}"></a>
+					</c:when>
+					<c:otherwise>
+						<a href="#">
+						<img width="45%" src="${ contextPath }/resources/images/yewon/profile.png"></a>
+					</c:otherwise>
+                </c:choose>
+                
                 <p id="name">${ loginUser.userName }</p>
                 <p id="level">${ loginUser.userGrade }</p>
                 <p id="mail">${ loginUser.userId }</p>

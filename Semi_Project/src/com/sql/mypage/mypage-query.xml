@@ -28,5 +28,26 @@
 				  AND USER_ID = ?
 				  ORDER BY NOTICE_NUM DESC
 	</entry>
+	
+	<entry key="selectProfile">
+		SELECT
+			USER_ID
+			FROM "PROFILE"
+			WHERE USER_ID= ?
+	</entry>
+
+
+	<entry key="selectProfileFile">
+		SELECT
+		    FILE_NO,
+		    ROUTE,
+			USER_ID,
+			ORIGIN_NAME,
+			CHANGE_NAME,
+			STATUS
+			FROM "PROFILE_FILE"
+			WHERE USER_ID= ?
+			AND STATUS = 'Y'
+	</entry>
 
 </properties>

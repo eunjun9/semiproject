@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.soda.lesson.model.vo.Lesson;
 import com.soda.member.model.vo.Member;
 import com.soda.mypage.model.service.MypageService;
+import com.soda.mypage.model.vo.Profile;
 
 /**
  * Servlet implementation class MypageTutorMainServlet
@@ -45,8 +46,12 @@ public class MypageTutorMainServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		String userId = ((Member)request.getSession().getAttribute("loginUser")).getUserId();
+		
+	      Profile profile = new MypageService().selectProfile(userId);
+		
+			request.setAttribute("profile", profile);
+			request.getRequestDispatcher("/WEB-INF/views/mypage/mypageMain.jsp").forward(request, response);
 	}
 
 }

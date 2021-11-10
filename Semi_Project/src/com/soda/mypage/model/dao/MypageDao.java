@@ -12,6 +12,9 @@ import java.util.Properties;
 
 import com.soda.lesson.model.vo.Attachment;
 import com.soda.lesson.model.vo.Lesson;
+import com.soda.mypage.model.vo.Profile;
+import com.soda.mypage.model.vo.ProfileFile;
+
 import static com.common.JDBCTemplate.*;
 
 public class MypageDao {
@@ -78,6 +81,65 @@ public class MypageDao {
 			close(pstmt);
 		}
 		return lessonList;
+	}
+
+	public Profile selectProfile(Connection conn, String userId) {
+		PreparedStatement pstmt = null;
+	      ResultSet rset = null;
+	      Profile profile = null;
+	      String sql = mypageQuery.getProperty("selectProfile");
+	      
+	      try {
+	         pstmt = conn.prepareStatement(sql);
+	         pstmt.setString(1, userId);
+	         rset = pstmt.executeQuery();
+	         
+	         
+	         if(rset.next()) {
+	        	 profile = new Profile();
+	        	 profile.setUserId(rset.getString("user_id"));
+	         }
+	         
+	      } catch (SQLException e) {
+	         e.printStackTrace();
+	      } finally {
+	         close(rset);
+	         close(pstmt);
+	      }
+
+	      return profile;
+	}
+
+	public List<ProfileFile> selectProfileFile(Connection conn, String userId) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		List<ProfileFile> profileFile = new ArrayList<>();
+		String sql = mypageQuery.getProperty("selectProfileFile");
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, userId);
+			rset = pstmt.executeQuery();
+
+			if (rset.next()) {
+				ProfileFile file = new ProfileFile();
+				file.setFileNo(rset.getInt("file_no"));
+				file.setRoute(rset.getString("route"));
+				file.setUserId(rset.getString("user_id"));
+				file.setOriginName(rset.getString("origin_name"));
+				file.setChangeName(rset.getString("change_name"));
+				file.setStatus(rset.getString("status"));
+				profileFile.add(file);
+
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return profileFile;
 	}
 
 }
