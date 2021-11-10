@@ -18,8 +18,8 @@ hr {
     height: 2px;
     background-color: lightgray;
     border: 0px;
-    margin-top: 50px;
-    margin-bottom: 50px;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 /* 본문 간격 */
@@ -71,6 +71,12 @@ hr {
     font-size: 1.1rem;
     display: inline;
     margin-left: 30px;
+}
+
+#like {
+    /*margin-top: 10px;*/
+    margin-left: 15px;
+    margin-bottom: -10px;
 }
 
 .wrapper3 {

@@ -1,6 +1,6 @@
 package com.soda.socialing.model.vo;
 
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 public class Socialing {
@@ -22,7 +22,6 @@ public class Socialing {
 	private String stype;		// 온오프라인 여부 (ON/OFF)
 	private int maxMember;		// 최대 참여 인원
 	private int minMember;		// 최소 참여 인원
-	private String profile;		// 작성자 프로필사진 (Profile 테이블 참조)
 	private String introduction;// 작성자 자기소개 (Profile 테이블 참조)
 
 	// SodaFile
@@ -35,7 +34,7 @@ public class Socialing {
 
 	public Socialing(int nNum, String nTitle, String nContent, String nStatus, String nType, String userId,
 			String userName, Date nDate, Date modifyDate, int nCount, String splace, Date sdate, String stime,
-			String stype, int maxMember, int minMember, String profile, String introduction, List<SodaFile> photoList) {
+			String stype, int maxMember, int minMember, String introduction, List<SodaFile> photoList) {
 		super();
 		this.nNum = nNum;
 		this.nTitle = nTitle;
@@ -53,7 +52,6 @@ public class Socialing {
 		this.stype = stype;
 		this.maxMember = maxMember;
 		this.minMember = minMember;
-		this.profile = profile;
 		this.introduction = introduction;
 		this.photoList = photoList;
 	}
@@ -186,14 +184,6 @@ public class Socialing {
 		this.minMember = minMember;
 	}
 
-	public String getProfile() {
-		return profile;
-	}
-
-	public void setProfile(String profile) {
-		this.profile = profile;
-	}
-
 	public List<SodaFile> getPhotoList() {
 		return photoList;
 	}
@@ -216,7 +206,7 @@ public class Socialing {
 				+ ", nType=" + nType + ", userId=" + userId + ", userName=" + userName + ", nDate=" + nDate
 				+ ", modifyDate=" + modifyDate + ", nCount=" + nCount + ", splace=" + splace + ", sdate=" + sdate
 				+ ", stime=" + stime + ", stype=" + stype + ", maxMember=" + maxMember + ", minMember=" + minMember
-				+ ", profile=" + profile + ", introduction=" + introduction + ", photoList=" + photoList + "]";
+				+ ", introduction=" + introduction + ", photoList=" + photoList + "]";
 	}
 
 }

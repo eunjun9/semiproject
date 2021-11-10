@@ -11,16 +11,16 @@ import com.soda.member.model.vo.Member;
 import com.soda.socialing.model.service.SocialingService;
 
 /**
- * Servlet implementation class SocialingLikeServlet
+ * Servlet implementation class SocialingUnLikeServlet
  */
-@WebServlet("/likeSocialing")
-public class SocialingLikeServlet extends HttpServlet {
+@WebServlet("/unLikeSocialing")
+public class SocialingUnLikeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SocialingLikeServlet() {
+    public SocialingUnLikeServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -40,13 +40,13 @@ public class SocialingLikeServlet extends HttpServlet {
 		int nNum = Integer.parseInt(request.getParameter("nNum"));
 		String userId = ((Member)request.getSession().getAttribute("loginUser")).getUserId();
 		
-		int result = new SocialingService().likeSocialing(nNum, userId);
+		int result = new SocialingService().unLikeSocialing(nNum, userId);
 		
 		if(result > 0) {
-			request.getSession().setAttribute("message", "관심 소셜링에 추가 되었습니다.");
+			request.getSession().setAttribute("message", "관심 소셜링에서 제거 되었습니다.");
 			response.sendRedirect(request.getContextPath() + "/socialing/detail?nNum=" + nNum);
 		} else {
-			request.setAttribute("message", "관심 소셜링 추가에 실패하였습니다.");
+			request.setAttribute("message", "관심 소셜링 제거에 실패하였습니다.");
 			request.getRequestDispatcher("/WEB-INF/views/common/errorpage.jsp").forward(request, response);
 		}
 	}

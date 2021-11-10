@@ -10,7 +10,7 @@
     left: 55%;
     top: 200px; 
     width: 300px; 
-    min-height: 300px;
+    min-height: 100px;
     border: 6px solid rgb(218,239,245);
     background-color: white;
     z-index: 1;

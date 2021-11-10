@@ -3,6 +3,8 @@ package com.soda.socialing.controller;
 import java.io.File;
 import java.io.IOException;
 import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -63,8 +65,8 @@ public class SocialingInsertServlet extends HttpServlet {
 		
 		String stitle = multiRequest.getParameter("inputTitle");				// 글 제목
 		String scontent = multiRequest.getParameter("content");					// 본문
-		String sdate = multiRequest.getParameter("dateIn");						// 모임 날짜 (ex. 2021-11-03)
-		String stime = multiRequest.getParameter("timeIn");						// 모임 시간 (ex. 13:10)
+		String dateIn = multiRequest.getParameter("dateIn");					// 모임 날짜
+		String stime = multiRequest.getParameter("timeIn");						// 모임 시간
 		String stype = multiRequest.getParameter("type");						// 온라인/오프라인
 		String[] splaceArr = multiRequest.getParameterValues("inputPlace");		// 모임 장소
 		int minMember = Integer.parseInt(multiRequest.getParameter("min"));		// 최소 참여 인원
@@ -79,12 +81,12 @@ public class SocialingInsertServlet extends HttpServlet {
 			splace = splaceArr[0]; // 온라인 모임일 경우 (상세 주소 x)
 		
 		// 모임 날짜 String -> Date로 변경
-		Date date = Date.valueOf(sdate);
-		
+		Date sdate = Date.valueOf(dateIn);
+
 		Socialing socialing = new Socialing();
 		socialing.setnTitle(stitle);
 		socialing.setnContent(scontent);
-		socialing.setSdate(date);
+		socialing.setSdate(sdate);
 		socialing.setStime(stime);
 		socialing.setStype(stype);
 		socialing.setSplace(splace);

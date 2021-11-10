@@ -3,6 +3,8 @@ package com.soda.socialing.controller;
 import java.io.File;
 import java.io.IOException;
 import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -67,10 +69,10 @@ public class SocialingUpdateServlet extends HttpServlet {
 		socialing.setnTitle(multiRequest.getParameter("inputTitle"));
 		socialing.setnContent(multiRequest.getParameter("content"));
 		
-		String sdate = multiRequest.getParameter("dateIn");
+		String dateIn = multiRequest.getParameter("dateIn");
 		// 모임 날짜 String -> Date로 변경
-		Date date = Date.valueOf(sdate);
-		socialing.setSdate(date);
+		Date sdate = Date.valueOf(dateIn);
+		socialing.setSdate(sdate);
 		
 		socialing.setStime(multiRequest.getParameter("timeIn"));
 		socialing.setStype(multiRequest.getParameter("type"));
@@ -84,7 +86,6 @@ public class SocialingUpdateServlet extends HttpServlet {
 			splace = splaceArr[0]; // 온라인 모임일 경우 (상세 주소 x)
 		socialing.setSplace(splace);
 		
-		socialing.setnType("소셜링");
 		socialing.setMinMember(Integer.parseInt(multiRequest.getParameter("min")));
 		socialing.setMaxMember(Integer.parseInt(multiRequest.getParameter("max")));
 		

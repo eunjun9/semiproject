@@ -13,10 +13,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.soda.lesson.model.service.LessonService;
+import com.soda.member.model.vo.Member;
 import com.soda.socialing.model.service.SocialingService;
 import com.soda.socialing.model.vo.Search;
 import com.soda.socialing.model.vo.Socialing;
+import com.soda.socialing.model.vo.SocialingLike;
+import com.soda.socialing.model.vo.SocialingMember;
 
 /**
  * Servlet implementation class SocialingMainServlet
@@ -37,6 +39,8 @@ public class SocialingMainServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String userId = ((Member)request.getSession().getAttribute("loginUser")).getUserId();
+		
 		/* 페이징 처리 */
 		// 페이지 초기값 (첫 페이지)
 		int page = 1;
@@ -59,9 +63,11 @@ public class SocialingMainServlet extends HttpServlet {
 		Map<String, Object> map = new SocialingService().selectList(page);
 //		Map<String, Object> map = new SocialingService().selectList(page, new Search(keyword, local, dateIn.getTime(), onoff));
 		
+		/* 찜한 소셜링 목록 조회 */
+//		List<SocialingLike> likedList = new SocialingService().selectLikedList(userId);
+		
 		request.setAttribute("pi", map.get("pi"));
 		request.setAttribute("socialingList", map.get("socialingList"));
-		request.setAttribute("sLike", map.get("sLike"));
 		request.getRequestDispatcher("/WEB-INF/views/socialing/socialingMainView.jsp").forward(request, response);
 	}
 

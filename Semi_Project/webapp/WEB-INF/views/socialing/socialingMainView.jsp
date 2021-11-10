@@ -9,7 +9,7 @@
 <title>소셜링</title>
 
 <!-- 외부 스타일 시트 -->
-<link href="${ contextPath }/resources/css/socialing/socialing_main.css?3" rel="stylesheet">
+<link href="${ contextPath }/resources/css/socialing/socialing_main.css?4" rel="stylesheet">
 
 <!-- 글꼴 (Noto Sans) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -42,45 +42,32 @@
                     <div class="swiper mySwiper">
                         <div class="swiper-wrapper">
                         <!-- 반복문으로 현재날짜(date) 기준 모임날짜(sdate) 2일 이내로 남은 소셜링 글 목록 출력 -->
-                        <div class="swiper-slide">
-                            <div id="thumbox">
-                                <img src="${ contextPath }/resources/images/eunjung/flower1.PNG"><br>
-                                <img id="like2" src="${ contextPath }/resources/images/eunjung/heart_empty.png">
-                            </div>
-                            <a href="#">
-                                <div id="titlebox">
-                                    <p id="s-thumtitle">할로윈 같이 즐겨요</p><br>
-                                    <h5 id="s-thumsub">이태원역 6호선 10.31(일) 오후 6:00</h5>
-                                    <a href=""><img id="profile2" src="${ contextPath }/resources/images/eunjung/profile.png"></a>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="swiper-slide">
-                            <div id="thumbox">
-                                <img src="${ contextPath }/resources/images/eunjung/flower1.PNG"><br>
-                                <img id="like2" src="${ contextPath }/resources/images/eunjung/heart_empty.png">
-                            </div>
-                            <a href="#">
-                                <div id="titlebox">
-                                    <p id="s-thumtitle">아침에 공원에서 산책하실 분!</p><br>
-                                    <h5 id="s-thumsub">평촌 중앙공원 10.20(수) 오전 9:00</h5>
-                                    <a href=""><img id="profile2" src="${ contextPath }/resources/images/eunjung/profile.png"></a>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="swiper-slide">
-                            <div id="thumbox">
-                                <img src="${ contextPath }/resources/images/eunjung/flower1.PNG"><br>
-                                <img id="like2" src="${ contextPath }/resources/images/eunjung/heart_empty.png">
-                            </div>
-                            <a href="#">
-                                <div id="titlebox">
-                                    <p id="s-thumtitle">이터널스 같이 보러가요</p><br>
-                                    <h5 id="s-thumsub">CGV 용산아이파크몰 11.20(토) 오...</h5>
-                                    <a href=""><img id="profile2" src="${ contextPath }/resources/images/eunjung/profile.png"></a>
-                                </div>
-                            </a>
-                        </div>
+                        <c:forEach var="s" items="${ socialingList }">
+	                        <div class="swiper-slide">
+	                            <div id="thumbox">
+	                                <img id="s-thumbnail2" onclick="detailView(${ s.nNum })" 
+	                                src="${ contextPath }${ s.photoList.get(0).route }${ s.photoList.get(0).changeName }"><br>
+	                            </div>
+	                            <a href="#">
+	                                <div id="titlebox">
+	                                    <p id="s-thumtitle">${ s.nTitle }</p><br>
+	                                    <!-- 오프라인일 경우 상세주소, 온라인일 경우 기본 주소 출력 -->
+		                                <c:choose>
+											<c:when test='${ s.splace.contains("|") }'>
+												<h5 id="s-thumsub">${ s.splace.split("\\|")[1] }
+											</c:when>
+											<c:otherwise>
+												<h5 id="s-thumsub">${ s.splace }
+											</c:otherwise>
+										</c:choose>
+		                                <fmt:formatDate value="${ s.sdate }" type="date" pattern="M.dd(E)"/>
+		                                <fmt:parseDate value="${ s.stime }" var="stime2" pattern="HH:mm" scope="page"/>
+										<fmt:formatDate value="${ stime2 }" type="time" pattern="a h:mm"/></h5>
+	                                    <a href="#"><img id="profile2" src="${ contextPath }/resources/images/eunjung/profile.png"></a>
+	                                </div>
+	                            </a>
+	                        </div>
+                        </c:forEach>
                         </div> 
                     </div> 
                 </div>
@@ -141,7 +128,7 @@
                 </div>
                 <div id="lineupbox">
                     <select name="lineup">
-                        <option value="">최신순</option> <!-- 작성일 순 -->
+                        <option value="">최신순</option> <!-- 작성일 순 (기본) -->
                         <option value="">인기순</option> <!-- 참여 인원 순 -->
                     </select>
                 </div>
@@ -153,14 +140,6 @@
                         <div id="thumbox">
                             <img id="s-thumbnail" onclick="detailView(${ s.nNum })" 
                             src="${ contextPath }${ s.photoList.get(0).route }${ s.photoList.get(0).changeName }"><br>
-                            <!-- empty : 클릭 시 꽉찬 하트 아이콘으로 변경 + 관심 소셜링에 추가, full : 클릭 시 빈 하트 아이콘으로 변경 + 관심 소셜링에서 제거 -->
-                            <!-- 관심 소셜링에 sNum 포함 여부에 따라 src 변경(if문) -->
-                            <form name="likeForm" method="post">
-                            	<input type="hidden" name="nNum" value="${ s.nNum }">
-                            </form>
-                            <c:if test='${ loginUser }'></c:if>
-                            <img id="like" src="${ contextPath }/resources/images/eunjung/heart_empty.png"
-                            onclick="likeSocialing()">
                         </div>
                         <a href="${ contextPath }/socialing/detail?nNum=${ s.nNum }">
                             <div id="titlebox">
@@ -264,38 +243,6 @@
 				function detailView(nNum){
 					location.href = '${contextPath}/socialing/detail?nNum=' + nNum;
 				}
-				
-				// 관심 소셜링에 추가
-				function likeSocialing() {
-					
-					let like = document.querySelectorAll('#like');
-			        let like2 = document.querySelectorAll('#like2');
-			        
-			        for(let i = 0; i < like.length; i++) {
-			            like[i].onclick = function() {
-			                if(like[i].src.indexOf('_empty') == -1) {
-			                    like[i].src = like[i].src.replace('.png', '_empty.png');
-			                    // 관심 소셜링 테이블에서 제거
-			                } else {
-			                    like[i].src = like[i].src.replace('_empty.png', '.png');
-			                	// 관심 소셜링 테이블에 추가
-			                	document.forms.likeForm.action = "${contextPath}/likeSocialing";
-				    			document.forms.likeForm.submit();
-			                }
-			            }
-
-			            like2[i].onclick = function() {
-			                if(like2[i].src.indexOf('_empty') == -1) {
-			                    like2[i].src = like2[i].src.replace('.png', '_empty.png');
-			                } else {
-			                    like2[i].src = like2[i].src.replace('_empty.png', '.png');
-			                	alert('관심 소셜링에 추가 되었습니다.');
-			                	// document.forms.likeForm.action = "${contextPath}/likeSocialing";
-				    			// document.forms.likeForm.submit();
-			                }
-			            }
-			        }
-		        }
 			</script>
 		</c:when>
 		<c:otherwise>
