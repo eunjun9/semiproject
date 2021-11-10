@@ -63,7 +63,7 @@ public class SocialingUpdateServlet extends HttpServlet {
 		
 		/* Notice + Socialing 테이블 수정 값 설정 */
 		Socialing socialing = new Socialing();
-		socialing.setnNum(Integer.parseInt(request.getParameter("nNum")));
+		socialing.setnNum(Integer.parseInt(multiRequest.getParameter("nNum")));
 		socialing.setnTitle(multiRequest.getParameter("inputTitle"));
 		socialing.setnContent(multiRequest.getParameter("content"));
 		
