@@ -49,7 +49,7 @@ public class SocialingMainServlet extends HttpServlet {
 		/* 필터 관련 파라미터 추출 */
 //		String keyword = request.getParameter("keyword");	// 키워드 검색
 //		String local = request.getParameter("local");		// 지역
-//		String dateIn = request.getParameter("dateIn");		// 날짜 (ex. 2021-11-03)
+//		String dateIn = request.getParameter("dateIn");		// 날짜
 //		String onoff = request.getParameter("onoff");		// 온/오프라인
 		
 		// 날짜 Date 타입으로 변환
@@ -62,9 +62,6 @@ public class SocialingMainServlet extends HttpServlet {
 		request.setAttribute("pi", map.get("pi"));
 		request.setAttribute("socialingList", map.get("socialingList"));
 		request.getRequestDispatcher("/WEB-INF/views/socialing/socialingMainView.jsp").forward(request, response);
-		
-//		List<Socialing> socialingList = new SocialingService().selectList();
-//		request.setAttribute("socialingList", socialingList);
 	}
 
 	/**

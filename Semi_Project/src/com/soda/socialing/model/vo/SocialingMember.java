@@ -2,11 +2,14 @@ package com.soda.socialing.model.vo;
 
 public class SocialingMember {
 	private int noticeNum;			// 게시판 번호 (pfk - Socialing 테이블 noticeNum 참조 값)
-	private String memberId;		// 참여자 (pfk - Member 테이블 user_id 참조 값)
+	private String memberId;		// 참여자 아이디 (pfk - Member 테이블 user_id 참조 값)
 	private String status;			// 참여 완료 여부 (Y/N)
 	private String memberName;		// 참여자명 (Member 테이블 join 결과 값)
 	private String memberProfile;	// 참여자 프로필사진 (Profile 테이블 join 결과 값)
 	private String introduction;	// 참여자 자기소개 (Profile 테이블 join 결과 값)
+	
+	// ProfileFile
+	private ProfileFile profile2;	// 프로필사진 첨부 파일 (참여자 프로필사진) -> String profile 삭제
 	
 	public SocialingMember() {}
 

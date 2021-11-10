@@ -41,7 +41,7 @@
                 <div class="slide">
                     <div class="swiper mySwiper">
                         <div class="swiper-wrapper">
-                        <!-- 반복문으로 현재 날짜(date) 기준 시작일(sdate) 2일 이내로 남은 소셜링 글 목록 출력 (최대 6개) -->
+                        <!-- 반복문으로 현재날짜(date) 기준 모임날짜(sdate) 2일 이내로 남은 소셜링 글 목록 출력 -->
                         <div class="swiper-slide">
                             <div id="thumbox">
                                 <img src="${ contextPath }/resources/images/eunjung/flower1.PNG"><br>
@@ -103,6 +103,7 @@
                             <input type="search" name="keyword" size="31" maxlength="20" placeholder="검색할 키워드를 입력해주세요"
                             value="${ param.keyword }"><br><br>
                         </div>
+                        
                         <label id="flabel">지역</label>
                         <select name="local">
                         	<option value="" selected>지역 선택</option>
@@ -133,6 +134,7 @@
                         <label for="offline">오프라인</label>&nbsp;
                         <input type="radio" id="online" name="onoff" value="online">
                         <label for="online">온라인</label>
+                        
                         <input type="reset" value="조건 초기화" id="s-reset">
                         <input type="submit" value="선택항목 검색" id="s-submit">
                     </form>
@@ -144,15 +146,6 @@
                     </select>
                 </div>
                 
-                <!-- 
-				 	String[] place;
-				 	if(socialingList.getSplace() != null) {
-				 		place = socialingList.getSplace().split("\\|");
-				 	} else {
-				 		place = new String[] {"", ""};
-				 	}
-				 -->
-                
                 <!-- 글 목록 출력 -->
                 <div class="s-container2">
                 	<c:forEach var="s" items="${ socialingList }">
@@ -162,8 +155,11 @@
                             src="${ contextPath }${ s.photoList.get(0).route }${ s.photoList.get(0).changeName }"><br>
                             <!-- empty : 클릭 시 꽉찬 하트 아이콘으로 변경 + 관심 소셜링에 추가, full : 클릭 시 빈 하트 아이콘으로 변경 + 관심 소셜링에서 제거 -->
                             <!-- 관심 소셜링에 sNum 포함 여부에 따라 src 변경(if문) -->
+                            <form name="likeForm" method="post">
+                            	<input type="hidden" name="nNum" value="${ s.nNum }">
+                            </form>
                             <img id="like" src="${ contextPath }/resources/images/eunjung/heart_empty.png"
-                            onclick="likeSocialing(${ s.nNum })">
+                            onclick="likeSocialing()">
                         </div>
                         <a href="${ contextPath }/socialing/detail?nNum=${ s.nNum }">
                             <div id="titlebox">
@@ -268,8 +264,8 @@
 					location.href = '${contextPath}/socialing/detail?nNum=' + nNum;
 				}
 				
-				// 관심 소셜링에 추가 (프로필정보에 관심 소셜링 컬럼 추가(게시글번호 - 구분자 이용해서 여러 글 추가되게))
-				function likeSocialing(nNum) {
+				// 관심 소셜링에 추가
+				function likeSocialing() {
 					
 					let like = document.querySelectorAll('#like');
 			        let like2 = document.querySelectorAll('#like2');
@@ -279,8 +275,10 @@
 			                if(like[i].src.indexOf('_empty') == -1) {
 			                    like[i].src = like[i].src.replace('.png', '_empty.png');
 			                } else {
-			                	alert('관심 소셜링에 추가 되었습니다.');
 			                    like[i].src = like[i].src.replace('_empty.png', '.png');
+			                	alert('관심 소셜링에 추가 되었습니다.');
+			                	// document.forms.likeForm.action = "${contextPath}/likeSocialing";
+				    			// document.forms.likeForm.submit();
 			                }
 			            }
 
@@ -288,8 +286,10 @@
 			                if(like2[i].src.indexOf('_empty') == -1) {
 			                    like2[i].src = like2[i].src.replace('.png', '_empty.png');
 			                } else {
-			                	alert('관심 소셜링에 추가 되었습니다.');
 			                    like2[i].src = like2[i].src.replace('_empty.png', '.png');
+			                	alert('관심 소셜링에 추가 되었습니다.');
+			                	// document.forms.likeForm.action = "${contextPath}/likeSocialing";
+				    			// document.forms.likeForm.submit();
 			                }
 			            }
 			        }
