@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,7 +8,7 @@
 <title>마이페이지</title>
 
 	<!--외부 스타일 시트-->
-    <link rel="stylesheet" href="${ contextPath }/resources/css/mypage/mypage_mainT.css">
+    <link rel="stylesheet" href="${ contextPath }/resources/css/mypage/mypage_mainT.css?1">
     <!-- font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,16 +30,16 @@
             <a class="notice" href="#"><p>알림</p></a>
             
             <div class="profile">
-                <a href="#"><img width="45%" src="${ contextPath }/resources/images/yewon/profile.png"></a>
-                <p id="name">김철수</p>
-                <p id="level">강사</p>
-                <p id="mail">kh@gmail.com</p>
-                <a id="myfeed" href="${contextPath }/myfeed">내 피드 <img width="5%" src="${ contextPath }/resources/images/yewon/next.png"></a>
+                <a href="#" id="profileimg"><img width="45%" src="${ contextPath }/resources/images/yewon/profile.png"></a>
+                <p id="name">${ loginUser.userName }</p>
+                <p id="level">${ loginUser.userGrade }</p>
+                <p id="mail">${ loginUser.userId }</p>
+                <a id="myfeed" href="${ contextPath }/myfeed">내 피드 <img width="5%" src="${ contextPath }/resources/images/yewon/next.png"></a>
             </div>
 
             <ul class="move">
-                <li><a class="mv" id="modify" href="#">정보수정 <img class="pmv" width="5%" src="${ contextPath }/resources/images/yewon/next.png"> </a></li>
-                <li><a class="mv" id="logout" href="${contextPath }/logout">로그아웃 <img class="pmv" width="5%" src="${ contextPath }/resources/images/yewon/next.png"> </a> </li>
+                <li><a class="mv" id="modify" href="${ contextPath }/mypage/userinfomodify">정보수정 <img class="pmv" width="5%" src="${ contextPath }/resources/images/yewon/next.png"> </a></li>
+                <li><a class="mv" id="logout" href="${ contextPath }/logout">로그아웃 <img class="pmv" width="5%" src="${ contextPath }/resources/images/yewon/next.png"> </a> </li>
             </ul>
         </div>
     </div> 
@@ -47,54 +48,21 @@
         <div class="interest">
             <div class="oneday">
                 <h3>나의 클래스 - 원데이</h3>
-                <p>9건</p>
+                <p></p>
             </div>
 
             <!-- Swiper -->
             <div class="slide1">
                 <div class="swiper mySwiper1 socialing">
                     <div class="swiper-wrapper sw">
-                        <div class="swiper-slide">
-                            <a href="#"><img class="ipic" width="92%" height="20%" src="${ contextPath }/resources/images/yewon/friend.jpg"></a>
-                            <a id="stitle" href="#">오일 파스텔 원데이 클래스</a>
-                            <p id="stime">사당역 10/8 토요일 오전 10시</p>
+                    	<!-- 반복문으로 글 넣기 -->
+                    	<c:forEach var="lesson" items="${ lessonList }">
+                    	<div class="swiper-slide" onclick="detailView(${lesson.nNum})">
+                            <a><img class="ipic" width="92%" height="20%"src="${ contextPath }${ lesson.photoList.get(0).route}${ lesson.photoList.get(0).changeName }"></a>
+                            <a id="stitle">${lesson.nTitle }</a>
+                            <p id="stime">${lesson.cLocation }</p>
                         </div>
-                        <div class="swiper-slide">
-                            <a href="#"><img class="ipic" width="92%" height="70%" src="${ contextPath }/resources/images/yewon/friend.jpg"></a>
-                            <a id="stitle" href="#">도자기 공방 원데이 클래스</a>
-                            <p id="stime">망원역 11/8 토요일 오전 12시</p>
-                        </div>
-                        <div class="swiper-slide">
-                            <a href="#"><img class="ipic" width="92%" height="70%" src="${ contextPath }/resources/images/yewon/friend.jpg"></a>
-                            <a id="stitle" href="#">오일 파스텔 원데이 클래스</a>
-                            <p id="stime">사당역 10/8 토요일 오전 10시</p>
-                        </div>
-                        <div class="swiper-slide">
-                            <a href="#"><img class="ipic" width="92%" height="70%" src="${ contextPath }/resources/images/yewon/friend.jpg"></a>
-                            <a id="stitle" href="#">위빙 원데이 클래스</a>
-                            <p id="stime">성수역 11/12 토요일 오전 10시</p>
-                        </div>
-                        <div class="swiper-slide">
-                            <a href="#"><img class="ipic" width="92%" height="70%" src="${ contextPath }/resources/images/yewon/friend.jpg"></a>
-                            <a id="stitle" href="#">오일 파스텔 원데이 클래스</a>
-                            <p id="stime">사당역 10/8 토요일 오전 10시</p>
-                        </div>
-                        <div class="swiper-slide">
-                            <a href="#"><img class="ipic" width="92%" height="70%" src="${ contextPath }/resources/images/yewon/friend.jpg"></a>
-                            <a id="stitle" href="#">위빙 원데이 클래스</a>
-                            <p id="stime">성수역 11/12 토요일 오전 10시</p>
-                        </div>
-                        <div class="swiper-slide">
-                            <a href="#"><img class="ipic" width="92%" height="70%" src="${ contextPath }/resources/images/yewon/friend.jpg"></a>
-                            <a id="stitle" href="#">오일 파스텔 원데이 클래스</a>
-                            <p id="stime">사당역 10/8 토요일 오전 10시</p>
-                        </div>
-                        <div class="swiper-slide">
-                            <a href="#"><img class="ipic" width="92%" height="70%" src="${ contextPath }/resources/images/yewon/friend.jpg"></a>
-                            <a id="stitle" href="#">스콘 베이킹 원데이 클래스</a>
-                            <p id="stime">홍대입구 11/10 일요일 오전 10시</p>
-                        </div>
-                        
+                    	</c:forEach>
                     </div>
                 </div>
                 

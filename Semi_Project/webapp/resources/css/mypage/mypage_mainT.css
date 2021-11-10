@@ -61,6 +61,10 @@ img{
     margin-top: -40px;
 }
 
+#profileimg {
+	margin-left: 5px;
+}
+
 #name{
     margin-left: 10%;
     color : rgb(77, 77, 77);
@@ -176,14 +180,14 @@ img{
 /* 슬라이드 버튼 */
 .button1{
     left:430px;
-    top : 320px;
+    top: 380px;
     position:absolute;
     cursor: pointer;
 }
 
 .button2{
     right:140px;
-    top : 320px;
+    top : 380px;
     position:absolute;
     cursor: pointer;
 }
@@ -205,14 +209,14 @@ img{
 }
 .button3{
     left:430px;
-    top : 590px;
+    top : 640px;
     position:absolute;
     cursor: pointer;
 }
 
 .button4{
     right:140px;
-    top : 590px;
+    top : 640px;
     position:absolute;
     cursor: pointer;
 }
