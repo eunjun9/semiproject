@@ -52,9 +52,9 @@
 		WHERE N.NOTICE_NUM = C.NOTICE_NUM
           AND N.NOTICE_NUM = W.NOTICE_NUM
      	  AND C.NOTICE_NUM = T.NOTICE_NUM
-		  AND W.WISH_STATUS = 'N'
+		  AND W.WISH_STATUS = 'Y'
 		  AND N.NOTICE_TYPE = '클래스'
-		  AND N.NOTICE_STATUS = 'N'
+		  AND N.NOTICE_STATUS = 'Y'
 		  AND W.USER_ID = ?
 		  AND T.FILE_LEVEL = 1
 		ORDER BY W.WISH_NUM DESC
@@ -71,7 +71,7 @@
 	<!-- 장바구니 삭제 -->
 	<entry key="deleteWishlist">
 		UPDATE WISHLIST
-		   SET WISH_STATUS = 'Y'
+		   SET WISH_STATUS = 'N'
 		 WHERE USER_ID = ?
 		   AND WISH_NUM = ?
 	</entry>
@@ -95,9 +95,9 @@
 		WHERE N.NOTICE_NUM = C.NOTICE_NUM
           AND N.NOTICE_NUM = W.NOTICE_NUM
      	  AND C.NOTICE_NUM = T.NOTICE_NUM
-		  AND W.WISH_STATUS = 'N'
+		  AND W.WISH_STATUS = 'Y'
 		  AND N.NOTICE_TYPE = '클래스'
-		  AND N.NOTICE_STATUS = 'N'
+		  AND N.NOTICE_STATUS = 'Y'
 		  AND W.USER_ID = ?
 		  AND T.FILE_LEVEL = 1
 		  AND W.NOTICE_NUM = ?
