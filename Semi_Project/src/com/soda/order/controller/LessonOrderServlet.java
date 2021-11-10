@@ -15,16 +15,16 @@ import com.soda.order.model.service.WishListService;
 import com.soda.order.model.vo.WishList;
 
 /**
- * Servlet implementation class PaymentServlet
+ * Servlet implementation class LessonOrderServlet
  */
-@WebServlet("/payment")
-public class PaymentServlet extends HttpServlet {
+@WebServlet("/lesson/order")
+public class LessonOrderServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PaymentServlet() {
+    public LessonOrderServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -37,36 +37,44 @@ public class PaymentServlet extends HttpServlet {
 		String userName = ((Member)request.getSession().getAttribute("loginUser")).getUserName();
 		String userPhone = ((Member)request.getSession().getAttribute("loginUser")).getUserPhone();
 		
-		// 신청하기 누른 장바구니 클래스 번호 가져오기
-		int nNum = Integer.parseInt(request.getParameter("nNum"));
+		// 결제하기 누른 게시물 번호 가져오기
+		int nNum = Integer.parseInt(request.getParameter("noticeNum"));
+		// 원데이클래스는 사용자가 직접 원하는 날짜 선택하기때문에 선택한 날짜 받아오기
+		String selDate = request.getParameter("selDate");
 		
 		Member member = new Member();
 		member.setUserName(userName);
 		member.setUserPhone(userPhone);
 		member.setUserId(userId);
+
+		WishList wishlist = new WishList();
+		wishlist.setnNum(nNum);
+		wishlist.setUserId(userId);
+		wishlist.setlessonDate(selDate);
 		
-		// 결제하려는 장바구니 클래스 조회
-		List<WishList> wishList = new WishListService().wishlistList(userId, nNum);
+		// 클래스 디테일 페이지에서 바로 넘어오는 결제 페이지 조회
+		List<WishList> wishList = new WishListService().wishListAdd(wishlist);
 		
-		// System.out.println(wishList);
+		System.out.println(wishList);
 
 		if (wishList != null) { 
 			request.setAttribute("wishList", wishList);
 			request.setAttribute("member", member);
-			request.getRequestDispatcher("/WEB-INF/views/order/orderPage.jsp").forward(request, response);
+			response.sendRedirect(request.getContextPath() + "/payment");
 		} else { 
 			request.setAttribute("message", "결제 페이지 접속에 실패하였습니다. 다시 시도해주세요.");
 			PrintWriter writer = response.getWriter();
 			writer.println("<script>history.back();</script>");
 			writer.close();
 		}
-	
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
+
 }

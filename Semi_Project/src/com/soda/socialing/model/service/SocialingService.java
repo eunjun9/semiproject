@@ -21,7 +21,7 @@ public class SocialingService {
 	
 	private SocialingDao socialingDao = new SocialingDao();
 	
-	/* 페이징 : 페이지와 게시글리스트를 리턴*/
+	/* 페이징 : 페이지와 게시글리스트를 리턴 */
 	public Map<String, Object> selectList(int page/*, Search search*/) {
 		Connection conn = getConnection();
 		
@@ -42,6 +42,7 @@ public class SocialingService {
 		return returnMap;
 	}
 	
+	/* 게시글 조회수 증가 */
 	public int increaseCount(int nNum) {
 		Connection conn = getConnection();
 		
@@ -204,6 +205,23 @@ public class SocialingService {
 		close(conn);
 		
 		return deletedPhotoList;
+	}
+
+	public int likeSocialing(int nNum, String userId) {
+		Connection conn = getConnection();
+		
+		// 중복추가 방지 로직 추가해야 함
+		int result = socialingDao.likeSocialing(conn, nNum, userId);
+		
+		if(result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return result;
 	}
 
 }

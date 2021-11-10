@@ -43,9 +43,9 @@
                 <h3 id="subTitle">날짜</h3>
                 <p id="subTitle2"><fmt:formatDate value="${ socialing.sdate }" type="date" pattern="M.dd(E)"/>
                 <fmt:parseDate value="${ socialing.stime }" var="stime2" pattern="HH:mm" scope="page"/>
-				<fmt:formatDate value="${ stime2 }" type="time" pattern="a h시 m분"/></p>
-				
-                <!-- 조회수 추가....? -->
+				<fmt:formatDate value="${ stime2 }" type="time" pattern="a h시 m분"/></p><br>
+				<h3 id="subTitle">조회</h3>
+				<p id="subTitle2">${ socialing.nCount }</p>
             </div>
             <div class="wrapper2">
                 <img src="${ contextPath }${ socialing.photoList.get(0).route }${ socialing.photoList.get(0).changeName }">

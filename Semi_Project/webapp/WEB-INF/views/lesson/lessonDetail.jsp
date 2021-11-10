@@ -55,8 +55,8 @@
 	            $(function(){ 
 	                 $("#apply").click(function(){ 
 	                    if(confirm('결제화면으로 이동하시겠습니까?')){
-	                        //document.forms.orderForm.action = "${ contextPath }/order/";
-			                //document.forms.orderForm.submit();
+	                        document.forms.orderForm.action = "${ contextPath }/lesson/order";
+			                document.forms.orderForm.submit();
 	                    } else {
 	                    	return false;
 	                    } 
@@ -96,8 +96,8 @@
 			        				 return false;
 			        			 } else {
 					                    if(confirm('결제화면으로 이동하시겠습니까?')){
-					                        //document.forms.orderForm.action = "${ contextPath }/order/";
-							                //document.forms.orderForm.submit();
+					                        document.forms.orderForm.action = "${ contextPath }/payment";
+							                document.forms.orderForm.submit();
 					                    }else {
 					                    	return false;
 					                    } 
@@ -110,8 +110,8 @@
 		        				 return false;
 		        			 } else {
 				                    if(confirm('장바구니로 이동하시겠습니까?')){
-				                        document.forms.testForm.action = "${ contextPath }/wishlist/add";
-						                document.forms.testForm.submit();
+				                        document.forms.orderForm.action = "${ contextPath }/wishlist/add";
+						                document.forms.orderForm.submit();
 				                    }else {
 				                    	return false;
 				                    } 

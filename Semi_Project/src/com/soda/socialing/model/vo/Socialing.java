@@ -28,6 +28,9 @@ public class Socialing {
 	// SodaFile
 	private List<SodaFile> photoList;  // 사진 첨부 파일
 	
+	// ProfileFile
+	private ProfileFile profile2;	// 프로필사진 첨부 파일 (작성자 프로필사진) -> String profile 삭제
+	
 	public Socialing() {}
 
 	public Socialing(int nNum, String nTitle, String nContent, String nStatus, String nType, String userId,

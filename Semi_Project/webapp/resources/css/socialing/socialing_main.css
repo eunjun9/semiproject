@@ -126,7 +126,6 @@ hr {
 }
 
 #flabel {
-    /* font-weight: bold; */
     color: gray;
 }
 
@@ -266,7 +265,7 @@ label[for=online] {
     justify-content: center;
     position : relative;
     margin-top: 50px;
-    margin-bottom: 30px;
+    margin-bottom: 50px;
 }
 
 .paging{

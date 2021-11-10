@@ -139,8 +139,8 @@
                     <p id="lengthck"></p>
                     <hr>
                     <label>타입</label> 
-                    <input type="radio" name="class_type" value="원데이" id="oneday"><label for="oneday" class="btnlabel">원데이 클래스</label>
-                    <input type="radio" name="class_type" value="vod" id="vod"><label for="vod" class="btnlabel">VOD 클래스</label><br>
+                    <input type="radio" name="class_type" value="원데이" id="oneday" <c:if test="${lesson.cCategory == '원데이' }"> checked</c:if> disabled><label for="oneday" class="btnlabel">원데이 클래스</label>
+                    <input type="radio" name="class_type" value="vod" id="vod" <c:if test="${lesson.cCategory == 'vod' }"> checked </c:if> disabled><label for="vod" class="btnlabel">VOD 클래스</label><br>
                 </div> 
                 
                 <script>
@@ -224,25 +224,31 @@
                 <textarea name="tutor_intro" id="tutor_intro">${ lesson.cTutor }</textarea>
                 
                 <!-- 원데이 클래스 일때 -->
+                <c:if test="${lesson.cCategory == '원데이' }">
                 <div class="offdate">
                 <h4>날짜를 선택하세요</h4>
                 <input type="date" name="o_date1"  value="${ lesson.oDate1 }"><label>&nbsp;부터  &nbsp;</label><input type="date" name="o_date2" value="${ lesson.oDate2 }"><label>&nbsp;까지</label><br>
                 </div>
+                </c:if>
                 
                 <!-- vod 클래스 일때 -->
+                <c:if test="${lesson.cCategory == 'vod' }">
                 <div class="ondate">
                 	<h4>기간을 입력하세요</h4>
                 	<input type="text" name="v_date" value="${ lesson.vDate }"><label>&nbsp;일</label>
                 </div>
+                </c:if>
                 
                 <!-- 타입이 오프라인일때 -->
+                <c:if test="${lesson.cCategory == '원데이' }">
                 <div class="offtime">
 					<h4>시간을 선택하세요</h4>
                 	<input type="time" name="class_time1" value="${ lesson.cTime1 }"> <label>&nbsp;부터  &nbsp;</label><input type="time" name="class_time2" value="${ lesson.cTime2 }"> <label>&nbsp;까지</label><br>
                 </div>
+                </c:if>
                 
                 
-				 	<c:if test="${lesson.getcLocation() != null }">
+				 	<c:if test="${lesson.cCategory == '원데이' }">
 						<div class="location">
 						 <h4>클래스 위치를 입력하세요</h4>
 		                 <input type="text" name="postcode" class="postcodify_postcode5" placeholder="우편번호" readonly>
@@ -264,7 +270,7 @@
 					</script>
             
             
-            	<script>
+            	<!-- <script>
                 	$(document).ready(function(){
                 		$(".offdate").css("display", "none");    // 원데이 날짜
                 		$(".ondate").css("display", "none");     // vod 날짜
@@ -287,7 +293,7 @@
                 		
                 	});
                 </script>	
-            
+             -->
                 <button type="submit" id="cf_submit">클래스 등록</button>
             </form>
         </div>
