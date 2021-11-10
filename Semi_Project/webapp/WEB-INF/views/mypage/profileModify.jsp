@@ -39,10 +39,9 @@
                 
                 
                 
-                <form method="post" name="modifyForm" 
-					action="${contextPath}/profile/modifyview" enctype="multipart/form-data">
+                <form method="post" name="modifyForm" action="${contextPath}/profile/modify" enctype="multipart/form-data">
                 <input type ="hidden" name="userId" value="${profile.userId}">
-				
+				<input type="hidden" name="changeName">
 				
 				
 					
@@ -51,7 +50,7 @@
                     <!--프로필-->
                     <div class="profile">
                     
-                    <img src="${ contextPath }${ profile.photoList.get(0).route }${magazine.photoList.get(0).changeName }">
+                    <img src="${ contextPath }${ profile.profileFile.get().route }${  profile.profileFile.get().changeName }">
                     <input type="file" name="pic" accept="image/gif,image/jpeg,image/png"> 
                     </div>
                     

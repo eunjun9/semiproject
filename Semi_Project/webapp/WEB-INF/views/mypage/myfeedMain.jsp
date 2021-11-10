@@ -45,7 +45,7 @@
                 <div class="photo-follow">
                     <div class="photo">
                         <div class="profile">
-                            <img src="../image/pro.jpg">
+                            <img src="${ contextPath }${ profile.profileFile.route}${profile.profileFile.changeName}">
                         </div>
 
                         <div class="name-grade">
@@ -91,7 +91,7 @@
                         </div>
 
                         <div class="profile-button">
-                            <button onclick="location.href='${contextPath}/profile/modify'">프로필 편집</button>
+                            <button onclick="location.href='${ contextPath }/profile/insertview'">프로필 편집</button>
                         </div>
 
                         <div class="email">
@@ -110,10 +110,10 @@
                         <div class="introduction">
                             <div class="intro">
                                 <p>자기소개</p>
-                                <textarea>${ profile.introduction }</textarea>
+                                <textarea class="intro">${ profile.introduction }</textarea>
                                 
                                 <p>SNS</p>
-                              <textarea>${ profile.sns }</textarea>
+                              <textarea type="text" class="sns">${ profile.sns }</textarea>
                             </div>
 
 
@@ -124,18 +124,24 @@
                             </div>
           
                         </div>
-                    </div>
-
-                    <!--피드 사진들-->
-                    <c:forEach var="magazine" items="${userselfList}">
-                    <div class="pics" onclick="detailView(${ magazine.nNum })">
-                    <c:if test="${!empty loginUser && magazine.userId == loginUser.userId}">
-					<img src="${ contextPath }${ magazine.photoList.get(0).route }${ magazine.photoList.get(0).changeName }">
-                	</c:if>
-                	</div>
-                	</c:forEach>
-
+                        
+                         <!--피드 사진들-->
+                    
             </div>
+                    </div>
+					<div class="img-par">
+                    <div class="imgs">
+                    <c:forEach var="magazine" items="${userselfList}">
+                    <c:if test="${!empty loginUser && magazine.userId == loginUser.userId}">
+                    <div class="pics" onclick="detailView(${ magazine.nNum })">
+					<img src="${ contextPath }${ magazine.photoList.get(0).route }${ magazine.photoList.get(0).changeName }">
+					</div>
+                	</c:if>
+                	</c:forEach>
+                	</div>
+                	</div>
+						
+                   
         </div>
     </div>
 
@@ -156,8 +162,8 @@
    			location.href = '${contextPath}/magazine/detail?nNum=' + nNum;
    		}
    
+   		
    </script>
-
 
 
 </body>
