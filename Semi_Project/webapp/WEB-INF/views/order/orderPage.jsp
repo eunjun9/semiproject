@@ -5,7 +5,12 @@
 <%
 	String selDate = (String) request.getAttribute("selDate");
 %>
-
+<%
+	String name = (String) request.getAttribute("name");
+	String email = (String) request.getAttribute("email");
+	String phone = (String) request.getAttribute("phone");
+	String totalPrice = (String) request.getAttribute("totalPrice");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +18,7 @@
 <title>신청/결제</title>
 <!-- 외부 스타일 시트 -->
 <link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/css/order/payment-style.css?2">
+	href="<%=request.getContextPath()%>/resources/css/order/payment-style.css?3">
 <!-- 외부 폰트 -->
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap"
@@ -30,9 +35,7 @@
 
 	<!-- 위시리스트 화면 -->
 	<div class="container">
-		<div class="wish-title">
-			<h1>신청/결제</h1>
-		</div>
+		<div class="wish-title">신청/결제</div>
 		<div class="wish-heardLine">
 			<hr>
 			<ul>
@@ -42,7 +45,7 @@
 			</ul>
 			<hr>
 		</div>
-			<div class="wish-class">
+		<div class="wish-class">
 			<c:forEach var="wishList" items="${ wishList }">
 				<div class="wish-content">
 					<input type="hidden" name="noticeNum">
@@ -67,8 +70,8 @@
 					</c:when>
 					<c:when test="${ wishList.cCategory eq '원데이' }">
 						<div class="wish-class-date">
-							<p class="date">${ wishList.lessonDate }<br>
-							${ wishList.cTime1 } ~ ${ wishList.cTime2 }
+							<p class="date">${ wishList.lessonDate }<br> ${ wishList.cTime1 }
+								~ ${ wishList.cTime2 }
 							</p>
 						</div>
 					</c:when>
@@ -81,104 +84,133 @@
 				</div>
 				<hr class="hr-line">
 
-		<!-- 주문자정보 / 결제금액 -->
-			<div class="order-info">
-				<form id="order-info form" method="post">
-					<h2>주문자 정보</h2>
-					<div class="order-name">${ member.userName }</div>
-					<span class="input-area"> <input type="text" id="phone"
-						name="order-phone" maxlength="11" value="${ member.userPhone }">
-					</span>
-					<button type="button" id="orderPhoneBtn">수정</button>
-					<br> <br> <span class="input-area"> <input
-						type="email" id="email" name="order-email"
-						value="${ member.userId }">
-					</span>
-					<button type="button" id="orderPhoneBtn">수정</button>
+				<!-- 주문자정보 / 결제금액 -->
+				<div class="order-info">
+					<form id="order-info form" method="post">
+						<h2>주문자 정보</h2>
+						<div class="order-name">${ member.userName }</div>
+						<span class="input-area1"> <input type="text" id="phone"
+							name="order-phone" maxlength="13" value="${ member.userPhone }">
+						</span> <input type="button" id="orderPhoneBtn" value="수정"><br>
+						<br> <span class="input-area2"> <input type="email"
+							id="email" name="order-email" value="${ member.userId }">
+						</span> <input type="button" id="orderEmailBtn" value="수정">
+					</form>
+
+					<div class="order-price">
+						<div class="total-price-first">
+							<h2>결제 금액</h2>
+						</div>
+						<div class="total-price-last">
+							<p>총 결제 금액</p>
+							<p class="orderPrice">
+								<fmt:formatNumber value="${ wishList.cPrice }"
+									pattern="###,###,###" /> 원
+							</p>
+
+						</div>
+					</div>
+
+				</div>
+			</c:forEach>
+
+			<hr class="hr-line">
+
+
+			<!-- 결제수단 선택 부분 -->
+			<div class="payment">
+				<div class="pay-title">결제수단</div>
+				<div class="order-select">
+					<div class="bank">
+						<input type="radio" name="bankPay" id="bankPay" value="무통장입금">무통장입금
+					</div>
+					<div class="card">
+						<input type="radio" name="cardPay" id="cardPay" value="카드결제">카드결제
+					</div>
+					<div class="kakaopay">
+						<input type="radio" name="kakaoPay" id="kakaoPay" value="카카오페이">카카오페이
+					</div>
+				</div>
+			</div>
+
+			<!-- 이전으로 가기 버튼 -->
+			<div class="wish-footer">
+				<div class="back-btn">
+					<input type="button" id="back-button" class="back" onclick="back()"
+						value="이전으로">
+				</div>
+				<!-- 결제하기 버튼 -->
+				<div class="pay-btn">
+
+					<form name="payForm" method="post">
+						<input type="hidden" name="name" value="${ name }" /> 
+						<input type="hidden" name="email" value="${ emalil }" /> 
+						<input type="hidden" name="phone" value="${ phone }" /> 
+						<input type="hidden" name="totalPrice" value="${ totalPrice }" />
+
+
+						<button type="submit" id="pay-button" class="pay"
+							onclick="radioCheck();">결제하기</button>
+				
 				</form>
-
-				<div class="order-price">
-					<div class="total-price-first">
-						<h2>결제 금액</h2>
-					</div>
-					<div class="total-price-last">
-						<p>총 결제 금액</p>
-						<p class="orderPrice">
-							<fmt:formatNumber value="${ wishList.cPrice }"
-								pattern="###,###,###" />
-							원
-						</p>
-
-					</div>
 				</div>
-
-			</div>
-		</c:forEach>
-
-		<hr class="hr-line">
-
-
-		<!--  ** ajax로 결제완료/미완료 비동기식  처리하기...? **  -->
-		<!--  결제완료 팝업창 닫히면 결제수단 부분이 결제내역 텍스트로 바뀌는 기능 만들기! -->
-
-		<!-- 	 <div class="pay-after">
-            <span class="text">주문이 정상적으로 처리되었습니다.<br>
-                결제 내역은 마이페이지에서 확인 가능합니다.<br>
-            (주문 실패 시 주문 실패 문구 노출)</span>
-        </div>
-		-->
-
-		<!-- 메인화면으로 이동 버튼
-		<div class="wish-footer">
-			<div class="back-btn">
-				<button type="button" id="back-button" class="back">메인화면</button>
-			</div> -->
-
-		<!-- 결제내역으로 이동 버튼
-			<div class="pay-btn">
-				<button type="button" id="pay-button" class="pay">결제내역</button>
-			</div>
-		</div>
-	</div> -->
-
-
-		<!-- 결제수단 선택 부분 -->
-		<div class="payment">
-			<div class="pay-title">결제수단</div>
-			<div class="order-select">
-				<div class="bank">
-					<input type="radio" name="pay" id="pay" value="무통장입금">무통장입금
-				</div>
-				<div class="card">
-					<input type="radio" name="pay" id="pay" value="카드결제">카드결제
-				</div>
-				<div class="kakaopay">
-					<input type="radio" name="pay" id="pay" value="카카오페이">카카오페이
-				</div>
-			</div>
-		</div>
-
-		<!-- 이전으로 가기 버튼 -->
-		<div class="wish-footer">
-			<div class="back-btn">
-				<input type="button" id="back-button" class="back" onclick="back()"
-					value="이전으로">
-			</div>
-
-			<!-- 결제하기 버튼 -->
-			<div class="pay-btn">
-				<button type="button" id="pay-button" class="pay">결제하기</button>
 			</div>
 		</div>
 	</div>
-</div>
+
+
 	<!-- 푸터 가져오기 -->
 	<%@ include file="/WEB-INF/views/common/footer.jsp"%>
 
+
+	<!--  뒤로 가기 -->
 	<script>
 		function back() {
 			history.back();
 		}
 	</script>
+
+
+	<!-- 주문자 정보 수정 -->
+	<script>
+		$("#phone").change(function() {
+			if ($(this).val()) {
+				$("#orderPhoneBtn").click(function() {
+					alert('수정되었습니다.');
+					$("#phone").prop("readonly", true);
+					$(".input-area1").css("background-color", "#F3F2F2");
+					$("#phone").css("background-color", "#F3F2F2");
+				});
+			} else {
+				$("#phone").text($(this).val());
+			}
+		});
+
+		$("#email").change(function() {
+			if ($(this).val()) {
+				$("#orderEmailBtn").click(function() {
+					alert('수정되었습니다.');
+					$("#email").prop("readonly", true);
+					$(".input-area2").css("background-color", "#F3F2F2");
+					$("#email").css("background-color", "#F3F2F2");
+				});
+			} else {
+				$("#email").text($(this).val());
+			}
+		});
+	</script>
+
+	<script>
+		function radioCheck() {
+			// 카카오페이 라디오버튼 클릭 시
+			if ($('input:radio[name="kakaoPay"]').is(":checked") == true){
+				document.forms.payForm.action = "${ contextPath }/pay/check";
+				document.forms.payForm.submit();
+			}
+		}
+	</script>
+
+
+
 </body>
 </html>
