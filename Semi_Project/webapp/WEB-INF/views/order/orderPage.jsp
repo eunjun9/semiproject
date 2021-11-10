@@ -80,10 +80,8 @@
 					</p>
 				</div>
 				<hr class="hr-line">
-		</c:forEach>
 
 		<!-- 주문자정보 / 결제금액 -->
-		<c:forEach var="wishList" items="${ wishList }">
 			<div class="order-info">
 				<form id="order-info form" method="post">
 					<h2>주문자 정보</h2>
