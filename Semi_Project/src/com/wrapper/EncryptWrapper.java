@@ -19,7 +19,7 @@ public class EncryptWrapper extends HttpServletRequestWrapper{
 		String value ="";
 		
 		// request 객체에 담긴 파라미터 키 값이 userPwd 또는 newPwd인 경우 암호화
-		if(key != null && (key.equals("userPwd") || key.equals("newPwd"))) {
+		if(key != null && (key.equals("userPwd") || key.equals("newPwd") || key.equals("kakaoId"))) {
 			value = getSha512(super.getParameter(key));
 		}else {
 			// request 객체에 담긴 파라미터 키 값이 userPwd, newPwd가 아닌 경우 기존 값 그대로 사용

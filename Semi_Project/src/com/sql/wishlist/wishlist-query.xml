@@ -33,7 +33,7 @@
 			  )
 	</entry>
 	
-	<!-- 장바구니 리스트 조회 -->
+	<!-- 장바구니 리스트  / 클래스에서 바로 결제화면 넘어갈 때 조회 -->
 	<entry key="wishlist">
 		SELECT
 		      W.NOTICE_NUM
@@ -103,31 +103,6 @@
 		  AND W.NOTICE_NUM = ?
 	</entry> 
 	
-	<!-- 클래스에서 바로 넘어가는 결제 화면 조회 -->
-	<entry key="lessonPaySelect">
-		SELECT
-		      N.NOTICE_NUM
-		    , W.LESSON_DATE
-		    , N.NOTICE_TITLE
-		    , C.C_PRICE
-		    , C.C_CATEGORY
-		    , C.C_LOCATION
-		    , C.C_TIME1
-		    , C.C_TIME2
-		    , C.V_DATE
-      		, T.ROUTE
-			, T.CHANGE_NAME
-		 FROM NOTICE N, CLASS C, WISHLIST W, TBL_FILE T
-		WHERE N.NOTICE_NUM = C.NOTICE_NUM
-          AND N.NOTICE_NUM = W.NOTICE_NUM
-     	  AND C.NOTICE_NUM = T.NOTICE_NUM
-		  AND W.WISH_STATUS = 'Y'
-		  AND N.NOTICE_TYPE = '클래스'
-		  AND N.NOTICE_STATUS = 'Y'
-		  AND W.USER_ID = ?
-		  AND T.FILE_LEVEL = 1
-		  AND N.NOTICE_NUM = ?
-	</entry> 
-
+	
 
 </properties>

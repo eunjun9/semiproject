@@ -39,21 +39,28 @@ public class LessonOrderServlet extends HttpServlet {
 		
 		// 결제하기 누른 게시물 번호 가져오기
 		int nNum = Integer.parseInt(request.getParameter("noticeNum"));
+		// 원데이클래스는 사용자가 직접 원하는 날짜 선택하기때문에 선택한 날짜 받아오기
+		String selDate = request.getParameter("selDate");
 		
 		Member member = new Member();
 		member.setUserName(userName);
 		member.setUserPhone(userPhone);
 		member.setUserId(userId);
+
+		WishList wishlist = new WishList();
+		wishlist.setnNum(nNum);
+		wishlist.setUserId(userId);
+		wishlist.setlessonDate(selDate);
 		
 		// 클래스 디테일 페이지에서 바로 넘어오는 결제 페이지 조회
-		List<WishList> lessonPay = new WishListService().lessonPay(userId, nNum);
+		List<WishList> wishList = new WishListService().wishListAdd(wishlist);
 		
-		System.out.println(lessonPay);
+		System.out.println(wishList);
 
-		if (lessonPay != null) { 
-			request.setAttribute("wishList", lessonPay);
+		if (wishList != null) { 
+			request.setAttribute("wishList", wishList);
 			request.setAttribute("member", member);
-			request.getRequestDispatcher("/WEB-INF/views/order/orderPage.jsp").forward(request, response);
+			response.sendRedirect(request.getContextPath() + "/payment");
 		} else { 
 			request.setAttribute("message", "결제 페이지 접속에 실패하였습니다. 다시 시도해주세요.");
 			PrintWriter writer = response.getWriter();
