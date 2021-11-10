@@ -28,7 +28,7 @@
         <!-- 클래스 상세 페이지 헤더-->
         <div class="class_detail1">
             <div class="cDetail_h" >
-                <h2 class="cMTitle">${ lesson.nTitle }</h2>
+                <h2 class="cMTitle">${ lesson.nTitle }<hr></h2>
                 <img class="cThumbnail" src="${ contextPath }${ lesson.photoList.get(0).route }${ lesson.photoList.get(0).changeName }">
             </div>
             <h4 class="cTutor">강사</h4><p>${ lesson.userName }</p>
@@ -55,8 +55,8 @@
 	            $(function(){ 
 	                 $("#apply").click(function(){ 
 	                    if(confirm('결제화면으로 이동하시겠습니까?')){
-	                        document.forms.orderForm.action = "${ contextPath }/lesson/order";
-			                document.forms.orderForm.submit();
+	                        //document.forms.orderForm.action = "${ contextPath }/lesson/order";
+			                //document.forms.orderForm.submit();
 	                    } else {
 	                    	return false;
 	                    } 
@@ -96,8 +96,8 @@
 			        				 return false;
 			        			 } else {
 					                    if(confirm('결제화면으로 이동하시겠습니까?')){
-					                        document.forms.orderForm.action = "${ contextPath }/lesson/order";
-							                document.forms.orderForm.submit();
+					                        //document.forms.orderForm.action = "${ contextPath }/lesson/order";
+							                //document.forms.orderForm.submit();
 					                    }else {
 					                    	return false;
 					                    } 
