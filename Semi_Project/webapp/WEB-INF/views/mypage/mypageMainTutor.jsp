@@ -33,12 +33,12 @@
                 <p id="name">김철수</p>
                 <p id="level">강사</p>
                 <p id="mail">kh@gmail.com</p>
-                <a id="myfeed" href="#">내 피드 <img width="5%" src="${ contextPath }/resources/images/yewon/next.png"></a>
+                <a id="myfeed" href="${contextPath }/myfeed">내 피드 <img width="5%" src="${ contextPath }/resources/images/yewon/next.png"></a>
             </div>
 
             <ul class="move">
                 <li><a class="mv" id="modify" href="#">정보수정 <img class="pmv" width="5%" src="${ contextPath }/resources/images/yewon/next.png"> </a></li>
-                <li><a class="mv" id="logout" href="#">로그아웃 <img class="pmv" width="5%" src="${ contextPath }/resources/images/yewon/next.png"> </a> </li>
+                <li><a class="mv" id="logout" href="${contextPath }/logout">로그아웃 <img class="pmv" width="5%" src="${ contextPath }/resources/images/yewon/next.png"> </a> </li>
             </ul>
         </div>
     </div> 
