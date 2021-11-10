@@ -54,11 +54,9 @@
 			 , S_TYPE
 			 , MAX_MEMBER
 			 , MIN_MEMBER
-			 , INTRODUCTION
 		  FROM NOTICE
 		  JOIN MEMBER_INFO USING(USER_ID)
 		  JOIN SOCIALING USING(NOTICE_NUM)
-		  JOIN PROFILE USING(USER_ID)
 		 WHERE NOTICE_TYPE = '소셜링'
 		   AND NOTICE_STATUS = 'Y'
 		   AND NOTICE_NUM = ?
@@ -187,7 +185,6 @@
 		UPDATE NOTICE
 		   SET NOTICE_TITLE = ?
 		   	 , NOTICE_CONTENT = ?
-		   	 , NOTICE_TYPE = ?
 		 WHERE NOTICE_NUM = ?
 	</entry>
 	
@@ -233,5 +230,19 @@
 			?
 		  , ?
 		)
+	</entry>
+	
+	<entry key="selectLikedList">
+		SELECT
+		       USER_ID
+		     , LIKE_NUM
+		  FROM SOCIALING_LIKE
+		 WHERE LIKE_NUM = ?
+	</entry>
+	
+	<entry key="unLikeSocialing">
+		DELETE FROM SOCIALING_LIKE
+		 WHERE USER_ID = ?
+		   AND LIKE_NUM = ?
 	</entry>
 </properties>

@@ -306,6 +306,11 @@ li {
     height: 300px;
 }
 
+#s-thumbnail2 {
+    height: 180px;
+    width: 100%;
+}
+
 .button1{
     position: relative;
     top:-220px;
@@ -315,7 +320,7 @@ li {
 .button2{
     position: relative;
     top:-263px;
-    right: -935px;
+    right: -920px;
     
 }
 

@@ -26,7 +26,7 @@ public class Member {
 
 	
 	public Member() {}
-	
+
 	// gender 포함
 	public Member(String userId, String userName, String userPhone, String userPwd, Date joinDate,
 			String status, String userGrade, String gender) {
@@ -125,11 +125,8 @@ public class Member {
 	@Override
 	public String toString() {
 		return "Member [userId=" + userId + ", userName=" + userName + ", userPhone=" + userPhone + ", userPwd="
-				+ userPwd + ", joinDate=" + joinDate + ", status=" + status
-				+ ", userGrade=" + userGrade + ", gender=" + gender + "]";
+				+ userPwd + ", joinDate=" + joinDate + ", status=" + status + ", userGrade=" + userGrade + ", gender="
+				+ gender + "]";
 	}
 
-	
-	
-	
 }

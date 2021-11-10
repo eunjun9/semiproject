@@ -14,6 +14,7 @@ import com.soda.socialing.model.dao.SocialingDao;
 import com.soda.socialing.model.vo.PageInfo;
 import com.soda.socialing.model.vo.Search;
 import com.soda.socialing.model.vo.Socialing;
+import com.soda.socialing.model.vo.SocialingLike;
 import com.soda.socialing.model.vo.SocialingMember;
 import com.soda.socialing.model.vo.SodaFile;
 
@@ -212,6 +213,33 @@ public class SocialingService {
 		
 		// 중복추가 방지 로직 추가해야 함
 		int result = socialingDao.likeSocialing(conn, nNum, userId);
+		
+		if(result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return result;
+	}
+
+	public List<SocialingLike> selectLikedList(int nNum) {
+		Connection conn = getConnection();
+		
+		/* Socialing_like 테이블 정보 조회 */
+		List<SocialingLike> socialingLike = socialingDao.selectLikedList(conn, nNum);
+		
+		close(conn);
+		
+		return socialingLike;
+	}
+
+	public int unLikeSocialing(int nNum, String userId) {
+		Connection conn = getConnection();
+		
+		int result = socialingDao.unLikeSocialing(conn, nNum, userId);
 		
 		if(result > 0) {
 			commit(conn);

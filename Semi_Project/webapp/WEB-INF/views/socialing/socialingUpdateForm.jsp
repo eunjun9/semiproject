@@ -33,9 +33,7 @@
                 <form method="post" action="${ contextPath }/socialing/update" enctype="multipart/form-data">
                 
 	                <input type="hidden" name="nNum" value="${ socialing.nNum }">
-					<c:forEach items="${ socialing.photoList }" var="photo">
-						<input type="hidden" name="changeName" value="${ photo.changeName }">
-					</c:forEach>
+					<input type="hidden" name="changeName" value="${ socialing.photoList.get(0).changeName }">
                 
                     <h1 id="w-main-title">어떤 활동을 하는 소셜링인가요?</h1>
                     <h4 id="w-sub-title">제목을 입력해 주세요 (최대 30자)</h4>
@@ -48,15 +46,14 @@
                     <img src="${ contextPath }${ socialing.photoList.get(0).route }${ socialing.photoList.get(0).changeName }">
                     </div>
                     <button type="button" id="fileBtn">file</button><br>
-                    <input type="file" name="thumbnail" accept="image/gif,image/jpeg,image/png" required>
+                    <input type="file" name="thumbnail" accept="image/gif,image/jpeg,image/png">
                     <textarea id="content" name="content" placeholder="함께 이야기하고 싶은 주제나 꼭 알려주고 싶은 내용을 입력해 주세요"
                      required>${ socialing.nContent }</textarea>
                     <hr>
                     
                     <h1 id="w-main-title2">언제 어디서 만나나요?</h1>
                     <h4 id="w-sub-title4">날짜를 선택하세요</h4>
-                    <input type="date" name="dateIn" 
-                    value='<fmt:formatDate value="${ socialing.sdate }" type="date" pattern="yyyy-MM-dd"/>' required>
+                    <input type="date" name="dateIn" value="${ socialing.sdate }" required>
                     <h4 id="w-sub-title5">시간을 선택하세요</h4>
                     <input type="time" name="timeIn" value="${ socialing.stime }" required>
                     <h4 id="w-sub-title5">장소를 입력하세요</h4>
