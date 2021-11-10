@@ -50,7 +50,7 @@
                 <div class="category1">
                     <a href="${ contextPath }/socialing/main">SOCIALING</a>
                     <a href="${ contextPath }/lesson/main">CLASS</a>
-                    <a href="#">MAGAZINE</a>
+                    <a href="${ contextPath }/magazine/main">MAGAZINE</a>
                 </div>
                 
                <div class="category2">
