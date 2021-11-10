@@ -44,7 +44,7 @@ public class SocialingLikeServlet extends HttpServlet {
 		
 		if(result > 0) {
 			request.getSession().setAttribute("message", "관심 소셜링에 추가 되었습니다.");
-			response.sendRedirect(request.getContextPath() + "/socialing/detail?nNum=" + nNum);
+			response.sendRedirect(request.getContextPath() + "/socialing/main");
 		} else {
 			request.setAttribute("message", "관심 소셜링 추가에 실패하였습니다.");
 			request.getRequestDispatcher("/WEB-INF/views/common/errorpage.jsp").forward(request, response);
