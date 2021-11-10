@@ -45,7 +45,7 @@
                 <div class="photo-follow">
                     <div class="photo">
                         <div class="profile">
-                            <img src="${ contextPath }${ profile.profileFile.route}${profile.profileFile.changeName}">
+                            <img src="${ contextPath }${ profileFile.route}${profileFile.changeName}">
                         </div>
 
                         <div class="name-grade">

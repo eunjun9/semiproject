@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
@@ -119,8 +120,6 @@ public class ProfileDao {
         try {
            pstmt = conn.prepareStatement(sql);
            
-           System.out.println(file);
-           
            pstmt.setString(1,  file.getRoute());
            pstmt.setString(2,  file.getOriginName());
            pstmt.setString(3,  file.getChangeName());
@@ -171,11 +170,41 @@ public class ProfileDao {
 	      return profile;
 	}
 
-	
-	
-
-
-	
+	public List<ProfileFile> selectProfileFile(Connection conn, String userId) {
+		PreparedStatement pstmt = null;
+	      ResultSet rset = null;
+	      List<ProfileFile> profileFile = new ArrayList<>();
+	      String sql = profileQuery.getProperty("selectProfileFile");
+	      
+	      try {
+	         pstmt = conn.prepareStatement(sql);
+	         pstmt.setString(1, userId);
+	         rset = pstmt.executeQuery();
+	         
+	         
+	         if(rset.next()) {
+	        	 ProfileFile file = new ProfileFile();
+	        	 file.setFileNo(rset.getInt("FILE_NO"));
+	        	 file.setRoute(rset.getString("route"));
+	        	 file.setUserId(rset.getString("USER_ID"));
+	        	 file.setOriginName(rset.getString("ORIGIN_NAME"));
+	        	 file.setChangeName(rset.getString("CHANGE_NAME"));
+	        	 file.setStatus(rset.getString("STATUS"));
+	        	 profileFile.add(file);
+	        	 
+	        	 
+	         }
+	         
+	         
+	      } catch (SQLException e) {
+	         e.printStackTrace();
+	      } finally {
+	         close(rset);
+	         close(pstmt);
+	         
+	      }
+	      return profileFile;
+	}
 
 	
 

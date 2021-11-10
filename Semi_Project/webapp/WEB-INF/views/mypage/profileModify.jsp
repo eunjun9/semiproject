@@ -50,7 +50,7 @@
                     <!--프로필-->
                     <div class="profile">
                     
-                    <img src="${ contextPath }${ profile.profileFile.get().route }${  profile.profileFile.get().changeName }">
+                    <img src="${ contextPath }$">
                     <input type="file" name="pic" accept="image/gif,image/jpeg,image/png"> 
                     </div>
                     

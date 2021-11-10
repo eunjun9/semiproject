@@ -79,4 +79,17 @@ INTEREST
 </entry>
 
 
+<entry key="selectProfileFile">
+	SELECT
+    FILE_NO,
+    ROUTE,
+	USER_ID,
+	ORIGIN_NAME,
+	CHANGE_NAME,
+	STATUS
+	FROM "PROFILE_FILE"
+	WHERE USER_ID= ?
+</entry>
+
+
 </properties>

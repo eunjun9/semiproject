@@ -96,7 +96,6 @@ public class ProfileInsertServlet extends HttpServlet {
 		file.setChangeName(changeName);
 		file.setRoute("/resources/images/woo_uploadFiles/");
 		
-		System.out.println(file);
 		
 		profileFile.add(file);
 		
