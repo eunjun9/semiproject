@@ -12,6 +12,7 @@ import com.soda.magazine.model.vo.MagazineFile;
 import com.soda.magazine.model.vo.Magazine;
 import com.soda.magazine.model.vo.PageInfo;
 import com.soda.magazine.model.vo.Reply;
+import com.soda.mypage.model.vo.Profile;
 
 public class MagazineService {
 
@@ -240,5 +241,18 @@ public class MagazineService {
 		
 		return replyList;
 	}
+
+	public List<Magazine> selectUserselfList() {
+		Connection conn = getConnection();
+
+		List<Magazine> userselfList = magazineDao.selectUserselfList(conn);
+		close(conn);
+
+		return userselfList;
+	}
+
+	
+
+	
 
 }

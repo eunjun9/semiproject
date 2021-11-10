@@ -8,9 +8,6 @@ import static com.common.JDBCTemplate.rollback;
 import java.sql.Connection;
 import java.util.List;
 
-import com.soda.magazine.model.dao.MagazineDao;
-import com.soda.magazine.model.vo.Magazine;
-import com.soda.magazine.model.vo.MagazineFile;
 import com.soda.mypage.model.dao.ProfileDao;
 import com.soda.mypage.model.vo.Profile;
 import com.soda.mypage.model.vo.ProfileFile;
@@ -19,30 +16,57 @@ public class ProfileService {
 
 	private ProfileDao profileDao = new ProfileDao();
 	
-	public int modifyProfile(Profile profile) {
+	
+	
+	
+	
+	public int insertProfile(Profile profile, ProfileFile file) {
+		Connection conn = getConnection();
+	      
+	      /* Board 테이블에 삽입 - 기존 메소드 활용 */
+	      int insertResult = profileDao.insertProfile(conn, profile);
+	      
+	      /* Attachment 테이블 삽입 */
+	      int attachmentResult = 0;
+	         attachmentResult = profileDao.insertFile(conn, file);
+	      
+	      
+	      int result = 0;    // 2가지 로직이 모두 잘 수행되었음을 나타내는 변수
+	      if(insertResult > 0 && attachmentResult == profile.getProfileFile().size()) {
+	         commit(conn);   // 2개의 모든 로직이 잘 수행되었을 때
+	         result = 1;
+	      } else {
+	         rollback(conn);
+	      }
+	      
+	      close(conn);
+	      
+	      return result;
+	   }
+	
+	
+	
+	public int modifyProfile(Profile profile, ProfileFile file) {
 
+		int insertFile = 0;
 		
-			Connection conn = getConnection();
-		      int result = profileDao.modifyProfile(conn, profile);
-		      
-		      /* File 테이블에 삽입 */
-				int fileResult = 0;
-				for (ProfileFile photo : profile.getPhotoList()) {
-					fileResult += profileDao.insertFile(conn, photo, profile);
-				}
+		Connection conn = getConnection();
+		int result = profileDao.modifyProfile(conn, profile);
+		
+		if(result>0) {
+			insertFile = profileDao.modifyFile(conn, file);
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		
+		
 
-				int realResult = 0; // 3가지 로직이 모두 잘 수행 되었음을 나타내는 변수
-				if (result > 0 && fileResult == profile.getPhotoList().size()) {
-					// fileResult = 사진 삽입(insert)이 정상 수행 된 갯수, size() = 실제 첨부 된 사진 갯수
-					commit(conn);
-					result = 1;
-				} else {
-					rollback(conn);
-				}
+		close(conn);
 
-				close(conn);
-
-				return realResult;
+		return insertFile;
+				
+		     
 		}
 
 	public Profile selectProfile(String userId) {
@@ -51,10 +75,6 @@ public class ProfileService {
 		/* magazine 테이블 정보 조회 */
 		Profile profile = profileDao.selectProfile(conn, userId);
 
-		
-		/* magazineFile 테이블 정보 조회 */
-//		List<MagazineFile> photoList = profileDao.selectPhotoList(conn, nNum);
-//		magazine.setPhotoList(photoList);
 
 		close(conn);
 		
@@ -62,6 +82,12 @@ public class ProfileService {
 		return profile;
 		
 	}
+
+
+
+
+
+	
 
 	}
 

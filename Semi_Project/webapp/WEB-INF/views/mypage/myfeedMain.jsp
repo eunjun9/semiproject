@@ -1,22 +1,23 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" import="com.soda.mypage.model.vo.Profile"%>
+
+    
+    <!DOCTYPE html>
 <html lang="ko">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>∏∂¿Ã ««µÂ ∏ﬁ¿Œ</title>
+    <title>ÎßàÏù¥ ÌîºÎìú Î©îÏù∏</title>
 
-    <!-- ø‹∫Œ Ω∫≈∏¿œ Ω√∆Æ -->
-    <link href="../css/myfeedMain.css" rel="stylesheet">
-    <link href="../css/Headerfooter.css" rel="stylesheet">
+    <!-- Ïô∏Î∂Ä Ïä§ÌÉÄÏùº ÏãúÌä∏ -->
+    <link rel="stylesheet" href="${ contextPath }/resources/css/mypage/myfeedMain.css">
 
     <!-- favicon (Real Favicon Generator)-->
     <link rel="icon" type="image/x-icon" href="resources/image/khfavicon.ico">
     
-    <!-- ±€≤√ -->
+    <!-- Í∏ÄÍº¥ -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
     <!--font-family: 'Noto Sans KR', sans-serif;-->
 
@@ -27,59 +28,37 @@
 </head>
 
 <body>
-    <!--header-->
-
-    <div class="header">
-        <div class="head-inner">
-
-            <div class="logo">
-                <img src="../image/logo.png">
-            </div>
-
-            <div class="big-category">
-                <div class="category1">
-                    <a href="#">SOCIALING</a>
-                    <a href="#">CLASS</a>
-                    <a href="#">MAGAZINE</a>
-                </div>
-                <div class="category2">
-                    <a href="#">CART</a>
-                    <a href="#">MYPAGE</a>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
+ <!-- header -->
+	<%@ include file="/WEB-INF/views/common/header.jsp" %>
 
     <!--body-->
     <div class="body-super">
         <div class="body-inner">
             <div class="body-inner-blue">
 
-                <!-- æ∆¿Ãµ -->
+                <!-- ÏïÑÏù¥Îîî ÎàÑÎ•¥Î©¥ ÎßàÏù¥ÌéòÏù¥ÏßÄÎ°ú Ïù¥Îèô-->
                 <div class=id>
-                    <p>&lt; sodaisthebest</p>
+                    <a href="${contextPath }/mypage/main">&lt; ÎßàÏù¥ÌéòÏù¥ÏßÄ</a>
                 </div>
 
-                <!-- ªÁ¡¯∫Œ∫–-->
+                <!-- ÏÇ¨ÏßÑÎ∂ÄÎ∂Ñ-->
                 <div class="photo-follow">
                     <div class="photo">
                         <div class="profile">
-                            <img src="../image/pro.jpg">
+                            <img src="${ contextPath }${ profile.profileFile.route}${profile.profileFile.changeName}">
                         </div>
 
                         <div class="name-grade">
                             <div class="name">
-                                <p>»´±Êµø</p>
+                                <p>${ loginUser.userName }</p>
                             </div>
                             <div class="grade">
-                                <p>¿œπ›</p>
+                                <p>${loginUser.userGrade}</p>
                             </div>
                         </div>
                     </div>
 
-                    <!--∆»∑ŒøÏ-->
+                    <!--ÌåîÎ°úÏö∞-->
                     <div class="follow">
                         <div class="follow-num">
 
@@ -88,7 +67,7 @@
                                     <p>234</p>
                                 </div>
                                 <div class="post-name">
-                                    <p>∞‘Ω√π∞</p>
+                                    <p>Í≤åÏãúÎ¨º</p>
                                 </div>
                             </div>
 
@@ -97,7 +76,7 @@
                                     <p>345</p>
                                 </div>
                                 <div class="post-name">
-                                    <p>∆»∑Œøˆ</p>
+                                    <p>ÌåîÎ°úÏõå</p>
                                 </div>
                             </div>
 
@@ -106,17 +85,17 @@
                                     <p>433</p>
                                 </div>
                                 <div class="post-name">
-                                    <p>∆»∑Œ¿◊</p>
+                                    <p>ÌåîÎ°úÏûâ</p>
                                 </div>
                             </div>
                         </div>
 
                         <div class="profile-button">
-                            <button>«¡∑Œ«  ∆Ì¡˝</button>
+                            <button onclick="location.href='${ contextPath }/profile/insertview'">ÌîÑÎ°úÌïÑ Ìé∏Ïßë</button>
                         </div>
 
                         <div class="email">
-                            <p>sodaisthebest@gamil.com</p>
+                            <p>${ loginUser.userId }</p>
                         </div>
 
                     </div>
@@ -126,46 +105,43 @@
                 <div class="content">
 
                     <div class="content-inner">
-                        <!--∏∂¿Ã∆‰¿Ã¡ˆ-->
-                        <div class="mypage">
-                            <a href="#">∏∂¿Ã∆‰¿Ã¡ˆ ∫∏±‚ ></a>
-                        </div>
 
-                        <!--¿⁄±‚º“∞≥-->
+                        <!--ÏûêÍ∏∞ÏÜåÍ∞ú-->
                         <div class="introduction">
                             <div class="intro">
-                                <p>¿⁄±‚º“∞≥</p>
-                                <textarea>¿⁄±‚º“∞≥∏¶ ¿‘∑¬«ÿ¡÷ººø‰</textarea>
+                                <p>ÏûêÍ∏∞ÏÜåÍ∞ú</p>
+                                <textarea class="intro">${ profile.introduction }</textarea>
+                                
+                                <p>SNS</p>
+                              <textarea type="text" class="sns">${ profile.sns }</textarea>
                             </div>
 
+
+
+                              <%--  <c:forEach var="profile" items="${interest}"> --%>
                             <div class="tag">
-                                <p>≈¬±◊1</p>
-                                <p>≈¬±◊2</p>
-                                <p>≈¬±◊3</p>
+                                <p>${profile.interest}</p>
                             </div>
+          
                         </div>
-                    </div>
-
-                    <!--««µÂ ªÁ¡¯µÈ-->
-                    <div class="pics">
-                        <img src="../image/white.jpg">
-                        <img src="../image/white.jpg">
-                        <img src="../image/white.jpg">
-                    </div>
-                    <div class="pics">
-                        <img src="../image/white.jpg">
-                        <img src="../image/white.jpg">
-                        <img src="../image/white.jpg">
-                    </div>
-                    <div class="pics">
-                        <img src="../image/white.jpg">
-                        <img src="../image/white.jpg">
-                        <img src="../image/white.jpg">
-                    </div>
-
-                </div>
-
+                        
+                         <!--ÌîºÎìú ÏÇ¨ÏßÑÎì§-->
+                    
             </div>
+                    </div>
+					<div class="img-par">
+                    <div class="imgs">
+                    <c:forEach var="magazine" items="${userselfList}">
+                    <c:if test="${!empty loginUser && magazine.userId == loginUser.userId}">
+                    <div class="pics" onclick="detailView(${ magazine.nNum })">
+					<img src="${ contextPath }${ magazine.photoList.get(0).route }${ magazine.photoList.get(0).changeName }">
+					</div>
+                	</c:if>
+                	</c:forEach>
+                	</div>
+                	</div>
+						
+                   
         </div>
     </div>
 
@@ -173,37 +149,21 @@
 
 
 
-    <!--footer-->
-    <div class="footer">
-        <div class="foot-inner">
-            <div class="foot-logo foot-all">
-                S O D A</div>
-            <div class="information foot-all">
-                <ul>¡÷Ωƒ»∏ªÁ º“º» ¥Ÿ¿Ã¥◊</ul>
-                <ul>¥Î«• : »´±Êµø | ∞≥¿Œ¡§∫∏∞¸∏Æ√•¿”¿⁄ : »´±Êµø | ¿¸»≠ : 02-123-4567 | ¿Ã∏ﬁ¿œ : soda@gmail.com</ul>
-                <ul>¡÷º“ : º≠øÔ ∞≠≥≤±∏ ≈◊«Ï∂ı∑Œ 14±Ê 6 ≥≤µµ∫Ùµ˘ 2√˛ | ªÁæ˜¿⁄µÓ∑œπ¯»£ : 000-00-00000</ul>
-                <ul> ≈ÎΩ≈∆«∏≈ : ¡¶ 2021-º≠øÔ∞≠≥≤-0000»£</ul>
-                <ul>øµæ˜Ω√∞£ : ø˘-±› ø¿»ƒ 2Ω√-7Ω√</ul>
-            </div>
-            <div class="foot-category foot-all">
-                <ul><a href="#">º“¥Ÿº“∞≥</a></ul>
-                <ul><a href="#">∞¯¡ˆªÁ«◊ </a></ul>
-                <ul><a href="#">∞≠ªÁΩ≈√ª</a></ul>
-                <ul><a href="#">¿⁄¡÷πØ¥¬¡˙πÆ</a></ul>
-            </div>
+ 	
 
 
-        </div>
     </div>
-    <div class="final">
-        <div class="foot-final">
-            <a href="#">¿ÃøÎæ‡∞¸ | </a>
-            <a href="#">∞≥¿Œ¡§∫∏√≥∏ÆπÊƒß | </a>
-            <a href="#">ªÁæ˜¿⁄¡§∫∏»Æ¿Œ</a>
-        </div>
-    </div>
+    
+    <!-- footer -->
+	<%@ include file="/WEB-INF/views/common/footer.jsp" %>
 
-    </div>
+<script>
+   		function detailView(nNum){
+   			location.href = '${contextPath}/magazine/detail?nNum=' + nNum;
+   		}
+   
+   		
+   </script>
 
 
 </body>
