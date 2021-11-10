@@ -181,7 +181,7 @@
 	
 	<entry key="updateLesson">
 		UPDATE CLASS
-		   SET C_TAG1 = ?, C_TAG2 = ?, C_PRICE = ?, C_CATEGORY = ?, 
+		   SET C_TAG1 = ?, C_TAG2 = ?, C_PRICE = ?, 
 		   	   V_DATE = ?, O_DATE1 = ?, O_DATE2 = ?, C_LOCATION = ?,
 		   	   C_TUTOR = ?, C_TIME1 = ?, C_TIME2 = ?
 		 WHERE NOTICE_NUM = ? 
