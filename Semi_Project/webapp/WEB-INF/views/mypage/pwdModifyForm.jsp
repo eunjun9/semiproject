@@ -5,20 +5,29 @@
 <head>
 <meta charset="UTF-8">
 <title>비밀번호 변경</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
 <style>
+	
 	.outer{
 		width:90%;
 		min-width : 450px;
 		margin:auto;
 	}
 	
-	.outer h1 {
+	.outer h2 {
 		text-align:center;
+	}
+	
+	.changePwd{
+		text-align:center;
+		font-size:1.35rem;
+		font-weight:600;
 	}
 	
 	#updatePwdForm {
 		width : 300px;
 		margin:auto;
+		
 	}
 	
 	.input_area {
@@ -49,11 +58,15 @@
 	button {
 		width : 100px;
 		height : 35px;
-		border : 0px;
-		color:white;
+		color:black;
 		background:#282A35;
 		margin : 5px;
 		cursor : pointer;
+		border: 1px solid #DAEFF5;
+		border-radius: 17px;
+	    background-color: #DAEFF5;
+	    font-size: 1rem;
+	    font-weight: 700;
 	}
 </style>
 <%
@@ -76,19 +89,19 @@
 </head>
 <body>
 	<div class="outer">
-	<h1>비밀번호 변경</h1>
+	<p class="changePwd">비밀번호 변경</p>
 	
 	<form id="updatePwdForm" action="<%= request.getContextPath() %>/pwdModify"
 	method="post" onsubmit="return checkPwd();">
-				<h4>현재 비밀번호</h4>
+				<h5>현재 비밀번호</h5>
 				<span class="input_area">
 				<input type="password" name="userPwd" id="userPwd" maxlength="15">
 				</span>
-				<h4>변경할 비밀번호</h4>
+				<h5>변경할 비밀번호</h5>
 				<span class="input_area">
 				<input type="password" name="newPwd" id="newPwd" maxlength="15">
 				</span>
-				<h4>변경할 비밀번호 확인</h4>
+				<h5>변경할 비밀번호 확인</h5>
 				<span class="input_area">
 				<input type="password" name="newPwd2" id="newPwd2" maxlength="15">
 				</span>
