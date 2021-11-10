@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Properties;
 
 import com.soda.magazine.model.dao.MagazineDao;
@@ -32,6 +33,56 @@ public class ProfileDao {
 		}
 	}
 	
+	public int insertProfile(Connection conn, Profile profile) {
+		PreparedStatement pstmt = null;
+	      int result = 0;
+	      String sql = profileQuery.getProperty("insertProfile");
+	      
+	      try {
+	         pstmt = conn.prepareStatement(sql);
+	         pstmt.setString(1, profile.getUserId());
+	         pstmt.setString(2, profile.getIntroduction());
+	         pstmt.setString(3, profile.getSns());
+	         pstmt.setString(4, profile.getInterest());
+	         
+	         result = pstmt.executeUpdate();
+	         
+	      } catch (SQLException e) {
+	         e.printStackTrace();
+	      } finally {
+	         close(pstmt);
+	      }
+	      
+	      return result;
+	}
+	
+	
+	public int insertFile(Connection conn, ProfileFile file) {
+	       PreparedStatement pstmt = null;
+           int result = 0;
+           String sql = profileQuery.getProperty("insertFile");
+           
+           try {
+              pstmt = conn.prepareStatement(sql);
+              
+              pstmt.setString(1,  file.getRoute());
+              pstmt.setString(2,  file.getUserId());
+              pstmt.setString(3,  file.getOriginName());
+              pstmt.setString(4,  file.getChangeName());
+              
+              result = pstmt.executeUpdate();
+              
+           } catch (SQLException e) {
+              e.printStackTrace();
+           } finally {
+              close(pstmt);
+           }
+           
+           return result;
+        }
+
+
+	
 	
 	public int modifyProfile(Connection conn, Profile profile) {
 		 PreparedStatement pstmt = null;
@@ -41,6 +92,7 @@ public class ProfileDao {
 	      try {
 	         pstmt = conn.prepareStatement(sql);
 	         
+
 	         pstmt.setString(1, profile.getIntroduction());
 	         pstmt.setString(2, profile.getSns());
 	         pstmt.setString(3, profile.getInterest());
@@ -58,6 +110,34 @@ public class ProfileDao {
 	      return result;
 	   }
 
+	
+	public int modifyFile(Connection conn, ProfileFile file) {
+		PreparedStatement pstmt = null;
+        int result = 0;
+        String sql = profileQuery.getProperty("modifyFile");
+        
+        try {
+           pstmt = conn.prepareStatement(sql);
+           
+           System.out.println(file);
+           
+           pstmt.setString(1,  file.getRoute());
+           pstmt.setString(2,  file.getOriginName());
+           pstmt.setString(3,  file.getChangeName());
+           pstmt.setString(4,  file.getUserId());
+           
+           result = pstmt.executeUpdate();
+           
+        } catch (SQLException e) {
+           e.printStackTrace();
+        } finally {
+           close(pstmt);
+        }
+        
+        return result;
+	}
+
+	
 
 	public Profile selectProfile(Connection conn, String userId) {
 		PreparedStatement pstmt = null;
@@ -74,13 +154,9 @@ public class ProfileDao {
 	         if(rset.next()) {
 	        	 profile = new Profile();
 	        	 profile.setUserId(rset.getString("user_id"));
-	        	 profile.setProfile(rset.getString("profile"));
 	        	 profile.setIntroduction(rset.getString("introduction"));
-	        	 profile.setFeedStatus(rset.getString("feed_status"));
-	        	 profile.setSocialing(rset.getString("socialing"));
 	        	 profile.setSns(rset.getString("sns"));
 	        	 profile.setInterest(rset.getString("interest"));
-	        	 profile.setLikeSocialing(rset.getString("like_socialing"));
 	         }
 	         
 	         
@@ -91,42 +167,21 @@ public class ProfileDao {
 	         close(rset);
 	         close(pstmt);
 	      }
+//	     System.out.println(profile);
 	      return profile;
 	}
 
+	
+	
 
-	public int insertFile(Connection conn, ProfileFile photo, Profile profile) {
-		   PreparedStatement pstmt = null;
-           int result = 0;
-           String sql = profileQuery.getProperty("insertFile");
-           
-           try {
-              pstmt = conn.prepareStatement(sql);
-              
-              
-//              System.out.println(photo.getRoute());
-//              System.out.println(profile.getUserId());
-//              System.out.println(photo.getOriginName());
-//              System.out.println(photo.getChangeName());
-              
-              pstmt.setString(1,  photo.getRoute());
-              pstmt.setString(2, profile.getUserId());
-              pstmt.setString(2,  photo.getOriginName());
-              pstmt.setString(3,  photo.getChangeName());
-              
-              result = pstmt.executeUpdate();
-              
-//              System.out.println(result);
-//              System.out.println(pstmt);
-              
-           } catch (SQLException e) {
-              e.printStackTrace();
-           } finally {
-              close(pstmt);
-           }
-           
-           return result;
-        }
+
+	
+
+	
+
+
+	
+
 
 	}
 

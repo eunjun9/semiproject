@@ -3,35 +3,29 @@
 "http://java.sun.com/dtd/properties.dtd">
 <properties>
 
-
-
-<entry key="modifyProfile">
-	UPDATE profile
-	SET "PROFILE"='n',
-	INTRODUCTION=?,
-	SNS=?,
-	INTEREST=?
-	WHERE user_id = ?
-</entry>
-
-<entry key="selectProfile">
-	SELECT
+<entry key="insertProfile">
+    
+    INSERT
+		INTO "PROFILE"
+		(
 	USER_ID,
-	"PROFILE",
-	INTRODUCTION,
-	FEED_STATUS,
-	SOCIALING,
-	SNS,
-	INTEREST,
-	LIKE_SOCIALING
-	FROM profile
-	WHERE FEED_STATUS='N'
-	AND user_id=?
+INTRODUCTION,
+SNS,
+INTEREST
+		)
+		VALUES
+		(
+		?,
+        ?,
+        ?,
+        ?
+		)
+
 </entry>
+
 
 <entry key="insertFile">
-
-		   
+    
     INSERT
 		INTO PROFILE_FILE
 		(
@@ -51,6 +45,38 @@
 		, ?
 		, DEFAULT
 		)
-	</entry>
+
+</entry>
+
+
+<entry key="modifyProfile">
+	UPDATE profile
+	SET 
+	INTRODUCTION=?,
+	SNS=?,
+	INTEREST=?
+	WHERE user_id = ?
+</entry>
+
+
+<entry key="modifyFile">
+		UPDATE PROFILE_FILE
+		SET 
+		ROUTE =?,
+		ORIGIN_NAME=?,
+		CHANGE_NAME=?
+		WHERE USER_ID=?
+</entry>
+
+<entry key="selectProfile">
+	SELECT
+	USER_ID,
+	INTRODUCTION,
+	SNS,
+	INTEREST
+	FROM "PROFILE"
+	WHERE USER_ID= ?
+</entry>
+
 
 </properties>

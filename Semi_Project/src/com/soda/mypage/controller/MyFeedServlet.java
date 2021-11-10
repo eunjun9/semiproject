@@ -48,13 +48,10 @@ public class MyFeedServlet extends HttpServlet {
 		
 //		System.out.println(profile);
 
-		if (profile != null) {
-			request.setAttribute("profile", profile);
-			request.getRequestDispatcher("/WEB-INF/views/mypage/myfeedMain.jsp").forward(request, response);
-		} else {
-			request.setAttribute("message", "마이 피트 보기에 실패하였습니다");
-			request.getRequestDispatcher("/WEB-INF/views/common/errorpage.jsp").forward(request, response);
-		}
+		
+		request.setAttribute("profile", profile);
+		request.getRequestDispatcher("/WEB-INF/views/mypage/myfeedMain.jsp").forward(request, response);
+		
 
 	}
 

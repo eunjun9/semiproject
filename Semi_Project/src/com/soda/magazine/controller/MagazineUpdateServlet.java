@@ -61,7 +61,7 @@ public class MagazineUpdateServlet extends HttpServlet {
 	         = new MultipartRequest(request, savePath, maxSize, "UTF-8", new MyFileRenamePolicy());
 	      
 	      
-	      /* Board 테이블 수정 값 설정*/
+	      /* Magazine 테이블 수정 값 설정*/
 	      Magazine magazine = new Magazine();
 	      magazine.setnNum(Integer.parseInt(multiRequest.getParameter("nNum")));
 	      magazine.setnType(multiRequest.getParameter("category"));
@@ -69,7 +69,7 @@ public class MagazineUpdateServlet extends HttpServlet {
 	      magazine.setnContent(multiRequest.getParameter("content"));
 	      
 	      
-	      /* Attachment 테이블 수정 값 설정*/
+	      /* MagazineFile 테이블 수정 값 설정*/
 	      List<MagazineFile> photoList = new ArrayList<>();
 	      String[] fileNames = {"thumbnail", "contentImg1", "contentImg2"};
 	      String[] changeNames = multiRequest.getParameterValues("changeName");

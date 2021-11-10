@@ -25,7 +25,7 @@
 <body>
     <div class="page body">
         <h2 id="title">회원 정보 수정</h2>
-        <form id="revise" action="" method="post">
+        <form id="modify" action="" method="post">
 
             <div class="line">
 
