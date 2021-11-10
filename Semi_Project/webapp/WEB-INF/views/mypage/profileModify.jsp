@@ -50,7 +50,7 @@
                     <!--프로필-->
                     <div class="profile">
                     
-                    <img src="${ contextPath }$">
+                    <img src="${ contextPath }${ profile.profileFile.get(0).route}${profile.profileFile.get(0).changeName}">
                     <input type="file" name="pic" accept="image/gif,image/jpeg,image/png"> 
                     </div>
                     
@@ -94,8 +94,9 @@
                 		"", "", "", "", "", "", "",
                 		"", "", "", "", "", "", ""};
                 
-                Profile profile = new Profile();
-                     
+               
+                Object profile = session.getAttribute("profile");
+                System.out.println("z" + profile);
                 
                 if(profile.getInterest() != null){
                    String[] interest = profile.getInterest().split("\\|");

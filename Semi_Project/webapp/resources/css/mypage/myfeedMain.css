@@ -41,19 +41,24 @@ html {
 }
 
 .profile{
-	width:100px;
-	height:100px;
-	  border-radius: 70%;
+	margin-top:20px;
+	border-radius: 70%;
     overflow: hidden;
-    margin-bottom:13px;
-	
+    height:110px;
+    width:110px;
+    margin-bottom:20px;
 }
 
-.sns{
-	margin-top:-50px;
-	border: 1px solid lightgrey;	
-	height:2px;
-	width:50px;
+.profile>img{
+	min-width:100%;
+	min-height:100%;
+}
+
+.sns-text{
+	margin-top:-15px;
+	font-size: 15px;
+	font-weight:nomal;
+	margin-bottom:-12px;
 }
  
 
@@ -157,9 +162,14 @@ html {
    margin-top: 0px;
    margin-left: 268px;
 }
-.intro>p{
-   font-weight: bold;
-   
+
+.intro-p{
+	font-weight : bold;
+}
+
+.sns{
+	font-weight : bold;
+	margin-top:-20px;
 }
 
 .intro>textarea{

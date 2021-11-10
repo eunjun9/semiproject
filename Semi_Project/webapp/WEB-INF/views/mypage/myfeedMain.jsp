@@ -45,7 +45,7 @@
                 <div class="photo-follow">
                     <div class="photo">
                         <div class="profile">
-                            <img src="${ contextPath }${ profileFile.route}${profileFile.changeName}">
+                            <img src="${ contextPath }${ profile.profileFile.get(0).route}${profile.profileFile.get(0).changeName}">
                         </div>
 
                         <div class="name-grade">
@@ -109,11 +109,11 @@
                         <!--자기소개-->
                         <div class="introduction">
                             <div class="intro">
-                                <p>자기소개</p>
-                                <textarea class="intro">${ profile.introduction }</textarea>
+                                <p class="intro-p">자기소개</p>
+                                <textarea class="intro-text">${ profile.introduction }</textarea>
                                 
-                                <p>SNS</p>
-                              <textarea type="text" class="sns">${ profile.sns }</textarea>
+                                <p class="sns">SNS</p>
+                              <p class="sns-text">${ profile.sns }</p>
                             </div>
 
 

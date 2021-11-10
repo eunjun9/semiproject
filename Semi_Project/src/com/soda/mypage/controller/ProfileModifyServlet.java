@@ -15,7 +15,6 @@ import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
 import com.common.MyFileRenamePolicy;
 import com.oreilly.servlet.MultipartRequest;
-import com.soda.magazine.model.vo.MagazineFile;
 import com.soda.member.model.vo.Member;
 import com.soda.mypage.model.service.ProfileService;
 import com.soda.mypage.model.vo.Profile;
@@ -104,12 +103,10 @@ public class ProfileModifyServlet extends HttpServlet {
 		
 		profile.setProfileFile(profileFile);
 		
-		System.out.println(profile);
-		System.out.println(profileFile);
+	
 		
 		int result = new ProfileService().modifyProfile(profile, file);
 		
-		System.out.println(result);
 
 		
 		if (result > 0) {

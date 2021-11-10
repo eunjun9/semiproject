@@ -106,11 +106,9 @@ public class ProfileInsertServlet extends HttpServlet {
 
 		
 		if (result > 0) {
-		
+			request.setAttribute("profile", profile);
 			response.sendRedirect(request.getContextPath() + "/myfeed");
 		} else {
-
-			request.setAttribute("message", "사진 게시글 수정에 실패했습니다.");
 			request.getRequestDispatcher("/WEB-INF/views/common/errorpage.jsp").forward(request, response);
 		}
 

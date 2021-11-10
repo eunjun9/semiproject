@@ -41,7 +41,7 @@ public class MyFeedServlet extends HttpServlet {
 
 		// 마이페이지에서 마이피드를 클릭한 후(요청) 마이 피드의 사진, 글들을 불러오기 위해 select사용
 		
-		// 사용자 본인의 사진
+		// 사용자가 그동안 올렸던 게시글들 보여줌
 		List<Magazine> userselfList = new MagazineService().selectUserselfList();
 		request.setAttribute("userselfList", userselfList);
 
@@ -50,7 +50,7 @@ public class MyFeedServlet extends HttpServlet {
 		ProfileService profileService = new ProfileService();
 
 		
-		// 사용자 본인만의 사진
+		// 사용자 본인이 올린 사진 및 정보 알려줌
 		String userId = ((Member) request.getSession().getAttribute("loginUser")).getUserId();
 		Profile profile = profileService.selectProfile(userId);
 		
