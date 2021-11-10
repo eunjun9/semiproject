@@ -223,10 +223,10 @@
 	
 	<entry key="likeSocialing">
 		INSERT
-		  INTO PROFILE
+		  INTO SOCIALING_LIKE
 		(
 			USER_ID
-		  , LIKE_SOCIALING
+		  , LIKE_NUM
 		)
 		VALUES
 		(

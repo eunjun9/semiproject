@@ -61,6 +61,7 @@ public class SocialingMainServlet extends HttpServlet {
 		
 		request.setAttribute("pi", map.get("pi"));
 		request.setAttribute("socialingList", map.get("socialingList"));
+		request.setAttribute("sLike", map.get("sLike"));
 		request.getRequestDispatcher("/WEB-INF/views/socialing/socialingMainView.jsp").forward(request, response);
 	}
 

@@ -498,7 +498,7 @@ public class SocialingDao {
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setString(1, userId);
-			pstmt.setString(2, String.valueOf(nNum));
+			pstmt.setInt(2, nNum);
 			
 			result = pstmt.executeUpdate();
 			

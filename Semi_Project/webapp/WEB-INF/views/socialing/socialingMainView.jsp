@@ -158,6 +158,7 @@
                             <form name="likeForm" method="post">
                             	<input type="hidden" name="nNum" value="${ s.nNum }">
                             </form>
+                            <c:if test='${ loginUser }'></c:if>
                             <img id="like" src="${ contextPath }/resources/images/eunjung/heart_empty.png"
                             onclick="likeSocialing()">
                         </div>
@@ -274,11 +275,12 @@
 			            like[i].onclick = function() {
 			                if(like[i].src.indexOf('_empty') == -1) {
 			                    like[i].src = like[i].src.replace('.png', '_empty.png');
+			                    // 관심 소셜링 테이블에서 제거
 			                } else {
 			                    like[i].src = like[i].src.replace('_empty.png', '.png');
-			                	alert('관심 소셜링에 추가 되었습니다.');
-			                	// document.forms.likeForm.action = "${contextPath}/likeSocialing";
-				    			// document.forms.likeForm.submit();
+			                	// 관심 소셜링 테이블에 추가
+			                	document.forms.likeForm.action = "${contextPath}/likeSocialing";
+				    			document.forms.likeForm.submit();
 			                }
 			            }
 
