@@ -33,12 +33,6 @@ public class PaymentServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String userId = ((Member)request.getSession().getAttribute("loginUser")).getUserId();
 		String userName = ((Member)request.getSession().getAttribute("loginUser")).getUserName();
 		String userPhone = ((Member)request.getSession().getAttribute("loginUser")).getUserPhone();
@@ -66,9 +60,11 @@ public class PaymentServlet extends HttpServlet {
 			writer.println("<script>history.back();</script>");
 			writer.close();
 		}
-
-		
-	
 	}
 
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	}
 }
