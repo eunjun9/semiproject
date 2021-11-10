@@ -158,7 +158,7 @@
                             <form name="likeForm" method="post">
                             	<input type="hidden" name="nNum" value="${ s.nNum }">
                             </form>
-                            <c:if test='${ socialing.stype == "ON" }'></c:if>
+                            <c:if test='${ loginUser }'></c:if>
                             <img id="like" src="${ contextPath }/resources/images/eunjung/heart_empty.png"
                             onclick="likeSocialing()">
                         </div>
