@@ -347,15 +347,14 @@ public class LessonDao {
 			pstmt.setString(1, lesson.getCtag1());
 			pstmt.setString(2, lesson.getCtag2());
 			pstmt.setInt(3, lesson.getcPrice());
-			pstmt.setString(4, lesson.getcCategory());
-			pstmt.setString(5,lesson.getvDate());
-			pstmt.setDate(6, (Date) lesson.getoDate1());
-			pstmt.setDate(7, (Date) lesson.getoDate2());
-			pstmt.setString(8, lesson.getcLocation());
-			pstmt.setString(9, lesson.getcTutor());
-			pstmt.setString(10, lesson.getcTime1());
-			pstmt.setString(11, lesson.getcTime2());
-			pstmt.setInt(12, lesson.getnNum());
+			pstmt.setString(4,lesson.getvDate());
+			pstmt.setDate(5, (Date) lesson.getoDate1());
+			pstmt.setDate(6, (Date) lesson.getoDate2());
+			pstmt.setString(7, lesson.getcLocation());
+			pstmt.setString(8, lesson.getcTutor());
+			pstmt.setString(9, lesson.getcTime1());
+			pstmt.setString(10, lesson.getcTime2());
+			pstmt.setInt(11, lesson.getnNum());
 			
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {

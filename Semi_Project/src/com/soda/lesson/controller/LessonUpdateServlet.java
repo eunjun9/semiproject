@@ -68,11 +68,14 @@ public class LessonUpdateServlet extends HttpServlet {
 		lesson.setCtag2(multiRequest.getParameter("smallC"));
 		lesson.setcPrice(Integer.parseInt(multiRequest.getParameter("cPrice")));
 		lesson.setnTitle(multiRequest.getParameter("nTitle"));
-		lesson.setcCategory(multiRequest.getParameter("class_type"));
 		lesson.setnContent(multiRequest.getParameter("editordata"));
 		lesson.setcTutor(multiRequest.getParameter("tutor_intro"));
-		lesson.setvDate(multiRequest.getParameter("v_date"));
 		
+		if(multiRequest.getParameter("v_date") != null) {
+		lesson.setvDate(multiRequest.getParameter("v_date"));
+		}
+		
+		if(multiRequest.getParameter("o_date1") != null && multiRequest.getParameter("o_date2") !=null ) {
 		// String으로 받아온 oneday클래스 날짜를 Date로 형변환
 		String str1 = multiRequest.getParameter("o_date1");
 		String str2 = multiRequest.getParameter("o_date2");
@@ -96,6 +99,8 @@ public class LessonUpdateServlet extends HttpServlet {
 		
 		lesson.setoDate1(oDate1);
 		lesson.setoDate2(oDate2);
+		}
+		
 		lesson.setcTime1(multiRequest.getParameter("class_time1"));
 		lesson.setcTime2(multiRequest.getParameter("class_time2"));
 		lesson.setcLocation( multiRequest.getParameter("postcode") 

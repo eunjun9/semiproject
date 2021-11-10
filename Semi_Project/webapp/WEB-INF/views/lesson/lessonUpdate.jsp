@@ -40,24 +40,24 @@
                 <h4 id="sub_title1">카테고리를 선택하세요</h4>
                     <select id="bigC" name="bigC">
                         <option value="big" disabled>대분류 선택</option>
-                        <option value="art" id="art" <c:if test="${ lesson.ctag1 == 'art'}">selected</c:if>>예술</option>
-                        <option value="food" id="food" <c:if test="${ lesson.ctag1 == 'food'}">selected</c:if>>음식</option>
-                        <option value="sport" id="sport" <c:if test="${ lesson.ctag1 == 'sport'}">selected</c:if>>운동</option>
+                        <option value="art" id="art" <c:if test="${ lesson.ctag1 == 'art'}">selected </c:if>>예술</option>
+                        <option value="food" id="food" <c:if test="${ lesson.ctag1 == 'food'}">selected </c:if>>음식</option>
+                        <option value="sport" id="sport" <c:if test="${ lesson.ctag1 == 'sport'}">selected </c:if>>운동</option>
                     </select>
                     
                      <select name="smallC" id="smallC">
                         <option id="small" disabled>소분류 선택</option>
-                        <option value="10" class="artS" <c:if test="${ lesson.ctag2 == 10}">selected</c:if>>드로잉</option>
-                        <option value="20" class="artS" <c:if test="${ lesson.ctag2 == 20}">selected</c:if>>악기</option>
-                        <option value="30" class="artS" <c:if test="${ lesson.ctag2 == 30}">selected</c:if>>일러스트</option>
-                        <option value="40" class="foodS" <c:if test="${ lesson.ctag2 == 40}">selected</c:if>>베이킹</option>
-                        <option value="50" class="foodS" <c:if test="${ lesson.ctag2 == 50}">selected</c:if>>양식</option>
-                        <option value="60" class="foodS" <c:if test="${ lesson.ctag2 == 60}">selected</c:if>>일식</option>
-                        <option value="70" class="foodS" <c:if test="${ lesson.ctag2 == 70}">selected</c:if>>중식</option>
-                        <option value="80" class="foodS" <c:if test="${ lesson.ctag2 == 80}">selected</c:if>>한식</option>
-                        <option value="90" class="sportS" <c:if test="${ lesson.ctag2 == 90}">selected</c:if>>근력운동</option>
-                        <option value="100" class="sportS" <c:if test="${ lesson.ctag2 == 100}">selected</c:if>>요가</option>
-                        <option value="110" class="sportS" <c:if test="${ lesson.ctag2 == 110}">selected</c:if>>필라테스</option>
+                        <option value="10" class="artS" <c:if test="${ lesson.ctag2 == 10}">selected </c:if>>드로잉</option>
+                        <option value="20" class="artS" <c:if test="${ lesson.ctag2 == 20}">selected </c:if>>악기</option>
+                        <option value="30" class="artS" <c:if test="${ lesson.ctag2 == 30}">selected </c:if>>일러스트</option>
+                        <option value="40" class="foodS" <c:if test="${ lesson.ctag2 == 40}">selected </c:if>>베이킹</option>
+                        <option value="50" class="foodS" <c:if test="${ lesson.ctag2 == 50}">selected </c:if>>양식</option>
+                        <option value="60" class="foodS" <c:if test="${ lesson.ctag2 == 60}">selected </c:if>>일식</option>
+                        <option value="70" class="foodS" <c:if test="${ lesson.ctag2 == 70}">selected </c:if>>중식</option>
+                        <option value="80" class="foodS" <c:if test="${ lesson.ctag2 == 80}">selected </c:if>>한식</option>
+                        <option value="90" class="sportS" <c:if test="${ lesson.ctag2 == 90}">selected </c:if>>근력운동</option>
+                        <option value="100" class="sportS" <c:if test="${ lesson.ctag2 == 100}">selected </c:if>>요가</option>
+                        <option value="110" class="sportS" <c:if test="${ lesson.ctag2 == 110}">selected </c:if>>필라테스</option>
                     </select><br>
                     
                     <script>

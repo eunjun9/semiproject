@@ -36,18 +36,18 @@ public class PaymentServlet extends HttpServlet {
 		String userId = ((Member)request.getSession().getAttribute("loginUser")).getUserId();
 		String userName = ((Member)request.getSession().getAttribute("loginUser")).getUserName();
 		String userPhone = ((Member)request.getSession().getAttribute("loginUser")).getUserPhone();
-		
+
 		// 신청하기 누른 장바구니 클래스 번호 가져오기
 		int nNum = Integer.parseInt(request.getParameter("nNum"));
-		
+
 		Member member = new Member();
 		member.setUserName(userName);
 		member.setUserPhone(userPhone);
 		member.setUserId(userId);
-		
+
 		// 결제하려는 장바구니 클래스 조회
 		List<WishList> wishList = new WishListService().wishlistList(userId, nNum);
-		
+
 		// System.out.println(wishList);
 
 		if (wishList != null) { 
@@ -60,6 +60,7 @@ public class PaymentServlet extends HttpServlet {
 			writer.println("<script>history.back();</script>");
 			writer.close();
 		}
+
 	
 	}
 

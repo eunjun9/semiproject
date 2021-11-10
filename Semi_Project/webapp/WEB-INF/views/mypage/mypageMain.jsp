@@ -7,7 +7,7 @@
 <title>마이페이지</title>
 
 	<!--외부 스타일 시트-->
-    <link rel="stylesheet" href="${ contextPath }/resources/css/mypage/mypage_main.css?1">
+    <link rel="stylesheet" href="${ contextPath }/resources/css/mypage/mypage_main.css?2">
     <!--폰트-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,9 +27,9 @@
             
             <div class="profile">
                 <a href="#"><img width="45%" src="${ contextPath }/resources/images/yewon/profile.png"></a>
-                <p id="name">홍길동</p>
-                <p id="level">회원</p>
-                <p id="mail">kh@gmail.com</p>
+                <p id="name">${ loginUser.userName }</p>
+                <p id="level">${ loginUser.userGrade }</p>
+                <p id="mail">${ loginUser.userId }</p>
                 <a id="myfeed" href="${contextPath }/myfeed">내 피드 <img width="5%" src="${ contextPath }/resources/images/yewon/next.png"></a>
             </div>
 
@@ -46,7 +46,7 @@
         <div class="interest">
             <span>
                 <h3>관심 소셜링</h3>
-                <p>5건</p>
+                <p>건</p>
             </span>
             <div class="socialing">
                 <div class="item1">
