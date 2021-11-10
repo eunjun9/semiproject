@@ -175,7 +175,6 @@ public class SocialingDao {
 				socialing.setStype(rset.getString("s_type"));
 				socialing.setMaxMember(rset.getInt("max_member"));
 				socialing.setMinMember(rset.getInt("min_member"));
-				socialing.setProfile(rset.getString("profile"));
 				socialing.setIntroduction(rset.getString("introduction"));
 			}
 			
@@ -242,7 +241,6 @@ public class SocialingDao {
 				sMember.setMemberId(rset.getString("user_id"));
 				sMember.setStatus(rset.getString("s_status"));
 				sMember.setMemberName(rset.getString("user_name"));
-				sMember.setMemberProfile(rset.getString("profile"));
 				sMember.setIntroduction(rset.getString("introduction"));
 				
 				memberList.add(sMember);
@@ -479,6 +477,28 @@ public class SocialingDao {
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setInt(1, nNum);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	public int likeSocialing(Connection conn, int nNum, String userId) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = socialingQuery.getProperty("likeSocialing");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, userId);
+			pstmt.setString(2, String.valueOf(nNum));
 			
 			result = pstmt.executeUpdate();
 			
