@@ -38,7 +38,7 @@ public class PaymentServlet extends HttpServlet {
 		String userPhone = ((Member)request.getSession().getAttribute("loginUser")).getUserPhone();
 
 		// 신청하기 누른 장바구니 클래스 번호 가져오기
-		int nNum = Integer.parseInt(request.getParameter("noticeNum"));
+		int nNum = Integer.parseInt(request.getParameter("nNum"));
 
 		Member member = new Member();
 		member.setUserName(userName);
