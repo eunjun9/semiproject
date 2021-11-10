@@ -158,13 +158,15 @@ public class LessonDao {
 				lesson.setnContent(rset.getString("notice_content"));
 				lesson.setCtag1(rset.getString("c_tag1"));
 				lesson.setCtag2(rset.getString("c_tag2"));
-				lesson.setcSDate(rset.getString("c_sdate"));  // 시작 날짜는 날짜만
+				lesson.setvDate(rset.getString("v_date")); // 시작 날짜는 날짜만
+				lesson.setoDate1(rset.getDate("o_date1"));
+				lesson.setoDate2(rset.getDate("o_date2"));
 				lesson.setcTime1(rset.getString("c_time1"));
 				lesson.setcTime2(rset.getString("c_time2"));
 				lesson.setcLocation(rset.getString("c_location"));
 				lesson.setcTutor(rset.getString("c_tutor"));
-				lesson.setnDate(rset.getTimestamp("notice_date")); // 작성-수정 날짜는 시간까지
-				lesson.setModifyDate(rset.getTimestamp("modify_date"));
+				lesson.setnDate(rset.getDate("notice_date")); // 작성-수정 날짜는 시간까지
+				lesson.setModifyDate(rset.getDate("modify_date"));
 				lesson.setnStatus(rset.getString("notice_status"));
 			}
 			
@@ -177,7 +179,8 @@ public class LessonDao {
 		
 		return lesson;
 	}
-
+	
+	// 클래스 조회
 	public List<Attachment> selectPhotoList(Connection conn, int nNum) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -210,7 +213,7 @@ public class LessonDao {
 		return photoList;
 	}
 
-	// 글 삽입 - notice 테이블
+	// 클래스 삽입 : 글 (notice 테이블)
 	public int insertNotice(Connection conn, Lesson lesson) {
 		int result = 0;
 		PreparedStatement pstmt = null;
@@ -234,7 +237,7 @@ public class LessonDao {
 		return result;
 	}
 	
-	// 클 삽입 - lesson 테이블
+	// 클래스 삽입 : 글 (lesson 테이블)
 	public int insertLesson(Connection conn, Lesson lesson) {
 		int result = 0;
 		PreparedStatement pstmt = null;
@@ -247,12 +250,14 @@ public class LessonDao {
 			pstmt.setString(2, lesson.getCtag2());
 			pstmt.setInt(3, lesson.getcPrice());
 			pstmt.setString(4, lesson.getcCategory());
-			pstmt.setString(5,lesson.getcSDate());
-			pstmt.setString(6, lesson.getcLocation());
-			pstmt.setString(7, lesson.getcTutor());
-			pstmt.setString(8, lesson.getUserId());
-			pstmt.setString(9, lesson.getcTime1());
-			pstmt.setString(10, lesson.getcTime2());
+			pstmt.setString(5,lesson.getvDate());
+			pstmt.setDate(6, (Date) lesson.getoDate1());
+			pstmt.setDate(7, (Date) lesson.getoDate2());
+			pstmt.setString(8, lesson.getcLocation());
+			pstmt.setString(9, lesson.getcTutor());
+			pstmt.setString(10, lesson.getUserId());
+			pstmt.setString(11, lesson.getcTime1());
+			pstmt.setString(12, lesson.getcTime2());
 			
 			
 			result = pstmt.executeUpdate();
@@ -265,7 +270,7 @@ public class LessonDao {
 		return result;
 	}
 	
-	// 사진 삽입
+	// 클래스 삽입 : 사진 
 	public int insertAttachment(Connection conn, Attachment photo) {
 		int result = 0;
 		PreparedStatement pstmt = null;
@@ -278,6 +283,147 @@ public class LessonDao {
 			pstmt.setString(2, photo.getOriginName());
 			pstmt.setString(3, photo.getChangeName());
 			pstmt.setInt(4, photo.getFileLevel());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	// 클래스 삭제 : 글
+	public int deleteLesson(Connection conn, int nNum) {
+		PreparedStatement pstmt = null;
+		String sql = lessonQuery.getProperty("deleteLesson");
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, nNum);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
+	// 클래스 삭제 : 사진
+	public int deletePhoto(Connection conn, int nNum) {
+		PreparedStatement pstmt = null;
+		String sql = lessonQuery.getProperty("deletePhoto");
+		int result = 0;
+		
+			try {
+				pstmt = conn.prepareStatement(sql);
+				
+				pstmt.setInt(1, nNum);
+				
+				result = pstmt.executeUpdate();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				close(pstmt);
+			}
+		return result;
+	}
+	
+	// 클래스 수정 : 글 (lesson 테이블)
+	public int updateLesson(Connection conn, Lesson lesson) {
+		PreparedStatement pstmt = null;
+		String sql = lessonQuery.getProperty("updateLesson");
+		int result = 0;
+		
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, lesson.getCtag1());
+			pstmt.setString(2, lesson.getCtag2());
+			pstmt.setInt(3, lesson.getcPrice());
+			pstmt.setString(4, lesson.getcCategory());
+			pstmt.setString(5,lesson.getvDate());
+			pstmt.setDate(6, (Date) lesson.getoDate1());
+			pstmt.setDate(7, (Date) lesson.getoDate2());
+			pstmt.setString(8, lesson.getcLocation());
+			pstmt.setString(9, lesson.getcTutor());
+			pstmt.setString(10, lesson.getcTime1());
+			pstmt.setString(11, lesson.getcTime2());
+			pstmt.setInt(12, lesson.getnNum());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	// 클래스 수정 : 글 (notice 테이블)
+	public int updateNotice(Connection conn, Lesson lesson) {
+		PreparedStatement pstmt = null;
+		String sql = lessonQuery.getProperty("updateNotice");
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, lesson.getnTitle());
+			pstmt.setString(2, lesson.getnContent());
+			pstmt.setInt(3, lesson.getnNum());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	// 클래스 수정 : 기존 사진 변경
+	public int updatePhoto(Connection conn, Attachment photo) {
+		PreparedStatement pstmt = null;
+		String sql = lessonQuery.getProperty("updatePhoto");
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, photo.getOriginName());
+			pstmt.setString(2, photo.getChangeName());
+			pstmt.setString(3, photo.getDeletedName());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
+	// 클래스 수정 : 사진 추가
+	public int insertAddedPhoto(Connection conn, int nNum, Attachment photo) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = lessonQuery.getProperty("insertAddedPhoto");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, nNum);
+			pstmt.setString(2, photo.getRoute());
+			pstmt.setString(3, photo.getOriginName());
+			pstmt.setString(4, photo.getChangeName());
+			pstmt.setInt(5, photo.getFileLevel());
 			
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {

@@ -146,14 +146,64 @@ public class SocialingService {
 		return result;
 	}
 
-//	public List<Socialing> selectList() {
-//		Connection conn = getConnection();
-//		
-//		List<Socialing> socialingList = socialingDao.selectList(conn);
-//		
-//		close(conn);
-//		
-//		return socialingList;
-//	}
+	public int updateSocialing(Socialing socialing) {
+		Connection conn = getConnection();
+		
+		/* Notice 테이블 수정 */
+		int noticeResult = socialingDao.updateNotice(conn, socialing);
+		
+		/* Socialing 테이블 수정 */
+		int socialingResult = socialingDao.updateSocialing(conn, socialing);
+		
+		System.out.println(noticeResult);
+		System.out.println(socialingResult);
+		
+		/* 실제 수행 값을 담을 변수 */
+		int updatePhotoResult = 0;
+		/* 수행 해야 될 리스트의 갯수를 담을 변수 */
+		int updateListCount = 0;
+		
+		/* Tbl_File 테이블 수정 및 삽입 */
+		for(SodaFile photo : socialing.getPhotoList()) {
+			if(photo.getDeletedName() != null) {
+				/* 기존에 있던 파일을 덮어쓰기 - update */
+				updatePhotoResult += socialingDao.updatePhoto(conn, photo);
+				updateListCount++;
+				System.out.println("update : " + photo);
+				System.out.println("updatePhotoResult : " + updatePhotoResult);
+			}
+		}
+		
+		int result = 0;
+		if(noticeResult > 0 && socialingResult > 0 && updatePhotoResult == updateListCount) {
+			commit(conn);
+			result = 1;
+		} else {
+			rollback(conn);
+		}
+		
+		return result;
+	}
+
+	public List<SodaFile> deleteSocialing(int nNum) {
+		Connection conn = getConnection();
+		
+		List<SodaFile> deletedPhotoList = socialingDao.selectPhotoList(conn, nNum); // nNum으로 조회한 사진 갯수
+		
+		int boardResult = socialingDao.deleteSocialing(conn, nNum); // notice 테이블 status 변경
+		
+		int photoResult = socialingDao.deletePhoto(conn, nNum); // file 테이블 status 변경
+		
+		if(boardResult > 0 && photoResult == deletedPhotoList.size()) {
+			commit(conn);
+		} else {
+			rollback(conn);
+			deletedPhotoList = null;
+		}
+		
+		close(conn);
+		
+		return deletedPhotoList;
+	}
 
 }

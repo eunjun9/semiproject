@@ -30,8 +30,21 @@
             <div class="wrapper1">
                 <p id="title">${ socialing.nTitle }</p>
                 <hr>
-                <h3 id="subTitle">장소</h3><p id="subTitle2">${ socialing.splace }</p><br>
-                <h3 id="subTitle">날짜</h3><p id="subTitle2"><fmt:formatDate value="${ socialing.sdate }" type="both" pattern="M.dd(E) a h시 m분"/></p>
+                <h3 id="subTitle">장소</h3>
+                <!-- 오프라인일 경우 상세주소, 온라인일 경우 기본 주소 출력 -->
+                <c:choose>
+					<c:when test='${ socialing.splace.contains("|") }'>
+						<p id="subTitle2">${ socialing.splace.split("\\|")[1] }</p>
+					</c:when>
+					<c:otherwise>
+						<p id="subTitle2">${ socialing.splace }</p>
+					</c:otherwise>
+				</c:choose><br>
+                <h3 id="subTitle">날짜</h3>
+                <p id="subTitle2"><fmt:formatDate value="${ socialing.sdate }" type="date" pattern="M.dd(E)"/>
+                <fmt:parseDate value="${ socialing.stime }" var="stime2" pattern="HH:mm" scope="page"/>
+				<fmt:formatDate value="${ stime2 }" type="time" pattern="a h시 m분"/></p>
+				
                 <!-- 조회수 추가....? -->
             </div>
             <div class="wrapper2">
@@ -88,11 +101,21 @@
             </div>
             <div class="subWrap3">
                 <img id="icon" src="${ contextPath }/resources/images/eunjung/pin.png">
-                <p id="detail">${ socialing.splace } (서울특별시 도봉구 창동 343)</p>
+                <c:choose>
+					<c:when test='${ socialing.splace.contains("|") }'>
+						<p id="detail">${ socialing.splace.split("\\|")[1] } (${ socialing.splace.split("\\|")[0] })</p>
+					</c:when>
+					<c:otherwise>
+						<p id="detail">${ socialing.splace }</p>
+					</c:otherwise>
+				</c:choose>
             </div>
             <div class="subWrap3">
                 <img id="icon" src="${ contextPath }/resources/images/eunjung/time.png">
-                <p id="detail"><fmt:formatDate value="${ socialing.sdate }" type="both" pattern="M.dd(E) a h시 m분"/></p>
+                <p id="detail">
+                <fmt:formatDate value="${ socialing.sdate }" type="date" pattern="M.dd(E)"/>
+                <fmt:parseDate value="${ socialing.stime }" var="stime2" pattern="HH:mm" scope="page"/>
+				<fmt:formatDate value="${ stime2 }" type="time" pattern="a h시 m분"/></p>
             </div>
             <div class="buttons"> <!-- 삭제, 수정은 작성자/관리자만 표시 -->
             <c:if test="${ loginUser.userId == socialing.userId || loginUser.userId.equals('admin') }">
@@ -165,11 +188,15 @@
 		        
 		        function updateBoard() {
 		        	// 글 작성 페이지로 이동
+		        	document.forms.memberForm.action = "${contextPath}/socialing/updateView";
+	    			document.forms.memberForm.submit();
 		        }
 	
 		        function deleteBoard() {
 		            if(confirm('이 게시글을 삭제하시겠습니까?')) {
 		                // 글 삭제 후 목록으로 이동
+		            	document.forms.memberForm.action = "${contextPath}/socialing/delete";
+		    			document.forms.memberForm.submit();
 		            }
 		        }
 	

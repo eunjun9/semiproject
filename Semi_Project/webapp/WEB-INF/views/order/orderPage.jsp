@@ -1,17 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>	
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>신청/결제</title>
 <!-- 외부 스타일 시트 -->
-<link rel="stylesheet"
-	href="<%= request.getContextPath() %>/resources/css/wishlist-style.css">
+<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/order/payment-style.css?2">
 <!-- 외부 폰트 -->
-<link
-	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap"
-	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+	crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -25,60 +27,61 @@
 		</div>
 		<div class="wish-heardLine">
 			<hr>
-			<h4>
-				<span class="class-info text"> 클래스 정보 </span>
-			</h4>
-			<h4>
-				<span class="class-date text"> 날짜/기한 </span>
-			</h4>
-			<h4>
-				<span class="class-price text"> 가격 </span>
-			</h4>
+			<ul>
+				<li class="class-info text"> 클래스 정보 </li>
+				<li class="class-date text"> 날짜/기한 </li>
+				<li class="class-price text"> 가격 </li>
+			</ul>
 			<hr>
 		</div>
-
-		<!-- 클래스 썸네일 이미지 영역 / 테스트 이미지 삽입 -->
+		<c:forEach var="wishList" items="${ wishList }">
 		<div class="wish-class">
-
 			<div class="wish-content">
-
+			<input type="hidden" name="nNum">
 				<div class="wish-class img">
-					<img src="../wishlistPage/resources/image/sample1.jpg"
-						width="200px" height="150px">
+					 <img src="${ contextPath }${ wishList.route }${ wishList.changeName }" width='200px' height='150px'>
 				</div>
 			</div>
 
 			<!-- 장바구니 추가한 클래스 정보 가져올 영역 -->
 			<div class="wish-class-info">
-				<p class="category">ONE-DAY</p>
-				<p class="title">도예공방에서 나만의 도자기 만들기</p>
+				<p class="category">${ wishList.cCategory }</p>
+				<p class="title">${ wishList.nTitle }</p>
 			</div>
 
-			<div class="wish-class-date">
-				<p class="date">2021-11-06 토요일 오후 7시</p>
-			</div>
+			<c:choose>
+			<c:when test="${ wishList.cCategory eq 'vod' }">
+				<div class="wish-class-date">
+					<p class="date">${ wishList.vDate } 일</p>
+				</div>
+			</c:when>
+			<c:when test="${ wishList.cCategory eq '원데이' }">
+				<div class="wish-class-date">
+					<p class="date">${ wishList.lessonDate }<br>
+					${ wishList.cTime1 } ~ ${ wishList.cTime2 }</p>
+				</div>
+			</c:when>
+			</c:choose>
 
 			<div class="wish-class-price">
-				<p class="price">50,000원</p>
+				<p class="price"><fmt:formatNumber value="${ wishList.cPrice }" pattern="#,###"/></p>
 			</div>
 			<hr class="hr-line">
-
-
+			</c:forEach>
+			
 		<!-- 주문자정보 / 결제금액 -->
-
+		<c:forEach var="wishList" items="${ wishList }">
 		<div class="order-info">
-
-			<!-- user_name 불러오기 -->
 			<form id="order-info form" method="post">
 				<h2>주문자 정보</h2>
-				<h3>홍길동</h3>
-				<span class="input-area"> <!-- 가입할 때 입력한 휴대폰번호 불러오기 --> <input
-					type="text" id="phone" name="order-phone" maxlength="11"
-					placeholder="(-없이)휴대폰번호입력" required>
+				<div class="order-name">${ member.userName }</div>
+				<span class="input-area">
+				<input type="text" id="phone" name="order-phone" maxlength="11"
+					value="${ member.userPhone }">
 				</span>
 				<button type="button" id="orderPhoneBtn">수정</button>
 				<br> <br> <span class="input-area"> <input
-					type="email" id="email" name="order-email" placeholder="이메일주소입력">
+					type="email" id="email" name="order-email" value="${ member.userId }">
 				</span>
 				<button type="button" id="orderPhoneBtn">수정</button>
 			</form>
@@ -87,22 +90,15 @@
 				<div class="total-price-first">
 					<h2>결제 금액</h2>
 				</div>
-				<div class="total-price">
-					<p>ㄴ 합계 금액 :</p>
-					<p class="totalPrice">150,000원</p>
-				</div>
-				<div class="total-price">
-					<p>ㄴ 혜택 금액 :</p>
-					<p class="discountPrice">0원</p>
-				</div>
 				<div class="total-price-last">
-					<p>총 결제 금액 :</p>
-					<p class="orderPrice">150,000원</p>
+					<p>총 결제 금액</p>
+					<p class="orderPrice"><fmt:formatNumber value="${ wishList.cPrice }" pattern="###,###,###" /> 원</p>
+				
 				</div>
 			</div>
 
 		</div>
-
+		</c:forEach>
 
 		<hr class="hr-line">
 
@@ -150,7 +146,7 @@
 	<!-- 이전으로 가기 버튼 -->
 	<div class="wish-footer">
 		<div class="back-btn">
-			<button type="button" id="back-button" class="back">이전으로</button>
+			<input type="button" id="back-button" class="back" onclick="back()" value="이전으로">
 		</div>
 
 		<!-- 결제하기 버튼 -->
@@ -159,8 +155,14 @@
 		</div>
 	</div>
 	</div>
+	</div>
 	<!-- 푸터 가져오기 -->
 	<%@ include file="/WEB-INF/views/common/footer.jsp"%>
-</div>
+
+	<script>
+	function back(){
+		history.back();
+	}
+	</script>
 </body>
 </html>

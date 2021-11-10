@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
@@ -9,7 +9,7 @@
 <title>소셜링</title>
 
 <!-- 외부 스타일 시트 -->
-<link href="${ contextPath }/resources/css/socialing/socialing_main.css?2" rel="stylesheet">
+<link href="${ contextPath }/resources/css/socialing/socialing_main.css?3" rel="stylesheet">
 
 <!-- 글꼴 (Noto Sans) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -143,6 +143,17 @@
                         <option value="">인기순</option> <!-- 참여 인원 순 -->
                     </select>
                 </div>
+                
+                <!-- 
+				 	String[] place;
+				 	if(socialingList.getSplace() != null) {
+				 		place = socialingList.getSplace().split("\\|");
+				 	} else {
+				 		place = new String[] {"", ""};
+				 	}
+				 -->
+                
+                <!-- 글 목록 출력 -->
                 <div class="s-container2">
                 	<c:forEach var="s" items="${ socialingList }">
                     <div id="s-list2">
@@ -151,15 +162,25 @@
                             src="${ contextPath }${ s.photoList.get(0).route }${ s.photoList.get(0).changeName }"><br>
                             <!-- empty : 클릭 시 꽉찬 하트 아이콘으로 변경 + 관심 소셜링에 추가, full : 클릭 시 빈 하트 아이콘으로 변경 + 관심 소셜링에서 제거 -->
                             <!-- 관심 소셜링에 sNum 포함 여부에 따라 src 변경(if문) -->
-                            <img id="like" src="<%= request.getContextPath() %>/resources/images/eunjung/heart_empty.png"
+                            <img id="like" src="${ contextPath }/resources/images/eunjung/heart_empty.png"
                             onclick="likeSocialing(${ s.nNum })">
                         </div>
                         <a href="${ contextPath }/socialing/detail?nNum=${ s.nNum }">
                             <div id="titlebox">
                                 <p id="s-thumtitle">${ s.nTitle }</p><br>
-                                <h5 id="s-thumsub">${ s.splace } 
-                                <fmt:formatDate value="${ s.sdate }" type="both" pattern="M.dd(E) a h:mm"/></h5>
-                                <a href="#"><img id="profile" src="<%= request.getContextPath() %>/resources/images/eunjung/profile.png"></a>
+                                <!-- 오프라인일 경우 상세주소, 온라인일 경우 기본 주소 출력 -->
+                                <c:choose>
+									<c:when test='${ s.splace.contains("|") }'>
+										<h5 id="s-thumsub">${ s.splace.split("\\|")[1] }
+									</c:when>
+									<c:otherwise>
+										<h5 id="s-thumsub">${ s.splace }
+									</c:otherwise>
+								</c:choose>
+                                <fmt:formatDate value="${ s.sdate }" type="date" pattern="M.dd(E)"/>
+                                <fmt:parseDate value="${ s.stime }" var="stime2" pattern="HH:mm" scope="page"/>
+								<fmt:formatDate value="${ stime2 }" type="time" pattern="a h:mm"/></h5>
+                                <a href="#"><img id="profile" src="${ contextPath }/resources/images/eunjung/profile.png"></a>
                             </div>
                         </a>
                     </div>

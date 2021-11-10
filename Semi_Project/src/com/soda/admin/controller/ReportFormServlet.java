@@ -43,7 +43,7 @@ public class ReportFormServlet extends HttpServlet {
 		if(request.getParameter("rep-reason").equals("기타")) {
 			reason = request.getParameter("detail");		// 신고 사유(기타-직접 입력)
 		} else {
-			reason = request.getParameter("rep-reason");	// 신고 사유
+			reason = request.getParameter("rep-reason");	// 신고 사유 (라디오 버튼)
 		}
 		int nNum = Integer.parseInt(request.getParameter("nNum"));	// 신고 게시판 번호
 		String userId = ((Member)request.getSession().getAttribute("loginUser")).getUserId(); // 신고한 회원 id

@@ -104,4 +104,64 @@ public class LessonService {
 		
 		return result;
 	}
+
+	// 클래스 삭제
+	public List<Attachment> deleteLesson(int nNum) {
+		Connection conn = getConnection();
+		
+		List<Attachment> deletedPhotoList = lessonDao.selectPhotoList(conn, nNum);
+		
+		int lessonResult = lessonDao.deleteLesson(conn, nNum);
+		int photoResult = lessonDao.deletePhoto(conn, nNum);
+		
+		if(lessonResult > 0 && photoResult == deletedPhotoList.size()) {
+			commit(conn);
+		} else {
+			rollback(conn);
+			deletedPhotoList = null;
+		}
+		close(conn);
+		
+		return deletedPhotoList;
+	}
+	
+	// 클래스 수정
+	public int updateLesson(Lesson lesson) {
+		Connection conn = getConnection();
+		
+		int lessonResult = lessonDao.updateLesson(conn, lesson);
+		int noticeResult = lessonDao.updateNotice(conn, lesson);
+		
+		int updatePhotoResult = 0;
+		int insertPhotoResult = 0;
+		
+		int updateListCount = 0;
+		int insertListCount = 0;
+		
+		for(Attachment photo : lesson.getPhotoList()) {
+			if(photo.getDeletedName() != null ) {
+				updatePhotoResult += lessonDao.updatePhoto(conn, photo);
+				updateListCount++;
+			} else {
+				insertPhotoResult += lessonDao.insertAddedPhoto(conn, lesson.getnNum(), photo);
+				insertListCount++;
+			}
+		}
+		
+		int result = 0;
+		if(lessonResult > 0 && noticeResult > 0
+				&& updatePhotoResult == updateListCount 
+				&& insertPhotoResult == insertListCount) {
+			commit(conn);
+			result = 1;
+		} else {
+			rollback(conn);
+		}
+		return result;
+	}
+	
+	
+	
+	
+	
 }

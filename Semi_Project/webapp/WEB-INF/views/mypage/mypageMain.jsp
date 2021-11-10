@@ -34,7 +34,7 @@
             </div>
 
             <ul class="move">
-                <li><a class="mv" id="modify" href="#">정보수정 <img class="pmv" width="5%" src="${ contextPath }/resources/images/yewon/next.png"> </a></li>
+                <li><a class="mv" id="modify" href="<%= request.getContextPath() %>/mypage/userinfomodify">정보수정 <img class="pmv" width="5%" src="${ contextPath }/resources/images/yewon/next.png"> </a></li>
                 <li><a class="mv" id="slist" href="#">모임내역 <img class="pmv" width="5%" src="${ contextPath }/resources/images/yewon/next.png"> </a> </li>
                 <li><a class="mv" id="plist" href="#">결제내역 <img class="pmv" width="5%" src="${ contextPath }/resources/images/yewon/next.png"> </a> </li>
                 <li><a class="mv" id="logout" href="#">로그아웃 <img class="pmv" width="5%" src="${ contextPath }/resources/images/yewon/next.png"> </a> </li>

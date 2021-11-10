@@ -19,6 +19,8 @@
 		                   , USER_NAME
 						   , S_PLACE
 						   , S_DATE
+						   , S_TIME
+						   , S_TYPE
 						   , ROUTE
 						   , CHANGE_NAME
 						   , NOTICE_STATUS
@@ -48,6 +50,8 @@
 			 , NCOUNT
 			 , S_PLACE
 			 , S_DATE
+			 , S_TIME
+			 , S_TYPE
 			 , MAX_MEMBER
 			 , MIN_MEMBER
 			 , PROFILE
@@ -103,5 +107,119 @@
 		   SET S_STATUS = 'Y'
 		 WHERE NOTICE_NUM = ?
 		   AND USER_ID = ?
+	</entry>
+	
+	<entry key="insertNotice">
+		INSERT
+		  INTO NOTICE
+		(
+			NOTICE_NUM
+		  , NOTICE_TITLE
+		  , NOTICE_CONTENT
+		  , NOTICE_DATE
+		  , NOTICE_STATUS
+		  , NOTICE_TYPE
+		  , USER_ID
+		  , MODIFY_DATE
+		  , NCOUNT
+		)
+		VALUES
+		(
+			SEQ_BNUM.NEXTVAL
+		  , ?
+		  , ?
+		  , DEFAULT
+		  , DEFAULT
+		  , '소셜링'
+		  , ?
+		  , SYSDATE
+		  , DEFAULT
+		)
+	</entry>
+	
+	<entry key="insertSocialing">
+		INSERT
+		  INTO SOCIALING
+		(
+			NOTICE_NUM
+		  , S_PLACE
+		  , S_DATE
+		  , S_TYPE
+		  , MAX_MEMBER
+		  , MIN_MEMBER
+		  , S_TIME
+		)
+		VALUES
+		(
+			SEQ_BNUM.CURRVAL
+		  , ?
+		  , ?
+		  , ?
+		  , ?
+		  , ?
+		  , ?
+		)
+	</entry>
+	
+	<entry key="insertFile">
+		INSERT
+		  INTO TBL_FILE
+		(
+			FILE_NUM
+		  , NOTICE_NUM
+		  , ROUTE
+		  , ORIGIN_NAME
+		  , FILE_LEVEL
+		  , CHANGE_NAME
+		  , STATUS
+		)
+		VALUES
+		(
+			SEQ_FNUM.NEXTVAL
+		  , SEQ_BNUM.CURRVAL
+		  , ?
+		  , ?
+		  , ?
+		  , ?
+		  , 'Y'
+		)
+	</entry>
+	
+	<entry key="updateNotice">
+		UPDATE NOTICE
+		   SET NOTICE_TITLE = ?
+		   	 , NOTICE_CONTENT = ?
+		   	 , NOTICE_TYPE = ?
+		 WHERE NOTICE_NUM = ?
+	</entry>
+	
+	<entry key="updateSocialing">
+		UPDATE SOCIALING
+		   SET S_DATE = ?
+		     , S_TIME = ?
+		     , S_TYPE = ?
+		     , S_PLACE = ?
+		     , MIN_MEMBER = ?
+		     , MAX_MEMBER = ?
+		 WHERE NOTICE_NUM = ?
+	</entry>
+	
+	<entry key="updatePhoto">
+		UPDATE TBL_FILE
+		   SET ORIGIN_NAME = ?
+		     , CHANGE_NAME = ?
+		 WHERE CHANGE_NAME = ?
+	</entry>
+	
+	<entry key="deleteSocialing">
+		UPDATE NOTICE
+		   SET NOTICE_STATUS = 'Y'
+		 WHERE NOTICE_NUM = ?
+	</entry>
+	
+	<entry key="deletePhoto">
+		UPDATE TBL_FILE
+		   SET STATUS = 'N'
+		 WHERE NOTICE_NUM = ?
 	</entry>
 </properties>

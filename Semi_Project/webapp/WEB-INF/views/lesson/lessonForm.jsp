@@ -8,18 +8,13 @@
 <title>클래스 등록</title>
 
     <!--외부 스타일 시트-->
-    <link href="${ contextPath }/resources/css/lesson/lesson_form.css?5" rel="stylesheet">
+    <link href="${ contextPath }/resources/css/lesson/lesson_form.css?7" rel="stylesheet">
 
     <!-- font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500&display=swap" rel="stylesheet">
     
-    <!-- 썸머노트 -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
-   
-
 </head>
 <body>
     <!-- header -->
@@ -106,27 +101,33 @@
                 </div>
 
                 <div id="form_head">
-                    <textarea name="nTitle" id="sub_title6" placeholder="클래스 제목을 입력하세요(최대25자)" required></textarea>
+                    <textarea name="nTitle" id="sub_title6" placeholder="클래스 제목을 입력하세요(최대20자)" required></textarea>
+                    <p id="lengthck"></p>
                     <hr>
                     <label>타입</label> 
                     <input type="radio" name="class_type" value="원데이" id="oneday"><label for="oneday" class="btnlabel">원데이 클래스</label>
                     <input type="radio" name="class_type" value="vod" id="vod"><label for="vod" class="btnlabel">VOD 클래스</label><br>
                 </div> 
                 
+                <script>
+                	$("#sub_title6").keyup(function(e){
+                		var content = $(this).val();
+                		$("#lengthck").val(content.length +"/");
+                		if(content.length > 20){
+                			alert("최대 20자까지 입력 가능합니다.");
+                			$("#sub_title6").focus();
+                		}
+                		
+                	});
+                </script>
                 
  				 <div id="form_body">
                     <hr><br>
-                    <h4>클래스 소개를 작성하세요</h4>
+                    <h4>클래스 소개를  작성해주세요</h4>
                     <textarea class="summernote" name="editordata"></textarea>
 					<div class="image_area2"></div>
                     <button type="button" id="fileBtn2">file</button><br>
                     <input type="file" name="contentImg1" accept="image/gif,image/jpeg,image/png" id="imageinfo1">
-                    <div id="img">
-                    <div class="image_area3"></div>
-                    <button type="button" id="fileBtn3">file</button><br>
-                    <input type="file" name="contentImg
-                    lesso2" accept="image/gif,image/jpeg,image/png" id="imageinfo2">
-                    </div>
   				</div>
 
  				<script>
@@ -155,48 +156,20 @@
 
                     }
                 </script>
-                <script>
-                    let fileBtn3 = document.querySelector("#fileBtn3");
-                
-                    const fileElements3 = document.querySelectorAll("#imageinfo2");
-                    const image_area3 = document.querySelectorAll(".image_area3");
-                
-                    /* 버튼 클릭했을 때 input type file 오픈 */
-                    fileBtn3.onclick = function() {
-                        fileElements3[0].click(); 
-                    }
-                
-                    /* input type file 요소에 change 이벤트 발생 시 (파일 첨부 발생) */
-                    fileElements3.forEach(item => item.addEventListener('change', preview3));
-                
-                    function preview3(){
-                        let index3 = Array.from(fileElements3).indexOf(this);
-
-                        if(this.files && this.files[0]) {
-                            let reader3 = new FileReader();
-                            reader3.readAsDataURL(this.files[0]);
-                            reader3.onload = function(){
-                                image_area3[index3].innerHTML = "<img src='" + reader3.result + "'>";
-                            }
-                        }
-
-                    }
-                </script>
-
                 <hr>  
-                <h4>강사 소개를 작성하세요</h4>
+                <h4>강사 소개를  작성해주세요</h4>
                 <textarea name="tutor_intro" id="tutor_intro" required></textarea>
                 
                 <!-- 원데이 클래스 일때 -->
                 <div class="offdate">
                 <h4>날짜를 선택하세요</h4>
-                <input type="date" name="class_date"><br>
+                <input type="date" name="o_date1"><label>&nbsp;부터  &nbsp;</label><input type="date" name="o_date2"><label>&nbsp;까지</label><br>
                 </div>
                 
                 <!-- vod 클래스 일때 -->
                 <div class="ondate">
                 	<h4>기간을 입력하세요</h4>
-                	<input type="text" name="class_date"><label>&nbsp;일</label>
+                	<input type="text" name="v_date"><label>&nbsp;일</label>
                 </div>
                 
                 <!-- 타입이 오프라인일때 -->

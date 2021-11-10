@@ -43,12 +43,17 @@ public class MypageUserInfoModifyServlet extends HttpServlet {
 		
 		request.setCharacterEncoding("UTF-8");
 		
+		String userId = ((Member)request.getSession().getAttribute("loginUser")).getUserId();
 		String userName = request.getParameter("userName");
 		String userPhone = request.getParameter("userPhone");
 		
-		Member member = new Member(userName, userPhone);
+		Member member = new Member(userId, userName, userPhone);
+		
+		// System.out.println("수정할 정보 : " + member);
 		
 		Member updatedMember = new MemberService().updateMember(member);
+		
+		// System.out.println("수정 된 정보 : " + updatedMember);
 		
 		if(updatedMember != null) {
 			

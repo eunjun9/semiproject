@@ -56,7 +56,6 @@
 			, ?
 			, ?
 			, ?
-			, ?
 			, SYSDATE
 			, DEFAULT
 			, DEFAULT
@@ -123,7 +122,6 @@
 		      MEMBER_INFO
 		  SET USER_NAME = ?
 		    , USER_PHONE = ?
-		    , MODIFY_DATE = SYSDATE
 		WHERE USER_ID = ?
 	</entry>
   

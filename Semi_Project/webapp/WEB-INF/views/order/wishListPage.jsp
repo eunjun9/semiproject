@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <title>장바구니</title>
 <!-- 외부 스타일 시트 -->
-<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/order/wishlist-style.css">
+<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/order/wishlist-style.css?1">
 <!-- 외부 폰트 -->
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
 <!-- jQuery -->
@@ -38,16 +38,16 @@
 		<form name="classForm" action="${ contextPath }/payment" method="post">
 		<div class="wish-class" id="wish-class">
 			<div class="wish-content">
-
+				<input type="hidden" name="nNum" value="${ wishList.nNum }">
 				<!-- 체크박스 -->
 				<div class="class-checkbox">
-					<input type="checkbox" class="order-check" id="order1" name="checkClass" value="${ wishList.wishNum }">
+					<input type="checkbox" class="order-check" id="order" name="checkClass" value="${ wishList.wishNum }">
 				</div>
 				
-				<!-- 클래스 썸네일 이미지 -->
+				<!-- 클래스 썸네일 이미지  -->
 				<div class="wish-class img">
-					<!--  <img src="${ contextPath }${ wishList.route }${ wishList.changeName }"
-						width="200px" height="150px"> -->
+					<img src="${ contextPath }${ wishList.route }${ wishList.changeName }"
+						width="200px" height="150px">
 				</div>
 			</div>
 
@@ -60,24 +60,26 @@
 			<c:choose>
 			<c:when test="${ wishList.cCategory eq 'vod' }">
 				<div class="wish-class-date">
-					<p class="date">${ wishList.cTime1 } ~ ${ wishList.cTime2 }</p>
+					<p class="date">${ wishList.vDate } 일</p>
 				</div>
 			</c:when>
 			<c:when test="${ wishList.cCategory eq '원데이' }">
 				<div class="wish-class-date">
-					<p class="date"><fmt:formatDate value="${ wishList.cSDate }" pattern="yyyy/MM/dd" /> 
-					~ <fmt:formatDate value="${ wishList.cEDate }" pattern="yyyy/MM/dd" /></p>
+					<p class="date">${ wishList.lessonDate }<br>
+					${ wishList.cTime1 } ~ ${ wishList.cTime2 }</p>
 				</div>
 			</c:when>
 			</c:choose>
 
+			
 			<div class="wish-class-price">
-				<p class="price">${ wishList.cPrice }</p>
+				<p class="price"><fmt:formatNumber value="${ wishList.cPrice }" pattern="#,###"/></p>
 			</div>
-
+			
+			
 			<!-- 신청하기(결제페이지로 이동) 버튼 -->
 			<div class="wish-class-btn">
-				<button type="button" class="order-button" type="submit">신청하기</button>
+				<button type="submit" class="order-button">신청하기</button>
 			</div>
 			<hr class="hr-line">
 		</div>
@@ -86,7 +88,7 @@
 
 	
 	
-	<!-- 선택버튼 / 총결제금액 표시 부분 -->
+	<!-- 클래스 선택버튼 -->
 	<div class="wish-content-foot">
 
 		<div class="class-checkbox-btn">
@@ -95,12 +97,13 @@
 				<button type="button" name="order" class="check-btn2" onclick="checkDelete();">선택삭제</button>
 			</div>
 
-
-			<div class="class-total-pay">
-				<div class="total">선택된 클래스의 총 금액</div>
-				<div class="totalPay"></div>
-				<div class="total">원</div>
-			</div>
+	<!-- 장바구니 총 합계 -->
+	<div class="class-total-pay">
+			<div class="total">장바구니 총 합계 금액</div>
+			<div class="totalPay"><fmt:formatNumber value="${ totalPrice }" pattern="###,###,###" /></div>
+			<div class="total">원</div>
+	</div>
+			
 
 		</div>
 		<hr class="hr-line">
@@ -108,14 +111,17 @@
 		<!-- 이전으로 가기 버튼 -->
 		<div class="wish-footer">
 			<div class="back-btn">
-				<button type="button" id="back-button" class="back">이전으로</button>
+				<input type="button" id="back-button" class="back" onclick="back()" value="이전으로">
 				<br>
 			</div>
 		</div>
+	
 	</div>
-
+</div>
 	<!-- 푸터 가져오기 -->
 	<%@ include file="/WEB-INF/views/common/footer.jsp"%>
+
+	
 	
 	
 	<script>
@@ -129,35 +135,41 @@
 	<script>
 		<!-- 선택된 체크박스 클래스 삭제 -->
 		function checkDelete() {
-			var arr = new Array();
-			var list = $("input[name=checkClass]");
-			for(var i = 0; i < list.length; i++){
-				if(list[i].checked) {
-					arr.push(list[i].value);
-				}
-			}
-			if( arr.length == 0 ){
-				alert('선택된 클래스가 없습니다.');
-			}else{
-				var chk = confirm("정말 삭제하시겠습니까?");
-				$.ajax({
-					url : "${ contextPath }/wishlist/delete",
-					type : 'post',
-					data : { arr : arr },
-					success : function(result){
-						if(result = 1){
-							alert('삭제 완료');
-							location.replace("${ contextPath }/wishlist");
-						}else{
-							alert('삭제 실패');
+			var checkArr = [];
+			// 선택된 체크박스 값 반복문으로 배열에 push
+			$("input:checkbox[name='checkClass']:checked").each(function(){
+				checkArr.push($(this).val());
+				console.log(checkArr);
+			});
+			
+				if( checkArr.length == 0 ){
+					alert('선택된 클래스가 없습니다.');
+				}else{
+					var chk = confirm("정말 삭제하시겠습니까?");
+					$.ajax({
+						url : "${ contextPath }/wishlist/delete",
+						type : "post",
+						data : { checkArr : checkArr },
+						traditional : true,					// 배열 넘겨줄 때 꼭 작성해야함
+						success : function(result){
+							if(result > 0){
+								alert('삭제되었습니다.');
+								location.replace("${ contextPath }/wishlist");
+							}else{
+								alert('삭제에 실패했습니다.');
 						}
 					}
 				});
 			}
 		}
+		</script>
+	
+	<script>
+	function back(){
+		history.back();
+	}
 	</script>
 	
 
-</div>
 </body>
 </html>

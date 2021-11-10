@@ -49,9 +49,9 @@
                     <h4 id="w-sub-title5">시간을 선택하세요</h4>
                     <input type="time" name="timeIn" required>
                     <h4 id="w-sub-title5">장소를 입력하세요</h4>
-                    <input type="radio" id="offline" name="type" value="off" checked>
+                    <input type="radio" id="offline" name="type" value="OFF" checked>
                     <label for="offline">오프라인</label>
-                    <input type="radio" id="online" name="type" value="on">
+                    <input type="radio" id="online" name="type" value="ON">
                     <label for="online">온라인</label><br>
                     
 					<div class="placeArea1">
@@ -64,7 +64,6 @@
 			            class="postcodify_details" placeholder="상세 주소를 입력해 주세요"><br>
 		            </span>
 					</div>
-
                     
                     <h4 id="w-sub-title5">인원 설정</h4>
                     <select id="min" name="min">
@@ -77,7 +76,6 @@
                         <option value="8">8명</option>
                     </select>
                     <p id="wave">~</p>
-                    <!-- max 인원이 min보다 적을 경우 경고 alert 출력 후 min과 같은 값으로 변경하기 -->
                     <select id="max" name="max">
                         <option value="2">2명</option>
                         <option value="3">3명</option>
@@ -128,17 +126,36 @@
     </script>
     
     <script>
-    	// 온라인, 오프라인 선택에 따른 입력창 변경
     	$(function(){
+    		// 온라인, 오프라인 선택에 따른 입력창 변경
     		$("input:radio").change(checkedChange);
+
+    		// min > max일 경우 경고창 출력 후 max와 같은 값으로 변경
+    		$("#min").change(checkedMin);
+    		// min > max일 경우 경고창 출력 후 min과 같은 값으로 변경
+    		$("#max").change(checkedMax);
     	});
     	
     	function checkedChange() {
-            if($(this).val() == 'on') {
+            if($(this).val() == 'ON') {
     			$(".placeArea2").css("display", "none");	
             } else {
     			$(".placeArea2").css("display", "inline");
             }
+    	}
+    	
+    	function checkedMin() {
+    		if($("#min").val() > $("#max").val()) {
+    			alert('최소 인원이 최대 인원을 넘을 수 없습니다.');
+    			$("#min").val($("#max").val());
+    		}
+    	}
+    	
+    	function checkedMax() {
+    		if($("#min").val() > $("#max").val()) {
+    			alert('최소 인원이 최대 인원을 넘을 수 없습니다.');
+    			$("#max").val($("#min").val());
+    		}
     	}
     </script>
 

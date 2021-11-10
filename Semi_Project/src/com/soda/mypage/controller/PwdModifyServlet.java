@@ -64,7 +64,7 @@ public class PwdModifyServlet extends HttpServlet {
 			request.setAttribute("result", "fail");
 		}
 		
-		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/member/pwdModifyForm.jsp");
+		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/mypage/pwdModifyForm.jsp");
 		view.forward(request, response);
 	}
 

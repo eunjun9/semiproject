@@ -33,6 +33,7 @@ public class WishListService {
 		return listResult;
 	}
 
+	// 장바구니 조회
 	public List<WishList> wishlistList(String userId) {
 		Connection conn = getConnection();
 		
@@ -43,5 +44,54 @@ public class WishListService {
 		return wishlist;
 	}
 
+	// 장바구니 삭제
+	public int deleteWishlist(int deleteList, String userId) {
+		Connection conn = getConnection();
+		int result = wishListDao.deleteWishlist(conn, deleteList, userId);
+		
+		if(result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		close(conn);
+		
+		return result;
+	}
+	
+	// 결제 화면 조회
+	public List<WishList> wishlistList(String userId, int nNum) {
+		Connection conn = getConnection();
+		
+		List<WishList> wishlist = wishListDao.wishlistPay(conn, userId, nNum);
+		
+		close(conn);
+		
+		return wishlist;
+	
+		
+	}
+	
+
+	// 결제 완료
+	public List<WishList> payInsert(WishList wishlist) {
+		Connection conn = getConnection();
+		List<WishList> wishOrder = null;
+		
+		// payment에 insert 결과
+		int result = wishListDao.payInsert(conn, wishlist);
+		
+		if(result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		close(conn);
+		
+		return wishOrder;
+	}
+
+	
+		
 
 }

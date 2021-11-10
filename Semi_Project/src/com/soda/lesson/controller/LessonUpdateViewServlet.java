@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.soda.lesson.model.service.LessonService;
+import com.soda.lesson.model.vo.Lesson;
+
 /**
  * Servlet implementation class LessonUpdateViewServlet
  */
@@ -26,16 +29,23 @@ public class LessonUpdateViewServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		int nNum = Integer.parseInt(request.getParameter("nNum"));
+		
+		Lesson lesson = new LessonService().selectLesson(nNum);
+		
+		if(lesson != null) {
+			request.setAttribute("lesson", lesson);
+			request.getRequestDispatcher("/WEB-INF/views/lesson/lessonUpdate.jsp").forward(request, response);
+		} else {
+			request.setAttribute("message", "수정할 클래스를 불러오는데 실패하였습니다.");
+			request.getRequestDispatcher("/WEB-INF/views/common/errorpage.jsp").forward(request, response);
+		}
 	}
 
 }

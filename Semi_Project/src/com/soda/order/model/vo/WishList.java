@@ -1,7 +1,5 @@
 package com.soda.order.model.vo;
 
-import java.sql.Date;
-
 
 public class WishList {
 	private String userId;
@@ -12,10 +10,11 @@ public class WishList {
 	private String nTitle;		// 게시글 제목 (notice 테이블 참조)
 	private int cPrice;			// 가격 (class 테이블 참조)
 	private String cCategory;	// 카테고리 (원데이 vod) (class 테이블 참조)
-	private Date cSDate;		// 시작 날짜 (class 테이블 참조)
-	private Date cEDate;		// 종료날짜 (class 테이블 참조)
+	private String vDate;		// 시작 날짜 (class 테이블 참조)
 	private String cTime1;		// 클래스 시간1 (class 테이블 참조)
 	private String cTime2;		// 클래스 시간2 (class 테이블 참조)
+	private String lessonDate;	// 원데이 선택 날짜
+	
 	private String cLocation;	// 장소 (class 테이블 참조)
 	private String route;		// 업로드 파일 저장 경로 (tbl_file 테이블 참조)
 	private String changeName;	// 바뀐 이름 (tbl_file 테이블 참조)
@@ -39,37 +38,14 @@ public class WishList {
 		this.wishStatus = wishStatus;
 	}
 	
-	// 전체
-	public WishList(String userId, int nNum, int wishNum, String wishStatus, String nTitle, int cPrice,
-			String cCategory, Date cSDate, Date cEDate, String cTime1, String cTime2, String cLocation, String route,
-			String changeName) {
-		super();
-		this.userId = userId;
-		this.nNum = nNum;
-		this.wishNum = wishNum;
-		this.wishStatus = wishStatus;
-		this.nTitle = nTitle;
-		this.cPrice = cPrice;
-		this.cCategory = cCategory;
-		this.cSDate = cSDate;
-		this.cEDate = cEDate;
-		this.cTime1 = cTime1;
-		this.cTime2 = cTime2;
-		this.cLocation = cLocation;
-		this.route = route;
-		this.changeName = changeName;
-	}
-
-
 	// 장바구니 리스트 조회
-	public WishList(String nTitle, int cPrice, String cCategory, Date cSDate, Date cEDate, String cTime1, String cTime2,
+	public WishList(String nTitle, int cPrice, String cCategory, String vDate, String cTime1, String cTime2,
 			String cLocation, String route, String changeName) {
 		super();
 		this.nTitle = nTitle;
 		this.cPrice = cPrice;
 		this.cCategory = cCategory;
-		this.cSDate = cSDate;
-		this.cEDate = cEDate;
+		this.vDate = vDate;
 		this.cTime1 = cTime1;
 		this.cTime2 = cTime2;
 		this.cLocation = cLocation;
@@ -78,8 +54,30 @@ public class WishList {
 	}
 	
 
-	public WishList(int nNum, int wishNum, String wishStatus, String nTitle, int cPrice, String cCategory, Date cSDate,
-			Date cEDate, String cTime1, String cTime2, String cLocation) {
+	// 전체
+	public WishList(String userId, int nNum, int wishNum, String wishStatus, String nTitle, int cPrice,
+			String cCategory, String vDate, String cTime1, String cTime2, String lessonDate, String cLocation,
+			String route, String changeName) {
+		super();
+		this.userId = userId;
+		this.nNum = nNum;
+		this.wishNum = wishNum;
+		this.wishStatus = wishStatus;
+		this.nTitle = nTitle;
+		this.cPrice = cPrice;
+		this.cCategory = cCategory;
+		this.vDate = vDate;
+		this.cTime1 = cTime1;
+		this.cTime2 = cTime2;
+		this.lessonDate = lessonDate;
+		this.cLocation = cLocation;
+		this.route = route;
+		this.changeName = changeName;
+	}
+
+
+	public WishList(int nNum, int wishNum, String wishStatus, String nTitle, int cPrice, String cCategory, String vDate,
+			String cTime1, String cTime2, String cLocation) {
 		super();
 		this.nNum = nNum;
 		this.wishNum = wishNum;
@@ -87,8 +85,7 @@ public class WishList {
 		this.nTitle = nTitle;
 		this.cPrice = cPrice;
 		this.cCategory = cCategory;
-		this.cSDate = cSDate;
-		this.cEDate = cEDate;
+		this.vDate = vDate;
 		this.cTime1 = cTime1;
 		this.cTime2 = cTime2;
 		this.cLocation = cLocation;
@@ -158,20 +155,12 @@ public class WishList {
 		this.cCategory = cCategory;
 	}
 
-	public Date getcSDate() {
-		return cSDate;
+	public String getvDate() {
+		return vDate;
 	}
 
-	public void setcSDate(Date cSDate) {
-		this.cSDate = cSDate;
-	}
-
-	public Date getcEDate() {
-		return cEDate;
-	}
-
-	public void setcEDate(Date cEDate) {
-		this.cEDate = cEDate;
+	public void setvDate(String vDate) {
+		this.vDate = vDate;
 	}
 
 	public String getcTime1() {
@@ -189,6 +178,18 @@ public class WishList {
 	public void setcTime2(String cTime2) {
 		this.cTime2 = cTime2;
 	}
+	
+	
+
+	public String getlessonDate() {
+		return lessonDate;
+	}
+
+
+	public void setlessonDate(String lessonDate) {
+		this.lessonDate = lessonDate;
+	}
+
 
 	public String getcLocation() {
 		return cLocation;
@@ -215,14 +216,15 @@ public class WishList {
 	}
 
 
-
 	@Override
 	public String toString() {
 		return "WishList [userId=" + userId + ", nNum=" + nNum + ", wishNum=" + wishNum + ", wishStatus=" + wishStatus
-				+ ", nTitle=" + nTitle + ", cPrice=" + cPrice + ", cCategory=" + cCategory + ", cSDate=" + cSDate
-				+ ", cEDate=" + cEDate + ", cTime1=" + cTime1 + ", cTime2=" + cTime2 + ", cLocation=" + cLocation
-				+ ", route=" + route + ", changeName=" + changeName + "]";
+				+ ", nTitle=" + nTitle + ", cPrice=" + cPrice + ", cCategory=" + cCategory + ", vDate=" + vDate
+				+ ", cTime1=" + cTime1 + ", cTime2=" + cTime2 + ", lessonDate=" + lessonDate
+				+ ", cLocation=" + cLocation + ", route=" + route + ", changeName=" + changeName + "]";
 	}
+
+
 
 
 

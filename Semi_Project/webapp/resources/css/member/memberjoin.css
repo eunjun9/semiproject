@@ -52,14 +52,11 @@ div{
     padding-right: 0;
     padding-left: 0;
     margin-top: 30px;
-    margin-left: 37.5%;
+    margin-left: 38%;
     margin-bottom: 3rem!important;
 }
 
-.firstjoin{
-    margin-left: 100px;
-    
-}
+
 
 form{
     display: block;
@@ -85,6 +82,12 @@ body, html{
     text-align: left;
 }
 
+.firstjoin{
+    margin-left: 100px;
+    font-size: 1.5rem;
+    font-weight: 500px
+}
+
 .common-form{
     position: relative;
     width: 400px;
@@ -102,6 +105,8 @@ body, html{
 
 #idCheck{
     margin-left: 5px;
+    border: 1px solid black;
+	border-radius: 5px;
 }
 
 .form-group{
@@ -117,7 +122,6 @@ body, html{
     letter-spacing: -.31px;
     margin-bottom: .25rem!important;
     width: 100px;
-    font-weight: 700;
     font-size: 0.9rem;
 }
 

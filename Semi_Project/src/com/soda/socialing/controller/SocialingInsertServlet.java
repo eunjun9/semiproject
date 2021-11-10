@@ -2,10 +2,8 @@ package com.soda.socialing.controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
+import java.sql.Date;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -22,7 +20,6 @@ import com.soda.member.model.vo.Member;
 import com.soda.socialing.model.service.SocialingService;
 import com.soda.socialing.model.vo.Socialing;
 import com.soda.socialing.model.vo.SodaFile;
-import com.sun.xml.internal.ws.api.message.Attachment;
 
 /**
  * Servlet implementation class SocialingFormServlet
@@ -57,23 +54,17 @@ public class SocialingInsertServlet extends HttpServlet {
 			return;
 		}
 		
-		/* 1. 전송 파일 용량 제한 : 10MB로 제한 */
 		int maxSize = 1024*1024*10;
-		
-		/* 2. 웹 서버 컨테이너 경로 추출 후 파일이 실제 저장 될 경로 지정 */
-		String root = request.getSession().getServletContext().getRealPath("/"); // E:\Server\workspace\JSPProject\webapp\
+		String root = request.getSession().getServletContext().getRealPath("/");
 		String savePath = root + "resources\\uploadFiles\\";
 		
-		/* HttpServletRequest => MultipartRequest 타입으로 변경 */
 		MultipartRequest multiRequest 
 			= new MultipartRequest(request, savePath, maxSize, "UTF-8", new MyFileRenamePolicy());
-		// 요청, 저장할 경로, 최대 용량, 인코딩 타입, 파일의 리네임 규칙에 따라 리네임하는 객체(cos.jar)
 		
-		/* DB에 데이터 저장 */
 		String stitle = multiRequest.getParameter("inputTitle");				// 글 제목
 		String scontent = multiRequest.getParameter("content");					// 본문
-		String sdate = multiRequest.getParameter("dateIn");						// 모임 날짜 ex. 2021-11-03
-		String stime = multiRequest.getParameter("timeIn");						// 모임 시간 ex. 13:10:20 (오후 1:10:20)
+		String sdate = multiRequest.getParameter("dateIn");						// 모임 날짜 (ex. 2021-11-03)
+		String stime = multiRequest.getParameter("timeIn");						// 모임 시간 (ex. 13:10)
 		String stype = multiRequest.getParameter("type");						// 온라인/오프라인
 		String[] splaceArr = multiRequest.getParameterValues("inputPlace");		// 모임 장소
 		int minMember = Integer.parseInt(multiRequest.getParameter("min"));		// 최소 참여 인원
@@ -85,22 +76,16 @@ public class SocialingInsertServlet extends HttpServlet {
 		if(splaceArr != null && !splaceArr[0].equals("") && !splaceArr[1].equals(""))
 			splace = String.join("|", splaceArr);
 		else
-			splace = splaceArr[0];
+			splace = splaceArr[0]; // 온라인 모임일 경우 (상세 주소 x)
 		
-		// 년월일시분초 잘라내기
-		int ydate = Integer.parseInt(sdate.substring(0,4));
-		int mdate = Integer.parseInt(sdate.substring(5,7));
-		int ddate = Integer.parseInt(sdate.substring(8));
-		int htime = Integer.parseInt(stime.substring(0,2));
-		int mtime = Integer.parseInt(stime.substring(3,5));
-		int sectime = Integer.parseInt(stime.substring(6));
-		// sdate, stime 합쳐서 Date 타입으로 파싱
-		Calendar formatDate = new GregorianCalendar(ydate, mdate, ddate, htime, mtime, sectime);
+		// 모임 날짜 String -> Date로 변경
+		Date date = Date.valueOf(sdate);
 		
 		Socialing socialing = new Socialing();
 		socialing.setnTitle(stitle);
 		socialing.setnContent(scontent);
-		socialing.setSdate(formatDate.getTime());
+		socialing.setSdate(date);
+		socialing.setStime(stime);
 		socialing.setStype(stype);
 		socialing.setSplace(splace);
 		socialing.setnType("소셜링");
@@ -118,6 +103,11 @@ public class SocialingInsertServlet extends HttpServlet {
 		thumbnail.setOriginName(multiRequest.getOriginalFileName(fileName));
 		/* getFilesystemName() : MyRenamePolicy의 rename 메소드에서 작성한대로 rename 된 파일명 */
 		thumbnail.setChangeName(multiRequest.getFilesystemName(fileName));
+		/* 썸네일만 첨부 */
+		thumbnail.setFileLevel(1);
+		
+		/* thumbnail 객체가 photo에 담김 */
+		photo.add(thumbnail);
 		
 		/* socialing에 만들어진 File 데이터 설정 */
 		socialing.setPhotoList(photo);
@@ -134,7 +124,7 @@ public class SocialingInsertServlet extends HttpServlet {
 				File failedFile = new File(savePath + p.getChangeName());
 				failedFile.delete();
 			}
-			request.setAttribute("message", "사진 게시판 게시글 등록에 실패하였습니다.");
+			request.setAttribute("message", "게시글 등록에 실패하였습니다.");
 			request.getRequestDispatcher("/WEB-INF/views/common/errorpage.jsp").forward(request, response);
 		}
 	}

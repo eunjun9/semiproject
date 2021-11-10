@@ -16,7 +16,6 @@ body {
 .text {
     display: inline-block;
     align-items: center;
-    padding-right: 12%;
     margin-top: -10px;
     margin-bottom: -10px;
     text-align: center;
@@ -29,13 +28,13 @@ ul {
 
 
  .class-info{
-    padding-left: 12%;
-    padding-right: 35%;
+    padding-left: 18%;
+    padding-right: 10%;
     
  }
 
  .class-price{
-     padding-left: 3%;
+     margin-left: 0%;
  }
 
  hr{
@@ -53,7 +52,7 @@ ul {
     height: 100%;
     display: inline-block;
     vertical-align: top;
-    padding-top: 30%;
+    padding-top: 25%;
  }
  #order{
     width: 15px;
@@ -74,7 +73,7 @@ ul {
     display: inline-block;
     justify-content: center;
     vertical-align: top;
-    margin-top: 3%;
+    margin-top: 2%;
     margin-left: 2%;
     border-right: 1px solid lightgray;
     height: 120px;
@@ -93,7 +92,7 @@ ul {
  /* 장바구니에 담긴 클래스 css */
 
  .category{
-     font-size: 11px;
+     font-size: 13px;
      color: gray;
      
  }
@@ -184,7 +183,7 @@ ul {
  }
 
  .total{
-     font-size: 19px;
+     font-size: 21px;
      margin-right: 30px;
      margin-top: 2px;
 

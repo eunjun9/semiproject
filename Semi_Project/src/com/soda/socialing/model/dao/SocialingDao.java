@@ -103,6 +103,8 @@ public class SocialingDao {
 				socialing.setUserName(rset.getString("user_name"));
 				socialing.setSplace(rset.getString("s_place"));
 				socialing.setSdate(rset.getDate("s_date"));
+				socialing.setStime(rset.getString("s_time"));
+				socialing.setStype(rset.getString("s_type"));
 
 				List<SodaFile> photoList = new ArrayList<>();
 				SodaFile file = new SodaFile();
@@ -169,6 +171,8 @@ public class SocialingDao {
 				socialing.setnCount(rset.getInt("ncount"));
 				socialing.setSplace(rset.getString("s_place"));
 				socialing.setSdate(rset.getTimestamp("s_date"));
+				socialing.setStime(rset.getString("s_time"));
+				socialing.setStype(rset.getString("s_type"));
 				socialing.setMaxMember(rset.getInt("max_member"));
 				socialing.setMinMember(rset.getInt("min_member"));
 				socialing.setProfile(rset.getString("profile"));
@@ -198,7 +202,7 @@ public class SocialingDao {
 			
 			rset = pstmt.executeQuery();
 			
-			// 썸네일 사진 1개 (프로필사진 여기로 추가해야되면 while문으로 변경)
+			// 썸네일 사진 1개 (사진 추가해야 되면 while문으로 변경)
 			if(rset.next()) {
 				SodaFile file = new SodaFile();
 				file.setFileNum(rset.getInt("file_num"));
@@ -300,62 +304,191 @@ public class SocialingDao {
 
 	// 게시글 추가하기 (notice, socialing, file 테이블 insert)
 	public int insertNotice(Connection conn, Socialing socialing) {
-		// TODO Auto-generated method stub
-		return 0;
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = socialingQuery.getProperty("insertNotice");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, socialing.getnTitle());
+			pstmt.setString(2, socialing.getnContent());
+			pstmt.setString(3, socialing.getUserId());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
 	}
 
 	public int insertSocialing(Connection conn, Socialing socialing) {
-		// TODO Auto-generated method stub
-		return 0;
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = socialingQuery.getProperty("insertSocialing");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, socialing.getSplace());
+			pstmt.setDate(2, new java.sql.Date(socialing.getSdate().getTime()));
+			// pstmt.setDate(4, new java.sql.Date(java.util.Date.getTime()));
+			pstmt.setString(3, socialing.getStype());
+			pstmt.setInt(4, socialing.getMaxMember());
+			pstmt.setInt(5, socialing.getMinMember());
+			pstmt.setString(6, socialing.getStime());
+
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
 	}
 
 	public int insertFile(Connection conn, SodaFile photo) {
-		// TODO Auto-generated method stub
-		return 0;
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = socialingQuery.getProperty("insertFile");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, photo.getRoute());
+			pstmt.setString(2, photo.getOriginName());
+			pstmt.setInt(3, photo.getFileLevel());
+			pstmt.setString(4, photo.getChangeName());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
 	}
 
+	public int updateNotice(Connection conn, Socialing socialing) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = socialingQuery.getProperty("updateNotice");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, socialing.getnTitle());
+			pstmt.setString(2, socialing.getnContent());
+			pstmt.setString(3, socialing.getnType());
+			pstmt.setInt(4, socialing.getnNum());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+	
+	public int updateSocialing(Connection conn, Socialing socialing) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = socialingQuery.getProperty("updateSocialing");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setDate(1, new java.sql.Date(socialing.getSdate().getTime()));
+			pstmt.setString(2, socialing.getStime());
+			pstmt.setString(3, socialing.getStype());
+			pstmt.setString(4, socialing.getSplace());
+			pstmt.setInt(5, socialing.getMinMember());
+			pstmt.setInt(6, socialing.getMaxMember());
+			pstmt.setInt(7, socialing.getnNum());
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
 
+	public int updatePhoto(Connection conn, SodaFile photo) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = socialingQuery.getProperty("updatePhoto");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, photo.getOriginName());
+			pstmt.setString(2, photo.getChangeName());
+			pstmt.setString(3, photo.getDeletedName());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
 
+	public int deleteSocialing(Connection conn, int nNum) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = socialingQuery.getProperty("deleteSocialing");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, nNum);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
 
-	
-	
-	
-	
-//	public List<Socialing> selectList(Connection conn) {
-//		PreparedStatement pstmt = null;
-//		ResultSet rset = null;
-//		List<Socialing> socialingList = new ArrayList<>();
-//		String sql = socialingQuery.getProperty("selectList");
-//		
-//		try {
-//			pstmt = conn.prepareStatement(sql);
-//			
-//			rset = pstmt.executeQuery();
-//			
-//			while(rset.next()) {
-//				Socialing socialing = new Socialing();
-//				socialing.setnNum(rset.getInt("notice_num"));
-//				socialing.setnTitle(rset.getString("notice_title"));
-//				socialing.setSplace(rset.getString("s_place"));
-//				socialing.setSdate(rset.getDate("s_date"));
-//				
-//				List<File> photoList = new ArrayList<>();
-//				File file = new File();
-//				file.setRoute(rset.getString("route"));
-//				file.setChangeName(rset.getString("change_name"));
-//				photoList.add(file);
-//				socialing.setPhotoList(photoList);
-//				
-//				socialingList.add(socialing);
-//			}
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		} finally {
-//			close(rset);
-//			close(pstmt);
-//		}
-//		
-//		return socialingList;
-//	}
+	public int deletePhoto(Connection conn, int nNum) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = socialingQuery.getProperty("deletePhoto");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, nNum);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
 
 }
