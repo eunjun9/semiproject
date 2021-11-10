@@ -8,6 +8,7 @@ import static com.common.JDBCTemplate.rollback;
 import java.sql.Connection;
 import java.util.List;
 
+import com.soda.magazine.model.vo.MagazineFile;
 import com.soda.mypage.model.dao.ProfileDao;
 import com.soda.mypage.model.vo.Profile;
 import com.soda.mypage.model.vo.ProfileFile;
@@ -69,12 +70,15 @@ public class ProfileService {
 		     
 		}
 
+	// myfeed에 불러오기
 	public Profile selectProfile(String userId) {
 		Connection conn = getConnection();
 
-		/* magazine 테이블 정보 조회 */
+		/* Profile 테이블 정보 조회 */
 		Profile profile = profileDao.selectProfile(conn, userId);
-
+		
+		List<ProfileFile> profileFile = profileDao.selectProfileFile(conn, userId);
+		profile.setProfileFile(profileFile);
 
 		close(conn);
 		

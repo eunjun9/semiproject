@@ -37,14 +37,15 @@ public class ProfileInsertViewServlet extends HttpServlet {
 	      
 	      Profile profile = new ProfileService().selectProfile(userId);
 	      
-//	      System.out.println(profile);
 	      if (profile == null) {
 	    	  request.setAttribute("profile", profile);
 		         request.getRequestDispatcher("/WEB-INF/views/mypage/profileInsert.jsp").forward(request, response);
 				
 			} else {
 				 request.setAttribute("profile", profile);
+				 
 				request.getRequestDispatcher("/WEB-INF/views/mypage/profileModify.jsp").forward(request, response);
+//			System.out.println(request);
 			}
 	         
 	   

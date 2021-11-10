@@ -15,6 +15,7 @@ import com.soda.magazine.model.vo.Magazine;
 import com.soda.member.model.vo.Member;
 import com.soda.mypage.model.service.ProfileService;
 import com.soda.mypage.model.vo.Profile;
+import com.soda.mypage.model.vo.ProfileFile;
 
 /**
  * Servlet implementation class MyFeedServlet
@@ -38,18 +39,26 @@ public class MyFeedServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		// 마이페이지에서 마이피드를 클릭한 후(요청) 마이 피드의 사진, 글들을 불러오기 위해 select사용
+		
+		// 사용자 본인의 사진
 		List<Magazine> userselfList = new MagazineService().selectUserselfList();
 		request.setAttribute("userselfList", userselfList);
 
+		
+		
 		ProfileService profileService = new ProfileService();
 
+		
+		// 사용자 본인만의 사진
 		String userId = ((Member) request.getSession().getAttribute("loginUser")).getUserId();
 		Profile profile = profileService.selectProfile(userId);
 		
-//		System.out.println(profile);
 
 		
+		
 		request.setAttribute("profile", profile);
+		
 		request.getRequestDispatcher("/WEB-INF/views/mypage/myfeedMain.jsp").forward(request, response);
 		
 
