@@ -8,7 +8,7 @@
 <title>마이페이지</title>
 
 	<!--외부 스타일 시트-->
-    <link rel="stylesheet" href="${ contextPath }/resources/css/mypage/mypage_mainT.css?1">
+    <link rel="stylesheet" href="${ contextPath }/resources/css/mypage/mypage_mainT.css?2">
     <!-- font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,9 +25,9 @@
 <div class="mypage_main">
     <div class="wrapper1">
         <div class="info">
-            <h2>마이 페이지</h2>
-            <a class="notice" href="#"><img width="7%" src="${ contextPath }/resources/images/yewon/bell.png"></a>
-            <a class="notice" href="#"><p>알림</p></a>
+            <h1>마이 페이지</h1>
+           <%--  <a class="notice" href="#"><img width="7%" src="${ contextPath }/resources/images/yewon/bell.png"></a>
+          <a class="notice" href="#"><p>알림</p></a>  --%>
             
             <div class="profile">
                 <a href="#" id="profileimg"><img width="45%" src="${ contextPath }/resources/images/yewon/profile.png"></a>
@@ -48,7 +48,7 @@
         <div class="interest">
             <div class="oneday">
                 <h3>나의 클래스 - 원데이</h3>
-                <p></p>
+               <!--  <p>건</p> -->
             </div>
 
             <!-- Swiper -->
@@ -58,9 +58,11 @@
                     	<!-- 반복문으로 글 넣기 -->
                     	<c:forEach var="lesson" items="${ lessonList }">
                     	<div class="swiper-slide" onclick="detailView(${lesson.nNum})">
-                            <a><img class="ipic" width="92%" height="20%"src="${ contextPath }${ lesson.photoList.get(0).route}${ lesson.photoList.get(0).changeName }"></a>
+                    	<c:if test="${lesson.cCategory == '원데이' }">
+                            <a><img class="ipic1" width="91%" height="155px"src="${ contextPath }${ lesson.photoList.get(0).route}${ lesson.photoList.get(0).changeName }"></a>
                             <a id="stitle">${lesson.nTitle }</a>
-                            <p id="stime">${lesson.cLocation }</p>
+                            <p id="stime">${lesson.oDate1 } ~ ${lesson.oDate2 }</p>
+                    	</c:if>
                         </div>
                     	</c:forEach>
                     </div>
@@ -100,44 +102,23 @@
             <!-- VOD 클래스 -->
             <div class="vod">
                 <h3>나의 클래스 - VOD</h3>
-                <p>6건</p>
+                <!-- <p>6건</p> -->
             </div>
 
                 <!-- Swiper -->
                 <div class="slide1">
-                    
                     <div class="swiper mySwiper2 socialing">
                         <div class="swiper-wrapper sw">
-                            <div class="swiper-slide">
-                                <a href="#"><img class="ipic" width="92%" height="70%" src="${ contextPath }/resources/images/yewon/friend.jpg"></a>
-                                <a id="stitle" href="#">오일 파스텔 원데이 클래스</a>
-                                <p id="stime">사당역 10/8 토요일 오전 10시</p>
-                            </div>
-                            <div class="swiper-slide">
-                                <a href="#"><img class="ipic" width="92%" height="70%" src="${ contextPath }/resources/images/yewon/friend.jpg"></a>
-                                <a id="stitle" href="#">도자기 공방 원데이 클래스</a>
-                                <p id="stime">망원역 11/8 토요일 오전 12시</p>
-                            </div>
-                            <div class="swiper-slide">
-                                <a href="#"><img class="ipic" width="92%" height="70%" src="${ contextPath }/resources/images/yewon/friend.jpg"></a>
-                                <a id="stitle" href="#">위빙 원데이 클래스</a>
-                                <p id="stime">성수역 11/12 토요일 오전 10시</p>
-                            </div>
-                            <div class="swiper-slide">
-                                <a href="#"><img class="ipic" width="92%" height="70%" src="${ contextPath }/resources/images/yewon/friend.jpg"></a>
-                                <a id="stitle" href="#">오일 파스텔 원데이 클래스</a>
-                                <p id="stime">사당역 10/8 토요일 오전 10시</p>
-                            </div>
-                            <div class="swiper-slide">
-                                <a href="#"><img class="ipic" width="92%" height="70%" src="${ contextPath }/resources/images/yewon/friend.jpg"></a>
-                                <a id="stitle" href="#">위빙 원데이 클래스</a>
-                                <p id="stime">성수역 11/12 토요일 오전 10시</p>
-                            </div>
-                            <div class="swiper-slide">
-                                <a href="#"><img class="ipic" width="92%" height="70%" src="${ contextPath }/resources/images/yewon/friend.jpg"></a>
-                                <a id="stitle" href="#">스콘 베이킹 원데이 클래스</a>
-                                <p id="stime">홍대입구 11/10 일요일 오전 10시</p>
-                            </div>
+	                            <!-- 반복문으로 글 넣기 -->
+	                    	<c:forEach var="lesson" items="${ lessonList }">
+	                    	<div class="swiper-slide" onclick="detailView(${lesson.nNum})">
+	         				<c:if test="${ lesson.cCategory == 'vod' }">
+	                            <a><img class="ipic2" width="91%" height="155px"src="${ contextPath }${ lesson.photoList.get(0).route}${ lesson.photoList.get(0).changeName }"></a>
+	                            <a id="stitle">${lesson.nTitle }</a>
+	                            <p id="stime">${lesson.vDate }일</p>
+	     					</c:if>
+	                        </div>
+	                    	</c:forEach>
                         </div>
                     </div>
                     
@@ -146,11 +127,9 @@
                         <!-- If we need navigation buttons -->
                         <div class="but3"><img width="20px" src="${ contextPath }/resources/images/yewon/prev_b.png"></div>
                     </div>
-                    
                     <div class=button4>
                         <div class="but4"><img width="20px" src="${ contextPath }/resources/images/yewon/next_b.png"></div>
                     </div>
-                    
                 </div> 
             </div>
             
@@ -169,10 +148,27 @@
                     }
                 });
             </script>   
-
+            
     </div>
 </div>    
-</div>
+			<c:choose>
+			<c:when test="${ !empty loginUser}"><!-- 로그인 했을 때 -->
+	            <script>
+	            	function detailView(nNum){
+	            		location.href = '${contextPath}/lesson/detail?nNum=' + nNum;
+	            	}
+	            </script>
+			</c:when>
+            <c:otherwise>	<!-- 로그인 안 했을 때 -->
+				<script>
+					function detailView(){
+						alert('로그인 후 이용 가능합니다. 로그인 해주세요.');
+						location.href='${ contextPath }/login';
+					}			
+				</script>
+			</c:otherwise>
+			</c:choose>
+
 
 	<!-- footer -->
 	<%@ include file="/WEB-INF/views/common/footer.jsp" %>

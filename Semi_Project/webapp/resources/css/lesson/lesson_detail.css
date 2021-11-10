@@ -31,24 +31,24 @@ img{
 
 .cMTitle{
     margin-top: 100px;
-    margin-left: 5px;
+    margin-left: 10%;
     width: 310px;
 }
 
 .cTutor{
     margin-top: -8%;
-    margin-left: 10%;
+    margin-left: 18%;
     color: rgb(107, 107, 107);
 }
 .cCategory{
     margin-top: 1%;
-    margin-left: 10%;
+    margin-left: 18%;
     color: rgb(107, 107, 107);
 }
 
 .class_detail1 p{
      font-size: 14px;
-     margin-left: 15%;
+     margin-left: 22%;
      margin-top: -50px;
      color: rgb(7, 86, 105);
 }
@@ -60,7 +60,7 @@ img{
     height: 200px;
     background-color: rgba(244, 246, 246, 0.5);
     box-shadow: 5px 5px 5px lightgrey;
-    margin-left: 75%;
+    margin-left: 76%;
     margin-top: -400px;
     padding: 1%;
 }

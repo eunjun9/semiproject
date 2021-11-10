@@ -1,11 +1,18 @@
 package com.soda.mypage.controller;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.soda.lesson.model.vo.Lesson;
+import com.soda.member.model.vo.Member;
+import com.soda.mypage.model.service.MypageService;
 
 /**
  * Servlet implementation class MypageTutorMainServlet
@@ -26,6 +33,10 @@ public class MypageTutorMainServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String user = ((Member)request.getSession().getAttribute("loginUser")).getUserId();
+		List<Lesson> lessonList = new MypageService().selectLessonList(user);
+		
+		request.setAttribute("lessonList", lessonList);
 		request.getRequestDispatcher("/WEB-INF/views/mypage/mypageMainTutor.jsp").forward(request, response);
 		
 	}
