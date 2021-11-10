@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <title>장바구니</title>
 <!-- 외부 스타일 시트 -->
-<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/order/wishlist-style.css?1">
+<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/order/wishlist-style.css?2">
 <!-- 외부 폰트 -->
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
 <!-- jQuery -->

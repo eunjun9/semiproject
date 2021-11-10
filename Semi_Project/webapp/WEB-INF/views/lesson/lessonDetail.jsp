@@ -76,7 +76,7 @@
         	<c:when test="${ lesson.cCategory == '원데이'}" >
         	<!-- 원데이 클래스는 수강하기 버튼만 있고 클릭 시 , 날짜 선택 모달창 -> 장바구니 / 결제하기로 넘어갈 수 있음 -->
        				<div class="payment">
-        				<form name="testForm" method="get">
+        				<form name="orderForm" method="get">
 						<input type="hidden" name="noticeNum" value="${ lesson.nNum }">
 			            <h4 id="pTitle">${ lesson.nTitle }</h4>
 			            <input type="date" id="pDate" min="${ lesson.oDate1 }" max="${ lesson.oDate2 }" name="selDate">
@@ -96,8 +96,8 @@
 			        				 return false;
 			        			 } else {
 					                    if(confirm('결제화면으로 이동하시겠습니까?')){
-					                        //document.forms.orderForm.action = "${ contextPath }/lesson/order";
-							                //document.forms.orderForm.submit();
+					                        document.forms.orderForm.action = "${ contextPath }/payment";
+							                document.forms.orderForm.submit();
 					                    }else {
 					                    	return false;
 					                    } 
