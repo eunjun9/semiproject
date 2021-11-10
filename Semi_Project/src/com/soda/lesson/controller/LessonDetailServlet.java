@@ -31,6 +31,7 @@ public class LessonDetailServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int nNum = Integer.parseInt(request.getParameter("nNum"));
+		// String nNum = request.getParameter("nNum");
 		LessonService lessonService = new LessonService();
 		
 		/* 동일 게시글에 대한 조회수 무한 증가 방지 처리 -> cookie 활용 */

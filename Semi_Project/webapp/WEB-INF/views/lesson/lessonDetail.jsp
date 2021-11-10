@@ -110,8 +110,8 @@
 		        				 return false;
 		        			 } else {
 				                    if(confirm('장바구니로 이동하시겠습니까?')){
-				                        document.forms.testForm.action = "${ contextPath }/wishlist/add";
-						                document.forms.testForm.submit();
+				                        document.forms.orderForm.action = "${ contextPath }/wishlist/add";
+						                document.forms.orderForm.submit();
 				                    }else {
 				                    	return false;
 				                    } 
