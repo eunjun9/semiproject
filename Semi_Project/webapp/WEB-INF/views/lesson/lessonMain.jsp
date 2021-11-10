@@ -9,7 +9,7 @@
 <title>클래스_메인</title>
 
 	<!--외부 스타일 시트-->
-    <link href="${ contextPath }/resources/css/lesson/lesson_main.css?1" rel="stylesheet">
+    <link href="${ contextPath }/resources/css/lesson/lesson_main.css?3" rel="stylesheet">
 
     <!-- font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
