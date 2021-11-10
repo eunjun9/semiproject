@@ -60,49 +60,37 @@ public class WishListService {
 	}
 	
 	// 결제 화면 조회
-	public List<WishList> wishlistList(int nNum) {
-		Connection conn = getConnection();
-		
-		List<WishList> wishlist = wishListDao.wishlistPay(conn, nNum);
-		
-		close(conn);
-		
-		return wishlist;
-	
-		
-	}
-	
+		public List<WishList> wishlistList(String userId, int nNum) {
+			Connection conn = getConnection();
 
-	// 결제 완료
-	public List<WishList> payInsert(WishList wishlist) {
-		Connection conn = getConnection();
-		List<WishList> wishOrder = null;
-		
-		// payment에 insert 결과
-		int result = wishListDao.payInsert(conn, wishlist);
-		
-		if(result > 0) {
-			commit(conn);
-		} else {
-			rollback(conn);
+			List<WishList> wishlist = wishListDao.wishlistPay(conn, userId, nNum);
+
+			close(conn);
+
+			return wishlist;
+
+
 		}
-		close(conn);
-		
-		return wishOrder;
-	}
 
-	// 클래스에서 바로 넘어오는 결제 화면 조회
-	public List<WishList> lessonPay(int nNum) {
-		Connection conn = getConnection();
-		
-		List<WishList> lessonPay = wishListDao.wishlistPay(conn, nNum);
-		
-		close(conn);
-		
-		return lessonPay;
 	
-		
-	}
-		
+//		// 결제 완료
+//		public List<WishList> payInsert(WishList wishlist) {
+//			Connection conn = getConnection();
+//			List<WishList> wishOrder = null;
+//
+//			// payment에 insert 결과
+//			int result = wishListDao.payInsert(conn, wishlist);
+//
+//			if(result > 0) {
+//				commit(conn);
+//			} else {
+//				rollback(conn);
+//			}
+//			close(conn);
+//
+//			return wishOrder;
+//		}
+
+
 
 }
