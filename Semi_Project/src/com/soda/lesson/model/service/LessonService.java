@@ -7,6 +7,7 @@ import java.util.Map;
 
 import com.soda.lesson.model.dao.LessonDao;
 import com.soda.lesson.model.vo.Attachment;
+import com.soda.lesson.model.vo.Filter;
 import com.soda.lesson.model.vo.Lesson;
 import com.soda.lesson.model.vo.PageInfo;
 
@@ -17,18 +18,18 @@ public class LessonService {
 	private LessonDao lessonDao = new LessonDao();
 	
 	/* 페이징 : 페이지와 게시글리스트를 리턴*/
-	public Map<String, Object> selectList(int page) {
+	public Map<String, Object> selectList(int page, Filter filter) {
 		Connection conn = getConnection();
 		
-		// 1. 조회할 게시글 총 개수 구하기 
-		int listCount = lessonDao.getListCount(conn);
+		// 1. 조회할 게시글 총 개수 구하기  (필터 설정했을 때 총 개수도 구하기 위해 filter를 파라미터에 넣어줌)
+		int listCount = lessonDao.getListCount(conn, filter);
 		//System.out.println(listCount);
 		
 		// 2. PageInfo 객체 만들기 (목록 5개씩, 한 페이지당 9개 게시글)
 		PageInfo pi = new PageInfo(page, listCount, 5, 9);
 		
-		// 3. 페이징 처리 된 게시글 목록 조회
-		List<Lesson> lessonList = lessonDao.selectList(conn, pi);
+		// 3. 페이징 처리 된 게시글 목록 조회 (필터링 됐을 때도 조회)
+		List<Lesson> lessonList = lessonDao.selectList(conn, pi, filter);
 		
 		Map<String, Object> returnMap = new HashMap<>();
 		
@@ -159,9 +160,7 @@ public class LessonService {
 		}
 		return result;
 	}
-	
-	
-	
+
 	
 	
 }

@@ -42,17 +42,17 @@
                     
                      <select name="smallC" id="smallC" required>
                         <option id="small" selected disabled>소분류 선택</option>
-                        <option value="10" class="artS">드로잉</option>
-                        <option value="20" class="artS">악기</option>
-                        <option value="30" class="artS">일러스트</option>
-                        <option value="40" class="foodS">베이킹</option>
-                        <option value="50" class="foodS">양식</option>
-                        <option value="60" class="foodS">일식</option>
-                        <option value="70" class="foodS">중식</option>
-                        <option value="80" class="foodS">한식</option>
-                        <option value="90" class="sportS">근력운동</option>
-                        <option value="100" class="sportS">요가</option>
-                        <option value="110" class="sportS">필라테스</option>
+                        <option value="draw" class="artS">드로잉</option>
+                        <option value="instrumetnt" class="artS">악기</option>
+                        <option value="illust" class="artS">일러스트</option>
+                        <option value="bake" class="foodS">베이킹</option>
+                        <option value="ws" class="foodS">양식</option>
+                        <option value="jp" class="foodS">일식</option>
+                        <option value="ch" class="foodS">중식</option>
+                        <option value="ko" class="foodS">한식</option>
+                        <option value="musc" class="sportS">근력운동</option>
+                        <option value="yoga" class="sportS">요가</option>
+                        <option value="fila" class="sportS">필라테스</option>
                     </select><br>
                     
                     <script>

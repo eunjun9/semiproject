@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.soda.lesson.model.service.LessonService;
+import com.soda.lesson.model.vo.Filter;
 import com.soda.lesson.model.vo.Lesson;
 
 /**
@@ -40,11 +41,23 @@ public class LessonMainServlet extends HttpServlet {
 		if(request.getParameter("page") != null) {
 			page = Integer.parseInt(request.getParameter("page"));
 		}
+ 
+		/* 필터 관련 파라미터 추출  (추후에 수정 ) */
+		String keyword = request.getParameter("keyword");
+		String price1 = request.getParameter("price1");
+		String price2 = request.getParameter("price2");
+		String bigC = request.getParameter("bigC");
+		String smallC = request.getParameter("smallC");
+		String oneday = request.getParameter("oneday");
+		String vod = request.getParameter("vod");
+		
+		/* 정렬 방식 */
+		String cSort = request.getParameter("classSort");
+		
 		
 		// 페이징과 관련된 데이터, 조회 된 게시판List를 담아서 map에 리턴
-		Map<String, Object> map = new LessonService().selectList(page);
+		Map<String, Object> map = new LessonService().selectList(page, new Filter(keyword ,price1, price2, bigC, smallC, oneday, vod, cSort));
 		
-		/*필터 관련 파라미터 추출  (추후에 수정 )*/
 	
 		/* 비즈니스 로직 수행 후 */ 
 		request.setAttribute("pi", map.get("pi"));

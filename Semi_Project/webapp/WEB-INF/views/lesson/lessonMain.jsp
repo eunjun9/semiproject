@@ -9,7 +9,7 @@
 <title>클래스_메인</title>
 
 	<!--외부 스타일 시트-->
-    <link href="${ contextPath }/resources/css/lesson/lesson_main.css?3" rel="stylesheet">
+    <link href="${ contextPath }/resources/css/lesson/lesson_main.css?4" rel="stylesheet">
 
     <!-- font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -45,38 +45,37 @@
                 </ul>
             </div>
             <div class="filtering">
-                <form method="get" action="${ contextPath }/lesson/main }">
+                <form method="get" action="${ contextPath }/lesson/main">
+                
                     <img id="search" width="20px" src="${ contextPath }/resources/images/yewon/search.png">
-                    <input type="text" maxlength="25" size="40" placeholder="검색할 키워드를 입력해주세요" name="keyword" id="keyword" ><br>
+                    <input type="text" maxlength="25" size="40" placeholder="검색할 키워드를 입력해주세요" name="keyword" id="keyword" value="${ param.keyword }" ><br>
                     
                     <label>가격</label>
-                    <input id="price1" type="number" value="0" name="price1"><label> 원&nbsp;&nbsp;&nbsp;~&nbsp;&nbsp;  </label>
-                    <input id="price2" type="number" value="50000" name="price2"><label> 원</label><br>
+                    <input id="price1" type="text" value="${ param.price1 }" name="price1" ><label> 원&nbsp;&nbsp;&nbsp;~&nbsp;&nbsp;  </label>
+                    <input id="price2" type="text" value="${ param.price2 }" name="price2"><label> 원</label><br>
 
                     <!-- 조건문으로 설정하기 -->
-
                     <label>카테고리</label>
                     <select id="bigC" name="bigC" required>
                         <option value="big" selected disabled>대분류 선택</option>
-                        <option value="art" id="art">예술</option>
-                        <option value="food" id="food">음식</option>
-                        <option value="sport" id="sport">운동</option>
+                        <option value="art" id="art" <c:if test="${ param.bigC == 'art' }">selected</c:if>>예술</option>
+                        <option value="food" id="food" <c:if test="${ param.bigC == 'food' }">selected</c:if>>음식</option>
+                        <option value="sport" id="sport" <c:if test="${ param.bigC == 'sport' }">selected</c:if>>운동</option>
                     </select>
                     
                      <select name="smallC" id="smallC" required>
                         <option id="small" selected disabled>소분류 선택</option>
-                        <option value="1" class="artS">드로잉</option>
-                        <option value="2" class="artS">악기</option>
-                        <option value="3" class="artS">일러스트</option>
-                        <option value="4" class="foodS">베이킹</option>
-                        <option value="5" class="foodS">양식</option>
-                        <option value="6" class="foodS">일식</option>
-                        <option value="7" class="foodS">중식</option>
-                        <option value="8" class="foodS">한식</option>
-                        <option value="9" class="sportS">근력운동</option>
-                        <option value="10" class="sportS">요가</option>
-                        <option value="11" class="sportS">유산소운동</option>
-                        <option value="12" class="sportS">필라테스</option>
+                        <option value="draw" class="artS" <c:if test="${ param.smallC == 'draw' }">selected</c:if>>드로잉</option>
+                        <option value="instrument" class="artS" <c:if test="${ param.smallC == 'instrument' }">selected</c:if>>악기</option>
+                        <option value="illust" class="artS" <c:if test="${ param.smallC == 'illust' }">selected</c:if>>일러스트</option>
+                        <option value="bake" class="foodS" <c:if test="${ param.smallC == 'bake' }">selected</c:if>>베이킹</option>
+                        <option value="ws" class="foodS" <c:if test="${ param.smallC == 'ws' }">selected</c:if>>양식</option>
+                        <option value="jp" class="foodS" <c:if test="${ param.smallC == 'jp' }">selected</c:if>>일식</option>
+                        <option value="ch" class="foodS" <c:if test="${ param.smallC == 'ch' }">selected</c:if>>중식</option>
+                        <option value="ko" class="foodS" <c:if test="${ param.smallC == 'ko' }">selected</c:if>>한식</option>
+                        <option value="musc" class="sportS" <c:if test="${ param.smallC == 'musc' }">selected</c:if>>근력운동</option>
+                        <option value="yoga" class="sportS" <c:if test="${ param.smallC == 'yoga' }">selected</c:if>>요가</option>
+                        <option value="fila" class="sportS" <c:if test="${ param.smallC == 'fila' }">selected</c:if>>필라테스</option>
                     </select><br>
                     
                     <script>
@@ -111,27 +110,26 @@
                      }
                     </script>
 
-<!--                     <label>진행방식</label>
-                    <input type="checkbox" value="online" name="online"><label class="ckboxlabel">온라인</label>
-                    <input type="checkbox" value="offline" name="offline"><label class="ckboxlabel">오프라인</label><br> -->
-
                     <label>클래스 타입</label>
-                    <input type="checkbox" value="oneday" name="oneday"><label class="ckboxlabel">원데이 클래스</label>
-                    <input type="checkbox" value="vod" name="vod"><label class="ckboxlabel">VOD 클래스</label> <br>
+                    <input type="checkbox" value="oneday" name="oneday" <c:if test="${ param.oneday == '원데이' }">checked</c:if>><label class="ckboxlabel">원데이 클래스</label>
+                    <input type="checkbox" value="vod" name="vod" <c:if test="${ param.vod == 'vod' }">checked</c:if>><label class="ckboxlabel">VOD 클래스</label> <br>
 
-                    <button type="reset" name="reSel">조건 초기화</button>
+                    <button type="reset" name="reSel" onclick="locatation.href='${contextPath}/lesson/main'">조건 초기화</button>
                     <button type="submit" name="selEnd">선택 검색</button>
+			        
+			        
+			        <div class="wrapper3">
+			        <select name="classSort">
+			            <option disabled>정렬 방식</option>
+			            <option value="pop" <c:if test="${ param.classSort == 'pop' }">selected</c:if> selected>인기순</option>
+			            <option value="rec" <c:if test="${ param.classSort == 'rec' }">selected</c:if>>최신순</option>
+			        </select><br>
+			        </div>
+			        
                 </form>
             </div>
         </div>
         
-        <div class="wrapper3">
-        <select name="classSort">
-            <option disabled>정렬 방식</option>
-            <option value="pop" selected >인기순</option>
-            <option value="rec">최신순</option>
-        </select><br>
-        </div>
         
         <div class="wrapper4">
         <!-- 게시글 반복문으로 삽입  -->
@@ -151,17 +149,42 @@
         <c:if test="${ loginUser.userGrade == '강사' }">
         <button id="classBtn" onclick="location.href='${ contextPath }/lesson/insert'">클래스 등록</button>
         </c:if>
-
+        
+         <!-- 필터가 있을 때 페이징에 사용할 변수 정의 -->			
+                <c:choose>
+	                <c:when test="${ !empty param.keyword }">
+	                	<c:set var="f1" value="&keyword=${ param.keyword }"/>
+	                 </c:when>
+	                 <c:when test="${ !empty param.price1 }">
+	                	<c:set var="f2" value="&price1=${ param.price1 }"/>
+	                 </c:when>
+	                 <c:when test="${ !empty param.price2 }">
+	                	<c:set var="f3" value="&price2=${ param.price2 }"/>
+	                 </c:when>
+	                 <c:when test="${ !empty param.bigC }">
+	                	<c:set var="f4" value="&bigC=${ param.bigC }"/>
+	                 </c:when>
+	                <c:when test="${ !empty param.smallC }">
+	                	<c:set var="f5" value="&smallC=${ param.smallC }"/>
+	                </c:when>
+	                <c:when test="${ !empty param.oneday }">
+	                	<c:set var="f6" value="&oneday=${ param.oneday }"/>
+	                </c:when>
+	                <c:when test="${ !empty param.vod }">
+	                	<c:set var="f7" value="&vod=${ param.vod }"/>
+	                </c:when>
+                </c:choose>
+        
 		<!-- 페이지 로직 (필터링 조건문 추후에 작성) -->
         <div class="wrapper5">
         	<!-- (<<) 제일 첫 페이지로 이동 -->
-            <a class="paging" href="${ contextPath }/lesson/main?page=1"><img width="16px" src="${ contextPath }/resources/images/yewon/previous.png">
+            <a class="paging" href="${ contextPath }/lesson/main?page=1${ f1 }${ f2 }${ f3 }${ f4 }${ f5 }${ f6 }${ f7 }"><img width="16px" src="${ contextPath }/resources/images/yewon/previous.png">
             <img width="16px" src="${ contextPath }/resources/images/yewon/previous.png"></a>
              
              <!--  (<) 이전 페이지  : 현재 페이지 - 1이니까 -->	
              <c:choose>
              	<c:when test="${ pi.page > 1 }"> <!--  현재 페이지가 1보다 클 때는 이동하고  -->
-             	<a class="paging" href="${ contextPath }/lesson/main?page=${ pi.page - 1}"><img width="18px" src="${ contextPath }/resources/images/yewon/previous.png"></a>
+             	<a class="paging" href="${ contextPath }/lesson/main?page=${ pi.page - 1}${ f1 }${ f2 }${ f3 }${ f4 }${ f5 }${ f6 }${ f7 }"><img width="18px" src="${ contextPath }/resources/images/yewon/previous.png"></a>
              	</c:when>
              	<c:otherwise> <!-- 1이면 현재 페이지에 머뭄 -->
              	<a class="paging" href="#"><img width="18px" src="${ contextPath }/resources/images/yewon/previous.png"></a>
@@ -175,7 +198,7 @@
 			 		<a href="#" class="paging"><img width="20px" src="${ contextPath }/resources/images/yewon/circle_sky.png"></a>
 			 		</c:when>
 			 		<c:otherwise> <!-- 현재 페이지 외에는 페이지 목록 숫자만 출력 -->
-			 		<a class="paging" href="${ contextPath }/lesson/main?page=${ p }"><img width="20px" src="${ contextPath }/resources/images/yewon/circle_beige.png"></a>
+			 		<a class="paging" href="${ contextPath }/lesson/main?page=${ p }${ f1 }${ f2 }${ f3 }${ f4 }${ f5 }${ f6 }${ f7 }"><img width="20px" src="${ contextPath }/resources/images/yewon/circle_beige.png"></a>
 			 		</c:otherwise>
 			 	</c:choose>
 			 	</li>
@@ -184,7 +207,7 @@
             <!--  (>) 다음 페이지 : 제일 끝 페이지에서 버튼 누를 것을 고려하여 조건문 사용 -->
             <c:choose>
             	<c:when test="${ pi.page < pi.maxPage }"> <!-- 현재 페이지가 최대 페이지보다 아래일 때 이동 -->
-            	 <a class="paging" href="${ contextPath }/lesson/main?page=${ pi.page + 1 }"><img width="18px" src="${ contextPath }/resources/images/yewon/next.png"></a>
+            	 <a class="paging" href="${ contextPath }/lesson/main?page=${ pi.page + 1 }${ f1 }${ f2 }${ f3 }${ f4 }${ f5 }${ f6 }${ f7 }"><img width="18px" src="${ contextPath }/resources/images/yewon/next.png"></a>
             	</c:when>
             	<c:otherwise>
             	<a class="paging" href="#"><img width="18px" src="${ contextPath }/resources/images/yewon/next.png"></a>
@@ -192,7 +215,7 @@
             </c:choose>
             
             <!-- (>>) 제일 끝 페이지로 이동 -->
-            <a class="paging" href="${ contextPath }/lesson/main?page=${ pi.maxPage }"><img width="16px" src="${ contextPath }/resources/images/yewon/next.png">
+            <a class="paging" href="${ contextPath }/lesson/main?page=${ pi.maxPage }${ f1 }${ f2 }${ f3 }${ f4 }${ f5 }${ f6 }${ f7 }"><img width="16px" src="${ contextPath }/resources/images/yewon/next.png">
             <img width="16px" src="${ contextPath }/resources/images/yewon/next.png"></a>
         </div>
     </div>

@@ -47,17 +47,17 @@
                     
                      <select name="smallC" id="smallC">
                         <option id="small" disabled>소분류 선택</option>
-                        <option value="10" class="artS" <c:if test="${ lesson.ctag2 == 10}">selected </c:if>>드로잉</option>
-                        <option value="20" class="artS" <c:if test="${ lesson.ctag2 == 20}">selected </c:if>>악기</option>
-                        <option value="30" class="artS" <c:if test="${ lesson.ctag2 == 30}">selected </c:if>>일러스트</option>
-                        <option value="40" class="foodS" <c:if test="${ lesson.ctag2 == 40}">selected </c:if>>베이킹</option>
-                        <option value="50" class="foodS" <c:if test="${ lesson.ctag2 == 50}">selected </c:if>>양식</option>
-                        <option value="60" class="foodS" <c:if test="${ lesson.ctag2 == 60}">selected </c:if>>일식</option>
-                        <option value="70" class="foodS" <c:if test="${ lesson.ctag2 == 70}">selected </c:if>>중식</option>
-                        <option value="80" class="foodS" <c:if test="${ lesson.ctag2 == 80}">selected </c:if>>한식</option>
-                        <option value="90" class="sportS" <c:if test="${ lesson.ctag2 == 90}">selected </c:if>>근력운동</option>
-                        <option value="100" class="sportS" <c:if test="${ lesson.ctag2 == 100}">selected </c:if>>요가</option>
-                        <option value="110" class="sportS" <c:if test="${ lesson.ctag2 == 110}">selected </c:if>>필라테스</option>
+                        <option value="draw" class="artS" <c:if test="${ lesson.ctag2 == 'draw'}">selected </c:if>>드로잉</option>
+                        <option value="instument" class="artS" <c:if test="${ lesson.ctag2 == 'instrument'}">selected </c:if>>악기</option>
+                        <option value="illust" class="artS" <c:if test="${ lesson.ctag2 == 'illust'}">selected </c:if>>일러스트</option>
+                        <option value="bake" class="foodS" <c:if test="${ lesson.ctag2 == 'bake'}">selected </c:if>>베이킹</option>
+                        <option value="ws" class="foodS" <c:if test="${ lesson.ctag2 == 'ws'}">selected </c:if>>양식</option>
+                        <option value="jp" class="foodS" <c:if test="${ lesson.ctag2 == 'jp'}">selected </c:if>>일식</option>
+                        <option value="ch" class="foodS" <c:if test="${ lesson.ctag2 == 'ch'}">selected </c:if>>중식</option>
+                        <option value="ko" class="foodS" <c:if test="${ lesson.ctag2 == 'ko'}">selected </c:if>>한식</option>
+                        <option value="musc" class="sportS" <c:if test="${ lesson.ctag2 == 'musc'}">selected </c:if>>근력운동</option>
+                        <option value="yoga" class="sportS" <c:if test="${ lesson.ctag2 == 'yoga'}">selected </c:if>>요가</option>
+                        <option value="fila" class="sportS" <c:if test="${ lesson.ctag2 == 'fila'}">selected </c:if>>필라테스</option>
                     </select><br>
                     
                     <script>
@@ -270,30 +270,6 @@
 					</script>
             
             
-            	<!-- <script>
-                	$(document).ready(function(){
-                		$(".offdate").css("display", "none");    // 원데이 날짜
-                		$(".ondate").css("display", "none");     // vod 날짜
-                		$(".offtime").css("display", "none");    // 원데이 시간
-                		$(".location").css("display", "none");   // 장소 
-                		 
-                		$("#oneday").change(function(){
-                			$(".offdate").show(300);
-                			$(".ondate").hide(300);
-                			$(".offtime").show(300);
-                            $(".location").show(300);
-                		});
-                		
-                		$("#vod").change(function(){
-                			$(".ondate").show(300);
-                			$(".offdate").hide(300);
-                			$(".offtime").hide(300);
-                            $(".location").hide(300);
-                		});
-                		
-                	});
-                </script>	
-             -->
                 <button type="submit" id="cf_submit">클래스 등록</button>
             </form>
         </div>

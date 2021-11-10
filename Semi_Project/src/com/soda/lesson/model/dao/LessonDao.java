@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Properties;
 
 import com.soda.lesson.model.vo.Attachment;
+import com.soda.lesson.model.vo.Filter;
 import com.soda.lesson.model.vo.Lesson;
 import com.soda.lesson.model.vo.PageInfo;
 
@@ -35,14 +36,55 @@ public class LessonDao {
 	}
 	
 	// 게시물 개수 조회
-	public int getListCount(Connection conn) {
+	public int getListCount(Connection conn, Filter filter) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		String sql = lessonQuery.getProperty("getListCount");
 		int listCount = 0;
 		
+		/* 필터링, 정렬방식 선택 된 목록 조회할 때 사용할 SQL문 */
+		// 검색 키워드 
+		if(filter.getKeyword() != null ) {
+			sql = lessonQuery.getProperty("getKeywordListCount");
+		}
+ 
+		// 가격 1 
+		if(filter.getPrice1() != null && filter.getPrice2() != null) {
+			sql = lessonQuery.getProperty("getPriceListCount");
+		}
+		
+		
+		// 원데이
+		if(filter.getOneday() != null || filter.getVod() != null){
+			sql = lessonQuery.getProperty("getOnedayListCount");
+		}
+		
+		// 카테고리 대분류
+		if(filter.getBigC() != null && filter.getSmallC() != null) {
+			sql = lessonQuery.getProperty("getBigCListCount");
+		}
+		
 		try {
 			pstmt = conn.prepareStatement(sql);
+			
+			// 필터링 & 정렬 sql 문을 실행하는 경우 설정 
+			if (filter.getKeyword() != null) {
+				pstmt.setString(1, filter.getKeyword());
+			}
+			if(filter.getPrice1() != null && filter.getPrice2() != null) {
+				pstmt.setString(1, filter.getPrice1());
+				pstmt.setString(2, filter.getPrice2());
+			}
+			if(filter.getOneday() != null || filter.getVod() != null){
+				pstmt.setString(1, filter.getOneday());
+				pstmt.setString(2, filter.getVod());
+			}
+			
+			// 카테고리 대분류
+			if(filter.getBigC() != null && filter.getSmallC() != null ) {
+				pstmt.setString(1, filter.getBigC());
+				pstmt.setString(2, filter.getSmallC());
+			}
 			
 			rset = pstmt.executeQuery();
 			
@@ -59,12 +101,25 @@ public class LessonDao {
 		return listCount;
 	}
 	
-	// 게시물 리스트 조회
-	public List<Lesson> selectList(Connection conn, PageInfo pi) {
+	// 페이징 처리된 게시물 리스트 조회 (+필터링 / 정렬 기준)
+	public List<Lesson> selectList(Connection conn, PageInfo pi, Filter filter) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		String sql = lessonQuery.getProperty("selectList");
 		List<Lesson> lessonList = new ArrayList<>();
+		
+		// 키워드
+		if(filter.getKeyword() != null ) {
+			sql = lessonQuery.getProperty("getKeywordList");
+		}
+//		// 정렬
+//		if(filter.getcSort() != null) {
+//			if(filter.getcSort().equals("pop")) {
+//				sql = lessonQuery.getProperty("selectPopList");
+//			} else if(filter.getcSort().equals("rec")) {
+//				sql = lessonQuery.getProperty("selectRecList");
+//			}
+//		}
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -72,8 +127,34 @@ public class LessonDao {
 			int startRow = (pi.getPage() - 1) * pi.getBoardLimit() + 1;
 			int endRow = startRow + pi.getBoardLimit() - 1;
 			
-			pstmt.setInt(1, startRow);
-			pstmt.setInt(2, endRow);
+			int index = 1;
+			
+				if (filter.getKeyword() != null) {
+					pstmt.setString(index++, filter.getKeyword());
+					if (filter.getPrice1() != null && filter.getPrice2() != null) {
+						pstmt.setString(index++, filter.getPrice1()); 
+						pstmt.setString(index++, filter.getPrice2()); 
+						if (filter.getOneday() != null || filter.getVod() != null) {
+							  pstmt.setString(index++, filter.getOneday()); 
+							  pstmt.setString(index++, filter.getVod()); 
+							  if (filter.getBigC() != null && filter.getSmallC() != null) {
+								   pstmt.setString(index++, filter.getBigC()); 
+								   pstmt.setString(index++, filter.getSmallC());
+							  } 
+						}
+					}
+				}
+//				if(filter.getcSort() != null) { 
+//					if(filter.getcSort().equals("pop")) {
+//						pstmt.setInt(index++, startRow);
+//						pstmt.setInt(index, endRow);
+//					} else if(filter.getcSort().equals("rec")) { 
+//						pstmt.setInt(index++, startRow);
+//						pstmt.setInt(index, endRow);
+//					}
+			
+			pstmt.setInt(index++, startRow);
+			pstmt.setInt(index, endRow);
 			
 			rset = pstmt.executeQuery();
 			
@@ -87,6 +168,9 @@ public class LessonDao {
 				lesson.setUserId(rset.getString("user_name"));
 				lesson.setModifyDate(rset.getDate("modify_date"));
 				lesson.setcPrice(rset.getInt("c_price"));
+				lesson.setCtag1(rset.getString("c_tag1"));
+				lesson.setCtag2(rset.getString("c_tag2"));
+				lesson.setcCategory(rset.getString("c_category"));
 				
 				List<Attachment> photoList = new ArrayList<>();
 				Attachment photo = new Attachment();

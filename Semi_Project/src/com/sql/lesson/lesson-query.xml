@@ -10,6 +10,50 @@
             AND NOTICE_STATUS = 'Y'
 	</entry>
 	
+	<!-- 필터링 글 개수 조회-->
+	<entry key="getKeywordListCount">
+		SELECT
+				   COUNT(*)		
+			  FROM NOTICE
+			 WHERE NOTICE_TYPE = '클래스'	
+			   AND NOTICE_STATUS = 'Y'
+			   AND NOTICE_TITLE LIKE '%' || ? || '%'
+	</entry>
+	
+	<entry key="getPriceListCount">
+		SELECT
+				   COUNT(*)		
+			  FROM NOTICE
+			  JOIN CLASS USING (NOTICE_NUM)
+			 WHERE NOTICE_TYPE = '클래스'	
+			   AND NOTICE_STATUS = 'Y'
+			   AND C_PRICE &lt;= ?
+			   AND C_PRICE &gt;= ?
+	</entry>
+	
+	<entry key="getOnedayListCount">
+		SELECT
+				   COUNT(*)		
+			  FROM NOTICE
+			  JOIN CLASS USING (NOTICE_NUM)
+			 WHERE NOTICE_TYPE = '클래스'	
+			   AND NOTICE_STATUS = 'Y'
+			   AND C_CATEGORY = ?
+			   OR C_CATEGORY = ?
+	</entry>
+	
+	<entry key="getBigCListCount">
+		SELECT
+				   COUNT(*)		
+			  FROM NOTICE
+			  JOIN CLASS USING (NOTICE_NUM)
+			 WHERE NOTICE_TYPE = '클래스'	
+			   AND NOTICE_STATUS = 'Y'
+			   AND C_TAG1 = ?
+			   AND C_TAG2 = ?
+	</entry>
+	
+	<!-- 메인페이지 글 전체 조회 -->
 	<entry key="selectList">
 			SELECT * 
 		FROM(SELECT ROWNUM RNUM, A.*
@@ -22,6 +66,9 @@
 			     , USER_NAME
 			     , MODIFY_DATE
 			     , C_PRICE
+			     , C_TAG1
+			     , C_TAG2
+			     , C_CATEGORY
 			     , FILE_NUM
 			     , ORIGIN_NAME
 			     , CHANGE_NAME
@@ -35,9 +82,116 @@
 			WHERE NOTICE_TYPE = '클래스'
 			  AND NOTICE_STATUS = 'Y'
 			  AND FILE_LEVEL= 1
-			  ORDER BY NOTICE_NUM DESC) A)
+			  ORDER BY NCOUNT DESC) A)
 		WHERE RNUM BETWEEN ? AND ?
 	</entry>
+	
+	<!-- 정렬 기준  -->
+		<entry key="selectPopList">
+			SELECT * 
+		FROM(SELECT ROWNUM RNUM, A.*
+			FROM(SELECT
+			       NOTICE_NUM
+			     , NOTICE_TITLE
+			     , NCOUNT
+			     , NOTICE_STATUS
+			     , NOTICE_DATE
+			     , USER_NAME
+			     , MODIFY_DATE
+			     , C_PRICE
+			     , C_TAG1
+			     , C_TAG2
+			     , C_CATEGORY
+			     , FILE_NUM
+			     , ORIGIN_NAME
+			     , CHANGE_NAME
+			     , ROUTE
+			     , FILE_LEVEL
+			     , F.STATUS
+			FROM NOTICE N
+			JOIN MEMBER_INFO USING(USER_ID)
+			JOIN CLASS USING(NOTICE_NUM)
+			JOIN TBL_FILE F USING(NOTICE_NUM)
+			WHERE NOTICE_TYPE = '클래스'
+			  AND NOTICE_STATUS = 'Y'
+			  AND FILE_LEVEL= 1
+			  ORDER BY NCOUNT DESC) A)
+		WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
+	<entry key="selectRecList">
+			SELECT * 
+		FROM(SELECT ROWNUM RNUM, A.*
+			FROM(SELECT
+			       NOTICE_NUM
+			     , NOTICE_TITLE
+			     , NCOUNT
+			     , NOTICE_STATUS
+			     , NOTICE_DATE
+			     , USER_NAME
+			     , MODIFY_DATE
+			     , C_PRICE 
+			     , C_TAG1
+			     , C_TAG2
+			     , C_CATEGORY
+			     , FILE_NUM
+			     , ORIGIN_NAME
+			     , CHANGE_NAME
+			     , ROUTE
+			     , FILE_LEVEL
+			     , F.STATUS
+			FROM NOTICE N
+			JOIN MEMBER_INFO USING(USER_ID)
+			JOIN CLASS USING(NOTICE_NUM)
+			JOIN TBL_FILE F USING(NOTICE_NUM)
+			WHERE NOTICE_TYPE = '클래스'
+			  AND NOTICE_STATUS = 'Y'
+			  AND FILE_LEVEL= 1
+			  ORDER BY RNUM DESC) A)
+		WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
+	<!-- 필터링 -->
+	<entry key="getKeywordList">
+			SELECT * 
+		FROM(SELECT ROWNUM RNUM, A.*
+			FROM(SELECT
+			       NOTICE_NUM
+			     , NOTICE_TITLE
+			     , NCOUNT
+			     , NOTICE_STATUS
+			     , NOTICE_DATE
+			     , USER_NAME
+			     , MODIFY_DATE
+			     , C_PRICE
+			     , C_TAG1
+			     , C_TAG2
+			     , C_CATEGORY
+			     , FILE_NUM
+			     , ORIGIN_NAME
+			     , CHANGE_NAME
+			     , ROUTE
+			     , FILE_LEVEL
+			     , F.STATUS
+			FROM NOTICE N
+			JOIN MEMBER_INFO USING(USER_ID)
+			JOIN CLASS USING(NOTICE_NUM)
+			JOIN TBL_FILE F USING(NOTICE_NUM)
+			WHERE NOTICE_TYPE = '클래스'
+			  AND NOTICE_STATUS = 'Y'
+			  AND NOTICE_TITLE LIKE '%' || ? || '%'
+			  AND C_PRICE &gt;= ?
+			  AND C_PRICE &lt;= ?
+			  AND C_CATEGORY = ?
+			  OR C_CATEGORY = ?
+			  AND C_TAG1 = ?
+			  AND C_TAG2 = ?
+			  AND F.FILE_LEVEL= 1
+			  ORDER BY NCOUNT DESC) A)
+		WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
+	
 	
 	<entry key="increaseCount">
 		UPDATE NOTICE
