@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <title>장바구니</title>
 <!-- 외부 스타일 시트 -->
-<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/order/wishlist-style.css?2">
+<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/order/wishlist-style.css?1">
 <!-- 외부 폰트 -->
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
 <!-- jQuery -->
@@ -22,7 +22,7 @@
 	<!-- 위시리스트 화면 -->
 	<div class="container">
 		<div class="wish-title">
-			<h1>장바구니</h1>
+			장바구니
 		</div>
 		<div class="wish-heardLine">
 			<hr>

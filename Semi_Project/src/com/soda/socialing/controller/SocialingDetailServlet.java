@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.soda.member.model.vo.Member;
 import com.soda.socialing.model.service.SocialingService;
 import com.soda.socialing.model.vo.Socialing;
+import com.soda.socialing.model.vo.SocialingLike;
 import com.soda.socialing.model.vo.SocialingMember;
 
 /**
@@ -35,6 +36,7 @@ public class SocialingDetailServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int nNum = Integer.parseInt(request.getParameter("nNum"));
+		String userId = ((Member)request.getSession().getAttribute("loginUser")).getUserId();
 		
 		SocialingService socialingService = new SocialingService();
 		
@@ -87,9 +89,13 @@ public class SocialingDetailServlet extends HttpServlet {
 		/* 참여자 리스트 조회 */
 		List<SocialingMember> memberList = socialingService.selectMember(nNum);
 		
+		/* 찜한 소셜링 목록 조회 */
+		List<SocialingLike> likedList = new SocialingService().selectLikedList(nNum);
+		
 		if(socialing != null) {
 			request.setAttribute("socialing", socialing);
 			request.setAttribute("memberList", memberList);
+			request.setAttribute("likedList", likedList);
 			request.getRequestDispatcher("/WEB-INF/views/socialing/socialingDetailView.jsp").forward(request, response);
 		} else {
 			request.setAttribute("message", "소셜링 게시글 상세보기에 실패하였습니다.");

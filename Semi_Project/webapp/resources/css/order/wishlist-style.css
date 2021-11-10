@@ -22,6 +22,15 @@ body {
     font-size : 20px;
  }
  
+  
+ .wish-title{
+ 	color: rgb(7, 86, 105);
+ 	font-size : 33px;
+ 	font-weight : bold;
+ 	margin-bottom : 2%;
+ }
+ 
+ 
 ul {
 	list-style-type : none;
 }
@@ -98,17 +107,17 @@ ul {
  }
 
  .title{
-    font-size: 16px;
-    font-weight: bold;
+    font-size: 18px;
     padding-right: 20px;
     width: 230px;
+    color: rgb(7, 86, 105);
  }
 
 
  .date{
      text-align: center;
-     padding-top: 15%;
-     font-size: 12px;
+     padding-top: 10%;
+     font-size: 14px;
      color: rgb(27, 27, 27);
      padding-right: 30px;
      width: 150px;

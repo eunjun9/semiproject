@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM
+"http://java.sun.com/dtd/properties.dtd">
+<properties>
+
+	<!-- 결제 완료 class_member insert -->
+	<entry key="lessonMemberInsert">
+		INSERT
+			  INTO CLASS_MEMBER
+			  (
+			  	C_MEM_ID
+			  , NOTICE_NUM
+			  , SELECT_DATE
+			  )
+			  VALUES
+			  (
+			    ?
+			  , ?
+			  , ?
+			  )
+	</entry>
+	
+	<!-- 결제 완료 payment insert -->
+	<entry key="payInsert">
+		INSERT
+			  INTO PAYMENT
+			  (
+			  	PAY_NUM
+			  , PAY_DATE
+			  , PAY_OPTION
+			  , PAY_PHONE
+			  , PAY_EMAIL
+			  , PAY_CANCLE
+			  , USER_ID
+			  , NOTICE_NUM
+			  )
+			  VALUES
+			  (
+			    ?
+			  , SYSDATE
+			  , ?
+			  , ?
+			  , ?
+			  , DEFAULT
+			  , ?
+			  , ?
+			  )
+	</entry>
+	
+	
+
+</properties>

@@ -9,8 +9,8 @@
 <title>소셜링_상세페이지</title>
 
 <!-- 외부 스타일 시트 -->
-<link href="${ contextPath }/resources/css/socialing/socialing_detail.css?2" rel="stylesheet">
-<link href="${ contextPath }/resources/css/socialing/socialing_check.css?1" rel="stylesheet">
+<link href="${ contextPath }/resources/css/socialing/socialing_detail.css?4" rel="stylesheet">
+<link href="${ contextPath }/resources/css/socialing/socialing_check.css?2" rel="stylesheet">
 
 <!-- 글꼴 (Noto Sans) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -45,7 +45,19 @@
                 <fmt:parseDate value="${ socialing.stime }" var="stime2" pattern="HH:mm" scope="page"/>
 				<fmt:formatDate value="${ stime2 }" type="time" pattern="a h시 m분"/></p><br>
 				<h3 id="subTitle">조회</h3>
-				<p id="subTitle2">${ socialing.nCount }</p>
+				<p id="subTitle2">${ socialing.nCount }</p><br>
+				<h3 id="subTitle">찜하기</h3>
+				<!-- empty : 클릭 시 꽉찬 하트 아이콘으로 변경 + 관심 소셜링에 추가, full : 클릭 시 빈 하트 아이콘으로 변경 + 관심 소셜링에서 제거 -->
+                <!-- 관심 소셜링에 글번호 포함 여부에 따라 src 변경(if문) -->
+						<img id="like" src="${ contextPath }/resources/images/eunjung/heart_empty.png"
+	                	onclick="likeSocialing()">
+                <c:forEach var="li" items="${ likedList }">
+					<span id="heart" <c:if test='${ li.userId == loginUser.userId }'>style="display:none"</c:if>>
+					</span>
+
+					<span id="heart2" <c:if test='${ li.userId != loginUser.userId }'>style="display:none"</c:if>>
+	                </span>
+                </c:forEach>
             </div>
             <div class="wrapper2">
                 <img src="${ contextPath }${ socialing.photoList.get(0).route }${ socialing.photoList.get(0).changeName }">
@@ -143,7 +155,7 @@
 	            <c:forEach var="m" items="${ memberList }">
 		        	<input type="hidden" name="mId" value="${ m.memberId }">
 		            <input type="checkbox" id="${ m.memberId }" name="check" value="${ m.memberId }"
-		            <c:if test="${ m.status == 'Y' }">checked</c:if>>
+		            <c:if test="${ m.status == 'N' }">checked</c:if>>
 		            <label for="person1">${ m.memberName }</label><br>
 	            </c:forEach>
             </div><br>
@@ -160,6 +172,28 @@
 				<input type="hidden" name="nNum" value="${ socialing.nNum }">
 			</form>
 			<script>
+				// 관심 소셜링에 추가
+				function likeSocialing() {
+					
+					let like = document.querySelectorAll('#like');
+			        
+			        for(let i = 0; i < like.length; i++) {
+			            like[i].onclick = function() {
+			                if(like[i].src.indexOf('_empty') == -1) {
+			                    like[i].src = like[i].src.replace('.png', '_empty.png');
+			                    // 관심 소셜링 테이블에서 제거
+			                    document.forms.memberForm.action = "${contextPath}/unLikeSocialing";
+				    			document.forms.memberForm.submit();
+			                } else {
+			                    like[i].src = like[i].src.replace('_empty.png', '.png');
+			                	// 관심 소셜링 테이블에 추가
+			                	document.forms.memberForm.action = "${contextPath}/likeSocialing";
+				    			document.forms.memberForm.submit();
+			                }
+			            }
+			        }
+		        }
+			
 				function openPopup(url, title, width, height) {
 		            let left = (document.body.clientWidth/2)-(width/2);
 		            left += window.screenLeft;

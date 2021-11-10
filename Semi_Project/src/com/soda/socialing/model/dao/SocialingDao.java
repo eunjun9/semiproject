@@ -3,6 +3,7 @@ package com.soda.socialing.model.dao;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -14,6 +15,7 @@ import static com.common.JDBCTemplate.close;
 import com.soda.socialing.model.vo.PageInfo;
 import com.soda.socialing.model.vo.Search;
 import com.soda.socialing.model.vo.Socialing;
+import com.soda.socialing.model.vo.SocialingLike;
 import com.soda.socialing.model.vo.SocialingMember;
 import com.soda.socialing.model.vo.SodaFile;
 
@@ -170,12 +172,12 @@ public class SocialingDao {
 				socialing.setUserName(rset.getString("user_name"));
 				socialing.setnCount(rset.getInt("ncount"));
 				socialing.setSplace(rset.getString("s_place"));
-				socialing.setSdate(rset.getTimestamp("s_date"));
+				socialing.setSdate(rset.getDate("s_date"));
 				socialing.setStime(rset.getString("s_time"));
 				socialing.setStype(rset.getString("s_type"));
 				socialing.setMaxMember(rset.getInt("max_member"));
 				socialing.setMinMember(rset.getInt("min_member"));
-				socialing.setIntroduction(rset.getString("introduction"));
+//				socialing.setIntroduction(rset.getString("introduction"));
 			}
 			
 		} catch (SQLException e) {
@@ -223,6 +225,7 @@ public class SocialingDao {
 		return photoList;
 	}
 	
+	// 소셜링 참여 멤버 조회
 	public List<SocialingMember> selectMember(Connection conn, int nNum) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -333,8 +336,8 @@ public class SocialingDao {
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setString(1, socialing.getSplace());
-			pstmt.setDate(2, new java.sql.Date(socialing.getSdate().getTime()));
-			// pstmt.setDate(4, new java.sql.Date(java.util.Date.getTime()));
+//			pstmt.setDate(2, new java.sql.Date(socialing.getSdate().getTime()));
+			pstmt.setDate(2, (Date)socialing.getSdate());
 			pstmt.setString(3, socialing.getStype());
 			pstmt.setInt(4, socialing.getMaxMember());
 			pstmt.setInt(5, socialing.getMinMember());
@@ -385,8 +388,7 @@ public class SocialingDao {
 			
 			pstmt.setString(1, socialing.getnTitle());
 			pstmt.setString(2, socialing.getnContent());
-			pstmt.setString(3, socialing.getnType());
-			pstmt.setInt(4, socialing.getnNum());
+			pstmt.setInt(3, socialing.getnNum());
 			
 			result = pstmt.executeUpdate();
 			
@@ -407,13 +409,15 @@ public class SocialingDao {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setDate(1, new java.sql.Date(socialing.getSdate().getTime()));
+			pstmt.setDate(1, (Date)socialing.getSdate());
 			pstmt.setString(2, socialing.getStime());
 			pstmt.setString(3, socialing.getStype());
 			pstmt.setString(4, socialing.getSplace());
 			pstmt.setInt(5, socialing.getMinMember());
 			pstmt.setInt(6, socialing.getMaxMember());
 			pstmt.setInt(7, socialing.getnNum());
+			
+			result = pstmt.executeUpdate();
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -493,6 +497,59 @@ public class SocialingDao {
 		PreparedStatement pstmt = null;
 		int result = 0;
 		String sql = socialingQuery.getProperty("likeSocialing");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, userId);
+			pstmt.setInt(2, nNum);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	public List<SocialingLike> selectLikedList(Connection conn, int nNum) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		List<SocialingLike> socialingLike = new ArrayList<>();
+		String sql = socialingQuery.getProperty("selectLikedList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, nNum);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				SocialingLike slike = new SocialingLike();
+				slike.setUserId(rset.getString("user_id"));
+				slike.setLikeNum(rset.getInt("like_num"));
+				
+				socialingLike.add(slike);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return socialingLike;
+	}
+
+	public int unLikeSocialing(Connection conn, int nNum, String userId) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = socialingQuery.getProperty("unLikeSocialing");
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
