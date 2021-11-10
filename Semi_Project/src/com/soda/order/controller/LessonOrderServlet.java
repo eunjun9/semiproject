@@ -46,20 +46,16 @@ public class LessonOrderServlet extends HttpServlet {
 		member.setUserName(userName);
 		member.setUserPhone(userPhone);
 		member.setUserId(userId);
-
-		WishList wishlist = new WishList();
-		wishlist.setnNum(nNum);
-		wishlist.setUserId(userId);
-		wishlist.setlessonDate(selDate);
 		
 		// 클래스 디테일 페이지에서 바로 넘어오는 결제 페이지 조회
-		List<WishList> wishList = new WishListService().wishListAdd(wishlist);
+		List<WishList> wishList = new WishListService().lessonPay(nNum);
 		
 		System.out.println(wishList);
 
 		if (wishList != null) { 
 			request.setAttribute("wishList", wishList);
 			request.setAttribute("member", member);
+			request.setAttribute("selDate", selDate);
 			response.sendRedirect(request.getContextPath() + "/payment");
 		} else { 
 			request.setAttribute("message", "결제 페이지 접속에 실패하였습니다. 다시 시도해주세요.");
