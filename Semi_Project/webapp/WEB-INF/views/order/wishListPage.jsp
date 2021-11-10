@@ -34,6 +34,7 @@
 			<hr>
 		</div>
 
+		<c:forEach var="wishList" items="${ wishList }">
 		<form name="classForm" action="${ contextPath }/payment" method="get">
 		<div class="wish-class" id="wish-class">
 			<div class="wish-content">
@@ -83,6 +84,7 @@
 			<hr class="hr-line">
 		</div>
 		</form>
+		</c:forEach>
 
 	
 	
