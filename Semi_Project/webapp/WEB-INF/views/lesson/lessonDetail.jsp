@@ -45,7 +45,7 @@
 			            <h4 id="pTitle">${ lesson.nTitle }</h4>
 			            <p id="pTime">${ lesson.vDate } 일 <hr></p>
 			            <h3 id="pPrice">50,000원</h3>
-			            <div width="100%">
+			            <div>
 			            <button id="cart">장바구니</button>
 			            <button id="apply">결제하기</button>
 			            </div>
