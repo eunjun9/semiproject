@@ -91,7 +91,18 @@ public class WishListService {
 		return wishOrder;
 	}
 
+	// 클래스에서 바로 넘어오는 결제 화면 조회
+	public List<WishList> lessonPay(String userId, int nNum) {
+		Connection conn = getConnection();
+		
+		List<WishList> lessonPay = wishListDao.lessonPay(conn, userId, nNum);
+		
+		close(conn);
+		
+		return lessonPay;
 	
+		
+	}
 		
 
 }

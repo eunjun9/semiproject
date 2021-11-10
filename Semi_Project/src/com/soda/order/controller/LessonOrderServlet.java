@@ -15,16 +15,16 @@ import com.soda.order.model.service.WishListService;
 import com.soda.order.model.vo.WishList;
 
 /**
- * Servlet implementation class PaymentServlet
+ * Servlet implementation class LessonOrderServlet
  */
-@WebServlet("/payment")
-public class PaymentServlet extends HttpServlet {
+@WebServlet("/lesson/order")
+public class LessonOrderServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PaymentServlet() {
+    public LessonOrderServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -45,13 +45,13 @@ public class PaymentServlet extends HttpServlet {
 		member.setUserPhone(userPhone);
 		member.setUserId(userId);
 		
-		// 결제하려는 장바구니 클래스 조회
-		List<WishList> wishList = new WishListService().wishlistList(userId, nNum);
+		// 클래스 디테일 페이지에서 바로 넘어오는 결제 페이지 조회
+		List<WishList> lessonPay = new WishListService().lessonPay(userId, nNum);
 		
-		// System.out.println(wishList);
+		System.out.println(lessonPay);
 
-		if (wishList != null) { 
-			request.setAttribute("wishList", wishList);
+		if (lessonPay != null) { 
+			request.setAttribute("wishList", lessonPay);
 			request.setAttribute("member", member);
 			request.getRequestDispatcher("/WEB-INF/views/order/orderPage.jsp").forward(request, response);
 		} else { 
@@ -60,13 +60,14 @@ public class PaymentServlet extends HttpServlet {
 			writer.println("<script>history.back();</script>");
 			writer.close();
 		}
-	
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
+
 }
