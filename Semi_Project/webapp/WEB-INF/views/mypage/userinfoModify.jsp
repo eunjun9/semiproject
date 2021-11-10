@@ -164,6 +164,8 @@ body, html{
 #pwdUpdateBtn{
     border-radius: 3px;
     margin-left: 5px;
+    border: 1px solid black;
+	border-radius: 5px;
 }
 
 #btn-modify{
