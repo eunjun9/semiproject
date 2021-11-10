@@ -38,7 +38,7 @@
 		<form name="classForm" action="${ contextPath }/payment" method="get">
 		<div class="wish-class" id="wish-class">
 			<div class="wish-content">
-				<input type="hidden" name="nNum" value="${ wishList.nNum }">
+				<input type="hidden" name="noticeNum" value="${ wishList.nNum }">
 				<!-- 체크박스 -->
 				<div class="class-checkbox">
 					<input type="checkbox" class="order-check" id="order" name="checkClass" value="${ wishList.wishNum }">
