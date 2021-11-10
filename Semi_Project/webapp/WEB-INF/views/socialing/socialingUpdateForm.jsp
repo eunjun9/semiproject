@@ -9,7 +9,7 @@
 <title>소셜링_글 작성</title>
 
 <!-- 외부 스타일 시트 -->
-<link href="${ contextPath }/resources/css/socialing/socialing_form.css?2" rel="stylesheet">
+<link href="${ contextPath }/resources/css/socialing/socialing_form.css?1" rel="stylesheet">
 
 <!-- 글꼴 (Noto Sans) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,8 +30,8 @@
                 <h3 id="sub-title">모든 입력폼은 필수 영역입니다.</h3>
             </div>
             <article id="wrapper">
-            	<!-- 파일 업로드를 위해서 enctype 지정 -->
                 <form method="post" action="${ contextPath }/socialing/update" enctype="multipart/form-data">
+                
                 	<input type="hidden" name="nNum" value="${ socialing.nNum }">
 				<c:forEach items="${ socialing.photoList }" var="photo">
 					<input type="hidden" name="changeName" value="${ photo.changeName }">

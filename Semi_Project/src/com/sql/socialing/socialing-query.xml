@@ -7,7 +7,7 @@
     		    COUNT(*)
 		   FROM NOTICE
 		  WHERE NOTICE_TYPE = '소셜링'
-            AND NOTICE_STATUS = 'N'
+            AND NOTICE_STATUS = 'Y'
 	</entry>
 	
 	<entry key="selectList">
@@ -29,7 +29,7 @@
 						JOIN SOCIALING USING(NOTICE_NUM)
 						JOIN TBL_FILE USING(NOTICE_NUM)
 						WHERE NOTICE_TYPE = '소셜링'
-						  AND NOTICE_STATUS = 'N'
+						  AND NOTICE_STATUS = 'Y'
 					    ORDER BY NOTICE_NUM DESC) A)
 		WHERE RNUM BETWEEN ? AND ?
 	</entry>
@@ -54,14 +54,13 @@
 			 , S_TYPE
 			 , MAX_MEMBER
 			 , MIN_MEMBER
-			 , PROFILE
 			 , INTRODUCTION
 		  FROM NOTICE
 		  JOIN MEMBER_INFO USING(USER_ID)
 		  JOIN SOCIALING USING(NOTICE_NUM)
 		  JOIN PROFILE USING(USER_ID)
 		 WHERE NOTICE_TYPE = '소셜링'
-		   AND NOTICE_STATUS = 'N'
+		   AND NOTICE_STATUS = 'Y'
 		   AND NOTICE_NUM = ?
 	</entry>
 	
@@ -83,7 +82,6 @@
 			   USER_ID
 			 , S_STATUS
 	         , USER_NAME
-	         , PROFILE
 	         , INTRODUCTION
 	      FROM SOCIALING_MEMBER
 	      JOIN MEMBER_INFO USING(USER_ID)
@@ -104,7 +102,7 @@
 	
 	<entry key="updateMember">
 		UPDATE SOCIALING_MEMBER
-		   SET S_STATUS = 'Y'
+		   SET S_STATUS = 'N'
 		 WHERE NOTICE_NUM = ?
 		   AND USER_ID = ?
 	</entry>
@@ -125,7 +123,7 @@
 		)
 		VALUES
 		(
-			SEQ_BNUM.NEXTVAL
+			SEQ_NOTICE_NUM.NEXTVAL
 		  , ?
 		  , ?
 		  , DEFAULT
@@ -151,7 +149,7 @@
 		)
 		VALUES
 		(
-			SEQ_BNUM.CURRVAL
+			SEQ_NOTICE_NUM.CURRVAL
 		  , ?
 		  , ?
 		  , ?
@@ -175,13 +173,13 @@
 		)
 		VALUES
 		(
-			SEQ_FNUM.NEXTVAL
-		  , SEQ_BNUM.CURRVAL
+			SEQ_FILE_NUM.NEXTVAL
+		  , SEQ_NOTICE_NUM.CURRVAL
 		  , ?
 		  , ?
 		  , ?
 		  , ?
-		  , 'Y'
+		  , DEFAULT
 		)
 	</entry>
 	
@@ -213,7 +211,7 @@
 	
 	<entry key="deleteSocialing">
 		UPDATE NOTICE
-		   SET NOTICE_STATUS = 'Y'
+		   SET NOTICE_STATUS = 'N'
 		 WHERE NOTICE_NUM = ?
 	</entry>
 	
@@ -221,5 +219,19 @@
 		UPDATE TBL_FILE
 		   SET STATUS = 'N'
 		 WHERE NOTICE_NUM = ?
+	</entry>
+	
+	<entry key="likeSocialing">
+		INSERT
+		  INTO PROFILE
+		(
+			USER_ID
+		  , LIKE_SOCIALING
+		)
+		VALUES
+		(
+			?
+		  , ?
+		)
 	</entry>
 </properties>
