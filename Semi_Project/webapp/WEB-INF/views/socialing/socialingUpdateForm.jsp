@@ -32,10 +32,10 @@
             <article id="wrapper">
                 <form method="post" action="${ contextPath }/socialing/update" enctype="multipart/form-data">
                 
-                	<input type="hidden" name="nNum" value="${ socialing.nNum }">
-				<c:forEach items="${ socialing.photoList }" var="photo">
-					<input type="hidden" name="changeName" value="${ photo.changeName }">
-				</c:forEach>
+	                <input type="hidden" name="nNum" value="${ socialing.nNum }">
+					<c:forEach items="${ socialing.photoList }" var="photo">
+						<input type="hidden" name="changeName" value="${ photo.changeName }">
+					</c:forEach>
                 
                     <h1 id="w-main-title">어떤 활동을 하는 소셜링인가요?</h1>
                     <h4 id="w-sub-title">제목을 입력해 주세요 (최대 30자)</h4>
