@@ -60,10 +60,10 @@ public class WishListService {
 	}
 	
 	// 결제 화면 조회
-	public List<WishList> wishlistList(String userId, int nNum) {
+	public List<WishList> wishlistList(int nNum) {
 		Connection conn = getConnection();
 		
-		List<WishList> wishlist = wishListDao.wishlistPay(conn, userId, nNum);
+		List<WishList> wishlist = wishListDao.wishlistPay(conn, nNum);
 		
 		close(conn);
 		
@@ -92,10 +92,10 @@ public class WishListService {
 	}
 
 	// 클래스에서 바로 넘어오는 결제 화면 조회
-	public List<WishList> lessonPay(String userId, int nNum) {
+	public List<WishList> lessonPay(int nNum) {
 		Connection conn = getConnection();
 		
-		List<WishList> lessonPay = wishListDao.lessonPay(conn, userId, nNum);
+		List<WishList> lessonPay = wishListDao.wishlistPay(conn, nNum);
 		
 		close(conn);
 		

@@ -38,22 +38,23 @@ public class PaymentServlet extends HttpServlet {
 		String userPhone = ((Member)request.getSession().getAttribute("loginUser")).getUserPhone();
 		
 		// 신청하기 누른 장바구니 클래스 번호 가져오기
-		int nNum = Integer.parseInt(request.getParameter("nNum"));
+		int nNum = Integer.parseInt(request.getParameter("noticeNum"));
+		
+		System.out.println(nNum);
 		
 		Member member = new Member();
 		member.setUserName(userName);
 		member.setUserPhone(userPhone);
-		member.setUserId(userId);
 		
 		// 결제하려는 장바구니 클래스 조회
-		List<WishList> wishList = new WishListService().wishlistList(userId, nNum);
+		List<WishList> wishList = new WishListService().lessonPay(nNum);
 		
 		// System.out.println(wishList);
 
 		if (wishList != null) { 
 			request.setAttribute("wishList", wishList);
 			request.setAttribute("member", member);
-			request.getRequestDispatcher("/WEB-INF/views/order/orderPage.jsp").forward(request, response);
+			response.sendRedirect(request.getContextPath() + "/payment");
 		} else { 
 			request.setAttribute("message", "결제 페이지 접속에 실패하였습니다. 다시 시도해주세요.");
 			PrintWriter writer = response.getWriter();
