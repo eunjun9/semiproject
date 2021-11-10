@@ -165,33 +165,7 @@ public class WishListDao {
 		}
 
 	
-	
-//	// 결제 추가 (미완료)
-//	public int payInsert(Connection conn, WishList wishlist) {
-//		PreparedStatement pstmt = null;
-//		int result = 0;
-//		ResultSet rset = null;
-//		String sql = wishlistQuery.getProperty("PayInsert");
-//			
-//			try {
-//				pstmt = conn.prepareStatement(sql);
-//				pstmt.setInt(1, wishlist.getnNum());
-//				pstmt.setString(2, wishlist.getUserId());
-//				pstmt.setString(3, wishlist.getlessonDate());
-//				
-//				result = pstmt.executeUpdate();
-//			
-//			
-//			} catch (SQLException e) {
-//				e.printStackTrace();
-//			} finally{
-//				close(rset);
-//				close(pstmt);
-//			}
-//		
-//		return result;
-//	}
-	
+
 	
 
 	
