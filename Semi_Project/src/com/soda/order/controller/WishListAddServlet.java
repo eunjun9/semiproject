@@ -45,9 +45,9 @@ public class WishListAddServlet extends HttpServlet {
 		String userId = loginUser.getUserId();
 
 		// 테스트
-		//System.out.println(nNum);
-		//System.out.println(userId);
-		//System.out.println(selDate);
+		System.out.println(nNum);
+		System.out.println(userId);
+		System.out.println(selDate);
 
 		WishList wishlist = new WishList();
 		wishlist.setnNum(nNum);
