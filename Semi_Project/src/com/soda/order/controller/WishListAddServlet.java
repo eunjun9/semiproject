@@ -36,18 +36,16 @@ public class WishListAddServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 장바구니에 클래스 추가하는 서블릿
-		HttpSession session = request.getSession();
 		int nNum = Integer.parseInt(request.getParameter("noticeNum"));
 		// 원데이클래스는 사용자가 직접 원하는 날짜 선택하기때문에 선택한 날짜 받아오기
 		String selDate = request.getParameter("selDate");
 		
-		Member loginUser = (Member)session.getAttribute("loginUser");
-		String userId = loginUser.getUserId();
+		String userId = ((Member)request.getSession().getAttribute("loginUser")).getUserId();
 
 		// 테스트
-		System.out.println(nNum);
-		System.out.println(userId);
-		System.out.println(selDate);
+		System.out.println("nNum : " + nNum);
+		System.out.println("userId : " + userId);
+		System.out.println("selDate : " + selDate);
 
 		WishList wishlist = new WishList();
 		wishlist.setnNum(nNum);

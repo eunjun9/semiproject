@@ -45,7 +45,7 @@
 			<div class="wish-class">
 			<c:forEach var="wishList" items="${ wishList }">
 				<div class="wish-content">
-					<input type="hidden" name="nNum">
+					<input type="hidden" name="noticeNum">
 					<div class="wish-class img">
 						<img
 							src="${ contextPath }${ wishList.route }${ wishList.changeName }"
@@ -67,8 +67,8 @@
 					</c:when>
 					<c:when test="${ wishList.cCategory eq '원데이' }">
 						<div class="wish-class-date">
-							<p class="date">${ wishList.lessonDate }<br> ${ wishList.cTime1 } ~
-								${ wishList.cTime2 }
+							<p class="date">${ wishList.lessonDate }<br>
+							${ wishList.cTime1 } ~ ${ wishList.cTime2 }
 							</p>
 						</div>
 					</c:when>
