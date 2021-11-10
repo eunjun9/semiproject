@@ -37,7 +37,6 @@
 		<c:forEach var="wishList" items="${ wishList }">
 		<div class="wish-class">
 			<div class="wish-content">
-			<input type="hidden" name="nNum">
 				<div class="wish-class img">
 					 <img src="${ contextPath }${ wishList.route }${ wishList.changeName }" width='200px' height='150px'>
 				</div>

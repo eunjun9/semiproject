@@ -164,7 +164,7 @@ public class WishListDao {
 		return wishlist;
 	}
 
-	// 결제 추가
+	// 결제 추가 (미완료)
 	public int payInsert(Connection conn, WishList wishlist) {
 		PreparedStatement pstmt = null;
 		int result = 0;
@@ -189,6 +189,49 @@ public class WishListDao {
 		
 		return result;
 	}
+	
+	// 클래스에서 바로 넘거나는 결제 화면 조회
+		public List<WishList> lessonPay(Connection conn, String userId, int nNum) {
+			PreparedStatement pstmt = null;
+			ResultSet rset = null;
+			List<WishList> lessonPay = new ArrayList<>();
+			String sql = wishlistQuery.getProperty("lessonPaySelect");
+			
+			try {
+				pstmt = conn.prepareStatement(sql);
+				
+				pstmt.setString(1, userId);
+				pstmt.setInt(2, nNum);
+				
+				rset = pstmt.executeQuery();
+				
+				while(rset.next()) {
+					WishList w = new WishList();
+					w.setnNum(rset.getInt("notice_num"));
+					w.setlessonDate(rset.getString("lesson_date"));
+					w.setnTitle(rset.getString("notice_title"));
+					w.setcPrice(rset.getInt("c_price"));
+					w.setcCategory(rset.getString("c_category"));
+					w.setcLocation(rset.getString("c_location"));
+					w.setcTime1(rset.getString("c_time1"));
+					w.setcTime2(rset.getString("c_time2"));
+					w.setvDate(rset.getString("v_date"));
+					w.setRoute(rset.getString("route"));
+					w.setChangeName(rset.getString("change_name"));
+					
+					lessonPay.add(w);
+				}
+				
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				close(rset);
+				close(pstmt);
+			}
+			
+			return lessonPay;
+		}
 
 	
 }

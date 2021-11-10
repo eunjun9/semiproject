@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.filter.SHA256Util;
 import com.soda.member.model.service.MemberService;
 import com.soda.member.model.vo.Member;
 
@@ -34,7 +33,7 @@ public class KakaoLoginServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String userId = request.getParameter("userEmail");
 		String userName = request.getParameter("userName");
-		String kakaoId = request.getParameter("kakaoId");
+		String userPwd = request.getParameter("kakaoId");
 		String kakaoGender = request.getParameter("kakaoGender");
 		
 		// 테스트
@@ -53,11 +52,12 @@ public class KakaoLoginServlet extends HttpServlet {
 			joinMember.setUserName(userName);
 			joinMember.setUserPhone("정보없음");
 			joinMember.setGender(kakaoGender);
+			joinMember.setUserPwd(userPwd);
 			
 			// 카카오계정 고유ID를 암호화해서 비밀번호로 생성
-			String salt = SHA256Util.generateSalt();
-	        String newPassword = SHA256Util.getEncrypt(kakaoId, salt);
-	        joinMember.setUserPwd(newPassword);
+			//String salt = SHA256Util.generateSalt();
+	        //String newPassword = SHA256Util.getEncrypt(kakaoId, salt);
+	        //joinMember.setUserPwd(newPassword);
 
 			//카카오 자동 회원가입 로직 실행
 			int kakaoJoin = new MemberService().kakaoJoin(joinMember);
