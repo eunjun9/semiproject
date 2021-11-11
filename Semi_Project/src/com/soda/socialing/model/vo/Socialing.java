@@ -25,16 +25,17 @@ public class Socialing {
 	private String introduction;// 작성자 자기소개 (Profile 테이블 참조)
 
 	// SodaFile
-	private List<SodaFile> photoList;  // 사진 첨부 파일
+	private List<SodaFile> photoList;	// 사진 첨부 파일
 	
 	// ProfileFile
-	private ProfileFile profileList;	// 프로필사진 첨부 파일 (작성자 프로필사진) -> String profile 삭제
+	private ProfileFile profileList;	// 프로필사진 첨부 파일 (작성자 프로필사진)
 	
 	public Socialing() {}
 
 	public Socialing(int nNum, String nTitle, String nContent, String nStatus, String nType, String userId,
 			String userName, Date nDate, Date modifyDate, int nCount, String splace, Date sdate, String stime,
-			String stype, int maxMember, int minMember, String introduction, List<SodaFile> photoList) {
+			String stype, int maxMember, int minMember, String introduction, List<SodaFile> photoList,
+			ProfileFile profileList) {
 		super();
 		this.nNum = nNum;
 		this.nTitle = nTitle;
@@ -54,6 +55,7 @@ public class Socialing {
 		this.minMember = minMember;
 		this.introduction = introduction;
 		this.photoList = photoList;
+		this.profileList = profileList;
 	}
 
 	public int getnNum() {
@@ -200,13 +202,21 @@ public class Socialing {
 		this.introduction = introduction;
 	}
 
+	public ProfileFile getProfileList() {
+		return profileList;
+	}
+
+	public void setProfileList(ProfileFile profileList) {
+		this.profileList = profileList;
+	}
+
 	@Override
 	public String toString() {
 		return "Socialing [nNum=" + nNum + ", nTitle=" + nTitle + ", nContent=" + nContent + ", nStatus=" + nStatus
 				+ ", nType=" + nType + ", userId=" + userId + ", userName=" + userName + ", nDate=" + nDate
 				+ ", modifyDate=" + modifyDate + ", nCount=" + nCount + ", splace=" + splace + ", sdate=" + sdate
 				+ ", stime=" + stime + ", stype=" + stype + ", maxMember=" + maxMember + ", minMember=" + minMember
-				+ ", introduction=" + introduction + ", photoList=" + photoList + "]";
+				+ ", introduction=" + introduction + ", photoList=" + photoList + ", profileList=" + profileList + "]";
 	}
 
 }

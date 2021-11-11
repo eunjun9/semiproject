@@ -163,7 +163,7 @@ input[name=dateIn] {
 
 select[name=lineup] {
     border: 1px solid lightgray;
-    width: 80px;
+    width: 90px;
     height: 30px;
     border-radius: 5px;
     padding-left: 10px;

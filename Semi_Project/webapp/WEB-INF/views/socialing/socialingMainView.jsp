@@ -10,7 +10,7 @@
 <title>소셜링</title>
 
 <!-- 외부 스타일 시트 -->
-<link href="${ contextPath }/resources/css/socialing/socialing_main.css?4" rel="stylesheet">
+<link href="${ contextPath }/resources/css/socialing/socialing_main.css?5" rel="stylesheet">
 
 <!-- 글꼴 (Noto Sans) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -87,52 +87,53 @@
                 <div id="filterbox">
                     <form>
                         <div id="search">
-                            <img id="searchIcon" src="<%= request.getContextPath() %>/resources/images/eunjung/search.png">
+                            <img id="searchIcon" src="${ contextPath }/resources/images/eunjung/search.png">
                             <input type="search" name="keyword" size="31" maxlength="20" placeholder="검색할 키워드를 입력해주세요"
                             value="${ param.keyword }"><br><br>
                         </div>
                         
                         <label id="flabel">지역</label>
                         <select name="local">
-                        	<option value="" selected>지역 선택</option>
-                            <option value="seoul">서울</option>
-                            <option value="busan">부산</option>
-                            <option value="daegu">대구</option>
-                            <option value="incheon">인천</option>
-                            <option value="gwanju">광주</option>
-                            <option value="daejeon">대전</option>
-                            <option value="ulsan">울산</option>
-                            <option value="sejong">세종</option>
-                            <option value="gyeonggi">경기</option>
-                            <option value="gangwon">강원</option>
-                            <option value="chungbuk">충북</option>
-                            <option value="chungnam">충남</option>
-                            <option value="jeonbuk">전북</option>
-                            <option value="jeonnam">전남</option>
-                            <option value="gyeongbuk">경북</option>
-                            <option value="gyeongnam">경남</option>
-                            <option value="jeju">제주</option>
+                        	<option selected disabled>지역 선택</option>
+                            <option value="서울" <c:if test="${ param.local == '서울' }">selected</c:if>>서울</option>
+                            <option value="부산" <c:if test="${ param.local == '부산' }">selected</c:if>>부산</option>
+                            <option value="대구" <c:if test="${ param.local == '대구' }">selected</c:if>>대구</option>
+                            <option value="인천" <c:if test="${ param.local == '인천' }">selected</c:if>>인천</option>
+                            <option value="광주" <c:if test="${ param.local == '광주' }">selected</c:if>>광주</option>
+                            <option value="대전" <c:if test="${ param.local == '대전' }">selected</c:if>>대전</option>
+                            <option value="울산" <c:if test="${ param.local == '울산' }">selected</c:if>>울산</option>
+                            <option value="세종" <c:if test="${ param.local == '세종' }">selected</c:if>>세종</option>
+                            <option value="경기" <c:if test="${ param.local == '경기' }">selected</c:if>>경기</option>
+                            <option value="강원" <c:if test="${ param.local == '강원' }">selected</c:if>>강원</option>
+                            <option value="충북" <c:if test="${ param.local == '충북' }">selected</c:if>>충북</option>
+                            <option value="충남" <c:if test="${ param.local == '충남' }">selected</c:if>>충남</option>
+                            <option value="전북" <c:if test="${ param.local == '전북' }">selected</c:if>>전북</option>
+                            <option value="전남" <c:if test="${ param.local == '전남' }">selected</c:if>>전남</option>
+                            <option value="경북" <c:if test="${ param.local == '경북' }">selected</c:if>>경북</option>
+                            <option value="경남" <c:if test="${ param.local == '경남' }">selected</c:if>>경남</option>
+                            <option value="제주" <c:if test="${ param.local == '제주' }">selected</c:if>>제주</option>
                         </select>
                         
                         <br><br>
                         <label id="flabel">날짜</label>
-                        <input type="date" name="dateIn"><br><br>
+                        <input type="date" name="dateIn" value="${ param.dateIn }"><br><br>
                         <label id="flabel">온오프라인</label>
-                        <input type="radio" id="offline" name="onoff" value="offline">
+                        <input type="radio" id="offline" name="onoff" value="OFF" <c:if test="${ param.onoff == 'OFF' }">checked</c:if>>
                         <label for="offline">오프라인</label>&nbsp;
-                        <input type="radio" id="online" name="onoff" value="online">
+                        <input type="radio" id="online" name="onoff" value="ON" <c:if test="${ param.onoff == 'ON' }">checked</c:if>>
                         <label for="online">온라인</label>
                         
                         <input type="reset" value="조건 초기화" id="s-reset">
                         <input type="submit" value="선택항목 검색" id="s-submit">
-                    </form>
                 </div>
                 <div id="lineupbox">
                     <select name="lineup">
-                        <option value="">최신순</option> <!-- 작성일 순 (기본) -->
-                        <option value="">인기순</option> <!-- 참여 인원 순 -->
+                    	<option disabled selected>정렬 방식</option>
+                        <option value="rec" <c:if test="${ param.lineup == 'rec' }">selected</c:if>>최신순</option>
+                        <option value="pop" <c:if test="${ param.lineup == 'pop' }">selected</c:if>>인기순</option>
                     </select>
                 </div>
+                </form>
                 
                 <!-- 글 목록 출력 -->
                 <div class="s-container2">
@@ -163,19 +164,37 @@
                     </div>
                 	</c:forEach>
                 </div>
+                
+                <c:choose>
+	                 <c:when test="${ !empty param.keyword }">
+	                	<c:set var="search1" value="&keyword=${ param.keyword }"/>
+	                 </c:when>
+	                 <c:when test="${ !empty param.local }">
+	                	<c:set var="search2" value="&local=${ param.local }"/>
+	                 </c:when>
+	                 <c:when test="${ !empty param.dateIn }">
+	                	<c:set var="search3" value="&dateIn=${ param.dateIn }"/>
+	                 </c:when>
+	                 <c:when test="${ !empty param.onoff }">
+	                	<c:set var="search4" value="&onoff=${ param.onoff }"/>
+	                 </c:when>
+	                <c:when test="${ !empty param.lineup }">
+	                	<c:set var="search5" value="&lineup=${ param.lineup }"/>
+	                </c:when>
+                </c:choose>
 
 				<!-- 페이지 로직 (필터링 조건문 추후에 작성) -->
                 <div class="pagebox">
                 
                 	<!-- (<<) 제일 첫 페이지로 이동 -->
-                	<a class="paging" href="${ contextPath }/socialing/main?page=1">
+                	<a class="paging" href="${ contextPath }/socialing/main?page=1${search1}${search2}${search3}${search4}${search5}">
                 	<img width="16px" src="${ contextPath }/resources/images/eunjung/previous.png">
 		            <img width="16px" src="${ contextPath }/resources/images/eunjung/previous.png"></a>
 		            
 		            <!--  (<) 이전 페이지  : 현재 페이지 - 1이니까 -->
 		            <c:choose>
 		             	<c:when test="${ pi.page > 1 }"> <!--  현재 페이지가 1보다 클 때는 이동하고  -->
-		             		<a class="paging" href="${ contextPath }/socialing/main?page=${ pi.page - 1 }"><img width="18px" src="${ contextPath }/resources/images/eunjung/previous.png"></a>
+		             		<a class="paging" href="${ contextPath }/socialing/main?page=${ pi.page - 1 }${search1}${search2}${search3}${search4}${search5}"><img width="18px" src="${ contextPath }/resources/images/eunjung/previous.png"></a>
 		             	</c:when>
 		             	<c:otherwise> <!-- 1이면 현재 페이지에 머뭄 -->
 		             		<a class="paging" href="#"><img width="18px" src="${ contextPath }/resources/images/eunjung/previous.png"></a>
@@ -190,7 +209,7 @@
 					 			<a href="#" class="paging"><img width="20px" src="${ contextPath }/resources/images/eunjung/circle_sky.png"></a>
 					 		</c:when>
 					 		<c:otherwise> <!-- 현재 페이지 외에는 페이지 목록 숫자만 출력 -->
-					 			<a class="paging" href="${ contextPath }/socialing/main?page=${ p }"><img width="20px" src="${ contextPath }/resources/images/eunjung/circle_beige.png"></a>
+					 			<a class="paging" href="${ contextPath }/socialing/main?page=${ p }${search1}${search2}${search3}${search4}${search5}"><img width="20px" src="${ contextPath }/resources/images/eunjung/circle_beige.png"></a>
 					 		</c:otherwise>
 					 	</c:choose>
 					 	</li>
@@ -199,7 +218,7 @@
 		            <!-- (>) 다음 페이지 : 제일 끝 페이지에서 버튼 누를 것을 고려하여 조건문 사용 -->
 		            <c:choose>
 		            	<c:when test="${ pi.page < pi.maxPage }"> <!-- 현재 페이지가 최대 페이지보다 아래일 때 이동 -->
-		            		<a class="paging" href="${ contextPath }/socialing/main?page=${ pi.page + 1 }"><img width="18px" src="${ contextPath }/resources/images/eunjung/next.png"></a>
+		            		<a class="paging" href="${ contextPath }/socialing/main?page=${ pi.page + 1 }${search1}${search2}${search3}${search4}${search5}"><img width="18px" src="${ contextPath }/resources/images/eunjung/next.png"></a>
 		            	</c:when>
 		            	<c:otherwise>
 		            		<a class="paging" href="#"><img width="18px" src="${ contextPath }/resources/images/eunjung/next.png"></a>
@@ -207,7 +226,7 @@
 		            </c:choose>
 	                
 	                <!-- (>>) 제일 끝 페이지로 이동 -->
-		            <a class="paging" href="${ contextPath }/socialing/main?page=${ pi.maxPage }">
+		            <a class="paging" href="${ contextPath }/socialing/main?page=${ pi.maxPage }${search1}${search2}${search3}${search4}${search5}">
 		            <img width="16px" src="${ contextPath }/resources/images/eunjung/next.png">
 		            <img width="16px" src="${ contextPath }/resources/images/eunjung/next.png"></a>
                 </div>

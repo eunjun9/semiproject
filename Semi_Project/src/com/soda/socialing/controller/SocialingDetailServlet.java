@@ -36,7 +36,7 @@ public class SocialingDetailServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int nNum = Integer.parseInt(request.getParameter("nNum"));
-		String userId = ((Member)request.getSession().getAttribute("loginUser")).getUserId();
+//		String userId = ((Member)request.getSession().getAttribute("loginUser")).getUserId();
 		
 		SocialingService socialingService = new SocialingService();
 		
