@@ -8,7 +8,7 @@
 <title>클래스 등록</title>
 
     <!--외부 스타일 시트-->
-    <link href="${ contextPath }/resources/css/lesson/lesson_form.css?9" rel="stylesheet">
+    <link href="${ contextPath }/resources/css/lesson/lesson_form.css?10" rel="stylesheet">
 
     <!-- font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -92,22 +92,22 @@
                 <hr>
                 
                 <h3>상세페이지를 작성해주세요</h3>
-                
-                <div id="img_wrapper">
-                    <h4 id="sub_title5">썸네일/메인 이미지를 첨부해주세요</h4>
-                    <div class="image_area"></div>
-                    <button type="button" id="fileBtn">file</button><br>
-                    <input type="file" name="cThumbnail" accept="image/gif,image/jpeg,image/png" required>
+                <div id="detatil_wrapper">
+	                <div id="form_head">
+	                    <textarea name="nTitle" id="sub_title6" placeholder="클래스 제목을 입력하세요(최대20자)" required></textarea>
+	                    <p id="lengthck"></p>
+	                    <hr>
+	                    <label>타입</label> 
+	                    <input type="radio" name="class_type" value="원데이" id="oneday"><label for="oneday" class="btnlabel">원데이 클래스</label>
+	                    <input type="radio" name="class_type" value="vod" id="vod"><label for="vod" class="btnlabel">VOD 클래스</label><br>
+	                </div> 
+	                <div id="img_wrapper">
+	                    <h4 id="sub_title5">썸네일/메인 이미지를 첨부해주세요</h4>
+	                    <div class="image_area"></div>
+	                    <button type="button" id="fileBtn">file</button><br>
+	                    <input type="file" name="cThumbnail" accept="image/gif,image/jpeg,image/png" required>
+	                </div>
                 </div>
-
-                <div id="form_head">
-                    <textarea name="nTitle" id="sub_title6" placeholder="클래스 제목을 입력하세요(최대20자)" required></textarea>
-                    <p id="lengthck"></p>
-                    <hr>
-                    <label>타입</label> 
-                    <input type="radio" name="class_type" value="원데이" id="oneday"><label for="oneday" class="btnlabel">원데이 클래스</label>
-                    <input type="radio" name="class_type" value="vod" id="vod"><label for="vod" class="btnlabel">VOD 클래스</label><br>
-                </div> 
                 
                 <script>
                 	$("#sub_title6").keyup(function(e){
@@ -120,7 +120,7 @@
                 		
                 	});
                 </script>
-                
+                <br>
  				 <div id="form_body">
                     <hr><br>
                     <h4>클래스 소개를  작성해주세요</h4>
@@ -221,8 +221,9 @@
                 		
                 	});
                 </script>	
-            
+            	<div id = "submitwrapper">
                 <button type="submit" id="cf_submit">클래스 등록</button>
+            	</div>
             </form>
         </div>
     </div>

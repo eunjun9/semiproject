@@ -64,6 +64,9 @@
                     <c:when test="${ loginUser.userGrade == '강사' }">
                     <a href="${ contextPath }/mypage/tutormain">MYPAGE</a>
                     </c:when>
+                    <c:when test="${ loginUser.userGrade == '관리자' }">
+                          		<li><a href="${ contextPath }/mypage/adminmain">ADMINPAGE</a></li>
+                          	</c:when>
                     </c:choose>
                         <ul class="mypage_sub">
                         <% if(loginUser != null) { %>
@@ -74,6 +77,10 @@
                           	<c:when test="${ loginUser.userGrade == '강사' }">
                           		<li><a href="${ contextPath }/mypage/tutormain">마이페이지</a></li>
                           	</c:when>
+                          		<c:when test="${ loginUser.userGrade == '관리자' }">
+                          		<li><a href="${ contextPath }/mypage/adminmain">관리자페이지</a></li>
+                          	</c:when>
+                          	
                           </c:choose>
                           <li><a href="${ contextPath }/logout">로그아웃</a></li>
                           <% } else { %>

@@ -6,9 +6,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 import static com.common.JDBCTemplate.close;
 
+import com.soda.magazine.model.vo.MagazineFile;
 import com.soda.member.model.vo.Member;
 
 
@@ -326,5 +329,100 @@ public class MemberDao {
 
 		return result;
 	}
+
+	// 관리자 회원 조회
+	public Member selectAdminMember(Connection conn, String userId) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = memberQuery.getProperty("selectAdminMember");
+		Member member = null;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, userId);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				member = new Member(rset.getString("user_id"),
+										rset.getString("user_name"),
+										rset.getString("user_phone"),
+										rset.getString("user_pwd"),
+										rset.getDate("join_date"),
+										rset.getString("status"),
+										rset.getString("user_grade"),
+										rset.getString("user_gender"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+
+		return member;
+	}
+
+	// 관리자 회원 수정
+	public int memberModify(Connection conn, Member member) {
+		
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = memberQuery.getProperty("updateAdminMember");
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, member.getUserName());
+			pstmt.setString(2, member.getUserPhone());
+			pstmt.setString(3, member.getGender());
+			pstmt.setString(4, member.getUserId());
+
+      result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+	
+	
+	// 관리자 회원 조회(수정을 위한)
+	public Member selectMember(Connection conn, Member member) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = memberQuery.getProperty("selectAdminMember");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, member.getUserId());
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				member = new Member(rset.getString("user_id"),
+										rset.getString("user_name"),
+										rset.getString("user_phone"),
+										rset.getString("user_pwd"),
+										rset.getDate("join_date"),
+										rset.getString("status"),
+										rset.getString("user_grade"),
+										rset.getString("user_gender"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+
+		return member;
+	}
+
+
+
 
 }

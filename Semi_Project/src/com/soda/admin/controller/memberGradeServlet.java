@@ -1,4 +1,4 @@
-package com.soda.order.controller;
+package com.soda.admin.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class PaymentCheckServlet
+ * Servlet implementation class memberGrade
  */
-@WebServlet("/pay/check")
-public class PaymentCheckServlet extends HttpServlet {
+@WebServlet("/memberGrade")
+public class memberGradeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PaymentCheckServlet() {
+    public memberGradeServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,25 +26,15 @@ public class PaymentCheckServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.getRequestDispatcher("/WEB-INF/views/admin/memberGrade.jsp").forward(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String name = request.getParameter("name");
-		String email = request.getParameter("email");
-		String phone = request.getParameter("phone");
-		String totalPrice = request.getParameter("totalPrice");
-		
-		System.out.println(name + email + phone + totalPrice);
-		
-		request.setAttribute("name", name);
-		request.setAttribute("email", email);
-		request.setAttribute("phone", phone);
-		request.setAttribute("totalPrice", totalPrice);
-		
-		request.getRequestDispatcher("/views/order/kakaoPay.jsp").forward(request, response);
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 
 }
