@@ -5,15 +5,12 @@
 <%
 	String msg = (String)request.getAttribute("msg");
 %>    
-<%
-	String selDate = (String) request.getAttribute("selDate");
-%>
 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>신청/결제</title>
+<title>결제완료</title>
 <!-- 외부 스타일 시트 -->
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/order/payment-style.css">
 <!-- 외부 폰트 -->
@@ -118,35 +115,6 @@
 	</script>
 	
 	
-	<!-- 주문자 정보 수정 -->
-	<script>
-	 $("#phone").change(function(){
-	        if($(this).val()){
-	        	$("#orderPhoneBtn").click(function(){
-	        		alert('수정되었습니다.');
-	        		$("#phone").prop("readonly", true);
-	        		$(".input-area1").css("background-color", "#F3F2F2");
-	        		$("#phone").css("background-color", "#F3F2F2");
-	        	});
-	        }else{
-	        	 $("#phone").text($(this).val());
-	        }
-	       }); 
-		
-	 $("#email").change(function(){
-	        if($(this).val()){
-	        	$("#orderEmailBtn").click(function(){
-	        		alert('수정되었습니다.');
-	        		$("#email").prop("readonly", true);
-	        		$(".input-area2").css("background-color", "#F3F2F2");
-	        		$("#email").css("background-color", "#F3F2F2");
-	        	});
-	        }else{
-	        	 $("#email").text($(this).val());
-	        }
-	       }); 
-	 
-	</script>
 	
 	<script>
 	function mainMove(){

@@ -34,6 +34,9 @@
 
     <!-- Slide -->
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    
+	
 </head>
 <body>
 <!-- 변수 선언 -->
@@ -221,85 +224,35 @@
                 <div class="slide">
                     <div class="swiper mySwiper2">
                         <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <div id="thumbox">
-                                <img src="resources/images/main/flower1.PNG"><br>
-                            </div>
-                            <a href="#">
-                                <div id="titlebox">
-                                    <p id="s-thumtitle">할로윈 같이 즐겨요</p><br>
-                                    <h5 id="s-thumsub">이태원역 6호선 10.31(일) 오후 6:00</h5>
-                                    
-                                </div>
-                            </a>
-                        </div>
-                        <div class="swiper-slide">
-                            <div id="thumbox">
-                                <img src="resources/images/main/flower1.PNG"><br>
-                               
-                            </div>
-                            <a href="#">
-                                <div id="titlebox">
-                                    <p id="s-thumtitle">아침에 공원에서 산책하실 분!</p><br>
-                                    <h5 id="s-thumsub">평촌 중앙공원 10.20(수) 오전 9:00</h5>
-                                    
-                                </div>
-                            </a>
-                        </div>
-                        <div class="swiper-slide">
-                            <div id="thumbox">
-                                <img src="resources/images/main/flower1.PNG"><br>
-                                
-                            </div>
-                            <a href="#">
-                                <div id="titlebox">
-                                    <p id="s-thumtitle">이터널스 같이 보러가요</p><br>
-                                    <h5 id="s-thumsub">CGV 용산아이파크몰 11.20(토) 오...</h5>
-                                    
-                                </div>
-                            </a>
-                        </div>
-                        <div class="swiper-slide">
-                            <div id="thumbox">
-                                <img src="resources/images/main/flower1.PNG"><br>
-                                
-                            </div>
-                            <a href="#">
-                                <div id="titlebox">
-                                    <p id="s-thumtitle">할로윈 같이 즐겨요</p><br>
-                                    <h5 id="s-thumsub">이태원역 6호선 10.31(일) 오후 6:00</h5>
-                                    
-                                </div>
-                            </a>
-                        </div>
-                        <div class="swiper-slide">
-                            <div id="thumbox">
-                                <img src="resources/images/main/flower1.PNG"><br>
-                                
-                            </div>
-                            <a href="#">
-                                <div id="titlebox">
-                                    <p id="s-thumtitle">아침에 공원에서 산책하실 분!</p><br>
-                                    <h5 id="s-thumsub">평촌 중앙공원 10.20(수) 오전 9:00</h5>
-                                    
-                                </div>
-                            </a>
-                        </div>
-                        <div class="swiper-slide">
-                            <div id="thumbox">
-                                <img src="resources/images/main/flower1.PNG"><br>
-                                
-                            </div>
-                            <a href="#">
-                                <div id="titlebox">
-                                    <p id="s-thumtitle">이터널스 같이 보러가요</p><br>
-                                    <h5 id="s-thumsub">CGV 용산아이파크몰 11.20(토) 오...</h5>
-                                    
-                                </div>
-                            </a>
-                        </div>
+                        <!-- 반복문으로 현재날짜(date) 기준 모임날짜(sdate) 2일 이내로 남은 소셜링 글 목록 출력 -->
+                        <c:forEach var="s" items="${ socialingList }">
+	                        <div class="swiper-slide">
+	                            <div id="thumbox">
+	                                <img id="s-thumbnail2" onclick="detailView(${ s.nNum })" 
+	                                src="${ contextPath }${ s.photoList.get(0).route }${ s.photoList.get(0).changeName }"><br>
+	                            </div>
+	                            <a href="#">
+	                                <div id="titlebox">
+	                                    <p id="s-thumtitle">${ s.nTitle }</p><br>
+	                                    <!-- 오프라인일 경우 상세주소, 온라인일 경우 기본 주소 출력 (주소 글자 수 7자 이상일 경우 잘라내기) -->
+		                                <c:choose>
+											<c:when test='${ s.splace.contains("|") }'>
+												<h5 id="s-thumsub">${ s.splace.split("\\|")[1] }
+											</c:when>
+											<c:otherwise>
+												<h5 id="s-thumsub">${ s.splace }
+											</c:otherwise>
+										</c:choose>
+		                                <fmt:formatDate value="${ s.sdate }" type="date" pattern="M.dd(E)"/>
+		                                <fmt:parseDate value="${ s.stime }" var="stime2" pattern="HH:mm" scope="page"/>
+										<fmt:formatDate value="${ stime2 }" type="time" pattern="a h:mm"/></h5>
+	                                    <a href="#"></a>
+	                                </div>
+	                            </a>
+	                        </div>
+                        </c:forEach>
                         </div> 
-                    </div> 
+                    </div>  
                 </div>
                     
                     <div class="button3">
@@ -330,6 +283,8 @@
             },
         });
     </script>
+    
+    
 
      </div>
      
@@ -422,8 +377,6 @@
                         </div> 
                     </div> 
                 </div>
-    
-            </div>
                 <div class="button5">
                     <!-- If we need navigation buttons -->
                     <div class="but5"><img width="30px" src="resources/images/main/prev_b.png"></div>
@@ -433,6 +386,9 @@
                     <div class="but6"><img width="30px" src="resources/images/main/next_b.png"></div>
                 </div>
             </article>
+    
+            </div>
+                
     
     
      <!-- Swiper JS -->
@@ -456,8 +412,27 @@
 
 </div>
 
+
+
     
-      
+    <script>
+    	const MAX_LENGTH = 7;
+    	var place = document.getElementById('s-thumtitle');
+    
+	    $(document).ready(function() {
+	    	if($('#s-thumtitle').length >= 7) {
+	    		
+	    	}
+	    	
+	        $('#s-thumtitle').click(function() {
+	            $('.checkPop').show();
+	        });
+	
+	        $('#cancel').click(function() {
+	            $('.checkPop').hide();
+	        });
+	    });
+    </script>  
     
     <!-- 예제 종료 -->
     <!--footer-->
