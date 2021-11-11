@@ -8,7 +8,7 @@
 <title>클래스 상세페이지</title>
 
 	<!--외부 스타일 시트-->
-    <link href="${ contextPath }/resources/css/lesson/lesson_detail.css?11" rel="stylesheet">
+    <link href="${ contextPath }/resources/css/lesson/lesson_detail.css?14" rel="stylesheet">
 	
     <!-- font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -29,10 +29,10 @@
         <div class="class_detail1">
             <div class="cDetail_h" >
                 <h2 class="cMTitle">${ lesson.nTitle }<hr></h2>
-                <img class="cThumbnail" src="${ contextPath }${ lesson.photoList.get(0).route }${ lesson.photoList.get(0).changeName }">
+            <h4 class="cTutor">강사</h4><p id="tutorname">${ lesson.userName }</p><br>
+            <h4 class="cCategory">타입</h4><p id="classtype">${ lesson.cCategory } 클래스</p>
             </div>
-            <h4 class="cTutor">강사</h4><p>${ lesson.userName }</p>
-            <h4 class="cCategory">타입</h4><p>${ lesson.cCategory } 클래스</p>
+                <img class="cThumbnail" src="${ contextPath }${ lesson.photoList.get(0).route }${ lesson.photoList.get(0).changeName }">
         </div>
         
         <c:choose>
@@ -178,6 +178,7 @@
                 <p class="cAnswer2" >아니요 준비물은 없습니다.</p>
             </div>
         </form> 
+    </div>
 
             <div class="btnArea">
               <button onclick="location.href='${ contextPath }/lesson/main'">목록보기</button>
@@ -187,7 +188,6 @@
               <button onclick="deleteLesson();">삭제하기</button>
               </c:if>
             </div>
-    </div>
     
     <!-- 문의사항 스크립트 -->
     <script>

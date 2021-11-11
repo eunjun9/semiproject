@@ -60,10 +60,10 @@ public class WishListService {
 	}
 	
 	// 결제 화면 조회
-		public List<WishList> wishlistList(String userId, int nNum) {
+		public List<WishList> wishlistList(int nNum) {
 			Connection conn = getConnection();
 
-			List<WishList> wishlist = wishListDao.wishlistPay(conn, userId, nNum);
+			List<WishList> wishlist = wishListDao.wishlistPay(conn, nNum);
 
 			close(conn);
 

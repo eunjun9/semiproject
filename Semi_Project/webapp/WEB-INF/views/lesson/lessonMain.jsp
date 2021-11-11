@@ -9,7 +9,7 @@
 <title>클래스_메인</title>
 
 	<!--외부 스타일 시트-->
-    <link href="${ contextPath }/resources/css/lesson/lesson_main.css?5" rel="stylesheet">
+    <link href="${ contextPath }/resources/css/lesson/lesson_main.css?6" rel="stylesheet">
 
     <!-- font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -29,12 +29,14 @@
 	<%@ include file="/WEB-INF/views/common/header.jsp" %>
 
 	<!-- 클래스 -->
+	<div class="class_wrapper">
     <div class="class_main">
         <div class="wrapper1">
             <h1>클래스</h1>
             <p>새로운 나, 24시간이면 충분해요</p>
         </div>
 
+	<article>
         <div class="wrapper2">
             <div class="slide">
                 <ul>
@@ -44,6 +46,7 @@
                     <li><img src="${ contextPath }/resources/images/yewon/baking.jpg" width="380px"  height="400px"></li>
                 </ul>
             </div>
+        
             <div class="filtering">
                 <form method="get" action="${ contextPath }/lesson/main">
                 
@@ -127,7 +130,6 @@
                 </form>
             </div>
         </div>
-        
         
         <div class="wrapper4">
         <!-- 게시글 반복문으로 삽입  -->
@@ -216,7 +218,9 @@
             <a class="paging" href="${ contextPath }/lesson/main?page=${ pi.maxPage }${ f1 }${ f2 }${ f3 }${ f4 }${ f5 }${ f6 }${ f7 }"><img width="16px" src="${ contextPath }/resources/images/yewon/next.png">
             <img width="16px" src="${ contextPath }/resources/images/yewon/next.png"></a>
         </div>
+</article>
     </div>
+</div>
 
 	<!-- footer -->
 	<%@ include file="/WEB-INF/views/common/footer.jsp" %>
