@@ -284,24 +284,7 @@
         });
     </script>
     
-    <script>
-    	const MAX_LENGTH = 7;
-    	var place = document.getElementById('s-thumtitle');
     
-	    $(document).ready(function() {
-	    	if($('#s-thumtitle').length >= 7) {
-	    		
-	    	}
-	    	
-	        $('#s-thumtitle').click(function() {
-	            $('.checkPop').show();
-	        });
-	
-	        $('#cancel').click(function() {
-	            $('.checkPop').hide();
-	        });
-	    });
-    </script>
 
      </div>
      
@@ -394,8 +377,6 @@
                         </div> 
                     </div> 
                 </div>
-    
-            </div>
                 <div class="button5">
                     <!-- If we need navigation buttons -->
                     <div class="but5"><img width="30px" src="resources/images/main/prev_b.png"></div>
@@ -405,6 +386,9 @@
                     <div class="but6"><img width="30px" src="resources/images/main/next_b.png"></div>
                 </div>
             </article>
+    
+            </div>
+                
     
     
      <!-- Swiper JS -->
@@ -431,7 +415,24 @@
 
 
     
-      
+    <script>
+    	const MAX_LENGTH = 7;
+    	var place = document.getElementById('s-thumtitle');
+    
+	    $(document).ready(function() {
+	    	if($('#s-thumtitle').length >= 7) {
+	    		
+	    	}
+	    	
+	        $('#s-thumtitle').click(function() {
+	            $('.checkPop').show();
+	        });
+	
+	        $('#cancel').click(function() {
+	            $('.checkPop').hide();
+	        });
+	    });
+    </script>  
     
     <!-- 예제 종료 -->
     <!--footer-->
