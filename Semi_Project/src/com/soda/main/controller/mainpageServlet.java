@@ -39,9 +39,9 @@ public class mainpageServlet extends HttpServlet {
 		int page = 1;
 		
 		// 전달 받은 페이지가 있을 때 
-		if(request.getParameter("page") != null) {
-			page = Integer.parseInt(request.getParameter("page"));
-		}
+//		if(request.getParameter("page") != null) {
+//			page = Integer.parseInt(request.getParameter("page"));
+//		}
 		
 		// 페이징과 관련된 데이터, 조회 된 게시판 List를 담아서 map에 리턴
 		Map<String, Object> map = new SocialingService().selectList(page);
