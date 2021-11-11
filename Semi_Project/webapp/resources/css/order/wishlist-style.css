@@ -82,7 +82,7 @@ ul {
     display: inline-block;
     justify-content: center;
     vertical-align: top;
-    margin-top: 2%;
+    margin-top: 3%;
     margin-left: 2%;
     border-right: 1px solid lightgray;
     height: 120px;
@@ -103,6 +103,7 @@ ul {
  .category{
      font-size: 13px;
      color: gray;
+     margin-bottom : -4%;
      
  }
 
