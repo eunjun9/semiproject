@@ -34,14 +34,38 @@ public class SocialingDao {
 	}
 
 	// 게시물 개수 조회
-	public int getListCount(Connection conn) {
+	public int getListCount(Connection conn, Search search) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		String sql = socialingQuery.getProperty("getListCount");
 		int listCount = 0;
+		
+		// 검색 된 목록을 조회해야 하는 경우 다른 SQL문 수행 (검색 조건이 설정되어 있을 때)
+		if(search.getKeyword() != null) {
+			sql = socialingQuery.getProperty("getKeywordListCount"); // 키워드 검색
+		} else if(search.getLocal() != null) {
+			sql = socialingQuery.getProperty("getLocalListCount"); // 지역 검색
+		}/* else if(search.getDateIn() != null) {
+			sql = socialingQuery.getProperty("getDateListCount"); // 날짜 검색
+		}*/ else if(search.getOnoff() != null) {
+			sql = socialingQuery.getProperty("getOnoffListCount"); // 온오프라인 검색
+		}
+		
+		// 정렬은 읽어오는 갯수는 다르지 않기 때문에 X
 
 		try {
 			pstmt = conn.prepareStatement(sql);
+			
+			// 검색 SQL문을 실행하는 경우 검색 값 설정
+			if(search.getKeyword() != null) {
+				pstmt.setString(1, search.getKeyword());
+			} else if(search.getLocal() != null) {
+				pstmt.setString(1, search.getLocal());
+			}/* else if(search.getDateIn() != null) {
+//				pstmt.setDate(1, search.getDateIn());
+			}*/ else if(search.getOnoff() != null) {
+				pstmt.setString(1, search.getOnoff());
+			}
 
 			rset = pstmt.executeQuery();
 
@@ -52,29 +76,38 @@ public class SocialingDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			close(pstmt);
 			close(rset);
+			close(pstmt);
 		}
 		return listCount;
 	}
 
 	// 게시물 리스트 조회
-	public List<Socialing> selectList(Connection conn, PageInfo pi/*, Search search*/) {
+	public List<Socialing> selectList(Connection conn, PageInfo pi, Search search) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		String sql = socialingQuery.getProperty("selectList");
 		List<Socialing> socialingList = new ArrayList<>();
 		
 		// 검색 시 수행할 쿼리문 변경
-//		if(search.getKeyword() != null && search.getLocal() != null && search.getDateIn() != null && search.getOnoff() != null) {
-//			if(search.getSearchCondition().equals("title")) {
-//				sql = socialingQuery.getProperty("selectTitleList");
-//			} else if(search.getSearchCondition().equals("content")) {
-//				sql = socialingQuery.getProperty("selectContentList");
-//			} else if(search.getSearchCondition().equals("writer")) {
-//				sql = socialingQuery.getProperty("selectWriterList");
-//			}
-//		}
+		if(search.getKeyword() != null) {
+			sql = socialingQuery.getProperty("selectKeywordList"); // 키워드 검색
+		} else if(search.getLocal() != null) {
+			sql = socialingQuery.getProperty("selectLocalList"); // 지역 검색
+		}/* else if(search.getDateIn() != null) {
+			sql = socialingQuery.getProperty("selectDateList"); // 날짜 검색
+		}*/ else if(search.getOnoff() != null) {
+			sql = socialingQuery.getProperty("selectOnoffList"); // 온오프라인 검색
+		}
+		
+		// 정렬 시 수행할 쿼리문 변경
+		if(search.getSort() != null) {
+			if(search.getSort().equals("rec")) {
+				sql = socialingQuery.getProperty("selectRecList"); // 최신순 정렬 (작성일 순)
+			} else if(search.getSort().equals("pop")) {
+				sql = socialingQuery.getProperty("selectPopList"); // 인기순 정렬 (참여 인원 순...에서 일단 조회수 순)
+			}
+		}
 
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -82,19 +115,22 @@ public class SocialingDao {
 			int startRow = (pi.getPage() - 1) * pi.getBoardLimit() + 1;
 			int endRow = startRow + pi.getBoardLimit() - 1;
 			
-//			int index = 1;
-//			// 검색 sql 실행 시
-//			if(search.getSearchCondition() != null && search.getSearchValue() != null) {
-//				pstmt.setString(index++, search.getSearchValue());
-//			}
-//			
-//			// if문에 안 걸림(검색X) : 1 -> 2
-//			// if문에 걸림(검색O) : if문 안의 index가 1 / 2 -> 3
-//			pstmt.setInt(index++, startRow);
-//			pstmt.setInt(index, endRow);
-
-			pstmt.setInt(1, startRow);
-			pstmt.setInt(2, endRow);
+			int index = 1;
+			// 검색 sql 실행 시
+			if(search.getKeyword() != null) {
+				pstmt.setString(index++, search.getKeyword());
+			} else if(search.getLocal() != null) {
+				pstmt.setString(index++, search.getLocal());
+			}/* else if(search.getDateIn() != null) {
+//				pstmt.setDate(index++, search.getDateIn());
+			}*/ else if(search.getOnoff() != null) {
+				pstmt.setString(index++, search.getOnoff());
+			}
+			
+			// if문에 안 걸림(검색X) : 1 -> 2
+			// if문에 걸림(검색O) : if문 안의 index가 1 / 2 -> 3
+			pstmt.setInt(index++, startRow);
+			pstmt.setInt(index, endRow);
 
 			rset = pstmt.executeQuery();
 
@@ -125,6 +161,47 @@ public class SocialingDao {
 		}
 
 		return socialingList;
+	}
+	
+	// 게시물 리스트 조회 (시작 임박)
+	public List<Socialing> selectSoonList(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = socialingQuery.getProperty("selectSoonList");
+		List<Socialing> socialingSoonList = new ArrayList<>();
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			rset = pstmt.executeQuery();
+			
+			while (rset.next()) {
+				Socialing socialing = new Socialing();
+				socialing.setnNum(rset.getInt("notice_num"));
+				socialing.setnTitle(rset.getString("notice_title"));
+				socialing.setSplace(rset.getString("s_place"));
+				socialing.setSdate(rset.getDate("s_date"));
+				socialing.setStime(rset.getString("s_time"));
+				socialing.setStype(rset.getString("s_type"));
+
+				List<SodaFile> photoList = new ArrayList<>();
+				SodaFile file = new SodaFile();
+				file.setRoute(rset.getString("route"));
+				file.setChangeName(rset.getString("change_name"));
+				photoList.add(file);
+				socialing.setPhotoList(photoList);
+				
+				socialingSoonList.add(socialing);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return socialingSoonList;
 	}
 	
 	// 게시물 조회수 증가

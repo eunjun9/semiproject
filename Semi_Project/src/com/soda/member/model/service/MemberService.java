@@ -165,6 +165,38 @@ public class MemberService {
 		
 		return result;
 	}
+
+	
+	public Member selectAdminMember(String userId) {
+		
+		Connection conn = getConnection();
+		
+		Member member = memberDao.selectAdminMember(conn, userId);
+		
+		close(conn);
+		
+		return member;
+	}
+
+	
+	// 관리자 회원 정보 번경
+	public Member memberModify(Member member) {
+		Connection conn = getConnection();
+		Member updatedMember = null;
+		
+		int result = memberDao.memberModify(conn, member);
+			
+		if(result > 0) {
+			updatedMember = memberDao.selectMember(conn, member);
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		
+		close(conn);
+  
+		return updatedMember;
+	}
 	
 	
 

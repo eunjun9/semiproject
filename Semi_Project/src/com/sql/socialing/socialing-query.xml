@@ -10,6 +10,42 @@
             AND NOTICE_STATUS = 'Y'
 	</entry>
 	
+	<entry key="getKeywordListCount">
+		SELECT
+			   COUNT(*)
+		  FROM NOTICE
+		 WHERE NOTICE_TYPE = '소셜링'
+		   AND NOTICE_STATUS = 'Y'
+		   AND NOTICE_TITLE LIKE '%' || ? || '%'
+	</entry>
+	
+	<entry key="getLocalListCount">
+		SELECT
+			   COUNT(*)
+		  FROM NOTICE
+		 WHERE NOTICE_TYPE = '소셜링'
+		   AND NOTICE_STATUS = 'Y'
+		   AND S_PLACE LIKE '%' || ? || '%'
+	</entry>
+	
+	<entry key="getDateListCount">
+		SELECT
+			   COUNT(*)
+		  FROM NOTICE
+		 WHERE NOTICE_TYPE = '소셜링'
+		   AND NOTICE_STATUS = 'Y'
+		   AND S_DATE LIKE '%' || ? || '%'
+	</entry>
+	
+	<entry key="getOnoffListCount">
+		SELECT
+			   COUNT(*)
+		  FROM NOTICE
+		 WHERE NOTICE_TYPE = '소셜링'
+		   AND NOTICE_STATUS = 'Y'
+		   AND S_TYPE LIKE '%' || ? || '%'
+	</entry>
+	
 	<entry key="selectList">
 		SELECT * 
 		  FROM(SELECT ROWNUM RNUM, A.*
@@ -32,6 +68,173 @@
 						  AND NOTICE_STATUS = 'Y'
 					    ORDER BY NOTICE_NUM DESC) A)
 		WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
+	<entry key="selectKeywordList">
+		SELECT * 
+		  FROM(SELECT ROWNUM RNUM, A.*
+				 FROM(SELECT
+						     NOTICE_NUM
+						   , NOTICE_TITLE
+		                   , USER_NAME
+						   , S_PLACE
+						   , S_DATE
+						   , S_TIME
+						   , S_TYPE
+						   , ROUTE
+						   , CHANGE_NAME
+						   , NOTICE_STATUS
+		                FROM NOTICE
+						JOIN MEMBER_INFO USING(USER_ID)
+						JOIN SOCIALING USING(NOTICE_NUM)
+						JOIN TBL_FILE USING(NOTICE_NUM)
+						WHERE NOTICE_TYPE = '소셜링'
+						  AND NOTICE_STATUS = 'Y'
+						  AND NOTICE_TITLE LIKE '%' || ? || '%'
+					    ORDER BY NOTICE_NUM DESC) A)
+		WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
+	<entry key="selectLocalList">
+		SELECT * 
+		  FROM(SELECT ROWNUM RNUM, A.*
+				 FROM(SELECT
+						     NOTICE_NUM
+						   , NOTICE_TITLE
+		                   , USER_NAME
+						   , S_PLACE
+						   , S_DATE
+						   , S_TIME
+						   , S_TYPE
+						   , ROUTE
+						   , CHANGE_NAME
+						   , NOTICE_STATUS
+		                FROM NOTICE
+						JOIN MEMBER_INFO USING(USER_ID)
+						JOIN SOCIALING USING(NOTICE_NUM)
+						JOIN TBL_FILE USING(NOTICE_NUM)
+						WHERE NOTICE_TYPE = '소셜링'
+						  AND NOTICE_STATUS = 'Y'
+						  AND S_PLACE LIKE '%' || ? || '%'
+					    ORDER BY NOTICE_NUM DESC) A)
+		WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
+	<entry key="selectDateList">
+		SELECT * 
+		  FROM(SELECT ROWNUM RNUM, A.*
+				 FROM(SELECT
+						     NOTICE_NUM
+						   , NOTICE_TITLE
+		                   , USER_NAME
+						   , S_PLACE
+						   , S_DATE
+						   , S_TIME
+						   , S_TYPE
+						   , ROUTE
+						   , CHANGE_NAME
+						   , NOTICE_STATUS
+		                FROM NOTICE
+						JOIN MEMBER_INFO USING(USER_ID)
+						JOIN SOCIALING USING(NOTICE_NUM)
+						JOIN TBL_FILE USING(NOTICE_NUM)
+						WHERE NOTICE_TYPE = '소셜링'
+						  AND NOTICE_STATUS = 'Y'
+						  AND S_DATE LIKE '%' || ? || '%'
+					    ORDER BY NOTICE_NUM DESC) A)
+		WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
+	<entry key="selectOnoffList">
+		SELECT * 
+		  FROM(SELECT ROWNUM RNUM, A.*
+				 FROM(SELECT
+						     NOTICE_NUM
+						   , NOTICE_TITLE
+		                   , USER_NAME
+						   , S_PLACE
+						   , S_DATE
+						   , S_TIME
+						   , S_TYPE
+						   , ROUTE
+						   , CHANGE_NAME
+						   , NOTICE_STATUS
+		                FROM NOTICE
+						JOIN MEMBER_INFO USING(USER_ID)
+						JOIN SOCIALING USING(NOTICE_NUM)
+						JOIN TBL_FILE USING(NOTICE_NUM)
+						WHERE NOTICE_TYPE = '소셜링'
+						  AND NOTICE_STATUS = 'Y'
+						  AND S_TYPE LIKE '%' || ? || '%'
+					    ORDER BY NOTICE_NUM DESC) A)
+		WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
+	<entry key="selectRecList">
+		SELECT * 
+		  FROM(SELECT ROWNUM RNUM, A.*
+				 FROM(SELECT
+						     NOTICE_NUM
+						   , NOTICE_TITLE
+		                   , USER_NAME
+						   , S_PLACE
+						   , S_DATE
+						   , S_TIME
+						   , S_TYPE
+						   , ROUTE
+						   , CHANGE_NAME
+						   , NOTICE_STATUS
+		                FROM NOTICE
+						JOIN MEMBER_INFO USING(USER_ID)
+						JOIN SOCIALING USING(NOTICE_NUM)
+						JOIN TBL_FILE USING(NOTICE_NUM)
+						WHERE NOTICE_TYPE = '소셜링'
+						  AND NOTICE_STATUS = 'Y'
+					    ORDER BY S_DATE DESC) A)
+		WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
+	<entry key="selectPopList">
+		SELECT * 
+		  FROM(SELECT ROWNUM RNUM, A.*
+				 FROM(SELECT
+						     NOTICE_NUM
+						   , NOTICE_TITLE
+		                   , USER_NAME
+						   , S_PLACE
+						   , S_DATE
+						   , S_TIME
+						   , S_TYPE
+						   , ROUTE
+						   , CHANGE_NAME
+						   , NOTICE_STATUS
+		                FROM NOTICE
+						JOIN MEMBER_INFO USING(USER_ID)
+						JOIN SOCIALING USING(NOTICE_NUM)
+						JOIN TBL_FILE USING(NOTICE_NUM)
+						WHERE NOTICE_TYPE = '소셜링'
+						  AND NOTICE_STATUS = 'Y'
+					    ORDER BY NCOUNT DESC) A)
+		WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
+	<entry key="selectSoonList">
+		SELECT
+		       NOTICE_NUM
+		     , NOTICE_TITLE
+		     , S_PLACE
+		     , S_DATE
+		     , S_TIME
+		     , S_TYPE
+		     , ROUTE
+		     , CHANGE_NAME
+		  FROM NOTICE
+		  JOIN SOCIALING USING(NOTICE_NUM)
+		  JOIN TBL_FILE USING(NOTICE_NUM)
+		 WHERE NOTICE_TYPE = '소셜링'
+		   AND NOTICE_STATUS = 'Y'
+		   AND S_DATE BETWEEN SYSDATE AND SYSDATE+2
+		 ORDER BY NOTICE_NUM DESC
 	</entry>
 	
 	<entry key="increaseCount">

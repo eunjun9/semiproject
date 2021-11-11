@@ -2,6 +2,8 @@ package com.soda.socialing.controller;
 
 import java.io.IOException;
 import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
@@ -51,23 +53,37 @@ public class SocialingMainServlet extends HttpServlet {
 		}
 		
 		/* 필터 관련 파라미터 추출 */
-//		String keyword = request.getParameter("keyword");	// 키워드 검색
-//		String local = request.getParameter("local");		// 지역
-//		String dateIn = request.getParameter("dateIn");		// 날짜
-//		String onoff = request.getParameter("onoff");		// 온/오프라인
+		String keyword = request.getParameter("keyword");	// 키워드 검색
+		String local = request.getParameter("local");		// 지역
+		String dateIn = request.getParameter("dateIn");		// 날짜
+		String onoff = request.getParameter("onoff");		// 온오프라인
 		
 		// 날짜 Date 타입으로 변환
-//		Date date = Date.valueOf(dateIn);
+//		Date sdate = Date.valueOf(dateIn);
+		
+//		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd"); 
+//		java.sql.Date sdate = null;
+//		try {
+//			java.util.Date d1 = df.parse(dateIn);
+//			
+//			long ch1 = d1.getTime();
+//			
+//			sdate = new java.sql.Date(ch1);
+//			
+//		} catch (ParseException e) {
+//			e.printStackTrace();
+//		}
+		
+		/* 정렬 관련 파라미터 추출 */
+		String sort = request.getParameter("lineup");
 		
 		// 페이징과 관련된 데이터, 조회 된 게시판 List를 담아서 map에 리턴
-		Map<String, Object> map = new SocialingService().selectList(page);
-//		Map<String, Object> map = new SocialingService().selectList(page, new Search(keyword, local, dateIn.getTime(), onoff));
-		
-		/* 찜한 소셜링 목록 조회 */
-//		List<SocialingLike> likedList = new SocialingService().selectLikedList(userId);
+//		Map<String, Object> map = new SocialingService().selectList(page);
+		Map<String, Object> map = new SocialingService().selectList(page, new Search(keyword, local, dateIn, onoff, sort));
 		
 		request.setAttribute("pi", map.get("pi"));
 		request.setAttribute("socialingList", map.get("socialingList"));
+		request.setAttribute("soonSocialingList", map.get("soonSocialingList"));
 		request.getRequestDispatcher("/WEB-INF/views/socialing/socialingMainView.jsp").forward(request, response);
 	}
 

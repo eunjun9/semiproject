@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -7,13 +7,14 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>°ü¸®ÀÚ È¸¿ø°ü¸®</title>
+  <title>ê´€ë¦¬ì íšŒì›ê´€ë¦¬</title>
 
-  <!-- ¿ÜºÎ ½ºÅ¸ÀÏ ½ÃÆ® -->
-  <link href="../css/Headerfooter.css" rel="stylesheet">
-  <link href="../css/admin-member.css" rel="stylesheet">
+  <!-- ì™¸ë¶€ ìŠ¤íƒ€ì¼ ì‹œíŠ¸ -->
+<link
+	href="<%=request.getContextPath()%>/resources/css/admin/admin-member.css" rel="stylesheet">
+  
 
-  <!-- ±Û²Ã (Noto Sans) -->
+  <!-- ê¸€ê¼´ (Noto Sans) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
@@ -24,48 +25,35 @@
 </head>
 
 <body>
-  <!--header-->
-  <div class="header">
-    <div class="head-inner">
-      <div class="logo">
-        <img src="../image/logo.png">
-      </div>
-      <div class="big-category">
-        <div class="category1">
-          <a href="#">SOCIALING</a>
-          <a href="#">CLASS</a>
-          <a href="#">MAGAZINE</a>
-        </div>
-        <div class="category2">
-          <a href="#">CART</a>
-          <a href="#">MYPAGE</a>
-        </div>
-      </div>
-    </div>
-  </div>
+      <!--header-->
+    <%@ include file="/WEB-INF/views/common/header.jsp"%>
+ 
+ 
+ 
+ 
 
   <!-- body -->
   <div class="sales body">
     <div class="body-inner">
       <div class="manager-content">
         <aside>
-          <!-- °ü¸®ÀÚÆäÀÌÁö ¸Ş´º -->
+          <!-- ê´€ë¦¬ìí˜ì´ì§€ ë©”ë‰´ -->
           <div class="admin-menu">
             <ul id="menu">
               <li class="member menu">
-                <a href="#">È¸¿ø°ü¸®</a>
+                <a href="#">íšŒì›ê´€ë¦¬</a>
               </li>
 
               <li class="content menu">
-                <a href="#">ÄÁÅÙÃ÷°ü¸®</a>
+                <a href="#">ì»¨í…ì¸ ê´€ë¦¬</a>
               </li>
 
               <li class="sales menu">
-                <a href="#">¸ÅÃâ°ü¸®</a>
+                <a href="#">ë§¤ì¶œê´€ë¦¬</a>
                 <ul class="submenu">
-                  <li><a href="#">¸ÅÃâÁ¶È¸</a></li>
-                  <li><a href="#">Á¤»ê³»¿ª</a></li>
-                  <li><a href="#">È¯ºÒ³»¿ª</a></li>
+                  <li><a href="#">ë§¤ì¶œì¡°íšŒ</a></li>
+                  <li><a href="#">ì •ì‚°ë‚´ì—­</a></li>
+                  <li><a href="#">í™˜ë¶ˆë‚´ì—­</a></li>
                 </ul>
               </li>
             </ul>
@@ -73,19 +61,19 @@
         </aside>
 
         <article>
-          <h1 id="main-title">È¸¿ø°ü¸®</h1>
+          <h1 id="main-title">íšŒì›ê´€ë¦¬</h1>
 
           <table class="tbl">
             <thead>
               <tr>
-                <th class="tbl-title">¼±ÅÃ</th>
-                <th class="tbl-title">È¸¿ø°èÁ¤</th>
-                <th class="tbl-title">ÀÌ¸§</th>
-                <th class="tbl-title">»ı³â¿ùÀÏ</th>
-                <th class="tbl-title">ÈŞ´ëÆù¹øÈ£</th>
-                <th class="tbl-title">°¡ÀÔÀÏ</th>
-                <th class="tbl-title">È¸¿øµî±Ş</th>
-                <th class="tbl-title">¼öÁ¤¹öÆ°</th>
+                <th class="tbl-title">ì„ íƒ</th>
+                <th class="tbl-title">ì•„ì´ë””</th>
+                <th class="tbl-title">ì´ë¦„<th>
+                <th class="tbl-title">íœ´ëŒ€í°ë²ˆí˜¸</th>
+                <th class="tbl-title">ì„±ë³„</th>
+                <th class="tbl-title">ê°€ì…ì¼</th>
+                <th class="tbl-title">íšŒì›ë“±ê¸‰</th>
+                <th class="tbl-title">ìˆ˜ì •ë²„íŠ¼</th>
               </tr>
             </thead>
             <tbody>
@@ -93,86 +81,33 @@
                 <td class="tbl-content">
                   <input type="checkbox" class="check" name="check">
                 </td>
-                <td class="tbl-content">admin</td>
-                <td class="tbl-content">°ü¸®ÀÚ</td>
-                <td class="tbl-content">000000</td>
-                <td class="tbl-content">02-1234-5678</td>
-                <td class="tbl-content">21.10.30</td>
-                <td class="tbl-content">°ü¸®ÀÚ</td>
+                <td class="tbl-content">${member.userId}</td>
+                <td class="tbl-content">${member.userName }</td>
+                <td class="tbl-content">${member.userPhone }</td>
+                <td class="tbl-content">${member.gender }</td>
+                <td class="tbl-content">${member.joinDate }</td>
+                <td class="tbl-content">${member.userGrade }</td>
                 <td class="tbl-content">
                   <button type="button" class="revise-button"
-                    onclick="openPopup('../POPUP/Member_revise_popup.html', 'checking', 350, 520)">¼öÁ¤</button>
+                    onclick="location.href='${ contextPath }/member/modify'">ìˆ˜ì •</button>
                 </td>
               </tr>
               <tr>
-                <td class="tbl-content">
-                  <input type="checkbox" class="check" name="check">
-                </td>
-                <td class="tbl-content">hong@gmail.com</td>
-                <td class="tbl-content">È«±æµ¿</td>
-                <td class="tbl-content">940223</td>
-                <td class="tbl-content">010-1234-5678</td>
-                <td class="tbl-content">21.10.30</td>
-                <td class="tbl-content">°­»ç</td>
-                <td class="tbl-content">
-                  <button type="button" class="revise-button"
-                    onclick="openPopup('../POPUP/Member_revise_popup.html', 'checking', 350, 520)">¼öÁ¤</button>
-                </td>
-              </tr>
-              <tr>
-                <td class="tbl-content">
-                  <input type="checkbox" class="check" name="check">
-                </td>
-                <td class="tbl-content">jennieisback@naver.com</td>
-                <td class="tbl-content">Á¦´Ï</td>
-                <td class="tbl-content">960505</td>
-                <td class="tbl-content">010-1344-5678</td>
-                <td class="tbl-content">21.10.31</td>
-                <td class="tbl-content">È¸¿ø</td>
-                <td class="tbl-content">
-                  <button type="button" class="revise-button"
-                    onclick="openPopup('../POPUP/Member_revise_popup.html', 'checking', 350, 520)">¼öÁ¤</button>
-                </td>
-              </tr>
-            </tbody>
+              
           </table>
 
           <button type="button" class="grade-revise"
-            onclick="openPopup('../POPUP/Grade_popup.html', 'checking', 335, 350)">È¸¿øµî±Şº¯°æ</button>
+            onclick="location.href='${ contextPath }/member/grade'">íšŒì›ë“±ê¸‰ë³€ê²½</button>
         </article>
       </div>
     </div>
   </div>
 
   <!--footer-->
-  <div class="footer">
-    <div class="foot-inner">
-      <div class="foot-logo foot-all">
-        S O D A</div>
-      <div class="information foot-all">
-        <ul>ÁÖ½ÄÈ¸»ç ¼Ò¼È ´ÙÀÌ´×</ul>
-        <ul>´ëÇ¥ : È«±æµ¿ | °³ÀÎÁ¤º¸°ü¸®Ã¥ÀÓÀÚ : È«±æµ¿ | ÀüÈ­ : 02-123-4567 | ÀÌ¸ŞÀÏ : soda@gmail.com</ul>
-        <ul>ÁÖ¼Ò : ¼­¿ï °­³²±¸ Å×Çì¶õ·Î 14±æ 6 ³²µµºôµù 2Ãş | »ç¾÷ÀÚµî·Ï¹øÈ£ : 000-00-00000</ul>
-        <ul> Åë½ÅÆÇ¸Å : Á¦ 2021-¼­¿ï°­³²-0000È£</ul>
-        <ul>¿µ¾÷½Ã°£ : ¿ù-±İ ¿ÀÈÄ 2½Ã-7½Ã</ul>
-      </div>
-      <div class="foot-category foot-all">
-        <ul><a href="#">¼Ò´Ù¼Ò°³</a></ul>
-        <ul><a href="#">°øÁö»çÇ× </a></ul>
-        <ul><a href="#">°­»ç½ÅÃ»</a></ul>
-        <ul><a href="#">ÀÚÁÖ¹¯´ÂÁú¹®</a></ul>
-      </div>
-    </div>
-  </div>
-  <div class="final">
-    <div class="foot-final">
-      <a href="#">ÀÌ¿ë¾à°ü | </a>
-      <a href="#">°³ÀÎÁ¤º¸Ã³¸®¹æÄ§ | </a>
-      <a href="#">»ç¾÷ÀÚÁ¤º¸È®ÀÎ</a>
-    </div>
-  </div>
+     <!--header-->
+    <%@ include file="/WEB-INF/views/common/footer.jsp"%>
 
-  <!--È¸¿ø°ü¸® ¿ŞÂÊ ¸Ş´º ½ºÅ©¸³Æ®-->
+  <!--íšŒì›ê´€ë¦¬ ì™¼ìª½ ë©”ë‰´ ìŠ¤í¬ë¦½íŠ¸-->
   <script>
     $(document).ready(function () {
       $(".menu").mouseover(function () {
@@ -185,7 +120,7 @@
 
   </script>
 
-  <!--È¸¿ø µî±Ş º¯°æ ÆË¾÷Ã¢ ½ºÅ©¸³Æ®-->
+  <!--íšŒì› ë“±ê¸‰ ë³€ê²½ íŒì—…ì°½ ìŠ¤í¬ë¦½íŠ¸-->
   <script>
     function openPopup(url, title, width, height) {
       let left = (document.body.clientWidth / 2) - (width / 2);
@@ -200,7 +135,7 @@
   </script>
 
 
-  <!--¼öÁ¤ ¹öÆ° ´©¸¦¶§ ÆË¾÷Ã¢ ½ºÅ©¸³Æ®-->
+  <!--ìˆ˜ì • ë²„íŠ¼ ëˆ„ë¥¼ë•Œ íŒì—…ì°½ ìŠ¤í¬ë¦½íŠ¸-->
   <script>
     function openPopup(url, title, width, height) {
       let left = (document.body.clientWidth / 2) - (width / 2);

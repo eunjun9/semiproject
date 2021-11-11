@@ -140,11 +140,10 @@ input[name=keyword] {
     font-size: 1.02rem;
 }
 
-select[name=local],
-select[name=local-details] {
+select[name=local] {
     border: 1px solid lightgray;
     width: 100px;
-    height: 30px;
+    height: 33px;
     border-radius: 5px;
     padding-left: 15px;
     font-family: 'Noto Sans KR', sans-serif;
@@ -163,7 +162,7 @@ input[name=dateIn] {
 
 select[name=lineup] {
     border: 1px solid lightgray;
-    width: 80px;
+    width: 90px;
     height: 30px;
     border-radius: 5px;
     padding-left: 10px;
