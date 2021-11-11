@@ -244,7 +244,7 @@ public class SocialingDao {
 				sMember.setMemberId(rset.getString("user_id"));
 				sMember.setStatus(rset.getString("s_status"));
 				sMember.setMemberName(rset.getString("user_name"));
-				sMember.setIntroduction(rset.getString("introduction"));
+//				sMember.setIntroduction(rset.getString("introduction"));
 				
 				memberList.add(sMember);
 			}
@@ -336,7 +336,6 @@ public class SocialingDao {
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setString(1, socialing.getSplace());
-//			pstmt.setDate(2, new java.sql.Date(socialing.getSdate().getTime()));
 			pstmt.setDate(2, (Date)socialing.getSdate());
 			pstmt.setString(3, socialing.getStype());
 			pstmt.setInt(4, socialing.getMaxMember());

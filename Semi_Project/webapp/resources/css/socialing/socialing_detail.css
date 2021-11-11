@@ -105,6 +105,14 @@ hr {
     padding-bottom: 20px;
 }
 
+.profile{
+	width:100px;
+	height:100px;
+	border-radius: 70%;
+    overflow: hidden;
+    margin-left: 35%;
+}
+
 #p-image {
     width: 30%;
     margin-left: 35%;
@@ -142,6 +150,19 @@ hr {
 .subWrap {
     height: 100px;
     width: 100%;
+}
+
+.profile2 {
+	width:40px;
+	height:40px;
+	border-radius: 70%;
+    overflow: hidden;
+    
+    margin-top: 5px;
+    position: flex;
+    justify-content: center;
+    float: left;
+    cursor: pointer;
 }
 
 #s-image {
