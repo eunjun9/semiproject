@@ -48,13 +48,22 @@
 				<p id="subTitle2">${ socialing.nCount }</p><br>
 				<h3 id="subTitle">찜하기</h3>
 				<!-- empty : 클릭 시 꽉찬 하트 아이콘으로 변경 + 관심 소셜링에 추가, full : 클릭 시 빈 하트 아이콘으로 변경 + 관심 소셜링에서 제거 -->
-                <!-- 관심 소셜링에 글번호 포함 여부에 따라 src 변경(if문) -->
-						<img id="like" src="${ contextPath }/resources/images/eunjung/heart_empty.png"
-	                	onclick="likeSocialing()">
+                <!-- 게시글마다 관심 소셜링에 userId 포함 여부에 따라 src 변경 -->
+                
+				<img id="like" src="${ contextPath }/resources/images/eunjung/heart_empty.png"
+	            onclick="likeSocialing()">
+						
                 <c:forEach var="li" items="${ likedList }">
+                	<c:if test='${ li.userId == loginUser.userId }'>
+                	<script>
+	                	$(document).ready(function() {
+	                		$("#like").attr("src", "${ contextPath }/resources/images/eunjung/heart.png");
+	                	}
+                	</script>
+                	</c:if>
+                	
 					<span id="heart" <c:if test='${ li.userId == loginUser.userId }'>style="display:none"</c:if>>
 					</span>
-
 					<span id="heart2" <c:if test='${ li.userId != loginUser.userId }'>style="display:none"</c:if>>
 	                </span>
                 </c:forEach>
@@ -68,6 +77,9 @@
             <div class="wrapper4">
                 <div class="profileBox">
                 	<!-- 프로필 이미지 border-radius로 동그랗게 출력 -->
+                	<!-- <div class="profile">
+                    	<img src="${ contextPath }${ profileFile.route }${ profileFile.changeName }">
+                    </div> -->
                     <img id="p-image" src="${ contextPath }/resources/images/eunjung/profile.png"><br>
                     <p id="p-name">${ socialing.userName }</p><br>
                     <!-- if문으로 일반 회원 : 참여하기 버튼 / 작성자 : 참여확인 버튼 출력되게 -->
@@ -86,6 +98,9 @@
             <!-- 작성자 프로필(기본) -->
             <div class="subWrap">
                 <a href="#"> <!-- 참여자 피드로 이동 -->
+                	<!-- <div class="profile2">
+                    	<img src="${ contextPath }${ profileFile.route }${ profileFile.changeName }">
+                    </div> -->
                     <img id="s-image" src="${ contextPath }/resources/images/eunjung/profile.png">
                     <div class="subWrap2">
                         <p id="s-name">${ socialing.userName }</p>

@@ -2,6 +2,7 @@
     pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -51,7 +52,7 @@
 	                            <a href="#">
 	                                <div id="titlebox">
 	                                    <p id="s-thumtitle">${ s.nTitle }</p><br>
-	                                    <!-- 오프라인일 경우 상세주소, 온라인일 경우 기본 주소 출력 -->
+	                                    <!-- 오프라인일 경우 상세주소, 온라인일 경우 기본 주소 출력 (주소 글자 수 7자 이상일 경우 잘라내기) -->
 		                                <c:choose>
 											<c:when test='${ s.splace.contains("|") }'>
 												<h5 id="s-thumsub">${ s.splace.split("\\|")[1] }
@@ -63,7 +64,7 @@
 		                                <fmt:formatDate value="${ s.sdate }" type="date" pattern="M.dd(E)"/>
 		                                <fmt:parseDate value="${ s.stime }" var="stime2" pattern="HH:mm" scope="page"/>
 										<fmt:formatDate value="${ stime2 }" type="time" pattern="a h:mm"/></h5>
-	                                    <a href="#"><img id="profile2" src="${ contextPath }/resources/images/eunjung/profile.png"></a>
+	                                    <a href="#"></a>
 	                                </div>
 	                            </a>
 	                        </div>
@@ -156,7 +157,7 @@
                                 <fmt:formatDate value="${ s.sdate }" type="date" pattern="M.dd(E)"/>
                                 <fmt:parseDate value="${ s.stime }" var="stime2" pattern="HH:mm" scope="page"/>
 								<fmt:formatDate value="${ stime2 }" type="time" pattern="a h:mm"/></h5>
-                                <a href="#"><img id="profile" src="${ contextPath }/resources/images/eunjung/profile.png"></a>
+                                <a href="#"><!-- <img id="profile" src="${ contextPath }/resources/images/eunjung/profile.png"> --></a>
                             </div>
                         </a>
                     </div>
@@ -234,6 +235,25 @@
                 prevEl: '.button-prev',
             },
         });
+    </script>
+    
+    <script>
+    	const MAX_LENGTH = 7;
+    	var place = document.getElementById('s-thumtitle');
+    
+	    $(document).ready(function() {
+	    	if($('#s-thumtitle').length >= 7) {
+	    		
+	    	}
+	    	
+	        $('#s-thumtitle').click(function() {
+	            $('.checkPop').show();
+	        });
+	
+	        $('#cancel').click(function() {
+	            $('.checkPop').hide();
+	        });
+	    });
     </script>
     
     <!-- 로그인 여부에 따른 스크립트 -->

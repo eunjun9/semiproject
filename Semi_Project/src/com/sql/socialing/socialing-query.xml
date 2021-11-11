@@ -80,10 +80,8 @@
 			   USER_ID
 			 , S_STATUS
 	         , USER_NAME
-	         , INTRODUCTION
 	      FROM SOCIALING_MEMBER
 	      JOIN MEMBER_INFO USING(USER_ID)
-	      JOIN PROFILE USING(USER_ID)
 	     WHERE NOTICE_NUM = ?
 	</entry>
 	
