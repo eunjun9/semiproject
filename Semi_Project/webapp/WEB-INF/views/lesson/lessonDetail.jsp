@@ -8,7 +8,7 @@
 <title>클래스 상세페이지</title>
 
 	<!--외부 스타일 시트-->
-    <link href="${ contextPath }/resources/css/lesson/lesson_detail.css?13" rel="stylesheet">
+    <link href="${ contextPath }/resources/css/lesson/lesson_detail.css?14" rel="stylesheet">
 	
     <!-- font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
