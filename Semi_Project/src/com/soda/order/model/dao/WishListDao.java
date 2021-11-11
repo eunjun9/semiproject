@@ -122,7 +122,7 @@ public class WishListDao {
 	}
 	
 	// 결제 화면 조회
-		public List<WishList> wishlistPay(Connection conn, int nNum) {
+		public List<WishList> wishlistPay(Connection conn, int nNum, String selDate) {
 			PreparedStatement pstmt = null;
 			ResultSet rset = null;
 			List<WishList> wishlist = new ArrayList<>();
@@ -139,6 +139,7 @@ public class WishListDao {
 					WishList w = new WishList();
 					w.setnNum(rset.getInt("notice_num"));
 					w.setnTitle(rset.getString("notice_title"));
+					w.setlessonDate(selDate);
 					w.setcPrice(rset.getInt("c_price"));
 					w.setcCategory(rset.getString("c_category"));
 					w.setcTime1(rset.getString("c_time1"));

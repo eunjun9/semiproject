@@ -65,6 +65,7 @@
 			</c:when>
 			<c:when test="${ wishList.cCategory eq '원데이' }">
 				<div class="wish-class-date">
+				<input type="hidden" name="selDate" value="${ wishList.lessonDate }">
 					<p class="date">${ wishList.lessonDate }<br>
 					${ wishList.cTime1 } ~ ${ wishList.cTime2 }</p>
 				</div>
