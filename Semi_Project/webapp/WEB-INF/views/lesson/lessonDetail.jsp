@@ -8,7 +8,7 @@
 <title>클래스 상세페이지</title>
 
 	<!--외부 스타일 시트-->
-    <link href="${ contextPath }/resources/css/lesson/lesson_detail.css?14" rel="stylesheet">
+    <link href="${ contextPath }/resources/css/lesson/lesson_detail.css?15" rel="stylesheet">
 	
     <!-- font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -128,7 +128,7 @@
     <h4>클래스 소개</h4>
     <h4 id="count">조회수 : <span>${ lesson.nCount }</span></h4>
     <div class="cDetail_b">
-         <pre class="cBodyText2">${ lesson.nContent }</pre>
+         <p class="cBodyText2">${ lesson.nContent }</p>
 			<div class="photoList">
 					<c:if test="${ lesson.photoList.size() > 1 }">
 						<img  src="${ contextPath }${ lesson.photoList.get(1).route }${ lesson.photoList.get(1).changeName }">
@@ -141,7 +141,7 @@
 <!-- 클래스 상세 페이지 푸터-->
 <div class="class_detail3">
     <h4>강사 소개</h4>
-    <pre id="cTutorIntro">${ lesson.cTutor }</pre> <hr>
+    <p id="cTutorIntro">${ lesson.cTutor }</p> <hr>
     
     <c:if test="${ lesson.cCategory == '원데이'}" >
     <h4>위치</h4>
