@@ -14,11 +14,15 @@ img{
 
 /* body-----------------*/
 .class_main{
-    max-width : 75%;
-    margin : 10px 19%;
+    max-width : 100%;
+    margin : 2% 10%;
     padding : 2% 4%;
 }
 
+.wrapper1 {
+	width : 100%;
+	margin-left : 6%;
+}
 .wrapper1 h1{
     color:  rgb(7, 86, 105);
 }
@@ -29,14 +33,18 @@ img{
     position: relative;
     font-weight: 550;
 }
+.wrapper2{
+	width : 100%;
+	margin-left : 10%;
+}
 
 /* 사진 자동 슬라이드 ------------------*/
 /* *{margin:0;padding:0;} */
 .slide ul,li{list-style:none;}
 .slide{
-        height:380px;
-        width: 380px;
-        margin-left: -45px;
+        height:400px;
+        width: 430px;
+        margin-left: -4.4%;
         overflow:hidden;}
 .slide ul{
           width:calc(100% * 4);
@@ -62,12 +70,12 @@ img{
 /* 필터링 ------------------------------- */
 .filtering{
     background-color: rgb(218, 239, 245);
-    width: 520px;
-    height: 298px;
-    margin-top: -365px;
-    margin-left: 335px;
-    margin-bottom: 40px;
-    padding: 4%;
+    width: 490px;
+    height: 316px;
+    margin-top: -384px;
+    margin-left: 33%;
+    margin-bottom: 30px;
+    padding: 3%;
     display: flex; 
 }
 
@@ -86,7 +94,7 @@ img{
 
 .filtering label:not(.ckboxlabel){
     color: rgb(77, 77, 77);
-    font-size: 14px;
+    font-size: 12pt;
     font-weight: bold;
     margin-bottom: 15px;
 }
@@ -94,6 +102,7 @@ img{
 .filtering input[name=keyword]{
     margin-top: -40px;
     margin-left: 10px;
+    font-size : 12pt;
     border: none;
     border-bottom: 1px solid rgb(185,185,185);
     text-align: center;
@@ -136,7 +145,7 @@ img{
 }
 
 .ckboxlabel{
-    font-size: 13px;
+    font-size: 11pt;
     color: rgb(88, 88, 88);
     margin-bottom: 20px;
 }
@@ -239,12 +248,13 @@ img{
 
 /* 클래스 신청 버튼 */
 #classBtn {
-    height: 30px;
-    width: 100px;
+    height: 35px;
+    width: 105px;
     border-radius: 5px ;
     border: 1px solid rgb(185,185,185, 0);
     cursor: pointer;
     font-weight: bold;
+    font-size : 0.92rem;
     background-color: rgb(218, 239, 245);
     color: black;
     margin-left: 800px;
@@ -253,8 +263,10 @@ img{
 /* 페이징 버튼------------*/
 .wrapper5{
     display: flex;
-    margin: 30px 300px;
+    margin: 20px auto;
+    justify-content: center;
 }
 .paging{
-    margin-left: 9px; 
+    margin-left: 1%; 
+    margin-right : 1%;
 } 

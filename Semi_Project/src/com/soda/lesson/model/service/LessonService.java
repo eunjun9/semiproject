@@ -40,7 +40,6 @@ public class LessonService {
 		returnMap.put("pi", pi);
 		returnMap.put("lessonList", lessonList);
 		
-		
 		return returnMap;
 	}
 

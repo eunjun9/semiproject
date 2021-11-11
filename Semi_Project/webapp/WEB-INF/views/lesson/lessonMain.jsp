@@ -9,7 +9,7 @@
 <title>클래스_메인</title>
 
 	<!--외부 스타일 시트-->
-    <link href="${ contextPath }/resources/css/lesson/lesson_main.css?4" rel="stylesheet">
+    <link href="${ contextPath }/resources/css/lesson/lesson_main.css?5" rel="stylesheet">
 
     <!-- font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -38,10 +38,10 @@
         <div class="wrapper2">
             <div class="slide">
                 <ul>
-                    <li><img src="${ contextPath }/resources/images/yewon/painting.jpg" width="340px" height="380px"></li>
-                    <li><img src="${ contextPath }/resources/images/yewon/dance.jpg" width="340px" height="380px"></li>
-                    <li><img src="${ contextPath }/resources/images/yewon/weaving.jpg" width="340px" height="380px"></li>
-                    <li><img src="${ contextPath }/resources/images/yewon/baking.jpg" width="340px"  height="380px"></li>
+                    <li><img src="${ contextPath }/resources/images/yewon/painting.jpg" width="380px" height="400px"></li>
+                    <li><img src="${ contextPath }/resources/images/yewon/dance.jpg" width="380px" height="400px"></li>
+                    <li><img src="${ contextPath }/resources/images/yewon/weaving.jpg" width="380px" height="400px"></li>
+                    <li><img src="${ contextPath }/resources/images/yewon/baking.jpg" width="380px"  height="400px"></li>
                 </ul>
             </div>
             <div class="filtering">
@@ -117,15 +117,13 @@
                     <button type="reset" name="reSel" onclick="locatation.href='${contextPath}/lesson/main'">조건 초기화</button>
                     <button type="submit" name="selEnd">선택 검색</button>
 			        
-			        
-			        <div class="wrapper3">
+			        <%-- <div class="wrapper3">
 			        <select name="classSort">
 			            <option disabled>정렬 방식</option>
 			            <option value="pop" <c:if test="${ param.classSort == 'pop' }">selected</c:if> selected>인기순</option>
 			            <option value="rec" <c:if test="${ param.classSort == 'rec' }">selected</c:if>>최신순</option>
 			        </select><br>
-			        </div>
-			        
+			        </div> --%>
                 </form>
             </div>
         </div>

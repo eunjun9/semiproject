@@ -8,7 +8,7 @@
 <title>클래스 상세페이지</title>
 
 	<!--외부 스타일 시트-->
-    <link href="${ contextPath }/resources/css/lesson/lesson_detail.css?9" rel="stylesheet">
+    <link href="${ contextPath }/resources/css/lesson/lesson_detail.css?11" rel="stylesheet">
 	
     <!-- font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,10 +21,10 @@
 </head>
 <body>
 
-<div class="class_detail_wrapper">
     <!-- header -->
 	<%@ include file="/WEB-INF/views/common/header.jsp" %>
         
+<div class="class_detail_wrapper">
         <!-- 클래스 상세 페이지 헤더-->
         <div class="class_detail1">
             <div class="cDetail_h" >
@@ -39,7 +39,7 @@
         	<c:when test="${ lesson.cCategory == 'vod'}" >
 	        	<form name="orderForm" method="get">
 					<input type="hidden" name="noticeNum" value="${ lesson.nNum }">
-        			<div class="payment">
+        			<div class="payment1">
        				 <!-- vod 클래스는 날짜 선택이 필요없기 때문에 모달창이 뜨지 않고 / 장바구니 결제하기 버튼이 바로 생성되어 있음 
        				 -> 각각 클릭 시 nNum과 함께 각 페이지로 이동  -->
 			            <h4 id="pTitle">${ lesson.nTitle }</h4>
@@ -75,7 +75,7 @@
         	
         	<c:when test="${ lesson.cCategory == '원데이'}" >
         	<!-- 원데이 클래스는 수강하기 버튼만 있고 클릭 시 , 날짜 선택 모달창 -> 장바구니 / 결제하기로 넘어갈 수 있음 -->
-       				<div class="payment">
+       				<div class="payment2">
         				<form name="orderForm" method="get">
 						<input type="hidden" name="noticeNum" value="${ lesson.nNum }">
 			            <h4 id="pTitle">${ lesson.nTitle }</h4>
@@ -126,6 +126,7 @@
 <div class="class_detail2">
     <hr>
     <h4>클래스 소개</h4>
+    <h4 id="count">조회수 : <span>${ lesson.nCount }</span></h4>
     <div class="cDetail_b">
          <pre class="cBodyText2">${ lesson.nContent }</pre>
 			<div class="photoList">
@@ -133,8 +134,8 @@
 						<img  src="${ contextPath }${ lesson.photoList.get(1).route }${ lesson.photoList.get(1).changeName }">
 					</c:if>
 			</div>
-        <hr>
     </div>
+        <hr>
 </div>
 
 <!-- 클래스 상세 페이지 푸터-->
@@ -164,17 +165,17 @@
             <div class="outer">
                 <p class="cQuestion2"> 가져가야 될 준비물이 있을까요?</p>
                 <p class="aStatus">답변 완료</p>
-                <p class="cAnswer" >아니요 준비물은 없습니다.</p>
+                <p class="cAnswer2" >아니요 준비물은 없습니다.</p>
             </div>
             <div class="outer">
                 <p class="cQuestion2"> 가져가야 될 준비물이 있을까요?</p>
                 <p class="aStatus">답변 완료</p>
-                <p class="cAnswer" >아니요 준비물은 없습니다.</p>
+                <p class="cAnswer2" >아니요 준비물은 없습니다.</p>
             </div>
             <div class="outer">
                 <p class="cQuestion2"> 가져가야 될 준비물이 있을까요?</p>
                 <p class="aStatus">답변 완료</p> 
-                <p class="cAnswer" >아니요 준비물은 없습니다.</p>
+                <p class="cAnswer2" >아니요 준비물은 없습니다.</p>
             </div>
         </form> 
 
@@ -191,13 +192,16 @@
     <!-- 문의사항 스크립트 -->
     <script>
         $('.cQuestion2').click(function(){
-            if($(this).siblings('.cAnswer').css('display') == 'none'){ // question다음의 컨텐츠 영역이 display=none일 때
-                $('p.cAnswer').slideUp();       // 기존에 열려있는 콘텐츠는 닫고
-                $(this).siblings('.cAnswer').slideDown();  // 클릭한 메뉴의 콘텐츠는 밑으로 스르륵 내려오게
+            if($(this).siblings('.cAnswer2').css('display') == 'none'){ // question다음의 컨텐츠 영역이 display=none일 때
+                $('p.cAnswer2').slideUp();       // 기존에 열려있는 콘텐츠는 닫고
+                $(this).siblings('.cAnswer2').slideDown();  // 클릭한 메뉴의 콘텐츠는 밑으로 스르륵 내려오게
+                
             }else{
-                $(this).siblings('.cAnswer').slideUp();    // display=none 이 아닐 때 클릭 시 위로 올라가게
+                $(this).siblings('.cAnswer2').slideUp();    // display=none 이 아닐 때 클릭 시 위로 올라가게
             }
+            
         });
+        
         </script>
 	
 </div>

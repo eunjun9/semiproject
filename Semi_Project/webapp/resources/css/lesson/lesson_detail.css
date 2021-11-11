@@ -12,84 +12,105 @@ img{
     max-width: 100%;
 }
 /* body-----------------*/
-
-.class_detail1{
-    padding: 5% 10% ;
+.class_detail_wrapper{
+	padding : 2% 2%;
 }
 
+ .class_detail1{
+    padding: 3% 1% ;
+} 
+
 /* 상세 페이지 헤더--------------------*/
+
 .cDetail_h{
     display: flex; 
     justify-content:space-around;
-    margin: 20px auto;
+    margin: 10px auto;
 }
 
 .cThumbnail{
-    width: 450px;
-    height: 260px;
+    width: 490px;
+    height: 300px;
+    margin-right : 11%;
 }
 
 .cMTitle{
     margin-top: 100px;
-    margin-left: 10%;
-    width: 310px;
+    margin-bottom : 3%;
+    margin-left: 12%;
+    width: 350px;
+    font-size : 1.9rem;
 }
 
 .cTutor{
     margin-top: -8%;
-    margin-left: 18%;
+    margin-left: 17%;
     color: rgb(107, 107, 107);
+    font-size : 1.2rem;
 }
 .cCategory{
-    margin-top: 1%;
-    margin-left: 18%;
+    margin-top: -0.5%;
+    margin-left: 17%;
     color: rgb(107, 107, 107);
+    font-size : 1.2rem;
 }
 
 .class_detail1 p{
-     font-size: 14px;
-     margin-left: 22%;
-     margin-top: -50px;
+     font-size: 13pt;
+     margin-left: 21%;
+     margin-top: -61px;
      color: rgb(7, 86, 105);
 }
 
 /* 결제창 -----------------------------*/
-.payment{
+.payment1{
     position: fixed;
-    width: 300px;
+    width: 320px;
     height: 200px;
     background-color: rgba(244, 246, 246, 0.5);
     box-shadow: 5px 5px 5px lightgrey;
-    margin-left: 76%;
+    margin-left: 73%;
+    margin-top: -400px;
+    padding: 1%;
+}
+.payment2{
+    position: fixed;
+    width: 340px;
+    height: 220px;
+    background-color: rgba(244, 246, 246, 0.5);
+    box-shadow: 5px 5px 5px lightgrey;
+    margin-left: 72%;
     margin-top: -400px;
     padding: 1%;
 }
 
 #pTitle{
     color : rgba(77, 77, 77);
-    text-align: center;
+    font-size: 14pt;
+    text-align: left;
     margin-top: 10px;
-    margin-right: -15px
+    margin-left: 6%;
 }
 
 #pDate{
-    width: 150px;
+    width: 190px;
     border-radius: 5px ;
     border: 1px solid rgba(255, 255, 255, 0);
+    font-size: 13pt;
     font-family: 'Noto Sans KR', sans-serif;
-    margin-left: 20px;
+    margin-left: 15px;
     color : rgba(77, 77, 77);
     background-color: rgba(218, 239, 245, 0.5);
 }
 
 #pTime{
     font-style: italic;
-    font-size: 10pt;
+    font-size: 12pt;
     color: grey;
     text-align: right;
     font-weight: bold;
-    margin-right: 20px;
-    margin-top: -28px;
+    margin-right: 4%;
+    margin-top: -30px;
 }
 
 #pPrice{
@@ -117,44 +138,53 @@ img{
 }
 
 #apply{
-    width: 105px;
-    height: 30px;
+    width: 110px;
+    height: 35px;
+    font-size : 12pt;
     border-radius: 5px ;
     border: 1px solid rgba(255, 255, 255, 0);
     cursor: pointer;
     font-weight: bold;
     color : rgba(77, 77, 77);
     background-color: rgb(218, 239, 245);
-    margin-left: 170px;
+    left: 14%;
     position: relative;
-    bottom: 32px;
+    bottom: 10%;
 }
 
 #cart{
-    width: 105px;
-    height: 30px;
+    width: 110px;
+    height: 35px;
+    font-size : 12pt;
     border-radius: 5px ;
     border: 1px solid rgba(255, 255, 255, 0);
     cursor: pointer;
     font-weight: bold;
     color : rgba(77, 77, 77);
     background-color: rgb(218, 239, 245);
-    margin-left: 30px;
+    margin-left: 10%;
 }
 
 
 /* 상세 페이지 바디 ---------------- */
 .class_detail2{
-    padding: 3% 10% ;
+    padding: 2% 4% ;
     margin: auto;
     align-items: center;
     justify-content: center;
-    width: 850px;
+    width: 980px;
     margin-bottom: -60px;
 }
 
 .class_detail2 h4{
     color: rgb(7, 86, 105);
+    font-size : 1.2rem;
+}
+
+#count{
+	margin-left : 90%;
+	margin-top : -40px;
+	font-weight : 400;
 }
 
 .cDetail_b{
@@ -162,10 +192,10 @@ img{
 }
 
 
-#cBodyText1{
+/* #cBodyText1{
     margin-top: 50px;
 }
-
+ */
 .cBodyImg{
     margin: auto;
     width: 800px;
@@ -173,7 +203,7 @@ img{
 }
 
 .cBodyText2{
-    font-size: 17px;
+    font-size: 1.3rem;
     font-family: 'Noto Sans KR', sans-serif;
 }
 
@@ -192,20 +222,21 @@ img{
 
 /* 상세페이지 푸터------------*/
 .class_detail3{
-    padding: 2% 14%;
+    padding: 1% 14%;
     margin: auto;
     align-items: center;
     justify-content: center;
-    width: 850px;
+    width: 980px;
 }
 
 .class_detail3:not(h4){
     color: grey;
-    font-size: 11pt;
+    font-size: 14pt;
 }
 
 .class_detail3 h4{
     color: rgb(7, 86, 105);
+    font-size: 12pt;
 }
 
 #cTutorIntro{
@@ -214,64 +245,81 @@ img{
 
 /* 문의사항 */
 .cQnA input[name=cQuestion]{
-    width: 740px;
-    height: 25px;
+    width: 90%;
+    height: 38px;
     border-radius: 5px ;
     border: 1px solid rgb(197, 197, 197);
-    font-size: 12px;
+    font-size: 13pt;
     font-family: 'Noto Sans KR', sans-serif;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
 }
 
 .cQnA button{
     border-radius: 5px ;
     border: 1px solid rgb(185,185,185, 0);
-    width: 65px;
-    height: 27px;
+    width: 75px;
+    height: 35px;
+    margin-bottom : 12px;
     margin-left: 10px;
     cursor: pointer;
     font-weight: bold;
+    font-size : 12pt;
 }
 
 .qBtn{
     background-color: rgb(218, 239, 245); 
     color: rgb(77, 77, 77);
+    margin-top : 2px;
 }
 
 .cQuestion1{
     padding: 0.5%;
-    font-size: 12px;
+    height : 30px;
+    font-size: 12pt;
     border-radius: 5px ;
     border: 1px solid rgb(197, 197, 197);
-    margin-bottom: -10px;
+    margin-bottom: 5px;
 }
 
 .cQuestion2{
     padding: 0.5%;
-    font-size: 12px;
+    height : 30px;
+    font-size: 12pt;
     border-radius: 5px ;
     border: 1px solid rgb(197, 197, 197);
-    margin-bottom: -10px;
+    margin-bottom: 5px;
     cursor: pointer;
 }
 
 .aStatus{
     color :rgb(7, 86, 105);
-    margin-left: 780px;
-    margin-top: -30px;
+    margin-left: 92%;
+    margin-top: -40px;
     font-weight: bold;
-    font-size: 13px;
+    font-size: 11pt;
 }
 
 .cAnswer{
-    width: 740px;
-    height: 40px;
+    width: 90%;
+    height: 50px;
     border-radius: 5px ;
     border: 1px solid rgb(197, 197, 197);
     resize: none;
     background-color:rgb(218, 239, 245);
     font-family: 'Noto Sans KR', sans-serif;
-    font-size: 10pt;
+    font-size: 12pt;
+}
+
+.cAnswer2{
+    width: 100%;
+    height: 50px;
+    border-radius: 5px ;
+    border: 1px solid rgb(197, 197, 197);
+    resize: none;
+    background-color:rgb(218, 239, 245);
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 12pt;
+    display : none;
 }
 
 textarea.cAnswer{
@@ -286,7 +334,7 @@ p.cAnswer{
 
 .aBtn{
     position: relative;
-    top : -20px;
+    top : -15px;
     background-color: rgb(7, 86, 105);
     color: white;
 }
@@ -303,9 +351,9 @@ p.cAnswer{
     border: 1px solid rgb(197, 197, 197);
     background-color: rgb(7, 86, 105);
     color: rgb(255, 255, 255);
-    width: 90px;
-    height: 30px;
-    font-size: 10pt;
+   width: 95px;
+    height: 40px;
+    font-size: 12pt;
     margin-top : 35px;
     margin-bottom: 30px;
     cursor: pointer;

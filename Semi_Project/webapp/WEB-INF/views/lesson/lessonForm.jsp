@@ -8,7 +8,7 @@
 <title>클래스 등록</title>
 
     <!--외부 스타일 시트-->
-    <link href="${ contextPath }/resources/css/lesson/lesson_form.css?8" rel="stylesheet">
+    <link href="${ contextPath }/resources/css/lesson/lesson_form.css?9" rel="stylesheet">
 
     <!-- font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -88,7 +88,7 @@
                     </script>
                     
                 <h4 id="sub_title4">가격을 입력해주세요</h4> 
-                <input type="text" name="cPrice" placeholder="'원' 빼고 입력" required>원
+                <input type="text" name="cPrice" placeholder="'원' 빼고 입력" required>&nbsp;&nbsp; 원
                 <hr>
                 
                 <h3>상세페이지를 작성해주세요</h3>

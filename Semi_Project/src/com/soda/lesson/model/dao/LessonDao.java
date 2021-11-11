@@ -53,7 +53,6 @@ public class LessonDao {
 			sql = lessonQuery.getProperty("getPriceListCount");
 		}
 		
-		
 		// 원데이
 		if(filter.getOneday() != null || filter.getVod() != null){
 			sql = lessonQuery.getProperty("getOnedayListCount");
@@ -112,14 +111,6 @@ public class LessonDao {
 		if(filter.getKeyword() != null ) {
 			sql = lessonQuery.getProperty("getKeywordList");
 		}
-//		// 정렬
-//		if(filter.getcSort() != null) {
-//			if(filter.getcSort().equals("pop")) {
-//				sql = lessonQuery.getProperty("selectPopList");
-//			} else if(filter.getcSort().equals("rec")) {
-//				sql = lessonQuery.getProperty("selectRecList");
-//			}
-//		}
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -144,14 +135,6 @@ public class LessonDao {
 						}
 					}
 				}
-//				if(filter.getcSort() != null) { 
-//					if(filter.getcSort().equals("pop")) {
-//						pstmt.setInt(index++, startRow);
-//						pstmt.setInt(index, endRow);
-//					} else if(filter.getcSort().equals("rec")) { 
-//						pstmt.setInt(index++, startRow);
-//						pstmt.setInt(index, endRow);
-//					}
 			
 			pstmt.setInt(index++, startRow);
 			pstmt.setInt(index, endRow);
@@ -237,6 +220,7 @@ public class LessonDao {
 				lesson.setnTitle(rset.getString("notice_title"));
 				lesson.setUserName(rset.getString("user_name"));
 				lesson.setUserId(rset.getString("c_writer"));
+				lesson.setnCount(rset.getInt("ncount"));
 				lesson.setcCategory(rset.getString("c_category"));
 				lesson.setcPrice(rset.getInt("c_price"));
 				lesson.setnContent(rset.getString("notice_content"));
@@ -517,5 +501,6 @@ public class LessonDao {
 		return result;
 	}
 
+	
 
 }

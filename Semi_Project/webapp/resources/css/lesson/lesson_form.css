@@ -27,7 +27,7 @@ hr{
 /* body-----------------*/
 /* 상단 영역 */
 .class_form{
-    max-width : 85%;
+    max-width : 100%;
     margin : 0px auto;
     padding : 2% 4%;
 }
@@ -35,12 +35,14 @@ hr{
 .cForm_title{
     margin-top: 50px;
     line-height: 0.7;
-    margin-left: 10%;
+    margin-left: 11%;
+    width : 70%;
 }
 
 .cForm_title > #main-title {
     font-weight: bold;
     color: rgb(7,86,105);
+    font-size : 2.1rem;
 }
 
 .cForm_title > #sub-title {
@@ -48,10 +50,11 @@ hr{
     color: rgb(188,188,188);
     margin-top: 20px;
     margin-bottom: 30px;
+    font-size : 1.2rem;
 }
 
 #back {
-    font-size: 11pt;
+    font-size: 13pt;
     color: slategray;
 }
 #back:hover{
@@ -62,37 +65,45 @@ hr{
 /* 작성 폼 영역 */
 /*part1*/
 #cForm_wrapper {
-    width: 1000px;
+    width: 70%;
     /* min-height: 100px; */
     margin : 0 auto;
     border : 6px solid rgb(218,239,245);
-    padding: 30px 50px 30px 50px;
+    padding: 3% 4%;
     margin-bottom: 50px;
 }
 
 #cForm_wrapper h3{
     font-weight: bold;
-    margin-top: 40px;
-    font-size: 1.2em;
+    margin-top: 30px;
+    font-size: 1.4rem;
 }
 
 #cForm_wrapper h4{
     margin-bottom: 10px;
     margin-top: 35px;
     color: gray;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: bold;
 }
 
 #cForm_wrapper select{
     border: 1px solid rgb(185,185,185);
     border-radius: 5px;
-    width: 150px;
+    width: 170px;
+    height: 35px;
+}
+
+input[name=cPrice]{
+    margin-bottom: 20px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
     height: 30px;
+    width : 170px;
 }
 
 .btnlabel{
-    margin-left: 5px;
+    margin-left: 2%;
     color: black;
 }
 
@@ -101,12 +112,6 @@ hr{
     margin-left: 20px;
 }
 
-input[name=cPrice]{
-    margin-bottom: 20px;
-    border: 1px solid lightgray;
-    border-radius: 5px;
-    height: 30px;
-}
 
 /* 상세페이지 헤드*/
 #img_wrapper{
@@ -164,7 +169,7 @@ input[name=cPrice]{
 
 #form_head label:not(.btnlabel){
     color : grey;
-    font-size: 11pt;
+    font-size: 12pt;
     margin-bottom: 10px;
 }
 

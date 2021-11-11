@@ -51,12 +51,9 @@ public class LessonMainServlet extends HttpServlet {
 		String oneday = request.getParameter("oneday");
 		String vod = request.getParameter("vod");
 		
-		/* 정렬 방식 */
-		String cSort = request.getParameter("classSort");
-		
 		
 		// 페이징과 관련된 데이터, 조회 된 게시판List를 담아서 map에 리턴
-		Map<String, Object> map = new LessonService().selectList(page, new Filter(keyword ,price1, price2, bigC, smallC, oneday, vod, cSort));
+		Map<String, Object> map = new LessonService().selectList(page, new Filter(keyword ,price1, price2, bigC, smallC, oneday, vod));
 		
 	
 		/* 비즈니스 로직 수행 후 */ 
@@ -70,7 +67,7 @@ public class LessonMainServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-	}
+		
+	}		
 
 }
