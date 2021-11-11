@@ -60,6 +60,7 @@ public class SocialingMainServlet extends HttpServlet {
 		
 		// 날짜 Date 타입으로 변환
 //		Date sdate = Date.valueOf(dateIn);
+		
 //		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd"); 
 //		java.sql.Date sdate = null;
 //		try {
@@ -73,16 +74,16 @@ public class SocialingMainServlet extends HttpServlet {
 //			e.printStackTrace();
 //		}
 		
-		
 		/* 정렬 관련 파라미터 추출 */
 		String sort = request.getParameter("lineup");
 		
 		// 페이징과 관련된 데이터, 조회 된 게시판 List를 담아서 map에 리턴
 //		Map<String, Object> map = new SocialingService().selectList(page);
-		Map<String, Object> map = new SocialingService().selectList(page, new Search(keyword, local, /*sdate*/dateIn, onoff, sort));
+		Map<String, Object> map = new SocialingService().selectList(page, new Search(keyword, local, dateIn, onoff, sort));
 		
 		request.setAttribute("pi", map.get("pi"));
 		request.setAttribute("socialingList", map.get("socialingList"));
+		request.setAttribute("soonSocialingList", map.get("soonSocialingList"));
 		request.getRequestDispatcher("/WEB-INF/views/socialing/socialingMainView.jsp").forward(request, response);
 	}
 

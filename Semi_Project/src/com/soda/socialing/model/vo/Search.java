@@ -53,7 +53,7 @@ public class Search {
 //	public void setDateIn(Date dateIn) {
 //		this.dateIn = dateIn;
 //	}
-
+	
 	public String getDateIn() {
 		return dateIn;
 	}
