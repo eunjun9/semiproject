@@ -33,15 +33,17 @@
 			  , PAY_CANCLE
 			  , USER_ID
 			  , NOTICE_NUM
+			  , PAY_ID
 			  )
 			  VALUES
 			  (
-			    ?
+			    SEQ_PAY_NUM.NEXTVAL
 			  , SYSDATE
 			  , ?
 			  , ?
 			  , ?
 			  , DEFAULT
+			  , ?
 			  , ?
 			  , ?
 			  )

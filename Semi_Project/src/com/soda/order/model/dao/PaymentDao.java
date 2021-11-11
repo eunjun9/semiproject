@@ -34,8 +34,8 @@ private Properties paymentQuery = new Properties();
 		try {
 			pstmt =conn.prepareStatement(sql);
 			
-			pstmt.setString(1, payment.getUser_id());
-			pstmt.setInt(2, payment.getNotice_num());
+			pstmt.setString(1, payment.getUserId());
+			pstmt.setInt(2, payment.getnNum());
 			pstmt.setDate(3, payment.getSelectDate());
 			
 			result = pstmt.executeUpdate();
@@ -57,12 +57,12 @@ private Properties paymentQuery = new Properties();
 		try {
 			pstmt =conn.prepareStatement(sql);
 			
-			pstmt.setInt(1, payment.getPayNum());
-			pstmt.setString(2, payment.getPayOption());
-			pstmt.setString(3, payment.getPayPhone());
-			pstmt.setString(4, payment.getPayEmail());
-			pstmt.setString(5, payment.getUser_id());
-			pstmt.setInt(6, payment.getNotice_num());
+			pstmt.setString(1, payment.getPayOption());
+			pstmt.setString(2, payment.getPayPhone());
+			pstmt.setString(3, payment.getPayEmail());
+			pstmt.setString(4, payment.getUserId());
+			pstmt.setInt(5, payment.getnNum());
+			pstmt.setString(6, payment.getPayId());
 
 			result = pstmt.executeUpdate();
 			
