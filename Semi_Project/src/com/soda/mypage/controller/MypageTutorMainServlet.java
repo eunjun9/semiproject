@@ -50,8 +50,10 @@ public class MypageTutorMainServlet extends HttpServlet {
 		
 	      Profile profile = new MypageService().selectProfile(userId);
 		
+	      if (profile != null) {
 			request.setAttribute("profile", profile);
-			request.getRequestDispatcher("/WEB-INF/views/mypage/mypageMain.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/views/mypage/mypageMainTutor.jsp").forward(request, response);
+	
+	      }
 	}
-
 }

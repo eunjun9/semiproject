@@ -12,8 +12,12 @@ import java.util.Properties;
 
 import com.soda.lesson.model.vo.Attachment;
 import com.soda.lesson.model.vo.Lesson;
+import com.soda.lesson.model.vo.PageInfo;
 import com.soda.mypage.model.vo.Profile;
 import com.soda.mypage.model.vo.ProfileFile;
+import com.soda.socialing.model.vo.Socialing;
+import com.soda.socialing.model.vo.SocialingLike;
+import com.soda.socialing.model.vo.SodaFile;
 
 import static com.common.JDBCTemplate.*;
 
@@ -141,5 +145,77 @@ public class MypageDao {
 		}
 		return profileFile;
 	}
+
+	// 관심 소셜링 글 개수
+	public int getSocialingListCount(Connection conn, Socialing socialing) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		int listCount = 0;
+		String sql = mypageQuery.getProperty("getSocialingListCount");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, socialing.getUserId());
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				listCount = rset.getInt(1);			// 쿼리문의 결과(rset)은 1행일것이기 때문에 인덱스 넘버로 받아오면 됨
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return listCount;
+	}
+	
+	public List<Socialing> selectSocialingList(Connection conn, PageInfo pi) {
+		PreparedStatement pstmt = null;
+		String sql = mypageQuery.getProperty("selectSocialingList");
+		List<Socialing> socialingList = new ArrayList<>();
+		ResultSet rset = null;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			int startRow = (pi.getPage() - 1) * pi.getBoardLimit() + 1;
+			int endRow = startRow + pi.getBoardLimit() - 1;
+			
+			int index = 1;
+			pstmt.setInt(index++, startRow);
+			pstmt.setInt(index, endRow);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				Socialing socialing = new Socialing();
+				socialing.setnNum(rset.getInt("like_num"));
+				socialing.setnTitle(rset.getString("notice_title"));
+				socialing.setSplace(rset.getString("s_place"));
+				socialing.setSdate(rset.getDate("s_date"));
+				
+				List<SodaFile> photoList = new ArrayList<>();
+				SodaFile file = new SodaFile();
+				file.setChangeName(rset.getString("change_name"));
+				file.setRoute(rset.getString("route"));
+				
+				photoList.add(file);
+				socialing.setPhotoList(photoList);
+				
+				socialingList.add(socialing);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return socialingList;
+	}
+
 
 }

@@ -32,13 +32,11 @@
             <!-- 프로필  -->
             <div class="profile">
                 <c:choose>
-					<c:when test="!empty ${profile}">
-		                <a href="#">
-		                <img width="45%" src="${ contextPath }${ profile.profileFile.get(0).route}${profile.profileFile.get(0).changeName}"></a>
+					<c:when test="${ not empty profile.profileFile.get(0).changeName}">
+		                <img width="45%" src="${ contextPath }${ profile.profileFile.get(0).route}${profile.profileFile.get(0).changeName}">
 					</c:when>
 					<c:otherwise>
-						<a href="#">
-						<img width="45%" src="${ contextPath }/resources/images/yewon/profile.png"></a>
+						<img width="45%" src="${ contextPath }/resources/images/yewon/profile.png">
 					</c:otherwise>
                 </c:choose>
                 
