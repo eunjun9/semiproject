@@ -1,5 +1,6 @@
 package com.soda.mypage.controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,32 +21,34 @@ import com.soda.mypage.model.vo.Profile;
 import com.soda.mypage.model.vo.ProfileFile;
 
 /**
- * Servlet implementation class ProfileInsertServlet
+ * Servlet implementation class ProfileReviseServlet
  */
-@WebServlet("/profile/insertview")
-public class ProfileInsertViewServlet extends HttpServlet {
+@WebServlet("/profile/modifyview")
+public class ProfileModifyViewServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public ProfileInsertViewServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	public ProfileModifyViewServlet() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
-	
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		/* enctype이 multipart/form-data 로 전송되었는지 확인 */
 		if (!ServletFileUpload.isMultipartContent(request)) {
 			request.setAttribute("message", "잘못된 전송입니다.");
@@ -73,7 +76,7 @@ public class ProfileInsertViewServlet extends HttpServlet {
 			interest = String.join("|", interestArr);
 		}
 
-		/* 프로필 수정정 값 설정 */
+		/* 프로필 수정 값 설정 */
 		Profile profile = new Profile();
 		profile.setUserId(userId);
 		profile.setSns(sns);
@@ -83,7 +86,8 @@ public class ProfileInsertViewServlet extends HttpServlet {
 		
 		
 		// 프로필 파일에 값 넣어주기
-		List<ProfileFile> profileFile = new ArrayList<>();
+
+	List<ProfileFile> profileFile = new ArrayList<>();
 		
 		ProfileFile file = new ProfileFile();
 		
@@ -95,22 +99,25 @@ public class ProfileInsertViewServlet extends HttpServlet {
 		file.setChangeName(changeName);
 		file.setRoute("/resources/images/woo_uploadFiles/");
 		
-		
 		profileFile.add(file);
 		
 		profile.setProfileFile(profileFile);
 		
 		
-		int result = new ProfileService().insertProfile(profile, file);
+	
+		
+		int result = new ProfileService().modifyProfile(profile, file);
 		
 
-		System.out.println(profile);
+		
 		if (result > 0) {
 			request.setAttribute("profile", profile);
 			response.sendRedirect(request.getContextPath() + "/myfeed");
 		} else {
+
+			request.setAttribute("message", "사진 게시글 수정에 실패했습니다.");
 			request.getRequestDispatcher("/WEB-INF/views/common/errorpage.jsp").forward(request, response);
 		}
-
 	}
+
 }

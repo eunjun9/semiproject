@@ -588,9 +588,8 @@ public class MagazineDao {
 	               close(rset);
 	               close(pstmt);
 	            }
-	            
-	         
-	         return userselfList;
+	       
+	        	 return userselfList;
 	      }
 
 		

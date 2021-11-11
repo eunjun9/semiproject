@@ -39,7 +39,7 @@
                 
                 
                 
-                <form method="post" name="modifyForm" action="${contextPath}/profile/insert" enctype="multipart/form-data">
+                <form method="post" name="modifyForm" action="${contextPath}/profile/insertview" enctype="multipart/form-data">
                 <input type ="hidden" name="userId" value="${profile.userId}">
 				<input type="hidden" name="changeName">
 				
@@ -50,7 +50,7 @@
                     <!--프로필-->
                     <div class="profile">
                     
-                    <img>
+                    <img src="${contextPath }/resourses/images/yeonjoo/pro.jpg">
                     <input type="file" name="pic" accept="image/gif,image/jpeg,image/png"> 
                     </div>
                     
@@ -59,7 +59,7 @@
                     <!--자기소개-->
                     <div class="introduction">
                         <p>자기소개</p>
-                        <textarea name="introduction">${profile.introduction}</textarea>
+                        <textarea name="introduction"></textarea>
                     </div>
 
                     <!--피드, 모임내역-->
@@ -73,7 +73,7 @@
                         </div>
 
                         <div class="insta">
-                            <textarea name="sns">${profile.sns}</textarea>
+                            <textarea name="sns"></textarea>
                         </div>
                         
                     </div>

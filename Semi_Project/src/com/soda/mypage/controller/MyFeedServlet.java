@@ -39,28 +39,30 @@ public class MyFeedServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		// 마이페이지에서 마이피드를 클릭한 후(요청) 마이 피드의 사진, 글들을 불러오기 위해 select사용
+		String userId = ((Member) request.getSession().getAttribute("loginUser")).getUserId();
+		
 		
 		// 사용자가 그동안 올렸던 게시글들 보여줌
 		List<Magazine> userselfList = new MagazineService().selectUserselfList();
 		request.setAttribute("userselfList", userselfList);
 
-		
-		
+
 		ProfileService profileService = new ProfileService();
 
 		
 		// 사용자 본인이 올린 사진 및 정보 알려줌
-		String userId = ((Member) request.getSession().getAttribute("loginUser")).getUserId();
 		Profile profile = profileService.selectProfile(userId);
-		
 
-		
-		
-		request.setAttribute("profile", profile);
-		
-		request.getRequestDispatcher("/WEB-INF/views/mypage/myfeedMain.jsp").forward(request, response);
-		
+		  if (profile == null) {
+			  
+			  request.setAttribute("profile", profile);
+			  request.getRequestDispatcher("/WEB-INF/views/mypage/myfeedInsert.jsp").forward(request, response);
+				
+			} else {
+				
+				request.setAttribute("profile", profile);
+				request.getRequestDispatcher("/WEB-INF/views/mypage/myfeedMain.jsp").forward(request, response);
+			}
 
 	}
 
