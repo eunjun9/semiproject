@@ -158,6 +158,46 @@
 		 WHERE USER_ID = ?
 	</entry>
 	
+	<!-- 관리자페이지 회원 조회 -->
+  <entry key="selectAdminMember">
+		SELECT
+			  USER_ID
+			, USER_NAME
+			, USER_PHONE
+			, USER_PWD
+			, JOIN_DATE
+			, STATUS
+			, USER_GRADE
+			, USER_GENDER
+		 FROM MEMBER_INFO
+		WHERE USER_ID = ?
+	</entry>
+	
+	
+	<!-- 관리자 페이지 회원 수정 -->
+	  <entry key="updateAdminMember">
+		UPDATE
+		      MEMBER_INFO
+		  SET USER_NAME = ?
+		    , USER_PHONE = ?
+		    , user_gender = ?
+		WHERE USER_ID = ?
+	</entry>
+	
+	<!-- 관리자페이지 회원 정보 조회(수정을 목적) -->
+	  <entry key="selectAdminMember">
+		SELECT
+			  USER_ID
+			, USER_NAME
+			, USER_PHONE
+			, USER_PWD
+			, JOIN_DATE
+			, STATUS
+			, USER_GRADE
+			, USER_GENDER
+		 FROM MEMBER_INFO
+		WHERE USER_ID = ?
+	</entry>
 
 
 </properties>

@@ -57,6 +57,9 @@
                 <c:when test="${ loginUser.userGrade == '강사' }">
 				<li><a class="main-menu2" href="${ contextPath }/mypage/tutormain"><img class="icon2" src="resources/images/사람아이콘3.png"></img></a></li>
                 </c:when>
+                <c:when test="${ loginUser.userGrade == '관리자' }">
+				<li><a class="main-menu2" href="${ contextPath }/mypage/adminmain"><img class="icon2" src="resources/images/사람아이콘3.png"></img></a></li>
+                </c:when>
                 </c:choose>
             </ul>
             <h1 class="under-logo">
