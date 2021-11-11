@@ -10,7 +10,7 @@
 <title>소셜링</title>
 
 <!-- 외부 스타일 시트 -->
-<link href="${ contextPath }/resources/css/socialing/socialing_main.css?5" rel="stylesheet">
+<link href="${ contextPath }/resources/css/socialing/socialing_main.css?3" rel="stylesheet">
 
 <!-- 글꼴 (Noto Sans) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -42,27 +42,27 @@
                 <div class="slide">
                     <div class="swiper mySwiper">
                         <div class="swiper-wrapper">
-                        <!-- 반복문으로 현재날짜(date) 기준 모임날짜(sdate) 2일 이내로 남은 소셜링 글 목록 출력 -->
-                        <c:forEach var="s" items="${ socialingList }">
+                        <!-- 현재날짜 기준 모임날짜 2일 이내로 남은 소셜링 글 목록 출력 -->
+                        <c:forEach var="ss" items="${ soonSocialingList }">
 	                        <div class="swiper-slide">
 	                            <div id="thumbox">
-	                                <img id="s-thumbnail2" onclick="detailView(${ s.nNum })" 
-	                                src="${ contextPath }${ s.photoList.get(0).route }${ s.photoList.get(0).changeName }"><br>
+	                                <img id="s-thumbnail2" onclick="detailView(${ ss.nNum })" 
+	                                src="${ contextPath }${ ss.photoList.get(0).route }${ ss.photoList.get(0).changeName }"><br>
 	                            </div>
-	                            <a href="#">
+	                            <a href="${ contextPath }/socialing/detail?nNum=${ ss.nNum }">
 	                                <div id="titlebox">
-	                                    <p id="s-thumtitle">${ s.nTitle }</p><br>
-	                                    <!-- 오프라인일 경우 상세주소, 온라인일 경우 기본 주소 출력 (주소 글자 수 7자 이상일 경우 잘라내기) -->
+	                                    <p id="s-thumtitle">${ ss.nTitle }</p><br>
+	                                    <!-- 오프라인일 경우 상세주소, 온라인일 경우 기본 주소 출력 -->
 		                                <c:choose>
-											<c:when test='${ s.splace.contains("|") }'>
-												<h5 id="s-thumsub">${ s.splace.split("\\|")[1] }
+											<c:when test='${ ss.splace.contains("|") }'>
+												<h5 id="s-thumsub">${ ss.splace.split("\\|")[1] }
 											</c:when>
 											<c:otherwise>
-												<h5 id="s-thumsub">${ s.splace }
+												<h5 id="s-thumsub">${ ss.splace }
 											</c:otherwise>
 										</c:choose>
-		                                <fmt:formatDate value="${ s.sdate }" type="date" pattern="M.dd(E)"/>
-		                                <fmt:parseDate value="${ s.stime }" var="stime2" pattern="HH:mm" scope="page"/>
+		                                <fmt:formatDate value="${ ss.sdate }" type="date" pattern="M.dd(E)"/>
+		                                <fmt:parseDate value="${ ss.stime }" var="stime2" pattern="HH:mm" scope="page"/>
 										<fmt:formatDate value="${ stime2 }" type="time" pattern="a h:mm"/></h5>
 	                                    <a href="#"></a>
 	                                </div>
@@ -85,7 +85,7 @@
             <article>
                 <h3 id="all-title">소셜링 전체 보기</h3>
                 <div id="filterbox">
-                    <form>
+                    <form name="filter">
                         <div id="search">
                             <img id="searchIcon" src="${ contextPath }/resources/images/eunjung/search.png">
                             <input type="search" name="keyword" size="31" maxlength="20" placeholder="검색할 키워드를 입력해주세요"
@@ -254,25 +254,6 @@
                 prevEl: '.button-prev',
             },
         });
-    </script>
-    
-    <script>
-    	const MAX_LENGTH = 7;
-    	var place = document.getElementById('s-thumtitle');
-    
-	    $(document).ready(function() {
-	    	if($('#s-thumtitle').length >= 7) {
-	    		
-	    	}
-	    	
-	        $('#s-thumtitle').click(function() {
-	            $('.checkPop').show();
-	        });
-	
-	        $('#cancel').click(function() {
-	            $('.checkPop').hide();
-	        });
-	    });
     </script>
     
     <!-- 로그인 여부에 따른 스크립트 -->

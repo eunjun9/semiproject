@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.soda.member.model.vo.Member;
-import com.soda.socialing.model.service.SocialingService;
 
 /**
  * Servlet implementation class mainpageServlet
@@ -44,12 +43,12 @@ public class mainpageServlet extends HttpServlet {
 		}
 		
 		// 페이징과 관련된 데이터, 조회 된 게시판 List를 담아서 map에 리턴
-		Map<String, Object> map = new SocialingService().selectList(page);
+//		Map<String, Object> map = new SocialingService().selectList(page);
 //		Map<String, Object> map = new SocialingService().selectList(page, new Search(keyword, local, dateIn.getTime(), onoff));
 				
 				
-		request.setAttribute("pi", map.get("pi"));
-		request.setAttribute("socialingList", map.get("socialingList"));
+//		request.setAttribute("pi", map.get("pi"));
+//		request.setAttribute("socialingList", map.get("socialingList"));
 		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/main/mainpage.jsp");
 		view.forward(request, response);
 	}
