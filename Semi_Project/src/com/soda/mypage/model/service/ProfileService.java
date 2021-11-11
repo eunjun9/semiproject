@@ -77,9 +77,13 @@ public class ProfileService {
 		/* Profile 테이블 정보 조회 */
 		Profile profile = profileDao.selectProfile(conn, userId);
 		
+		// 사진 조회
 		List<ProfileFile> profileFile = profileDao.selectProfileFile(conn, userId);
+		
+		if(profile != null) {
+		
 		profile.setProfileFile(profileFile);
-
+		}
 		close(conn);
 		
 

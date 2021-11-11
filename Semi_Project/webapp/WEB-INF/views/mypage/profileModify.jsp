@@ -39,7 +39,7 @@
                 
                 
                 
-                <form method="post" name="modifyForm" action="${contextPath}/profile/modify" enctype="multipart/form-data">
+                <form method="post" name="modifyForm" action="${contextPath}/profile/modifyview" enctype="multipart/form-data">
                 <input type ="hidden" name="userId" value="${profile.userId}">
 				<input type="hidden" name="changeName">
 				
@@ -50,7 +50,7 @@
                     <!--프로필-->
                     <div class="profile">
                     
-                    <img src="${ contextPath }$">
+                    <img src="${ contextPath }${ profile.profileFile.get(0).route}${profile.profileFile.get(0).changeName}">
                     <input type="file" name="pic" accept="image/gif,image/jpeg,image/png"> 
                     </div>
                     
@@ -94,8 +94,11 @@
                 		"", "", "", "", "", "", "",
                 		"", "", "", "", "", "", ""};
                 
-                Profile profile = new Profile();
+               
                      
+                 	Profile profile = (Profile)request.getAttribute("profile");
+                 
+                
                 
                 if(profile.getInterest() != null){
                    String[] interest = profile.getInterest().split("\\|");
@@ -126,6 +129,7 @@
                    }
          
                 }
+                
              %>
                     
 
@@ -135,7 +139,7 @@
                         <div class="career-checkbox">
                             <input type="checkbox" name="interest" value="마케팅" <%= checkedInterest[0] %>><label for="marketing">마케팅</label>
                             <input type="checkbox" name="interest" value="브랜딩" <%= checkedInterest[1] %>><label for="branding">브랜딩</label>
-                            <input type="checkbox" name="interest" value="기획" <%= checkedInterest[2] %>><label for="planning">기획</label>
+                            <input type="checkbox" name="interest" value="기획" <%= checkedInterest[2] %>><label for="plan">기획</label>
                             <input type="checkbox" name="interest" value="스타트업" <%= checkedInterest[3] %>><label for="startup">스타트업</label>
                                                         <br>
                             <input type="checkbox" name="interest" value="디자인" <%= checkedInterest[4] %>><label for="design">디자인</label>
@@ -177,7 +181,7 @@
                     </div>
                     
                     <div class="btn_area">
-						<button class="button" type="button">취소하기</button>
+						<button class="button" type="button" onclick = "location.href = '${contextPath}/myfeed' ">취소하기</button>
 						<button class="submit" type="submit">저장하기</button>
 
 					</div>
