@@ -122,7 +122,7 @@ public class WishListDao {
 	}
 	
 	// 결제 화면 조회
-		public List<WishList> wishlistPay(Connection conn, String userId, int nNum) {
+		public List<WishList> wishlistPay(Connection conn, int nNum) {
 			PreparedStatement pstmt = null;
 			ResultSet rset = null;
 			List<WishList> wishlist = new ArrayList<>();
@@ -131,19 +131,16 @@ public class WishListDao {
 			try {
 				pstmt = conn.prepareStatement(sql);
 
-				pstmt.setString(1, userId);
-				pstmt.setInt(2, nNum);
+				pstmt.setInt(1, nNum);
 
 				rset = pstmt.executeQuery();
 
 				while(rset.next()) {
 					WishList w = new WishList();
 					w.setnNum(rset.getInt("notice_num"));
-					w.setlessonDate(rset.getString("lesson_date"));
 					w.setnTitle(rset.getString("notice_title"));
 					w.setcPrice(rset.getInt("c_price"));
 					w.setcCategory(rset.getString("c_category"));
-					w.setcLocation(rset.getString("c_location"));
 					w.setcTime1(rset.getString("c_time1"));
 					w.setcTime2(rset.getString("c_time2"));
 					w.setvDate(rset.getString("v_date"));
