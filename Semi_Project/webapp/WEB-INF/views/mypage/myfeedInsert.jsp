@@ -45,15 +45,7 @@
                 <div class="photo-follow">
                     <div class="photo">
                         <div class="profile">
-                        <c:choose>
-                         
-                         <c:when test="${not empty profile.profileFile.get(0).changeName}">
-                            <img src="${ contextPath }${ profile.profileFile.get(0).route}${profile.profileFile.get(0).changeName}">
-                          </c:when>
-                          <c:otherwise>
-                           <img src="${ contextPath }/resources/images/yeonjoo/pro.jpg">
-                          </c:otherwise>
-                          </c:choose>
+                            <img src="${contextPath }/webapp/resourses/images/yeonjoo/pro.jpg">
                         </div>
 
                         <div class="name-grade">
@@ -99,9 +91,7 @@
                         </div>
 
                         <div class="profile-button">
-                        
-                            <button onclick="location.href='${ contextPath }/profile/modify'">프로필 편집</button>
-                            
+                            <button onclick="location.href='${ contextPath }/profile/insert'">프로필 편집</button>
                         </div>
 
                         <div class="email">
@@ -110,8 +100,6 @@
 
                     </div>
                 </div>
-                
-              
 
 
                 <div class="content">
@@ -122,20 +110,19 @@
                         <div class="introduction">
                             <div class="intro">
                                 <p class="intro-p">자기소개</p>
-                                <textarea class="intro-text">${ profile.introduction }</textarea>
+                                <textarea class="intro-text"></textarea>
                                 
                                 <p class="sns">SNS</p>
-                              <p class="sns-text">${ profile.sns }</p>
+                              <p class="sns-text"></p>
                             </div>
 
 
 
+                              <%--  <c:forEach var="profile" items="${interest}"> --%>
                             <div class="tag">
-                            	<p>${profile.interest }</p>
+                                <p></p>
                             </div>
-                            
-          					
-          					
+          
                         </div>
                         
                          <!--피드 사진들-->
