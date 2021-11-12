@@ -67,4 +67,25 @@ public class MypageService {
 		return returnMap;
 	}
 
+	// 소셜링 내역 - 참여 완료
+	public List<Socialing> socialingListAfter(String userId) {
+		Connection conn = getConnection();
+		
+		List<Socialing> socialingListAfter = mypageDao.selectMySocialingListAfter(conn,userId);
+		
+		close(conn);
+		
+		return socialingListAfter;
+	}
+
+	public List<Socialing> socialingListBefore(String userId) {
+		Connection conn = getConnection();
+		
+		List<Socialing> socialingListBefore = mypageDao.selectMySocialingListBefore(conn,userId);
+		
+		close(conn);
+		
+		return socialingListBefore;
+	}
+
 }

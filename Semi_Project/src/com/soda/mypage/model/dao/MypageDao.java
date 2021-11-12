@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Properties;
 
@@ -215,6 +216,81 @@ public class MypageDao {
 			close(pstmt);
 		}
 		return socialingList;
+	}
+
+	public List<Socialing> selectMySocialingListAfter(Connection conn, String userId) {
+		PreparedStatement pstmt = null;
+		String sql = mypageQuery.getProperty("selectMySocialingListAfter");
+		List<Socialing> socialingListAfter = new ArrayList<>();
+		ResultSet rset = null;
+		
+		try {
+		
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, userId);
+			
+			rset = pstmt.executeQuery();
+			while(rset.next()) {
+				Socialing socialing = new Socialing();
+				socialing.setnTitle(rset.getString("notice_title"));
+				socialing.setSplace(rset.getString("s_place"));
+				socialing.setSdate(rset.getDate("s_date"));
+				
+				List<SodaFile> photoList = new ArrayList<>();
+				SodaFile file = new SodaFile();
+				file.setChangeName(rset.getString("change_name"));
+				file.setRoute(rset.getString("route"));
+				
+				photoList.add(file);
+				socialing.setPhotoList(photoList);
+				
+				socialingListAfter.add(socialing);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rset);
+		}
+		return socialingListAfter;
+	}
+
+	public List<Socialing> selectMySocialingListBefore(Connection conn, String userId) {
+		PreparedStatement pstmt = null;
+		String sql = mypageQuery.getProperty("selectMySocialingeListBefore");
+		List<Socialing> socialingListBefore = new ArrayList<>();
+		ResultSet rset = null;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, userId);
+			
+			rset = pstmt.executeQuery();
+			while(rset.next()) {
+				Socialing socialing = new Socialing();
+				socialing.setnTitle(rset.getString("notice_title"));
+				socialing.setSplace(rset.getString("s_place"));
+				socialing.setSdate(rset.getDate("s_date"));
+				
+				List<SodaFile> photoList = new ArrayList<>();
+				SodaFile file = new SodaFile();
+				file.setChangeName(rset.getString("change_name"));
+				file.setRoute(rset.getString("route"));
+				
+				photoList.add(file);
+				socialing.setPhotoList(photoList);
+				
+				socialingListBefore.add(socialing);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rset);
+		}
+		return socialingListBefore;
 	}
 
 

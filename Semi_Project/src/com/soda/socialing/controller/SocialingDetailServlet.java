@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.soda.member.model.vo.Member;
+import com.soda.mypage.model.vo.Profile;
 import com.soda.socialing.model.service.SocialingService;
+import com.soda.socialing.model.vo.ProfileFile;
 import com.soda.socialing.model.vo.Socialing;
 import com.soda.socialing.model.vo.SocialingLike;
 import com.soda.socialing.model.vo.SocialingMember;
@@ -36,7 +38,7 @@ public class SocialingDetailServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int nNum = Integer.parseInt(request.getParameter("nNum"));
-//		String userId = ((Member)request.getSession().getAttribute("loginUser")).getUserId();
+		String userId = ((Member)request.getSession().getAttribute("loginUser")).getUserId();
 		
 		SocialingService socialingService = new SocialingService();
 		
@@ -83,14 +85,46 @@ public class SocialingDetailServlet extends HttpServlet {
 			}
 		}
 		
-		/* 소셜링 게시글 조회 */
+		/* 소셜링 게시글 + 작성자 조회 */
 		Socialing socialing = socialingService.selectSocialing(nNum);
+		
+		/* 작성자 프로필 사진 조회 */
+		Socialing writerProfile = socialingService.selectWriterProfile(nNum);
+		/* 작성자 자기소개 조회 */
+		Socialing writerItd = socialingService.selectWriterItd(nNum);
+		
+		// 프로필 정보가 있을 경우 작성자 정보 추가
+		if(writerProfile != null && writerItd != null) {
+			socialing.setProfile(writerProfile.getProfile());
+			socialing.setIntroduction(writerItd.getIntroduction());
+		} else if(writerProfile != null) {
+			socialing.setProfile(writerProfile.getProfile());
+		} else if(writerItd != null) {
+			socialing.setIntroduction(writerItd.getIntroduction());
+		}
 		
 		/* 참여자 리스트 조회 */
 		List<SocialingMember> memberList = socialingService.selectMember(nNum);
 		
-		/* 찜한 소셜링 목록 조회 */
-		List<SocialingLike> likedList = new SocialingService().selectLikedList(nNum);
+		/* 참여자 프로필 사진 조회 */
+		SocialingMember memberProfile = socialingService.selectMemberProfile(nNum);
+		/* 참여자 자기소개 조회 */
+		SocialingMember memberItd = socialingService.selectMemberItd(nNum);
+		
+		// 프로필 정보가 있을 경우 참여자 정보 추가
+		for(SocialingMember s : memberList) {
+			if(memberProfile != null && memberItd != null) {
+				s.setProfile(memberProfile.getProfile());
+				s.setIntroduction(memberItd.getIntroduction());
+			} else if(memberProfile != null) {
+				s.setProfile(memberProfile.getProfile());
+			} else if(memberItd != null) {
+				s.setIntroduction(memberItd.getIntroduction());
+			}
+		}
+		
+		/* 로그인 유저가 현재 글을 찜했는지 조회 */
+		SocialingLike likedList = new SocialingService().selectLikedList(nNum, userId);
 		
 		if(socialing != null) {
 			request.setAttribute("socialing", socialing);

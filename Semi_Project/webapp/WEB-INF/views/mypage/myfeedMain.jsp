@@ -29,7 +29,7 @@
 
 <body>
  <!-- header -->
-	<%@ include file="/WEB-INF/views/common/header.jsp" %>
+   <%@ include file="/WEB-INF/views/common/header.jsp" %>
 
     <!--body-->
     <div class="body-super">
@@ -131,29 +131,29 @@
 
 
                             <div class="tag">
-                            	<p>${profile.interest }</p>
+                               <p>${profile.interest }</p>
                             </div>
                             
-          					
-          					
+                         
+                         
                         </div>
                         
                          <!--피드 사진들-->
                     
             </div>
                     </div>
-					<div class="img-par">
+               <div class="img-par">
                     <div class="imgs">
                     <c:forEach var="magazine" items="${userselfList}">
                     <c:if test="${!empty loginUser && magazine.userId == loginUser.userId}">
                     <div class="pics" onclick="detailView(${ magazine.nNum })">
-					<img src="${ contextPath }${ magazine.photoList.get(0).route }${ magazine.photoList.get(0).changeName }">
-					</div>
-                	</c:if>
-                	</c:forEach>
-                	</div>
-                	</div>
-						
+               <img src="${ contextPath }${ magazine.photoList.get(0).route }${ magazine.photoList.get(0).changeName }">
+               </div>
+                   </c:if>
+                   </c:forEach>
+                   </div>
+                   </div>
+                  
                    
         </div>
     </div>
@@ -162,20 +162,20 @@
 
 
 
- 	
+    
 
 
     </div>
     
     <!-- footer -->
-	<%@ include file="/WEB-INF/views/common/footer.jsp" %>
+   <%@ include file="/WEB-INF/views/common/footer.jsp" %>
 
 <script>
-   		function detailView(nNum){
-   			location.href = '${contextPath}/magazine/detail?nNum=' + nNum;
-   		}
+         function detailView(nNum){
+            location.href = '${contextPath}/magazine/detail?nNum=' + nNum;
+         }
    
-   		
+         
    </script>
 
 

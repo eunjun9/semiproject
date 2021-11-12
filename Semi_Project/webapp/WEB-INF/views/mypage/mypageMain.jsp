@@ -49,7 +49,7 @@
 			<div id="movebox">
             <ul class="move">
                 <li><a class="mv" id="modify" href="<%= request.getContextPath() %>/mypage/userinfomodify">정보수정 <img class="pmv" width="5%" src="${ contextPath }/resources/images/yewon/next.png"> </a></li>
-                <li><a class="mv" id="slist" href="#">모임내역 <img class="pmv" width="5%" src="${ contextPath }/resources/images/yewon/next.png"> </a> </li>
+                <li><a class="mv" id="slist" href="${ contextPath }/mypage/socialingList">모임내역 <img class="pmv" width="5%" src="${ contextPath }/resources/images/yewon/next.png"> </a> </li>
                 <li><a class="mv" id="plist" href="#">결제내역 <img class="pmv" width="5%" src="${ contextPath }/resources/images/yewon/next.png"> </a> </li>
                 <li><a class="mv" id="logout" href="${contextPath }/logout">로그아웃 <img class="pmv" width="5%" src="${ contextPath }/resources/images/yewon/next.png"> </a> </li>
             </ul>
@@ -79,8 +79,16 @@
             	</c:forEach>
             </div>
     </div>
+    
+    <script>
+    	function detailView(nNum){
+    		location.href = "${ contextPath }/socialing/detail?nNum=" + nNum;
+    	}
+    
+    </script>
             
         <!-- 페이지 로직 -->
+        <c:if test="${ not empty socialingList }">
         <div class="wrapper5">
         	<!-- (<<) 제일 첫 페이지로 이동 -->
             <a class="paging" href="${ contextPath }/mypage/main?page=1"><img width="16px" src="${ contextPath }/resources/images/yewon/previous.png">
@@ -123,6 +131,7 @@
             <a class="paging" href="${ contextPath }/mypage/main?page=${ pi.maxPage }"><img width="16px" src="${ contextPath }/resources/images/yewon/next.png">
             <img width="16px" src="${ contextPath }/resources/images/yewon/next.png"></a>
         </div>
+        </c:if>
         </div>
 </div>
 </div>	

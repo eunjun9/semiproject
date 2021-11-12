@@ -13,6 +13,7 @@ import java.util.Properties;
 import static com.common.JDBCTemplate.close;
 
 import com.soda.socialing.model.vo.PageInfo;
+import com.soda.socialing.model.vo.ProfileFile;
 import com.soda.socialing.model.vo.Search;
 import com.soda.socialing.model.vo.Socialing;
 import com.soda.socialing.model.vo.SocialingLike;
@@ -254,7 +255,6 @@ public class SocialingDao {
 				socialing.setStype(rset.getString("s_type"));
 				socialing.setMaxMember(rset.getInt("max_member"));
 				socialing.setMinMember(rset.getInt("min_member"));
-//				socialing.setIntroduction(rset.getString("introduction"));
 			}
 			
 		} catch (SQLException e) {
@@ -265,6 +265,66 @@ public class SocialingDao {
 		}
 		
 		return socialing;
+	}
+	
+	public Socialing selectWriterProfile(Connection conn, int nNum) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		Socialing writerProfile = null;
+		String sql = socialingQuery.getProperty("selectWriterProfile");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, nNum);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				writerProfile = new Socialing();
+				
+				ProfileFile profile = new ProfileFile();
+				profile.setRoute(rset.getString("route"));
+				profile.setChangeName(rset.getString("change_name"));
+				writerProfile.setProfile(profile);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return writerProfile;
+	}
+	
+	public Socialing selectWriterItd(Connection conn, int nNum) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		Socialing writerItd = null;
+		String sql = socialingQuery.getProperty("selectWriterItd");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, nNum);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				writerItd = new Socialing();
+				writerItd.setIntroduction(rset.getString("introduction"));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return writerItd;
 	}
 	
 	public List<SodaFile> selectPhotoList(Connection conn, int nNum) {
@@ -321,7 +381,6 @@ public class SocialingDao {
 				sMember.setMemberId(rset.getString("user_id"));
 				sMember.setStatus(rset.getString("s_status"));
 				sMember.setMemberName(rset.getString("user_name"));
-//				sMember.setIntroduction(rset.getString("introduction"));
 				
 				memberList.add(sMember);
 			}
@@ -334,6 +393,66 @@ public class SocialingDao {
 		}
 		
 		return memberList;
+	}
+	
+	public SocialingMember selectMemberProfile(Connection conn, int nNum) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		SocialingMember memberProfile = null;
+		String sql = socialingQuery.getProperty("selectMemberProfile");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, nNum);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				memberProfile = new SocialingMember();
+				
+				ProfileFile profile = new ProfileFile();
+				profile.setRoute(rset.getString("route"));
+				profile.setChangeName(rset.getString("change_name"));
+				memberProfile.setProfile(profile);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return memberProfile;
+	}
+
+	public SocialingMember selectMemberItd(Connection conn, int nNum) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		SocialingMember memberItd = null;
+		String sql = socialingQuery.getProperty("selectMemberItd");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, nNum);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				memberItd = new SocialingMember();
+				memberItd.setIntroduction(rset.getString("introduction"));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return memberItd;
 	}
 	
 	public int insertMember(Connection conn, int nNum, String userId) {
@@ -591,25 +710,24 @@ public class SocialingDao {
 		return result;
 	}
 
-	public List<SocialingLike> selectLikedList(Connection conn, int nNum) {
+	public SocialingLike selectLikedList(Connection conn, int nNum, String userId) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		List<SocialingLike> socialingLike = new ArrayList<>();
+		SocialingLike socialingLike = null;
 		String sql = socialingQuery.getProperty("selectLikedList");
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setInt(1, nNum);
+			pstmt.setString(2, userId);
 			
 			rset = pstmt.executeQuery();
 			
-			while(rset.next()) {
-				SocialingLike slike = new SocialingLike();
-				slike.setUserId(rset.getString("user_id"));
-				slike.setLikeNum(rset.getInt("like_num"));
-				
-				socialingLike.add(slike);
+			if(rset.next()) {
+				socialingLike = new SocialingLike();
+				socialingLike.setUserId(rset.getString("user_id"));
+				socialingLike.setLikeNum(rset.getInt("like_num"));
 			}
 			
 		} catch (SQLException e) {

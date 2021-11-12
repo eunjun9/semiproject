@@ -9,7 +9,7 @@
 <title>소셜링_상세페이지</title>
 
 <!-- 외부 스타일 시트 -->
-<link href="${ contextPath }/resources/css/socialing/socialing_detail.css?4" rel="stylesheet">
+<link href="${ contextPath }/resources/css/socialing/socialing_detail.css?5" rel="stylesheet">
 <link href="${ contextPath }/resources/css/socialing/socialing_check.css?2" rel="stylesheet">
 
 <!-- 글꼴 (Noto Sans) -->
@@ -48,25 +48,15 @@
 				<p id="subTitle2">${ socialing.nCount }</p><br>
 				<h3 id="subTitle">찜하기</h3>
 				<!-- empty : 클릭 시 꽉찬 하트 아이콘으로 변경 + 관심 소셜링에 추가, full : 클릭 시 빈 하트 아이콘으로 변경 + 관심 소셜링에서 제거 -->
-                <!-- 게시글마다 관심 소셜링에 userId 포함 여부에 따라 src 변경 -->
-                
-				<img id="like" src="${ contextPath }/resources/images/eunjung/heart_empty.png"
-	            onclick="likeSocialing()">
-						
-                <c:forEach var="li" items="${ likedList }">
-                	<c:if test='${ li.userId == loginUser.userId }'>
-                	<script>
-	                	$(document).ready(function() {
-	                		$("#like").attr("src", "${ contextPath }/resources/images/eunjung/heart.png");
-	                	}
-                	</script>
-                	</c:if>
-                	
-					<span id="heart" <c:if test='${ li.userId == loginUser.userId }'>style="display:none"</c:if>>
-					</span>
-					<span id="heart2" <c:if test='${ li.userId != loginUser.userId }'>style="display:none"</c:if>>
-	                </span>
-                </c:forEach>
+                <!-- 게시글마다 관심 소셜링 여부에 따라 src 변경 -->
+				<span id="heart" <c:if test='${ likedList.userId == loginUser.userId }'>style="display:none"</c:if>>
+					<img id="like" src="${ contextPath }/resources/images/eunjung/heart_empty.png"
+		            onclick="likeSocialing()">
+	            </span>
+				<span id="heart" <c:if test='${ likedList.userId != loginUser.userId }'>style="display:none"</c:if>>
+					<img id="like" src="${ contextPath }/resources/images/eunjung/heart.png"
+		            onclick="likeSocialing()">
+				</span>
             </div>
             <div class="wrapper2">
                 <img src="${ contextPath }${ socialing.photoList.get(0).route }${ socialing.photoList.get(0).changeName }">
@@ -76,11 +66,17 @@
             </div>
             <div class="wrapper4">
                 <div class="profileBox">
-                	<!-- 프로필 이미지 border-radius로 동그랗게 출력 -->
-                	<!-- <div class="profile">
-                    	<img src="${ contextPath }${ profileFile.route }${ profileFile.changeName }">
-                    </div> -->
-                    <img id="p-image" src="${ contextPath }/resources/images/eunjung/profile.png"><br>
+                	<c:choose>
+	                    <c:when test="${ not empty socialing.profile }">
+                			<div class="profile">
+	                        	<img src="${ contextPath }${ socialing.profile.route }${ socialing.profile.changeName }"><br>
+	                        </div>
+	                    </c:when>
+	                    <c:otherwise>
+	                        <img id="p-image" src="${ contextPath }/resources/images/eunjung/profile2.png"><br>
+	                    </c:otherwise>
+                    </c:choose>
+                    
                     <p id="p-name">${ socialing.userName }</p><br>
                     <!-- if문으로 일반 회원 : 참여하기 버튼 / 작성자 : 참여확인 버튼 출력되게 -->
                     <c:choose>
@@ -97,11 +93,17 @@
             <h3 id="subTitle3">함께하는 멤버</h3>
             <!-- 작성자 프로필(기본) -->
             <div class="subWrap">
-                <a href="#"> <!-- 참여자 피드로 이동 -->
-                	<!-- <div class="profile2">
-                    	<img src="${ contextPath }${ profileFile.route }${ profileFile.changeName }">
-                    </div> -->
-                    <img id="s-image" src="${ contextPath }/resources/images/eunjung/profile.png">
+                <a href="${contextPath}/myfeed?userId=${socialing.userId}"> <!-- 참여자 피드로 이동(임시값) -->
+                	<div class="s-profile">
+	                	<c:choose>
+		                    <c:when test="${ not empty socialing.profile.changeName }">
+		                        <img src="${ contextPath }${ socialing.profile.route }${ socialing.profile.changeName }"><br>
+		                    </c:when>
+		                    <c:otherwise>
+		                        <img id="s-image" src="${ contextPath }/resources/images/eunjung/profile2.png"><br>
+		                    </c:otherwise>
+	                    </c:choose>
+	                </div>
                     <div class="subWrap2">
                         <p id="s-name">${ socialing.userName }</p>
                         <p id="s-intro">${ socialing.introduction }</p>
@@ -112,7 +114,16 @@
             <c:forEach var="m" items="${ memberList }">
             <div class="subWrap">
                 <a href="#">
-                    <img id="s-image" src="${ contextPath }/resources/images/eunjung/profile.png">
+                	<div class="s-profile">
+	                	<c:choose>
+		                    <c:when test="${ not empty m.profile.changeName }">
+		                        <img src="${ contextPath }${ m.profile.route }${ m.profile.changeName }"><br>
+		                    </c:when>
+		                    <c:otherwise>
+		                        <img id="s-image" src="${ contextPath }/resources/images/eunjung/profile2.png"><br>
+		                    </c:otherwise>
+	                    </c:choose>
+	                </div>
                     <div class="subWrap2">
                         <p id="s-name">${ m.memberName }</p>
                         <p id="s-intro">${ m.introduction }</p>
@@ -191,7 +202,8 @@
 				function likeSocialing() {
 					
 					let like = document.querySelectorAll('#like');
-			        
+					let heart = document.querySelectorAll('#heart');
+					
 			        for(let i = 0; i < like.length; i++) {
 			            like[i].onclick = function() {
 			                if(like[i].src.indexOf('_empty') == -1) {
@@ -207,6 +219,7 @@
 			                }
 			            }
 			        }
+			        
 		        }
 			
 				function openPopup(url, title, width, height) {

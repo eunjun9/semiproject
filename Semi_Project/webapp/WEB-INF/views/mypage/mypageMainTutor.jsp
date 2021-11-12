@@ -77,7 +77,7 @@
                     </div>
                 </div>
                 
-
+				<c:if test="${ not empty lessonList }">
                 <!-- 슬라이드 버튼 설정 -->
                 <div class=button1>
                     <!-- If we need navigation buttons -->
@@ -88,7 +88,7 @@
                 <div class=button2>
                     <div class="but2"><img width="20px" src="${ contextPath }/resources/images/yewon/next_b.png"></div>
                 </div>
-                
+                </c:if>
             </div> 
             
             <!-- Initialize Swiper -->
@@ -131,6 +131,7 @@
                         </div>
                     </div>
                     
+                    <c:if test="${ not empty lessonList }">
                     <!-- 슬라이드 버튼 설정 -->
                     <div class=button3>
                         <!-- If we need navigation buttons -->
@@ -139,6 +140,7 @@
                     <div class=button4>
                         <div class="but4"><img width="20px" src="${ contextPath }/resources/images/yewon/next_b.png"></div>
                     </div>
+                    </c:if>
                 </div> 
             </div>
             

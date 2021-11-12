@@ -12,6 +12,7 @@ import java.util.Map;
 
 import com.soda.socialing.model.dao.SocialingDao;
 import com.soda.socialing.model.vo.PageInfo;
+import com.soda.socialing.model.vo.ProfileFile;
 import com.soda.socialing.model.vo.Search;
 import com.soda.socialing.model.vo.Socialing;
 import com.soda.socialing.model.vo.SocialingLike;
@@ -79,6 +80,28 @@ public class SocialingService {
 		return socialing;
 	}
 	
+	public Socialing selectWriterProfile(int nNum) {
+		Connection conn = getConnection();
+		
+		/* 작성자 프로필(프로필사진) 조회 */
+		Socialing writerProfile = socialingDao.selectWriterProfile(conn, nNum);
+		
+		close(conn);
+		
+		return writerProfile;
+	}
+	
+	public Socialing selectWriterItd(int nNum) {
+		Connection conn = getConnection();
+		
+		/* 작성자 프로필(자기소개) 조회 */
+		Socialing writerItd = socialingDao.selectWriterItd(conn, nNum);
+		
+		close(conn);
+		
+		return writerItd;
+	}
+	
 	public List<SocialingMember> selectMember(int nNum) {
 		Connection conn = getConnection();
 		
@@ -88,6 +111,28 @@ public class SocialingService {
 		close(conn);
 		
 		return socialing;
+	}
+	
+	public SocialingMember selectMemberProfile(int nNum) {
+		Connection conn = getConnection();
+		
+		/* 작성자 프로필(프로필사진) 조회 */
+		SocialingMember memberProfile = socialingDao.selectMemberProfile(conn, nNum);
+		
+		close(conn);
+		
+		return memberProfile;
+	}
+
+	public SocialingMember selectMemberItd(int nNum) {
+		Connection conn = getConnection();
+		
+		/* 작성자 프로필(자기소개) 조회 */
+		SocialingMember memberItd = socialingDao.selectMemberItd(conn, nNum);
+		
+		close(conn);
+		
+		return memberItd;
 	}
 
 	public int insertSocialing(Socialing socialing) {
@@ -229,11 +274,11 @@ public class SocialingService {
 		return result;
 	}
 
-	public List<SocialingLike> selectLikedList(int nNum) {
+	public SocialingLike selectLikedList(int nNum, String userId) {
 		Connection conn = getConnection();
 		
 		/* Socialing_like 테이블 정보 조회 */
-		List<SocialingLike> socialingLike = socialingDao.selectLikedList(conn, nNum);
+		SocialingLike socialingLike = socialingDao.selectLikedList(conn, nNum, userId);
 		
 		close(conn);
 		

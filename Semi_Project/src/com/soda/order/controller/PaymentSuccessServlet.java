@@ -63,13 +63,13 @@ public class PaymentSuccessServlet extends HttpServlet {
 		payment.setPayOption(pg);
 		payment.setPayPhone(payPhone);
 		
-		// 결제한 클래스 조회
-		List<WishList> wishList = new WishListService().whsilistPay(nNum, selectDate);
+		// 결제하려는 클래스 조회
+		// List<WishList> wishList = new WishListService().whsilistPay(nNum, selectDate);
 
 		// 결제한 클래스 insert
 		int payInsert = new PaymentService().payInsert(payment);
 
-		// System.out.println("결제한 클래스 조회" + wishList);
+		 //System.out.println("결제한 클래스 조회" + wishList);
 		 System.out.println("insert 결과 " + payInsert);
 		 
 		response.setContentType("application/json; charset=utf-8");
