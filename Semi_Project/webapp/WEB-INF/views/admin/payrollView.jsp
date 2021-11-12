@@ -32,7 +32,9 @@
                     <div class="combo-area">
                         <select id="year" name="year" class="select">
                         <!-- db에서 year 추출해서 가져오기(년도는 계속 추가되기 때문에).. -->
-                        <option value="2020">년</option>
+                        <option value="">년</option>
+                        <option value="2021">2021</option>
+                        <option value="2020">2020</option>
 						</select>
 						 
 						 <!-- 1부터 12까지 forEach로 반복해서 option value 넣어주기 -->
@@ -70,31 +72,36 @@
         
         $(function() { 
         	$('#year').on('change', function () { 
-        		year = $(this).val(); 
-        		month = $(this).val(); 
+        		var year = $('#year').val(); 
+        		$('#month').on('change', function () { 
+        			var month = $('#month').val(); 
         		
-        		if (month != "") {
+        		
         			$.ajax({
         				type: "GET", 
         				url: "${ contextPath }/payroll", 
         				data: { year: year, month: month }, 
         				datatype: "JSON", 
         				success: function (result) { 
+        					console.log(result);
         					
-        					var html = "<tr><td>" + result.nTitle + "</td><td>" + result.userName + "</td><td>"
-								+ result.userId + "</td><td>" + result.total + "</td><td>" + result.taxTotal
+        						var html = '';
+        					
+        						$.each(result, function(i){
+        						html += "<tr><td>" + result[i].nTitle + "</td><td>" + result[i].userName + "</td><td>"
+								+ result[i].userId + "</td><td>" + result[i].total + "</td><td>" + result[i].taxTotal
 								+ "</td></tr>";
-								$("#tbl tbody").append(html);
-								
-        					}, 
+        						});
+        						$("#tbl tbody").append(html);
+        					
+        				}, 
         					error: function (e) { 
         						console.log("조회오류 "); 
         						} 
-        					}); 
-        			} else { 
-        				$("#tbl tbody").attr("disabled", true);
-        				}
+        				})
+        		
         			});
+        	});
         });
 
   </script>

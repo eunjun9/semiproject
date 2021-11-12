@@ -44,7 +44,7 @@ private Properties adminQuery = new Properties();
 			
 			rset = pstmt.executeQuery();
 			
-			if(rset.next()) {
+			while(rset.next()) {
 				payroll.add(new Payroll(rset.getString("notice_title"),
 										rset.getString("user_name"),
 										rset.getString("c_writer"),
