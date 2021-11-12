@@ -12,7 +12,7 @@
 <meta charset="UTF-8">
 <title>결제완료</title>
 <!-- 외부 스타일 시트 -->
-<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/order/payment-style.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/order/payment-style.css?2">
 <!-- 외부 폰트 -->
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
 <!-- jQuery -->
@@ -26,7 +26,7 @@
 	<!-- 위시리스트 화면 -->
 	<div class="container">
 		<div class="wish-title">
-			신청/결제
+			결제완료
 		</div>
 		<div class="wish-heardLine">
 			<hr>
@@ -79,11 +79,10 @@
 		
 		</c:forEach>
 
-		<hr class="hr-line">
-
 			<!-- 결제 결과 텍스트  -->
 		 	 <div class="pay-after">
-		        <span class="text">주문이 정상적으로 처리되었습니다.<br>
+		        <span class="text">
+		        클래스 신청이 정상적으로 처리되었습니다.<br>
 		            결제 내역은 마이페이지에서 확인 가능합니다.<br>
 		        </span>
 		    </div>
@@ -118,11 +117,11 @@
 	
 	<script>
 	function mainMove(){
-			location.href='${ contextPath }/mainpage.jsp';
+			location.href='${ contextPath }/mainpage';
 	}
 	
 	function payMove(){
-			location.href='${ contextPath }/mypagePayList.jsp';
+			location.href='${ contextPath }/mypage/main';
 	}
 	</script>
 	
