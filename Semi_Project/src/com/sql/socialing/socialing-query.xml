@@ -260,8 +260,36 @@
 			 , MAX_MEMBER
 			 , MIN_MEMBER
 		  FROM NOTICE
-		  JOIN MEMBER_INFO USING(USER_ID)
 		  JOIN SOCIALING USING(NOTICE_NUM)
+		  JOIN MEMBER_INFO USING(USER_ID)
+		 WHERE NOTICE_TYPE = '소셜링'
+		   AND NOTICE_STATUS = 'Y'
+		   AND NOTICE_NUM = ?
+	</entry>
+	
+	<entry key="selectWriterProfile">
+		SELECT
+			   NOTICE_NUM
+			 , USER_ID
+             , ROUTE
+             , CHANGE_NAME
+		  FROM NOTICE
+		  JOIN MEMBER_INFO USING(USER_ID)
+          JOIN PROFILE_FILE F USING(USER_ID)
+		 WHERE NOTICE_TYPE = '소셜링'
+		   AND NOTICE_STATUS = 'Y'
+           AND F.STATUS = 'Y'
+		   AND NOTICE_NUM = ?
+	</entry>
+	
+	<entry key="selectWriterItd">
+		SELECT
+			   NOTICE_NUM
+			 , USER_ID
+             , INTRODUCTION
+		  FROM NOTICE
+		  JOIN MEMBER_INFO USING(USER_ID)
+          JOIN PROFILE USING(USER_ID)
 		 WHERE NOTICE_TYPE = '소셜링'
 		   AND NOTICE_STATUS = 'Y'
 		   AND NOTICE_NUM = ?
@@ -288,6 +316,30 @@
 	      FROM SOCIALING_MEMBER
 	      JOIN MEMBER_INFO USING(USER_ID)
 	     WHERE NOTICE_NUM = ?
+	</entry>
+	
+	<entry key="selectMemberProfile">
+		SELECT
+			   USER_ID
+	         , USER_NAME
+             , ROUTE
+             , CHANGE_NAME
+	      FROM SOCIALING_MEMBER
+	      JOIN MEMBER_INFO USING(USER_ID)
+          JOIN PROFILE_FILE F USING(USER_ID)
+         WHERE F.STATUS = 'Y'
+	       AND NOTICE_NUM = ?
+	</entry>
+	
+	<entry key="selectMemberItd">
+		SELECT
+			   USER_ID
+	         , USER_NAME
+             , INTRODUCTION
+	      FROM SOCIALING_MEMBER
+	      JOIN MEMBER_INFO USING(USER_ID)
+          JOIN PROFILE USING(USER_ID)
+         WHERE NOTICE_NUM = ?
 	</entry>
 	
 	<entry key="insertMember">
