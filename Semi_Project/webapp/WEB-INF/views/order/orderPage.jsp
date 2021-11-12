@@ -205,43 +205,45 @@
             buyer_tel : '${ member.userPhone }',
             buyer_addr : '대한민국',
             buyer_postcode : '123-456'
-        }, function(rsp) {
+        }, function(rsp) {						// 결제 승인 시
         	var nNum = $('#noticeNum').val();
         	var userEmail =  $('#email').val();
         	var selDate = $('#selDate').val();
         	
-        	 if ( rsp.success ) {
+        	 if ( rsp.success ) {				// 결제 성공 시
  		    	$.ajax({
  		    		url: "${ contextPath }/pay/success", //cross-domain error가 발생하지 않도록 주의해주세요
  		    		type: 'get',
  		    		data: { imp_uid : rsp.imp_uid, pg_provider : rsp.pg_provider
 	    				, nNum : nNum, userEmail : userEmail, selDate : selDate
-		    			, buyerTel : rsp.buyer_tel }
- 		   		 }).done(function(data) {
-		    		if ( date > 0 ) {
-		    			msg = '결제가 완료되었습니다.';
-                        msg += '\n고유ID : ' + rsp.imp_uid;
-                        msg += '\n상점 거래ID : ' + rsp.merchant_uid;
-                        msg += '\결제 금액 : ' + rsp.paid_amount;
-                        msg += '카드 승인번호 : ' + rsp.apply_num;
+		    			, buyerTel : rsp.buyer_tel },
+		    		success : function(data){
+		    		if ( data > 0 ) {
+		    			msg = '결제가 완료되었습니다.' + '\n';
+                        msg += '\n주문번호 : ' + rsp.imp_uid + '\n';
+                        msg += '\결제 금액 : ' + rsp.paid_amount + ' 원';
                         
                         alert(msg);
+                        location.href="${ contextPath }/pay/after?nNum=" + nNum +"&selDate=" + selDate;
             		} else {
                		 var msg = '결제에 실패하였습니다.';
                 	 msg += '에러내용 : ' + rsp.error_msg;
                 	//[3] 아직 제대로 결제가 되지 않았습니다.
 	    			//[4] 결제된 금액이 요청한 금액과 달라 결제를 자동취소처리하였습니다.
             		}
-         	   });
-		    	//성공시 이동할 페이지
- 		    	location.href='${ contextPath }/pay/success?msg='+msg;
-		    } else {
+		    	},
+		    	error : function(data){
+		    		console.log('에러 발생')
+		    	}
+		    })
+		   } else {
 		        msg = '결제에 실패하였습니다.';
 		        msg += '에러내용 : ' + rsp.error_msg;
 		        //실패시 이동할 페이지
 		        location.href='${ contextPath }/wishlist';
 		        alert(msg);
 		    }
+        
         });
     }
 

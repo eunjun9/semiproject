@@ -2,7 +2,6 @@ package com.soda.order.controller;
 
 import java.io.IOException;
 import java.util.List;
-import java.sql.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -50,8 +49,10 @@ public class PaymentSuccessServlet extends HttpServlet {
 				payId + "/" + pg + "/" + payPhone);
     	
 		// 원데이 선택 날짜 String으로 넘어와서 sql Date로 변환
-		java.sql.Date selDate = java.sql.Date.valueOf(selectDate);
-		
+		java.sql.Date selDate = null;
+		if( selectDate != null ) {
+			selDate = java.sql.Date.valueOf(selectDate);
+		}
 		
 		Payment payment = new Payment();
 		payment.setUserId(userId);
@@ -68,20 +69,12 @@ public class PaymentSuccessServlet extends HttpServlet {
 		// 결제한 클래스 insert
 		int payInsert = new PaymentService().payInsert(payment);
 
-		 System.out.println("결제한 클래스 조회" + wishList);
+		// System.out.println("결제한 클래스 조회" + wishList);
 		 System.out.println("insert 결과 " + payInsert);
 		 
 		response.setContentType("application/json; charset=utf-8");
 		response.getWriter().print(payInsert);
-			
-	//	if (payInsert > 0) { 
-			//	request.setAttribute("payInsert", payInsert);
-			//	request.setAttribute("wishList", wishList);
-			//	request.getRequestDispatcher("/WEB-INF/views/order/paySuccess.jsp").forward(request, response);
-		//} else { 
-		//	request.setAttribute("message", "결제 내역 조회에 실패하였습니다. 마이페이지에서 확인해주세요.");
-		//	request.getRequestDispatcher("/WEB-INF/views/main/mainpage.jsp").forward(request, response);
-		//}
+
 	
 	}
 
