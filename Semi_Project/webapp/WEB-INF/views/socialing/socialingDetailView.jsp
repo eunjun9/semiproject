@@ -9,7 +9,7 @@
 <title>소셜링_상세페이지</title>
 
 <!-- 외부 스타일 시트 -->
-<link href="${ contextPath }/resources/css/socialing/socialing_detail.css?4" rel="stylesheet">
+<link href="${ contextPath }/resources/css/socialing/socialing_detail.css?5" rel="stylesheet">
 <link href="${ contextPath }/resources/css/socialing/socialing_check.css?2" rel="stylesheet">
 
 <!-- 글꼴 (Noto Sans) -->
@@ -66,11 +66,17 @@
             </div>
             <div class="wrapper4">
                 <div class="profileBox">
-                	<!-- 프로필 이미지 border-radius로 동그랗게 출력 -->
-                	<!-- <div class="profile">
-                    	<img src="${ contextPath }${ profileFile.route }${ profileFile.changeName }">
-                    </div> -->
-                    <img id="p-image" src="${ contextPath }/resources/images/eunjung/profile.png"><br>
+                	<c:choose>
+	                    <c:when test="${ not empty socialing.profile }">
+                			<div class="profile">
+	                        	<img src="${ contextPath }${ socialing.profile.route }${ socialing.profile.changeName }"><br>
+	                        </div>
+	                    </c:when>
+	                    <c:otherwise>
+	                        <img id="p-image" src="${ contextPath }/resources/images/eunjung/profile2.png"><br>
+	                    </c:otherwise>
+                    </c:choose>
+                    
                     <p id="p-name">${ socialing.userName }</p><br>
                     <!-- if문으로 일반 회원 : 참여하기 버튼 / 작성자 : 참여확인 버튼 출력되게 -->
                     <c:choose>
@@ -87,11 +93,17 @@
             <h3 id="subTitle3">함께하는 멤버</h3>
             <!-- 작성자 프로필(기본) -->
             <div class="subWrap">
-                <a href="#"> <!-- 참여자 피드로 이동 -->
-                	<!-- <div class="profile2">
-                    	<img src="${ contextPath }${ profileFile.route }${ profileFile.changeName }">
-                    </div> -->
-                    <img id="s-image" src="${ contextPath }/resources/images/eunjung/profile.png">
+                <a href="${contextPath}/myfeed?userId=${socialing.userId}"> <!-- 참여자 피드로 이동(임시값) -->
+                	<div class="s-profile">
+	                	<c:choose>
+		                    <c:when test="${ not empty socialing.profile.changeName }">
+		                        <img src="${ contextPath }${ socialing.profile.route }${ socialing.profile.changeName }"><br>
+		                    </c:when>
+		                    <c:otherwise>
+		                        <img id="s-image" src="${ contextPath }/resources/images/eunjung/profile2.png"><br>
+		                    </c:otherwise>
+	                    </c:choose>
+	                </div>
                     <div class="subWrap2">
                         <p id="s-name">${ socialing.userName }</p>
                         <p id="s-intro">${ socialing.introduction }</p>
@@ -102,7 +114,16 @@
             <c:forEach var="m" items="${ memberList }">
             <div class="subWrap">
                 <a href="#">
-                    <img id="s-image" src="${ contextPath }/resources/images/eunjung/profile.png">
+                	<div class="s-profile">
+	                	<c:choose>
+		                    <c:when test="${ not empty m.profile.changeName }">
+		                        <img src="${ contextPath }${ m.profile.route }${ m.profile.changeName }"><br>
+		                    </c:when>
+		                    <c:otherwise>
+		                        <img id="s-image" src="${ contextPath }/resources/images/eunjung/profile2.png"><br>
+		                    </c:otherwise>
+	                    </c:choose>
+	                </div>
                     <div class="subWrap2">
                         <p id="s-name">${ m.memberName }</p>
                         <p id="s-intro">${ m.introduction }</p>
