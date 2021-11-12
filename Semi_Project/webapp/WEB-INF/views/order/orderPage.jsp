@@ -138,7 +138,7 @@
 						<input type="hidden" name="phone" value="${ member.userPhone }" />
 						<input type="hidden" name="totalPrice" value="${ totalPrice }" /> 
 				
-						<button type="submit" id="pay-button" class="pay" onclick="iamport();">결제하기</button>
+						<button type="submit" id="pay-button" class="pay" onclick="radioCheck();">결제하기</button>
 				 </div>
 			</div>
 			
@@ -191,7 +191,9 @@
 
 	<!-- 아임포트 카카오페이 API -->
 	<script>
-	function iamport(){
+	function radioCheck(){
+	    if($('input:radio[id=kakaoPay]').is(':checked')){
+		
         //가맹점 식별코드
         IMP.init('imp46363326');
         IMP.request_pay({
@@ -218,8 +220,8 @@
 	    				, nNum : nNum, userEmail : userEmail, selDate : selDate
 		    			, buyerTel : rsp.buyer_tel },
 		    		success : function(data){
-		    		if ( data > 0 ) {
-		    			msg = '결제가 완료되었습니다.' + '\n';
+		    			if( data > 0 ) {
+		    			var msg = '결제가 완료되었습니다.' + '\n';
                         msg += '\n주문번호 : ' + rsp.imp_uid + '\n';
                         msg += '\결제 금액 : ' + rsp.paid_amount + ' 원';
                         
@@ -245,7 +247,65 @@
 		    }
         
         });
-    }
+	   
+	 } else if($('input:radio[id=cardPay]').is(':checked')){
+		 
+		 //가맹점 식별코드
+	        IMP.init('imp46363326');
+	        IMP.request_pay({
+	            pg : 'html5_inicis',
+	            pay_method : 'card',
+	            merchant_uid : 'merchant_' + new Date().getTime(),
+	            name : '소셜다이닝',
+	            amount : ${ totalPrice },
+	            buyer_email : '${ member.userId }',
+	            buyer_name : '${ member.userName }',
+	            buyer_tel : '${ member.userPhone }',
+	            buyer_addr : '대한민국',
+	            buyer_postcode : '123-456'
+	        }, function(rsp) {						// 결제 승인 시
+	        	var nNum = $('#noticeNum').val();
+	        	var userEmail =  $('#email').val();
+	        	var selDate = $('#selDate').val();
+	        	
+	        	 if ( rsp.success ) {				// 결제 성공 시
+	 		    	$.ajax({
+	 		    		url: "${ contextPath }/pay/success", //cross-domain error가 발생하지 않도록 주의해주세요
+	 		    		type: 'get',
+	 		    		data: { imp_uid : rsp.imp_uid, pg_provider : rsp.pg_provider
+		    				, nNum : nNum, userEmail : userEmail, selDate : selDate
+			    			, buyerTel : rsp.buyer_tel },
+			    		success : function(data){
+			    		if ( data > 0 ) {
+			    			var msg = '결제가 완료되었습니다.' + '\n';
+	                        msg += '\n주문번호 : ' + rsp.imp_uid + '\n';
+	                        msg += '\결제 금액 : ' + rsp.paid_amount + ' 원';
+	                        
+	                        alert(msg);
+	                        location.href="${ contextPath }/pay/after?nNum=" + nNum +"&selDate=" + selDate;
+	            		} else {
+	               		 var msg = '결제에 실패하였습니다.';
+	                	 msg += '에러내용 : ' + rsp.error_msg;
+	                	//[3] 아직 제대로 결제가 되지 않았습니다.
+		    			//[4] 결제된 금액이 요청한 금액과 달라 결제를 자동취소처리하였습니다.
+	            		}
+			    	},
+			    	error : function(data){
+			    		console.log('에러 발생')
+			    	}
+			    })
+			   } else {
+			        msg = '결제에 실패하였습니다.';
+			        msg += '에러내용 : ' + rsp.error_msg;
+			        //실패시 이동할 페이지
+			        location.href='${ contextPath }/wishlist';
+			        alert(msg);
+			    }
+	        
+	        });
+		 
+	 }
+  }
 
 	</script>
 
