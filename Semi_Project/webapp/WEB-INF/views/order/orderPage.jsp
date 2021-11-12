@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%
-	String selDate = (String) request.getAttribute("selDate");
+	int nNum = (int) request.getAttribute("nNum");
 %>
 <!DOCTYPE html>
 <html>
@@ -41,10 +41,9 @@
 		<div class="wish-class">
 			<c:forEach var="wishList" items="${ wishList }">
 				<div class="wish-content">
-					<input type="hidden" name="noticeNum">
+					<input type="hidden" id="noticeNum" name="noticeNum" value="${ nNum }">
 					<div class="wish-class img">
-						<img
-							src="${ contextPath }${ wishList.route }${ wishList.changeName }"
+						<img src="${ contextPath }${ wishList.route }${ wishList.changeName }"
 							width='200px' height='150px'>
 					</div>
 				</div>
@@ -63,11 +62,12 @@
 					</c:when>
 					<c:when test="${ wishList.cCategory eq '원데이' }">
 						<div class="wish-class-date">
-							<p class="date">${ selDate }<br>
-							${ wishList.cTime1 } ~ ${ wishList.cTime2 }
-							</p>
+						<p class="date">
+						<input type="hidden" id="selDate" name="selDate" value="${ wishList.lessonDate }">
+							${ wishList.lessonDate }<br>
+							${ wishList.cTime1 } ~ ${ wishList.cTime2 } </p>
 						</div>
-					</c:when>
+						</c:when>
 				</c:choose>
 
 				<div class="wish-class-price">
@@ -196,7 +196,7 @@
         IMP.init('imp46363326');
         IMP.request_pay({
             pg : 'kakaopay',
-            pay_method : '$(":input:radio[id=kakaoPay]:checked").val()',
+            pay_method : 'card',
             merchant_uid : 'merchant_' + new Date().getTime(),
             name : '소셜다이닝',
             amount : ${ totalPrice },
@@ -205,43 +205,45 @@
             buyer_tel : '${ member.userPhone }',
             buyer_addr : '대한민국',
             buyer_postcode : '123-456'
-        }, function(rsp) {
-        	 if ( rsp.success ) {
- 		    	//[1] 서버단에서 결제정보 조회를 위해 jQuery ajax로 imp_uid 전달하기
- 		    	jQuery.ajax({
- 		    		url: "/payments/complete", //cross-domain error가 발생하지 않도록 주의해주세요
- 		    		type: 'POST',
- 		    		dataType: 'json',
- 		    		data: { imp_uid : rsp.imp_uid, pg_provider : pg_provider }
- 			    		//기타 필요한 데이터가 있으면 추가 전달
- 		   		 }).done(function(data) {
-		    		//[2] 서버에서 REST API로 결제정보확인 및 서비스루틴이 정상적인 경우
-		    		if ( everythings_fine ) {
-		    			var msg = '결제가 완료되었습니다.';
-		    			msg += '\n고유ID : ' + rsp.imp_uid;
-		    			msg += '\n상점 거래ID : ' + rsp.merchant_uid;
-		    			msg += '\결제 금액 : ' + rsp.paid_amount;
-		    			msg += '카드 승인번호 : ' + rsp.apply_num;
-		    			
-		    			alert(msg);
-		    			console.log(rsp);
-                
+        }, function(rsp) {						// 결제 승인 시
+        	var nNum = $('#noticeNum').val();
+        	var userEmail =  $('#email').val();
+        	var selDate = $('#selDate').val();
+        	
+        	 if ( rsp.success ) {				// 결제 성공 시
+ 		    	$.ajax({
+ 		    		url: "${ contextPath }/pay/success", //cross-domain error가 발생하지 않도록 주의해주세요
+ 		    		type: 'get',
+ 		    		data: { imp_uid : rsp.imp_uid, pg_provider : rsp.pg_provider
+	    				, nNum : nNum, userEmail : userEmail, selDate : selDate
+		    			, buyerTel : rsp.buyer_tel },
+		    		success : function(data){
+		    		if ( data > 0 ) {
+		    			msg = '결제가 완료되었습니다.' + '\n';
+                        msg += '\n주문번호 : ' + rsp.imp_uid + '\n';
+                        msg += '\결제 금액 : ' + rsp.paid_amount + ' 원';
+                        
+                        alert(msg);
+                        location.href="${ contextPath }/pay/after?nNum=" + nNum +"&selDate=" + selDate;
             		} else {
                		 var msg = '결제에 실패하였습니다.';
-                	msg += '에러내용 : ' + rsp.error_msg;
+                	 msg += '에러내용 : ' + rsp.error_msg;
                 	//[3] 아직 제대로 결제가 되지 않았습니다.
 	    			//[4] 결제된 금액이 요청한 금액과 달라 결제를 자동취소처리하였습니다.
             		}
-         	   });
-		    	//성공시 이동할 페이지
-		    	location.href='<%=request.getContextPath()%>/pay/success';
-		    } else {
+		    	},
+		    	error : function(data){
+		    		console.log('에러 발생')
+		    	}
+		    })
+		   } else {
 		        msg = '결제에 실패하였습니다.';
 		        msg += '에러내용 : ' + rsp.error_msg;
 		        //실패시 이동할 페이지
-		        location.href="<%=request.getContextPath()%>/wishlist";
+		        location.href='${ contextPath }/wishlist';
 		        alert(msg);
 		    }
+        
         });
     }
 

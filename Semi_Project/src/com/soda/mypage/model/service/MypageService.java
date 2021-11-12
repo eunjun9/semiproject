@@ -1,12 +1,16 @@
 package com.soda.mypage.model.service;
 
 import java.sql.Connection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.soda.lesson.model.vo.Lesson;
+import com.soda.lesson.model.vo.PageInfo;
 import com.soda.mypage.model.dao.MypageDao;
 import com.soda.mypage.model.vo.Profile;
 import com.soda.mypage.model.vo.ProfileFile;
+import com.soda.socialing.model.vo.Socialing;
 
 import static com.common.JDBCTemplate.*;
 
@@ -37,6 +41,30 @@ public class MypageService {
 		close(conn);
 
 		return profile;
+	}
+	
+	// 관심 소셜링 가져오기
+	public Map<String, Object> likeSocialingList(int page, Socialing socialing) {
+		Connection conn = getConnection();
+		
+		// 게시글 총 개수 
+		int listCount = mypageDao.getSocialingListCount(conn, socialing);
+		
+		// 페이지 객체
+		PageInfo pi = new PageInfo(page, listCount, 3, 6);
+		
+		// 목록 조회
+		List<Socialing> socialingList = mypageDao.selectSocialingList(conn, pi);
+		//System.out.println(listCount);
+		
+		Map<String, Object> returnMap = new HashMap<>();
+		
+		returnMap.put("pi", pi);
+		returnMap.put("socialingList", socialingList);
+		
+		close(conn);
+		
+		return returnMap;
 	}
 
 }

@@ -63,7 +63,6 @@ public class SocialingDao {
 				pstmt.setString(1, search.getLocal());
 			}/* else if(search.getDateIn() != null) {
 //				pstmt.setDate(1, search.getDateIn());
-				pstmt.setString(1, search.getDateIn());
 			}*/ else if(search.getOnoff() != null) {
 				pstmt.setString(1, search.getOnoff());
 			}
@@ -124,7 +123,6 @@ public class SocialingDao {
 				pstmt.setString(index++, search.getLocal());
 			}/* else if(search.getDateIn() != null) {
 //				pstmt.setDate(index++, search.getDateIn());
-				pstmt.setString(index++, search.getDateIn());
 			}*/ else if(search.getOnoff() != null) {
 				pstmt.setString(index++, search.getOnoff());
 			}
@@ -163,6 +161,47 @@ public class SocialingDao {
 		}
 
 		return socialingList;
+	}
+	
+	// 게시물 리스트 조회 (시작 임박)
+	public List<Socialing> selectSoonList(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = socialingQuery.getProperty("selectSoonList");
+		List<Socialing> socialingSoonList = new ArrayList<>();
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			rset = pstmt.executeQuery();
+			
+			while (rset.next()) {
+				Socialing socialing = new Socialing();
+				socialing.setnNum(rset.getInt("notice_num"));
+				socialing.setnTitle(rset.getString("notice_title"));
+				socialing.setSplace(rset.getString("s_place"));
+				socialing.setSdate(rset.getDate("s_date"));
+				socialing.setStime(rset.getString("s_time"));
+				socialing.setStype(rset.getString("s_type"));
+
+				List<SodaFile> photoList = new ArrayList<>();
+				SodaFile file = new SodaFile();
+				file.setRoute(rset.getString("route"));
+				file.setChangeName(rset.getString("change_name"));
+				photoList.add(file);
+				socialing.setPhotoList(photoList);
+				
+				socialingSoonList.add(socialing);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return socialingSoonList;
 	}
 	
 	// 게시물 조회수 증가

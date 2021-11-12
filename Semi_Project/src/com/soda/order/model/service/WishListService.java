@@ -60,10 +60,10 @@ public class WishListService {
 	}
 	
 	// 결제 화면 조회
-		public List<WishList> wishlistList(int nNum) {
+		public List<WishList> whsilistPay(int nNum,  String selDate) {
 			Connection conn = getConnection();
 
-			List<WishList> wishlist = wishListDao.wishlistPay(conn, nNum);
+			List<WishList> wishlist = wishListDao.wishlistPay(conn, nNum, selDate);
 
 			close(conn);
 
@@ -73,23 +73,6 @@ public class WishListService {
 		}
 
 	
-//		// 결제 완료
-//		public List<WishList> payInsert(WishList wishlist) {
-//			Connection conn = getConnection();
-//			List<WishList> wishOrder = null;
-//
-//			// payment에 insert 결과
-//			int result = wishListDao.payInsert(conn, wishlist);
-//
-//			if(result > 0) {
-//				commit(conn);
-//			} else {
-//				rollback(conn);
-//			}
-//			close(conn);
-//
-//			return wishOrder;
-//		}
 
 
 

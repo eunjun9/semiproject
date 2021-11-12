@@ -1,6 +1,9 @@
 package com.soda.mypage.controller;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,6 +14,7 @@ import com.soda.member.model.vo.Member;
 import com.soda.mypage.model.service.MypageService;
 import com.soda.mypage.model.service.ProfileService;
 import com.soda.mypage.model.vo.Profile;
+import com.soda.socialing.model.vo.Socialing;
 
 /**
  * Servlet implementation class MypageMainServlet
@@ -30,22 +34,39 @@ public class MypageMainServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-    // 마이페이지 메인 - 프로필
+    // 마이페이지 메인 - 관심소셜링
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-			request.getRequestDispatcher("/WEB-INF/views/mypage/mypageMain.jsp").forward(request, response);
+		// 페이지 초기값 (첫 페이지)
+		int page = 1;
+
+		// 전달 받은 페이지가 있을 때
+		if (request.getParameter("page") != null) {
+			page = Integer.parseInt(request.getParameter("page"));
+		}
+		
+		String userId = ((Member)request.getSession().getAttribute("loginUser")).getUserId();
+		Socialing socialing = new Socialing();
+		socialing.setUserId(userId);
+		
+		Map<String, Object> map = new MypageService().likeSocialingList(page, socialing);
+		//List<Socialing> socialingList = new MypageService().likeSocialingList(userId);
+		
+		request.setAttribute("pi", map.get("pi"));
+		request.setAttribute("socialingList", map.get("socialingList"));
+		request.getRequestDispatcher("/WEB-INF/views/mypage/mypageMain.jsp").forward(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	// 마이페이지 메인 - 관심 소셜링
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-			String userId = ((Member)request.getSession().getAttribute("loginUser")).getUserId();
-		
-	      Profile profile = new MypageService().selectProfile(userId);
-		
-			request.setAttribute("profile", profile);
-			request.getRequestDispatcher("/WEB-INF/views/mypage/mypageMain.jsp").forward(request, response);
+//		String userId = ((Member)request.getSession().getAttribute("loginUser")).getUserId();
+//		
+//	      Profile profile = new MypageService().selectProfile(userId);
+//		
+//			request.setAttribute("profile", profile);
+//			request.getRequestDispatcher("/WEB-INF/views/mypage/mypageMain.jsp").forward(request, response);
 	}
 
 }

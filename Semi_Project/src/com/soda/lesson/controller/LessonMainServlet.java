@@ -42,7 +42,7 @@ public class LessonMainServlet extends HttpServlet {
 			page = Integer.parseInt(request.getParameter("page"));
 		}
  
-		/* 필터 관련 파라미터 추출  (추후에 수정 ) */
+		/* 필터 관련 파라미터 추출 */
 		String keyword = request.getParameter("keyword");
 		String price1 = request.getParameter("price1");
 		String price2 = request.getParameter("price2");

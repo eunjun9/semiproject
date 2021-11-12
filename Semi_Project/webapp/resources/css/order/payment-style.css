@@ -263,17 +263,26 @@ ul {
 
  .wish-footer{
     width: 40%;
-    margin-left: 280px;
+    margin-left: 0;
     margin-top: 5%;
     margin-bottom: 10%;
     display: flex;
+    
 
  }
- .back-btn, .pay-btn{
+ .back-btn, .pay-btn {
     margin-top: 5%;
     margin-bottom: 5%;
     width: 100%;
+    align-items : center;
+    margin-left : 80%;
  }
+ 
+.pay-btn{
+	margin : 5%;
+    width: 100%;
+    align-items : center;
+}
 
  .back{
      width: 150px;

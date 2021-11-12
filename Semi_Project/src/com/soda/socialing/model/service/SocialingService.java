@@ -35,10 +35,14 @@ public class SocialingService {
 		// 3. 페이징 처리 된 게시글 목록 조회
 		List<Socialing> socialingList = socialingDao.selectList(conn, pi, search);
 		
+		// 4. 시작 임박 소셜링 목록 조회
+		List<Socialing> soonSocialingList = socialingDao.selectSoonList(conn);
+		
 		Map<String, Object> returnMap = new HashMap<>();
 		
 		returnMap.put("pi", pi);
 		returnMap.put("socialingList", socialingList);
+		returnMap.put("soonSocialingList", soonSocialingList);
 		
 		return returnMap;
 	}
