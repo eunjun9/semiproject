@@ -77,4 +77,56 @@ public class SocialingMember {
 				+ ", memberName=" + memberName + ", introduction=" + introduction + ", profile=" + profile + "]";
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((introduction == null) ? 0 : introduction.hashCode());
+		result = prime * result + ((memberId == null) ? 0 : memberId.hashCode());
+		result = prime * result + ((memberName == null) ? 0 : memberName.hashCode());
+		result = prime * result + noticeNum;
+		result = prime * result + ((profile == null) ? 0 : profile.hashCode());
+		result = prime * result + ((status == null) ? 0 : status.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		SocialingMember other = (SocialingMember) obj;
+		if (introduction == null) {
+			if (other.introduction != null)
+				return false;
+		} else if (!introduction.equals(other.introduction))
+			return false;
+		if (memberId == null) {
+			if (other.memberId != null)
+				return false;
+		} else if (!memberId.equals(other.memberId))
+			return false;
+		if (memberName == null) {
+			if (other.memberName != null)
+				return false;
+		} else if (!memberName.equals(other.memberName))
+			return false;
+		if (noticeNum != other.noticeNum)
+			return false;
+		if (profile == null) {
+			if (other.profile != null)
+				return false;
+		} else if (!profile.equals(other.profile))
+			return false;
+		if (status == null) {
+			if (other.status != null)
+				return false;
+		} else if (!status.equals(other.status))
+			return false;
+		return true;
+	}
+
 }

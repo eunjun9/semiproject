@@ -107,19 +107,19 @@ public class SocialingDetailServlet extends HttpServlet {
 		List<SocialingMember> memberList = socialingService.selectMember(nNum);
 		
 		/* 참여자 프로필 사진 조회 */
-		SocialingMember memberProfile = socialingService.selectMemberProfile(nNum);
+		List<SocialingMember> memberProfile = socialingService.selectMemberProfile(nNum);
 		/* 참여자 자기소개 조회 */
-		SocialingMember memberItd = socialingService.selectMemberItd(nNum);
+		List<SocialingMember> memberItd = socialingService.selectMemberItd(nNum);
 		
 		// 프로필 정보가 있을 경우 참여자 정보 추가
-		for(SocialingMember s : memberList) {
-			if(memberProfile != null && memberItd != null) {
-				s.setProfile(memberProfile.getProfile());
-				s.setIntroduction(memberItd.getIntroduction());
-			} else if(memberProfile != null) {
-				s.setProfile(memberProfile.getProfile());
-			} else if(memberItd != null) {
-				s.setIntroduction(memberItd.getIntroduction());
+		for(int i = 0; i < memberList.size(); i++) {
+			if(memberProfile.get(i) != null && memberItd.get(i) != null) {
+				memberList.get(i).setProfile(memberProfile.get(i).getProfile());
+				memberList.get(i).setIntroduction(memberItd.get(i).getIntroduction());
+			} else if(memberProfile.get(i) != null) {
+				memberList.get(i).setProfile(memberProfile.get(i).getProfile());
+			} else if(memberItd.get(i) != null) {
+				memberList.get(i).setIntroduction(memberItd.get(i).getIntroduction());
 			}
 		}
 		
