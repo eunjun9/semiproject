@@ -29,7 +29,7 @@ img {
 }
 .sList_title h2{
 	font-size: 1.8rem;
-	    color: rgb(7, 86, 105);
+	 color: rgb(7, 86, 105);
 }
 
 #back {
@@ -44,7 +44,6 @@ img {
 
 #main_title{
     color: rgb(188,188,188);
-    font-weight: bold;
     margin-top: -20px;
     font-size: 1.2rem;
 }

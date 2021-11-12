@@ -29,7 +29,7 @@
                           </li> 
                   
                          <li class="content menu">
-                            <a href="#">컨텐츠관리</a> 
+                            <a href="${ contextPath }/admin/report">신고관리</a> 
                          </li>
                   
                         <li class="sales menu">

@@ -25,7 +25,7 @@ hr{
 }
 
 #pList_box{
-    width: 900px;
+    width: 980px;
     margin : 0 auto;
     border : 6px solid rgb(218,239,245);
     padding: 3% 4%;
@@ -33,7 +33,7 @@ hr{
 }
 
 #back {
-    font-size: 0.9rem;
+    font-size: 1.1rem;
     color: slategray;
 }
 
@@ -42,10 +42,15 @@ hr{
     text-decoration: none;
 }
 
+#firstbox h2{
+	font-size : 1.8rem;
+	color : rgb(7, 86, 105);
+}
+
 #main_title{
     color: rgb(188,188,188);
-    font-weight: bold;
-    margin-top: -20px;
+    font-size: 1.2rem;
+    margin-top : -2%;
 }
 
 /* 결제내역 필터 */
@@ -59,30 +64,31 @@ hr{
     border-radius: 5px;
 }
 .pay_filter form{
-    margin: auto 16%;
+    margin: auto 15%;
 }
 .pay_filter label{
-    font-weight: 600;
-    font-size: 11pt;
+    font-size: 1.2rem;
 }
 .pay_filter input[type=date]{
     border: 1px solid rgb(185,185,185, 0);
     border-radius: 5px;
-    width: 150px;
-    height: 25px;
+    width: 190px;
+    height: 30px;
     font-family: 'Noto Sans KR', sans-serif;
     cursor: pointer;
     margin-left: 5px;
+    font-size : 1.0rem;
 }
 .pay_filter [name=filter_submit]{
     border: 1px solid rgb(185,185,185, 0);
     border-radius: 5px;
-    width: 70px;
-    height: 25px;
+    width: 75px;
+    height: 35px;
     background-color: rgb(7, 86, 105);
     color: white;
     cursor: pointer;
-    margin-left: 10px;
+    margin-left: 20px;
+    font-size : 1.0rem;
 }
 
 /* 결제 내역 타이틀 */
@@ -136,9 +142,9 @@ hr{
     position: relative;
     top : -175px;
     left : 210px;
-    width: 50px;
+    width: 70px;
     height: 40px;
-    font-size: 11px;
+    font-size: 10pt;
     color: grey;
 }
 .class_title{
@@ -151,20 +157,37 @@ hr{
 }
 
 /* 날짜 시간 */
-.class_date{
+.o_date{
     padding: 4% 2%;
     position: relative;
-    width: 19%;
+    width: 22%;
     height: 50px;
     border-right: 1px solid lightgray;
-    top: -82px;
+    top: -86px;
     left: 495px;
 }
-.class_date p{
+.o_dateP{
     position: relative;
-    font-size: 12px;
+    font-size: 0.8rem;
     color : rgb(121, 121, 121);
-    margin-left: 5px;
+    margin-left: 42px;
+}
+
+.v_date{
+    padding: 4% 2%;
+    position: relative;
+    width: 22%;
+    height: 50px;
+    border-right: 1px solid lightgray;
+    top: -86px;
+    left: 495px;
+}
+
+.v_dateP{
+	position: relative;
+    font-size: 1.0rem;
+    color : rgb(121, 121, 121);
+    margin-left: 105px;
 }
 
 /* 가격 */
@@ -173,10 +196,10 @@ hr{
     position: relative;
     width: 13%;
     height: 50px;
-    top: -220px;
-    left: 757px;
+    top: -225px;
+    left: 817px;
 }
-.price p{
+.class_priceP{
     font-size: 15px;
     font-weight: bold;
 }
@@ -185,8 +208,10 @@ hr{
     border: 1px solid rgb(185,185,185, 0);
     border-radius: 5px;
     width: 70px;
-    height: 25px;
+    height: 30px;
     background-color:rgb(218, 239, 245);
     cursor: pointer;
+    margin-top : 2px;
     margin-left: -5px;
+    font-weight : bold;
 }

@@ -16,7 +16,7 @@ import com.soda.socialing.model.vo.Socialing;
 /**
  * Servlet implementation class MypageSocialingList
  */
-@WebServlet("/mypage/socialingList")
+@WebServlet("/mypage/socialinglist")
 public class MypageSocialingList extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
