@@ -71,7 +71,7 @@
 
 				<div class="wish-class-price">
 					<p class="price">
-						<fmt:formatNumber value="${ wishList.cPrice }" pattern="#,###" />
+						<fmt:formatNumber value="${ wishList.cPrice }" pattern="#,###" /> 원
 					</p>
 				</div>
 				<hr class="hr-line">
