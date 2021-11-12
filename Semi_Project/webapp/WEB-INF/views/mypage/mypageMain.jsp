@@ -88,6 +88,7 @@
     </script>
             
         <!-- 페이지 로직 -->
+        <c:if test="${ not empty socialingList }">
         <div class="wrapper5">
         	<!-- (<<) 제일 첫 페이지로 이동 -->
             <a class="paging" href="${ contextPath }/mypage/main?page=1"><img width="16px" src="${ contextPath }/resources/images/yewon/previous.png">
@@ -130,6 +131,7 @@
             <a class="paging" href="${ contextPath }/mypage/main?page=${ pi.maxPage }"><img width="16px" src="${ contextPath }/resources/images/yewon/next.png">
             <img width="16px" src="${ contextPath }/resources/images/yewon/next.png"></a>
         </div>
+        </c:if>
         </div>
 </div>
 </div>	
