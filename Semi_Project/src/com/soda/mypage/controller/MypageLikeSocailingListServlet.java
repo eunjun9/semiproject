@@ -11,13 +11,13 @@ import javax.servlet.http.HttpServletResponse;
  * Servlet implementation class LikeSocailingListServlet
  */
 @WebServlet("/mypage/like")
-public class LikeSocailingListServlet extends HttpServlet {
+public class MypageLikeSocailingListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LikeSocailingListServlet() {
+    public MypageLikeSocailingListServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
