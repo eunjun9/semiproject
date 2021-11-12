@@ -157,7 +157,7 @@
 				<fmt:formatDate value="${ stime2 }" type="time" pattern="a h시 m분"/></p>
             </div>
             <div class="buttons"> <!-- 삭제, 수정은 작성자/관리자만 표시 -->
-            <c:if test="${ loginUser.userId == socialing.userId || loginUser.userId.equals('admin') }">
+            <c:if test="${ loginUser.userId == socialing.userId || loginUser.userId.contains('admin') }">
             	<button type="button" id="delete" onclick="deleteBoard()">삭제</button>
                 <button type="button" id="update" onclick="updateBoard()">수정</button>
             </c:if>

@@ -56,11 +56,11 @@ public class ReportFormServlet extends HttpServlet {
 
 		int result = new AdminService().insertReport(report);
 		
-//		if (result > 0) {
-//			request.setAttribute("result", "success");
-//		} else {
-//			request.setAttribute("result", "fail");
-//		}
+		if (result > 0) {
+			request.setAttribute("result", "success");
+		} else {
+			request.setAttribute("result", "fail");
+		}
 		
 		request.getRequestDispatcher("/WEB-INF/views/common/reportFormPopup.jsp").forward(request, response);
 	}

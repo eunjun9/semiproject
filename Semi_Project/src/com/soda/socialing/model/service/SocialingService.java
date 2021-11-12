@@ -167,7 +167,6 @@ public class SocialingService {
 	public int insertMember(int nNum, String userId) {
 		Connection conn = getConnection();
 		
-		// 중복참여 방지 로직 추가해야 함
 		int result = socialingDao.insertMember(conn, nNum, userId);
 		
 		if(result > 0) {

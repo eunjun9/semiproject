@@ -42,7 +42,7 @@
 	
 	<div class="page body">
         <h2 id="r_title">신고하기</h2>
-        <form id="report" action="" method="post">
+        <form id="report" action="${ contextPath }/reportForm" method="post">
         	<input type="hidden" name="nNum" value="${ param.nNum }"> <!-- 값이 가져와지는지 확인 필요 -->
             <div class="radioArea">
                 <p id="r_subTitle">신고 사유</p>
@@ -56,7 +56,7 @@
                 <label for="rep4">명예훼손</label><br>
                 <input type="radio" id="rep5" name="rep-reason" value="기타">
                 <label for="rep5">기타</label><br>
-                <textarea id="r_detail" name="detail" placeholder="신고 사유를 구체적으로 기재해 주세요." disabled="disabled"></textarea>
+                <textarea id="r_detail" name="detail" placeholder="신고 사유를 구체적으로 기재해 주세요." disabled></textarea>
             </div><br>
             <div class="r_btnArea">
                 <button type="button" id="r_cancel" onclick="window.close()">취소</button>
@@ -66,17 +66,16 @@
     </div>
     
     <script>
-    	// 신고사유 기타 선택시에만 textarea 활성화 (수정해야함)
+    	// 신고사유 기타 선택시에만 textarea 활성화
     	$(function(){
-    		var reason = $('input[name=rep-reason]:checked').val();
     		
-    		if(reason == '기타') {
-    			$('#r_detail').prop('disabled', false);
-    		} else {
-    			$('#r_detail').prop('disabled', true);
-    		}
-    	} 
-    		
+    		$('input:radio[name=rep-reason]').click(function(){
+    			if($('input[name=rep-reason]:checked').val() == "기타") {
+    				$("#r_detail").attr("disabled", false);
+    			} else {
+    				$("#r_detail").attr("disabled", true);
+    			}
+    		});
     	});
     </script>
     
