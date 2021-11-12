@@ -59,6 +59,8 @@
                	<c:when test="${ empty loginUser }">
                	<li><a class="main-menu2" href="${ contextPath }/login"><img class="icon2" src="resources/images/사람아이콘3.png"></a></li>
                 </c:when>
+                </c:choose>
+                <c:choose>
                 <c:when test="${ loginUser.userGrade == '회원' }">
                 <li><a class="main-menu2" href="${ contextPath }/mypage/main"><img class="icon2" src="resources/images/사람아이콘3.png"></img></a></li>
                 </c:when>
