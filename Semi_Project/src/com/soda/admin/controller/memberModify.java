@@ -32,15 +32,7 @@ public class memberModify extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		
-		String userId = ((Member) request.getSession().getAttribute("loginUser")).getUserId();
 		
-		MemberService memberService = new MemberService();
-		
-		// 사용자 정보 불러오기
-		Member member = memberService.selectAdminMember(userId);
-		
-		request.setAttribute("member", member);
-		request.getRequestDispatcher("/WEB-INF/views/admin/memberModify.jsp").forward(request, response);
 	}
 
 	/**
@@ -48,25 +40,19 @@ public class memberModify extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String userId = ((Member) request.getSession().getAttribute("loginUser")).getUserId();
-		String name = request.getParameter("name");
-		String phone = request.getParameter("phone");
-		String gender = request.getParameter("gender");
 		
-		Member member = new Member();
-		member.setUserId(userId);
-		member.setUserName(name);
-		member.setUserPhone(phone);
-		member.setGender(gender);
+		String userId = request.getParameter("userId");
 		
-		Member updatedMember = new MemberService().memberModify(member);
+		MemberService memberService = new MemberService();
 		
+		// 사용자 정보 불러오기
+		Member member = memberService.selectAdminMember(userId);
 		
-		System.out.println(updatedMember);
-	
-			request.setAttribute("updatedMember", updatedMember);
-			request.getRequestDispatcher("/WEB-INF/views/admin/memberModify.jsp").forward(request, response);
-	
+//		System.out.println(member);
+		
+		request.setAttribute("member", member);
+		request.getRequestDispatcher("/WEB-INF/views/admin/memberModify.jsp").forward(request, response);
+		
 		
 		
 		

@@ -3,7 +3,9 @@ package com.soda.member.model.service;
 import static com.common.JDBCTemplate.*;
 
 import java.sql.Connection;
+import java.util.List;
 
+import com.soda.magazine.model.vo.Magazine;
 import com.soda.member.model.dao.MemberDao;
 import com.soda.member.model.vo.Member;
 
@@ -198,6 +200,34 @@ public class MemberService {
 		return updatedMember;
 	}
 	
-	
+	// 관리자가 회원 등급 변경
+	public Member memberGrade(Member member) {
+		Connection conn = getConnection();
+		Member updatedMember = null;
+		
+		int result = memberDao.memberGrade(conn, member);
+			
+		if(result > 0) {
+			updatedMember = memberDao.selectMember(conn, member);
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		
+		close(conn);
+  
+		return updatedMember;
+	}
+
+	public List<Member> selectMemberList(Member member) {
+		Connection conn = getConnection();
+
+		List<Member> memberList = memberDao.selectMemberList(conn);
+		// System.out.println(conn);
+		close(conn);
+
+		return memberList;
+	}
+
 
 }

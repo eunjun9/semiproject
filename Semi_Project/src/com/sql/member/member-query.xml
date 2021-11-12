@@ -198,6 +198,30 @@
 		 FROM MEMBER_INFO
 		WHERE USER_ID = ?
 	</entry>
+	
+	<!-- 관리자 페이지 등급 수정 -->
+	  <entry key="updateMemberGrade">
+		UPDATE
+		      MEMBER_INFO
+		  SET USER_GRADE= ?
+		    , STATUS = ?
+		WHERE USER_ID = ?
+	</entry>
+	
+	
+		<!-- 관리자페이지 회원 리스트 조회 -->
+  <entry key="selectMemberList">
+		SELECT
+			  USER_ID
+			, USER_NAME
+			, USER_PHONE
+			, USER_PWD
+			, JOIN_DATE
+			, STATUS
+			, USER_GRADE
+			, USER_GENDER
+		 FROM MEMBER_INFO
+	</entry>
 
 
 </properties>

@@ -25,30 +25,28 @@
 <body>
     <div class="page body">
         <h2 id="title">회원 정보 수정</h2>
-        <form id="revise" action="${contextPath }/member/modify" method="post">
+        <form id="revise" action="${contextPath }/member/modifyview" method="post">
 
             <div class="line">
 
             <div class="label-input">
             <label class="id"></label><br>
-            <input type="text" class="id-text" value="${member.userId}">
+            <input type="text" class="id-text" name="userId" value="${member.userId}">
             </div>
-
-         
 
             <div class="label-input">
             <label class="name"></label><br>
-            <input type="text" class="birth-text" value="${member.userName }">
+            <input type="text" class="birth-text" name="name" value="${member.userName }">
             </div>
 
             <div class="label-input">
             <label class="phone"></label><br>
-            <input type="text" class="phone-text" value="${member.userPhone }"><br>
+            <input type="text" class="phone-text" name="phone" value="${member.userPhone }"><br>
             </div>
             
             <div class="label-input">
             <label class="phone"></label><br>
-            <input type="text" class="phone-text" value="${member.gender }"><br>
+            <input type="text" class="gender-text" name="gender" value="${member.gender }"><br>
             </div>
             
     

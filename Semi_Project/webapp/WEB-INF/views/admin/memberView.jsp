@@ -60,26 +60,29 @@
           </div>
         </aside>
 
+ <form name="memberForm" method="post">
         <article>
           <h1 id="main-title">회원관리</h1>
-
           <table class="tbl">
             <thead>
               <tr>
-                <th class="tbl-title">선택</th>
-                <th class="tbl-title">아이디</th>
-                <th class="tbl-title">이름<th>
-                <th class="tbl-title">휴대폰번호</th>
-                <th class="tbl-title">성별</th>
-                <th class="tbl-title">가입일</th>
-                <th class="tbl-title">회원등급</th>
-                <th class="tbl-title">수정버튼</th>
+                <th class="tbl-title th1">선택</th>
+                <th class="tbl-title th2">아이디</th>
+                <th class="tbl-title th3">이름</th>
+                <th class="tbl-title th4">휴대폰번호</th>
+                <th class="tbl-title th5">성별</th>
+                <th class="tbl-title th6">가입일</th>
+                <th class="tbl-title th7">회원등급</th>
+                <th class="tbl-title th8">활동여부</th>
+                <th class="tbl-title th9">회원정보수정</th>
               </tr>
             </thead>
             <tbody>
+            
+            <c:forEach var="member" items="${ memberList}">
               <tr>
                 <td class="tbl-content">
-                  <input type="checkbox" class="check" name="check">
+                  <input type="checkbox" class="check" name="check" value="${member.userId}">
                 </td>
                 <td class="tbl-content">${member.userId}</td>
                 <td class="tbl-content">${member.userName }</td>
@@ -88,17 +91,32 @@
                 <td class="tbl-content">${member.joinDate }</td>
                 <td class="tbl-content">${member.userGrade }</td>
                 <td class="tbl-content">
-                  <button type="button" class="revise-button"
-                    onclick="location.href='${ contextPath }/member/modify'">수정</button>
+                 
+                 <c:choose>
+                <c:when test="${member.status =='Y'}">활동가능</c:when>
+                <c:when test="${member.status =='N'}">활동중지</c:when>
+                </c:choose>
+                
+                </td>
+                
+                <td class="tbl-content">
+			 <input type="hidden" name="userId" value="${ member.userId}"> 
+			 <button class="revise-button" onclick="javascript: form.action='${contextPath}/member/modify'">수정</button>
+                
                 </td>
               </tr>
-              <tr>
-              
+				
+			</c:forEach>	
+				              
           </table>
-
-          <button type="button" class="grade-revise"
-            onclick="location.href='${ contextPath }/member/grade'">회원등급변경</button>
+          
+			 <button class="grade-revise" onclick="javascript: form.action='${contextPath}/member/grade'">회원등급변경</button>
+          
         </article>
+		</form>
+			
+
+         
       </div>
     </div>
   </div>
@@ -147,7 +165,56 @@
       window.open(url, title, options);
     }
   </script>
+  
+  
+<!--   	<script>
+			function modify(){
+				document.forms.memberForm.action = "${ contextPath }/member/modify";
+				document.forms.memberForm.submit();
+			}
+	= -->
+  
+  
+  
+  
+  <script>
+  
+  
+  /* function grade(){
+	  
+	  var rowData = new Array();
+		var tdArr = new Array();
+		var checkbox = $("input[name=chb]:checked");
+		
+		// 체크된 체크박스 값을 가져온다
+		checkbox.each(function(i) {
 
+			// checkbox.parent() : checkbox의 부모는 <td>이다.
+			// checkbox.parent().parent() : <td>의 부모이므로 <tr>이다.
+			var tr = checkbox.parent().parent().eq(i);
+			var td = tr.children();
+			
+			// 체크된 row의 모든 값을 배열에 담는다.
+			rowData.push(tr.text());
+			
+			// td.eq(0)은 체크박스 이므로  td.eq(1)의 값부터 가져온다.
+			var userId = td.eq(1).text()+" ";
+			
+			
+			// 가져온 값을 배열에 담는다.
+			tdArr.push(userId);
+			
+		});
+		
+	};
+	   */
+  
+  
+			
+			
+
+  	</script>	
+  	
 </body>
 
 </html>
