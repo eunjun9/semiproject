@@ -12,6 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.soda.member.model.vo.Member;
 
+import com.soda.socialing.model.service.SocialingService;
+import com.soda.socialing.model.vo.Search;
+
+
 /**
  * Servlet implementation class mainpageServlet
  */
@@ -31,6 +35,7 @@ public class mainpageServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 //		String userId = ((Member)request.getSession().getAttribute("loginUser")).getUserId();
 //		
 //		/* 페이징 처리 */
@@ -49,6 +54,7 @@ public class mainpageServlet extends HttpServlet {
 //				
 //		request.setAttribute("pi", map.get("pi"));
 //		request.setAttribute("socialingList", map.get("socialingList"));
+
 
 		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/main/mainpage.jsp");
 		view.forward(request, response);
