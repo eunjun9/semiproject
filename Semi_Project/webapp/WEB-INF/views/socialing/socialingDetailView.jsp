@@ -48,25 +48,15 @@
 				<p id="subTitle2">${ socialing.nCount }</p><br>
 				<h3 id="subTitle">찜하기</h3>
 				<!-- empty : 클릭 시 꽉찬 하트 아이콘으로 변경 + 관심 소셜링에 추가, full : 클릭 시 빈 하트 아이콘으로 변경 + 관심 소셜링에서 제거 -->
-                <!-- 게시글마다 관심 소셜링에 userId 포함 여부에 따라 src 변경 -->
-                
-				<img id="like" src="${ contextPath }/resources/images/eunjung/heart_empty.png"
-	            onclick="likeSocialing()">
-						
-                <c:forEach var="li" items="${ likedList }">
-                	<c:if test='${ li.userId == loginUser.userId }'>
-                	<script>
-	                	$(document).ready(function() {
-	                		$("#like").attr("src", "${ contextPath }/resources/images/eunjung/heart.png");
-	                	}
-                	</script>
-                	</c:if>
-                	
-					<span id="heart" <c:if test='${ li.userId == loginUser.userId }'>style="display:none"</c:if>>
-					</span>
-					<span id="heart2" <c:if test='${ li.userId != loginUser.userId }'>style="display:none"</c:if>>
-	                </span>
-                </c:forEach>
+                <!-- 게시글마다 관심 소셜링 여부에 따라 src 변경 -->
+				<span id="heart" <c:if test='${ likedList.userId == loginUser.userId }'>style="display:none"</c:if>>
+					<img id="like" src="${ contextPath }/resources/images/eunjung/heart_empty.png"
+		            onclick="likeSocialing()">
+	            </span>
+				<span id="heart" <c:if test='${ likedList.userId != loginUser.userId }'>style="display:none"</c:if>>
+					<img id="like" src="${ contextPath }/resources/images/eunjung/heart.png"
+		            onclick="likeSocialing()">
+				</span>
             </div>
             <div class="wrapper2">
                 <img src="${ contextPath }${ socialing.photoList.get(0).route }${ socialing.photoList.get(0).changeName }">
@@ -191,7 +181,8 @@
 				function likeSocialing() {
 					
 					let like = document.querySelectorAll('#like');
-			        
+					let heart = document.querySelectorAll('#heart');
+					
 			        for(let i = 0; i < like.length; i++) {
 			            like[i].onclick = function() {
 			                if(like[i].src.indexOf('_empty') == -1) {
@@ -207,6 +198,7 @@
 			                }
 			            }
 			        }
+			        
 		        }
 			
 				function openPopup(url, title, width, height) {
