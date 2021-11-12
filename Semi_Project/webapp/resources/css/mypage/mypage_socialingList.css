@@ -114,14 +114,14 @@ img {
 }
 .button1{
     left:20%;
-    top : 590px;
+    top : 630px;
     position:absolute;
     cursor: pointer;
 }
 
 .button2{
     right: 20%;
-    top : 590px;
+    top : 630px;
     position:absolute;
     cursor: pointer;
 }
@@ -146,14 +146,14 @@ img {
 
 .button3{
     left:20%;
-    top : 1040px;
+    top : 1100px;
     position:absolute;
     cursor: pointer;
 }
 
 .button4{
     right: 20%;
-    top : 1040px;
+    top : 1100px;
     position:absolute;
     cursor: pointer;
 }

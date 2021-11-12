@@ -68,24 +68,24 @@ public class MypageService {
 	}
 
 	// 소셜링 내역 - 참여 완료
-	public List<Socialing> socialingList(String userId) {
+	public List<Socialing> socialingListAfter(String userId) {
 		Connection conn = getConnection();
 		
-		List<Socialing> socialingList = mypageDao.selectMySocialingList(conn,userId);
+		List<Socialing> socialingListAfter = mypageDao.selectMySocialingListAfter(conn,userId);
 		
 		close(conn);
 		
-		return socialingList;
+		return socialingListAfter;
 	}
 
 	public List<Socialing> socialingListBefore(String userId) {
 		Connection conn = getConnection();
 		
-		List<Socialing> socialingList = mypageDao.selectMySocialingBeforeList(conn,userId);
+		List<Socialing> socialingListBefore = mypageDao.selectMySocialingListBefore(conn,userId);
 		
 		close(conn);
 		
-		return socialingList;
+		return socialingListBefore;
 	}
 
 }

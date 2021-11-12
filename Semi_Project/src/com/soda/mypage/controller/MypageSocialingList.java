@@ -17,13 +17,13 @@ import com.soda.socialing.model.vo.Socialing;
  * Servlet implementation class MypageSocialingList
  */
 @WebServlet("/mypage/socialingList")
-public class MypageSocialingListBefore extends HttpServlet {
+public class MypageSocialingList extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MypageSocialingListBefore() {
+    public MypageSocialingList() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,8 +34,10 @@ public class MypageSocialingListBefore extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String userId = ((Member)request.getSession().getAttribute("loginUser")).getUserId();
 		
+		List<Socialing> socialingListAfter = new MypageService().socialingListAfter(userId);
 		List<Socialing> socialingListBefore = new MypageService().socialingListBefore(userId);
 		
+		request.setAttribute("socialingListAfter", socialingListAfter);
 		request.setAttribute("socialingListBefore", socialingListBefore);
 		request.getRequestDispatcher("/WEB-INF/views/mypage/mypageSocialingList.jsp").forward(request, response);
 	}

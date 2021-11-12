@@ -82,7 +82,7 @@
 			 WHERE RNUM BETWEEN ? AND ?
 	</entry>
 	
-	<entry key="selectMySocialingList">
+	<entry key="selectMySocialingListAfter">
 		  	SELECT
 				   SM.USER_ID
 	             , NOTICE_TITLE
@@ -97,12 +97,12 @@
 		     WHERE FILE_LEVEL = 1
 	          AND F.STATUS = 'Y'
 	          AND NOTICE_STATUS = 'Y'
-	          AND S_DATE BETWEEN ADD_MONTHS(SYSDATE, -2) AND SYSDATE
+	          AND S_DATE BETWEEN ADD_MONTHS(SYSDATE, -2) AND SYSDATE 
 	          AND SM.USER_ID = ?
 	          ORDER BY S_DATE ASC
 	</entry>
 	
-	<entry key="selectMySocialingBeforeList">
+	<entry key="selectMySocialingeListBefore">
 		  	SELECT
 				   SM.USER_ID
 	             , NOTICE_TITLE
@@ -117,7 +117,7 @@
 		     WHERE FILE_LEVEL = 1
 	          AND F.STATUS = 'Y'
 	          AND NOTICE_STATUS = 'Y'
-	          AND S_DATE BETWEEN SYSDATE AND ADD_MONTHS(SYSDATE, 2)
+	          AND S_DATE BETWEEN SYSDATE AND ADD_MONTHS(SYSDATE, 2) 
 	          AND SM.USER_ID = ?
 	          ORDER BY S_DATE ASC
 	</entry>

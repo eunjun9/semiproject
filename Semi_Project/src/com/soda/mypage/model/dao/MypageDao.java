@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Properties;
 
@@ -217,13 +218,14 @@ public class MypageDao {
 		return socialingList;
 	}
 
-	public List<Socialing> selectMySocialingList(Connection conn, String userId) {
+	public List<Socialing> selectMySocialingListAfter(Connection conn, String userId) {
 		PreparedStatement pstmt = null;
-		String sql = mypageQuery.getProperty("selectMySocialingList");
-		List<Socialing> socialingList = new ArrayList<>();
+		String sql = mypageQuery.getProperty("selectMySocialingListAfter");
+		List<Socialing> socialingListAfter = new ArrayList<>();
 		ResultSet rset = null;
 		
 		try {
+		
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setString(1, userId);
@@ -243,7 +245,7 @@ public class MypageDao {
 				photoList.add(file);
 				socialing.setPhotoList(photoList);
 				
-				socialingList.add(socialing);
+				socialingListAfter.add(socialing);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -251,13 +253,13 @@ public class MypageDao {
 			close(pstmt);
 			close(rset);
 		}
-		return socialingList;
+		return socialingListAfter;
 	}
 
-	public List<Socialing> selectMySocialingBeforeList(Connection conn, String userId) {
+	public List<Socialing> selectMySocialingListBefore(Connection conn, String userId) {
 		PreparedStatement pstmt = null;
-		String sql = mypageQuery.getProperty("selectMySocialingBeforeList");
-		List<Socialing> socialingList = new ArrayList<>();
+		String sql = mypageQuery.getProperty("selectMySocialingeListBefore");
+		List<Socialing> socialingListBefore = new ArrayList<>();
 		ResultSet rset = null;
 		
 		try {
@@ -280,7 +282,7 @@ public class MypageDao {
 				photoList.add(file);
 				socialing.setPhotoList(photoList);
 				
-				socialingList.add(socialing);
+				socialingListBefore.add(socialing);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -288,7 +290,7 @@ public class MypageDao {
 			close(pstmt);
 			close(rset);
 		}
-		return socialingList;
+		return socialingListBefore;
 	}
 
 

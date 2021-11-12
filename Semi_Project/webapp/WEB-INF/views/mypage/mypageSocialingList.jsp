@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="java.util.Date" import="java.text.SimpleDateFormat"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,7 +9,7 @@
 <title>마이페이지_모임내역</title>
 
 	<!--외부 스타일 시트-->
-    <link href="${ contextPath }/resources/css/mypage/mypage_socialingList.css?1" rel="stylesheet">
+    <link href="${ contextPath }/resources/css/mypage/mypage_socialingList.css?2" rel="stylesheet">
 
      <!-- font -->
      <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -39,7 +41,7 @@
                 <h3>참여 전 모임</h3> 
                 <br>
             </div>
-                
+				
                 <!-- Swiper -->
               <div class="slist_body">
               <div id="firstline"> 
@@ -59,7 +61,7 @@
 	                                	</c:otherwise>
 	                            	</c:choose>
 	                            </div>
-                            </c:forEach>
+	                     </c:forEach>
                         </div>
                     </div>
                 </div> 
@@ -104,7 +106,7 @@
             <div class="slide1">
                 <div class="swiper mySwiper2 socialing">
                     <div class="swiper-wrapper sw">
-                        <c:forEach var="socialing" items = "${ socialingList }" >
+                        <c:forEach var="socialing" items = "${ socialingListAfter }" >
 	                            <div class="swiper-slide" onclick="detailView()">
 	                                <img class="ipic" src="${ contextPath }${ socialing.photoList.get(0).route}${ socialing.photoList.get(0).changeName }">
 	                               	<br><p id="stitle">${ socialing.nTitle }</p><br>
