@@ -190,7 +190,8 @@
 						JOIN TBL_FILE USING(NOTICE_NUM)
 						WHERE NOTICE_TYPE = '소셜링'
 						  AND NOTICE_STATUS = 'Y'
-					    ORDER BY S_DATE DESC) A)
+						  AND NOTICE_TITLE LIKE '%' || ? || '%'
+					    ORDER BY NOTICE_DATE DESC) A)
 		WHERE RNUM BETWEEN ? AND ?
 	</entry>
 	
@@ -214,6 +215,7 @@
 						JOIN TBL_FILE USING(NOTICE_NUM)
 						WHERE NOTICE_TYPE = '소셜링'
 						  AND NOTICE_STATUS = 'Y'
+						  AND NOTICE_TITLE LIKE '%' || ? || '%'
 					    ORDER BY NCOUNT DESC) A)
 		WHERE RNUM BETWEEN ? AND ?
 	</entry>
@@ -439,6 +441,7 @@
 		     , LIKE_NUM
 		  FROM SOCIALING_LIKE
 		 WHERE LIKE_NUM = ?
+		   AND USER_ID = ?
 	</entry>
 	
 	<entry key="unLikeSocialing">

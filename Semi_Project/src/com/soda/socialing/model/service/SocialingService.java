@@ -229,11 +229,11 @@ public class SocialingService {
 		return result;
 	}
 
-	public List<SocialingLike> selectLikedList(int nNum) {
+	public SocialingLike selectLikedList(int nNum, String userId) {
 		Connection conn = getConnection();
 		
 		/* Socialing_like 테이블 정보 조회 */
-		List<SocialingLike> socialingLike = socialingDao.selectLikedList(conn, nNum);
+		SocialingLike socialingLike = socialingDao.selectLikedList(conn, nNum, userId);
 		
 		close(conn);
 		
