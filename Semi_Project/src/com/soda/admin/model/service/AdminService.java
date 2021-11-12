@@ -13,10 +13,21 @@ public class AdminService {
 	private AdminDao adminDao = new AdminDao();
 
 	
-	
+	// 게시글 신고 접수
 	public int insertReport(Report report) {
-		// TODO Auto-generated method stub
-		return 0;
+		Connection conn = getConnection();
+		
+		int result = adminDao.insertReport(conn, report);
+		
+		if(result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return result;
 	}
 
 	

@@ -26,26 +26,7 @@
         <div class="body-inner">
             <div class="manager-content">
                 <aside>
-                    <div class="admin-menu">
-                        <ul id="menu">
-                          <li class="member menu">
-                            <a href="#">회원관리</a> 
-                          </li> 
-                  
-                         <li class="content menu">
-                            <a href="#">컨텐츠관리</a> 
-                         </li>
-                  
-                        <li class="sales menu">
-                           <a href="#">매출관리</a> 
-                           <ul class="submenu"> 
-                            <li><a href="#">매출조회</a></li> 
-                            <li><a href="#">정산내역</a></li> 
-                            <li><a href="#">환불내역</a></li> 
-                           </ul> 
-                         </li>
-                      </ul>
-                  </div>
+                    <%@ include file="/WEB-INF/views/admin/sideMenu.jsp"%>
                 </aside>
                 <article>
                     <h1 id="main-title">매출조회</h1>
@@ -92,17 +73,5 @@
     <!--footer-->
     <%@ include file="/WEB-INF/views/common/footer.jsp" %>
 
-    <script>
-        $(document).ready(function(){
-          
-          $(".menu").mouseover(function(){ 
-            $(this).children(".submenu").show(300); 
-          });
-
-          $(".menu").mouseleave(function(){ 
-            $(this).children(".submenu").hide(300); 
-          });
-        });
-    </script>
 </body>
 </html>

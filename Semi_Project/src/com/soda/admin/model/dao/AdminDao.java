@@ -12,6 +12,7 @@ import java.util.Properties;
 import static com.common.JDBCTemplate.close;
 
 import com.soda.admin.model.vo.Payroll;
+import com.soda.admin.model.vo.Report;
 
 public class AdminDao {
 	
@@ -28,6 +29,29 @@ private Properties adminQuery = new Properties();
 		}
 	}
 
+	// 게시글 신고 접수
+	public int insertReport(Connection conn, Report report) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = adminQuery.getProperty("insertReport");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, report.getrReason());
+			pstmt.setInt(2, report.getnNum());
+			pstmt.setString(3, report.getUserId());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
 	
 	
 	// 정산 내역 조회
@@ -62,5 +86,6 @@ private Properties adminQuery = new Properties();
 		return payroll;
 		
 	}
+
 
 }
