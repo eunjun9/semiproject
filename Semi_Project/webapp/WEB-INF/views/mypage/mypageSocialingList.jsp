@@ -48,22 +48,22 @@
                         <div class="swiper-wrapper sw">
                             <div class="swiper-slide" onclick="detailView()">
                                 <img class="ipic" src="${ contextPath }/resources/images/yewon/bakingclass.jpg">
-                                <p id="stitle">주말에 관악산 등산하실 분</p><br>
+                               	<br><p id="stitle">주말에 관악산 등산하실 분</p><br>
                                 <p id="stime">사당역 10/8 토요일 오전 10시</p>
                             </div>
                               <div class="swiper-slide">
                                 <img class="ipic" src="${ contextPath }/resources/images/yewon/bakingclass.jpg">
-                                <p id="stitle">주말에 관악산 등산하실 분</p><br>
+                                <br><p id="stitle">주말에 관악산 등산하실 분</p><br>
                                 <p id="stime">사당역 10/8 토요일 오전 10시</p>
                             </div>
                             <div class="swiper-slide">
                                <img class="ipic" src="${ contextPath }/resources/images/yewon/bakingclass.jpg">
-                                <p id="stitle">주말에 관악산 등산하실 분</p><br>
+                                <br><p id="stitle">주말에 관악산 등산하실 분</p><br>
                                 <p id="stime">사당역 10/8 토요일 오전 10시</p>
                             </div>
                             <div class="swiper-slide">
                                 <img class="ipic" src="${ contextPath }/resources/images/yewon/bakingclass.jpg">
-                                <p id="stitle">주말에 관악산 등산하실 분</p><br>
+                                <br><p id="stitle">주말에 관악산 등산하실 분</p><br>
                                 <p id="stime">사당역 10/8 토요일 오전 10시</p>
                             </div>
                              
@@ -103,7 +103,7 @@
 			
             <div class="sList_after">
                 <h3>참여 완료 모임</h3>
-                <p id="after_count">5건</p>
+                <p id="after_count">5건</p><br>
             </div>   
             
            <div id="secondline">
@@ -113,22 +113,22 @@
                     <div class="swiper-wrapper sw">
                         <div class="swiper-slide">
                                 <img class="ipic" src="${ contextPath }/resources/images/yewon/bakingclass.jpg">
-                                <p id="stitle">주말에 관악산 등산하실 분</p><br>
+                                <br><p id="stitle">주말에 관악산 등산하실 분</p><br>
                                 <p id="stime">사당역 10/8 토요일 오전 10시</p>
                         </div>
                          <div class="swiper-slide">
                                 <img class="ipic" src="${ contextPath }/resources/images/yewon/bakingclass.jpg">
-                                <p id="stitle">주말에 관악산 등산하실 분</p><br>
+                                <br><p id="stitle">주말에 관악산 등산하실 분</p><br>
                                 <p id="stime">사당역 10/8 토요일 오전 10시</p>
                         </div>
                          <div class="swiper-slide">
                                 <img class="ipic" src="${ contextPath }/resources/images/yewon/bakingclass.jpg">
-                                <p id="stitle">주말에 관악산 등산하실 분</p><br>
+                                <br><p id="stitle">주말에 관악산 등산하실 분</p><br>
                                 <p id="stime">사당역 10/8 토요일 오전 10시</p>
                         </div>
                          <div class="swiper-slide">
                                 <img class="ipic" src="${ contextPath }/resources/images/yewon/bakingclass.jpg">
-                                <p id="stitle">주말에 관악산 등산하실 분</p><br>
+                                <br><p id="stitle">주말에 관악산 등산하실 분</p><br>
                                 <p id="stime">사당역 10/8 토요일 오전 10시</p>
                         </div>
                     </div>

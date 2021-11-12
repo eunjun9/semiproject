@@ -217,5 +217,15 @@ public class MypageDao {
 		return socialingList;
 	}
 
+	public List<Socialing> selectMySocialingList(Connection conn, String userId) {
+		PreparedStatement pstmt = null;
+		String sql = mypageQuery.getProperty("selectSocialingList");
+		List<Socialing> socialingList = new ArrayList<>();
+		ResultSet rset = null;
+		
+		
+		return null;
+	}
+
 
 }
