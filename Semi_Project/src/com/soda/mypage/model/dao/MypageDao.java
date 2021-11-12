@@ -219,12 +219,76 @@ public class MypageDao {
 
 	public List<Socialing> selectMySocialingList(Connection conn, String userId) {
 		PreparedStatement pstmt = null;
-		String sql = mypageQuery.getProperty("selectSocialingList");
+		String sql = mypageQuery.getProperty("selectMySocialingList");
 		List<Socialing> socialingList = new ArrayList<>();
 		ResultSet rset = null;
 		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, userId);
+			
+			rset = pstmt.executeQuery();
+			while(rset.next()) {
+				Socialing socialing = new Socialing();
+				socialing.setnTitle(rset.getString("notice_title"));
+				socialing.setSplace(rset.getString("s_place"));
+				socialing.setSdate(rset.getDate("s_date"));
+				
+				List<SodaFile> photoList = new ArrayList<>();
+				SodaFile file = new SodaFile();
+				file.setChangeName(rset.getString("change_name"));
+				file.setRoute(rset.getString("route"));
+				
+				photoList.add(file);
+				socialing.setPhotoList(photoList);
+				
+				socialingList.add(socialing);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rset);
+		}
+		return socialingList;
+	}
+
+	public List<Socialing> selectMySocialingBeforeList(Connection conn, String userId) {
+		PreparedStatement pstmt = null;
+		String sql = mypageQuery.getProperty("selectMySocialingBeforeList");
+		List<Socialing> socialingList = new ArrayList<>();
+		ResultSet rset = null;
 		
-		return null;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, userId);
+			
+			rset = pstmt.executeQuery();
+			while(rset.next()) {
+				Socialing socialing = new Socialing();
+				socialing.setnTitle(rset.getString("notice_title"));
+				socialing.setSplace(rset.getString("s_place"));
+				socialing.setSdate(rset.getDate("s_date"));
+				
+				List<SodaFile> photoList = new ArrayList<>();
+				SodaFile file = new SodaFile();
+				file.setChangeName(rset.getString("change_name"));
+				file.setRoute(rset.getString("route"));
+				
+				photoList.add(file);
+				socialing.setPhotoList(photoList);
+				
+				socialingList.add(socialing);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rset);
+		}
+		return socialingList;
 	}
 
 

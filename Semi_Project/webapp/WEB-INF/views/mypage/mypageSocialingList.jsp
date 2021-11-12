@@ -37,7 +37,7 @@
             
             <div class="sList_before">
                 <h3>참여 전 모임</h3> 
-                <p id="before_count">6건</p><br>
+                <br>
             </div>
                 
                 <!-- Swiper -->
@@ -46,27 +46,20 @@
                 <div class="slide1">
                     <div class="swiper mySwiper1 socialing">
                         <div class="swiper-wrapper sw">
-                            <div class="swiper-slide" onclick="detailView()">
-                                <img class="ipic" src="${ contextPath }/resources/images/yewon/bakingclass.jpg">
-                               	<br><p id="stitle">주말에 관악산 등산하실 분</p><br>
-                                <p id="stime">사당역 10/8 토요일 오전 10시</p>
-                            </div>
-                              <div class="swiper-slide">
-                                <img class="ipic" src="${ contextPath }/resources/images/yewon/bakingclass.jpg">
-                                <br><p id="stitle">주말에 관악산 등산하실 분</p><br>
-                                <p id="stime">사당역 10/8 토요일 오전 10시</p>
-                            </div>
-                            <div class="swiper-slide">
-                               <img class="ipic" src="${ contextPath }/resources/images/yewon/bakingclass.jpg">
-                                <br><p id="stitle">주말에 관악산 등산하실 분</p><br>
-                                <p id="stime">사당역 10/8 토요일 오전 10시</p>
-                            </div>
-                            <div class="swiper-slide">
-                                <img class="ipic" src="${ contextPath }/resources/images/yewon/bakingclass.jpg">
-                                <br><p id="stitle">주말에 관악산 등산하실 분</p><br>
-                                <p id="stime">사당역 10/8 토요일 오전 10시</p>
-                            </div>
-                             
+                            <c:forEach var="socialing" items = "${ socialingListBefore }" >
+	                            <div class="swiper-slide" onclick="detailView()">
+	                                <img class="ipic" src="${ contextPath }${ socialing.photoList.get(0).route}${ socialing.photoList.get(0).changeName }">
+	                               	<br><p id="stitle">${ socialing.nTitle }</p><br>
+	                                <c:choose>
+	                                	<c:when test="${socialing.splace.contains('|') }">
+	                                		<p id="stime">${ socialing.splace.split("\\|")[0] } | ${ socialing.sdate }</p>
+	                                	</c:when>
+	                                	<c:otherwise>
+	                                		<p id="stime">${ socialing.splace } | ${ socialing.sdate }</p>
+	                                	</c:otherwise>
+	                            	</c:choose>
+	                            </div>
+                            </c:forEach>
                         </div>
                     </div>
                 </div> 
@@ -103,7 +96,7 @@
 			
             <div class="sList_after">
                 <h3>참여 완료 모임</h3>
-                <p id="after_count">5건</p><br>
+               <br>
             </div>   
             
            <div id="secondline">
@@ -111,26 +104,20 @@
             <div class="slide1">
                 <div class="swiper mySwiper2 socialing">
                     <div class="swiper-wrapper sw">
-                        <div class="swiper-slide">
-                                <img class="ipic" src="${ contextPath }/resources/images/yewon/bakingclass.jpg">
-                                <br><p id="stitle">주말에 관악산 등산하실 분</p><br>
-                                <p id="stime">사당역 10/8 토요일 오전 10시</p>
-                        </div>
-                         <div class="swiper-slide">
-                                <img class="ipic" src="${ contextPath }/resources/images/yewon/bakingclass.jpg">
-                                <br><p id="stitle">주말에 관악산 등산하실 분</p><br>
-                                <p id="stime">사당역 10/8 토요일 오전 10시</p>
-                        </div>
-                         <div class="swiper-slide">
-                                <img class="ipic" src="${ contextPath }/resources/images/yewon/bakingclass.jpg">
-                                <br><p id="stitle">주말에 관악산 등산하실 분</p><br>
-                                <p id="stime">사당역 10/8 토요일 오전 10시</p>
-                        </div>
-                         <div class="swiper-slide">
-                                <img class="ipic" src="${ contextPath }/resources/images/yewon/bakingclass.jpg">
-                                <br><p id="stitle">주말에 관악산 등산하실 분</p><br>
-                                <p id="stime">사당역 10/8 토요일 오전 10시</p>
-                        </div>
+                        <c:forEach var="socialing" items = "${ socialingList }" >
+	                            <div class="swiper-slide" onclick="detailView()">
+	                                <img class="ipic" src="${ contextPath }${ socialing.photoList.get(0).route}${ socialing.photoList.get(0).changeName }">
+	                               	<br><p id="stitle">${ socialing.nTitle }</p><br>
+	                                <c:choose>
+	                                	<c:when test="${socialing.splace.contains('|') }">
+	                                		<p id="stime">${ socialing.splace.split("\\|")[0] } | ${ socialing.sdate }</p>
+	                                	</c:when>
+	                                	<c:otherwise>
+	                                		<p id="stime">${ socialing.splace } | ${ socialing.sdate }</p>
+	                                	</c:otherwise>
+	                            	</c:choose>
+	                            </div>
+	                     </c:forEach>
                     </div>
                 </div>
             

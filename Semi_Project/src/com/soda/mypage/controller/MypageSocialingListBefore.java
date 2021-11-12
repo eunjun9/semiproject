@@ -1,7 +1,6 @@
 package com.soda.mypage.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -18,13 +17,13 @@ import com.soda.socialing.model.vo.Socialing;
  * Servlet implementation class MypageSocialingList
  */
 @WebServlet("/mypage/socialingList")
-public class MypageSocialingList extends HttpServlet {
+public class MypageSocialingListBefore extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MypageSocialingList() {
+    public MypageSocialingListBefore() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,9 +34,9 @@ public class MypageSocialingList extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String userId = ((Member)request.getSession().getAttribute("loginUser")).getUserId();
 		
-		List<Socialing> socialingList = new MypageService().socialingList(userId);
+		List<Socialing> socialingListBefore = new MypageService().socialingListBefore(userId);
 		
-		request.setAttribute("socialingList", socialingList);
+		request.setAttribute("socialingListBefore", socialingListBefore);
 		request.getRequestDispatcher("/WEB-INF/views/mypage/mypageSocialingList.jsp").forward(request, response);
 	}
 

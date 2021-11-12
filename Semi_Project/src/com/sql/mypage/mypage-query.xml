@@ -81,5 +81,45 @@
 	            ORDER BY S_DATE ASC) A)
 			 WHERE RNUM BETWEEN ? AND ?
 	</entry>
+	
+	<entry key="selectMySocialingList">
+		  	SELECT
+				   SM.USER_ID
+	             , NOTICE_TITLE
+	             , S_PLACE
+	             , S_DATE
+	             , CHANGE_NAME
+	             , ROUTE
+		      FROM SOCIALING_MEMBER SM
+	          JOIN SOCIALING USING(NOTICE_NUM)
+	          JOIN NOTICE USING(NOTICE_NUM)
+	          JOIN TBL_FILE F USING(NOTICE_NUM)
+		     WHERE FILE_LEVEL = 1
+	          AND F.STATUS = 'Y'
+	          AND NOTICE_STATUS = 'Y'
+	          AND S_DATE BETWEEN ADD_MONTHS(SYSDATE, -2) AND SYSDATE
+	          AND SM.USER_ID = ?
+	          ORDER BY S_DATE ASC
+	</entry>
+	
+	<entry key="selectMySocialingBeforeList">
+		  	SELECT
+				   SM.USER_ID
+	             , NOTICE_TITLE
+	             , S_PLACE
+	             , S_DATE
+	             , CHANGE_NAME
+	             , ROUTE
+		      FROM SOCIALING_MEMBER SM
+	          JOIN SOCIALING USING(NOTICE_NUM)
+	          JOIN NOTICE USING(NOTICE_NUM)
+	          JOIN TBL_FILE F USING(NOTICE_NUM)
+		     WHERE FILE_LEVEL = 1
+	          AND F.STATUS = 'Y'
+	          AND NOTICE_STATUS = 'Y'
+	          AND S_DATE BETWEEN SYSDATE AND ADD_MONTHS(SYSDATE, 2)
+	          AND SM.USER_ID = ?
+	          ORDER BY S_DATE ASC
+	</entry>
 
 </properties>
