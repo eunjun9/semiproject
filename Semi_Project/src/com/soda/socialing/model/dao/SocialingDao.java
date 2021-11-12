@@ -591,25 +591,24 @@ public class SocialingDao {
 		return result;
 	}
 
-	public List<SocialingLike> selectLikedList(Connection conn, int nNum) {
+	public SocialingLike selectLikedList(Connection conn, int nNum, String userId) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		List<SocialingLike> socialingLike = new ArrayList<>();
+		SocialingLike socialingLike = null;
 		String sql = socialingQuery.getProperty("selectLikedList");
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setInt(1, nNum);
+			pstmt.setString(2, userId);
 			
 			rset = pstmt.executeQuery();
 			
-			while(rset.next()) {
-				SocialingLike slike = new SocialingLike();
-				slike.setUserId(rset.getString("user_id"));
-				slike.setLikeNum(rset.getInt("like_num"));
-				
-				socialingLike.add(slike);
+			if(rset.next()) {
+				socialingLike = new SocialingLike();
+				socialingLike.setUserId(rset.getString("user_id"));
+				socialingLike.setLikeNum(rset.getInt("like_num"));
 			}
 			
 		} catch (SQLException e) {

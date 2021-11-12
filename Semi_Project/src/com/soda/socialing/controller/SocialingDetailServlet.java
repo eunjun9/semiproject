@@ -36,7 +36,7 @@ public class SocialingDetailServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int nNum = Integer.parseInt(request.getParameter("nNum"));
-//		String userId = ((Member)request.getSession().getAttribute("loginUser")).getUserId();
+		String userId = ((Member)request.getSession().getAttribute("loginUser")).getUserId();
 		
 		SocialingService socialingService = new SocialingService();
 		
@@ -89,8 +89,8 @@ public class SocialingDetailServlet extends HttpServlet {
 		/* 참여자 리스트 조회 */
 		List<SocialingMember> memberList = socialingService.selectMember(nNum);
 		
-		/* 찜한 소셜링 목록 조회 */
-		List<SocialingLike> likedList = new SocialingService().selectLikedList(nNum);
+		/* 로그인 유저가 현재 글을 찜했는지 조회 */
+		SocialingLike likedList = new SocialingService().selectLikedList(nNum, userId);
 		
 		if(socialing != null) {
 			request.setAttribute("socialing", socialing);

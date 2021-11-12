@@ -115,8 +115,8 @@
                         </select>
                         
                         <br><br>
-                        <label id="flabel">날짜</label>
-                        <input type="date" name="dateIn" value="${ param.dateIn }"><br><br>
+                        <!-- <label id="flabel">날짜</label>
+                        <input type="date" name="dateIn" value="${ param.dateIn }"><br><br> -->
                         <label id="flabel">온오프라인</label>
                         <input type="radio" id="offline" name="onoff" value="OFF" <c:if test="${ param.onoff == 'OFF' }">checked</c:if>>
                         <label for="offline">오프라인</label>&nbsp;
@@ -166,19 +166,19 @@
                 </div>
                 
                 <c:choose>
-	                 <c:when test="${ !empty param.keyword }">
+	                 <c:when test="${ !param.keyword }">
 	                	<c:set var="search1" value="&keyword=${ param.keyword }"/>
 	                 </c:when>
-	                 <c:when test="${ !empty param.local }">
+	                 <c:when test="${ !param.keyword && !empty param.local }">
 	                	<c:set var="search2" value="&local=${ param.local }"/>
 	                 </c:when>
-	                 <c:when test="${ !empty param.dateIn }">
+	                 <c:when test="${ !param.dateIn }">
 	                	<c:set var="search3" value="&dateIn=${ param.dateIn }"/>
 	                 </c:when>
-	                 <c:when test="${ !empty param.onoff }">
+	                 <c:when test="${ !param.keyword && !empty param.onoff }">
 	                	<c:set var="search4" value="&onoff=${ param.onoff }"/>
 	                 </c:when>
-	                <c:when test="${ !empty param.lineup }">
+	                <c:when test="${ !param.keyword && !empty param.lineup }">
 	                	<c:set var="search5" value="&lineup=${ param.lineup }"/>
 	                </c:when>
                 </c:choose>
@@ -254,6 +254,21 @@
                 prevEl: '.button-prev',
             },
         });
+    </script>
+    
+    <script>
+    	$(function(){
+    		// 정렬 콤보박스 변경 시 글 목록 바로 정렬
+    		$("select[name=lineup]").change(listChange);
+    	});
+    	
+    	function listChange() {
+            if($(this).val() == 'rec') {
+    			$("#s-submit").click();
+            } else if($(this).val() == 'pop') {
+            	$("#s-submit").click();
+            }
+    	}
     </script>
     
     <!-- 로그인 여부에 따른 스크립트 -->
