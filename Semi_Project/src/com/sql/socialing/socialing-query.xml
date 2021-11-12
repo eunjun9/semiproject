@@ -116,6 +116,7 @@
 						WHERE NOTICE_TYPE = '소셜링'
 						  AND NOTICE_STATUS = 'Y'
 						  AND S_PLACE LIKE '%' || ? || '%'
+						  AND NOTICE_TITLE LIKE '%' || ? || '%'
 					    ORDER BY NOTICE_NUM DESC) A)
 		WHERE RNUM BETWEEN ? AND ?
 	</entry>
@@ -141,6 +142,7 @@
 						WHERE NOTICE_TYPE = '소셜링'
 						  AND NOTICE_STATUS = 'Y'
 						  AND S_DATE LIKE '%' || ? || '%'
+						  AND NOTICE_TITLE LIKE '%' || ? || '%'
 					    ORDER BY NOTICE_NUM DESC) A)
 		WHERE RNUM BETWEEN ? AND ?
 	</entry>
@@ -166,6 +168,7 @@
 						WHERE NOTICE_TYPE = '소셜링'
 						  AND NOTICE_STATUS = 'Y'
 						  AND S_TYPE LIKE '%' || ? || '%'
+						  AND NOTICE_TITLE LIKE '%' || ? || '%'
 					    ORDER BY NOTICE_NUM DESC) A)
 		WHERE RNUM BETWEEN ? AND ?
 	</entry>

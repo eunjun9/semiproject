@@ -113,22 +113,22 @@ public class SocialingService {
 		return socialing;
 	}
 	
-	public SocialingMember selectMemberProfile(int nNum) {
+	public List<SocialingMember> selectMemberProfile(int nNum) {
 		Connection conn = getConnection();
 		
 		/* 작성자 프로필(프로필사진) 조회 */
-		SocialingMember memberProfile = socialingDao.selectMemberProfile(conn, nNum);
+		List<SocialingMember> memberProfile = socialingDao.selectMemberProfile(conn, nNum);
 		
 		close(conn);
 		
 		return memberProfile;
 	}
 
-	public SocialingMember selectMemberItd(int nNum) {
+	public List<SocialingMember> selectMemberItd(int nNum) {
 		Connection conn = getConnection();
 		
 		/* 작성자 프로필(자기소개) 조회 */
-		SocialingMember memberItd = socialingDao.selectMemberItd(conn, nNum);
+		List<SocialingMember> memberItd = socialingDao.selectMemberItd(conn, nNum);
 		
 		close(conn);
 		
