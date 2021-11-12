@@ -58,21 +58,23 @@ public class SocialingMainServlet extends HttpServlet {
 		String dateIn = request.getParameter("dateIn");		// 날짜
 		String onoff = request.getParameter("onoff");		// 온오프라인
 		
-		// 날짜 Date 타입으로 변환
-//		Date sdate = Date.valueOf(dateIn);
-		
-//		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd"); 
-//		java.sql.Date sdate = null;
-//		try {
-//			java.util.Date d1 = df.parse(dateIn);
-//			
-//			long ch1 = d1.getTime();
-//			
-//			sdate = new java.sql.Date(ch1);
-//			
-//		} catch (ParseException e) {
-//			e.printStackTrace();
-//		}
+//		String startDate = "";
+//	      String date2 = "";
+//	      LocalDate endDate2 = null;
+//	      String endDate = "";
+//	      if(request.getParameter("endDate") != null && !request.getParameter("endDate").equals("")) {
+//	         startDate = request.getParameter("startDate");
+//	         date2 = request.getParameter("endDate");
+//	         String[] e = date2.split("-");
+//	         int d1 = Integer.parseInt(e[0]);
+//	         int d2 = Integer.parseInt(e[1]);
+//	         int d3 = Integer.parseInt(e[2]);
+//	         endDate2 = LocalDate.of(d1, d2, d3);
+//	         endDate2 = endDate2.plusDays(1);
+//	         System.out.println(endDate2);
+//	         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yy-MM-dd");
+//	         endDate = endDate2.format(formatter);   // String 형 변환
+//	      }
 		
 		/* 정렬 관련 파라미터 추출 */
 		String sort = request.getParameter("lineup");

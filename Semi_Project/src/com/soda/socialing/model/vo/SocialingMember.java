@@ -5,23 +5,22 @@ public class SocialingMember {
 	private String memberId;		// 참여자 아이디 (pfk - Member 테이블 user_id 참조 값)
 	private String status;			// 참여 완료 여부 (Y/N)
 	private String memberName;		// 참여자명 (Member 테이블 join 결과 값)
-	private String memberProfile;	// 참여자 프로필사진 (Profile 테이블 join 결과 값)
 	private String introduction;	// 참여자 자기소개 (Profile 테이블 join 결과 값)
 	
 	// ProfileFile
-	private ProfileFile profile2;	// 프로필사진 첨부 파일 (참여자 프로필사진) -> String profile 삭제
+	private ProfileFile profile;	// 프로필사진 첨부 파일 (참여자 프로필사진)
 	
 	public SocialingMember() {}
-
-	public SocialingMember(int noticeNum, String memberId, String status, String memberName, String memberProfile,
-			String introduction) {
+	
+	public SocialingMember(int noticeNum, String memberId, String status, String memberName, String introduction,
+			ProfileFile profile) {
 		super();
 		this.noticeNum = noticeNum;
 		this.memberId = memberId;
 		this.status = status;
 		this.memberName = memberName;
-		this.memberProfile = memberProfile;
 		this.introduction = introduction;
+		this.profile = profile;
 	}
 
 	public int getNoticeNum() {
@@ -56,14 +55,6 @@ public class SocialingMember {
 		this.memberName = memberName;
 	}
 
-	public String getMemberProfile() {
-		return memberProfile;
-	}
-
-	public void setMemberProfile(String memberProfile) {
-		this.memberProfile = memberProfile;
-	}
-
 	public String getIntroduction() {
 		return introduction;
 	}
@@ -72,11 +63,18 @@ public class SocialingMember {
 		this.introduction = introduction;
 	}
 
+	public ProfileFile getProfile() {
+		return profile;
+	}
+
+	public void setProfile(ProfileFile profile) {
+		this.profile = profile;
+	}
+
 	@Override
 	public String toString() {
 		return "SocialingMember [noticeNum=" + noticeNum + ", memberId=" + memberId + ", status=" + status
-				+ ", memberName=" + memberName + ", memberProfile=" + memberProfile + ", introduction=" + introduction
-				+ "]";
+				+ ", memberName=" + memberName + ", introduction=" + introduction + ", profile=" + profile + "]";
 	}
 
 }
