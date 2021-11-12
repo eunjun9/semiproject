@@ -36,7 +36,7 @@
                            <a href="#">매출관리</a> 
                            <ul class="submenu"> 
                             <li><a href="#">매출조회</a></li> 
-                            <li><a href="${ contextPath }/payroll">정산내역</a></li> 
+                            <li><a href="${ contextPath }/payroll/page">정산내역</a></li> 
                             <li><a href="#">환불내역</a></li> 
                            </ul> 
                          </li>
