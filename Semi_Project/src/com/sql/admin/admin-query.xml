@@ -3,6 +3,24 @@
 "http://java.sun.com/dtd/properties.dtd">
 <properties>
 
-	
+
+
+<!-- 관리자페이지 정산내역 조회  -->
+<entry key="payrollSelect">
+	SELECT
+	        N.NOTICE_TITLE
+	      , M.USER_NAME
+	      , C.C_WRITER
+	      , P.NOTICE_NUM
+	      , SUM(C.C_PRICE) AS TOTAL
+	   FROM NOTICE N, MEMBER_INFO M, CLASS C FULL OUTER JOIN PAYMENT P
+	     ON C.NOTICE_NUM = P.NOTICE_NUM
+	  WHERE N.NOTICE_NUM = C.NOTICE_NUM
+	    AND C.C_WRITER = M.USER_ID
+	    AND EXTRACT(YEAR FROM P.PAY_DATE) = ?
+	    AND EXTRACT(MONTH FROM P.PAY_DATE) = ?
+	    AND P.PAY_CANCLE = 'Y'
+	  GROUP BY P.NOTICE_NUM, N.NOTICE_TITLE, M.USER_NAME, C.C_WRITER
+</entry>
 
 </properties>
