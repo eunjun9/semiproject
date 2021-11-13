@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>관리자페이지 사이드메뉴</title>
     <!-- 외부 스타일 시트 -->
-    <link href="${ contextPath }/resources/css/admin/admin-style.css" rel="stylesheet">
+    <link href="${ contextPath }/resources/css/admin/admin-style.css?2" rel="stylesheet">
     <!-- favicon (Real Favicon Generator)-->
     <link rel="icon" type="image/x-icon" href="${ contextPath }/resources/images/khfavicon.ico">
     <!-- 글꼴 -->
@@ -25,15 +25,15 @@
   <div class="admin-menu">
                         <ul id="menu">
                           <li class="member menu">
-                            <a href="${ contextPath }/mypage/adminmain">회원관리</a> 
+                            <a href="${ contextPath }/mypage/adminmain"> <img src="${ contextPath }/resources/images/admin1.png">회원관리</a> 
                           </li> 
                   
                          <li class="content menu">
-                            <a href="${ contextPath }/admin/report">신고관리</a> 
+                            <a href="${ contextPath }/admin/report"><img src="${ contextPath }/resources/images/admin2.png">신고관리</a> 
                          </li>
                   
                         <li class="sales menu">
-                           <a href="#">매출관리</a> 
+                           <a href="#"><img src="${ contextPath }/resources/images/admin3.png">매출관리</a> 
                            <ul class="submenu"> 
                             <li><a href="#">매출조회</a></li> 
                             <li><a href="${ contextPath }/payroll/page">정산내역</a></li> 
