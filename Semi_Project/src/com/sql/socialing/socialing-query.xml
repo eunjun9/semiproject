@@ -446,4 +446,23 @@
 		 WHERE USER_ID = ?
 		   AND LIKE_NUM = ?
 	</entry>
+	
+	<entry key="socialinglistview">
+		SELECT
+		       NOTICE_NUM
+		     , NOTICE_TITLE
+		     , S_PLACE
+		     , S_DATE
+		     , S_TIME
+		     , S_TYPE
+		     , ROUTE
+		     , CHANGE_NAME
+		  FROM NOTICE
+		  JOIN SOCIALING USING(NOTICE_NUM)
+		  JOIN TBL_FILE USING(NOTICE_NUM)
+		 WHERE NOTICE_TYPE = '소셜링'
+		   AND NOTICE_STATUS = 'Y'
+		 ORDER BY NOTICE_NUM DESC
+	</entry>
+	
 </properties>

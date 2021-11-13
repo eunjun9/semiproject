@@ -307,29 +307,24 @@
                 <div class="slide">
                     <div class="swiper mySwiper3" style="height: 330px;">
                         <div class="swiper-wrapper">
-                        <!-- 반복문으로 현재날짜(date) 기준 모임날짜(sdate) 2일 이내로 남은 소셜링 글 목록 출력 -->
-                        <c:forEach var="s" items="${ socialingList }">
+                        <c:forEach var="lesson" items="${ lessonList }">
 	                        <div class="swiper-slide">
 	                            <div id="thumbox">
-	                                <img id="s-thumbnail2" onclick="detailView(${ s.nNum })" 
-	                                src="${ contextPath }${ s.photoList.get(0).route }${ s.photoList.get(0).changeName }"><br>
+	                                <img id="s-thumbnail2" onclick="detailView2(${lesson.nNum})" 
+	                                src="${ contextPath }${ lesson.photoList.get(0).route}${ lesson.photoList.get(0).changeName }"><br>
 	                            </div>
-	                            <a href="#">
+	                            <a href="${ contextPath }/socialing/detail?nNum=${lesson.nNum}">
 	                                <div id="titlebox">
-	                                    <p id="s-thumtitle">${ s.nTitle }</p><br>
+	                                    <p id="s-thumtitle">${ lesson.nTitle }</p><br>
 	                                    <!-- 오프라인일 경우 상세주소, 온라인일 경우 기본 주소 출력 (주소 글자 수 7자 이상일 경우 잘라내기) -->
 		                                <c:choose>
-											<c:when test='${ s.splace.contains("|") }'>
-												<h5 id="s-thumsub">${ s.splace.split("\\|")[1] }
+											<c:when test='${ lesson.cLocation.contains("|") }'>
+												<h5 id="s-thumsub">${ lesson.cLocation.split("\\|")[1] }
 											</c:when>
 											<c:otherwise>
-												<h5 id="s-thumsub">${ s.splace }
+												<h5 id="s-thumsub">${ lesson.cLocation }
 											</c:otherwise>
 										</c:choose>
-		                                <fmt:formatDate value="${ s.sdate }" type="date" pattern="M.dd(E)"/>
-		                                <fmt:parseDate value="${ s.stime }" var="stime2" pattern="HH:mm" scope="page"/>
-										<fmt:formatDate value="${ stime2 }" type="time" pattern="a h:mm"/></h5>
-	                                    <a href="#"></a>
 	                                </div>
 	                            </a>
 	                        </div>
@@ -408,6 +403,25 @@
 				function detailView(nNum){
 					alert('로그인 후 이용 가능합니다.');
 					location.href = '${contextPath}/login';
+				}			
+			</script>
+		</c:otherwise>
+	</c:choose>
+	
+	<!-- 클래스 상세 페이지 스크립트 -->	
+	<c:choose>
+		<c:when test="${ !empty loginUser }"> <!-- 로그인 했을 때 볼 수 있게 -->
+			<script>
+				function detailView2(nNum){
+					location.href = '${contextPath}/lesson/detail?nNum=' + nNum;
+				}
+			</script>
+		</c:when>
+		<c:otherwise>	<!-- 로그인 안 했을 때 -->
+			<script>
+				function detailView(){
+					alert('로그인 후 이용 가능합니다. 로그인 해주세요.');
+					location.href='${ contextPath }/login';
 				}			
 			</script>
 		</c:otherwise>
