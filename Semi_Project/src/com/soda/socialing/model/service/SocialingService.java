@@ -113,22 +113,22 @@ public class SocialingService {
 		return socialing;
 	}
 	
-	public SocialingMember selectMemberProfile(int nNum) {
+	public List<SocialingMember> selectMemberProfile(int nNum) {
 		Connection conn = getConnection();
 		
 		/* 작성자 프로필(프로필사진) 조회 */
-		SocialingMember memberProfile = socialingDao.selectMemberProfile(conn, nNum);
+		List<SocialingMember> memberProfile = socialingDao.selectMemberProfile(conn, nNum);
 		
 		close(conn);
 		
 		return memberProfile;
 	}
 
-	public SocialingMember selectMemberItd(int nNum) {
+	public List<SocialingMember> selectMemberItd(int nNum) {
 		Connection conn = getConnection();
 		
 		/* 작성자 프로필(자기소개) 조회 */
-		SocialingMember memberItd = socialingDao.selectMemberItd(conn, nNum);
+		List<SocialingMember> memberItd = socialingDao.selectMemberItd(conn, nNum);
 		
 		close(conn);
 		
@@ -167,7 +167,6 @@ public class SocialingService {
 	public int insertMember(int nNum, String userId) {
 		Connection conn = getConnection();
 		
-		// 중복참여 방지 로직 추가해야 함
 		int result = socialingDao.insertMember(conn, nNum, userId);
 		
 		if(result > 0) {
@@ -300,5 +299,24 @@ public class SocialingService {
 		
 		return result;
 	}
+
+	public List<Socialing> selectList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public List<Socialing> socialinglistview() {
+		Connection conn = getConnection();
+		
+		List<Socialing> socialingList = socialingDao.socialinglistview(conn);
+		
+		close(conn);
+		
+		return socialingList;
+	}
+
+	
+
+	
 
 }

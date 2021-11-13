@@ -21,7 +21,7 @@
 	%>
 
     <!-- 외부 스타일 시트 -->
-    <link href="${ contextPath }/resources/css/common/header_footer.css?10" rel="stylesheet">
+    <link href="${ contextPath }/resources/css/common/header_footer.css?11" rel="stylesheet">
     <!-- favicon (Real Favicon Generator)-->
     <link rel="icon" type="image/x-icon" href="${ contextPath }/resources/images/khfavicon.ico">
     <!-- 글꼴 -->

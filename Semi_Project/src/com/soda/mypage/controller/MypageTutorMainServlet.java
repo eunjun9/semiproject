@@ -37,6 +37,9 @@ public class MypageTutorMainServlet extends HttpServlet {
 		String user = ((Member)request.getSession().getAttribute("loginUser")).getUserId();
 		List<Lesson> lessonList = new MypageService().selectLessonList(user);
 		
+		Profile profile = new MypageService().selectProfile(user);
+		
+		request.setAttribute("profile", profile);
 		request.setAttribute("lessonList", lessonList);
 		request.getRequestDispatcher("/WEB-INF/views/mypage/mypageMainTutor.jsp").forward(request, response);
 		
@@ -46,14 +49,5 @@ public class MypageTutorMainServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String userId = ((Member)request.getSession().getAttribute("loginUser")).getUserId();
-		
-	      Profile profile = new MypageService().selectProfile(userId);
-		
-	      if (profile != null) {
-			request.setAttribute("profile", profile);
-			request.getRequestDispatcher("/WEB-INF/views/mypage/mypageMainTutor.jsp").forward(request, response);
-	
-	      }
 	}
 }

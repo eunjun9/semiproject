@@ -7,7 +7,7 @@
 <title>마이페이지</title>
 
 	<!--외부 스타일 시트-->
-    <link rel="stylesheet" href="${ contextPath }/resources/css/mypage/mypage_main.css?5">
+    <link rel="stylesheet" href="${ contextPath }/resources/css/mypage/mypage_main.css?6">
     <!--폰트-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,7 +25,6 @@
             <h2>마이 페이지</h2>
         </div>
             
-            <!-- 프로필  수정 필요 -->
             <div class="profile">
             	<div id="mypic">
                 <c:choose>
@@ -49,8 +48,8 @@
 			<div id="movebox">
             <ul class="move">
                 <li><a class="mv" id="modify" href="<%= request.getContextPath() %>/mypage/userinfomodify">정보수정 <img class="pmv" width="5%" src="${ contextPath }/resources/images/yewon/next.png"> </a></li>
-                <li><a class="mv" id="slist" href="${ contextPath }/mypage/socialingList">모임내역 <img class="pmv" width="5%" src="${ contextPath }/resources/images/yewon/next.png"> </a> </li>
-                <li><a class="mv" id="plist" href="#">결제내역 <img class="pmv" width="5%" src="${ contextPath }/resources/images/yewon/next.png"> </a> </li>
+                <li><a class="mv" id="slist" href="${ contextPath }/mypage/socialinglist">모임내역 <img class="pmv" width="5%" src="${ contextPath }/resources/images/yewon/next.png"> </a> </li>
+                <li><a class="mv" id="plist" href="${ contextPath }/mypage/paylist">결제내역 <img class="pmv" width="5%" src="${ contextPath }/resources/images/yewon/next.png"> </a> </li>
                 <li><a class="mv" id="logout" href="${contextPath }/logout">로그아웃 <img class="pmv" width="5%" src="${ contextPath }/resources/images/yewon/next.png"> </a> </li>
             </ul>
 			</div>

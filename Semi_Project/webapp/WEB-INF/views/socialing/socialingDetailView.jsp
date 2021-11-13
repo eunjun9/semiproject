@@ -84,7 +84,8 @@
 							<button type="button" id="p-button2">소셜링 참여확인</button>
 						</c:when>
 						<c:otherwise>
-							<button type="button" id="p-button" onclick="join()">소셜링 참여하기</button>
+							<button type="button" id="p-button" onclick="join()" 
+							<c:if test="${ memberList.size() >= socialing.maxMember }">disabled</c:if>>소셜링 참여하기</button>
 						</c:otherwise>
 					</c:choose>           
                 </div>
@@ -156,7 +157,7 @@
 				<fmt:formatDate value="${ stime2 }" type="time" pattern="a h시 m분"/></p>
             </div>
             <div class="buttons"> <!-- 삭제, 수정은 작성자/관리자만 표시 -->
-            <c:if test="${ loginUser.userId == socialing.userId || loginUser.userId.equals('admin') }">
+            <c:if test="${ loginUser.userId == socialing.userId || loginUser.userId.contains('admin') }">
             	<button type="button" id="delete" onclick="deleteBoard()">삭제</button>
                 <button type="button" id="update" onclick="updateBoard()">수정</button>
             </c:if>
@@ -238,6 +239,10 @@
 		            	document.forms.memberForm.action = "${contextPath}/socialingMember";
 		    			document.forms.memberForm.submit();
 		            }
+		        }
+		        
+		        function notJoin() {
+		        	alert('최대 참여 인원을 초과하였습니다.');
 		        }
 	
 		        function checkSub() {

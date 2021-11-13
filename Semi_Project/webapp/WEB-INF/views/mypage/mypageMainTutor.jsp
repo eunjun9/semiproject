@@ -8,7 +8,7 @@
 <title>마이페이지</title>
 
 	<!--외부 스타일 시트-->
-    <link rel="stylesheet" href="${ contextPath }/resources/css/mypage/mypage_mainT.css?2">
+    <link rel="stylesheet" href="${ contextPath }/resources/css/mypage/mypage_mainT.css?3">
     <!-- font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -33,10 +33,10 @@
             <div class="profile">
                 <c:choose>
 					<c:when test="${ not empty profile.profileFile.get(0).changeName}">
-		                <img width="45%" src="${ contextPath }${ profile.profileFile.get(0).route}${profile.profileFile.get(0).changeName}">
+		                <img id="profileimg" width="45%" src="${ contextPath }${ profile.profileFile.get(0).route}${profile.profileFile.get(0).changeName}">
 					</c:when>
 					<c:otherwise>
-						<img width="45%" src="${ contextPath }/resources/images/yewon/profile.png">
+						<img id="profileimg" width="45%" src="${ contextPath }/resources/images/yewon/profile.png">
 					</c:otherwise>
                 </c:choose>
                 

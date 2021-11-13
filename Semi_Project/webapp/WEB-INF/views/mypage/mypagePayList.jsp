@@ -7,7 +7,7 @@
 <title>마이페이지_결제내역</title>
 
  	 <!--외부 스타일 시트-->
-     <link href="${ contextPath }/resources/css/mypage/mypage_payList.css" rel="stylesheet">
+     <link href="${ contextPath }/resources/css/mypage/mypage_payList.css?2" rel="stylesheet">
 
      <!-- font -->
      <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,8 +25,8 @@
  <!-- 결제 내역 바디 -->
     <div class="pList_wrapper">
         <div id="pList_box">
-            <div>
-                <a id="back" href="#">&lt; 마이페이지</a>
+            <div id="firstbox">
+                <a id="back" href="${ contextPath }/mypage/main">&lt; 마이페이지</a>
                 <h2>결제 내역</h2>
                 <p id="main_title">날짜를 선택하세요(1년 이내)</p>
                 <hr>
@@ -57,27 +57,27 @@
                         <div class="class_title"><p name="class_title">프랑스 제과학교 출신 파티시에의 타르트 클래스</p></div>
                     </div>
                     
-                    <div class="class_date">
-                        <p name="class_date">2021-11-07 토요일 오후 7시</p>
+                    <div class="o_date">
+                        <p class="o_dateP">2021-11-07 토요일 오후 7시</p>
                     </div>
                     
                     <div class="price">
-                        <p name="class_price">60,000원</p>
+                        <p class="class_priceP">60,000원</p>
                         <button type="button" class="refund_Btn">취소</button>
                     </div><hr>
     
                     <div class="class_info">
-                        <div class="class_img"><a href="#"><img name="class_img" src="../resources/image/bakingclass.jpg"></a></div>
-                        <div class="class_type"><p name="class_type">ONE-DAY</p></div>
-                        <div class="class_title"><p name="class_title">프랑스 제과학교 출신 파티시에의 타르트 클래스</p></div>
+                        <div class="class_img"><img name="class_img" src="../resources/image/bakingclass.jpg"></div>
+                        <div class="class_type"><p>ONE-DAY</p></div>
+                        <div class="class_title"><p>프랑스 제과학교 출신 파티시에의 타르트 클래스</p></div>
                     </div>
                     
-                    <div class="class_date">
-                        <p name="class_date">2021-11-07 토요일 오후 7시</p>
+                    <div class="v_date">
+                        <p class="v_dateP">40일</p>
                     </div>
                     
                     <div class="price">
-                        <p name="class_price">60,000원</p>
+                        <p class="class_priceP">60,000원</p>
                         <button type="button" class="refund_Btn">취소</button>
                     </div><hr>
                 </form>

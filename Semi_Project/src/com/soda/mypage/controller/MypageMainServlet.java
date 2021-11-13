@@ -34,7 +34,7 @@ public class MypageMainServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-    // 마이페이지 메인 - 관심소셜링
+    // 마이페이지 메인 - 관심소셜링, 프로필
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 페이지 초기값 (첫 페이지)
 		int page = 1;
@@ -51,6 +51,10 @@ public class MypageMainServlet extends HttpServlet {
 		Map<String, Object> map = new MypageService().likeSocialingList(page, socialing);
 		//List<Socialing> socialingList = new MypageService().likeSocialingList(userId);
 		
+		/* 프로필 사진 */
+	    Profile profile = new MypageService().selectProfile(userId);
+		
+	    request.setAttribute("profile", profile);
 		request.setAttribute("pi", map.get("pi"));
 		request.setAttribute("socialingList", map.get("socialingList"));
 		request.getRequestDispatcher("/WEB-INF/views/mypage/mypageMain.jsp").forward(request, response);
@@ -61,12 +65,6 @@ public class MypageMainServlet extends HttpServlet {
 	 */
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		String userId = ((Member)request.getSession().getAttribute("loginUser")).getUserId();
-//		
-//	      Profile profile = new MypageService().selectProfile(userId);
-//		
-//			request.setAttribute("profile", profile);
-//			request.getRequestDispatcher("/WEB-INF/views/mypage/mypageMain.jsp").forward(request, response);
 	}
 
 }

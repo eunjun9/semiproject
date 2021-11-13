@@ -18,8 +18,8 @@ a {
 }
  
 .body-inner {
-    max-width: 1200px;
-    width: 1200px;
+    max-width: 1000px;
+    width: 1000px;
     margin : 0 auto;
 }
 
@@ -33,11 +33,10 @@ a {
     display : flex;
     justify-content: space-between;
     margin-bottom: 50px;
-    margin-left: 70px;
 }
 
 article {
-    width : 77%;
+    width : 70%;
     order : 2;
 }
 
@@ -45,7 +44,6 @@ aside {
     width : 20%;
     order : 1;
 }
-
 
 
 /* 조회 테이블 */
@@ -60,7 +58,18 @@ aside {
     margin-bottom: 30px;
 }
 
-select[name=filter] {
+select[name=year] {
+    border: 1px solid lightgray;
+    width: 120px;
+    height: 35px;
+    border-radius: 5px;
+    padding-left: 10px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+select[name=month] {
     border: 1px solid lightgray;
     width: 120px;
     height: 35px;
@@ -112,8 +121,10 @@ select[name=filter] {
     vertical-align:top;
 }
 
-.tbl .tbl-content {
+.tbl{
+	font-size: 10px;
     border-color:inherit;
     text-align:center;
     vertical-align:top;
+    margin-bottom : 25%;
 }

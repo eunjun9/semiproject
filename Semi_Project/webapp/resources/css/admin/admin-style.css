@@ -46,25 +46,34 @@ aside {
 }
 
 /* 사이드 메뉴 */
-a{
+li a{
     text-decoration:none;
-    color:inherit;
+    color: #777d8a;
+    transition: all .4s ease;
 }
 
 #menu{
+	font-weight: 500;
     width:150px;
     text-align:center;
+    letter-spacing: 2px;
+    background-color: rgb(218,239,245);
+    
 } 
 
 .menu{ 
     line-height:2; 
-    border:1px solid lightgray; 
     position:relative; 
-    background-color: rgb(218,239,245);
     list-style: none;
     margin-top: 5%;
-    margin-left: -20%;
+    margin-left: -25%;
 } 
+
+.menu img {
+	width: 21px;
+	padding-right: 7px;
+	margin-bottom : -2%;
+}
 
 .menu .submenu{ 
     position:absolute;
@@ -79,13 +88,12 @@ a{
 } 
 
 .menu:hover{ 
-    background-color:#222;
-    color:white;
+    color: #f5d7c4;
+    
 } 
 
 .menu .submenu>li:hover{ 
     background-color:white; 
-    color:black; 
     font-weight: bold;
 }
 
@@ -93,6 +101,9 @@ a{
     margin-bottom: 70px;
 }
 
+.admin-menu a{
+	transition: all 0.4s;
+}
 
 
 /* 조회 테이블 */

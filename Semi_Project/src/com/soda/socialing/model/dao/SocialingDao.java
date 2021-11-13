@@ -122,10 +122,12 @@ public class SocialingDao {
 				pstmt.setString(index++, search.getKeyword());
 			} else if(search.getLocal() != null) {
 				pstmt.setString(index++, search.getLocal());
+				pstmt.setString(index++, search.getKeyword());
 			}/* else if(search.getDateIn() != null) {
 //				pstmt.setDate(index++, search.getDateIn());
 			}*/ else if(search.getOnoff() != null) {
 				pstmt.setString(index++, search.getOnoff());
+				pstmt.setString(index++, search.getKeyword());
 			}
 			
 			// if문에 안 걸림(검색X) : 1 -> 2
@@ -395,10 +397,10 @@ public class SocialingDao {
 		return memberList;
 	}
 	
-	public SocialingMember selectMemberProfile(Connection conn, int nNum) {
+	public List<SocialingMember> selectMemberProfile(Connection conn, int nNum) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		SocialingMember memberProfile = null;
+		List<SocialingMember> memberProfile = new ArrayList<>();
 		String sql = socialingQuery.getProperty("selectMemberProfile");
 		
 		try {
@@ -408,13 +410,15 @@ public class SocialingDao {
 			
 			rset = pstmt.executeQuery();
 			
-			if(rset.next()) {
-				memberProfile = new SocialingMember();
+			while(rset.next()) {
+				SocialingMember sMember = new SocialingMember();
 				
 				ProfileFile profile = new ProfileFile();
 				profile.setRoute(rset.getString("route"));
 				profile.setChangeName(rset.getString("change_name"));
-				memberProfile.setProfile(profile);
+				sMember.setProfile(profile);
+				
+				memberProfile.add(sMember);
 			}
 			
 		} catch (SQLException e) {
@@ -427,10 +431,10 @@ public class SocialingDao {
 		return memberProfile;
 	}
 
-	public SocialingMember selectMemberItd(Connection conn, int nNum) {
+	public List<SocialingMember> selectMemberItd(Connection conn, int nNum) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		SocialingMember memberItd = null;
+		List<SocialingMember> memberItd = new ArrayList<>();
 		String sql = socialingQuery.getProperty("selectMemberItd");
 		
 		try {
@@ -440,9 +444,11 @@ public class SocialingDao {
 			
 			rset = pstmt.executeQuery();
 			
-			if(rset.next()) {
-				memberItd = new SocialingMember();
-				memberItd.setIntroduction(rset.getString("introduction"));
+			while(rset.next()) {
+				SocialingMember sMember = new SocialingMember();
+				sMember.setIntroduction(rset.getString("introduction"));
+				
+				memberItd.add(sMember);
 			}
 			
 		} catch (SQLException e) {
@@ -760,6 +766,46 @@ public class SocialingDao {
 		}
 		
 		return result;
+	}
+
+	public List<Socialing> socialinglistview(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		List<Socialing> socialingList = new ArrayList<>();
+		String sql = socialingQuery.getProperty("socialinglistview");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			rset = pstmt.executeQuery();
+			
+			while (rset.next()) {
+				Socialing socialing = new Socialing();
+				socialing.setnNum(rset.getInt("notice_num"));
+				socialing.setnTitle(rset.getString("notice_title"));
+				socialing.setSplace(rset.getString("s_place"));
+				socialing.setSdate(rset.getDate("s_date"));
+				socialing.setStime(rset.getString("s_time"));
+				socialing.setStype(rset.getString("s_type"));
+
+				List<SodaFile> photoList = new ArrayList<>();
+				SodaFile file = new SodaFile();
+				file.setRoute(rset.getString("route"));
+				file.setChangeName(rset.getString("change_name"));
+				photoList.add(file);
+				socialing.setPhotoList(photoList);
+				
+				socialingList.add(socialing);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return socialingList;
 	}
 
 }

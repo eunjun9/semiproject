@@ -66,6 +66,7 @@
                     </div>
                 </div> 
              			    <!-- 슬라이드 버튼 설정 -->
+             			    <c:if test="${ not empty socialingListBefore }" >
                 			<div class="btnArea1" >
 		                    <div class=button1>
 		                        <div class="but1"><img width="20px" src="${ contextPath }/resources/images/yewon/prev_b.png"></div>
@@ -75,6 +76,7 @@
 		                        <div class="but2"><img width="20px" src="${ contextPath }/resources/images/yewon/next_b.png"></div>
 		                    </div>    
                 			</div>
+                			</c:if>
                 
               </div>
                 <br><br><hr>
@@ -125,6 +127,7 @@
             
 
 	                <!-- 슬라이드 버튼 설정 -->
+	                <c:if test="${ not empty socialingListAfter }" >
 	                <div class=button3>
 	                    <!-- If we need navigation buttons -->
 	                    <div class="but3"><img width="20px" src="${ contextPath }/resources/images/yewon/prev_b.png"></div>
@@ -133,6 +136,7 @@
 	                <div class=button4>
 	                    <div class="but4"><img width="20px" src="${ contextPath }/resources/images/yewon/next_b.png"></div>
 	                </div>    
+	                </c:if>
 	            </div> 
             </div>
 	        

@@ -37,27 +37,8 @@
     <div class="body-inner">
       <div class="manager-content">
         <aside>
-          <!-- 관리자페이지 메뉴 -->
-          <div class="admin-menu">
-            <ul id="menu">
-              <li class="member menu">
-                <a href="#">회원관리</a>
-              </li>
-
-              <li class="content menu">
-                <a href="#">컨텐츠관리</a>
-              </li>
-
-              <li class="sales menu">
-                <a href="#">매출관리</a>
-                <ul class="submenu">
-                  <li><a href="#">매출조회</a></li>
-                  <li><a href="#">정산내역</a></li>
-                  <li><a href="#">환불내역</a></li>
-                </ul>
-              </li>
-            </ul>
-          </div>
+           <!-- 관리자페이지 사이드바 메뉴 -->
+                   <%@ include file="/WEB-INF/views/admin/sideMenu.jsp"%>
         </aside>
 
 
