@@ -61,6 +61,7 @@ img{
      margin-right: 20px;
      color: gray;
      font-family: 'Noto Sans KR', sans-serif;
+     transition: all .3s ease;
 }
 
 .category1{
@@ -71,6 +72,7 @@ img{
      margin-right: 20px;
      color: gray;
      font-family: 'Noto Sans KR', sans-serif;
+     transition: all .3s ease;
 }
 
 .category2{
