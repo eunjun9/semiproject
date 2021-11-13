@@ -8,6 +8,7 @@ public class Filter {
 	private String smallC;		// 소분류
 	private String oneday;		// 원데이 클래스
 	private String vod;		 	// vod 클래스
+	private String sort;
 	
 	public Filter(){}
 
@@ -20,6 +21,7 @@ public class Filter {
 		this.smallC = smallC;
 		this.oneday = oneday;
 		this.vod = vod;
+		
 	}
 
 	public String getKeyword() {
@@ -78,10 +80,20 @@ public class Filter {
 		this.vod = vod;
 	}
 
+	public String getSort() {
+		return sort;
+	}
+
+	public void setSort(String sort) {
+		this.sort = sort;
+	}
+
 	@Override
 	public String toString() {
 		return "Filter [keyword=" + keyword + ", price1=" + price1 + ", price2=" + price2 + ", bigC=" + bigC
-				+ ", smallC=" + smallC + ", oneday=" + oneday + ", vod=" + vod + "]";
+				+ ", smallC=" + smallC + ", oneday=" + oneday + ", vod=" + vod + ", sort=" + sort + "]";
 	}
+	
+
 	
 }

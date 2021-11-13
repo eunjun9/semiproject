@@ -55,7 +55,10 @@ public class MypageMainServlet extends HttpServlet {
 		/* 프로필 사진 */
 	    Profile profile = new MypageService().selectProfile(userId);
 		System.out.println(profile);
-	    request.setAttribute("profile", profile);
+		
+		if(profile != null) {
+			request.setAttribute("profile", profile);
+		}
 		request.setAttribute("pi", map.get("pi"));
 		request.setAttribute("socialingList", map.get("socialingList"));
 		request.getRequestDispatcher("/WEB-INF/views/mypage/mypageMain.jsp").forward(request, response);

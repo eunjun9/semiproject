@@ -112,6 +112,14 @@ public class LessonDao {
 			sql = lessonQuery.getProperty("getKeywordList");
 		}
 		
+//		if(filter.getSort() != null) {
+//			if(filter.getSort().equals("rec")) {
+//				sql = lessonQuery.getProperty("getRecList"); 
+//			} else if(filter.getSort().equals("pop")) {
+//				sql = lessonQuery.getProperty("getPopList"); 
+//			}
+//		}
+		
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
@@ -138,6 +146,8 @@ public class LessonDao {
 			
 			pstmt.setInt(index++, startRow);
 			pstmt.setInt(index, endRow);
+			
+			//System.out.println(index);
 			
 			rset = pstmt.executeQuery();
 			
