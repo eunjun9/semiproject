@@ -25,6 +25,9 @@ public class Lesson {
 	private String cTime2;		// 클래스 시간2
 	private String cLocation;	// 장소
 	private String cTutor;		// 강사 소개
+	private Date selectDate; 	// 클래스 선택 날짜
+	private Date payDate;		// 클래스 결제 날짜
+	
 	
 	private List<Attachment> photoList;  // 첨부파일
 	
@@ -33,7 +36,7 @@ public class Lesson {
 	public Lesson(int nNum, String nTitle, String nContent, int nCount, String nStatus, String nType, String userId,
 			String userName, Date nDate, Date modifyDate, String ctag1, String ctag2, int cPrice, String cCategory,
 			String vDate, Date oDate1, Date oDate2, String cTime1, String cTime2, String cLocation, String cTutor,
-			List<Attachment> photoList) {
+			Date selectDate, List<Attachment> photoList) {
 		super();
 		this.nNum = nNum;
 		this.nTitle = nTitle;
@@ -56,8 +59,11 @@ public class Lesson {
 		this.cTime2 = cTime2;
 		this.cLocation = cLocation;
 		this.cTutor = cTutor;
+		this.selectDate = selectDate;
 		this.photoList = photoList;
 	}
+
+
 
 	public int getnNum() {
 		return nNum;
@@ -235,6 +241,22 @@ public class Lesson {
 		this.photoList = photoList;
 	}
 
+	public Date getSelectDate() {
+		return selectDate;
+	}
+
+	public void setSelectDate(Date selectDate) {
+		this.selectDate = selectDate;
+	}
+	
+	public Date getPayDate() {
+		return payDate;
+	}
+
+	public void setPayDate(Date payDate) {
+		this.payDate = payDate;
+	}
+
 	@Override
 	public String toString() {
 		return "Lesson [nNum=" + nNum + ", nTitle=" + nTitle + ", nContent=" + nContent + ", nCount=" + nCount
@@ -242,9 +264,8 @@ public class Lesson {
 				+ ", nDate=" + nDate + ", modifyDate=" + modifyDate + ", ctag1=" + ctag1 + ", ctag2=" + ctag2
 				+ ", cPrice=" + cPrice + ", cCategory=" + cCategory + ", vDate=" + vDate + ", oDate1=" + oDate1
 				+ ", oDate2=" + oDate2 + ", cTime1=" + cTime1 + ", cTime2=" + cTime2 + ", cLocation=" + cLocation
-				+ ", cTutor=" + cTutor + ", photoList=" + photoList + "]";
+				+ ", cTutor=" + cTutor + ", selectDate=" + selectDate + ", photoList=" + photoList + "]";
 	}
 
-	
 }
 

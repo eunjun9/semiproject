@@ -16,6 +16,7 @@ import com.soda.lesson.model.vo.Lesson;
 import com.soda.lesson.model.vo.PageInfo;
 import com.soda.mypage.model.vo.Profile;
 import com.soda.mypage.model.vo.ProfileFile;
+import com.soda.order.model.vo.Payment;
 import com.soda.socialing.model.vo.Socialing;
 import com.soda.socialing.model.vo.SocialingLike;
 import com.soda.socialing.model.vo.SodaFile;
@@ -293,5 +294,53 @@ public class MypageDao {
 		return socialingListBefore;
 	}
 
+	// 결제내역
+	public List<Lesson> selectPayList(Connection conn, Payment payment) {
+		PreparedStatement pstmt = null;
+		String sql = mypageQuery.getProperty("selectPayList");
+		ResultSet rset = null;
+		List<Lesson> lessonList = new ArrayList<>();
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, payment.getUserId());
+			pstmt.setString(2, payment.getPayListDate1());
+			pstmt.setString(3, payment.getPayListDate2());
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				Lesson lesson = new Lesson();
+				lesson.setnNum(rset.getInt("notice_num"));
+				lesson.setPayDate(rset.getDate("pay_date"));
+				lesson.setnTitle(rset.getString("notice_title"));
+				lesson.setcPrice(rset.getInt("c_price"));
+				lesson.setcTime1(rset.getString("c_time1"));
+				lesson.setcTime2(rset.getString("c_time2"));
+				lesson.setcCategory(rset.getString("c_category"));
+				lesson.setvDate(rset.getString("v_date"));
+				lesson.setSelectDate(rset.getDate("select_date"));
+				
+				
+				List<Attachment> photoList = new ArrayList<>();
+				Attachment photo = new Attachment();
+				photo.setRoute(rset.getString("route"));
+				photo.setChangeName(rset.getString("change_name"));
+				
+				photoList.add(photo);
+				lesson.setPhotoList(photoList);
+				
+				lessonList.add(lesson);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rset);
+		}
+		return lessonList;
+	}
+	
 
 }
