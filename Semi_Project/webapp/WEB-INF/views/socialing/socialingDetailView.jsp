@@ -161,14 +161,8 @@
             	<button type="button" id="delete" onclick="deleteBoard()">삭제</button>
                 <button type="button" id="update" onclick="updateBoard()">수정</button>
             </c:if>
-            	<!-- 신고 팝업에 글번호 값 보내기 -->
-            	<div style="display: none">
-	            	<jsp:include page="/WEB-INF/views/common/reportFormPopup.jsp">
-						<jsp:param name="nNum" value="${ socialing.nNum }"/>
-					</jsp:include>
-            	</div>
                 <button type="button" id="report" 
-                onclick="openPopup('${ contextPath }/reportForm', 'reportForm', 370, 500)">신고</button>
+                onclick="openPopup('${ contextPath }/reportForm', 'reportForm', 450, 500)">신고</button>
             </div>
         </div>
     </div>
@@ -196,7 +190,7 @@
     <c:choose>
 		<c:when test="${ !empty loginUser }">
 			<form name="memberForm" method="post">
-				<input type="hidden" name="nNum" value="${ socialing.nNum }">
+				<input type="hidden" id="nNum" name="nNum" value="${ socialing.nNum }">
 			</form>
 			<script>
 				// 관심 소셜링에 추가
@@ -239,10 +233,6 @@
 		            	document.forms.memberForm.action = "${contextPath}/socialingMember";
 		    			document.forms.memberForm.submit();
 		            }
-		        }
-		        
-		        function notJoin() {
-		        	alert('최대 참여 인원을 초과하였습니다.');
 		        }
 	
 		        function checkSub() {

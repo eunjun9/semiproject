@@ -121,7 +121,7 @@
 	}
 	
 	function payMove(){
-			location.href='${ contextPath }/mypage/main';
+			location.href='${ contextPath }/mypage/paylist';
 	}
 	</script>
 	

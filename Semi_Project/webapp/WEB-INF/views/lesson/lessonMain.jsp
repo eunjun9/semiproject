@@ -120,16 +120,31 @@
                     <button type="reset" name="reSel" onclick="locatation.href='${contextPath}/lesson/main'">조건 초기화</button>
                     <button type="submit" name="selEnd">선택 검색</button>
 			        
-			        <%-- <div class="wrapper3">
+			       <%--  <div class="wrapper3">
 			        <select name="classSort">
-			            <option disabled>정렬 방식</option>
-			            <option value="pop" <c:if test="${ param.classSort == 'pop' }">selected</c:if> selected>인기순</option>
+			            <option disabled selected>정렬 방식</option>
+			            <option value="pop" <c:if test="${ param.classSort == 'pop' }">selected</c:if>>인기순</option>
 			            <option value="rec" <c:if test="${ param.classSort == 'rec' }">selected</c:if>>최신순</option>
 			        </select><br>
 			        </div> --%>
                 </form>
             </div>
         </div>
+        
+        <!-- <script>
+        	$(function(){
+        		$("select[name=classSort]").change(sortList);
+        	});
+        	
+        	function sortList(){
+        		if($(this).val() == 'pop'){
+        			$("button[name=selEnd]").click();
+        		} else if($(this).val() == 'rec'){
+        			$("button[name=selEnd]").click();
+        		}
+        	}
+        </script> -->
+        
         
         <div class="wrapper4">
         <!-- 게시글 반복문으로 삽입  -->

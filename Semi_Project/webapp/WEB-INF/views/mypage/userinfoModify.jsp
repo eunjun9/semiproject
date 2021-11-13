@@ -23,7 +23,7 @@
     
     <!-- 외부 스타일 시트 -->
     
-    <link href="resources/css/mypage/mypage_userinfoModify.css" rel="stylesheet">
+    <link href="${ contextPath }resources/css/mypage/mypage_userinfoModify.css" rel="stylesheet">
    
     <!-- favicon (Real Favicon Generator)-->
     <link rel="icon" type="image/x-icon" href="resources/image/khfavicon.ico">

@@ -32,7 +32,7 @@ public class ReportFormServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 팝업창 화면 보여주기
-		request.getRequestDispatcher("/WEB-INF/views/common/reportFormPopup.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/views/admin/reportFormPopup.jsp").forward(request, response);
 	}
 
 	/**
@@ -45,7 +45,7 @@ public class ReportFormServlet extends HttpServlet {
 		} else {
 			reason = request.getParameter("rep-reason");	// 신고 사유 (라디오 버튼)
 		}
-		int nNum = Integer.parseInt(request.getParameter("nNum"));	// 신고 게시판 번호
+		int nNum = Integer.parseInt(request.getParameter("rNum"));	// 신고 게시판 번호
 		String userId = ((Member)request.getSession().getAttribute("loginUser")).getUserId(); // 신고한 회원 id
 
 		// 신고 테이블에 값 담기
@@ -62,7 +62,7 @@ public class ReportFormServlet extends HttpServlet {
 			request.setAttribute("result", "fail");
 		}
 		
-		request.getRequestDispatcher("/WEB-INF/views/common/reportFormPopup.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/views/admin/reportFormPopup.jsp").forward(request, response);
 	}
 
 }

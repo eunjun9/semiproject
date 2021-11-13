@@ -29,10 +29,10 @@
             	<div id="mypic">
                 <c:choose>
 					<c:when test="${ not empty profile.profileFile.get(0).changeName}">
-                		<img src="${ contextPath }${ profile.profileFile.get(0).route}${profile.profileFile.get(0).changeName}"></a>
+                		<img src="${ contextPath }${ profile.profileFile.get(0).route}${profile.profileFile.get(0).changeName}">
 					</c:when>
 					<c:otherwise>
-						<img src="${ contextPath }/resources/images/yewon/profile.png"></a>
+						<img src="${ contextPath }/resources/images/yewon/profile.png">
 					</c:otherwise>
                 </c:choose>
             	</div>

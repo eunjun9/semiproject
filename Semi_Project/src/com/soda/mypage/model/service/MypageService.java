@@ -36,8 +36,9 @@ public class MypageService {
 		
 		List<ProfileFile> profileFile = mypageDao.selectProfileFile(conn, userId);
 		
-		profile.setProfileFile(profileFile);
-		
+		if(profile != null) {
+			profile.setProfileFile(profileFile);
+		}
 		close(conn);
 
 		return profile;

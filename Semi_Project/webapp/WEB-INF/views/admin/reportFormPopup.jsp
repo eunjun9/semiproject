@@ -43,7 +43,7 @@
 	<div class="page body">
         <h2 id="r_title">신고하기</h2>
         <form id="report" action="${ contextPath }/reportForm" method="post">
-        	<input type="hidden" name="nNum" value="${ param.nNum }"> <!-- 값이 가져와지는지 확인 필요 -->
+        	<input type='hidden' id='rNum' name='rNum' value='' />
             <div class="radioArea">
                 <p id="r_subTitle">신고 사유</p>
                 <input type="radio" id="rep1" name="rep-reason" value="개인정보 노출" checked>
@@ -66,9 +66,11 @@
     </div>
     
     <script>
-    	// 신고사유 기타 선택시에만 textarea 활성화
     	$(function(){
+    		// 신고할 글 번호 가져오기
+    		$('#rNum').val(opener.document.getElementById('nNum').value);
     		
+    		// 신고사유 기타 선택시에만 textarea 활성화
     		$('input:radio[name=rep-reason]').click(function(){
     			if($('input[name=rep-reason]:checked').val() == "기타") {
     				$("#r_detail").attr("disabled", false);
