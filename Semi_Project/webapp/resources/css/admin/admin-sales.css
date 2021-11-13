@@ -45,49 +45,6 @@ aside {
     order : 1;
 }
 
-/* 사이드 메뉴 */
-
-#menu{
-    width:150px;
-    text-align:center;
-} 
-
-.menu{ 
-    line-height:2; 
-    border:1px solid lightgray; 
-    position:relative; 
-    background-color: rgb(218,239,245);
-    list-style: none;
-    margin-top: 5%;
-    margin-left: -20%;
-} 
-
-.menu .submenu{ 
-    position:absolute;
-    width:90px; 
-    left:149px;
-    border:1px solid lightgray; 
-    background-color:white; 
-    color:black; 
-    top:-1px; 
-    display:none; 
-    list-style: none;
-} 
-
-.menu:hover{ 
-    background-color:#222;
-    color:white;
-} 
-
-.menu .submenu>li:hover{ 
-    background-color:white; 
-    color:black; 
-    font-weight: bold;
-}
-
-.admin-menu{
-    margin-bottom: 70px;
-}
 
 /* 조회 테이블 */
 
