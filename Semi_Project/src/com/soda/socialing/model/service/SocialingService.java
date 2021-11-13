@@ -300,4 +300,23 @@ public class SocialingService {
 		return result;
 	}
 
+	public List<Socialing> selectList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public List<Socialing> socialinglistview() {
+		Connection conn = getConnection();
+		
+		List<Socialing> socialingList = socialingDao.socialinglistview(conn);
+		
+		close(conn);
+		
+		return socialingList;
+	}
+
+	
+
+	
+
 }

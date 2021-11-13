@@ -133,7 +133,7 @@
         
         <div class="wrapper4">
         <!-- 게시글 반복문으로 삽입  -->
-      <c:forEach var="lesson" items="${ lessonList }">
+     	<c:forEach var="lesson" items="${ lessonList }">
             <div class="cItem" onclick="detailView(${lesson.nNum})">
             	<!-- a태그에 제목, 사진, 가격 넣어서 클릭 시 해당 페이지로 이동 nNum으로 구분  (아래 href 코드 수정 필요)-->
                     <img class="cThumbnail" src="${ contextPath }${ lesson.photoList.get(0).route}${ lesson.photoList.get(0).changeName }">

@@ -768,4 +768,44 @@ public class SocialingDao {
 		return result;
 	}
 
+	public List<Socialing> socialinglistview(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		List<Socialing> socialingList = new ArrayList<>();
+		String sql = socialingQuery.getProperty("socialinglistview");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			rset = pstmt.executeQuery();
+			
+			while (rset.next()) {
+				Socialing socialing = new Socialing();
+				socialing.setnNum(rset.getInt("notice_num"));
+				socialing.setnTitle(rset.getString("notice_title"));
+				socialing.setSplace(rset.getString("s_place"));
+				socialing.setSdate(rset.getDate("s_date"));
+				socialing.setStime(rset.getString("s_time"));
+				socialing.setStype(rset.getString("s_type"));
+
+				List<SodaFile> photoList = new ArrayList<>();
+				SodaFile file = new SodaFile();
+				file.setRoute(rset.getString("route"));
+				file.setChangeName(rset.getString("change_name"));
+				photoList.add(file);
+				socialing.setPhotoList(photoList);
+				
+				socialingList.add(socialing);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return socialingList;
+	}
+
 }

@@ -1,6 +1,7 @@
 package com.soda.main.controller;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
@@ -10,10 +11,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.soda.lesson.model.service.LessonService;
+import com.soda.lesson.model.vo.Filter;
+import com.soda.lesson.model.vo.Lesson;
 import com.soda.member.model.vo.Member;
 
 import com.soda.socialing.model.service.SocialingService;
 import com.soda.socialing.model.vo.Search;
+import com.soda.socialing.model.vo.Socialing;
 
 
 /**
@@ -35,27 +40,15 @@ public class mainpageServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-//		String userId = ((Member)request.getSession().getAttribute("loginUser")).getUserId();
-//		
-//		/* 페이징 처리 */
-//		// 페이지 초기값 (첫 페이지)
-//		int page = 1;
-//		
-//		// 전달 받은 페이지가 있을 때 
-//		if(request.getParameter("page") != null) {
-//			page = Integer.parseInt(request.getParameter("page"));
-//		}
-//		
-//		// 페이징과 관련된 데이터, 조회 된 게시판 List를 담아서 map에 리턴
-//		Map<String, Object> map = new SocialingService().selectList(page);
-////		Map<String, Object> map = new SocialingService().selectList(page, new Search(keyword, local, dateIn.getTime(), onoff));
-//				
-//				
-//		request.setAttribute("pi", map.get("pi"));
-//		request.setAttribute("socialingList", map.get("socialingList"));
-
-
+		
+		List<Socialing> socialingList = new  SocialingService().socialinglistview();
+		
+		List<Lesson> lessonList = new LessonService().lessonlistview();
+		// System.out.println(lessonList);
+		request.setAttribute("socialingList", socialingList);
+		
+		request.setAttribute("lessonList", lessonList);
+		
 		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/main/mainpage.jsp");
 		view.forward(request, response);
 	}

@@ -160,6 +160,16 @@ public class LessonService {
 		return result;
 	}
 
+	public List<Lesson> lessonlistview() {
+		Connection conn = getConnection();
+		
+		List<Lesson> lessonList = lessonDao.lessonlistview(conn);
+		
+		close(conn);
+		
+		return lessonList;
+	}
+
 	
 	
 }

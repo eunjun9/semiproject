@@ -501,6 +501,49 @@ public class LessonDao {
 		return result;
 	}
 
+	public List<Lesson> lessonlistview(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = lessonQuery.getProperty("selectlessonList");
+		List<Lesson> lessonlistview = new ArrayList<>();
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				Lesson lesson = new Lesson();
+				lesson.setnNum(rset.getInt("notice_num"));
+				lesson.setnTitle(rset.getString("notice_title"));
+				lesson.setcLocation(rset.getString("c_location"));
+				lesson.setvDate(rset.getString("v_date"));
+				
+				List<Attachment> photoList = new ArrayList<>();
+				Attachment photo = new Attachment();
+				photo.setChangeName(rset.getString("change_name"));
+				photo.setRoute(rset.getString("route"));
+				photo.setStatus(rset.getString("status"));
+				
+				photoList.add(photo);
+				
+				lesson.setPhotoList(photoList);
+				
+				lessonlistview.add(lesson);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		
+		return lessonlistview;
+	}
+
+
 	
 
 }
