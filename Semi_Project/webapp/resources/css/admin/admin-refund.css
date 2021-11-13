@@ -122,7 +122,9 @@ select[name=filter] {
 .tbl {
     border-collapse:collapse;
     border-spacing:0;
-    width: 100%;
+    width: 850px;
+    margin-left: -125px;
+    
 }
 
 .tbl td {
