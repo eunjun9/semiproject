@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>관리자페이지_정산내역</title>
-<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/admin/admin-payroll.css?1">
+<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/admin/admin-payroll.css">
 <!-- 외부 폰트 -->
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
 <!-- jQuery -->
@@ -31,6 +31,7 @@
                 <article>
                     <h1 id="main-title">정산내역</h1>
                     <div class="combo-area">
+                    <p class="yearText"></p> <p class="monthText"></p>
                         <select id="year" name="year" class="select">
                         <!-- db에서 year 추출해서 가져오기(년도는 계속 추가되기 때문에).. -->
                         <option value="" selected>년</option>
@@ -47,7 +48,7 @@
 						</c:forEach>
 						</select>
                     </div>
-                    <table class="tbl">
+                    <table class="tbl" style="width:750px;">
                         <thead>
                           <tr>
                          	<th class="tbl-title">클래스번호</th>
@@ -69,14 +70,26 @@
     <!--footer-->
     <%@ include file="/WEB-INF/views/common/footer.jsp"%>
 
+	<script>
+	$(function(){
+		$('#year').on('change', function () { 
+			$(".tbl tbody").html("");
+		});
+		$('#month').on('change', function () { 
+			$(".tbl tbody").html("");
+		});
+		
+	});
+	</script>
         
         <script>
         
         $(function() { 
         	$('#year').on('change', function () { 
-        		var year = $('#year').val(); 
+        		var year = $('#year').val();
+        		
         		$('#month').on('change', function () { 
-        			var month = $('#month').val(); 
+        			var month = $('#month').val();
         		
         			// 비동기식으로 테이블 데이터 조회해오기
         			$.ajax({
@@ -88,25 +101,32 @@
         					console.log(result);
         					
         					var data = '';
-        					
         					$.each(result, function(i){
         							data += "<tr><td>" + result[i].nNum + "</td><td>" + result[i].nTitle + "</td><td>" + result[i].userName
         							+ "</td><td>" + result[i].userId + "</td><td>" + result[i].total + "</td><td>" + result[i].taxTotal
         							+ "</td></tr>";
         							
+        							// $(".tbl tbody").append(data);
         					 });
-        					 $(".tbl tbody").append(data);
-        				
+        					// 테이블에 행 추가
+        					$(".tbl tbody").html(data);
+        					// 선택값 초기화
+        					$("#year").val("");
+        					$("#month").val("");
+        					
         					
         				}, 
         					error: function (e) { 
         						console.log("조회오류 "); 
         						} 
         				})
+        				$("data").remove();
+        			
         		
         			});
         	});
         });
+        
 
   </script>
 

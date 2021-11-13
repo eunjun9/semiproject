@@ -81,11 +81,11 @@ a{
 .menu:hover{ 
     background-color:#222;
     color:white;
+    
 } 
 
 .menu .submenu>li:hover{ 
     background-color:white; 
-    color:black; 
     font-weight: bold;
 }
 
@@ -93,6 +93,9 @@ a{
     margin-bottom: 70px;
 }
 
+.admin-menu a{
+	transition: all 0.4s;
+}
 
 
 /* 조회 테이블 */
