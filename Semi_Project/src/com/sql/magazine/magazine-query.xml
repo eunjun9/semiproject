@@ -326,6 +326,26 @@ REPLY_MODIFYDATE
     ORDER BY NOTICE_NUM DESC
     </entry>
     
+    	<entry key="selectOthersList">
+	   SELECT
+          NOTICE_NUM
+        , NOTICE_TYPE
+        , NOTICE_TITLE
+        , USER_ID
+        , NCOUNT
+        , ROUTE
+        , CHANGE_NAME
+        , file_level
+        , NOTICE_SELF_NUM
+     FROM NOTICE
+     JOIN MEMBER_INFO USING(USER_ID)
+     JOIN TBL_FILE USING(NOTICE_NUM)
+    WHERE NOTICE_STATUS = 'Y'
+    AND FILE_LEVEL = 1
+    AND USER_ID=?
+    ORDER BY NOTICE_NUM DESC
+    </entry>
+    
     
    
 	

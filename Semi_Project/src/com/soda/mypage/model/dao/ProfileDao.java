@@ -207,7 +207,39 @@ public class ProfileDao {
 	}
 
 	
-
+	public Profile selectOthers(Connection conn, String userId) {
+		PreparedStatement pstmt = null;
+	      ResultSet rset = null;
+	      Profile profile = null;
+	      String sql = profileQuery.getProperty("selectOthers");
+	      
+	      try {
+	         pstmt = conn.prepareStatement(sql);
+	         pstmt.setString(1, userId);
+	         rset = pstmt.executeQuery();
+	         
+	         
+	         if(rset.next()) {
+	        	 profile = new Profile();
+	        	 profile.setUserId(rset.getString("user_id"));
+	        	 profile.setUserName(rset.getString("user_name"));
+	        	 profile.setUserGrade(rset.getString("user_grade"));
+	        	 profile.setIntroduction(rset.getString("introduction"));
+	        	 profile.setSns(rset.getString("sns"));
+	        	 profile.setInterest(rset.getString("interest"));
+	         }
+	         
+	         
+	         
+	      } catch (SQLException e) {
+	         e.printStackTrace();
+	      } finally {
+	         close(rset);
+	         close(pstmt);
+	      }
+//	     System.out.println(profile);
+	      return profile;
+	}
 
 	
 

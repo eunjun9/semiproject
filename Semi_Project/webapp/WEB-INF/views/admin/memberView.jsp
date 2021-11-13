@@ -60,13 +60,12 @@
           </div>
         </aside>
 
- <form name="memberForm" method="post">
+
         <article>
           <h1 id="main-title">회원관리</h1>
           <table class="tbl">
             <thead>
               <tr>
-                <th class="tbl-title th1">선택</th>
                 <th class="tbl-title th2">아이디</th>
                 <th class="tbl-title th3">이름</th>
                 <th class="tbl-title th4">휴대폰번호</th>
@@ -78,12 +77,8 @@
               </tr>
             </thead>
             <tbody>
-            
             <c:forEach var="member" items="${ memberList}">
-              <tr>
-                <td class="tbl-content">
-                  <input type="checkbox" class="check" name="check" value="${member.userId}">
-                </td>
+            <tr>
                 <td class="tbl-content">${member.userId}</td>
                 <td class="tbl-content">${member.userName }</td>
                 <td class="tbl-content">${member.userPhone }</td>
@@ -100,20 +95,34 @@
                 </td>
                 
                 <td class="tbl-content">
-			 <input type="hidden" name="userId" value="${ member.userId}"> 
-			 <button class="revise-button" onclick="javascript: form.action='${contextPath}/member/modify'">수정</button>
                 
-                </td>
-              </tr>
+				 <%-- <form name="memberForm" method="post">
+				 <input type="hidden" name="userId" value="${ member.userId }"> 
+				 <button type="submit" class="revise-button" onclick="action='${ contextPath }/member/modify'">수정</button>
+				</form>  --%>
 				
+				
+					 <form name="memberForm" method="post">
+				 <input type="hidden" name="userId" value="${ member.userId }"> 
+				 <button type="submit" class="revise-button" onclick="modify()">수정</button>
+				</form> 
+				
+				<%-- <form name="memberForm" method="post" id="memberForm">
+				 <input type="hidden" name="userId" value="${ member.userId }"> 
+				 <button type="submit" class="revise-button" id="btn">수정</button>
+				</form> --%>
+				
+               
+                </td>
+                
+              </tr>
 			</c:forEach>	
-				              
+			</tbody>              
           </table>
           
-			 <button class="grade-revise" onclick="javascript: form.action='${contextPath}/member/grade'">회원등급변경</button>
           
         </article>
-		</form>
+		
 			
 
          
@@ -138,24 +147,13 @@
 
   </script>
 
-  <!--회원 등급 변경 팝업창 스크립트-->
-  <script>
-    function openPopup(url, title, width, height) {
-      let left = (document.body.clientWidth / 2) - (width / 2);
-      left += window.screenLeft;
-      let top = (screen.availHeight / 2) - (height / 2);
-
-      let options = "width=" + width + ",height=" + height + ",left=" + left + ",top=" + top;
-
-      window.open(url, title, options);
-    }
-
-  </script>
 
 
   <!--수정 버튼 누를때 팝업창 스크립트-->
-  <script>
+<!--   <script>
     function openPopup(url, title, width, height) {
+    
+    	
       let left = (document.body.clientWidth / 2) - (width / 2);
       left += window.screenLeft;
       let top = (screen.availHeight / 2) - (height / 2);
@@ -164,56 +162,31 @@
 
       window.open(url, title, options);
     }
-  </script>
+  </script> -->
   
+<script>
+ 	/* function modify(){
+		document.forms.memberForm.action = "${ contextPath }/member/modify";
+		document.forms.memberForm.submit();
+	} */
   
-<!--   	<script>
-			function modify(){
-				document.forms.memberForm.action = "${ contextPath }/member/modify";
-				document.forms.memberForm.submit();
-			}
-	= -->
+ 	
+ 	function modify() {
+ 		 var form = document.forms.memberForm;
+ 		 window.open("","popup","width=210,height=300,left=700,top=300,scrollbars=no");
+ 		 form.target = "popup";
+ 		 form.action = "${ contextPath }/member/modify?userId"+userId;
+ 		 form.method = "post";
+ 		 form.submit();
+ 		}
+ 	
   
+</script>
   
-  
-  
-  <script>
-  
-  
-  /* function grade(){
-	  
-	  var rowData = new Array();
-		var tdArr = new Array();
-		var checkbox = $("input[name=chb]:checked");
-		
-		// 체크된 체크박스 값을 가져온다
-		checkbox.each(function(i) {
 
-			// checkbox.parent() : checkbox의 부모는 <td>이다.
-			// checkbox.parent().parent() : <td>의 부모이므로 <tr>이다.
-			var tr = checkbox.parent().parent().eq(i);
-			var td = tr.children();
-			
-			// 체크된 row의 모든 값을 배열에 담는다.
-			rowData.push(tr.text());
-			
-			// td.eq(0)은 체크박스 이므로  td.eq(1)의 값부터 가져온다.
-			var userId = td.eq(1).text()+" ";
-			
-			
-			// 가져온 값을 배열에 담는다.
-			tdArr.push(userId);
-			
-		});
-		
-	};
-	   */
   
   
-			
-			
 
-  	</script>	
   	
 </body>
 

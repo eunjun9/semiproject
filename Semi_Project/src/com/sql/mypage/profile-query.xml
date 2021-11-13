@@ -91,5 +91,19 @@ INTEREST
 	WHERE USER_ID= ?
 </entry>
 
+<!-- 다른 사람 피드 조회 -->
+<entry key="selectOthers">
+SELECT
+	USER_ID,
+    user_name,
+    user_grade,
+	INTRODUCTION,
+	SNS,
+	INTEREST
+	FROM "PROFILE"
+    join member_info using(user_id)
+	WHERE USER_ID = ?
+</entry>
+
 
 </properties>

@@ -377,7 +377,9 @@ public class MemberDao {
 			pstmt.setString(1, member.getUserName());
 			pstmt.setString(2, member.getUserPhone());
 			pstmt.setString(3, member.getGender());
-			pstmt.setString(4, member.getUserId());
+			pstmt.setString(4, member.getUserGrade());
+			pstmt.setString(5, member.getStatus());
+			pstmt.setString(6, member.getUserId());
 
 			
       result = pstmt.executeUpdate();

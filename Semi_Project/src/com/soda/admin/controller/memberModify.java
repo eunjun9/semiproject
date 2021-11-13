@@ -31,6 +31,7 @@ public class memberModify extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+	
 		
 		
 	}
@@ -43,16 +44,15 @@ public class memberModify extends HttpServlet {
 		
 		String userId = request.getParameter("userId");
 		
-		MemberService memberService = new MemberService();
 		
-		// 사용자 정보 불러오기
-		Member member = memberService.selectAdminMember(userId);
-		
-//		System.out.println(member);
-		
-		request.setAttribute("member", member);
-		request.getRequestDispatcher("/WEB-INF/views/admin/memberModify.jsp").forward(request, response);
-		
+			MemberService memberService = new MemberService();
+			
+			// 사용자 정보 불러오기
+			Member member = memberService.selectAdminMember(userId);
+			
+			
+			request.setAttribute("member", member);
+			request.getRequestDispatcher("/WEB-INF/views/admin/memberModify.jsp").forward(request, response);
 		
 		
 		

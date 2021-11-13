@@ -45,16 +45,24 @@ public class memberModifyView extends HttpServlet {
 		String name = request.getParameter("name");
 		String phone = request.getParameter("phone");
 		String gender = request.getParameter("gender");
+		String grade = request.getParameter("grade");
+		String account = request.getParameter("account");
+	
+		
+		
 		
 		Member member = new Member();
 		member.setUserId(userId);
 		member.setUserName(name);
 		member.setUserPhone(phone);
 		member.setGender(gender);
+		member.setUserGrade(grade);
+		member.setStatus(account);
+		
 		
 		Member updatedMember = new MemberService().memberModify(member);
 		
-		
+		System.out.println(updatedMember);
 	
 			request.setAttribute("updatedMember", updatedMember);
 			response.sendRedirect(request.getContextPath() + "/mypage/adminmain");

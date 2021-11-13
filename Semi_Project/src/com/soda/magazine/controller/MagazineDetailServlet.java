@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.soda.magazine.model.service.MagazineService;
 import com.soda.magazine.model.vo.Magazine;
 import com.soda.member.model.vo.Member;
+import com.soda.mypage.model.service.ProfileService;
+import com.soda.mypage.model.vo.Profile;
 
 
 /**
@@ -35,6 +37,14 @@ public class MagazineDetailServlet extends HttpServlet {
 		
 		//게시판 게시글 조회
     	Magazine magazine = magazineService.selectMagazine(nNum);
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
 		
 //		System.out.println(magazine);
 		

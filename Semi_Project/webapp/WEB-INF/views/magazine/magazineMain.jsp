@@ -99,7 +99,15 @@
 										<br>
 									</div>
 									<div class="writer-par">
-										<a href="#" class="writer">${ magazine.userId }</a>
+											<c:choose>
+							<c:when test="${ loginUser.userId == magazine.userId}">
+							<a href="${contextPath}/myfeed">${ magazine.userId }</a>
+							
+							</c:when>
+							<c:otherwise>
+							<a href="${contextPath}/others/feed?userId=${magazine.userId}">${ magazine.userId }</a>
+							</c:otherwise>
+							</c:choose>
 									</div>
 								</div>
 							</ul>
@@ -175,7 +183,15 @@
 										<br>
 									</div>
 									<div class="writer-par">
-										<a href="#" class="writer">${ magazine.userId }</a>
+											<c:choose>
+							<c:when test="${ loginUser.userId == magazine.userId}">
+							<a href="${contextPath}/myfeed">${ magazine.userId }</a>
+							
+							</c:when>
+							<c:otherwise>
+							<a href="${contextPath}/others/feed?userId=${magazine.userId}">${ magazine.userId }</a>
+							</c:otherwise>
+							</c:choose>
 									</div>
 								</div>
 							</ul>

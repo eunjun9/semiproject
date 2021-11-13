@@ -73,10 +73,22 @@
 				<div class="myinfo">
 					<div class="myinfo1">
 						<div class="profile">
-							<img src="../image/pro.jpg">
+							<img src="${ contextPath }${ profile.profileFile.get(0).route}${profile.profileFile.get(0).changeName}">
 						</div>
 						<div class="id">
-							<a href="#">${ magazine.userId }</a>
+						
+						
+							<c:choose>
+							<c:when test="${ loginUser.userId == magazine.userId}">
+							<a href="${contextPath}/myfeed">${ magazine.userId }</a>
+							
+							</c:when>
+							<c:otherwise>
+							<a href="${contextPath}/others/feed?userId=${magazine.userId}">${ magazine.userId }</a>
+							</c:otherwise>
+							</c:choose>
+							
+							
 						</div>
 						<div class="date">
 							<p>

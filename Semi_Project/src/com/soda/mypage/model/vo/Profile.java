@@ -18,6 +18,9 @@ public class Profile {
 	private String sns;
 	private String interest;
 	
+	private String userName;
+	private String userGrade;
+	
 	List<ProfileFile> profileFile;
 	
 	
@@ -32,6 +35,22 @@ public class Profile {
 		this.introduction = introduction;
 		this.sns = sns;
 		this.interest = interest;
+		this.profileFile = profileFile;
+	}
+
+
+	
+	
+
+	public Profile(String userId, String introduction, String sns, String interest, String userName, String userGrade,
+			List<ProfileFile> profileFile) {
+		super();
+		this.userId = userId;
+		this.introduction = introduction;
+		this.sns = sns;
+		this.interest = interest;
+		this.userName = userName;
+		this.userGrade = userGrade;
 		this.profileFile = profileFile;
 	}
 
@@ -97,11 +116,37 @@ public class Profile {
 
 
 
+	public String getUserName() {
+		return userName;
+	}
+
+
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+
+
+	public String getUserGrade() {
+		return userGrade;
+	}
+
+
+
+	public void setUserGrade(String userGrade) {
+		this.userGrade = userGrade;
+	}
+
+
+
 	@Override
 	public String toString() {
 		return "Profile [userId=" + userId + ", introduction=" + introduction + ", sns=" + sns + ", interest="
-				+ interest + ", profileFile=" + profileFile + "]";
+				+ interest + ", userName=" + userName + ", userGrade=" + userGrade + ", profileFile=" + profileFile
+				+ "]";
 	}
+
 
 
 
