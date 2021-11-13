@@ -8,17 +8,29 @@ public class Payroll {
 	private int nNum;			// 게시물번호 notice_num
 	private int total;			// 매출합계 sum(c_price)
 	private int taxTotal;		// 정산금 total*0.2
+	private int optionYear;		// 년도 그룹해서 조회
 	
 	public Payroll() {}
+	
 
-	public Payroll(String nTitle, String userName, String userId, int nNum, int total) {
+	public Payroll(String nTitle, String userName, String userId, int nNum, int total, int taxTotal) {
 		super();
 		this.nTitle = nTitle;
 		this.userName = userName;
 		this.userId = userId;
 		this.nNum = nNum;
 		this.total = total;
+		this.taxTotal = taxTotal;
 	}
+
+
+
+
+	public Payroll(int optionYear) {
+		super();
+		this.optionYear = optionYear;
+	}
+	
 
 	public String getnTitle() {
 		return nTitle;
@@ -61,19 +73,29 @@ public class Payroll {
 	}
 
 	public int getTaxTotal() {
-		return (int) (total * 0.2);
+		return taxTotal;
 	}
 
 	public void setTaxTotal(int taxTotal) {
-		this.taxTotal = (int) (total * 0.2);
+		this.taxTotal = taxTotal;
+	}
+	
+	
+
+	public int getOptionYear() {
+		return optionYear;
+	}
+
+	public void setOptionYear(int optionYear) {
+		this.optionYear = optionYear;
 	}
 
 	@Override
 	public String toString() {
 		return "Payroll [nTitle=" + nTitle + ", userName=" + userName + ", userId=" + userId + ", nNum=" + nNum
-				+ ", total=" + total + ", taxTotal=" + taxTotal + "]";
+				+ ", total=" + total + ", taxTotal=" + taxTotal + ", optionYear=" + optionYear + "]";
 	}
-	
+
 	
 	
 	

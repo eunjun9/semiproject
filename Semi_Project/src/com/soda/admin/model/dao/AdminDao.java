@@ -73,7 +73,8 @@ private Properties adminQuery = new Properties();
 										rset.getString("user_name"),
 										rset.getString("c_writer"),
 										rset.getInt("notice_num"),
-										rset.getInt("total")));
+										rset.getInt("total"),
+										rset.getInt("taxtotal")));
 			}
 			
 		} catch (SQLException e) {
@@ -87,5 +88,32 @@ private Properties adminQuery = new Properties();
 		
 	}
 
+	// 정산내역 옵션값 조회해오기
+	public List<Payroll> payrollYear(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		List<Payroll> payrollYear = new ArrayList<>();
+		String sql = adminQuery.getProperty("payrollYear");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				payrollYear.add(new Payroll(rset.getInt("optionyear")));
+			
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return payrollYear;
+		
+		}
 
 }

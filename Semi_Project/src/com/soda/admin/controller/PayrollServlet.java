@@ -34,7 +34,7 @@ public class PayrollServlet extends HttpServlet {
 		String year = request.getParameter("year");
 		String month = request.getParameter("month");
 		
-		System.out.println(year + month);
+		// System.out.println(year + month);
 		
 		List<Payroll> payroll = new AdminService().payrollSelect(year, month);
 		

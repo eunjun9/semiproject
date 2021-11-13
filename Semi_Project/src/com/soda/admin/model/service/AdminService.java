@@ -42,5 +42,16 @@ public class AdminService {
 		return payroll;		
 		
 	}
+
+	// 정산내역 option 값 조회해오기
+	public List<Payroll> payrollYear() {
+		Connection conn = getConnection();
+		
+		List<Payroll> payrollYear = adminDao.payrollYear(conn);
+		
+		close(conn);
+		
+		return payrollYear;
+	}
 	
 }
