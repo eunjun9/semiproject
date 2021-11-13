@@ -47,7 +47,7 @@
 				</button>
 			</div>
 			<div class="admin">
-				<c:if test="${ loginUser.userId == magazine.userId || loginUser.userId == 'admin@gmail.com' }">
+				<c:if test="${ !empty loginUser && (loginUser.userId == 'admin@gmail.com' || loginUser.userId == magazine.userId) }">
 					<button onclick="deleteDetail();">삭제</button>
 					<button onclick="updateDetail();">수정</button>
 				</c:if>
@@ -78,9 +78,15 @@
 						<div class="id">
 						
 						
+	
 							<c:choose>
 							<c:when test="${ loginUser.userId == magazine.userId}">
 							<a href="${contextPath}/myfeed">${ magazine.userId }</a>
+							
+							
+
+							
+							
 							
 							</c:when>
 							<c:otherwise>
@@ -92,8 +98,7 @@
 						</div>
 						<div class="date">
 							<p>
-								<fmt:formatDate value="${ magazine.nDate }" type="both"
-									pattern="yyy.MM.dd HH:mm:ss" />
+								<fmt:formatDate value="${ magazine.nDate }" type="both"	pattern="yyy.MM.dd HH:mm" />
 							</p>
 						</div>
 					</div>
@@ -145,7 +150,7 @@
 							<a href class="rwriter">${ magazine.userId }</a>
 							<li class="rcontent">${ reply.rContent }</li>
 							<li class="rdate"><fmt:formatDate value="${ reply.rDate }"
-									type="both" pattern="yyyy.MM.dd" /></li>
+									type="both" pattern="yyyy.MM.dd HH:mm" /></li>
 						</ul>
 
 

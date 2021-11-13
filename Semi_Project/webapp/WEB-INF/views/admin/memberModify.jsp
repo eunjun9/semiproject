@@ -27,7 +27,7 @@
 <body>
     <div class="page body">
         <h2 id="title">회원 정보 수정</h2>
-        <form id="revise" action="${contextPath }/member/modifyview" method="post">
+        <form name="modifyForm" id="modify" action="${contextPath }/member/modifyview" method="post">
 
             <div class="line">
 
@@ -73,18 +73,23 @@
                     
                 </select>
                 
-                <p id="subTitle">${member.userName }님의 회원등급을 변경하시겠습니까?</p>
+                <p id="subTitle">${member.userName}님의 회원등급을 변경하시겠습니까?</p>
             
             
     
             <div class="btnArea">
             <button type="button" id="cancel" onclick="window.close()">취소</button>
-            <button type="submit" id="sub">확인</button>
+            
+            <button id="sub" type="submit">확인</button>
+            
             </div>
 
             </div>
         </form>
     </div>
+    
+
+    
 </body>
 
 </html>

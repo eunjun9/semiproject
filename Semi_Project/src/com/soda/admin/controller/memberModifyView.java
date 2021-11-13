@@ -62,7 +62,7 @@ public class memberModifyView extends HttpServlet {
 		
 		Member updatedMember = new MemberService().memberModify(member);
 		
-		System.out.println(updatedMember);
+//		System.out.println(updatedMember);
 	
 			request.setAttribute("updatedMember", updatedMember);
 			response.sendRedirect(request.getContextPath() + "/mypage/adminmain");

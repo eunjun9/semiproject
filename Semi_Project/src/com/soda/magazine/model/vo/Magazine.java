@@ -3,7 +3,7 @@ package com.soda.magazine.model.vo;
 import java.util.Date;
 import java.util.List;
 
-import com.soda.magazine.model.vo.MagazineFile;
+
 
 public class Magazine {
 	private int nNum;			// 게시글 번호 pk

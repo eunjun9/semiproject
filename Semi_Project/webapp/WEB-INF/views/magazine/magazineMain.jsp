@@ -101,10 +101,14 @@
 									<div class="writer-par">
 											<c:choose>
 							<c:when test="${ loginUser.userId == magazine.userId}">
+							<!-- 이떄 아이디값 넘어감 -->
 							<a href="${contextPath}/myfeed">${ magazine.userId }</a>
+							
+							
 							
 							</c:when>
 							<c:otherwise>
+							<!-- 이떄 아이디값 넘어감 -->
 							<a href="${contextPath}/others/feed?userId=${magazine.userId}">${ magazine.userId }</a>
 							</c:otherwise>
 							</c:choose>
@@ -185,10 +189,12 @@
 									<div class="writer-par">
 											<c:choose>
 							<c:when test="${ loginUser.userId == magazine.userId}">
+							<!-- 이 때 아이디값 넘어감 -->
 							<a href="${contextPath}/myfeed">${ magazine.userId }</a>
 							
 							</c:when>
 							<c:otherwise>
+							<!-- 이 때 아이디값 넘어감 -->
 							<a href="${contextPath}/others/feed?userId=${magazine.userId}">${ magazine.userId }</a>
 							</c:otherwise>
 							</c:choose>

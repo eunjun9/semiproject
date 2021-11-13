@@ -106,4 +106,39 @@ SELECT
 </entry>
 
 
+
+
+
+<!-- nNum값으로 다른 사람 아이디 조회 -->
+<entry key="selectOthersnNum">
+SELECT
+    user_id,
+	INTRODUCTION,
+	SNS,
+	INTEREST
+	FROM "PROFILE"
+    join notice using(user_id)
+	WHERE notice_num = ?
+</entry>
+
+
+<!-- nNum값으로 다른 사람 아이디 조회 -->
+<entry key="selectProfileFilenNum">
+	SELECT
+    FILE_NO,
+    ROUTE,
+	USER_ID,
+	ORIGIN_NAME,
+	CHANGE_NAME,
+	STATUS
+	FROM "PROFILE_FILE"
+    join notice using(user_id)
+	WHERE notice_num = ?
+</entry>
+
+
+
+
+
+
 </properties>

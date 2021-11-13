@@ -242,6 +242,77 @@ public class ProfileDao {
 	}
 
 	
+	
+	/* nnum 값으로 다른 사람 아이디 조회*/
+	public Profile selectOthers(Connection conn, int nNum) {
+		PreparedStatement pstmt = null;
+	      ResultSet rset = null;
+	      Profile profile = null;
+	      String sql = profileQuery.getProperty("selectOthersnNum");
+	      
+	      try {
+	         pstmt = conn.prepareStatement(sql);
+	         pstmt.setInt(1, nNum);
+	         rset = pstmt.executeQuery();
+	         
+	         
+	         if(rset.next()) {
+	        	 profile = new Profile();
+	        	 profile.setUserId(rset.getString("user_id"));
+	        	 profile.setIntroduction(rset.getString("introduction"));
+	        	 profile.setSns(rset.getString("sns"));
+	        	 profile.setInterest(rset.getString("interest"));
+	         }
+	         
+	         
+	         
+	      } catch (SQLException e) {
+	         e.printStackTrace();
+	      } finally {
+	         close(rset);
+	         close(pstmt);
+	      }
+//	     System.out.println(profile);
+	      return profile;
+	}
+
+	/* nnum 값으로 다른 사람 아이디 조회*/
+	public List<ProfileFile> selectProfileFile(Connection conn, int nNum) {
+		PreparedStatement pstmt = null;
+	      ResultSet rset = null;
+	      List<ProfileFile> profileFile = new ArrayList<>();
+	      String sql = profileQuery.getProperty("selectProfileFilenNum");
+	      
+	      try {
+	         pstmt = conn.prepareStatement(sql);
+	         pstmt.setInt(1, nNum);
+	         rset = pstmt.executeQuery();
+	         
+	         
+	         if(rset.next()) {
+	        	 ProfileFile file = new ProfileFile();
+	        	 file.setFileNo(rset.getInt("FILE_NO"));
+	        	 file.setRoute(rset.getString("route"));
+	        	 file.setUserId(rset.getString("USER_ID"));
+	        	 file.setOriginName(rset.getString("ORIGIN_NAME"));
+	        	 file.setChangeName(rset.getString("CHANGE_NAME"));
+	        	 file.setStatus(rset.getString("STATUS"));
+	        	 profileFile.add(file);
+	        	 
+	         }
+	         
+	         
+	      } catch (SQLException e) {
+	         e.printStackTrace();
+	      } finally {
+	         close(rset);
+	         close(pstmt);
+	         
+	      }
+	      return profileFile;
+	}
+
+	
 
 
 	}

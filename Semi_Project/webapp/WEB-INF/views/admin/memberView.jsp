@@ -66,32 +66,22 @@
                 <td class="tbl-content">${member.gender }</td>
                 <td class="tbl-content">${member.joinDate }</td>
                 <td class="tbl-content">${member.userGrade }</td>
-                <td class="tbl-content">
-                 
+                 <td>
                  <c:choose>
-                <c:when test="${member.status =='Y'}">활동가능</c:when>
-                <c:when test="${member.status =='N'}">활동중지</c:when>
+                <c:when test="${member.status =='Y'}">활동중</c:when>
+                <c:when test="${member.status =='N'}">정지</c:when>
                 </c:choose>
                 
                 </td>
                 
                 <td class="tbl-content">
                 
-				 <%-- <form name="memberForm" method="post">
-				 <input type="hidden" name="userId" value="${ member.userId }"> 
-				 <button type="submit" class="revise-button" onclick="action='${ contextPath }/member/modify'">수정</button>
-				</form>  --%>
 				
 				
-					 <form name="memberForm" method="post">
-				 <input type="hidden" name="userId" value="${ member.userId }"> 
-				 <button type="submit" class="revise-button" onclick="modify()">수정</button>
-				</form> 
-				
-				<%-- <form name="memberForm" method="post" id="memberForm">
-				 <input type="hidden" name="userId" value="${ member.userId }"> 
-				 <button type="submit" class="revise-button" id="btn">수정</button>
-				</form> --%>
+				<form name="memberForm" method="post">
+				<input type="hidden" name="userId" id="userId"> 
+				 <input name="userId" value="수정" type="submit" class="revise-button" onclick="document.getElementById('userId').value='${ member.userId }'"> 
+				</form>
 				
                
                 </td>
@@ -152,15 +142,38 @@
 	} */
   
  	
- 	function modify() {
+ 	/* function modify(userId) {
  		 var form = document.forms.memberForm;
  		 window.open("","popup","width=210,height=300,left=700,top=300,scrollbars=no");
  		 form.target = "popup";
- 		 form.action = "${ contextPath }/member/modify?userId"+userId;
+ 		 form.action = "${ contextPath }/member/modify?userId=" + userId;
  		 form.method = "post";
  		 form.submit();
- 		}
- 	
+ 		} */
+	
+	
+ 		$(".revise-button").on("click", function() {
+ 			 var form = document.forms.memberForm;
+ 			 var modifyChild=window.open("","popup","width=210,height=300,left=700,top=300,scrollbars=no");
+ 	 		 form.target = "popup";
+ 	 		 form.action = "${ contextPath }/member/modify";
+ 	 		 form.method = "post";
+ 	 		 form.submit();
+ 		});
+ 		
+ 		
+ 		
+/* 	function modify(userId) {
+		 var form = document.forms.memberForm;
+		 window.open("","popup","width=210,height=300,left=700,top=300,scrollbars=no");
+		 form.target = "popup";
+		form.action = "${ contextPath }/member/modify";
+		 form.method = "post";
+		 form.submit();
+		 
+		 
+		}
+ 	 */
   
 </script>
   

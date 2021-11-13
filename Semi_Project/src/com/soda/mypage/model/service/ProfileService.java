@@ -114,6 +114,29 @@ public class ProfileService {
 
 
 
+	// nNum으로 프로필 값 찾기
+	public Profile selectOthers(int nNum) {
+		Connection conn = getConnection();
+
+		/* Profile 테이블 정보 조회 */
+		Profile profile = profileDao.selectOthers(conn, nNum);
+		
+		// 사진 조회
+		List<ProfileFile> profileFile = profileDao.selectProfileFile(conn, nNum);
+		
+		if(profile != null) {
+		
+		profile.setProfileFile(profileFile);
+		}
+		close(conn);
+		
+
+		return profile;
+	}
+
+
+	
+
 
 
 	
