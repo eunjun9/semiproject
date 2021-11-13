@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>관리자페이지_정산내역</title>
-<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/admin/admin-style.css">
+<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/admin/admin-payroll.css?1">
 <!-- 외부 폰트 -->
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
 <!-- jQuery -->
@@ -32,14 +33,15 @@
                     <div class="combo-area">
                         <select id="year" name="year" class="select">
                         <!-- db에서 year 추출해서 가져오기(년도는 계속 추가되기 때문에).. -->
-                        <option value="">년</option>
-                        <option value="2021">2021</option>
-                        <option value="2020">2020</option>
+                        <option value="" selected>년</option>
+                        <c:forEach var="pYear" items="${ payrollYear }">
+                        <option value="${ pYear.optionYear }">${ pYear.optionYear }</option>
+                        </c:forEach>
 						</select>
 						 
 						 <!-- 1부터 12까지 forEach로 반복해서 option value 넣어주기 -->
 						<select id="month" name="month" class="select">
-						<option value="">월</option>
+						<option value="" selected>월</option>
 						<c:forEach var="i" begin="1" end="12">
 						    <option value="${i}">${i}</option>
 						</c:forEach>
@@ -48,15 +50,15 @@
                     <table class="tbl">
                         <thead>
                           <tr>
+                         	<th class="tbl-title">클래스번호</th>
                             <th class="tbl-title">클래스명</th>
                             <th class="tbl-title">강사명</th>
                             <th class="tbl-title">강사계정</th>
                             <th class="tbl-title">월별 총 수익</th>
-                            <th class="tbl-title">정산금액(수수료제외)</th>
+                            <th class="tbl-title">정산금액</th>
                           </tr>
                         </thead>
                         <tbody>
-                         
                         </tbody>
                     </table>
                 </article>
@@ -76,7 +78,7 @@
         		$('#month').on('change', function () { 
         			var month = $('#month').val(); 
         		
-        		
+        			// 비동기식으로 테이블 데이터 조회해오기
         			$.ajax({
         				type: "GET", 
         				url: "${ contextPath }/payroll", 
@@ -85,14 +87,16 @@
         				success: function (result) { 
         					console.log(result);
         					
-        						var html = '';
+        					var data = '';
         					
-        						$.each(result, function(i){
-        						html += "<tr><td>" + result[i].nTitle + "</td><td>" + result[i].userName + "</td><td>"
-								+ result[i].userId + "</td><td>" + result[i].total + "</td><td>" + result[i].taxTotal
-								+ "</td></tr>";
-        						});
-        						$("#tbl tbody").append(html);
+        					$.each(result, function(i){
+        							data += "<tr><td>" + result[i].nNum + "</td><td>" + result[i].nTitle + "</td><td>" + result[i].userName
+        							+ "</td><td>" + result[i].userId + "</td><td>" + result[i].total + "</td><td>" + result[i].taxTotal
+        							+ "</td></tr>";
+        							
+        					 });
+        					 $(".tbl tbody").append(data);
+        				
         					
         				}, 
         					error: function (e) { 
