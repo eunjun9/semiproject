@@ -16,7 +16,7 @@
 		)
 		VALUES
 		(
-			SEQ_REPORT_NUM
+			SEQ_REPORT_NUM.NEXTVAL
 		  , ?
 		  , ?
 		  , ?
