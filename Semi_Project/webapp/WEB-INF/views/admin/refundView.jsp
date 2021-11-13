@@ -9,8 +9,8 @@
     <title>관리자_환불내역</title>
 
     <!-- 외부 스타일 시트 -->
-    <link href="resources/css/header_footer.css" rel="stylesheet">
-    <link href="resources/CSS/refundView.css" rel="stylesheet">
+
+    <link href="${ contextPath }/resources/css/admin/admin-refund.css" rel="stylesheet">
 
     <!-- 글꼴 (Noto Sans) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,53 +21,18 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 </head>
 <body>
+
     <!--header-->
-    <div class="header">
-        <div class="head-inner">
-            <div class="logo">
-                <img src="resources/images/logo.png">
-            </div>
-            <div class="big-category">
-                <div class="category1">
-                    <a href="#">SOCIALING</a>
-                    <a href="#">CLASS</a>
-                    <a href="#">MAGAZINE</a>
-                </div>
-                <div class="category2">
-                    <a href="#">CART</a>
-                    <a href="#">MYPAGE</a>
-                </div>
-            </div>
-        </div>
-    </div>
+    <%@ include file="/WEB-INF/views/common/header.jsp"%>
 
     <!-- body -->
     <div class="sales body">
         <div class="body-inner">
             <div class="manager-content">
                 <aside>
-                  <!-- 관리자페이지 메뉴 -->
-                    <div class="admin-menu">
-                        <ul id="menu">
-                          <li class="member menu">
-                            <a href="#">회원관리</a> 
-                          </li> 
-                  
-                         <li class="content menu">
-                            <a href="#">컨텐츠관리</a> 
-                         </li>
-                  
-                        <li class="sales menu">
-                           <a href="#">매출관리</a> 
-                           <ul class="submenu"> 
-                            <li><a href="#">매출조회</a></li> 
-                            <li><a href="#">정산내역</a></li> 
-                            <li><a href="#">환불내역</a></li> 
-                           </ul> 
-                         </li>
-                      </ul>
-                  </div>
-                </aside>
+          		 <!-- 관리자페이지 사이드바 메뉴 -->
+                   <%@ include file="/WEB-INF/views/admin/sideMenu.jsp"%>
+        		</aside>
 
                 <article>
                     <h1 id="main-title">환불내역</h1>
@@ -80,7 +45,7 @@
                             <option value="">2020년 07월</option>
                         </select>
                     </div>
-                    <table class="tbl">
+                    <table class="tbl" style="width:850px; margin-left:-125px;">
                         <thead>
                           <tr>
                             <th class="tbl-title">클래스명</th>
@@ -152,34 +117,9 @@
     </div>
 
     <!--footer-->
-    <div class="footer">
-        <div class="foot-inner">
-            <div class="foot-logo foot-all">
-                S O D A</div>
-            <div class="information foot-all">
-                <ul>주식회사 소셜 다이닝</ul>
-                <ul>대표 : 홍길동 | 개인정보관리책임자 : 홍길동 | 전화 : 02-123-4567 | 이메일 : soda@gmail.com</ul>
-                <ul>주소 : 서울 강남구 테헤란로 14길 6 남도빌딩 2층 | 사업자등록번호 : 000-00-00000</ul>
-                    <ul> 통신판매 : 제 2021-서울강남-0000호</ul>
-                        <ul>영업시간 : 월-금 오후 2시-7시</ul>
-            </div>
-            <div class="foot-category foot-all">
-                <ul><a href="#">소다소개</a></ul>
-                <ul><a href="#">공지사항 </a></ul>
-                <ul><a href="#">강사신청</a></ul>
-                <ul><a href="#">자주묻는질문</a></ul>
-            </div>
-        </div>
-    </div>
-    <div class="final">
-        <div class="foot-final">
-            <a href="#">이용약관 | </a>
-            <a href="#">개인정보처리방침 | </a>
-            <a href="#">사업자정보확인</a>
-        </div>
-    </div>
+    <%@ include file="/WEB-INF/views/common/footer.jsp"%>
 
-    <script>
+    	<script>
         $(document).ready(function(){ 
           $(".menu").mouseover(function(){ 
             $(this).children(".submenu").show(300); 
