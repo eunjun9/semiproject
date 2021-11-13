@@ -32,7 +32,7 @@ public class ReportFormServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 팝업창 화면 보여주기
-		request.getRequestDispatcher("/WEB-INF/views/common/reportFormPopup.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/views/admin/reportFormPopup.jsp").forward(request, response);
 	}
 
 	/**
@@ -62,7 +62,7 @@ public class ReportFormServlet extends HttpServlet {
 			request.setAttribute("result", "fail");
 		}
 		
-		request.getRequestDispatcher("/WEB-INF/views/common/reportFormPopup.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/views/admin/reportFormPopup.jsp").forward(request, response);
 	}
 
 }
