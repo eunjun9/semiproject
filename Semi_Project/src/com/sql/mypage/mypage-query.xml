@@ -187,22 +187,22 @@
 	
 	<entry key="insertRefundInfo">
 
-		INSERT INTO REFUND VALUES (
+		INSERT INTO REFUND (
 		       PAY_NUM
 		     , REFUND_DATE
 		     , REFUND_ACCOUNT
 		     , BANK
 		     , ACCOUNT_HOLDER
 		     , REFUND_PROCESS
-		     , NOITCE_NUM
+		     , NOTICE_NUM
 		)
-	  		   ?
+	  	VALUES	(   ?
 			 , DEFAULT
 			 , ?
 			 , ?
 			 , ?
 			 , DEFAULT
-			 , ?
+			 , ?)
 	
 
 	</entry>

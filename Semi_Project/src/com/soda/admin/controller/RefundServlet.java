@@ -1,6 +1,7 @@
 package com.soda.admin.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,10 +10,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.soda.admin.model.service.AdminService;
 import com.soda.member.model.service.MemberService;
 import com.soda.member.model.vo.Member;
 import com.soda.mypage.model.service.RefundService;
-import com.soda.mypage.model.vo.Refund;
+import com.soda.admin.model.vo.Refund;
 
 /**
  * Servlet implementation class RefundServlet
@@ -34,13 +36,14 @@ public class RefundServlet extends HttpServlet {
 	 *      response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
+		
+		Refund refund = new Refund();
+		
+		List<Refund> refundList = new AdminService().selectRefundList(refund);
+		
 
-		//int pNum = Integer.parseInt(request.getParameter("pNum"));
-
-		//request.setAttribute("pNum", pNum);
+		request.setAttribute("refundList", refundList);
 		request.getRequestDispatcher("/WEB-INF/views/admin/refundView.jsp").forward(request, response);
-		// request.getRequestDispatcher("/WEB-INF/views/mypage/PayList.jsp").forward(request,
-		// response);
 	}
 
 	/**
