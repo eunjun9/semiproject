@@ -183,7 +183,7 @@ public class MemberDao {
 	}
 
   // 비밀번호 찾기 - 임시비밀번호 발급받아 비밀번호 수정
-	public int sendPwd(Connection conn, String userId, int random) {
+	public int sendPwd(Connection conn, String userId, String newPwd) {
 		PreparedStatement pstmt = null;
 		int result = 0;
 		String sql = memberQuery.getProperty("sendPwd");
@@ -191,7 +191,7 @@ public class MemberDao {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setInt(1, random);
+			pstmt.setString(1, newPwd);
 			pstmt.setString(2, userId);
 			
 			result = pstmt.executeUpdate();
@@ -488,11 +488,51 @@ public class MemberDao {
          return memberList;
 	}
 
-	// 수정중
-	public int updateKakao(Connection conn, String userId) {
+	// 카카오 회원탈퇴
+	public int kakaoDelete(Connection conn, String userId) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = memberQuery.getProperty("kakaoDelete");
 		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, userId);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+
+		return result;
 		
-		return 0;
+	}
+
+	// 비밀번호 찾기 - 변경
+	public int findPwdUpdate(Connection conn, String userId, String newPwd) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = memberQuery.getProperty("findPwdUpdate");
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, newPwd);
+			pstmt.setString(2, userId);
+
+      result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+		
 	}
 
 

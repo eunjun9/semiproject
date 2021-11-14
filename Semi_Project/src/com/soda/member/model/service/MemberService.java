@@ -36,9 +36,9 @@ public class MemberService {
 	}
 	
 	// 카카오 자동 회원가입
-	public int kakaoJoin(Member joinMember) {
+	public int kakaoJoin(Member joinMember, String userId) {
 		Connection conn = getConnection();
-		
+
 		int result = memberDao.kakaoJoin(conn, joinMember);
 		
 		if(result > 0) {
@@ -80,23 +80,20 @@ public class MemberService {
 	}
 
   // 비밀번호 찾기 - 임시비밀번호 발급받아 비밀번호 수정
-	public Member sendPwd(String userId, int random) {
+	public int sendPwd(String userId, String newPwd) {
 		Connection conn = getConnection();
-		Member sendPwd = null;
 		
-		int result = memberDao.sendPwd(conn, userId, random);
+		int result = memberDao.sendPwd(conn, userId, newPwd);
 		
 		if(result > 0) {
-			sendPwd = memberDao.loginMember(conn, userId);
-
 			commit(conn);
 		} else {
 			rollback(conn);
 		}
     
-    close(conn);
+		close(conn);
 		
-		return sendPwd;
+		return result;
 	}
 
 
@@ -229,11 +226,11 @@ public class MemberService {
 		return memberList;
 	}
 
-	// 카카오 탈퇴 후 재가입 시 status 업데이트
-	public int updateKakao(String userId) {
+	// 카카오 회원탈퇴
+	public int kakaoDelete(String userId) {
 		Connection conn = getConnection();
 		
-		int result = memberDao.updateKakao(conn, userId);
+		int result = memberDao.kakaoDelete(conn, userId);
 			
 		if(result > 0) {
 			commit(conn);
@@ -245,6 +242,27 @@ public class MemberService {
   
 		return result;
 	}
+
+	// 비밀번호 찾기 - 변경
+	public Member findPwdUpdate(String userId, String newPwd) {
+		Connection conn = getConnection();
+		Member findPwdUpdate = null;
+		
+		int result = memberDao.findPwdUpdate(conn, userId,newPwd);
+			
+		if(result > 0) {
+			findPwdUpdate = memberDao.selectMember(conn, userId);
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		
+		close(conn);
+  
+		return findPwdUpdate;
+		
+	}
+
 
 
 }

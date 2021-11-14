@@ -317,7 +317,7 @@ body, html{
 			url: '/v1/user/unlink',
 			success: function(res) {
 				alert('카카오 회원탈퇴 완료');
-				location.href='<%=request.getContextPath()%>/accountDelete';
+				location.href='<%=request.getContextPath()%>/kakao/delete';
 			},
 			fail: function(err) {
            	alert('카카오계정 탈퇴에 실패하였습니다.');

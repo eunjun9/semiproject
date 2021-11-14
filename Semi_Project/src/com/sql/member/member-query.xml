@@ -62,15 +62,7 @@
 			, ?
 		)
 	</entry>
-	
-	<!-- 카카오 탈퇴 후 재가입 -->
-		
-	<entry key="updateKakao">
-		UPDATE
-		       MEMBER_INFO
-		   SET STATUS = 'Y'
-		 WHERE USER_ID = ?
-	</entry>
+
 	
 	<!-- 회원가입 -->
 	<entry key="insertMember">
@@ -224,6 +216,22 @@
 			, USER_GRADE
 			, USER_GENDER
 		 FROM MEMBER_INFO
+	</entry>
+	
+	  <!-- 카카오 회원 탈퇴 -->
+  <entry key="kakaoDelete">
+  
+		  DELETE
+		    FROM MEMBER_INFO
+		   WHERE USER_ID = ?
+	</entry>
+	
+	  <!-- 비밀번호 변경 -->
+  <entry key="findPwdUpdate">
+		UPDATE
+		       MEMBER_INFO
+		   SET USER_PWD = ?
+		 WHERE USER_ID = ?
 	</entry>
 
 
