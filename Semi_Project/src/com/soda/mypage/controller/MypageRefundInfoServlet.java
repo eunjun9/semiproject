@@ -1,28 +1,28 @@
-package com.soda.admin.controller;
+package com.soda.mypage.controller;
 
 import java.io.IOException;
-import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.soda.admin.model.service.AdminService;
-import com.soda.admin.model.vo.Report;
+import com.soda.member.model.service.MemberService;
+import com.soda.member.model.vo.Member;
 
 /**
- * Servlet implementation class AdminContentServlet
+ * Servlet implementation class MypageUserInfoModifyServlet
  */
-@WebServlet("/admin/report")
-public class AdminContentServlet extends HttpServlet {
+@WebServlet("/mypage/refundinfo")
+public class MypageRefundInfoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminContentServlet() {
+    public MypageRefundInfoServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,21 +31,17 @@ public class AdminContentServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String filter = request.getParameter("filter");
-		Report report = new Report();
-		report.setSort(filter);
-		
-		List<Report> reportList = new AdminService().selectReportList(report);
-		
-		
-		request.setAttribute("reportList", reportList);
-		request.getRequestDispatcher("/WEB-INF/views/admin/reportView.jsp").forward(request, response);
+		// TODO Auto-generated method stub
+		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/mypage/refundinfo.jsp");
+		view.forward(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		
 	}
 
 }

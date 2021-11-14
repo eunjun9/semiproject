@@ -10,6 +10,7 @@ import com.soda.lesson.model.vo.PageInfo;
 import com.soda.mypage.model.dao.MypageDao;
 import com.soda.mypage.model.vo.Profile;
 import com.soda.mypage.model.vo.ProfileFile;
+import com.soda.order.model.vo.Payment;
 import com.soda.socialing.model.vo.Socialing;
 
 import static com.common.JDBCTemplate.*;
@@ -36,8 +37,9 @@ public class MypageService {
 		
 		List<ProfileFile> profileFile = mypageDao.selectProfileFile(conn, userId);
 		
-		profile.setProfileFile(profileFile);
-		
+		if(profile != null) {
+			profile.setProfileFile(profileFile);
+		}
 		close(conn);
 
 		return profile;
@@ -77,7 +79,8 @@ public class MypageService {
 		
 		return socialingListAfter;
 	}
-
+	
+	// 소셜링 내역 - 참여 전
 	public List<Socialing> socialingListBefore(String userId) {
 		Connection conn = getConnection();
 		
@@ -87,5 +90,18 @@ public class MypageService {
 		
 		return socialingListBefore;
 	}
+
+	// 결제내역
+	public List<Lesson> selectpayList(Payment payment) {
+		Connection conn = getConnection();
+		
+		List<Lesson> lessonList = mypageDao.selectPayList(conn, payment);
+		
+		close(conn);
+		
+		return lessonList;	
+	}
+	
+
 
 }

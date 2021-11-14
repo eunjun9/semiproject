@@ -16,6 +16,8 @@ public class Payment {
 	
 	private Date selectDate;	// 원데이선택날짜 (class_member 테이블 참고)
 	
+	private String payListDate1;	// 마이페이지 결제내역 선택날짜1
+	private String payListDate2;
 	
 	
 /*	PAY_NUM	NUMBER
@@ -47,6 +49,24 @@ public Payment(int payNum, Date payDate, String payOption, String payPhone, Stri
 	this.payId = payId;
 	this.nNum = nNum;
 	this.selectDate = selectDate;
+}
+
+// 마이페이지 - 결제내역 생성자
+public Payment(int payNum, Date payDate, String payOption, String payPhone, String payEmail, String payCancle,
+		String userId, String payId, int nNum, Date selectDate, String payListDate1, String payListDate2) {
+	super();
+	this.payNum = payNum;
+	this.payDate = payDate;
+	this.payOption = payOption;
+	this.payPhone = payPhone;
+	this.payEmail = payEmail;
+	this.payCancle = payCancle;
+	this.userId = userId;
+	this.payId = payId;
+	this.nNum = nNum;
+	this.selectDate = selectDate;
+	this.payListDate1 = payListDate1;
+	this.payListDate2 = payListDate2;
 }
 
 
@@ -171,11 +191,34 @@ public void setSelectDate(Date selectDate) {
 
 
 
+public String getPayListDate1() {
+	return payListDate1;
+}
+
+
+public void setPayListDate1(String payListDate1) {
+	this.payListDate1 = payListDate1;
+}
+
+
+
+public String getPayListDate2() {
+	return payListDate2;
+}
+
+
+
+public void setPayListDate2(String payListDate2) {
+	this.payListDate2 = payListDate2;
+}
+
+
 @Override
 public String toString() {
 	return "Payment [payNum=" + payNum + ", payDate=" + payDate + ", payOption=" + payOption + ", payPhone=" + payPhone
 			+ ", payEmail=" + payEmail + ", payCancle=" + payCancle + ", userId=" + userId + ", payId=" + payId
-			+ ", nNum=" + nNum + ", selectDate=" + selectDate + "]";
+			+ ", nNum=" + nNum + ", selectDate=" + selectDate + ", payListDate1=" + payListDate1 + ", payListDate2="
+			+ payListDate2 + "]";
 }
 
 

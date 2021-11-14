@@ -50,7 +50,7 @@ public class LessonMainServlet extends HttpServlet {
 		String smallC = request.getParameter("smallC");
 		String oneday = request.getParameter("oneday");
 		String vod = request.getParameter("vod");
-		
+		//String sort = request.getParameter("classSort");
 		
 		// 페이징과 관련된 데이터, 조회 된 게시판List를 담아서 map에 리턴
 		Map<String, Object> map = new LessonService().selectList(page, new Filter(keyword ,price1, price2, bigC, smallC, oneday, vod));

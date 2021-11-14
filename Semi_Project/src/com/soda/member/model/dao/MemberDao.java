@@ -331,7 +331,7 @@ public class MemberDao {
 	}
 
 	// 관리자 회원 조회
-	public Member selectAdminMember(Connection conn, String userId) {
+	public Member selectAdminMember	(Connection conn, String userId) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		String sql = memberQuery.getProperty("selectAdminMember");

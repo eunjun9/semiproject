@@ -55,6 +55,7 @@ public class AdminService {
 		return payrollYear;
 	}
 
+
 	// 매출조회
 	public List<SalesList> selectSalesList(String filter) {
 		Connection conn = getConnection();
@@ -64,6 +65,17 @@ public class AdminService {
 		close(conn);
 		
 		return salesList;
+
+	// 신고 내역 조회
+	public List<Report> selectReportList(Report report) {
+		Connection conn = getConnection();
+		
+		List<Report> reportList = adminDao.selectreportList(conn, report);
+		
+		close(conn);
+		
+		return reportList;
+
 	}
 	
 }

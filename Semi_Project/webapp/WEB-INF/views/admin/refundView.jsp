@@ -45,15 +45,15 @@
                             <option value="">2020년 07월</option>
                         </select>
                     </div>
-                    <table class="tbl" style="width:850px; margin-left:-125px;">
+                    <table class="tbl" style="width:1000px; margin-left:-345px;">
                         <thead>
                           <tr>
                             <th class="tbl-title">클래스명</th>
+                            <th class="tbl-title">결제일</th>
                             <th class="tbl-title">강사명</th>
                             <th class="tbl-title">강사계정</th>
                             <th class="tbl-title">회원아이디</th>
                             <th class="tbl-title">결제금액</th>
-                            <th class="tbl-title">결제방식</th>
                             <th class="tbl-title">환불계좌</th>
                             <th class="tbl-title">은행</th>
                             <th class="tbl-title">예금주</th>
@@ -63,11 +63,11 @@
                         <tbody>
                           <tr>
                             <td class="tbl-content">클래스명1</td>
+                            <td class="tbl-content">2021/11/02</td>
                             <td class="tbl-content">홍길동</td>
                             <td class="tbl-content">sample@gmail.com</td>
                             <td class="tbl-content">gsdga@gmail.com</td>
                             <td class="tbl-content">200,000</td>
-                            <td class="tbl-content">미완료</td>
                             <td class="tbl-content">12-235-222</td>
                             <td class="tbl-content">신한</td>
                             <td class="tbl-content">김혜수</td>
@@ -75,11 +75,11 @@
                           </tr>
                           <tr>
                             <td class="tbl-content">클래스명2</td>
+                            <td class="tbl-content">2021/11/02</td>
                             <td class="tbl-content">김길동</td>
                             <td class="tbl-content">sample@naver.com</td>
                             <td class="tbl-content">squidgame@naver.com</td>
                             <td class="tbl-content">2,000,000</td>
-                            <td class="tbl-content">완료</td>
                             <td class="tbl-content">222-555-8421</td>
                             <td class="tbl-content">국민</td>
                             <td class="tbl-content">이정재</td>
