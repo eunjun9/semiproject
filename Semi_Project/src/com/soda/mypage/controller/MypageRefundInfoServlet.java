@@ -58,19 +58,20 @@ public class MypageRefundInfoServlet extends HttpServlet {
 		String bank = request.getParameter("bank");
 		String accountHolder = request.getParameter("accountHolder");
 		int pNum = Integer.parseInt(request.getParameter("pNum"));
+		int nNum = Integer.parseInt(request.getParameter("nNum"));
 		
 		Payment payment = new Payment();
 		payment.setRefundAccount(refundAccount);
 		payment.setRefundBank(bank);
 		payment.setAccountHolder(accountHolder);
 		payment.setPayNum(pNum);
-		
+		payment.setnNum(nNum);
 		
 		int result = new MypageService().insertRefundInfo(payment);
 		
 		
 		if(result > 0) {
-			request.getRequestDispatcher("/WEB-INF/views/mypage/mypage/main");
+			response.sendRedirect(request.getContextPath() + "/mypage/main" );
 		
 		} else {  //회원 정보 수정 실패 시 
 			request.setAttribute("message", "환불 접수가 실패하였습니다.");
