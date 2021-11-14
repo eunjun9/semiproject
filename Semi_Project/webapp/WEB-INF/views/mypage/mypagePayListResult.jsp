@@ -33,10 +33,10 @@
                 <hr>
             </div>
             <div class="pay_filter">
-          	<form method="post" action="${ contextPath}/mypage/paylist">
+          	<form method="post" action="${contextPath }/mypage/paylist">
                     <label>날짜 선택&nbsp;</label>
-                    <input type="date" name="date1">
-                    ― <input type="date" name="date2">
+                    <input type="date" name="date1" value="${ param.date1 }">
+                    ― <input type="date" name="date2" value="${ param.date2 }">
                     <button type="submit" name="filter_submit">검색</button>
              </form>
             </div>
@@ -51,7 +51,7 @@
             <hr>
             
             <!-- 결제내역 리스트는 hidden으로 해두고 필터링 거친 후 최신 순으로 정렬 -->
-           <%--  <div class="list_detail">
+            <div class="list_detail">
                 	<c:forEach var="lesson" items="${ lessonList }">
                     <div class="class_info">
                         <div class="class_img"><img src="${ contextPath }${ lesson.photoList.get(0).route }${ lesson.photoList.get(0).changeName }"></div>
@@ -71,17 +71,46 @@
                     </div>
                     </c:when>
                     </c:choose>
+                    
                     <form>
                     <div class="price">
                         <p class="class_priceP"><fmt:formatNumber value="${ lesson.cPrice }" type="currency" currencySymbol=""/> 원</p>
-                        <button type="button" class="refund_Btn">취소</button>
+                        <button type="button" class="refund_Btn" onclick="checkrefund();">취소</button>
                     </div><hr>
                     </form>
                 	</c:forEach>
-            </div> --%>
+            </div>
         </div>
     </div>
     
+    <script>
+    	function checkrefund(){
+     		/* var today = new Date();
+    		var year = today.getFullYear();
+    		var month = ('0' + (today.getMonth() + 1)).slice(-2);
+    		var day = ('0' + today.getDate()).slice(-2);
+    		var dateString = year + '/' + month  + '/' + day; 
+
+    		var pay = new Date(paydate);
+    		var year2 = pay.getFullYear();
+    		var month2 = ('0' + (pay.getMonth() + 1)).slice(-2);
+    		var day2 = ('0' + pay.getDate() + 7).slice(-2);
+    		
+    		var refundabledate = year2 +"/" + month2 +'/' + day2;
+    		
+    		if(dateString > refundabledate){
+    			alert("환불은 결제 후 7일 이내에 가능합니다.");
+    		} 
+    		if {
+    		//if(confirm("클래스를 환불하시겠습니까?")){
+	    			
+    		}
+    		} */
+    		alert("환불은 결제 후 7일 이내에 가능합니다.");
+    	}
+    </script>
+
+
 	<!-- footer -->
 	<%@ include file="/WEB-INF/views/common/footer.jsp" %>
 
