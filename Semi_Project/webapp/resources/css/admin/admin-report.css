@@ -8,6 +8,7 @@ html {
 a {
     text-decoration: none;
     color: black;
+    cursor: pointer;
 }
 
 /* 본문 간격 */
@@ -44,8 +45,6 @@ aside {
     width : 20%;
     order : 1;
 }
-
-
 
 /* 조회 테이블 */
 
@@ -116,6 +115,7 @@ select[name=filter] {
     text-align:center;
     vertical-align:top;
 }
+
 
 /* 삭제 버튼 */
 #deleteBtn{

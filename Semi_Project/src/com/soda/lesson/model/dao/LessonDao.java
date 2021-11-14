@@ -154,7 +154,7 @@ public class LessonDao {
 			while(rset.next()) {
 				Lesson lesson = new Lesson();
 				lesson.setnNum(rset.getInt("notice_num"));
-				lesson.setnTitle(rset.getNString("notice_title"));
+				lesson.setnTitle(rset.getString("notice_title"));
 				lesson.setnCount(rset.getInt("nCount"));
 				lesson.setnStatus(rset.getString("notice_status"));
 				lesson.setnDate(rset.getDate("notice_date"));
