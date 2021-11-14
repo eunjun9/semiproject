@@ -108,10 +108,6 @@ public class SocialingService {
 		/* Socialing_member 테이블 정보 조회 */
 		List<SocialingMember> socialing = socialingDao.selectMember(conn, nNum);
 		
-		/* 참여자 프로필(프로필사진) 조회 */
-		
-		/* 참여자 프로필(자기소개) 조회 */
-		
 //		if(profile != null) {
 //			
 //		} else if(itd != null) {
