@@ -38,32 +38,56 @@ public class WishListAddServlet extends HttpServlet {
 		int nNum = Integer.parseInt(request.getParameter("noticeNum"));
 		// 원데이클래스는 사용자가 직접 원하는 날짜 선택하기때문에 선택한 날짜 받아오기
 		String selDate = request.getParameter("selDate");
-		
 		String userId = ((Member)request.getSession().getAttribute("loginUser")).getUserId();
 
+		if(userId == null) {
+			response.sendRedirect(request.getContextPath()+"/WEB-INF/views/member/login.jsp");
+			return;
+		}
+		
 		// 테스트
-		System.out.println("nNum : " + nNum);
-		System.out.println("userId : " + userId);
-		System.out.println("selDate : " + selDate);
+		//System.out.println("nNum : " + nNum);
+		//System.out.println("userId : " + userId);
+		//System.out.println("selDate : " + selDate);
 
 		WishList wishlist = new WishList();
 		wishlist.setnNum(nNum);
 		wishlist.setUserId(userId);
 		wishlist.setlessonDate(selDate);
 		
-		// 장바구니에 insert하고 바로 리스트 조회해오기
-		List<WishList> wishList = new WishListService().wishListAdd(wishlist);
+		// 장바구니 중복 체크
+		int wishlistCheck = new WishListService().wishlistCheck(wishlist);
+		
+		// 중복된 클래스가 1개 이상이면 선택한 옵션으로 DB 업데이트
+		if( wishlistCheck > 0 ) {
+			int result = new WishListService().checkUpdate(wishlist);
+			
+			if( result > 0 ) {
+				request.setAttribute("message", "이미 장바구니에 같은 클래스가 있습니다. 새로 선택한 날짜로 추가되었습니다.");
+				response.sendRedirect(request.getContextPath() + "/wishlist");
+			} else { 
+				request.setAttribute("message", "장바구니 추가에 실패하였습니다. 다시 시도해주세요.");
+				PrintWriter writer = response.getWriter();
+				writer.println("<script>history.back();</script>");
+				writer.close();
+			}
+		} else { 
+			// 장바구니에 insert하고 바로 리스트 조회해오기
+			List<WishList> wishList = new WishListService().wishListAdd(wishlist);
 
-		if (wishList != null) { /* 장바구니 insert 성공 시 */
-			request.setAttribute("wishList", wishList);
-			response.sendRedirect(request.getContextPath() + "/wishlist");
-		} else { /* 장바구니 insert 실패 시 */
-			request.setAttribute("message", "장바구니 추가에 실패하였습니다. 다시 시도해주세요.");
-			PrintWriter writer = response.getWriter();
-			writer.println("<script>history.back();</script>");
-			writer.close();
+			if (wishList != null) { /* 장바구니 insert 성공 시 */
+				request.setAttribute("wishList", wishList);
+				response.sendRedirect(request.getContextPath() + "/wishlist");
+			} else { /* 장바구니 insert 실패 시 */
+				request.setAttribute("message", "장바구니 추가에 실패하였습니다. 다시 시도해주세요.");
+				PrintWriter writer = response.getWriter();
+				writer.println("<script>history.back();</script>");
+				writer.close();
+			}
+			
+			
 		}
-
+		
 	}
 
 	/**

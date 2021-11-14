@@ -3,14 +3,14 @@
 "http://java.sun.com/dtd/properties.dtd">
 <properties>
 
-	<!-- 장바구니 중복 체크 조회  
+	<!-- 장바구니 중복 체크 조회 --> 
 	<entry key="wishListCheck">
 		SELECT
 			   COUNT(*)
 		  FROM WISHLIST
 		 WHERE USER_ID = ?
 		   AND NOTICE_NUM = ?
-	</entry>-->
+	</entry>
 
 	<!-- 장바구니 담기 추가 -->
 	<entry key="wishListAdd">
@@ -60,12 +60,13 @@
 		ORDER BY W.WISH_NUM DESC
 	</entry> 
 	
-	<!-- 장바구니 클래스 중복으로 담을 때 업데이트 처리 
+	<!-- 장바구니 클래스 중복으로 담을 때 업데이트 처리 -->
 	<entry key="updateAdd">
 		UPDATE WISHLIST
-		   SET NOTICE_NUM = ?
-		 WHERE USER_ID = ?
-	</entry>-->
+		   SET LESSON_DATE = ?
+		 WHERE NOTICE_NUM = ?
+		   AND USER_ID = ?
+	</entry>
 	
 	
 	<!-- 장바구니 삭제 -->
