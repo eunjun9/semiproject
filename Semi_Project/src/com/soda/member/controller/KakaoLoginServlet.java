@@ -35,6 +35,9 @@ public class KakaoLoginServlet extends HttpServlet {
 		String userName = request.getParameter("userName");
 		String userPwd = request.getParameter("kakaoId");
 		String kakaoGender = request.getParameter("kakaoGender");
+		String token = request.getParameter("token");
+		
+		System.out.println(token);
 		
 		// 테스트
 		// System.out.println(userId + "/" + userName + "/" + kakaoId + "/" + kakaoGender);
@@ -66,14 +69,17 @@ public class KakaoLoginServlet extends HttpServlet {
 			if(kakaoJoin > 0) {
 				Member kakaoLoginUser = new MemberService().loginMember(userId);
 				session.setAttribute("loginUser", kakaoLoginUser);
+				session.setAttribute("token", token);
 				response.sendRedirect(request.getContextPath() + "/mainpage");
 			}else {
+				int updateKakao = new MemberService().updateKakao(userId);
 				System.out.println("카카오 회원가입 실패");
 			}
 			
 			// 기존에 회원정보가 있었으면 바로 세션에 저장하고 비동기식 전송
 		}else {
 			session.setAttribute("loginUser", loginUser);
+			session.setAttribute("token", token);
 			response.sendRedirect(request.getContextPath() + "/mainpage");
 		}
 	}

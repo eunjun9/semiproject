@@ -229,5 +229,22 @@ public class MemberService {
 		return memberList;
 	}
 
+	// 카카오 탈퇴 후 재가입 시 status 업데이트
+	public int updateKakao(String userId) {
+		Connection conn = getConnection();
+		
+		int result = memberDao.updateKakao(conn, userId);
+			
+		if(result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		
+		close(conn);
+  
+		return result;
+	}
+
 
 }

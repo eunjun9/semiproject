@@ -124,6 +124,8 @@ public class MemberDao {
 		return result;
 	}
 	
+	
+	
 	// 회원가입
 	public int insertMember(Connection conn, Member member) {
 		int result = 0;
@@ -484,6 +486,13 @@ public class MemberDao {
             
          
          return memberList;
+	}
+
+	// 수정중
+	public int updateKakao(Connection conn, String userId) {
+		
+		
+		return 0;
 	}
 
 

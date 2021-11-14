@@ -75,6 +75,12 @@
                 Kakao.API.request({
                   url: '/v2/user/me',
                   success: function (res) {
+                	 // if(Kakao.Auth.getAccessToken()){
+                        	 //alert('Kakao.Auth.getAccessToken() + "토큰이 존재합니다."');
+                       // }
+                   		var token = Kakao.Auth.getAccessToken();
+                   		Kakao.Auth.setAccessToken(token);
+                	  
                         var userEmail = res.kakao_account.email; // 카카오 email
                         console.log(userEmail);	 				 // 테스트용 콘솔 노출
                         var userName = res.properties.nickname; 	// 카카오 닉네임(이름)
@@ -82,6 +88,7 @@
                         var kakaoId = res.id					// 비밀번호로 사용할 카카오 아이디
                         console.log(kakaoId);					// 테스트용 콘솔 노출
                        var kakaoGender = res.kakao_account.gender;	 // 카카오 성별
+                        console.log(kakaoGender);
                        
                     // 카카오 자동가입 시 추가되는 성별 DB 통일성을 위해 변경
                        if( kakaoGender != null) {
@@ -97,7 +104,7 @@
 
                        $.ajax({
                         url:"${ contextPath }/kakao/login",
-                        data:{ userEmail : userEmail, userName : userName, kakaoId : kakaoId, kakaoGender : kakaoGender },
+                        data:{ userEmail : userEmail, userName : userName, kakaoId : kakaoId, kakaoGender : kakaoGender, token : token },
                         Type:"post",
                         success:function(data){
                         	location.href="${ contextPath }/mainpage";
@@ -105,10 +112,6 @@
                         }
                         
                     });
-                       if(Kakao.Auth.getAccessToken()){
-                       	// console.log(Kakao.Auth.getAccessToken() + "토큰이 존재합니다.");
-                       }
-                     Kakao.Auth.setAccessToken(res.access_token);
                   },
     		     
                   fail: function (error) {
@@ -123,6 +126,7 @@
             })
           }
      
+        
         </script>
 </body>
 </html>
