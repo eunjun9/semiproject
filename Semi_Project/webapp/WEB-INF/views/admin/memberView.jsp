@@ -41,45 +41,62 @@
                    <%@ include file="/WEB-INF/views/admin/sideMenu.jsp"%>
         </aside>
 
+
         <article>
           <h1 id="main-title">회원관리</h1>
-
           <table class="tbl">
             <thead>
               <tr>
-                <th class="tbl-title">선택</th>
-                <th class="tbl-title">아이디</th>
-                <th class="tbl-title">이름<th>
-                <th class="tbl-title">휴대폰번호</th>
-                <th class="tbl-title">성별</th>
-                <th class="tbl-title">가입일</th>
-                <th class="tbl-title">회원등급</th>
-                <th class="tbl-title">수정버튼</th>
+                <th class="tbl-title th2">아이디</th>
+                <th class="tbl-title th3">이름</th>
+                <th class="tbl-title th4">휴대폰번호</th>
+                <th class="tbl-title th5">성별</th>
+                <th class="tbl-title th6">가입일</th>
+                <th class="tbl-title th7">회원등급</th>
+                <th class="tbl-title th8">활동여부</th>
+                <th class="tbl-title th9">회원정보수정</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td class="tbl-content">
-                  <input type="checkbox" class="check" name="check">
-                </td>
+            <c:forEach var="member" items="${ memberList}">
+            <tr>
                 <td class="tbl-content">${member.userId}</td>
                 <td class="tbl-content">${member.userName }</td>
                 <td class="tbl-content">${member.userPhone }</td>
                 <td class="tbl-content">${member.gender }</td>
                 <td class="tbl-content">${member.joinDate }</td>
                 <td class="tbl-content">${member.userGrade }</td>
-                <td class="tbl-content">
-                  <button type="button" class="revise-button"
-                    onclick="location.href='${ contextPath }/member/modify'">수정</button>
+                 <td>
+                 <c:choose>
+                <c:when test="${member.status =='Y'}">활동중</c:when>
+                <c:when test="${member.status =='N'}">정지</c:when>
+                </c:choose>
+                
                 </td>
+                
+                <td class="tbl-content">
+                
+				
+				
+				<form name="memberForm" method="post">
+				<input type="hidden" name="userId" id="userId"> 
+				 <input name="userId" value="수정" type="submit" class="revise-button" onclick="document.getElementById('userId').value='${ member.userId }'"> 
+				</form>
+				
+               
+                </td>
+                
               </tr>
-              <tr>
-              
+			</c:forEach>	
+			</tbody>              
           </table>
-
-          <button type="button" class="grade-revise"
-            onclick="location.href='${ contextPath }/member/grade'">회원등급변경</button>
+          
+          
         </article>
+		
+			
+
+         
       </div>
     </div>
   </div>
@@ -101,24 +118,13 @@
 
   </script>
 
-  <!--회원 등급 변경 팝업창 스크립트-->
-  <script>
-    function openPopup(url, title, width, height) {
-      let left = (document.body.clientWidth / 2) - (width / 2);
-      left += window.screenLeft;
-      let top = (screen.availHeight / 2) - (height / 2);
-
-      let options = "width=" + width + ",height=" + height + ",left=" + left + ",top=" + top;
-
-      window.open(url, title, options);
-    }
-
-  </script>
 
 
   <!--수정 버튼 누를때 팝업창 스크립트-->
-  <script>
+<!--   <script>
     function openPopup(url, title, width, height) {
+    
+    	
       let left = (document.body.clientWidth / 2) - (width / 2);
       left += window.screenLeft;
       let top = (screen.availHeight / 2) - (height / 2);
@@ -127,8 +133,55 @@
 
       window.open(url, title, options);
     }
-  </script>
+  </script> -->
+  
+<script>
+ 	/* function modify(){
+		document.forms.memberForm.action = "${ contextPath }/member/modify";
+		document.forms.memberForm.submit();
+	} */
+  
+ 	
+ 	/* function modify(userId) {
+ 		 var form = document.forms.memberForm;
+ 		 window.open("","popup","width=210,height=300,left=700,top=300,scrollbars=no");
+ 		 form.target = "popup";
+ 		 form.action = "${ contextPath }/member/modify?userId=" + userId;
+ 		 form.method = "post";
+ 		 form.submit();
+ 		} */
+	
+	
+ 		$(".revise-button").on("click", function() {
+ 			 var form = document.forms.memberForm;
+ 			 var modifyChild=window.open("","popup","width=210,height=300,left=700,top=300,scrollbars=no");
+ 	 		 form.target = "popup";
+ 	 		 form.action = "${ contextPath }/member/modify";
+ 	 		 form.method = "post";
+ 	 		 form.submit();
+ 		});
+ 		
+ 		
+ 		
+/* 	function modify(userId) {
+		 var form = document.forms.memberForm;
+		 window.open("","popup","width=210,height=300,left=700,top=300,scrollbars=no");
+		 form.target = "popup";
+		form.action = "${ contextPath }/member/modify";
+		 form.method = "post";
+		 form.submit();
+		 
+		 
+		}
+ 	 */
+  
+</script>
+  
 
+  
+  
+
+  	
 </body>
 
 </html>

@@ -383,6 +383,15 @@ public class SocialingDao {
 				sMember.setMemberId(rset.getString("user_id"));
 				sMember.setStatus(rset.getString("s_status"));
 				sMember.setMemberName(rset.getString("user_name"));
+				if(rset.getString("route") != null && rset.getString("change_name") != null) {
+					ProfileFile profile = new ProfileFile();
+					profile.setRoute(rset.getString("route"));
+					profile.setChangeName(rset.getString("change_name"));
+					sMember.setProfile(profile);
+				}
+				if(rset.getString("introduction") != null) {
+					sMember.setIntroduction(rset.getString("introduction"));
+				}
 				
 				memberList.add(sMember);
 			}

@@ -41,8 +41,6 @@ public class SocialingMainServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String userId = ((Member)request.getSession().getAttribute("loginUser")).getUserId();
-		
 		/* 페이징 처리 */
 		// 페이지 초기값 (첫 페이지)
 		int page = 1;

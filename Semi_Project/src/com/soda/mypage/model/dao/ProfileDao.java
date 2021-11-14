@@ -137,7 +137,7 @@ public class ProfileDao {
 	}
 
 	
-
+	// 내 피드 프로필 셀렉해오기
 	public Profile selectProfile(Connection conn, String userId) {
 		PreparedStatement pstmt = null;
 	      ResultSet rset = null;
@@ -169,7 +169,8 @@ public class ProfileDao {
 //	     System.out.println(profile);
 	      return profile;
 	}
-
+	
+	// 나, 남의 피드 사진들 가져오기
 	public List<ProfileFile> selectProfileFile(Connection conn, String userId) {
 		PreparedStatement pstmt = null;
 	      ResultSet rset = null;
@@ -207,7 +208,111 @@ public class ProfileDao {
 	}
 
 	
+	// 다른사람일 경우 프로필, 프사 가져오기
+	public Profile selectOthersFeed(Connection conn, String userId) {
+		PreparedStatement pstmt = null;
+	      ResultSet rset = null;
+	      Profile profile = null;
+	      String sql = profileQuery.getProperty("selectOthers");
+	      
+	      try {
+	         pstmt = conn.prepareStatement(sql);
+	         pstmt.setString(1, userId);
+	         rset = pstmt.executeQuery();
+	         
+	         
+	         if(rset.next()) {
+	        	 profile = new Profile();
+	        	 profile.setUserId(rset.getString("user_id"));
+	        	 profile.setUserName(rset.getString("user_name"));
+	        	 profile.setUserGrade(rset.getString("user_grade"));
+	        	 profile.setIntroduction(rset.getString("introduction"));
+	        	 profile.setSns(rset.getString("sns"));
+	        	 profile.setInterest(rset.getString("interest"));
+	         }
+	         
+	         
+	         
+	      } catch (SQLException e) {
+	         e.printStackTrace();
+	      } finally {
+	         close(rset);
+	         close(pstmt);
+	      }
+//	     System.out.println("다른사람" + profile);
+	      return profile;
+	}
 
+	
+	
+	/* nnum 값으로 다른 사람 아이디 조회*/
+	public Profile selectOthers(Connection conn, int nNum) {
+		PreparedStatement pstmt = null;
+	      ResultSet rset = null;
+	      Profile profile = null;
+	      String sql = profileQuery.getProperty("selectOthersnNum");
+	      
+	      try {
+	         pstmt = conn.prepareStatement(sql);
+	         pstmt.setInt(1, nNum);
+	         rset = pstmt.executeQuery();
+	         
+	         
+	         if(rset.next()) {
+	        	 profile = new Profile();
+	        	 profile.setUserId(rset.getString("user_id"));
+	        	 profile.setIntroduction(rset.getString("introduction"));
+	        	 profile.setSns(rset.getString("sns"));
+	        	 profile.setInterest(rset.getString("interest"));
+	         }
+	         
+	         
+	         
+	      } catch (SQLException e) {
+	         e.printStackTrace();
+	      } finally {
+	         close(rset);
+	         close(pstmt);
+	      }
+//	     System.out.println(profile);
+	      return profile;
+	}
+
+	/* nnum 값으로 다른 사람 아이디 조회*/
+	public List<ProfileFile> selectProfileFile(Connection conn, int nNum) {
+		PreparedStatement pstmt = null;
+	      ResultSet rset = null;
+	      List<ProfileFile> profileFile = new ArrayList<>();
+	      String sql = profileQuery.getProperty("selectProfileFilenNum");
+	      
+	      try {
+	         pstmt = conn.prepareStatement(sql);
+	         pstmt.setInt(1, nNum);
+	         rset = pstmt.executeQuery();
+	         
+	         
+	         if(rset.next()) {
+	        	 ProfileFile file = new ProfileFile();
+	        	 file.setFileNo(rset.getInt("FILE_NO"));
+	        	 file.setRoute(rset.getString("route"));
+	        	 file.setUserId(rset.getString("USER_ID"));
+	        	 file.setOriginName(rset.getString("ORIGIN_NAME"));
+	        	 file.setChangeName(rset.getString("CHANGE_NAME"));
+	        	 file.setStatus(rset.getString("STATUS"));
+	        	 profileFile.add(file);
+	        	 
+	         }
+	         
+	         
+	      } catch (SQLException e) {
+	         e.printStackTrace();
+	      } finally {
+	         close(rset);
+	         close(pstmt);
+	         
+	      }
+	      return profileFile;
+	}
 
 	
 

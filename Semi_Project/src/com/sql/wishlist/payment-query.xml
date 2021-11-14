@@ -50,5 +50,14 @@
 	</entry>
 	
 	
+	<!-- 결제 완료 후 장바구니 삭제 -->
+	<entry key="wishlistEnd">
+		UPDATE WISHLIST
+		   SET WISH_STATUS = 'N'
+		 WHERE USER_ID = ?
+		   AND NOTICE_NUM = ?
+	</entry>
+	
+	
 
 </properties>

@@ -39,7 +39,7 @@ public class MagazineMainServlet extends HttpServlet {
 		
 		List<Magazine> magazineAdminList = new MagazineService().selectAdminList();
 		
-		System.out.println(magazineAdminList);
+//		System.out.println(magazineAdminList);
 		request.setAttribute("magazineAdminList", magazineAdminList);
 		request.setAttribute("userList", userList);
 		request.getRequestDispatcher("/WEB-INF/views/magazine/magazineMain.jsp").forward(request, response);
