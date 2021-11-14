@@ -74,9 +74,15 @@
                     </c:when>
                     </c:choose>
                     
+
+                    <form>
+                   
                     <div class="price">
                         <p class="class_priceP"><fmt:formatNumber value="${ lesson.cPrice }" type="currency" currencySymbol=""/> 원</p>
-                        <button type="button" class="refund_Btn">취소</button>
+                        <button type="button" class="refund_Btn" onclick="location.href='${ contextPath }/mypage/refundinfo'">취소</button>
+
+                    
+
                     </div><hr>
                     </form>
                 	</c:forEach>

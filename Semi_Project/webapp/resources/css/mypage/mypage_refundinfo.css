@@ -1,0 +1,175 @@
+@charset "UTF-8"; /*인코딩 문자 깨짐 방지 (유니코드 문자열 있을 시)*/
+
+html{
+    /* 사용자 설정 문자 크기 그대로 반영 되도록 */
+    font-size: 100%;
+}
+
+body {
+    color : #432;
+    line-height: 2.0; 
+}
+
+a {
+    text-decoration: none;
+}
+
+img{
+    max-width: 100%;
+}
+
+/* header ------------------------------ */
+
+
+
+
+
+/*---------------body----------------*/
+
+/* 배너 */
+.board {
+    width: 100%;
+    display: flex;
+ }
+ 
+ .board-inner {
+     max-width: 1000px;
+     margin : 0 auto;
+ }
+
+ *{
+    box-sizing: border-box;
+   
+}
+
+div{
+    display: block;
+}
+
+.joinInfoArea{
+    max-width: 400px;
+    width: 100%;
+    padding-right: 0;
+    padding-left: 0;
+    margin-left: 38%;
+    margin-bottom: 3rem!important;
+    
+}
+
+
+
+form{
+    display: block;
+    margin-top: 0em;
+}
+
+body{
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    text-align: left;
+    background-color: #fff;
+}
+ 
+html{
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body, html{
+    font-family: Noto Sans KR;
+    letter-spacing: -.4px;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: left;
+}
+
+.firstjoin{
+    font-size: 1.5rem;
+    font-weight: 500px;
+    margin-left: 60px;
+    
+}
+
+.common-form{
+    position: relative;
+    width: 400px;
+    height: 100%;
+    min-height: 1px;
+    padding-right: 0;
+    padding-left: 0;
+    margin-left: 50px;
+    margin-bottom: .5rem!important;
+    flex: 0 0 100%;
+    max-width: 100%;
+    display: block;
+    
+}
+
+#idCheck{
+    margin-left: 5px;
+}
+
+.form-group{
+    margin-bottom: 0;
+    margin: 0;
+}
+
+.form-label{
+    font-size: 13px;
+    color: #000;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.54;
+    letter-spacing: -.31px;
+    margin-bottom: .25rem!important;
+    width: 100px;
+    font-size: 0.9rem;
+    
+}
+
+.form-control{
+    border-radius: 5px;
+    width: 270px;
+    height: 35px;
+    border: 1px solid lightgray;
+}
+
+.form-check{
+    position: relative;
+    display: block;
+    padding-left: 1.25rem;
+}
+
+.form-check-input{
+    position: absolute;
+    margin-top: .3rem;
+    margin-left: -1.25rem;
+    overflow: visible;
+    display: flex;
+}
+
+#pwdUpdateBtn{
+    border-radius: 3px;
+    margin-left: 5px;
+    border: 1px solid black;
+	border-radius: 5px;
+}
+
+#btn-confirm{
+    width: 130px;
+    height: 50px;
+    margin-top: 25px;
+    margin-left: 100px;
+    padding: 9px;
+    border-radius: 20px;
+    border: 1px solid #DAEFF5;
+    background-color: #DAEFF5;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
