@@ -74,12 +74,7 @@ public class MagazineUserInsertServlet extends HttpServlet {
 			
 	
 		
-		Magazine user = new Magazine();
-		user.setnType(mCategory);
-		user.setnTitle(mtitle);
-		user.setnContent(mcontent);
-		user.setUserId(mwriter);
-		
+	  
 		
 		// 첨부파일 썸네일로 받아오기
 		List<MagazineFile> photoList = new ArrayList<>();

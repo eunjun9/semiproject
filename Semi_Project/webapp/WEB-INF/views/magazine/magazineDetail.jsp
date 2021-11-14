@@ -54,7 +54,7 @@
 				<c:if
 					test="${ !empty loginUser && loginUser.userId == 'admin@gmail.com'}">
 					<button type="button" class="report-button"
-						onclick="openPopup('Report_popup.html', 'checking', 450, 650)">신고</button>
+						onclick="openPopup('${ contextPath }/reportForm', 'reportForm', 280, 400)">신고</button>
 				</c:if>
 			</div>
 
@@ -268,8 +268,17 @@
 
 </c:if>
 
-
-
+<script type="text/javascript">
+function openPopup(url, title, width, height) {
+		            let left = (document.body.clientWidth/2)-(width/2);
+		            left += window.screenLeft;
+		            let top = (screen.availHeight/2)-(height/2);
+		                
+		            let options = "width="+width+",height="+height+",left="+left+",top="+top;
+		                
+		            window.open(url, title, options);
+		        }
+</script>
 
 <script>
       /* 댓글달기 버튼 클릭 시 Reply 테이블에 insert 기능 수행 후 
