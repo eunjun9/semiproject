@@ -10,6 +10,47 @@
             AND NOTICE_STATUS = 'Y'
 	</entry>
 	
+	<entry key="getAllFilterListCount">
+		SELECT
+			   COUNT(*)
+		  FROM NOTICE
+		 WHERE NOTICE_TYPE = '소셜링'
+		   AND NOTICE_STATUS = 'Y'
+		   AND NOTICE_TITLE LIKE '%' || ? || '%'
+		   AND S_PLACE LIKE '%' || ? || '%'
+		   AND S_TYPE LIKE '%' || ? || '%'
+	</entry>
+	
+	<entry key="getKeywordLocalListCount">
+		SELECT
+			   COUNT(*)
+		  FROM NOTICE
+		 WHERE NOTICE_TYPE = '소셜링'
+		   AND NOTICE_STATUS = 'Y'
+		   AND NOTICE_TITLE LIKE '%' || ? || '%'
+		   AND S_PLACE LIKE '%' || ? || '%'
+	</entry>
+	
+	<entry key="getKeywordOnoffListCount">
+		SELECT
+			   COUNT(*)
+		  FROM NOTICE
+		 WHERE NOTICE_TYPE = '소셜링'
+		   AND NOTICE_STATUS = 'Y'
+		   AND NOTICE_TITLE LIKE '%' || ? || '%'
+		   AND S_TYPE LIKE '%' || ? || '%'
+	</entry>
+	
+	<entry key="getLocalOnoffListCount">
+		SELECT
+			   COUNT(*)
+		  FROM NOTICE
+		 WHERE NOTICE_TYPE = '소셜링'
+		   AND NOTICE_STATUS = 'Y'
+		   AND S_PLACE LIKE '%' || ? || '%'
+		   AND S_TYPE LIKE '%' || ? || '%'
+	</entry>
+	
 	<entry key="getKeywordListCount">
 		SELECT
 			   COUNT(*)
@@ -66,6 +107,85 @@
 						JOIN TBL_FILE USING(NOTICE_NUM)
 						WHERE NOTICE_TYPE = '소셜링'
 						  AND NOTICE_STATUS = 'Y'
+					    ORDER BY NOTICE_NUM DESC) A)
+		WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
+	<entry key="selectAllFilterList">
+		SELECT * 
+		  FROM(SELECT ROWNUM RNUM, A.*
+				 FROM(SELECT
+						     NOTICE_NUM
+						   , NOTICE_TITLE
+		                   , USER_NAME
+						   , S_PLACE
+						   , S_DATE
+						   , S_TIME
+						   , S_TYPE
+						   , ROUTE
+						   , CHANGE_NAME
+						   , NOTICE_STATUS
+		                FROM NOTICE
+						JOIN MEMBER_INFO USING(USER_ID)
+						JOIN SOCIALING USING(NOTICE_NUM)
+						JOIN TBL_FILE USING(NOTICE_NUM)
+						WHERE NOTICE_TYPE = '소셜링'
+						  AND NOTICE_STATUS = 'Y'
+						  AND NOTICE_TITLE LIKE '%' || ? || '%'
+						  AND S_PLACE LIKE '%' || ? || '%'
+						  AND S_TYPE LIKE '%' || ? || '%'
+					    ORDER BY NOTICE_NUM DESC) A)
+		WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
+	<entry key="selectKeywordLocalList">
+		SELECT * 
+		  FROM(SELECT ROWNUM RNUM, A.*
+				 FROM(SELECT
+						     NOTICE_NUM
+						   , NOTICE_TITLE
+		                   , USER_NAME
+						   , S_PLACE
+						   , S_DATE
+						   , S_TIME
+						   , S_TYPE
+						   , ROUTE
+						   , CHANGE_NAME
+						   , NOTICE_STATUS
+		                FROM NOTICE
+						JOIN MEMBER_INFO USING(USER_ID)
+						JOIN SOCIALING USING(NOTICE_NUM)
+						JOIN TBL_FILE USING(NOTICE_NUM)
+						WHERE NOTICE_TYPE = '소셜링'
+						  AND NOTICE_STATUS = 'Y'
+						  AND NOTICE_TITLE LIKE '%' || ? || '%'
+						  AND S_PLACE LIKE '%' || ? || '%'
+					    ORDER BY NOTICE_NUM DESC) A)
+		WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
+	<entry key="selectKeywordOnoffList">
+		SELECT * 
+		  FROM(SELECT ROWNUM RNUM, A.*
+				 FROM(SELECT
+						     NOTICE_NUM
+						   , NOTICE_TITLE
+		                   , USER_NAME
+						   , S_PLACE
+						   , S_DATE
+						   , S_TIME
+						   , S_TYPE
+						   , ROUTE
+						   , CHANGE_NAME
+						   , NOTICE_STATUS
+		                FROM NOTICE
+						JOIN MEMBER_INFO USING(USER_ID)
+						JOIN SOCIALING USING(NOTICE_NUM)
+						JOIN TBL_FILE USING(NOTICE_NUM)
+						WHERE NOTICE_TYPE = '소셜링'
+						  AND NOTICE_STATUS = 'Y'
+						  AND NOTICE_TITLE LIKE '%' || ? || '%'
+						  AND S_TYPE LIKE '%' || ? || '%'
 					    ORDER BY NOTICE_NUM DESC) A)
 		WHERE RNUM BETWEEN ? AND ?
 	</entry>

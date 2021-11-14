@@ -42,15 +42,21 @@ public class SocialingDao {
 		int listCount = 0;
 		
 		// 검색 된 목록을 조회해야 하는 경우 다른 SQL문 수행 (검색 조건이 설정되어 있을 때)
-		if(search.getKeyword() != null) {
+		if(search.getKeyword() != null && search.getLocal() != null) {
+			sql = socialingQuery.getProperty("getKeywordLocalListCount"); // 키워드 + 지역 검색
+		} else if(search.getKeyword() != null && search.getOnoff() != null) {
+			sql = socialingQuery.getProperty("getKeywordOnoffListCount"); // 키워드 + 온오프라인 검색
+		} else if(search.getKeyword() != null && search.getLocal() != null && search.getOnoff() != null) {
+			sql = socialingQuery.getProperty("getAllFilterListCount"); // 전체 필터링 검색 (지역+온오프라인)
+		} else if(search.getKeyword() != null) {
 			sql = socialingQuery.getProperty("getKeywordListCount"); // 키워드 검색
-		} else if(search.getLocal() != null) {
+		}/* else if(search.getLocal() != null) {
 			sql = socialingQuery.getProperty("getLocalListCount"); // 지역 검색
-		}/* else if(search.getDateIn() != null) {
+		} else if(search.getDateIn() != null) {
 			sql = socialingQuery.getProperty("getDateListCount"); // 날짜 검색
-		}*/ else if(search.getOnoff() != null) {
+		} else if(search.getOnoff() != null) {
 			sql = socialingQuery.getProperty("getOnoffListCount"); // 온오프라인 검색
-		}
+		}*/
 		
 		// 정렬은 읽어오는 갯수는 다르지 않기 때문에 X
 
@@ -58,15 +64,25 @@ public class SocialingDao {
 			pstmt = conn.prepareStatement(sql);
 			
 			// 검색 SQL문을 실행하는 경우 검색 값 설정
-			if(search.getKeyword() != null) {
+			if(search.getKeyword() != null && search.getLocal() != null) {
 				pstmt.setString(1, search.getKeyword());
-			} else if(search.getLocal() != null) {
+				pstmt.setString(2, search.getLocal());
+			} else if(search.getKeyword() != null && search.getOnoff() != null) {
+				pstmt.setString(1, search.getKeyword());
+				pstmt.setString(2, search.getOnoff());
+			} else if(search.getKeyword() != null && search.getLocal() != null && search.getOnoff() != null) {
+				pstmt.setString(1, search.getKeyword());
+				pstmt.setString(2, search.getLocal());
+				pstmt.setString(3, search.getOnoff());
+			} else if(search.getKeyword() != null) {
+				pstmt.setString(1, search.getKeyword());
+			}/* else if(search.getLocal() != null) {
 				pstmt.setString(1, search.getLocal());
-			}/* else if(search.getDateIn() != null) {
+			} else if(search.getDateIn() != null) {
 //				pstmt.setDate(1, search.getDateIn());
-			}*/ else if(search.getOnoff() != null) {
+			} else if(search.getOnoff() != null) {
 				pstmt.setString(1, search.getOnoff());
-			}
+			}*/
 
 			rset = pstmt.executeQuery();
 
@@ -91,15 +107,21 @@ public class SocialingDao {
 		List<Socialing> socialingList = new ArrayList<>();
 		
 		// 검색 시 수행할 쿼리문 변경
-		if(search.getKeyword() != null) {
+		if(search.getKeyword() != null && search.getLocal() != null) {
+			sql = socialingQuery.getProperty("selectKeywordLocalList"); // 키워드 + 지역 검색
+		} else if(search.getKeyword() != null && search.getOnoff() != null) {
+			sql = socialingQuery.getProperty("selectKeywordOnoffList"); // 키워드 + 온오프라인 검색
+		} else if(search.getKeyword() != null && search.getLocal() != null && search.getOnoff() != null) {
+			sql = socialingQuery.getProperty("selectAllFilterList"); // 전체 필터 검색
+		} else if(search.getKeyword() != null) {
 			sql = socialingQuery.getProperty("selectKeywordList"); // 키워드 검색
-		} else if(search.getLocal() != null) {
+		}/* else if(search.getLocal() != null) {
 			sql = socialingQuery.getProperty("selectLocalList"); // 지역 검색
-		}/* else if(search.getDateIn() != null) {
+		} else if(search.getDateIn() != null) {
 			sql = socialingQuery.getProperty("selectDateList"); // 날짜 검색
-		}*/ else if(search.getOnoff() != null) {
+		} else if(search.getOnoff() != null) {
 			sql = socialingQuery.getProperty("selectOnoffList"); // 온오프라인 검색
-		}
+		}*/
 		
 		// 정렬 시 수행할 쿼리문 변경
 		if(search.getSort() != null) {
@@ -118,17 +140,28 @@ public class SocialingDao {
 			
 			int index = 1;
 			// 검색 sql 실행 시
-			if(search.getKeyword() != null) {
+			
+			if(search.getKeyword() != null && search.getLocal() != null) {
 				pstmt.setString(index++, search.getKeyword());
-			} else if(search.getLocal() != null) {
 				pstmt.setString(index++, search.getLocal());
+			} else if(search.getKeyword() != null && search.getOnoff() != null) {
 				pstmt.setString(index++, search.getKeyword());
-			}/* else if(search.getDateIn() != null) {
-//				pstmt.setDate(index++, search.getDateIn());
-			}*/ else if(search.getOnoff() != null) {
 				pstmt.setString(index++, search.getOnoff());
+			} else if(search.getKeyword() != null && search.getLocal() != null && search.getOnoff() != null) {
 				pstmt.setString(index++, search.getKeyword());
-			}
+				pstmt.setString(index++, search.getLocal());
+				pstmt.setString(index++, search.getOnoff());
+			} else if(search.getKeyword() != null) {
+				pstmt.setString(index++, search.getKeyword());
+			}/* else if(search.getLocal() != null) {
+				pstmt.setString(index++, search.getLocal());
+//				pstmt.setString(index++, search.getKeyword());
+			} else if(search.getDateIn() != null) {
+//				pstmt.setDate(index++, search.getDateIn());
+			} else if(search.getOnoff() != null) {
+				pstmt.setString(index++, search.getOnoff());
+//				pstmt.setString(index++, search.getKeyword());
+			}*/
 			
 			// if문에 안 걸림(검색X) : 1 -> 2
 			// if문에 걸림(검색O) : if문 안의 index가 1 / 2 -> 3

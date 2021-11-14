@@ -207,9 +207,11 @@ public class SocialingService {
 		
 		/* Notice 테이블 수정 */
 		int noticeResult = socialingDao.updateNotice(conn, socialing);
+		System.out.println(noticeResult);
 		
 		/* Socialing 테이블 수정 */
 		int socialingResult = socialingDao.updateSocialing(conn, socialing);
+		System.out.println(socialingResult);
 		
 		/* 실제 수행 값을 담을 변수 */
 		int updatePhotoResult = 0;
@@ -222,6 +224,8 @@ public class SocialingService {
 				/* 기존에 있던 파일을 덮어쓰기 - update */
 				updatePhotoResult += socialingDao.updatePhoto(conn, photo);
 				updateListCount++;
+				System.out.println("photoResult : " + updatePhotoResult);
+				System.out.println(updateListCount);
 			}
 		}
 		

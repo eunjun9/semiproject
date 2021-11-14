@@ -94,7 +94,14 @@
             <h3 id="subTitle3">함께하는 멤버</h3>
             <!-- 작성자 프로필(기본) -->
             <div class="subWrap">
-                <a href="${contextPath}/myfeed?userId=${socialing.userId}"> <!-- 참여자 피드로 이동(임시값) -->
+            	<c:choose>
+					<c:when test="${ loginUser.userId == socialing.userId }">
+						<a href="${contextPath}/myfeed">			
+					</c:when>
+					<c:otherwise>
+						<a href="${contextPath}/others/feed?userId=${ socialing.userId }">
+					</c:otherwise>
+				</c:choose>
                 	<div class="s-profile">
 	                	<c:choose>
 		                    <c:when test="${ not empty socialing.profile.changeName }">
@@ -114,7 +121,15 @@
             <!-- 참여 회원 목록 -->
             <c:forEach var="m" items="${ memberList }">
             <div class="subWrap">
-                <a href="#">
+            	<c:choose>
+					<c:when test="${ loginUser.userId == m.memberId }">
+						<a href="${ contextPath }/myfeed">
+					</c:when>
+					<c:otherwise>
+						<a href="${ contextPath }/others/feed?userId=${ m.memberId }">
+					</c:otherwise>
+				</c:choose>
+                <!-- <a href="#"> -->
                 	<div class="s-profile">
 	                	<c:choose>
 		                    <c:when test="${ not empty m.profile.changeName }">
