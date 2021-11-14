@@ -17,7 +17,7 @@ import com.soda.mypage.model.vo.Refund;
 /**
  * Servlet implementation class RefundServlet
  */
-@WebServlet("/refund")
+@WebServlet("/admin/refund")
 public class RefundServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -33,7 +33,11 @@ public class RefundServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		
+		int pNum = Integer.parseInt(request.getParameter("pNum"));
+		
+		request.setAttribute("pNum", pNum);
+		
 		request.getRequestDispatcher("/WEB-INF/views/mypage/PayList.jsp").forward(request, response);
 	}
 
