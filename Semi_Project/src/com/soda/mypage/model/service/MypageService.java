@@ -116,7 +116,6 @@ public class MypageService {
 	}
 
 
-
 	// 환불 정보 입력
 	public int insertRefundInfo(Payment payment) {
 		Connection conn = getConnection();

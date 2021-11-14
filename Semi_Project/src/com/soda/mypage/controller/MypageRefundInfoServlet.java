@@ -66,6 +66,7 @@ public class MypageRefundInfoServlet extends HttpServlet {
 		payment.setAccountHolder(accountHolder);
 		payment.setPayNum(pNum);
 		payment.setnNum(nNum);
+
 		
 		int result = new MypageService().insertRefundInfo(payment);
 		

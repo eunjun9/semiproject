@@ -186,6 +186,7 @@
 	</entry>
 	
 	<entry key="insertRefundInfo">
+
 		INSERT INTO REFUND VALUES (
 		       PAY_NUM
 		     , REFUND_DATE
@@ -203,5 +204,6 @@
 			 , DEFAULT
 			 , ?
 	
+
 	</entry>
 </properties>
