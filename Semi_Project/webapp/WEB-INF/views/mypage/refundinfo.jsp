@@ -75,16 +75,11 @@
             
             
                 <div class="form-check"> 
-                    <button id="btn-confirm" type="button" onclick="confirmRefundinfo();">환불 접수 하기</button>
+                    <input id="btn-confirm" type="submit">환불 접수 하기</input>
                 </div>
         	</form>
          </div> 
-    
-		<script>
-		 	function confirmRefundinfo(){
-		 		alert('환불 접수가 완료되었습니다.');
-		 	}
-		</script>
+   
 	
 
 

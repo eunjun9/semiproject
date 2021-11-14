@@ -371,11 +371,18 @@ public class MypageDao {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
+			pstmt.setInt(1, payment.getPayNum());
+			pstmt.setString(2, payment.getRefundAccount());
+			pstmt.setString(3, payment.getRefundBank());
+			pstmt.setString(4, payment.getAccountHolder());
+			pstmt.setInt(5, payment.getnNum());
+			
+			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			close(pstmt);
 		}
-		
 		return result;
 	}
 	

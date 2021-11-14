@@ -193,6 +193,7 @@
 			    , BANK = ?
 			    , ACCOUNT_HOLDER = ?
 			    , REFUND_PROCESS = DEFAULT
+			    , NOTICE_NUM = ?
 			)
 	</entry>
 </properties>
