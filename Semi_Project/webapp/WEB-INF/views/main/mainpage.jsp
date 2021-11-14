@@ -232,7 +232,7 @@
 
         <article>
                 <div class="slide">
-                    <div class="swiper mySwiper2" style="height: 330px;">
+                    <div class="swiper mySwiper2" style="height: 350px;">
                         <div class="swiper-wrapper">
                         <!-- 반복문으로 현재날짜(date) 기준 모임날짜(sdate) 2일 이내로 남은 소셜링 글 목록 출력 -->
                         <c:forEach var="s" items="${ socialingList }">
@@ -305,7 +305,7 @@
         </div>
         <article>
                 <div class="slide">
-                    <div class="swiper mySwiper3" style="height: 330px;">
+                    <div class="swiper mySwiper3" style="height: 350px;">
                         <div class="swiper-wrapper">
                         <c:forEach var="lesson" items="${ lessonList }">
 	                        <div class="swiper-slide">
