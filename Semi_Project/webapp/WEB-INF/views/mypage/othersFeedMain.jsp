@@ -12,7 +12,7 @@
     <title>마이 피드 메인</title>
 
     <!-- 외부 스타일 시트 -->
-    <link rel="stylesheet" href="${ contextPath }/resources/css/mypage/myfeedMain.css">
+    <link rel="stylesheet" href="${ contextPath }/resources/css/mypage/othersFeedMain.css">
 
     <!-- favicon (Real Favicon Generator)-->
     <link rel="icon" type="image/x-icon" href="resources/image/khfavicon.ico">

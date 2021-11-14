@@ -12,7 +12,7 @@
     <title>회원등급변경</title>
 
   <!-- 외부 스타일 시트 -->
-    <link rel="stylesheet" href="${ contextPath }/resources/css/admin/memberModify.css">
+    <link rel="stylesheet" href="${ contextPath }/resources/css/common/memberModify.css">
 
     <!-- 글꼴 (Noto Sans) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,7 +31,8 @@
 			// 신고 요청에 성공
 %>
 <script>
-alert("변경되었습니다.");
+alert("회원 정보가 변경되었습니다.");
+window.opener.location.reload();
 	window.close();
 </script>
 <% 
@@ -53,30 +54,32 @@ alert("변경되었습니다.");
 
             <div class="line">
 
-            <div class="label-input">
+            <div class="label-input1">
             <label class="id">아이디  : </label>
-            <input type="text" class="id-text" name="userId" value="${member.userId}">
+            <input type="text" class="id-text" name="userId" value="${member.userId}"><br>
             </div>
 			
-            <div class="label-input">
-            <label class="name">이름 : </label>
-            <input type="text" class="birth-text" name="name" value="${member.userName }">
+            <div class="label-input2">
+            <label class="name">이 름 : </label>
+            <input type="text" class="birth-text" name="name" value="${member.userName }"><br>
             </div>
 			
 			
-            <div class="label-input">
-            <label class="phone">핸드폰 번호 : </label>
-            <input type="text" class="phone-text" name="phone" value="${member.userPhone }"><br>
+            <div class="label-input3">
+            <label class="phone">핸드폰 : </label>
+            <input type="text" class="phone-text" name="phone" value="${member.userPhone }">
             </div>
             
-            <label class="gender">성별 : </label>
+            <div class="label-input4">
+            <label class="gender">성 별 : </label>
             <select id="gender" name="gender">
               <option value="여자" <c:if test="${member.userGrade eq 'F'}">selected</c:if>>여자</option>
                <option value="남자" <c:if test="${member.userGrade eq'M'}">selected</c:if>>남자</option>
               </select>
+            </div>
             
-             <br>
-            <label class="grade">등급 : </label>
+             <div class="label-input5">
+            <label class="grade">등 급 : </label>
             <select id="grade" name="grade">
             
               <option value="강사" <c:if test="${member.userGrade eq '강사'}">selected</c:if>>강사</option>
@@ -85,8 +88,11 @@ alert("변경되었습니다.");
             
             
               </select>
-            
-             <br>
+            </div>
+
+
+
+
  			<label class="account">활동여부 : </label>        
                 <select id="account " name="account">
                 
@@ -95,8 +101,10 @@ alert("변경되었습니다.");
                     
                 </select>
                 
-                <p id="subTitle">${member.userName}님의 회원등급을 변경하시겠습니까?</p>
-            
+                <div class="subTitle">
+                <p id="subTitle">${member.userName}님의 
+                                <br>회원등급을 변경하시겠습니까?</p>
+            </div>
             
     
             <div class="btnArea">

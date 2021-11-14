@@ -14,11 +14,10 @@ public class Reply {
 //	REPLY_STATUS
 //	REPLY_SELF_NUM
 	
-	private int rNum;
+	private int rNum;//댓글 시퀀스
 	private String rContent;
 	private String rWriter;
 	private int nNum;
-	private String UserId;
 	private Date rDate;
 	private Date rModifyDate;
 	private String rStatus;
@@ -33,7 +32,6 @@ public class Reply {
 		this.rContent = rContent;
 		this.rWriter = rWriter;
 		this.nNum = nNum;
-		UserId = userId;
 		this.rDate = rDate;
 		this.rModifyDate = rModifyDate;
 		this.rStatus = rStatus;
@@ -73,13 +71,6 @@ public class Reply {
 		this.nNum = nNum;
 	}
 
-	public String getUserId() {
-		return UserId;
-	}
-
-	public void setUserId(String userId) {
-		UserId = userId;
-	}
 
 	public Date getrDate() {
 		return rDate;
@@ -116,7 +107,7 @@ public class Reply {
 	@Override
 	public String toString() {
 		return "Reply [rNum=" + rNum + ", rContent=" + rContent + ", rWriter=" + rWriter + ", nNum=" + nNum
-				+ ", UserId=" + UserId + ", rDate=" + rDate + ", rModifyDate=" + rModifyDate + ", rStatus=" + rStatus
+				 + ", rDate=" + rDate + ", rModifyDate=" + rModifyDate + ", rStatus=" + rStatus
 				+ ", rSelfNnum=" + rSelfNum + "]";
 	}
 

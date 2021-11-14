@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.soda.magazine.model.service.MagazineService;
 import com.soda.magazine.model.vo.Magazine;
+import com.soda.magazine.model.vo.Reply;
 import com.soda.member.model.vo.Member;
 import com.soda.mypage.model.service.ProfileService;
 import com.soda.mypage.model.vo.Profile;
@@ -32,23 +33,21 @@ public class MagazineDetailServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	int nNum = Integer.parseInt(request.getParameter("nNum"));
+    	
+    	
+    	
 		MagazineService magazineService = new MagazineService();
     	
-		
 		//게시판 게시글 조회
     	Magazine magazine = magazineService.selectMagazine(nNum);
-    	
-    	
-    	
     	
     	ProfileService profileService = new ProfileService();
 		
 		// 사용자 본인이 올린 사진 및 정보 알려줌
 		Profile profile = profileService.selectOthers(nNum);
 		
-		request.setAttribute("profile", profile);
+		
     	 	   	   	
-    	    	
     	
 		
 		
@@ -60,7 +59,6 @@ public class MagazineDetailServlet extends HttpServlet {
 			request.setAttribute("message", "사진 게시판 게시글 상세보기에 실패하였습니다");
 			request.getRequestDispatcher("/WEB-INF/views/common/errorpage.jsp").forward(request, response);
 		}
-		
     
 }
 		
@@ -70,6 +68,7 @@ public class MagazineDetailServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+
 		
 		
 		

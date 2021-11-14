@@ -86,8 +86,10 @@ public class MagazineService {
 		magazine.setPhotoList(photoList);
 		
 		// 댓글 조회 추가
-	      magazine.setReplyList(magazineDao.selectReplyList(conn, nNum));
-
+	     magazine.setReplyList(magazineDao.selectReplyList(conn, nNum));
+	     
+	     System.out.println(magazine);
+	     
 		close(conn);
 		
 
@@ -222,25 +224,33 @@ public class MagazineService {
 	      return result;
 	   }
 
-	public List<Reply> insertReply(Reply reply) {
+	public int insertReply(Reply reply) {
 		Connection conn = getConnection();
-		List<Reply> replyList = null;
-		
+		/*
+		 * List<Reply> replyList = null;
+		 */		
 		// 댓글 입력
 		int result = magazineDao.insertReply(conn, reply);
 		
+		
 		if(result > 0) {
+		
+			
 			commit(conn);
-			// 갱신된 댓글 목록 조회
-			replyList = magazineDao.selectReplyList(conn, reply.getnNum());
+//			replyList = magazineDao.selectReplyList(conn, reply.getnNum());
+			
+			
 		} else {
 			rollback(conn);
 		}
-		
 		close(conn);
 		
-		return replyList;
+		
+		return result;
 	}
+	
+	
+	
 
 	public List<Magazine> selectUserselfList() {
 		Connection conn = getConnection();
@@ -260,6 +270,20 @@ public class MagazineService {
 
 		return othersList;
 
+	}
+
+	public List<Reply> deleteReply(int rNum) {
+		Connection conn = getConnection();
+
+		
+		Reply deleteReply = magazineDao.selectReply(rNum);
+	      
+	      int boardResult = magazineDao.deleteMagazine(conn, nNum);   /* 게시글 지우기 */
+	     
+	      
+	      
+	      close(conn);
+	      return deleteReply;
 	}
 
 	

@@ -3,12 +3,16 @@
 
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 
 <head>
 <meta charset="UTF-8">
 <title>매거진 상세 페이지</title>
+
+
+
 
 <!-- 외부 스타일 시트 -->
 <link
@@ -47,15 +51,15 @@
 				</button>
 			</div>
 			<div class="admin">
-				<c:if test="${ loginUser.userId == magazine.userId }">
+				<c:if test="${ loginUser.userId.contains('admin') || loginUser.userId == magazine.userId }">
 					<button onclick="deleteDetail();">삭제</button>
 					<button onclick="updateDetail();">수정</button>
 				</c:if>
 				<c:if
-					test="${ loginUser.userId.contains('admin') || loginUser.userId == magazine.userId}">
+					test="${ loginUser.userId.contains('admin')}">
 					
 					<button type="button" class="report-button"
-						onclick="openPopup('${ contextPath }/reportForm', 'reportForm', 280, 400)">신고</button>
+						onclick="openPopup('${ contextPath }/reportForm', 'reportForm', 450, 500)">신고</button>
 				
 				</c:if>
 			</div>
@@ -148,10 +152,11 @@
 							<li class="rcontent">${ reply.rContent }</li>
 							<li class="rdate"><fmt:formatDate value="${ reply.rDate }"
 									type="both" pattern="yyyy.MM.dd HH:mm" /></li>
+						
 						</ul>
-
-
-
+						<div class="delete">
+						<button onclick="detailReply()">삭제</button>
+						</div>
 					</c:forEach>
 				
 			
@@ -168,9 +173,13 @@
 
 
 		</div>
-
-
-
+		<form method="post" action="${contextPath}/magazine/insertReply">
+		<input type="hidden" value="${magazine.nNum }" name="nNum">
+		<div class="reply_write">
+			<input type="text" name="rContent" class="reply_content">
+			<button type="submit">댓글등록</button>
+		</div>
+		</form>
 
 		<!-- <div class="comment-each">
 			<div class="com-front">
@@ -208,10 +217,7 @@
 
 
 
-		<div class="reply_write">
-			<textarea class="reply_content"></textarea>
-			<button onclick="addReply(${ magazine.nNum });">댓글등록</button>
-		</div>
+		
 
 
 	</div>
@@ -261,6 +267,22 @@
 			}
 		}
 	</script>
+	
+	<!--  댓글 삭제 수정 -->
+
+	<form name="replyForm" method="post">
+		<input type="hidden" name="reNum" id='reNum' value="${reply.rNum }">
+	</form>
+	
+	
+<script>
+	
+	
+		function deleteReply(){
+				document.forms.detailForm.action="${contextPath}/reply/delete";
+				document.forms.detailForm.submit();
+		}
+	</script>
 
 
 <script type="text/javascript">
@@ -275,7 +297,11 @@ function openPopup(url, title, width, height) {
 		        }
 </script>
 
-<script>
+
+
+
+
+<!-- <script>
       /* 댓글달기 버튼 클릭 시 Reply 테이블에 insert 기능 수행 후 
       비동기적으로 새로 갱신된 댓글 목록을 Reply 테이블에서 select해서 화면에 적용시키는 기능 */
       function addReply(nNum) {
@@ -307,7 +333,7 @@ function openPopup(url, title, width, height) {
             }
          });
       };
-   </script>
+   </script> -->
 
 
 </body>
