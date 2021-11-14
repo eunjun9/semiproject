@@ -78,7 +78,7 @@
                     </c:choose>
                     
                     <p id="p-name">${ socialing.userName }</p><br>
-                    <!-- if문으로 일반 회원 : 참여하기 버튼 / 작성자 : 참여확인 버튼 출력되게 -->
+                    <!-- 일반 회원 : 참여하기 버튼 / 작성자 : 참여확인 버튼 출력 -->
                     <c:choose>
 						<c:when test="${ loginUser.userId == socialing.userId }">
 							<button type="button" id="p-button2">소셜링 참여확인</button>
@@ -236,8 +236,8 @@
 		        }
 	
 		        function checkSub() {
-		            if(confirm('참석 처리 하시겠습니까?')) {
-		                // 참여 여부 'Y'로 변경
+		            if(confirm('모임 참석 처리 하시겠습니까?')) {
+		                // 불참 여부(status) 'N'으로 변경
 		                document.forms.checking.action = "${contextPath}/socialingMember/update";
 		                document.forms.checking.submit();
 		            }
@@ -257,6 +257,7 @@
 		            }
 		        }
 	
+		        // 참여 회원 체크 div창 출력
 		        $(document).ready(function() {
 		            $('#p-button2').click(function() {
 		                $('.checkPop').show();
