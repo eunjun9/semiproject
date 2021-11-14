@@ -53,7 +53,7 @@ public class SocialingMainServlet extends HttpServlet {
 		/* 필터 관련 파라미터 추출 */
 		String keyword = request.getParameter("keyword");	// 키워드 검색
 		String local = request.getParameter("local");		// 지역
-		String dateIn = request.getParameter("dateIn");		// 날짜
+//		String dateIn = request.getParameter("dateIn");		// 날짜
 		String onoff = request.getParameter("onoff");		// 온오프라인
 		
 //		String startDate = "";
@@ -79,7 +79,7 @@ public class SocialingMainServlet extends HttpServlet {
 		
 		// 페이징과 관련된 데이터, 조회 된 게시판 List를 담아서 map에 리턴
 //		Map<String, Object> map = new SocialingService().selectList(page);
-		Map<String, Object> map = new SocialingService().selectList(page, new Search(keyword, local, dateIn, onoff, sort));
+		Map<String, Object> map = new SocialingService().selectList(page, new Search(keyword, local, onoff, sort));
 		
 		request.setAttribute("pi", map.get("pi"));
 		request.setAttribute("socialingList", map.get("socialingList"));
