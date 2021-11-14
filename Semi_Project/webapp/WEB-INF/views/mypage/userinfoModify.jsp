@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="java.util.*" import="com.soda.member.model.vo.Member"%>
-
+<%
+	String token = (String)session.getAttribute("token");
+%>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -23,15 +25,15 @@
     
     <!-- 외부 스타일 시트 -->
     
-    <link href="${ contextPath }resources/css/mypage/mypage_userinfoModify.css" rel="stylesheet">
+    <link href="${ contextPath }/resources/css/mypage/mypage_userinfoModify.css" rel="stylesheet">
    
     <!-- favicon (Real Favicon Generator)-->
     <link rel="icon" type="image/x-icon" href="resources/image/khfavicon.ico">
     <!-- 글꼴 -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
     <!--font-family: 'Noto Sans KR', sans-serif;-->
-    <!-- JQuery-->
-    <script src="../js/jquery-3.6.0.min.js"></script>
+    <!-- jQuery -->
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
 	<style>
 		/* 배너 */
@@ -191,6 +193,18 @@ body, html{
     font-size: 1rem;
     font-weight: 700;
 }
+
+#btn-kakaoDelete{
+    width: 150px;
+    margin-top: 30px;
+    margin-left: 22%;
+    padding: 9px;
+    border-radius: 20px;
+    border: 1px solid yellow;
+    background-color: yellow;
+    font-size: 1rem;
+    font-weight: 700;
+}
 	</style>
 
 
@@ -245,6 +259,8 @@ body, html{
                     <button id="btn-modify">수정하기</button>
                     <button id="btn-delete" type="button"
 					onclick="confirmAccountDelete();">탈퇴하기</button>
+					 <button id="btn-kakaoDelete" type="button"
+					onclick="kakaoDelete();">카카오탈퇴하기</button>
                 </div>
             </div> 
         </form>
@@ -272,15 +288,45 @@ body, html{
 		window.open(url, title, options);
 		// 팝업창 열 때 (주소, 팝업창 이름, 속성값 문자열)
 	}
+	</script>
+	
+	<script>
 	
 	function confirmAccountDelete() {
-		if(confirm("정말로 탈퇴하시겠습니까?"))
+		if(confirm("정말로 탈퇴하시겠습니까?")){
 			// confirm : 확인 취소 버튼 달린 확인 메세지창
 			// location : 새로운 페이지로 이동되는 기능 (객체 속성)
 			location.href='<%= request.getContextPath() %>/accountDelete';
-	}
+			}
+		}
+	
 	</script>
 
+	<!-- 카카오 회원탈퇴 -->
+	<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+	<script>
+	function kakaoDelete(){
+		if(confirm("정말로 탈퇴하시겠습니까?")){
+	Kakao.init('10762705b6719eedabb3e0dcab4cb83d');
+	 Kakao.Auth.setAccessToken("${token}");
+		if("${token}" != null){
+	 		console.log("카카오 회원탈퇴");
+	 
+			Kakao.API.request({
+			url: '/v1/user/unlink',
+			success: function(res) {
+				alert('카카오 회원탈퇴 완료');
+				location.href='<%=request.getContextPath()%>/accountDelete';
+			},
+			fail: function(err) {
+           	alert('카카오계정 탈퇴에 실패하였습니다.');
+			}
+	})
+	}
+}
+}
+	</script>
 
     <!--footer-->
 	<%@ include file="/WEB-INF/views/common/footer.jsp"%>

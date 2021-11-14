@@ -63,6 +63,15 @@
 		)
 	</entry>
 	
+	<!-- 카카오 탈퇴 후 재가입 -->
+		
+	<entry key="updateKakao">
+		UPDATE
+		       MEMBER_INFO
+		   SET STATUS = 'Y'
+		 WHERE USER_ID = ?
+	</entry>
+	
 	<!-- 회원가입 -->
 	<entry key="insertMember">
 		INSERT
