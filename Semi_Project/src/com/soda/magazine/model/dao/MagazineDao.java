@@ -85,11 +85,11 @@ public class MagazineDao {
 				while(rset.next()) {
 					Magazine magazine = new Magazine();
 					magazine.setnNum(rset.getInt("magazine_num"));
-					magazine.setnTitle(rset.getNString("magazine_title"));
+					magazine.setnTitle(rset.getString("magazine_title"));
 					magazine.setnStatus(rset.getString("magazine_status"));
-					magazine.setnDate(rset.getDate("magazine_date"));
+					magazine.setnDate(rset.getTimestamp("magazine_date"));
 					magazine.setUserId(rset.getString("user_name"));
-					magazine.setModifyDate(rset.getDate("modify_date"));
+					magazine.setModifyDate(rset.getTimestamp("modify_date"));
 					
 					List<MagazineFile> photoList = new ArrayList<>();
 					MagazineFile photo = new MagazineFile();
@@ -243,11 +243,11 @@ public class MagazineDao {
 		        	magazine.setnNum(rset.getInt("notice_num"));
 		        	magazine.setnTitle(rset.getString("notice_title"));
 		        	magazine.setnContent(rset.getString("notice_content"));
-		        	magazine.setnDate(rset.getDate("notice_date"));
+		        	magazine.setnDate(rset.getTimestamp("notice_date"));
 		        	magazine.setnStatus(rset.getString("notice_status"));
 		        	magazine.setnType(rset.getString("notice_type"));
 		        	magazine.setUserId(rset.getString("user_id"));
-		        	magazine.setnDate(rset.getDate("modify_date"));
+		        	magazine.setnDate(rset.getTimestamp("modify_date"));
 		        	magazine.setSelfNum(rset.getString("notice_self_num"));
 		        	magazine.setnCount(rset.getInt("ncount"));
 		         }
@@ -486,7 +486,6 @@ public class MagazineDao {
 
 		public int insertReply(Connection conn, Reply reply) {
 			PreparedStatement pstmt = null;
-			ResultSet rset = null;
 			int result = 0;
 			String sql = magazineQuery.getProperty("insertReply");
 			
@@ -497,10 +496,10 @@ public class MagazineDao {
 				pstmt.setInt(2, reply.getnNum());
 				pstmt.setString(3, reply.getrWriter());
 				
+				
 				result = pstmt.executeUpdate();
 				
 				
-//				System.out.println(result);
 				
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -533,11 +532,11 @@ public class MagazineDao {
 				
 					reply.setrNum(rset.getInt("reply_num"));
 					reply.setrContent(rset.getString("reply_content"));
-					reply.setrDate(rset.getDate("reply_date"));
+					reply.setrDate(rset.getTimestamp("reply_date"));
 					reply.setnNum(rset.getInt("notice_num"));
 					reply.setrWriter(rset.getString("rwriter"));
 					reply.setrStatus(rset.getString("reply_status"));
-					reply.setrModifyDate(rset.getDate("reply_modifydate"));
+					reply.setrModifyDate(rset.getTimestamp("reply_modifydate"));
 					
 					replyList.add(reply);
 				}

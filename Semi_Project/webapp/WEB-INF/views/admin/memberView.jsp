@@ -154,7 +154,7 @@
 	
  		$(".revise-button").on("click", function() {
  			 var form = document.forms.memberForm;
- 			 var modifyChild=window.open("","popup","width=210,height=300,left=700,top=300,scrollbars=no");
+ 			 var modifyChild=window.open("","popup","width=510,height=460,left=700,top=300,scrollbars=no");
  	 		 form.target = "popup";
  	 		 form.action = "${ contextPath }/member/modify";
  	 		 form.method = "post";

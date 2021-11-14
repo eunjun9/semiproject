@@ -10,8 +10,6 @@ html {
     position: relative;
     align-items: center;
     flex-direction: column;
-    height: 390px;
-    width : 260px;
 }
 
 .label-input{
@@ -23,13 +21,36 @@ html {
 #title {
     color: rgb(7,86,105);
     margin-bottom: 15px;
+    
 }
 
+.label-input1{
+	margin-bottom:12px;
+}
 
+.label-input2{
+	margin-bottom:12px;
+}
 
+.label-input3{
+	margin-bottom:10px;
+}
 
+.label-input4{
+	margin-bottom:10px;
+}
 
+.label-input5{
+	margin-bottom:10px;
+}
 
+#subTitle{
+	 text-align:center;
+}
+
+.subTitle{
+	 font-size:25px;
+}
 
 .btnArea {
     display: flex;
@@ -59,4 +80,4 @@ html {
     border-radius: 5px;
     width: 80px;
     cursor: pointer;
-}harset "UTF-8";
+}

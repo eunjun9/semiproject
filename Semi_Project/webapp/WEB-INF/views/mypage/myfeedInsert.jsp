@@ -45,7 +45,7 @@
                 <div class="photo-follow">
                     <div class="photo">
                         <div class="profile">
-                            <img src="${contextPath }/webapp/resourses/images/yeonjoo/pro.jpg">
+                             <img src="${ contextPath }/resources/images/yeonjoo/pro.jpg">
                         </div>
 
                         <div class="name-grade">

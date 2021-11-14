@@ -92,7 +92,7 @@
 						<div class="swiper-slide">
 							<ul class="board_list">
 								<div class="box">
-									<div class="pics" onclick="detailView(${ magazine.nNum })">
+									<div class="pics" onclick="detailView(${magazine.nNum})">
 										<img src="${ contextPath }${ magazine.photoList.get(0).route }${ magazine.photoList.get(0).changeName }">
 										<p class="category">[${ magazine.nType }]</p>
 										<p class="list-title">${ magazine.nTitle }</p>
@@ -325,9 +325,11 @@
 	</div>
 
 
+
 	<script>
    		function detailView(nNum){
    			location.href = '${contextPath}/magazine/detail?nNum=' + nNum;
+   		
    		}
    
    </script>

@@ -10,7 +10,7 @@
     <title>프로필 수정</title>
 
     <!-- 외부 스타일 시트 -->
-    <link rel="stylesheet" href="${ contextPath }/resources/css/mypage/profileRevise.css">
+    <link rel="stylesheet" href="${ contextPath }/resources/css/mypage/profileModify.css">
 
     <!-- favicon (Real Favicon Generator)-->
     <link rel="icon" type="image/x-icon" href="resources/image/khfavicon.ico">
