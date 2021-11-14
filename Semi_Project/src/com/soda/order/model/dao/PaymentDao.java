@@ -75,4 +75,28 @@ private Properties paymentQuery = new Properties();
 
 	}
 
+	public int wishlistEnd(Connection conn, Payment payment) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = paymentQuery.getProperty("wishlistEnd");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, payment.getUserId());
+			pstmt.setInt(2, payment.getnNum());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+		
+		
+	}
+
 }
