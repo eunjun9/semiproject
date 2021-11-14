@@ -10,7 +10,7 @@
 <title>소셜링</title>
 
 <!-- 외부 스타일 시트 -->
-<link href="${ contextPath }/resources/css/socialing/socialing_main.css?3" rel="stylesheet">
+<link href="${ contextPath }/resources/css/socialing/socialing_main.css?4" rel="stylesheet">
 
 <!-- 글꼴 (Noto Sans) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -94,7 +94,7 @@
                         
                         <label id="flabel">지역</label>
                         <select name="local">
-                        	<option selected>지역 선택</option>
+                        	<option value="" selected>지역 선택</option>
                             <option value="서울" <c:if test="${ param.local == '서울' }">selected</c:if>>서울</option>
                             <option value="부산" <c:if test="${ param.local == '부산' }">selected</c:if>>부산</option>
                             <option value="대구" <c:if test="${ param.local == '대구' }">selected</c:if>>대구</option>
@@ -128,7 +128,7 @@
                 </div>
                 <div id="lineupbox">
                     <select name="lineup">
-                    	<option selected>정렬 방식</option>
+                    	<option value="" selected>정렬 방식</option>
                         <option value="rec" <c:if test="${ param.lineup == 'rec' }">selected</c:if>>최신순</option>
                         <option value="pop" <c:if test="${ param.lineup == 'pop' }">selected</c:if>>인기순</option>
                     </select>

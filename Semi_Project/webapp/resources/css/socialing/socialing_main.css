@@ -92,16 +92,21 @@ hr {
     width: 100%;
 }
 
+#s-thumtitle:hover {
+	color: lightgray;
+}
+
 #s-thumtitle {
 	color: black;
     margin-top: 5px;
     font-weight: bold;
     cursor: pointer;
+    transition: all .2s ease;
 }
 
 #s-thumsub {
     margin-top: -45px;
-    color: lightslategray;
+    color: rgb(150,150,150);/*lightslategray;*/
 }
 
 /* 소셜링 전체 보기 - 필터링 */
@@ -318,8 +323,8 @@ li {
 }
 .button2{
     position: relative;
-    top:-263px;
-    right: -920px;
+    top:-265px;
+    right: -935px;
     
 }
 

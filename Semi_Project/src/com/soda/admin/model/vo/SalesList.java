@@ -3,7 +3,6 @@ package com.soda.admin.model.vo;
 import java.sql.Date;
 
 public class SalesList {
-	private String filter;	// 콤보박스 필터
 	// notice
 	private String nTitle;	// 클래스명(group)
 	// payment
@@ -15,22 +14,13 @@ public class SalesList {
 	
 	public SalesList() {}
 
-	public SalesList(String filter, String nTitle, Date pDate, String pOption, int pCount, int pTotal) {
+	public SalesList(String nTitle, Date pDate, String pOption, int pCount, int pTotal) {
 		super();
-		this.filter = filter;
 		this.nTitle = nTitle;
 		this.pDate = pDate;
 		this.pOption = pOption;
 		this.pCount = pCount;
 		this.pTotal = pTotal;
-	}
-
-	public String getFilter() {
-		return filter;
-	}
-
-	public void setFilter(String filter) {
-		this.filter = filter;
 	}
 
 	public String getnTitle() {
@@ -75,7 +65,7 @@ public class SalesList {
 
 	@Override
 	public String toString() {
-		return "SalesList [filter=" + filter + ", nTitle=" + nTitle + ", pDate=" + pDate + ", pOption=" + pOption
-				+ ", pCount=" + pCount + ", pTotal=" + pTotal + "]";
+		return "SalesList [nTitle=" + nTitle + ", pDate=" + pDate + ", pOption=" + pOption + ", pCount=" + pCount
+				+ ", pTotal=" + pTotal + "]";
 	}
 }

@@ -55,30 +55,30 @@ public class SocialingMainServlet extends HttpServlet {
 		String local = request.getParameter("local");		// 지역
 //		String dateIn = request.getParameter("dateIn");		// 날짜
 		String onoff = request.getParameter("onoff");		// 온오프라인
-		
-//		String startDate = "";
-//	      String date2 = "";
-//	      LocalDate endDate2 = null;
-//	      String endDate = "";
-//	      if(request.getParameter("endDate") != null && !request.getParameter("endDate").equals("")) {
-//	         startDate = request.getParameter("startDate");
-//	         date2 = request.getParameter("endDate");
-//	         String[] e = date2.split("-");
-//	         int d1 = Integer.parseInt(e[0]);
-//	         int d2 = Integer.parseInt(e[1]);
-//	         int d3 = Integer.parseInt(e[2]);
-//	         endDate2 = LocalDate.of(d1, d2, d3);
-//	         endDate2 = endDate2.plusDays(1);
-//	         System.out.println(endDate2);
-//	         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yy-MM-dd");
-//	         endDate = endDate2.format(formatter);   // String 형 변환
-//	      }
+		System.out.println(onoff);
+		/*
+		String startDate = "";
+	    String date2 = "";
+	    LocalDate endDate2 = null;
+	    String endDate = "";
+	    if(request.getParameter("endDate") != null && !request.getParameter("endDate").equals("")) {
+	       startDate = request.getParameter("startDate");
+	       date2 = request.getParameter("endDate");
+	       String[] e = date2.split("-");
+	       int d1 = Integer.parseInt(e[0]);
+	       int d2 = Integer.parseInt(e[1]);
+	       int d3 = Integer.parseInt(e[2]);
+	       endDate2 = LocalDate.of(d1, d2, d3);
+	       endDate2 = endDate2.plusDays(1);
+	       System.out.println(endDate2);
+	       DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yy-MM-dd");
+	       endDate = endDate2.format(formatter);   // String 형 변환
+	    }*/
 		
 		/* 정렬 관련 파라미터 추출 */
 		String sort = request.getParameter("lineup");
 		
 		// 페이징과 관련된 데이터, 조회 된 게시판 List를 담아서 map에 리턴
-//		Map<String, Object> map = new SocialingService().selectList(page);
 		Map<String, Object> map = new SocialingService().selectList(page, new Search(keyword, local, onoff, sort));
 		
 		request.setAttribute("pi", map.get("pi"));
