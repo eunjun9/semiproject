@@ -8,6 +8,7 @@ import com.soda.admin.model.dao.AdminDao;
 import com.soda.admin.model.vo.Payroll;
 import com.soda.admin.model.vo.Report;
 import com.soda.admin.model.vo.SalesList;
+import com.soda.admin.model.vo.Refund;
 
 public class AdminService {
 	
@@ -76,6 +77,17 @@ public class AdminService {
 		
 		return reportList;
 
+	}
+
+
+	public List<Refund> selectRefundList(Refund refund) {
+		Connection conn = getConnection();
+		
+		List<Refund> refundList = adminDao.selectRefundList(conn, refund);
+		
+		close(conn);
+		
+		return refundList;
 	}
 	
 }
