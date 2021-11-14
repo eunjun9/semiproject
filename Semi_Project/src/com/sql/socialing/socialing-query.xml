@@ -315,10 +315,16 @@
 		SELECT
 			   USER_ID
 			 , S_STATUS
-	         , USER_NAME
+	         , USER_NAME <!-- 원래 여기까지 -->
+	         , ROUTE
+             , CHANGE_NAME
+             , INTRODUCTION
 	      FROM SOCIALING_MEMBER
 	      JOIN MEMBER_INFO USING(USER_ID)
-	     WHERE NOTICE_NUM = ?
+	      JOIN PROFILE_FILE F USING(USER_ID)
+	      JOIN PROFILE USING(USER_ID)
+         WHERE F.STATUS = 'Y'
+	       AND NOTICE_NUM = ?
 	</entry>
 	
 	<entry key="selectMemberProfile">
