@@ -55,6 +55,7 @@
                 	<c:forEach var="lesson" items="${ lessonList }">
                     <form name="payForm" method="get">
                     <input type="hidden" name="pNum" value="${ lesson.pNum }">
+                    <input type="hidden" name="nNum" value="${ lesson.nNum }">
                     <div class="class_info">
                         <div class="class_img"><img src="${ contextPath }${ lesson.photoList.get(0).route }${ lesson.photoList.get(0).changeName }"></div>
                         <div class="class_type"><p>${ lesson.cCategory }</p></div>

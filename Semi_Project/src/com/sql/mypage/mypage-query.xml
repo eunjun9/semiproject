@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM
+"http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<entry key="selectLessonList">
+			SELECT
+				       NOTICE_NUM
+				     , NOTICE_TITLE
+				     , NOTICE_STATUS
+				     , NOTICE_DATE
+				     , C_CATEGORY
+				     , O_DATE1
+				     , O_DATE2
+				     , V_DATE
+				     , FILE_NUM
+				     , ORIGIN_NAME
+				     , CHANGE_NAME
+				     , ROUTE
+				     , FILE_LEVEL
+				     , F.STATUS
+				FROM NOTICE N
+				JOIN MEMBER_INFO USING(USER_ID)
+				JOIN CLASS USING(NOTICE_NUM)
+				JOIN TBL_FILE F USING(NOTICE_NUM)
+				WHERE NOTICE_TYPE = '클래스'
+				  AND NOTICE_STATUS = 'Y'
+				  AND FILE_LEVEL= 1
+				  AND USER_ID = ?
+				  ORDER BY NOTICE_NUM DESC
+	</entry>
+	
+	<entry key="selectProfile">
+		SELECT
+			USER_ID
+			FROM "PROFILE"
+			WHERE USER_ID= ?
+	</entry>
+
+
+	<entry key="selectProfileFile">
+		SELECT
+		    FILE_NO,
+		    ROUTE,
+			USER_ID,
+			ORIGIN_NAME,
+			CHANGE_NAME,
+			STATUS
+			FROM "PROFILE_FILE"
+			WHERE USER_ID= ?
+			AND STATUS = 'Y'
+	</entry>
+
+	<entry key="getSocialingListCount">
+	SELECT COUNT(*)
+	 FROM SOCIALING_LIKE
+	 WHERE USER_ID = ?
+	
+	</entry>
+
+	<entry key="selectSocialingList">
+		    SELECT *
+				FROM (SELECT ROWNUM RNUM, A.*
+					FROM (SELECT 
+	       					  LIKE_NUM
+	       					, NOTICE_TITLE
+							, S_PLACE
+							, S_DATE
+							, S_TIME
+							, FILE_NUM
+							, ORIGIN_NAME
+							, CHANGE_NAME
+							, ROUTE
+							, FILE_LEVEL
+	            FROM SOCIALING_LIKE SL
+				JOIN SOCIALING S ON(LIKE_NUM = S.NOTICE_NUM)
+				JOIN NOTICE N ON (LIKE_NUM = N.NOTICE_NUM)
+				JOIN TBL_FILE F ON(LIKE_NUM = F.NOTICE_NUM)
+				WHERE FILE_LEVEL = 1
+				AND F.STATUS = 'Y'
+				AND NOTICE_STATUS = 'Y'
+	            ORDER BY S_DATE ASC) A)
+			 WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
+	<entry key="selectMySocialingListAfter">
+		  	SELECT
+				   SM.USER_ID
+	             , NOTICE_TITLE
+	             , S_PLACE
+	             , S_DATE
+	             , CHANGE_NAME
+	             , ROUTE
+		      FROM SOCIALING_MEMBER SM
+	          JOIN SOCIALING USING(NOTICE_NUM)
+	          JOIN NOTICE USING(NOTICE_NUM)
+	          JOIN TBL_FILE F USING(NOTICE_NUM)
+		     WHERE FILE_LEVEL = 1
+	          AND F.STATUS = 'Y'
+	          AND NOTICE_STATUS = 'Y'
+	          AND S_DATE BETWEEN ADD_MONTHS(SYSDATE, -2) AND SYSDATE 
+	          AND SM.USER_ID = ?
+	          ORDER BY S_DATE ASC
+	</entry>
+	
+	<entry key="selectMySocialingeListBefore">
+		  	SELECT
+				   SM.USER_ID
+	             , NOTICE_TITLE
+	             , S_PLACE
+	             , S_DATE
+	             , CHANGE_NAME
+	             , ROUTE
+		      FROM SOCIALING_MEMBER SM
+	          JOIN SOCIALING USING(NOTICE_NUM)
+	          JOIN NOTICE USING(NOTICE_NUM)
+	          JOIN TBL_FILE F USING(NOTICE_NUM)
+		     WHERE FILE_LEVEL = 1
+	          AND F.STATUS = 'Y'
+	          AND NOTICE_STATUS = 'Y'
+	          AND S_DATE BETWEEN SYSDATE AND ADD_MONTHS(SYSDATE, 2) 
+	          AND SM.USER_ID = ?
+	          ORDER BY S_DATE ASC
+	</entry>
+
+	<entry key="selectPayList">
+	     SELECT
+		      P.NOTICE_NUM
+            , P.PAY_NUM
+            , P.PAY_DATE
+		    , N.NOTICE_TITLE
+		    , C.C_PRICE
+		    , C.C_CATEGORY
+		    , C.C_TIME1
+		    , C.C_TIME2
+            , C.C_CATEGORY
+            , C.V_DATE
+            , CM.SELECT_DATE
+      		, T.ROUTE
+			, T.CHANGE_NAME
+		 FROM PAYMENT P
+         JOIN CLASS_MEMBER CM ON (P.NOTICE_NUM = CM.NOTICE_NUM)
+         JOIN NOTICE N ON (N.NOTICE_NUM = P.NOTICE_NUM)
+         JOIN CLASS C ON (C.NOTICE_NUM = P.NOTICE_NUM)
+         JOIN TBL_FILE T ON (T.NOTICE_NUM = P.NOTICE_NUM)
+		WHERE N.NOTICE_TYPE = '클래스'
+		  AND N.NOTICE_STATUS = 'Y'
+		  AND T.FILE_LEVEL = 1
+          AND P.PAY_CANCLE = 'Y'
+		  AND P.USER_ID = ?
+		  AND P.PAY_DATE BETWEEN ? AND ?
+          ORDER BY P.PAY_DATE ASC
+	</entry>
+
+	<entry key="selectPayListResult">
+	     SELECT
+		      P.NOTICE_NUM
+            , P.PAY_NUM
+            , P.PAY_DATE
+		    , N.NOTICE_TITLE
+		    , C.C_PRICE
+		    , C.C_CATEGORY
+		    , C.C_TIME1
+		    , C.C_TIME2
+            , C.C_CATEGORY
+            , C.V_DATE
+            , CM.SELECT_DATE
+      		, T.ROUTE
+			, T.CHANGE_NAME
+		 FROM PAYMENT P
+         JOIN CLASS_MEMBER CM ON (P.NOTICE_NUM = CM.NOTICE_NUM)
+         JOIN NOTICE N ON (N.NOTICE_NUM = P.NOTICE_NUM)
+         JOIN CLASS C ON (C.NOTICE_NUM = P.NOTICE_NUM)
+         JOIN TBL_FILE T ON (T.NOTICE_NUM = P.NOTICE_NUM)
+		WHERE N.NOTICE_TYPE = '클래스'
+		  AND N.NOTICE_STATUS = 'Y'
+		  AND T.FILE_LEVEL = 1
+          AND P.PAY_CANCLE = 'Y'
+		  AND P.USER_ID = ?
+          ORDER BY P.PAY_DATE ASC
+	</entry>
+	
+	<entry key="selectPayCancelList">
+		UPDATE PAYMENT
+			SET PAY_CANCLE = 'N'
+			WHERE PAY_NUM = ?
+	</entry>
+	
+	<entry key="insertRefundInfo">
+		INSERT INTO REFUND VALUES (
+			      PAY_NUM = ?
+			    , REFUND_DATE = DEFAULT
+			    , REFUND_ACCOUNT = ?
+			    , BANK = ?
+			    , ACCOUNT_HOLDER = ?
+			    , REFUND_PROCESS = DEFAULT
+			)
+	</entry>
+</properties>
