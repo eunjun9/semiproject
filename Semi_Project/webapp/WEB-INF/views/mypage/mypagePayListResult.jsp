@@ -53,7 +53,7 @@
             <!-- 결제내역 리스트는 hidden으로 해두고 필터링 거친 후 최신 순으로 정렬 -->
             <div class="list_detail">
                 	<c:forEach var="lesson" items="${ lessonList }">
-                    <form name="payForm" method="post">
+                    <form name="payForm" method="get">
                     <input type="hidden" name="pNum" value="${ lesson.pNum }">
                     <div class="class_info">
                         <div class="class_img"><img src="${ contextPath }${ lesson.photoList.get(0).route }${ lesson.photoList.get(0).changeName }"></div>
@@ -73,16 +73,9 @@
                     </div>
                     </c:when>
                     </c:choose>
-                    
-
-                    <form>
-                   
                     <div class="price">
                         <p class="class_priceP"><fmt:formatNumber value="${ lesson.cPrice }" type="currency" currencySymbol=""/> 원</p>
-                        <button type="button" class="refund_Btn" onclick="location.href='${ contextPath }/mypage/refundinfo'">취소</button>
-
-                    
-
+                        <button type="button" class="refund_Btn">취소</button>
                     </div><hr>
                     </form>
                 	</c:forEach>
