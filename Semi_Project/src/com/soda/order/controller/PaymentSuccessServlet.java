@@ -1,7 +1,6 @@
 package com.soda.order.controller;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,9 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.soda.member.model.vo.Member;
 import com.soda.order.model.service.PaymentService;
-import com.soda.order.model.service.WishListService;
 import com.soda.order.model.vo.Payment;
-import com.soda.order.model.vo.WishList;
 
 /**
  * Servlet implementation class PaymentSuccessServlet
@@ -37,7 +34,7 @@ public class PaymentSuccessServlet extends HttpServlet {
 		String userId = ((Member)request.getSession().getAttribute("loginUser")).getUserId();
 		String userEmail = request.getParameter("userEmail");
 
-		System.out.println("결제 후 받아온 값 : " + userId + "/" + userEmail);
+		// System.out.println("결제 후 받아온 값 : " + userId + "/" + userEmail);
 		
 		int nNum = Integer.parseInt(request.getParameter("nNum"));
 		String selectDate = request.getParameter("selDate");		// 원데이 선택 날짜
