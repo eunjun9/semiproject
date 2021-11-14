@@ -87,7 +87,7 @@
     		$(function(){
     			$(".refund_Btn").click(function(){
     				if(confirm('선택한 클래스를 환불하시겠습니까?')){
-    					document.forms.payForm.action="${ contextPath }/mypage/refundinfo";
+    					document.forms.payForm.action="${ contextPath }/admin/refund";
     					document.forms.payForm.submit();
     				} else{
     					return false;
