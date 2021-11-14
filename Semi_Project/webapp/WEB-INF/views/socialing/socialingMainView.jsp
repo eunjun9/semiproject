@@ -94,7 +94,7 @@
                         
                         <label id="flabel">지역</label>
                         <select name="local">
-                        	<option selected disabled>지역 선택</option>
+                        	<option selected>지역 선택</option>
                             <option value="서울" <c:if test="${ param.local == '서울' }">selected</c:if>>서울</option>
                             <option value="부산" <c:if test="${ param.local == '부산' }">selected</c:if>>부산</option>
                             <option value="대구" <c:if test="${ param.local == '대구' }">selected</c:if>>대구</option>
@@ -128,7 +128,7 @@
                 </div>
                 <div id="lineupbox">
                     <select name="lineup">
-                    	<option disabled selected>정렬 방식</option>
+                    	<option selected>정렬 방식</option>
                         <option value="rec" <c:if test="${ param.lineup == 'rec' }">selected</c:if>>최신순</option>
                         <option value="pop" <c:if test="${ param.lineup == 'pop' }">selected</c:if>>인기순</option>
                     </select>

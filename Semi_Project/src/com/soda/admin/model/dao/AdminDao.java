@@ -13,6 +13,7 @@ import static com.common.JDBCTemplate.close;
 
 import com.soda.admin.model.vo.Payroll;
 import com.soda.admin.model.vo.Report;
+import com.soda.admin.model.vo.SalesList;
 
 public class AdminDao {
 	
@@ -155,6 +156,58 @@ private Properties adminQuery = new Properties();
 			close(pstmt);
 		}
 		return reportList;
+	}
+
+	// 매출조회
+	public List<SalesList> selectSalesList(Connection conn, String filter) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		List<SalesList> salesList = new ArrayList<>();
+		String sql = "";
+		
+		if(filter.equals("class")) {
+			sql = adminQuery.getProperty("selectClassList");
+		} else if(filter.equals("date")) {
+			sql = adminQuery.getProperty("selectDateList");
+		} else if(filter.equals("option")) {
+			sql = adminQuery.getProperty("selectOptionList");
+		}
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			rset = pstmt.executeQuery();
+			
+			SalesList slist = null;
+			while(rset.next()) {
+				if(filter.equals("class")) {
+					slist = new SalesList();
+					slist.setnTitle(rset.getString("notice_title"));
+					slist.setpTotal(rset.getInt("ptotal"));
+					slist.setpCount(rset.getInt("pcount"));
+				} else if(filter.equals("date")) {
+					slist = new SalesList();
+					slist.setpDate(rset.getDate("pay_date"));
+					slist.setpTotal(rset.getInt("ptotal"));
+					slist.setpCount(rset.getInt("pcount"));
+				} else if(filter.equals("option")) {
+					slist = new SalesList();
+					slist.setpOption(rset.getString("pay_option"));
+					slist.setpTotal(rset.getInt("ptotal"));
+					slist.setpCount(rset.getInt("pcount"));
+				}
+			
+			salesList.add(slist);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return salesList;
 	}
 
 }

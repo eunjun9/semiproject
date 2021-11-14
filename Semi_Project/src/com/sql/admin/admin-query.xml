@@ -50,6 +50,43 @@
 		  GROUP BY EXTRACT(YEAR FROM PAY_DATE)
 		  ORDER BY EXTRACT(YEAR FROM PAY_DATE)
 	</entry>
+	
+	<!-- 필터 별 매출조회 -->
+	<entry key="selectClassList">
+		SELECT
+		       NOTICE_TITLE
+		     , SUM(C_PRICE) AS PTOTAL
+		     , COUNT(NOTICE_NUM) AS PCOUNT
+		  FROM PAYMENT
+		  LEFT JOIN NOTICE USING(NOTICE_NUM)
+		  LEFT JOIN CLASS USING(NOTICE_NUM)
+		 WHERE PAY_CANCLE = 'Y'
+		 GROUP BY NOTICE_TITLE
+	</entry>
+	
+	<entry key="selectDateList">
+		SELECT
+		       PAY_DATE
+		     , SUM(C_PRICE) AS PTOTAL
+		     , COUNT(PAY_DATE) AS PCOUNT
+		  FROM PAYMENT
+		  LEFT JOIN NOTICE USING(NOTICE_NUM)
+		  LEFT JOIN CLASS USING(NOTICE_NUM)
+		 WHERE PAY_CANCLE = 'Y'
+		 GROUP BY PAY_DATE
+	</entry>
+	
+	<entry key="selectOptionList">
+		SELECT
+		       PAY_OPTION
+		     , SUM(C_PRICE) AS PTOTAL
+		     , COUNT(PAY_OPTION) AS PCOUNT
+		  FROM PAYMENT
+		  LEFT JOIN NOTICE USING(NOTICE_NUM)
+		  LEFT JOIN CLASS USING(NOTICE_NUM)
+		 WHERE PAY_CANCLE = 'Y'
+		 GROUP BY PAY_OPTION
+	</entry>
 
 	<!-- 신고 내역 조회 -->
 	<entry key="selectreportList">

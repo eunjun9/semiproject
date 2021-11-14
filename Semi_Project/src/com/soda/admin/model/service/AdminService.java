@@ -7,6 +7,7 @@ import static com.common.JDBCTemplate.*;
 import com.soda.admin.model.dao.AdminDao;
 import com.soda.admin.model.vo.Payroll;
 import com.soda.admin.model.vo.Report;
+import com.soda.admin.model.vo.SalesList;
 
 public class AdminService {
 	
@@ -54,6 +55,17 @@ public class AdminService {
 		return payrollYear;
 	}
 
+
+	// 매출조회
+	public List<SalesList> selectSalesList(String filter) {
+		Connection conn = getConnection();
+		
+		List<SalesList> salesList = adminDao.selectSalesList(conn, filter);
+		
+		close(conn);
+		
+		return salesList;
+
 	// 신고 내역 조회
 	public List<Report> selectReportList(Report report) {
 		Connection conn = getConnection();
@@ -63,6 +75,7 @@ public class AdminService {
 		close(conn);
 		
 		return reportList;
+
 	}
 	
 }
