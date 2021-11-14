@@ -162,6 +162,63 @@ public class WishListDao {
 			return wishlist;
 		}
 
+
+	// 클래스 장바구니 담을 때 중복이면 새로 담은 클래스로 업데이트
+	public int checkUpdate(Connection conn, WishList wishlist) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = wishlistQuery.getProperty("updateAdd");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, wishlist.getlessonDate());
+			pstmt.setInt(2, wishlist.getnNum());
+			pstmt.setString(3, wishlist.getUserId());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+			
+		}
+
+
+	// 담으려는 클래스 이미 등록된 클래스인지 조회
+	public int wishlistCheck(Connection conn, WishList wishlist) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		ResultSet rset = null;
+		String sql = wishlistQuery.getProperty("wishListCheck");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, wishlist.getUserId());
+			pstmt.setInt(2, wishlist.getnNum());
+
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				result = rset.getInt(1);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return result;
+		
+	}
+
 	
 
 	

@@ -72,6 +72,34 @@ public class WishListService {
 
 		}
 
+		// 중복된 클래스 업데이트
+		public int checkUpdate(WishList wishlist) {
+			Connection conn = getConnection();
+
+			int result = wishListDao.checkUpdate(conn, wishlist);
+			
+			if(result > 0) {
+				commit(conn);
+			} else {
+				rollback(conn);
+			}
+			close(conn);
+
+			return result;
+		}
+
+		// 담으려는 클래스 중복인지 체크
+		public int wishlistCheck(WishList wishlist) {
+			Connection conn = getConnection();
+			
+			int result = wishListDao.wishlistCheck(conn, wishlist);
+			
+			close(conn);
+			
+			return result;
+			
+		}
+
 	
 
 

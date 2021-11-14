@@ -11,7 +11,7 @@
 
   <!-- 외부 스타일 시트 -->
 <link
-	href="<%=request.getContextPath()%>/resources/css/admin/admin-member.css" rel="stylesheet">
+	href="<%=request.getContextPath()%>/resources/css/admin/admin-member.css?1" rel="stylesheet">
   
 
   <!-- 글꼴 (Noto Sans) -->
