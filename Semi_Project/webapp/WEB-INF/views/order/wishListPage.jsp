@@ -77,12 +77,11 @@
 				<p class="price"><fmt:formatNumber value="${ wishList.cPrice }" pattern="#,###"/></p>
 			</div>
 			
-			
 			<!-- 신청하기(결제페이지로 이동) 버튼 -->
 			<div class="wish-class-btn">
 				<button type="submit" class="order-button">신청하기</button>
-				
 			</div>
+				
 			<hr class="hr-line">
 		</div>
 		</form>
@@ -171,7 +170,8 @@
 		history.back();
 	}
 	</script>
-
+	
+	
 	
 
 </body>
