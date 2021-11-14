@@ -184,4 +184,15 @@
 			SET PAY_CANCLE = 'N'
 			WHERE PAY_NUM = ?
 	</entry>
+	
+	<entry key="insertRefundInfo">
+		INSERT INTO REFUND VALUES (
+			      PAY_NUM = ?
+			    , REFUND_DATE = DEFAULT
+			    , REFUND_ACCOUNT = ?
+			    , BANK = ?
+			    , ACCOUNT_HOLDER = ?
+			    , REFUND_PROCESS = DEFAULT
+			)
+	</entry>
 </properties>

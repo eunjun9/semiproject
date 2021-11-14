@@ -362,5 +362,22 @@ public class MypageDao {
 		return result;
 	}
 	
+	// 환불 정보 입력
+	public int insertRefundInfo(Connection conn, Payment payment) {
+		PreparedStatement pstmt = null;
+		String sql = mypageQuery.getProperty("insertRefundInfo");
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+	
 
 }

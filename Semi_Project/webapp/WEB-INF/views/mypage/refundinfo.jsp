@@ -45,8 +45,9 @@
    
 
     <div class="joinInfoArea" id="register_row">
-        <form id="register_form" action="<%= request.getContextPath() %>/mypage/main"
-        method="post" onsubmit="return validate();">
+        <form id="register_form" action="${ contextPath }/mypage/refundinfo"
+        method="post">
+        <input type="hidden" name="pNum" value="${pNum}">
             <div class="common-form title">
                 <p class="firstjoin">환불 정보 입력</p>
             </div>
@@ -67,7 +68,7 @@
             <div class="common-form">
                 <div class="form-group">
                     <label class="form-label">예금주</label><br>
-                    <input class="form-control" id="name" type="text" name="userName" 
+                    <input class="form-control" id="name" type="text" name="accountHolder" 
                     placeholder="이름을 입력해주세요" size="25" required>
                 </div>
             </div>
@@ -76,10 +77,14 @@
                 <div class="form-check"> 
                     <button id="btn-confirm" type="button" onclick="confirmRefundinfo();">환불 접수 하기</button>
                 </div>
-            </div> 
-        </form>
-    </div>
-	
+        	</form>
+         </div> 
+    
+		<script>
+		 	function confirmRefundinfo(){
+		 		alert('환불 접수가 완료되었습니다.');
+		 	}
+		</script>
 	
 
 

@@ -47,39 +47,6 @@ public class RefundServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-/*
-		request.setCharacterEncoding("UTF-8");
-		
-		String userId = ((Member)request.getSession().getAttribute("loginUser")).getUserId();
-		
-		String refundAccount = request.getParameter("refundAccount");
-		String bank = request.getParameter("bank");
-		String accountHolder = request.getParameter("accountHolder");
-		
-		Refund refund = new Refund();
-		refund.setRefundAccount(refundAccount);
-		refund.setBank(bank);
-		refund.setAccountHolder(accountHolder);
-		refund.setUserId(userId);
-		
-		// System.out.println("수정할 정보 : " + member);
-		
-		Refund insertRefundInfo = new RefundService().insertRefundInfo(refund);
-		
-		// System.out.println("수정 된 정보 : " + updatedMember);
-		
-		if(insertRefundInfo != null) {
-			
-			request.getSession().setAttribute("message", "환불 접수가 완료되었습니다.");
-			request.getSession().setAttribute("loginUser", insertRefundInfo);
-			response.sendRedirect(request.getContextPath() + "/mypage/main");
-		
-		} else {  회원 정보 수정 실패 시 
-			request.setAttribute("message", "환불 접수가 실패하였습니다.");
-			RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/common/errorpage.jsp");
-			view.forward(request, response);
-		}
- */
 		
 	}
 }

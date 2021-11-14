@@ -114,6 +114,20 @@ public class MypageService {
 		}
 		return result;
 	}
+
+	// 환불 정보 입력
+	public int insertRefundInfo(Payment payment) {
+		Connection conn = getConnection();
+		
+		int result =  mypageDao.insertRefundInfo(conn, payment);
+		
+		if(result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		return result;
+	}
 	
 
 
