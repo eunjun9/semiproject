@@ -115,15 +115,10 @@ public class MypageService {
 		return result;
 	}
 
-<<<<<<< HEAD
-	public int insertRefundInfo(Payment payment) {
-		Connection conn = getConnection();
-=======
 	// 환불 정보 입력
 	public int insertRefundInfo(Payment payment) {
 		Connection conn = getConnection();
 		
->>>>>>> branch 'master' of https://github.com/umyewon/semiproject.git
 		int result =  mypageDao.insertRefundInfo(conn, payment);
 		
 		if(result > 0) {
