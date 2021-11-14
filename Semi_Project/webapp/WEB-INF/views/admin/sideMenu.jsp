@@ -35,7 +35,7 @@
                         <li class="sales menu">
                            <a href="#"><img src="${ contextPath }/resources/images/admin3.png">매출관리</a> 
                            <ul class="submenu"> 
-                            <li><a href="#">매출조회</a></li> 
+                            <li><a href="${ contextPath }/sales">매출조회</a></li> 
                             <li><a href="${ contextPath }/payroll/page">정산내역</a></li> 
                             <li><a href="${ contextPath }/refund">환불내역</a></li> 
                            </ul> 

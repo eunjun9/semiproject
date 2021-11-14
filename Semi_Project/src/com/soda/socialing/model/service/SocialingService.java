@@ -108,6 +108,16 @@ public class SocialingService {
 		/* Socialing_member 테이블 정보 조회 */
 		List<SocialingMember> socialing = socialingDao.selectMember(conn, nNum);
 		
+		/* 참여자 프로필(프로필사진) 조회 */
+		
+		/* 참여자 프로필(자기소개) 조회 */
+		
+//		if(profile != null) {
+//			
+//		} else if(itd != null) {
+//			
+//		}
+		
 		close(conn);
 		
 		return socialing;
@@ -116,7 +126,7 @@ public class SocialingService {
 	public List<SocialingMember> selectMemberProfile(int nNum) {
 		Connection conn = getConnection();
 		
-		/* 작성자 프로필(프로필사진) 조회 */
+		/* 참여자 프로필(프로필사진) 조회 */
 		List<SocialingMember> memberProfile = socialingDao.selectMemberProfile(conn, nNum);
 		
 		close(conn);
@@ -127,7 +137,7 @@ public class SocialingService {
 	public List<SocialingMember> selectMemberItd(int nNum) {
 		Connection conn = getConnection();
 		
-		/* 작성자 프로필(자기소개) 조회 */
+		/* 참여자 프로필(자기소개) 조회 */
 		List<SocialingMember> memberItd = socialingDao.selectMemberItd(conn, nNum);
 		
 		close(conn);
@@ -205,9 +215,6 @@ public class SocialingService {
 		/* Socialing 테이블 수정 */
 		int socialingResult = socialingDao.updateSocialing(conn, socialing);
 		
-		System.out.println(noticeResult);
-		System.out.println(socialingResult);
-		
 		/* 실제 수행 값을 담을 변수 */
 		int updatePhotoResult = 0;
 		/* 수행 해야 될 리스트의 갯수를 담을 변수 */
@@ -219,8 +226,6 @@ public class SocialingService {
 				/* 기존에 있던 파일을 덮어쓰기 - update */
 				updatePhotoResult += socialingDao.updatePhoto(conn, photo);
 				updateListCount++;
-				System.out.println("update : " + photo);
-				System.out.println("updatePhotoResult : " + updatePhotoResult);
 			}
 		}
 		
