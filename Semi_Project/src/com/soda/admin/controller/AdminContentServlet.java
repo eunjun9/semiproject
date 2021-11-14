@@ -33,8 +33,9 @@ public class AdminContentServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String filter = request.getParameter("filter");
 		Report report = new Report();
+		report.setSort(filter);
 		
-		List<Report> reportList = new AdminService().selectReportList(filter);
+		List<Report> reportList = new AdminService().selectReportList(report);
 		
 		
 		request.setAttribute("reportList", reportList);

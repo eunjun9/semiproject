@@ -55,10 +55,10 @@ public class AdminService {
 	}
 
 	// 신고 내역 조회
-	public List<Report> selectReportList(String filter) {
+	public List<Report> selectReportList(Report report) {
 		Connection conn = getConnection();
 		
-		List<Report> reportList = adminDao.selectreportList(conn, filter);
+		List<Report> reportList = adminDao.selectreportList(conn, report);
 		
 		close(conn);
 		

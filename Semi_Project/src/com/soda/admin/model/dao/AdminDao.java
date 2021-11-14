@@ -117,18 +117,18 @@ private Properties adminQuery = new Properties();
 		}
 	
 	// 신고 내역 조회
-	public List<Report> selectreportList(Connection conn, String filter) {
+	public List<Report> selectreportList(Connection conn, Report report2) {
 		PreparedStatement pstmt = null;
 		String sql= adminQuery.getProperty("selectreportList");
 		ResultSet rset = null;
 		List<Report> reportList = new ArrayList<>();
 		
-		if(filter.equals("all")) {
-			sql= adminQuery.getProperty("selectreportList");
-		} else if(filter.equals("magazine")) {
-			sql = adminQuery.getProperty("selectmagazineList");
-		} else if(filter.equals("socialing")) {
-			sql = adminQuery.getProperty("selectsocialingList");
+		if(report2.getSort() != null) {
+			if(report2.getSort().equals("magazine")) {
+				sql = adminQuery.getProperty("selectmagazineList");
+			} else if(report2.getSort().equals("socialing")) {
+				sql = adminQuery.getProperty("selectsocialingList");
+			}
 		}
 		
 		

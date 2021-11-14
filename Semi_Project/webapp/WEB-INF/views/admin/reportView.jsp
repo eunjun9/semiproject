@@ -45,19 +45,17 @@
                     </div>
                     
                     <script>
-                    	${function(){
+                    	$(function(){
                     		$("select[name=filter]").change(sortMethod);
                     	
-                    	function sortMethod(){
-                    		if($(this).val() == 'all'){
-                    			location.href="{ contextPath }/admin/report";
-                    		} else if ($(this).val() == 'magazine'){
-                    			$("#submitBtn").click();
-                    		} else if ($(this).val() == 'socialing'){
-                    			$("#submitBtn").click();
+	                    	function sortMethod(){
+	                    		if($(this).val() == 'magazine'){
+	                    			$("#submitBtn").click();
+	                    		} else if ($(this).val() == 'socialing'){
+	                    			$("#submitBtn").click();
+	                    		}
                     		}
-                    	}
-                    	}};
+                    	});
                     </script>
                     <table class="tbl">
                         <thead>
