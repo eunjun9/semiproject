@@ -7,7 +7,7 @@
 <title>관리자페이지_신고내역</title>
 
 	<!-- 외부 스타일 시트 -->
-    <link rel="stylesheet" href="/resources/css/admin/admin-report.css">
+    <link rel="stylesheet" href="/resources/css/admin/admin-report.css?6">
     <!-- 글꼴 (Noto Sans) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,12 +34,31 @@
                     <h1 id="main-title">신고내역</h1>
                     <div class="combo-area">
                       <!-- 정렬 선택 전 전체보기가 디폴트, 오래된 순으로 정렬-->
+                      <form method="get" action="${ contextPath }/admin/report">
                         <select name="filter">
-                            <option value="" selected>전체보기</option>
-                            <option value="">매거진</option>
-                            <option value="">소셜링</option>
+                            <option value="all" selected>전체보기</option>
+                            <option value="magazine">매거진</option>
+                            <option value="socialing">소셜링</option>
                         </select>
+                        <input type="submit" id="submitBtn" style="display:none"></input>
+                      </form>
                     </div>
+                    
+                    <script>
+                    	${function(){
+                    		$("select[name=filter]").change(sortMethod);
+                    	
+                    	function sortMethod(){
+                    		if($(this).val() == 'all'){
+                    			location.href="{ contextPath }/admin/report";
+                    		} else if ($(this).val() == 'magazine'){
+                    			$("#submitBtn").click();
+                    		} else if ($(this).val() == 'socialing'){
+                    			$("#submitBtn").click();
+                    		}
+                    	}
+                    	}};
+                    </script>
                     <table class="tbl">
                         <thead>
                           <tr>
@@ -48,55 +67,46 @@
                             <th class="tbl-title">카테고리</th>
                             <th class="tbl-title">제목</th>
                             <th class="tbl-title">게시자</th>
-                            <th class="tbl-title">게시일</th>
+                            <th class="tbl-title">신고일</th>
                             <th class="tbl-title">신고사유</th>
                           </tr>
                         </thead>
                         <tbody>
+                        <c:forEach var="report" items="${ reportList }">
                           <tr>
-                            <td class="tbl-content"><input type="checkbox" name="r_ckbox"></td>
-                            <td class="tbl-content" name="r_bNo">1</td>
-                            <td class="tbl-content" name="r_category">매거진</td>
-                            <td class="tbl-content" name="r_title"><a href="#">독서토론 강사 xxx</a></td>
-                            <td class="tbl-content" name="r_writer">김구라</td>
-                            <td class="tbl-content" name="r_date">2021.11.02</td>
-                            <td class="tbl-content" name="r_reason">명예훼손</td>
+                            <td class="tbl-content"> </td>
+                            <td class="tbl-content">${ report.nNum }</td>
+                            <td class="tbl-content">${ report.category }</td>
+                            <c:choose>
+                            	<c:when test="${ report.category == '소셜링' }"> 
+									<td class="tbl-content title"><a onclick="socialingDetail(${ report.nNum })">${ report.noticeTitle }</a></td>                            	
+                            	</c:when>
+                            	<c:when test="${ report.category == '매거진' }"> 
+								 	<td class="tbl-content title"><a onclick="magazineDetail(${ report.nNum })">${ report.noticeTitle }</a></td>                            	
+                            	</c:when>
+                            </c:choose>
+                            <td class="tbl-content">${ report.reportedId }</td>
+                            <td class="tbl-content">${ report.rDate }</td>
+                            <td class="tbl-content">${ report.rReason }</td>
                           </tr>
-                          <tr>
-                            <td class="tbl-content"><input type="checkbox" name="r_ckbox"></td>
-                            <td class="tbl-content" name="r_bNo">4</td>
-                            <td class="tbl-content" name="r_category">매거진</td>
-                            <td class="tbl-content" name="r_title"><a href="#">ㅇㅇ모임 노잼</a></td>
-                            <td class="tbl-content" name="r_writer">박명수</td>
-                            <td class="tbl-content" name="r_date">2021.10.29</td>
-                            <td class="tbl-content" name="r_reason">불법성</td>
-                          </tr>
-                          <tr>
-                            <td class="tbl-content"><input type="checkbox" name="r_ckbox"></td>
-                            <td class="tbl-content" name="r_bNo">5</td>
-                            <td class="tbl-content" name="r_category">소셜링</td>
-                            <td class="tbl-content" name="r_title"><a href="#">xxx xxxx</a></td>
-                            <td class="tbl-content" name="r_writer">신짱구</td>
-                            <td class="tbl-content" name="r_date">2021.11.10</td>
-                            <td class="tbl-content" name="r_reason">욕설</td>
-                          </tr>
+                         </c:forEach>
                         </tbody>
                       </table>
-                      <button id="deleteBtn" onclick="deleteconfirm();">선택삭제</button>
+                      
+                      <script>
+                      	function socialingDetail(nNum){
+                      	 	location.href = "${ contextPath }/socialing/detail?nNum=" + nNum;
+                      	}
+                      	function magazineDetail(nNum){
+                      		location.href = "${ contextPath }/magazine/detail?nNum=" + nNum;
+                      	}
+                      
+                      </script>
                 </article>
             </div>
         </div>
     </div>
 
-    <script>
-      function deleteconfirm(){
-        if(confirm('게시글을 삭제하시겠습니까?')){
-          // db에서 게시글 상태 y->n으로 바꾸고, 상태가 n이 된 글은 신고 내역에서 안 보이게
-          
-        }
-      }
-    </script>
-    
       <script>
         $(document).ready(function(){ 
           $(".menu").mouseover(function(){ 

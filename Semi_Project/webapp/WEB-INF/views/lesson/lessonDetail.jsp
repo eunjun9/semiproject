@@ -87,6 +87,8 @@
 						</form>
 	    			</div>
 	    			
+	    			<c:choose>
+	    			<c:when test="${ not empty loginUser }">
 	    			<script>
 		        	$(function(){
 		        		 $("#apply").click(function(){ 
@@ -115,10 +117,19 @@
 				                    }else {
 				                    	return false;
 				                    } 
-		 	       			 }
-		                }); 
-		        	});
-        	</script>
+		 	       				 }
+		               		 }); 
+			        	});
+	        	</script>
+	        	</c:when>
+	        	<c:otherwise>
+	        		<script>
+	        			alert("로그인 후 이용가능합니다.");
+	        			location.href="${ contextPath}/login";
+	        		</script>
+	        	</c:otherwise>
+	        	</c:choose>
+        	
         	</c:when>
         </c:choose>
         
@@ -188,6 +199,30 @@
               <button onclick="deleteLesson();">삭제하기</button>
               </c:if>
             </div>
+            
+            
+         <c:if test="${ loginUser.userId == lesson.userId }">
+		<form name="lessonForm" method="post">
+			<input type="hidden" name="nNum" value="${ lesson.nNum }">
+		</form>
+		<script>
+			function updateLessonView(){
+				document.forms.lessonForm.action = "${ contextPath }/lesson/updateView";
+				document.forms.lessonForm.submit();
+			}
+			
+			function deleteLesson(){
+				if(confirm("이 게시글을 삭제하시겠습니까?")){
+					document.forms.lessonForm.action = "${ contextPath }/lesson/delete";
+					document.forms.lessonForm.submit();
+				}
+			}
+		</script>
+	</c:if>
+            
+            
+            
+            
     
     <!-- 문의사항 스크립트 -->
     <script>
@@ -209,24 +244,5 @@
 	<!-- footer -->
 	<%@ include file="/WEB-INF/views/common/footer.jsp" %>
 	
-	<c:if test="${ loginUser.userId == lesson.userId }">
-		<form name="lessonForm" method="post">
-			<input type="hidden" name="nNum" value="${ lesson.nNum }">
-		</form>
-		<script>
-			function updateLessonView(){
-				document.forms.lessonForm.action = "${ contextPath }/lesson/updateView";
-				document.forms.lessonForm.submit();
-			}
-			
-			function deleteLesson(){
-				if(confirm("이 게시글을 삭제하시겠습니까?")){
-					document.forms.lessonForm.action = "${ contextPath }/lesson/delete";
-					document.forms.lessonForm.submit();
-				}
-			}
-		</script>
-	</c:if>
-
 </body>
 </html>

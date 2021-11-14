@@ -115,5 +115,46 @@ private Properties adminQuery = new Properties();
 		return payrollYear;
 		
 		}
+	
+	// 신고 내역 조회
+	public List<Report> selectreportList(Connection conn, String filter) {
+		PreparedStatement pstmt = null;
+		String sql= adminQuery.getProperty("selectreportList");
+		ResultSet rset = null;
+		List<Report> reportList = new ArrayList<>();
+		
+		if(filter.equals("all")) {
+			sql= adminQuery.getProperty("selectreportList");
+		} else if(filter.equals("magazine")) {
+			sql = adminQuery.getProperty("selectmagazineList");
+		} else if(filter.equals("socialing")) {
+			sql = adminQuery.getProperty("selectsocialingList");
+		}
+		
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()){
+				Report report = new Report();
+				report.setnNum(rset.getInt("notice_num"));
+				report.setCategory(rset.getString("notice_type"));
+				report.setNoticeTitle(rset.getString("notice_title"));
+				report.setReportedId(rset.getString("user_id"));
+				report.setrDate(rset.getDate("report_date"));
+				report.setrReason(rset.getString("report_reason"));
+				
+				reportList.add(report);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return reportList;
+	}
 
 }

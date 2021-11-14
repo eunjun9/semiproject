@@ -53,5 +53,16 @@ public class AdminService {
 		
 		return payrollYear;
 	}
+
+	// 신고 내역 조회
+	public List<Report> selectReportList(String filter) {
+		Connection conn = getConnection();
+		
+		List<Report> reportList = adminDao.selectreportList(conn, filter);
+		
+		close(conn);
+		
+		return reportList;
+	}
 	
 }
