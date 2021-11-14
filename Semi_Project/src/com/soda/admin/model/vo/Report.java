@@ -12,6 +12,8 @@ public class Report {
 	private String reportedId;	// 신고된 회원 아이디
 	private String category;	// 게시판 카테고리
 	private String noticeTitle;	// 게시글 제목
+	private String sort;
+	
 	
 	public Report() {}
 
@@ -27,7 +29,7 @@ public class Report {
 
 	// 신고용 생성자
 	public Report(int rNum, String rReason, int cNum, int nNum, String userId, Date rDate, String reportedId,
-			String category, String noticeTitle) {
+			String category, String noticeTitle, String sort) {
 		super();
 		this.rNum = rNum;
 		this.rReason = rReason;
@@ -38,6 +40,7 @@ public class Report {
 		this.reportedId = reportedId;
 		this.category = category;
 		this.noticeTitle = noticeTitle;
+		this.sort = sort;
 	}
 
 	public int getrNum() {
@@ -110,6 +113,15 @@ public class Report {
 
 	public void setNoticeTitle(String noticeTitle) {
 		this.noticeTitle = noticeTitle;
+	}
+
+	
+	public String getSort() {
+		return sort;
+	}
+
+	public void setSort(String sort) {
+		this.sort = sort;
 	}
 
 	@Override

@@ -31,7 +31,11 @@ public class AdminContentServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<Report> reportList = new AdminService().selectReportList();
+		String filter = request.getParameter("filter");
+		Report report = new Report();
+		
+		List<Report> reportList = new AdminService().selectReportList(filter);
+		
 		
 		request.setAttribute("reportList", reportList);
 		request.getRequestDispatcher("/WEB-INF/views/admin/reportView.jsp").forward(request, response);
@@ -41,8 +45,6 @@ public class AdminContentServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
 	}
 
 }

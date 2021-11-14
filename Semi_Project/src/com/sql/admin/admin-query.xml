@@ -65,7 +65,38 @@
 		  WHERE REPORT_STATUS = 'Y'
 		    AND NOTICE_STATUS = 'Y'
    	   ORDER BY REPORT_DATE ASC
+	</entry>
 	
+	<entry key="selectmagazineList">
+		SELECT 
+		        R.NOTICE_NUM
+		      , N.NOTICE_TYPE
+		      , N.NOTICE_TITLE
+		      , N.USER_ID
+		      , REPORT_DATE
+		      , REPORT_REASON
+		   FROM REPORT R
+		   JOIN NOTICE N ON(N.NOTICE_NUM = R.NOTICE_NUM)
+		  WHERE REPORT_STATUS = 'Y'
+		    AND NOTICE_STATUS = 'Y'
+		   	AND N.NOTICE_TYPE = '매거진'
+   	   ORDER BY REPORT_DATE ASC
+	</entry>
+	
+	<entry key="selectsocialingList">
+		SELECT 
+		        R.NOTICE_NUM
+		      , N.NOTICE_TYPE
+		      , N.NOTICE_TITLE
+		      , N.USER_ID
+		      , REPORT_DATE
+		      , REPORT_REASON
+		   FROM REPORT R
+		   JOIN NOTICE N ON(N.NOTICE_NUM = R.NOTICE_NUM)
+		  WHERE REPORT_STATUS = 'Y'
+		    AND NOTICE_STATUS = 'Y'
+		   	AND N.NOTICE_TYPE = '소셜링'
+   	   ORDER BY REPORT_DATE ASC
 	</entry>
 	
 	

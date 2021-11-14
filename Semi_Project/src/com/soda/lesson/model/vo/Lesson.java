@@ -27,6 +27,7 @@ public class Lesson {
 	private String cTutor;		// 강사 소개
 	private Date selectDate; 	// 클래스 선택 날짜
 	private Date payDate;		// 클래스 결제 날짜
+	private int pNum;			// 주문번호
 	
 	
 	private List<Attachment> photoList;  // 첨부파일
@@ -255,6 +256,14 @@ public class Lesson {
 
 	public void setPayDate(Date payDate) {
 		this.payDate = payDate;
+	}
+	
+	public int getpNum() {
+		return pNum;
+	}
+
+	public void setpNum(int pNum) {
+		this.pNum = pNum;
 	}
 
 	@Override

@@ -321,6 +321,7 @@ public class MypageDao {
 				lesson.setcCategory(rset.getString("c_category"));
 				lesson.setvDate(rset.getString("v_date"));
 				lesson.setSelectDate(rset.getDate("select_date"));
+				lesson.setpNum(rset.getInt("pay_num"));
 				
 				
 				List<Attachment> photoList = new ArrayList<>();
