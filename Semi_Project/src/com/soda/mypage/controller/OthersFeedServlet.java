@@ -44,14 +44,16 @@ public class OthersFeedServlet extends HttpServlet {
 				ProfileService profileService = new ProfileService();
 				
 				// 사용자 본인이 올린 사진 및 정보 알려줌
-				Profile others = profileService.selectOthers(userId);
-				System.out.println(others);
+				Profile others = profileService.selectOthersFeed(userId);
+				System.out.println("다른사람" + others);
 				
-				request.setAttribute("others", others);
 		
 				
 				// 사용자가 그동안 올렸던 게시글들 보여줌
 				List<Magazine> othersList = new MagazineService().selectOthersList(userId);
+				System.out.println("다른사람 리스트" + othersList);
+				
+				request.setAttribute("others", others);
 				request.setAttribute("othersList", othersList);
 				request.getRequestDispatcher("/WEB-INF/views/mypage/othersFeedMain.jsp").forward(request, response);
 

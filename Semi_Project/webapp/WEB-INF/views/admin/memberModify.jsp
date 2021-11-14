@@ -22,6 +22,28 @@
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        
+        
+        <%
+	if(request.getAttribute("result") != null) {
+		// 신고 요청을 수행하고 돌아온 상황일 때 (처음 팝업창을 여는 상황은 result가 null)
+		if(request.getAttribute("result").equals("success")) {
+			// 신고 요청에 성공
+%>
+<script>
+alert("변경되었습니다.");
+	window.close();
+</script>
+<% 
+		} else { // 신고 요청에 실패
+%>
+<script>
+	alert("다시 확인해주세요.");
+</script>
+<%
+		}
+	}
+%>
 </head>
 
 <body>

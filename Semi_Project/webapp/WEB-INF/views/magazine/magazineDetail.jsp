@@ -47,14 +47,16 @@
 				</button>
 			</div>
 			<div class="admin">
-				<c:if test="${ !empty loginUser && (loginUser.userId == 'admin@gmail.com' || loginUser.userId == magazine.userId) }">
+				<c:if test="${ loginUser.userId == magazine.userId }">
 					<button onclick="deleteDetail();">삭제</button>
 					<button onclick="updateDetail();">수정</button>
 				</c:if>
 				<c:if
-					test="${ !empty loginUser && loginUser.userId == 'admin@gmail.com'}">
+					test="${ loginUser.userId.contains('admin') || loginUser.userId == magazine.userId}">
+					
 					<button type="button" class="report-button"
 						onclick="openPopup('${ contextPath }/reportForm', 'reportForm', 280, 400)">신고</button>
+				
 				</c:if>
 			</div>
 
@@ -82,11 +84,6 @@
 							<c:choose>
 							<c:when test="${ loginUser.userId == magazine.userId}">
 							<a href="${contextPath}/myfeed">${ magazine.userId }</a>
-							
-							
-
-							
-							
 							
 							</c:when>
 							<c:otherwise>
@@ -246,9 +243,8 @@
 
 <!--  게시물 삭제 수정 -->
 
-<c:if test="${ loginUser.userId == magazine.userId || loginIser.userId =='admin@gmail.com'}">
 	<form name="detailForm" method="post">
-		<input type="hidden" name="nNum" value="${magazine.nNum }">
+		<input type="hidden" name="nNum" id='nNum' value="${magazine.nNum }">
 	</form>
 
 
@@ -266,7 +262,6 @@
 		}
 	</script>
 
-</c:if>
 
 <script type="text/javascript">
 function openPopup(url, title, width, height) {

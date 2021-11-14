@@ -63,9 +63,16 @@ public class memberModifyView extends HttpServlet {
 		Member updatedMember = new MemberService().memberModify(member);
 		
 //		System.out.println(updatedMember);
+		
+		if (updatedMember != null) {
+			request.setAttribute("result", "success");
+		} else {
+			request.setAttribute("result", "fail");
+		}
 	
 			request.setAttribute("updatedMember", updatedMember);
-			response.sendRedirect(request.getContextPath() + "/mypage/adminmain");
+			request.getRequestDispatcher("/WEB-INF/views/admin/memberModify.jsp").forward(request, response);
+//			response.sendRedirect(request.getContextPath() + "/mypage/adminmain");
 		
 		
 		

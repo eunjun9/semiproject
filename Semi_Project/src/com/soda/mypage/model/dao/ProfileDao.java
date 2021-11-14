@@ -137,7 +137,7 @@ public class ProfileDao {
 	}
 
 	
-
+	// 내 피드 프로필 셀렉해오기
 	public Profile selectProfile(Connection conn, String userId) {
 		PreparedStatement pstmt = null;
 	      ResultSet rset = null;
@@ -169,7 +169,8 @@ public class ProfileDao {
 //	     System.out.println(profile);
 	      return profile;
 	}
-
+	
+	// 나, 남의 피드 사진들 가져오기
 	public List<ProfileFile> selectProfileFile(Connection conn, String userId) {
 		PreparedStatement pstmt = null;
 	      ResultSet rset = null;
@@ -207,7 +208,8 @@ public class ProfileDao {
 	}
 
 	
-	public Profile selectOthers(Connection conn, String userId) {
+	// 다른사람일 경우 프로필, 프사 가져오기
+	public Profile selectOthersFeed(Connection conn, String userId) {
 		PreparedStatement pstmt = null;
 	      ResultSet rset = null;
 	      Profile profile = null;
@@ -237,7 +239,7 @@ public class ProfileDao {
 	         close(rset);
 	         close(pstmt);
 	      }
-//	     System.out.println(profile);
+//	     System.out.println("다른사람" + profile);
 	      return profile;
 	}
 

@@ -69,35 +69,14 @@ public class ProfileService {
 				
 		     
 		}
-
-	// myfeed에 불러오기
-	public Profile selectOthers(String userId) {
-		Connection conn = getConnection();
-
-		/* Profile 테이블 정보 조회 */
-		Profile profile = profileDao.selectOthers(conn, userId);
-		
-		// 사진 조회
-		List<ProfileFile> profileFile = profileDao.selectProfileFile(conn, userId);
-		
-		if(profile != null) {
-		
-		profile.setProfileFile(profileFile);
-		}
-		close(conn);
-		
-
-		return profile;
-		
-	}
-
-
-
+	
+	
+	// 내 프로필, 사진 불러오기
 	public Profile selectProfile(String userId) {
 		Connection conn = getConnection();
 
 		/* Profile 테이블 정보 조회 */
-		Profile profile = profileDao.selectOthers(conn, userId);
+		Profile profile = profileDao.selectProfile(conn, userId);
 		
 		// 사진 조회
 		List<ProfileFile> profileFile = profileDao.selectProfileFile(conn, userId);
@@ -110,6 +89,29 @@ public class ProfileService {
 		
 
 		return profile;
+	}
+	
+	
+
+	// 다른 사람의 프로필, 프로필사진 불러오기
+	public Profile selectOthersFeed(String userId) {
+		Connection conn = getConnection();
+
+		/* Profile 테이블 정보 조회 */
+		Profile profile = profileDao.selectOthersFeed(conn, userId);
+		
+		// 사진 조회
+		List<ProfileFile> profileFile = profileDao.selectProfileFile(conn, userId);
+		
+		if(profile != null) {
+		
+		profile.setProfileFile(profileFile);
+		}
+		close(conn);
+		
+
+		return profile;
+		
 	}
 
 

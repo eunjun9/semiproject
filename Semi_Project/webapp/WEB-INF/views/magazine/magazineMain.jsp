@@ -161,7 +161,7 @@
 					<div class="b-title">소다만의 STORY를 공개합니다</div>
 					<div class="view1">
 						<a href="<%= request.getContextPath() %>/admin/list">전체보기</a>
-						<c:if test="${ !empty loginUser && loginUser.userId == 'admin@gmail.com'}">
+						<c:if test="${ loginUser.userId.contains('admin') || loginUser.userId == magazine.userId}">
 						<a href="<%= request.getContextPath() %>/admin/insert">글쓰기</a>
 						</c:if>
 					</div>
