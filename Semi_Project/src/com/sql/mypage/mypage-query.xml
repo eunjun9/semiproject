@@ -178,4 +178,10 @@
 		  AND P.USER_ID = ?
           ORDER BY P.PAY_DATE ASC
 	</entry>
+	
+	<entry key="selectPayCancelList">
+		UPDATE PAYMENT
+			SET PAY_CANCLE = 'N'
+			WHERE PAY_NUM = ?
+	</entry>
 </properties>

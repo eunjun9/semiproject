@@ -37,7 +37,7 @@
                            <ul class="submenu"> 
                             <li><a href="${ contextPath }/sales">매출조회</a></li> 
                             <li><a href="${ contextPath }/payroll/page">정산내역</a></li> 
-                            <li><a href="${ contextPath }/refund">환불내역</a></li> 
+                            <li><a href="${ contextPath }/admin/refund">환불내역</a></li> 
                            </ul> 
                          </li>
                       </ul>

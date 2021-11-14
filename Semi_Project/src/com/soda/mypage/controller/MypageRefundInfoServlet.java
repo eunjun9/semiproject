@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.soda.member.model.service.MemberService;
 import com.soda.member.model.vo.Member;
+import com.soda.mypage.model.service.MypageService;
 
 /**
  * Servlet implementation class MypageUserInfoModifyServlet
@@ -31,11 +32,15 @@ public class MypageRefundInfoServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int pNum = Integer.parseInt(request.getParameter("pNum"));
+		
+		 int result = new MypageService().selectpayCancelList(pNum);
+		
+		 if(result > 0) {
+			 request.getRequestDispatcher("/WEB-INF/views/mypage/refundinfo.jsp").forward(request, response);
+		 }
 		
 		
-		
-		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/mypage/refundinfo.jsp");
-		view.forward(request, response);
 	}
 
 	/**

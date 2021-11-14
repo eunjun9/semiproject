@@ -64,7 +64,7 @@ public class AdminService {
 		
 		close(conn);
 		
-		return salesList;
+		return salesList;}
 
 	// 신고 내역 조회
 	public List<Report> selectReportList(Report report) {

@@ -101,6 +101,19 @@ public class MypageService {
 		
 		return lessonList;	
 	}
+
+	// 결제 취소 처리
+	public int selectpayCancelList(int pNum) {
+		Connection conn = getConnection();
+		int result =  mypageDao.selectpayCancelList(conn, pNum);
+		
+		if(result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		return result;
+	}
 	
 
 

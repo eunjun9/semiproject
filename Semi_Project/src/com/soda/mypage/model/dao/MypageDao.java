@@ -342,6 +342,25 @@ public class MypageDao {
 		}
 		return lessonList;
 	}
+
+	// 결제 취소 처리
+	public int selectpayCancelList(Connection conn, int pNum) {
+		PreparedStatement pstmt = null;
+		String sql = mypageQuery.getProperty("selectPayCancelList");
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, pNum);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
 	
 
 }
