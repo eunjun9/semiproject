@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.filter.SHA256Util;
 import com.soda.member.model.service.MemberService;
 import com.soda.member.model.vo.Member;
 
@@ -37,15 +38,16 @@ public class KakaoLoginServlet extends HttpServlet {
 		String kakaoGender = request.getParameter("kakaoGender");
 		String token = request.getParameter("token");
 		
-		System.out.println(token);
-		
 		// 테스트
 		// System.out.println(userId + "/" + userName + "/" + kakaoId + "/" + kakaoGender);
+		
+		
+		HttpSession session = request.getSession();
+		
 		
 		// 카카오 계정으로 이미 가입된 회원이 있는지 조회
 		Member loginUser = new MemberService().loginMember(userId);
 		
-		HttpSession session = request.getSession();
 		
 		// 가입된 정보 없으면 가입시켜주기
 		if( loginUser == null ) {
@@ -55,15 +57,14 @@ public class KakaoLoginServlet extends HttpServlet {
 			joinMember.setUserName(userName);
 			joinMember.setUserPhone("정보없음");
 			joinMember.setGender(kakaoGender);
-			joinMember.setUserPwd(userPwd);
 			
-			// 카카오계정 고유ID를 암호화해서 비밀번호로 생성
-			//String salt = SHA256Util.generateSalt();
-	        //String newPassword = SHA256Util.getEncrypt(kakaoId, salt);
-	        //joinMember.setUserPwd(newPassword);
-
+			//카카오계정 고유ID를 암호화해서 비밀번호로 생성
+			String salt = SHA256Util.generateSalt();
+	        String newPassword = SHA256Util.getEncrypt(userPwd, salt);
+	        joinMember.setUserPwd(newPassword);
+			
 			//카카오 자동 회원가입 로직 실행
-			int kakaoJoin = new MemberService().kakaoJoin(joinMember);
+			int kakaoJoin = new MemberService().kakaoJoin(joinMember, userId);
 			
 			// 카카오 자동가입 성공 후 세션에 저장하고 비동기식 전송
 			if(kakaoJoin > 0) {
@@ -72,11 +73,9 @@ public class KakaoLoginServlet extends HttpServlet {
 				session.setAttribute("token", token);
 				response.sendRedirect(request.getContextPath() + "/mainpage");
 			}else {
-				int updateKakao = new MemberService().updateKakao(userId);
-				System.out.println("카카오 회원가입 실패");
+				System.out.println("카카오 회원 가입 실패");
 			}
 			
-			// 기존에 회원정보가 있었으면 바로 세션에 저장하고 비동기식 전송
 		}else {
 			session.setAttribute("loginUser", loginUser);
 			session.setAttribute("token", token);

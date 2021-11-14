@@ -17,6 +17,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.soda.member.model.service.MemberService;
 import com.soda.member.model.vo.Member;
@@ -40,7 +41,7 @@ public class PwdFindServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/WEB-INF/views/member/pwdFindForm.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/views/member/pwdFindForm.jsp").forward(request, response);
 	}
 
 	/**
@@ -83,7 +84,8 @@ public class PwdFindServlet extends HttpServlet {
 
 			// 5자리 임시비밀번호 생성
 			int random = (int)(Math.random() * (99999 - 10000 + 1)) + 10000;
-			System.out.println("임시비밀번호 : " + random);
+			System.out.println("인증번호 : " + random);
+			String randomStr = Integer.toString(random);
 			
 			Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
 				protected PasswordAuthentication getPasswordAuthentication() {
@@ -98,9 +100,9 @@ public class PwdFindServlet extends HttpServlet {
 				send.addRecipient(Message.RecipientType.TO, new InternetAddress(toEmail));
 				
 				// 메일 제목
-				send.setSubject("소셜다이닝 임시 비밀번호 발급");
+				send.setSubject("소셜다이닝 인증번호 발급 메일");
 				// 메일 내용
-				send.setText("임시 비밀번호는 " + random + " 입니다. 로그인 후 비밀번호 변경을 진행해주세요.");
+				send.setText("인증번호는 " + randomStr + " 입니다.");
 
 				Transport.send(send);
 				System.out.println("이메일 전송 완료");
@@ -111,22 +113,11 @@ public class PwdFindServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 			
-			// 발급된 임시비밀번호로 비밀번호 변경해주는 로직 만들어야함 !!
-			Member sendPwd = new MemberService().sendPwd(userId, random);
-
-			System.out.println(sendPwd);
-			
-			if(sendPwd != null) {
+				HttpSession savePwd = request.getSession();
+				savePwd.setAttribute("randomStr", randomStr);
+				request.setAttribute("userId", userId);
 				writer.println("<script>alert('이메일로 임시 비밀번호가 전송되었습니다.');</script>");
-				writer.println("<script>history.back();</script>");
-				writer.close();
-	            return;
-			}else {
-				System.out.println("임시비밀번호 변경 실패");
-			}
-			
-		 }
-
+				request.getRequestDispatcher("/WEB-INF/views/member/pwdUpdateForm.jsp").forward(request, response);
+	      }
 	}
-
 }

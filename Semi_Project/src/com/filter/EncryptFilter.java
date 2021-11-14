@@ -18,11 +18,9 @@ import com.wrapper.EncryptWrapper;
  */
 
 // 암호화가 필요한 서블릿 적용
-@WebFilter(filterName="encrypt", servletNames= {"LoginServlet"
-											  , "memberjoinServlet"
-											  , "kakaoLoginServlet"
-											  , "PwdFindServlet"
+@WebFilter(filterName="encrypt", servletNames= {"memberjoinServlet"
 											  , "EmailLoginServlet"
+											  , "PwdFindUpdateServlet"
 											  , "PwdModifyServlet"})
 public class EncryptFilter implements Filter {
 

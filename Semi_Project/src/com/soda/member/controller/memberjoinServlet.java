@@ -39,7 +39,7 @@ public class memberjoinServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 회원 정보 입력 후 회원 가입 버튼을 눌렀을 때
+			// 회원 정보 입력 후 회원 가입 버튼을 눌렀을 때
 				// 요청을 통해 넘어온 정보 DB에 Insert 후 응답 화면
 				
 				// 1. 한글 값이 있을 경우 인코딩 처리 (필터 적용 후 주석)
