@@ -378,6 +378,7 @@ public class MypageDao {
 			pstmt.setInt(5, payment.getnNum());
 			
 			result = pstmt.executeUpdate();
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {

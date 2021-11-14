@@ -45,10 +45,12 @@
    
 
     <div class="joinInfoArea" id="register_row">
-        <form id="register_form" action="${ contextPath }/mypage/refundinfo"
+        <form id="register_form" action="<%= request.getContextPath() %>/mypage/refundinfo"
         method="post">
-        <input type="hidden" name="pNum" value="${pNum}">
-        <input type="hidden" name="nNum" value="${nNum }">
+
+        <input type="hidden" name="pNum" value="${ pNum }">
+        <input type="hidden" name="nNum" value="${ nNum }">
+
             <div class="common-form title">
                 <p class="firstjoin">환불 정보 입력</p>
             </div>
@@ -78,10 +80,11 @@
                 <div class="form-check"> 
                     <input id="btn-confirm" type="submit" value="환불 접수 하기">
                 </div>
-        	</form>
-         </div> 
-   
-	
+
+         </input>
+         </input>
+	     </form>
+    </div> 
 
 
     <!--footer-->
