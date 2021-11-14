@@ -189,7 +189,7 @@ private Properties adminQuery = new Properties();
 					slist.setpCount(rset.getInt("pcount"));
 				} else if(filter.equals("date")) {
 					slist = new SalesList();
-					slist.setpDate(rset.getDate("pay_date"));
+					slist.setpDate(rset.getDate("pdate"));
 					slist.setpTotal(rset.getInt("ptotal"));
 					slist.setpCount(rset.getInt("pcount"));
 				} else if(filter.equals("option")) {

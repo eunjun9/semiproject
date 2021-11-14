@@ -14,6 +14,7 @@
 		SELECT
 			   COUNT(*)
 		  FROM NOTICE
+		  JOIN SOCIALING USING(NOTICE_NUM)
 		 WHERE NOTICE_TYPE = '소셜링'
 		   AND NOTICE_STATUS = 'Y'
 		   AND NOTICE_TITLE LIKE '%' || ? || '%'
@@ -25,6 +26,7 @@
 		SELECT
 			   COUNT(*)
 		  FROM NOTICE
+		  JOIN SOCIALING USING(NOTICE_NUM)
 		 WHERE NOTICE_TYPE = '소셜링'
 		   AND NOTICE_STATUS = 'Y'
 		   AND NOTICE_TITLE LIKE '%' || ? || '%'
@@ -35,6 +37,7 @@
 		SELECT
 			   COUNT(*)
 		  FROM NOTICE
+		  JOIN SOCIALING USING(NOTICE_NUM)
 		 WHERE NOTICE_TYPE = '소셜링'
 		   AND NOTICE_STATUS = 'Y'
 		   AND NOTICE_TITLE LIKE '%' || ? || '%'
@@ -45,6 +48,7 @@
 		SELECT
 			   COUNT(*)
 		  FROM NOTICE
+		  JOIN SOCIALING USING(NOTICE_NUM)
 		 WHERE NOTICE_TYPE = '소셜링'
 		   AND NOTICE_STATUS = 'Y'
 		   AND S_PLACE LIKE '%' || ? || '%'
@@ -55,6 +59,7 @@
 		SELECT
 			   COUNT(*)
 		  FROM NOTICE
+		  JOIN SOCIALING USING(NOTICE_NUM)
 		 WHERE NOTICE_TYPE = '소셜링'
 		   AND NOTICE_STATUS = 'Y'
 		   AND NOTICE_TITLE LIKE '%' || ? || '%'
@@ -64,6 +69,7 @@
 		SELECT
 			   COUNT(*)
 		  FROM NOTICE
+		  JOIN SOCIALING USING(NOTICE_NUM)
 		 WHERE NOTICE_TYPE = '소셜링'
 		   AND NOTICE_STATUS = 'Y'
 		   AND S_PLACE LIKE '%' || ? || '%'
@@ -82,6 +88,7 @@
 		SELECT
 			   COUNT(*)
 		  FROM NOTICE
+		  JOIN SOCIALING USING(NOTICE_NUM)
 		 WHERE NOTICE_TYPE = '소셜링'
 		   AND NOTICE_STATUS = 'Y'
 		   AND S_TYPE LIKE '%' || ? || '%'
@@ -236,32 +243,6 @@
 						WHERE NOTICE_TYPE = '소셜링'
 						  AND NOTICE_STATUS = 'Y'
 						  AND S_PLACE LIKE '%' || ? || '%'
-						  AND NOTICE_TITLE LIKE '%' || ? || '%'
-					    ORDER BY NOTICE_NUM DESC) A)
-		WHERE RNUM BETWEEN ? AND ?
-	</entry>
-	
-	<entry key="selectDateList">
-		SELECT * 
-		  FROM(SELECT ROWNUM RNUM, A.*
-				 FROM(SELECT
-						     NOTICE_NUM
-						   , NOTICE_TITLE
-		                   , USER_NAME
-						   , S_PLACE
-						   , S_DATE
-						   , S_TIME
-						   , S_TYPE
-						   , ROUTE
-						   , CHANGE_NAME
-						   , NOTICE_STATUS
-		                FROM NOTICE
-						JOIN MEMBER_INFO USING(USER_ID)
-						JOIN SOCIALING USING(NOTICE_NUM)
-						JOIN TBL_FILE USING(NOTICE_NUM)
-						WHERE NOTICE_TYPE = '소셜링'
-						  AND NOTICE_STATUS = 'Y'
-						  AND S_DATE LIKE '%' || ? || '%'
 						  AND NOTICE_TITLE LIKE '%' || ? || '%'
 					    ORDER BY NOTICE_NUM DESC) A)
 		WHERE RNUM BETWEEN ? AND ?
@@ -440,34 +421,9 @@
              , CHANGE_NAME
              , INTRODUCTION
 	      FROM SOCIALING_MEMBER
-	      JOIN MEMBER_INFO USING(USER_ID)
-	      JOIN PROFILE_FILE F USING(USER_ID)
-	      JOIN PROFILE USING(USER_ID)
-         WHERE F.STATUS = 'Y'
-	       AND NOTICE_NUM = ?
-	</entry>
-	
-	<entry key="selectMemberProfile">
-		SELECT
-			   USER_ID
-	         , USER_NAME
-             , ROUTE
-             , CHANGE_NAME
-	      FROM SOCIALING_MEMBER
-	      JOIN MEMBER_INFO USING(USER_ID)
-          JOIN PROFILE_FILE F USING(USER_ID)
-         WHERE F.STATUS = 'Y'
-	       AND NOTICE_NUM = ?
-	</entry>
-	
-	<entry key="selectMemberItd">
-		SELECT
-			   USER_ID
-	         , USER_NAME
-             , INTRODUCTION
-	      FROM SOCIALING_MEMBER
-	      JOIN MEMBER_INFO USING(USER_ID)
-          JOIN PROFILE USING(USER_ID)
+	      LEFT JOIN MEMBER_INFO USING(USER_ID)
+	      LEFT JOIN PROFILE_FILE F USING(USER_ID)
+	      LEFT JOIN PROFILE USING(USER_ID)
          WHERE NOTICE_NUM = ?
 	</entry>
 	

@@ -33,7 +33,6 @@ public class SalesListServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String filter = request.getParameter("filter");
-		System.out.println(filter);
 		
 		List<SalesList> salesList = new AdminService().selectSalesList(filter);
 		

@@ -93,7 +93,7 @@ public class SocialingDetailServlet extends HttpServlet {
 		/* 작성자 자기소개 조회 */
 		Socialing writerItd = socialingService.selectWriterItd(nNum);
 		
-		// 프로필 정보가 있을 경우 작성자 정보 추가
+		// 프로필 정보가 있을 경우 작성자 정보에 추가
 		if(writerProfile != null && writerItd != null) {
 			socialing.setProfile(writerProfile.getProfile());
 			socialing.setIntroduction(writerItd.getIntroduction());
@@ -105,23 +105,6 @@ public class SocialingDetailServlet extends HttpServlet {
 		
 		/* 참여자 리스트 조회 */
 		List<SocialingMember> memberList = socialingService.selectMember(nNum);
-		
-//		/* 참여자 프로필 사진 조회 */
-//		List<SocialingMember> memberProfile = socialingService.selectMemberProfile(nNum);
-//		/* 참여자 자기소개 조회 */
-//		List<SocialingMember> memberItd = socialingService.selectMemberItd(nNum);
-//		
-//		// 프로필 정보가 있을 경우 참여자 정보 추가
-//		for(int i = 0; i < memberList.size(); i++) {
-//			if(memberProfile.get(i) != null && memberItd.get(i) != null) {
-//				memberList.get(i).setProfile(memberProfile.get(i).getProfile());
-//				memberList.get(i).setIntroduction(memberItd.get(i).getIntroduction());
-//			} else if(memberProfile.get(i) != null) {
-//				memberList.get(i).setProfile(memberProfile.get(i).getProfile());
-//			} else if(memberItd.get(i) != null) {
-//				memberList.get(i).setIntroduction(memberItd.get(i).getIntroduction());
-//			}
-//		}
 		
 		/* 로그인 유저가 현재 글을 찜했는지 조회 */
 		SocialingLike likedList = new SocialingService().selectLikedList(nNum, userId);

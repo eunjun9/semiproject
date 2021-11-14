@@ -34,7 +34,7 @@
                     <div class="combo-area">
                     <form name="filterForm">
                         <select name="filter">
-                        	<option selected>정렬 방식</option>
+                        	<option value="" selected>정렬 방식</option>
                             <option value="class">클래스별</option>
                             <option value="date">날짜별</option>
                             <option value="option">결제수단별</option>

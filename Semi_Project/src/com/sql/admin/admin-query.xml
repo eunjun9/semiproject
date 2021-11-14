@@ -66,14 +66,14 @@
 	
 	<entry key="selectDateList">
 		SELECT
-		       PAY_DATE
+		       TO_CHAR(PAY_DATE, 'YYYY-MM-DD') AS PDATE
 		     , SUM(C_PRICE) AS PTOTAL
 		     , COUNT(PAY_DATE) AS PCOUNT
 		  FROM PAYMENT
 		  LEFT JOIN NOTICE USING(NOTICE_NUM)
 		  LEFT JOIN CLASS USING(NOTICE_NUM)
 		 WHERE PAY_CANCLE = 'Y'
-		 GROUP BY PAY_DATE
+		 GROUP BY TO_CHAR(PAY_DATE, 'YYYY-MM-DD')
 	</entry>
 	
 	<entry key="selectOptionList">

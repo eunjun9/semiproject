@@ -108,37 +108,9 @@ public class SocialingService {
 		/* Socialing_member 테이블 정보 조회 */
 		List<SocialingMember> socialing = socialingDao.selectMember(conn, nNum);
 		
-//		if(profile != null) {
-//			
-//		} else if(itd != null) {
-//			
-//		}
-		
 		close(conn);
 		
 		return socialing;
-	}
-	
-	public List<SocialingMember> selectMemberProfile(int nNum) {
-		Connection conn = getConnection();
-		
-		/* 참여자 프로필(프로필사진) 조회 */
-		List<SocialingMember> memberProfile = socialingDao.selectMemberProfile(conn, nNum);
-		
-		close(conn);
-		
-		return memberProfile;
-	}
-
-	public List<SocialingMember> selectMemberItd(int nNum) {
-		Connection conn = getConnection();
-		
-		/* 참여자 프로필(자기소개) 조회 */
-		List<SocialingMember> memberItd = socialingDao.selectMemberItd(conn, nNum);
-		
-		close(conn);
-		
-		return memberItd;
 	}
 
 	public int insertSocialing(Socialing socialing) {
