@@ -22,15 +22,25 @@
 <body>
     <div class="page body">
         <h2 id="title">회원 등급 변경</h2>
-        <form id="revise" action="" method="post">
+        <form id="revise" action="${contextPath }/member/grade" method="post">
             <div class="optionArea">
+            
+            
                 <select id="grade" name="grade">
-                    <option value="member">회원</option>
-                    <option value="tutor">강사</option>
-                    <option value="stop">활동정지</option>
-                    <option value="admin">관리자</option>
+             		 <option value="회원" <c:if test="${member.userGrade=='회원'}"> selected</c:if>>회원</option>
+                    <option value="강사" <c:if test="${member.userGrade=='강사'}"> selected</c:if>>강사</option>
+                    <option value="관리자" <c:if test="${member.userGrade=='관리자'}"> selected</c:if>>관리자</option>
+                    
                 </select>
-                <p id="subTitle">회원등급을 변경하시겠습니까?</p>
+                
+                <select id="account " name="account">
+                    <option value="Y" <c:if test="${member.status=='Y'}"> selected</c:if>>활동가능</option>
+                    <option value="N" <c:if test="${member.status=='N'}"> selected</c:if>>활동중지</option>
+                    
+                </select>
+                
+                
+                <p id="subTitle">${member.userName }님의 회원등급을 변경하시겠습니까?</p>
             </div><br>
             <div class="btnArea">
                 <button type="button" id="cancel" onclick="window.close()">취소</button>

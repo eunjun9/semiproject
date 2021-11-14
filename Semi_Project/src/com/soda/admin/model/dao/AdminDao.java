@@ -40,7 +40,8 @@ private Properties adminQuery = new Properties();
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setString(1, report.getrReason());
-			pstmt.setInt(2, report.getnNum());
+				pstmt.setInt(2, report.getnNum());
+			
 			pstmt.setString(3, report.getUserId());
 			
 			result = pstmt.executeUpdate();

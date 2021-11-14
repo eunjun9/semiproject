@@ -1,226 +1,227 @@
-
 @charset "UTF-8";
 
 html {
-    font-size : 100%;
-    font-family: 'Noto Sans KR', sans-serif;
+	font-size: 100%;
+	font-family: 'Noto Sans KR', sans-serif;
 }
 
-.body-super{
-    width: 1000px;
-    margin : 0 auto;
-    height: auto;
-    font-family: 'Noto Sans KR', sans-serif;
-    
-    
- }
- 
- .body-inner-blue{
-   width:1000px;
-   height: auto;
-   border: 6px solid rgb(218, 239, 245);
-   background-color: white;
-   margin: 0 auto;
-   margin-top: 20px;
+.body-super {
+	width: 1000px;
+	margin: 0 auto;
+	height: auto;
+	font-family: 'Noto Sans KR', sans-serif;
 }
 
-.write{
-   display: flex;
-   justify-content: center;
+.body-inner-blue {
+	width: 1000px;
+	height: auto;
+	border: 6px solid rgb(218, 239, 245);
+	background-color: white;
+	margin: 0 auto;
+	margin-top: 20px;
 }
 
-.content-inner{
-   width: 700px;
-   align-items: center;
-   margin-top: 20px;
+.write {
+	display: flex;
+	justify-content: center;
 }
 
-.buttons{
-   display: flex;
-   justify-content: space-between;
-   margin-top: 20px;
+.content-inner {
+	width: 700px;
+	align-items: center;
+	margin-top: 20px;
 }
 
-.back{
-   margin-left: 20px;
+.buttons {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 20px;
 }
 
-.back>button{
-background-color: rgb(218, 239, 245);
-font-size: 16px;
-border: 1px lightgrey solid;
-border-radius: 5px;
-font-family: 'Noto Sans KR', sans-serif;
+.back {
+	margin-left: 20px;
 }
 
-.admin{
-   margin-right: 10px;
+.back>button {
+	background-color: rgb(218, 239, 245);
+	font-size: 16px;
+	border: 1px lightgrey solid;
+	border-radius: 5px;
+	font-family: 'Noto Sans KR', sans-serif;
 }
 
-.admin>button{
-   margin-right: 10px;
-   font-size: 16px;
-   background-color:rgb(7, 86, 105);
-   color: white;
-   font-family: 'Noto Sans KR', sans-serif;
-   border: 1px rgb(7, 86, 105) solid;
-   border-radius: 5px;
-   height: 30px;
-   width:45px
+.admin {
+	margin-right: 10px;
 }
 
-
-
-.title{
-   margin-top: 40px;
-   text-align: center;
-   color:rgb(7, 86, 105);
-   font-weight: bold;
-   font-size: 27px;
+.admin>button {
+	margin-right: 10px;
+	font-size: 16px;
+	background-color: rgb(7, 86, 105);
+	color: white;
+	font-family: 'Noto Sans KR', sans-serif;
+	border: 1px rgb(7, 86, 105) solid;
+	border-radius: 5px;
+	height: 30px;
+	width: 45px
 }
 
-.myinfo{
-   display: flex;
-   justify-content: space-between;
+.title {
+	margin-top: 40px;
+	text-align: center;
+	color: rgb(7, 86, 105);
+	font-weight: bold;
+	font-size: 27px;
 }
 
-.myinfo1{
-   display: flex;
-}
-.profile{
-   width: 100px;
-   height: 100px;
+.myinfo {
+	display: flex;
+	justify-content: space-between;
 }
 
-.id{
-   margin-top:30px;
-   margin-right: 15px;
-   margin-left: 10px;
+.myinfo1 {
+	display: flex;
 }
 
-.id>a{
-   font-size: 17px;
-   color:grey;
-   top:20px;
+/*  동그랗게 만들기  */
+.profile {
+	margin-top: -2px;
+	border-radius: 70%;
+	overflow: hidden;
+	height: 90px;
+	border: solid rgb(218, 239, 245) 5 px;
+	width: 90px;
+	margin-bottom: 15px;
+	margin-right: 15px;
 }
 
-.date{
-   margin-top:13px;
-   color:grey;
+.profile>img {
+	min-width: 100%;
+	min-height: 100%;
 }
 
-.date>p{
-   font-size: 17px;
+.id {
+	margin-top: 30px;
+	margin-right: 15px;
+	margin-left: 10px;
 }
 
-.follow{
-   margin-top: 32px;
+.id>a {
+	font-size: 17px;
+	color: grey;
+	top: 20px;
 }
 
-.follow>button{
-   background-color:  rgb(218, 239, 245);
-   border: lightgrey;
-   padding: 7px;
+.date {
+	margin-top: 13px;
+	color: grey;
 }
 
-.hr1{
-  border-color: grey;
+.date>p {
+	font-size: 17px;
 }
 
-.content{
-	margin-bottom:70px;
+.follow {
+	margin-top: 32px;
 }
 
-
-
-
-.comment{
-	width :1010px;
-   background-color: rgb(237, 237, 237);
-   display: grid;
- 
-   
+.follow>button {
+	background-color: rgb(218, 239, 245);
+	border: lightgrey;
+	padding: 7px;
 }
 
-.comment-title{
-   margin-top:20px;
-   margin-left: 50px;
-   color:rgb(7, 86, 105);
-   font-weight: bold;
-   font-size: 23px;
+.hr1 {
+	border-color: grey;
 }
 
-.comment-each{
-   display: flex;
-   justify-content: space-between;
+.content {
+	margin-bottom: 70px;
 }
 
-.com-front{
-   display: flex;
-   margin-left: 20px;
+.comment {
+	width: 1010px;
+	background-color: rgb(237, 237, 237);
+	display: grid;
 }
 
-
-.reply_list>ul{
-   list-style:none;
-   padding-left:0px;
-   }
-   
-.reply_ul>a{
-	margin-left:40px;
-	margin-top:60px;
+.comment-title {
+	margin-top: 20px;
+	margin-left: 50px;
+	color: rgb(7, 86, 105);
+	font-weight: bold;
+	font-size: 23px;
 }
 
-.rcontent{
-	margin-left:220px;
-	margin-top:-30px;
+.comment-each {
+	display: flex;
+	justify-content: space-between;
 }
 
-.rdate{
-	margin-left:750px;
-	margin-top:-30px;
+.com-front {
+	display: flex;
+	margin-left: 20px;
 }
 
-
-
-.com-button{
-   margin-top : 40px;
-   margin-right: 40px;
+.reply_list>ul {
+	list-style: none;
+	padding-left: 0px;
 }
 
-.hr2{
-   border-color: grey;
-   width: 820px;
-   z-index: 9999;
- }
+.reply_ul>a {
+	margin-left: 40px;
+	margin-top: 60px;
+}
 
- .reply_write {
-   display:flex;
-   justify-content: center;
-   padding : 20px;
+.rcontent {
+	margin-left: 271px;
+	margin-top: -30px;
+}
+
+.rdate {
+	margin-left: 761px;
+    margin-top: -30px;
+}
+
+.com-button {
+	margin-top: 40px;
+	margin-right: 40px;
+}
+
+.hr2 {
+	border-color: grey;
+	width: 820px;
+	z-index: 9999;
+}
+
+.reply_write {
+	display: flex;
+	justify-content: center;
+	padding: 20px;
+	margin-bottom: 25px;
 }
 
 .reply_content {
-   width:730px;
-   height : 80px;
-   resize : none;
+    width: 783px;
+    height: 80px;
+    resize: none;
+    margin-left: -24px;
 }
 
-.reply_write>button{
-   background-color : rgb(218, 239, 245);
-   margin-top: 20px;
-   margin-left: 20px;
-   height: 40px;
-   font-family: 'Noto Sans KR', sans-serif;
-   border-radius: 10px;
-   border:1px lightgray solid;
+.reply_write>button {
+	background-color: rgb(218, 239, 245);
+	margin-top: 20px;
+	margin-left: 20px;
+	height: 40px;
+	font-family: 'Noto Sans KR', sans-serif;
+	border-radius: 10px;
+	border: 1px lightgray solid;
 }
 
-
-.ntype{
-	margin-top:50px;
+.ntype {
+	margin-top: 50px;
 	margin-bottom: -20px;
-	margin-left : 150px;
-	color:grey;
+	margin-left: 150px;
+	color: grey;
 	font-family: 'Noto Sans KR', sans-serif;
 }

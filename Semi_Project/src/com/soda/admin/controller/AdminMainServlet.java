@@ -1,6 +1,8 @@
 package com.soda.admin.controller;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -30,14 +32,17 @@ public class AdminMainServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String userId = ((Member) request.getSession().getAttribute("loginUser")).getUserId();
+		String userId = request.getParameter("userId");
 		
 		MemberService memberService = new MemberService();
 		
 		// 사용자 정보 불러오기
 		Member member = memberService.selectAdminMember(userId);
 		
-		request.setAttribute("member", member);
+		List<Member> memberList = memberService.selectMemberList(member);
+		
+		
+		request.setAttribute("memberList", memberList);
 		request.getRequestDispatcher("/WEB-INF/views/admin/memberView.jsp").forward(request, response);
 	}
 

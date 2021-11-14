@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Properties;
 import static com.common.JDBCTemplate.close;
 
+import com.soda.magazine.model.vo.Magazine;
 import com.soda.magazine.model.vo.MagazineFile;
 import com.soda.member.model.vo.Member;
 
@@ -376,10 +377,14 @@ public class MemberDao {
 			pstmt.setString(1, member.getUserName());
 			pstmt.setString(2, member.getUserPhone());
 			pstmt.setString(3, member.getGender());
-			pstmt.setString(4, member.getUserId());
+			pstmt.setString(4, member.getUserGrade());
+			pstmt.setString(5, member.getStatus());
+			pstmt.setString(6, member.getUserId());
 
+			
       result = pstmt.executeUpdate();
 			
+      
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -418,8 +423,67 @@ public class MemberDao {
 			close(rset);
 			close(pstmt);
 		}
+		
 
 		return member;
+	}
+
+	public int memberGrade(Connection conn, Member member) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = memberQuery.getProperty("updateMemberGrade");
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, member.getUserGrade());
+			pstmt.setString(2, member.getStatus());
+			pstmt.setString(3, member.getUserId());
+
+      result = pstmt.executeUpdate();
+			
+      
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	public List<Member> selectMemberList(Connection conn) {
+		 PreparedStatement pstmt = null;
+         ResultSet rset = null;
+         List<Member> memberList = new ArrayList<>();
+         String sql = memberQuery.getProperty("selectMemberList");
+         
+            try {
+               pstmt = conn.prepareStatement(sql);
+               rset = pstmt.executeQuery();
+               while(rset.next()) {   // next() : 다음 행
+            	   Member member = new Member();
+                 
+            	   member.setUserId(rset.getString("user_id"));
+            	   member.setUserName(rset.getString("user_name"));
+            	   member.setUserPhone(rset.getString("user_phone"));
+            	   member.setUserPwd(rset.getString("user_pwd"));
+            	   member.setStatus(rset.getString("status"));
+            	   member.setJoinDate(rset.getDate("join_date"));
+            	   member.setUserGrade(rset.getString("user_grade"));
+            	   member.setGender(rset.getString("user_gender"));
+            	   memberList.add(member);
+               }
+               
+            } catch (SQLException e) {
+               e.printStackTrace();
+            } finally {
+               close(rset);
+               close(pstmt);
+            }
+            
+         
+         return memberList;
 	}
 
 

@@ -14,14 +14,14 @@ import com.soda.member.model.vo.Member;
 /**
  * Servlet implementation class memberModify
  */
-@WebServlet("/member/modify")
-public class memberModify extends HttpServlet {
+@WebServlet("/member/modifyview")
+public class memberModifyView extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public memberModify() {
+    public memberModifyView() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,7 +31,6 @@ public class memberModify extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-	
 		
 		
 	}
@@ -43,17 +42,37 @@ public class memberModify extends HttpServlet {
 		
 		
 		String userId = request.getParameter("userId");
+		String name = request.getParameter("name");
+		String phone = request.getParameter("phone");
+		String gender = request.getParameter("gender");
+		String grade = request.getParameter("grade");
+		String account = request.getParameter("account");
+	
 		
 		
-			MemberService memberService = new MemberService();
-			
-			// 사용자 정보 불러오기
-			Member member = memberService.selectAdminMember(userId);
-			
-			
-			request.setAttribute("member", member);
+		
+		Member member = new Member();
+		member.setUserId(userId);
+		member.setUserName(name);
+		member.setUserPhone(phone);
+		member.setGender(gender);
+		member.setUserGrade(grade);
+		member.setStatus(account);
+		
+		
+		Member updatedMember = new MemberService().memberModify(member);
+		
+//		System.out.println(updatedMember);
+		
+		if (updatedMember != null) {
+			request.setAttribute("result", "success");
+		} else {
+			request.setAttribute("result", "fail");
+		}
+	
+			request.setAttribute("updatedMember", updatedMember);
 			request.getRequestDispatcher("/WEB-INF/views/admin/memberModify.jsp").forward(request, response);
-		
+//			response.sendRedirect(request.getContextPath() + "/mypage/adminmain");
 		
 		
 		

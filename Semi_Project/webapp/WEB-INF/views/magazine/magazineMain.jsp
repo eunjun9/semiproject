@@ -99,7 +99,19 @@
 										<br>
 									</div>
 									<div class="writer-par">
-										<a href="#" class="writer">${ magazine.userId }</a>
+											<c:choose>
+							<c:when test="${ loginUser.userId == magazine.userId}">
+							<!-- 이떄 아이디값 넘어감 -->
+							<a href="${contextPath}/myfeed">${ magazine.userId }</a>
+							
+							
+							
+							</c:when>
+							<c:otherwise>
+							<!-- 이떄 아이디값 넘어감 -->
+							<a href="${contextPath}/others/feed?userId=${magazine.userId}">${ magazine.userId }</a>
+							</c:otherwise>
+							</c:choose>
 									</div>
 								</div>
 							</ul>
@@ -149,7 +161,7 @@
 					<div class="b-title">소다만의 STORY를 공개합니다</div>
 					<div class="view1">
 						<a href="<%= request.getContextPath() %>/admin/list">전체보기</a>
-						<c:if test="${ !empty loginUser && loginUser.userId == 'admin@gmail.com'}">
+						<c:if test="${ loginUser.userId.contains('admin') || loginUser.userId == magazine.userId}">
 						<a href="<%= request.getContextPath() %>/admin/insert">글쓰기</a>
 						</c:if>
 					</div>
@@ -175,7 +187,17 @@
 										<br>
 									</div>
 									<div class="writer-par">
-										<a href="#" class="writer">${ magazine.userId }</a>
+											<c:choose>
+							<c:when test="${ loginUser.userId == magazine.userId}">
+							<!-- 이 때 아이디값 넘어감 -->
+							<a href="${contextPath}/myfeed">${ magazine.userId }</a>
+							
+							</c:when>
+							<c:otherwise>
+							<!-- 이 때 아이디값 넘어감 -->
+							<a href="${contextPath}/others/feed?userId=${magazine.userId}">${ magazine.userId }</a>
+							</c:otherwise>
+							</c:choose>
 									</div>
 								</div>
 							</ul>

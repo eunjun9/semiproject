@@ -47,14 +47,16 @@
 				</button>
 			</div>
 			<div class="admin">
-				<c:if test="${ loginUser.userId == magazine.userId || loginUser.userId == 'admin@gmail.com' }">
+				<c:if test="${ loginUser.userId == magazine.userId }">
 					<button onclick="deleteDetail();">삭제</button>
 					<button onclick="updateDetail();">수정</button>
 				</c:if>
 				<c:if
-					test="${ !empty loginUser && loginUser.userId == 'admin@gmail.com'}">
+					test="${ loginUser.userId.contains('admin') || loginUser.userId == magazine.userId}">
+					
 					<button type="button" class="report-button"
-						onclick="openPopup('Report_popup.html', 'checking', 450, 650)">신고</button>
+						onclick="openPopup('${ contextPath }/reportForm', 'reportForm', 280, 400)">신고</button>
+				
 				</c:if>
 			</div>
 
@@ -73,15 +75,27 @@
 				<div class="myinfo">
 					<div class="myinfo1">
 						<div class="profile">
-							<img src="../image/pro.jpg">
+							<img src="${ contextPath }${ profile.profileFile.get(0).route}${profile.profileFile.get(0).changeName}">
 						</div>
 						<div class="id">
-							<a href="#">${ magazine.userId }</a>
+						
+						
+	
+							<c:choose>
+							<c:when test="${ loginUser.userId == magazine.userId}">
+							<a href="${contextPath}/myfeed">${ magazine.userId }</a>
+							
+							</c:when>
+							<c:otherwise>
+							<a href="${contextPath}/others/feed?userId=${magazine.userId}">${ magazine.userId }</a>
+							</c:otherwise>
+							</c:choose>
+							
+							
 						</div>
 						<div class="date">
 							<p>
-								<fmt:formatDate value="${ magazine.nDate }" type="both"
-									pattern="yyy.MM.dd HH:mm:ss" />
+								<fmt:formatDate value="${ magazine.nDate }" type="both"	pattern="yyy.MM.dd HH:mm" />
 							</p>
 						</div>
 					</div>
@@ -133,7 +147,7 @@
 							<a href class="rwriter">${ magazine.userId }</a>
 							<li class="rcontent">${ reply.rContent }</li>
 							<li class="rdate"><fmt:formatDate value="${ reply.rDate }"
-									type="both" pattern="yyyy.MM.dd" /></li>
+									type="both" pattern="yyyy.MM.dd HH:mm" /></li>
 						</ul>
 
 
@@ -229,9 +243,8 @@
 
 <!--  게시물 삭제 수정 -->
 
-<c:if test="${ loginUser.userId == magazine.userId || loginIser.userId =='admin@gmail.com'}">
 	<form name="detailForm" method="post">
-		<input type="hidden" name="nNum" value="${magazine.nNum }">
+		<input type="hidden" name="nNum" id='nNum' value="${magazine.nNum }">
 	</form>
 
 
@@ -249,10 +262,18 @@
 		}
 	</script>
 
-</c:if>
 
-
-
+<script type="text/javascript">
+function openPopup(url, title, width, height) {
+		            let left = (document.body.clientWidth/2)-(width/2);
+		            left += window.screenLeft;
+		            let top = (screen.availHeight/2)-(height/2);
+		                
+		            let options = "width="+width+",height="+height+",left="+left+",top="+top;
+		                
+		            window.open(url, title, options);
+		        }
+</script>
 
 <script>
       /* 댓글달기 버튼 클릭 시 Reply 테이블에 insert 기능 수행 후 

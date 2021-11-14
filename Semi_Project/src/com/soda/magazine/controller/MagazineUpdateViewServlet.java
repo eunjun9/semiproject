@@ -46,7 +46,7 @@ public class MagazineUpdateViewServlet extends HttpServlet {
 	         request.getRequestDispatcher("/WEB-INF/views/magazine/magazineUpdateView.jsp").forward(request, response);
 	         
 	      }else {
-	         request.setAttribute("message", "수정할 사진 게시판 게시글을 불러오는데 실패했습니다.");
+	         request.setAttribute("message", "게시판 게시글을 불러오는데 실패했습니다.");
 	         request.getRequestDispatcher("/WEB-INF/views/common/errorpage.jsp").forward(request, response);
 	         
 	      }

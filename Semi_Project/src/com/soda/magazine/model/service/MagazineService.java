@@ -251,6 +251,17 @@ public class MagazineService {
 		return userselfList;
 	}
 
+
+	public List<Magazine> selectOthersList(String userId) {
+		Connection conn = getConnection();
+
+		List<Magazine> othersList = magazineDao.selectOthersList(conn, userId);
+		close(conn);
+
+		return othersList;
+
+	}
+
 	
 
 	

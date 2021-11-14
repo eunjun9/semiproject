@@ -1,6 +1,7 @@
 package com.soda.magazine.model.vo;
 
 import java.util.Date;
+import java.util.List;
 
 public class Reply {
 

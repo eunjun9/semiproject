@@ -562,6 +562,7 @@ public class MagazineDao {
 	         
 	            try {
 	               pstmt = conn.prepareStatement(sql);
+	               
 	               rset = pstmt.executeQuery();
 	               
 	               while(rset.next()) {   // next() : 다음 행
@@ -591,6 +592,46 @@ public class MagazineDao {
 	       
 	        	 return userselfList;
 	      }
+
+
+		public List<Magazine> selectOthersList(Connection conn, String userId) {
+			PreparedStatement pstmt = null;
+	         ResultSet rset = null;
+	         List<Magazine> othersList = new ArrayList<>();
+	         String sql = magazineQuery.getProperty("selectOthersList");
+	         
+	            try {
+	               pstmt = conn.prepareStatement(sql);
+					pstmt.setString(1,  userId);
+	               rset = pstmt.executeQuery();
+	               
+	               while(rset.next()) {   // next() : 다음 행
+	                  Magazine userself = new Magazine();
+	                  userself.setnNum(rset.getInt("notice_num"));
+	                  userself.setnType(rset.getString("notice_type"));
+	                  userself.setnTitle(rset.getString("notice_title"));
+	                  userself.setUserId(rset.getString("user_id"));
+	                  
+	                  List<MagazineFile> photoList = new ArrayList<>();
+	                  MagazineFile photo = new MagazineFile();
+	                  photo.setRoute(rset.getString("route"));
+	                  photo.setChangeName(rset.getString("change_name"));
+	                  photo.setFileLevel(rset.getInt("file_level"));
+	                  photoList.add(photo);
+	                  userself.setPhotoList(photoList);
+	                  
+	                  othersList.add(userself);
+	               }
+	               
+	            } catch (SQLException e) {
+	               e.printStackTrace();
+	            } finally {
+	               close(rset);
+	               close(pstmt);
+	            }
+	       
+	        	 return othersList;
+		}
 
 		
 		
