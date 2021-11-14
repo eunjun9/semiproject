@@ -186,14 +186,23 @@
 	</entry>
 	
 	<entry key="insertRefundInfo">
-		INSERT INTO REFUND VALUES (
-			      PAY_NUM = ?
-			    , REFUND_DATE = DEFAULT
-			    , REFUND_ACCOUNT = ?
-			    , BANK = ?
-			    , ACCOUNT_HOLDER = ?
-			    , REFUND_PROCESS = DEFAULT
-			    , NOTICE_NUM = ?
+		INSERT INTO REFUND (
+				  PAY_NUM
+				, REFUND_DATE
+				, REFUND_ACCOUNT
+				, BANK
+				, ACCOUNT_HOLDER
+				, REFUND_PROCESS
+				, NOTICE_NUM
+		
+		)VALUES (
+			       ?
+			    , DEFAULT
+			    , ?
+			    , ?
+			    , ?
+			    , DEFAULT
+			    , ?
 			)
 	</entry>
 </properties>
