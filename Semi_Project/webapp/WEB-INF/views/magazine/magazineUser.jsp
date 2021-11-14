@@ -79,7 +79,17 @@
 											<p class="list-title">${ magazine.nTitle }</p><br> 
 								   </div>
 									<div class="writer-par">
-									<a href="#" class="writer">${ magazine.userId }</a>
+									<c:choose>
+							<c:when test="${ loginUser.userId == magazine.userId}">
+							<!-- 이 때 아이디값 넘어감 -->
+							<a href="${contextPath}/myfeed">${ magazine.userId }</a>
+							
+							</c:when>
+							<c:otherwise>
+							<!-- 이 때 아이디값 넘어감 -->
+							<a href="${contextPath}/others/feed?userId=${magazine.userId}">${ magazine.userId }</a>
+							</c:otherwise>
+							</c:choose>
 									</div>
 								</div>
 								</c:forEach>
