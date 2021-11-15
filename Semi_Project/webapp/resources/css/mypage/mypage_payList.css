@@ -156,6 +156,11 @@ hr{
     height: 20px;
 }
 
+.class_title:hover{
+	color : rgb(145, 224, 244);
+    cursor: pointer;
+}
+
 /* 날짜 시간 */
 .o_date{
     padding: 4% 2%;

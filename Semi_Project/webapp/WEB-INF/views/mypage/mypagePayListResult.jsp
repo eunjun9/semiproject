@@ -8,7 +8,7 @@
 <title>마이페이지_결제내역</title>
 
  	 <!--외부 스타일 시트-->
-     <link href="${ contextPath }/resources/css/mypage/mypage_payList.css?2" rel="stylesheet">
+     <link href="${ contextPath }/resources/css/mypage/mypage_payList.css?3" rel="stylesheet">
 
      <!-- font -->
      <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -59,7 +59,7 @@
                     <div class="class_info">
                         <div class="class_img"><img src="${ contextPath }${ lesson.photoList.get(0).route }${ lesson.photoList.get(0).changeName }"></div>
                         <div class="class_type"><p>${ lesson.cCategory }</p></div>
-                        <div class="class_title"><p>${ lesson.nTitle }</p></div>
+                        <div class="class_title" onclick="detailView(${ lesson.nNum })"><p>${ lesson.nTitle }</p></div>
                     </div>
                     
                     <c:choose>
@@ -79,7 +79,6 @@
                         <button type="button" class="refund_Btn">취소</button>
                     </div><hr>
                       ${payment.userId }
-                    
                     </form>
                 	</c:forEach>
             </div>
@@ -98,6 +97,13 @@
     				
     			})
     		});
+    	</script>
+    	
+    	<script>
+    		function detailView(nNum){
+    			location.href = "${contextPath}/lesson/detail?nNum=" + nNum;
+    		}
+    	
     	</script>
     
 
