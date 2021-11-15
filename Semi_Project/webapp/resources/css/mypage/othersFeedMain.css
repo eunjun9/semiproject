@@ -29,10 +29,15 @@ html {
     background-color: white;
     margin: 0 auto;
  }
+.photo-par{
+	text-align:center;
+}
 
 .photo-follow{
+	display:inline-block;
 	margin-top:30px;
    justify-content:center;
+   text-align: -webkit-right;
 }
 
 .id{
@@ -70,10 +75,6 @@ html {
 }
  
 
- .photo{
-    margin-top: 0px;
-    margin-right: 70px;
- }
 
 .name-grade{
    display: flex;
@@ -97,9 +98,6 @@ html {
 }
 
 
-.photo-follow{
-   display: flex;
-}
 
  .profile{
     width: 110px;
@@ -107,7 +105,6 @@ html {
 
  .profile-button>button{
    background-color:  rgb(218, 239, 245);
-   width: 220px;
    height: 30px;
    font-family: 'Noto Sans KR', sans-serif;
  }

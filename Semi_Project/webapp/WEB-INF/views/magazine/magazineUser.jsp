@@ -45,11 +45,11 @@
 
 <body>
 
-
 	<div class="body-super">
-	<!--header-->
 
 	<%@ include file="/WEB-INF/views/common/header.jsp"%>
+	<!--header-->
+
 		<div class="board1">
 			<div class="body-inner1">
 				<div class="title-big">
@@ -95,8 +95,7 @@
 							</ul>
 						</div>
 
-					</div>
-				</div>
+					
 
 
 
@@ -151,7 +150,7 @@
 		            <img width="16px" src="${ contextPath }/resources/images/eunjung/next.png"></a>
                 </div>
 
-
+</div>
 
 
 

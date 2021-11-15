@@ -42,6 +42,7 @@
                 </div>
 
                 <!-- 사진부분-->
+                <div class="photo-par">
                 <div class="photo-follow">
                     <div class="photo">
                         <div class="profile">
@@ -68,7 +69,7 @@
 
                     <!--팔로우-->
                     <div class="follow">
-                        <div class="follow-num">
+                   <!--      <div class="follow-num">
 
                             <div class="post-num-name">
                                 <div class="post-num">
@@ -96,7 +97,7 @@
                                     <p>팔로잉</p>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
 
                         
 
@@ -106,7 +107,7 @@
 
                     </div>
                 </div>
-                
+                </div>
               
 
 
