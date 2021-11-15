@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -44,7 +45,7 @@
        				 -> 각각 클릭 시 nNum과 함께 각 페이지로 이동  -->
 			            <h4 id="pTitle">${ lesson.nTitle }</h4>
 			            <p id="pTime">${ lesson.vDate } 일 <hr></p>
-			            <h3 id="pPrice">50,000원</h3>
+			            <h3 id="pPrice"><fmt:formatNumber value="${ lesson.cPrice }" type="currency" currencySymbol=""/> 원</h3>
 			            <div>
 			            <button id="cart">장바구니</button>
 			            <button id="apply">결제하기</button>
@@ -81,7 +82,7 @@
 			            <h4 id="pTitle">${ lesson.nTitle }</h4>
 			            <input type="date" id="pDate" min="${ lesson.oDate1 }" max="${ lesson.oDate2 }" name="selDate">
 			            <p id="pTime">${ lesson.cTime1 } ~ ${ lesson.cTime2 } <hr></p>
-			            <h3 id="pPrice">50,000원</h3>
+			            <h3 id="pPrice"><fmt:formatNumber value="${ lesson.cPrice }" type="currency" currencySymbol=""/> 원</h3>
 			            <button type="submit" id="cart">장바구니</button>
 			            <button type="submit" id="apply">결제하기</button>
 						</form>
