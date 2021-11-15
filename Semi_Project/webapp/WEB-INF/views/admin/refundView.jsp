@@ -45,7 +45,7 @@
                             <option value="">2020년 07월</option>
                         </select>
                     </div> -->
-                    <table class="tbl" style="width:1000px; margin-left:-345px; margin-top:70px;">
+                    <table class="tbl" style="width:1000px; margin-left:-345px;">
                         <thead>
                           <tr>
                             <th class="tbl-title">클래스명</th>
@@ -70,7 +70,7 @@
                             <td class="tbl-content">${ refund.rAccount }</td>
                             <td class="tbl-content">${ refund.bank }</td>
                             <td class="tbl-content">${ refund.aHolder }</td>
-                            <td class="tbl-content"><input id="button" type="submit"  onclick='changeBtnName()' value="미완료"></td>
+                            <td class="tbl-content"><input type="submit" id="button_${var.index }" onclick='changeBtnName()' value="미완료"></td>
                           </tr>
                           </c:forEach>
                         </tbody>
@@ -79,19 +79,20 @@
             </div>
         </div>
     </div>
-    
-    <script src="//code.jquery.com/jquery.min.js"></script>
-	<script>
-	function changeBtnName()  {
-		  const btnElement 
-		    = document.getElementById('button');
-		  
-		  btnElement.value = "완료";
-		}
-	</script>
 
     <!--footer-->
     <%@ include file="/WEB-INF/views/common/footer.jsp"%>
+	<script>
+	$("input[name^='button']").on("click", function(e) {
+		function changeBtnName()  {
+	        const btnElement 
+	          = document.getElementById('button');
+	        btnElement.value = "완료";
+	      }
+	    function($(this));
+	  });
+   
+   </script>
 
     	<script>
         $(document).ready(function(){ 
