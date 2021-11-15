@@ -49,7 +49,7 @@
                     <div class="swiper mySwiper1 socialing">
                         <div class="swiper-wrapper sw">
                             <c:forEach var="socialing" items = "${ socialingListBefore }" >
-	                            <div class="swiper-slide" onclick="detailView()">
+	                            <div class="swiper-slide" onclick="detailView(${socialing.nNum})">
 	                                <img class="ipic" src="${ contextPath }${ socialing.photoList.get(0).route}${ socialing.photoList.get(0).changeName }">
 	                               	<br><p id="stitle">${ socialing.nTitle }</p><br>
 	                                <c:choose>
@@ -109,7 +109,7 @@
                 <div class="swiper mySwiper2 socialing">
                     <div class="swiper-wrapper sw">
                         <c:forEach var="socialing" items = "${ socialingListAfter }" >
-	                            <div class="swiper-slide" onclick="detailView()">
+	                            <div class="swiper-slide" onclick="detailView(${socialing.nNum})">
 	                                <img class="ipic" src="${ contextPath }${ socialing.photoList.get(0).route}${ socialing.photoList.get(0).changeName }">
 	                               	<br><p id="stitle">${ socialing.nTitle }</p><br>
 	                                <c:choose>
@@ -125,7 +125,11 @@
                     </div>
                 </div>
             
-
+<script>
+	function detailView(nNum){
+		location.href = "${ contextPath }/socialing/detail?nNum=" + nNum;
+	}
+</script>
 	                <!-- 슬라이드 버튼 설정 -->
 	                <c:if test="${ not empty socialingListAfter }" >
 	                <div class=button3>

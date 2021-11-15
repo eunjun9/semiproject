@@ -90,6 +90,7 @@
 	             , S_DATE
 	             , CHANGE_NAME
 	             , ROUTE
+	             , NOTICE_NUM
 		      FROM SOCIALING_MEMBER SM
 	          JOIN SOCIALING USING(NOTICE_NUM)
 	          JOIN NOTICE USING(NOTICE_NUM)
@@ -110,6 +111,7 @@
 	             , S_DATE
 	             , CHANGE_NAME
 	             , ROUTE
+	             , NOTICE_NUM
 		      FROM SOCIALING_MEMBER SM
 	          JOIN SOCIALING USING(NOTICE_NUM)
 	          JOIN NOTICE USING(NOTICE_NUM)

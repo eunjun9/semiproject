@@ -237,6 +237,7 @@ public class MypageDao {
 				socialing.setnTitle(rset.getString("notice_title"));
 				socialing.setSplace(rset.getString("s_place"));
 				socialing.setSdate(rset.getDate("s_date"));
+				socialing.setnNum(rset.getInt("notice_num"));
 				
 				List<SodaFile> photoList = new ArrayList<>();
 				SodaFile file = new SodaFile();
@@ -274,6 +275,7 @@ public class MypageDao {
 				socialing.setnTitle(rset.getString("notice_title"));
 				socialing.setSplace(rset.getString("s_place"));
 				socialing.setSdate(rset.getDate("s_date"));
+				socialing.setnNum(rset.getInt("notice_num"));
 				
 				List<SodaFile> photoList = new ArrayList<>();
 				SodaFile file = new SodaFile();
