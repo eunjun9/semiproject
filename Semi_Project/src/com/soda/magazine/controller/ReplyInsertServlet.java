@@ -46,6 +46,7 @@ public class ReplyInsertServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
 		int nnum = Integer.parseInt(request.getParameter("nNum"));
 		String rcontent = request.getParameter("rContent");
 		
@@ -63,10 +64,12 @@ public class ReplyInsertServlet extends HttpServlet {
 		
 		int result = new MagazineService().insertReply(reply);
 		
-		System.out.println(result);
+//		System.out.println(result);
 
 		
-		 response.sendRedirect(request.getContextPath() + "/magazine/detail");
+//		 response.sendRedirect(request.getHeader("referer"));
+
+		 response.sendRedirect(request.getContextPath() + "/magazine/detail?nNum="+nnum);
 		
 		
 		

@@ -347,6 +347,39 @@ REPLY_MODIFYDATE
     </entry>
     
     
+    <entry key="deleteReply">
+        UPDATE reply
+            SET reply_STATUS = 'N'
+          WHERE reply_NUM = ?
+   </entry>
+    
+    
+    
+    <entry key="getListCount">
+		SELECT
+    		    COUNT(*)
+		   FROM NOTICE
+		  WHERE NOTICE_TYPE = '매거진'
+            AND NOTICE_STATUS = 'Y'
+	</entry>
    
-	
+   
+   	<entry key="selectList">
+   	SELECT * 
+		  FROM(SELECT ROWNUM RNUM, A.*
+				 FROM(SELECT
+						     NOTICE_NUM
+						   , NOTICE_TITLE
+		                   , USER_NAME
+						     , ROUTE
+						   , CHANGE_NAME
+						   , NOTICE_STATUS
+		                FROM NOTICE
+						JOIN MEMBER_INFO USING(USER_ID)
+						JOIN TBL_FILE USING(NOTICE_NUM)
+						WHERE NOTICE_TYPE = '매거진'
+						  AND NOTICE_STATUS = 'Y'
+					    ORDER BY NOTICE_NUM DESC) A)
+		WHERE RNUM BETWEEN ? AND ?
+	</entry>
 	</properties>

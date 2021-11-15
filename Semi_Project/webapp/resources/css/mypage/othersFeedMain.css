@@ -54,6 +54,14 @@ html {
 	min-height:100%;
 }
 
+
+ .tag-par{
+ display : flex;
+
+    margin-top: -28px;
+    margin-bottom:-10px;
+ }
+
 .sns-text{
 	margin-top:-15px;
 	font-size: 15px;
@@ -161,8 +169,10 @@ html {
 }
 
 .introduction{
-   margin-top: 0px;
+   margin-top: -13px;
    margin-left: 268px;
+   width:500px;
+   margin-bottom:37px;
 }
 
 .intro-p{

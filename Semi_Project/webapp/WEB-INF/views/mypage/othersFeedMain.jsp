@@ -116,6 +116,20 @@
 
                         <!--자기소개-->
                         <div class="introduction">
+                        
+                        
+                        <div class="tag-par">
+                            <c:forEach var="i" items="${ list }">
+                            <div class="tag">
+                              <p> ${i}</p>
+                            </div>
+                            </c:forEach>
+                        </div>
+                        
+                        
+                        
+                        
+                        
                             <div class="intro">
                                 <p class="intro-p">자기소개</p>
                                 <textarea class="intro-text">${ others.introduction }</textarea>
@@ -125,12 +139,6 @@
                             </div>
 
 
-
-                            <div class="tag">
-                               <p>${others.interest }</p>
-                            </div>
-                            
-                         
                          
                         </div>
                         

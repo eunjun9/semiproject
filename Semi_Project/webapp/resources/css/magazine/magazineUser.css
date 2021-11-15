@@ -6,18 +6,8 @@ html {
 }
 
 /*타이틀 부분*/
-.board {
-    width: 100%;
-    margin : 0 auto;
- }
- 
- .board-inner {
-     max-width: 100%;
-     display: flex;
- }
-
 .title-big{
-    margin-top: -40px;
+    margin-top: -59px;
 }
 
 .title{
@@ -29,6 +19,13 @@ html {
     color:rgb(7, 86, 105);
 
 }
+
+
+.body-inner1{
+	margin-left:-46px;
+}
+
+
 
 .id-list>ul{
     list-style: none;
@@ -52,8 +49,6 @@ html {
 
 .view1{
    margin-left : 660px;
-   position:sticky;
-    transform: translate(90px, 130px); 
     text-decoration: underline;
 
 }
@@ -94,38 +89,31 @@ html {
 /* 게시판 */
 
 .body-super{
+	margin-left:184px;
     width: 100%;
     height: auto;
 }
 
-.board{
+.board1{
     width: 100%;
     height: auto;
-    margin-top: 30px;
-    margin-bottom: 130px;
-    margin-left: -100px;
+    display:block;
 }
 
- .board-inner {
-     max-width: 930px;
+
+ .board-inner1 {
+     width: 1068px;
      margin : 0 auto;
      height: auto;
-    
  }
 
 
  
 .body-big{
+	margin-left:259px;
     margin-bottom: 150px;
+    width:960px;
 }
-
- .body-inner {
-     width: 1030px;
-     margin : 0 auto;
-     height: auto;
-     
-    
- }
 
 
 .list_div {
@@ -198,7 +186,6 @@ margin-top:-20px;
 .board_paging {
     height: 50px;
     line-height: 50px;
-    display: flex;
     justify-content: center;
     list-style: none;
     width: 480px;

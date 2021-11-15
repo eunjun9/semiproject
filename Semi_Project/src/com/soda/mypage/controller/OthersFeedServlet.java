@@ -45,13 +45,17 @@ public class OthersFeedServlet extends HttpServlet {
 				
 				// 사용자 본인이 올린 사진 및 정보 알려줌
 				Profile others = profileService.selectOthersFeed(userId);
-				System.out.println("다른사람" + others);
 				
 		
 				
 				// 사용자가 그동안 올렸던 게시글들 보여줌
 				List<Magazine> othersList = new MagazineService().selectOthersList(userId);
-				System.out.println("다른사람 리스트" + othersList);
+				
+				
+				String str  = others.getInterest();
+				String[] list = str.split("\\|");
+				request.setAttribute("list", list);
+				
 				
 				request.setAttribute("others", others);
 				request.setAttribute("othersList", othersList);

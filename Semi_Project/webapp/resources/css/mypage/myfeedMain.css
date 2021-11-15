@@ -58,9 +58,14 @@ html {
 	margin-top:-15px;
 	font-size: 15px;
 	font-weight:nomal;
-	margin-bottom:-12px;
+	margin-bottom:10px;
 }
  
+ .tag-par{
+ display : flex;
+ margin-bottom: -7px;
+    margin-top: -8px;
+ }
 
  .photo{
     margin-top: 0px;
@@ -161,8 +166,9 @@ html {
 }
 
 .introduction{
-   margin-top: 0px;
+   margin-top: -13px;
    margin-left: 268px;
+   width:500px;
 }
 
 .intro-p{
@@ -194,6 +200,7 @@ html {
    margin-right: 7px;
    border-radius: 5px;
    background-color: rgb(248, 241, 233);
+   
 }
 
 
