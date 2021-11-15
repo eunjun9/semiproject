@@ -47,7 +47,6 @@ public class MagazineService {
 //			return returnMap;
 //		}
 
-	
 	// 유저 작성하기
 	public int insertUser(Magazine user) {
 		Connection conn = getConnection();
@@ -86,14 +85,13 @@ public class MagazineService {
 		/* magazineFile 테이블 정보 조회 */
 		List<MagazineFile> photoList = magazineDao.selectPhotoList(conn, nNum);
 		magazine.setPhotoList(photoList);
-		
+
 		// 댓글 조회 추가
-	     magazine.setReplyList(magazineDao.selectReplyList(conn, nNum));
-	     
-	     System.out.println(magazine);
-	     
+		magazine.setReplyList(magazineDao.selectReplyList(conn, nNum));
+
+		System.out.println(magazine);
+
 		close(conn);
-		
 
 		return magazine;
 
@@ -167,91 +165,81 @@ public class MagazineService {
 
 	// 디테일 삭제
 	public List<MagazineFile> deleteMagazine(int nNum) {
-		 Connection conn = getConnection();
-	      
-	      List<MagazineFile> deletedPhotoList = magazineDao.selectPhotoList(conn, nNum);   /* 게시물 번호에 해당하는 이미지파일을 정보 얻어옴 */
-	      
-	      int boardResult = magazineDao.deleteMagazine(conn, nNum);   /* 게시글 지우기 */
-	      
-	      int photoResult = magazineDao.deletePhoto(conn, nNum);   /* 이미지 지우기 */
-	      
-	      if(boardResult > 0 && photoResult == deletedPhotoList.size()) {   /* 보드테이블 삭제 & 이미지 삭제 1 ~ 3행 */
-	         commit(conn);
-	      } else {
-	         rollback(conn);
-	         deletedPhotoList = null;   /* 실패 시 이미지 삭제 방지 */
-	      }
-	      
-	      close(conn);
-	      
-	      return deletedPhotoList;
+		Connection conn = getConnection();
+
+		List<MagazineFile> deletedPhotoList = magazineDao.selectPhotoList(conn, nNum); /* 게시물 번호에 해당하는 이미지파일을 정보 얻어옴 */
+
+		int boardResult = magazineDao.deleteMagazine(conn, nNum); /* 게시글 지우기 */
+
+		int photoResult = magazineDao.deletePhoto(conn, nNum); /* 이미지 지우기 */
+
+		if (boardResult > 0 && photoResult == deletedPhotoList.size()) { /* 보드테이블 삭제 & 이미지 삭제 1 ~ 3행 */
+			commit(conn);
+		} else {
+			rollback(conn);
+			deletedPhotoList = null; /* 실패 시 이미지 삭제 방지 */
+		}
+
+		close(conn);
+
+		return deletedPhotoList;
 	}
 
 	public int updateMagazine(Magazine magazine) {
-		 Connection conn = getConnection();
-	      
-	      /* Board 테이블 수정 */
-	      int updateResult = magazineDao.updateMagazine(conn, magazine);
-	      
-	      // 실행 결과
-	      int updatePhotoResult = 0;
-	      int insertPhotoResult = 0;
-	      // 수행 해야할 리스트 갯수
-	      int updateListCount = 0;
-	      int insertListCount = 0;
-	      
-	      /* Attachment 테이블 수정 */
-	      for(MagazineFile photo : magazine.getPhotoList()) {
-	         if(photo.getDeletedName() != null) {
-	            /* 기존에 있던 파일을 덮어쓰기 - update */
-	            updatePhotoResult += magazineDao.updatePhoto(conn, photo);
-	            updateListCount++;
-	         }else {
-	            /* 새로 첨부 된 파일을 추가하기 - insert */
-	            insertPhotoResult += magazineDao.insertAddedPhoto(conn, magazine.getnNum(), photo);
-	            insertListCount++;
-	         }
-	      }
-	      
-	      int result = 0;
-	      if(updateResult > 0 
-	            && updatePhotoResult == updateListCount 
-	            && insertPhotoResult == insertListCount) {
-	         result = 1;
-	         commit(conn);
-	      }else {
-	         rollback(conn);
-	      }
-	      
-	      return result;
-	   }
+		Connection conn = getConnection();
+
+		/* Board 테이블 수정 */
+		int updateResult = magazineDao.updateMagazine(conn, magazine);
+
+		// 실행 결과
+		int updatePhotoResult = 0;
+		int insertPhotoResult = 0;
+		// 수행 해야할 리스트 갯수
+		int updateListCount = 0;
+		int insertListCount = 0;
+
+		/* Attachment 테이블 수정 */
+		for (MagazineFile photo : magazine.getPhotoList()) {
+			if (photo.getDeletedName() != null) {
+				/* 기존에 있던 파일을 덮어쓰기 - update */
+				updatePhotoResult += magazineDao.updatePhoto(conn, photo);
+				updateListCount++;
+			} else {
+				/* 새로 첨부 된 파일을 추가하기 - insert */
+				insertPhotoResult += magazineDao.insertAddedPhoto(conn, magazine.getnNum(), photo);
+				insertListCount++;
+			}
+		}
+
+		int result = 0;
+		if (updateResult > 0 && updatePhotoResult == updateListCount && insertPhotoResult == insertListCount) {
+			result = 1;
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+
+		return result;
+	}
 
 	public int insertReply(Reply reply) {
 		Connection conn = getConnection();
-		
-		 	
+
 		// 댓글 입력
 		int result = magazineDao.insertReply(conn, reply);
-		
-		
-		if(result > 0) {
-		
-			
+
+		if (result > 0) {
+
 			commit(conn);
 //			List<Reply> replyList = magazineDao.selectReplyList(conn, reply.getnNum());
-			
-			
+
 		} else {
 			rollback(conn);
 		}
 		close(conn);
-		
-		
+
 		return result;
 	}
-	
-	
-	
 
 	public List<Magazine> selectUserselfList() {
 		Connection conn = getConnection();
@@ -261,7 +249,6 @@ public class MagazineService {
 
 		return userselfList;
 	}
-
 
 	public List<Magazine> selectOthersList(String userId) {
 		Connection conn = getConnection();
@@ -276,36 +263,54 @@ public class MagazineService {
 	public int deleteReply(int reNum) {
 		Connection conn = getConnection();
 
-		
 		int result = magazineDao.deleteReply(conn, reNum);
-	      
-	      
-	      
-	      close(conn);
-	      return result;
+
+		close(conn);
+		return result;
 	}
 
-	
 	// 페이징
 	public Map<String, Object> selectList(int page) {
-Connection conn = getConnection();
-		
-		// 1. 조회할 게시글 총 개수 구하기 
+		Connection conn = getConnection();
+
+		// 1. 조회할 게시글 총 개수 구하기
 		int listCount = magazineDao.getListCount(conn);
-		
+
 		// 2. PageInfo 객체 만들기 (목록 5개씩, 한 페이지당 9개 게시글)
 		PageInfo pi = new PageInfo(page, listCount, 5, 16);
-		
+
 		// 3. 페이징 처리 된 게시글 목록 조회
 		List<Magazine> magazineList = magazineDao.selectList(conn, pi);
-		
+
 		// 4. 시작 임박 소셜링 목록 조회
-		
+
 		Map<String, Object> returnMap = new HashMap<>();
-		
+
 		returnMap.put("pi", pi);
 		returnMap.put("magazineList", magazineList);
-		
+
+		return returnMap;
+	}
+
+	public Map<String, Object> selectAdminList(int page) {
+		Connection conn = getConnection();
+
+		// 1. 조회할 게시글 총 개수 구하기
+		int listCount = magazineDao.getListCount(conn);
+
+		// 2. PageInfo 객체 만들기 (목록 5개씩, 한 페이지당 9개 게시글)
+		PageInfo pi = new PageInfo(page, listCount, 5, 16);
+
+		// 3. 페이징 처리 된 게시글 목록 조회
+		List<Magazine> magazineAdminList = magazineDao.selectAdminList(conn, pi);
+
+		// 4. 시작 임박 소셜링 목록 조회
+
+		Map<String, Object> returnMap = new HashMap<>();
+
+		returnMap.put("pi", pi);
+		returnMap.put("magazineAdminList", magazineAdminList);
+
 		return returnMap;
 	}
 
@@ -317,7 +322,5 @@ Connection conn = getConnection();
 //		 close(conn);
 //	      return reply;
 //	}
-	}
 
-	
-
+}

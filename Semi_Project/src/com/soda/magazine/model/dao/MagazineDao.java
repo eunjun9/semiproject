@@ -40,57 +40,7 @@ public class MagazineDao {
 	
 
 
-	// 게시물 리스트 조회
-		public List<Magazine> selectList(Connection conn, PageInfo pi) {
-			PreparedStatement pstmt = null;
-			ResultSet rset = null;
-			String sql = magazineQuery.getProperty("selectList");
-			List<Magazine> magazineList = new ArrayList<>();
-			
-			try {
-				pstmt = conn.prepareStatement(sql);
-				
-				int startRow = (pi.getPage() - 1) * pi.getBoardLimit() + 1;
-				int endRow = startRow + pi.getBoardLimit() - 1;
-				
-				pstmt.setInt(1, startRow);
-				pstmt.setInt(2, endRow);
-				
-				rset = pstmt.executeQuery();
-				
-				while(rset.next()) {
-					Magazine magazine = new Magazine();
-					magazine.setnNum(rset.getInt("magazine_num"));
-					magazine.setnTitle(rset.getString("magazine_title"));
-					magazine.setnStatus(rset.getString("magazine_status"));
-					magazine.setnDate(rset.getTimestamp("magazine_date"));
-					magazine.setUserId(rset.getString("user_name"));
-					magazine.setModifyDate(rset.getTimestamp("modify_date"));
-					
-					List<MagazineFile> photoList = new ArrayList<>();
-					MagazineFile photo = new MagazineFile();
-					photo.setFileNum(rset.getInt("file_num"));
-					photo.setOriginName(rset.getString("origin_name"));
-					photo.setChangeName(rset.getString("change_name"));
-					photo.setRoute(rset.getString("route"));
-					photo.setFileLevel(rset.getInt("file_level"));
-					photo.setStatus(rset.getString("status"));
-					
-					photoList.add(photo);
-					
-					magazine.setPhotoList(photoList);
-					
-					magazineList.add(magazine);
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-			} finally {
-				close(rset);
-				close(pstmt);
-			}
-			
-			return magazineList;
-		}
+	
 
 
 		
@@ -658,6 +608,115 @@ public class MagazineDao {
 				close(pstmt);
 			}
 			return listCount;
+		}
+
+
+
+		// 게시물 리스트 조회
+				public List<Magazine> selectList(Connection conn, PageInfo pi) {
+					PreparedStatement pstmt = null;
+					ResultSet rset = null;
+					String sql = magazineQuery.getProperty("selectList");
+					List<Magazine> magazineList = new ArrayList<>();
+					
+					try {
+						pstmt = conn.prepareStatement(sql);
+						
+						int startRow = (pi.getPage() - 1) * pi.getBoardLimit() + 1;
+						int endRow = startRow + pi.getBoardLimit() - 1;
+						
+						int index = 1;
+						
+						pstmt.setInt(index++, startRow);
+						pstmt.setInt(index, endRow);
+						
+						rset = pstmt.executeQuery();
+						
+							  while(rset.next()) {   // next() : 다음 행
+				                  Magazine user = new Magazine();
+				                  user.setnNum(rset.getInt("notice_num"));
+				                  user.setnRef(rset.getString("NOTICE_ref"));
+				                  user.setnTitle(rset.getString("notice_title"));
+				                  user.setUserId(rset.getString("user_id"));
+				                  user.setnCount(rset.getInt("ncount"));
+				                  
+				                  List<MagazineFile> photoList = new ArrayList<>();
+				                  MagazineFile photo = new MagazineFile();
+				                  photo.setRoute(rset.getString("route"));
+				                  photo.setChangeName(rset.getString("change_name"));
+				                  photo.setFileLevel(rset.getInt("file_level"));
+				                  photoList.add(photo);
+				                  user.setPhotoList(photoList);
+							
+							  
+							photoList.add(photo);
+							
+							user.setPhotoList(photoList);
+							
+							magazineList.add(user);
+						}
+					} catch (SQLException e) {
+						e.printStackTrace();
+					} finally {
+						close(rset);
+						close(pstmt);
+					}
+					
+					return magazineList;
+				}
+		
+		
+
+		public List<Magazine> selectAdminList(Connection conn, PageInfo pi) {
+			PreparedStatement pstmt = null;
+			ResultSet rset = null;
+			String sql = magazineQuery.getProperty("selectAdminPagingList");
+			List<Magazine> magazineAdminList = new ArrayList<>();
+			
+			try {
+				pstmt = conn.prepareStatement(sql);
+				
+				int startRow = (pi.getPage() - 1) * pi.getBoardLimit() + 1;
+				int endRow = startRow + pi.getBoardLimit() - 1;
+				
+				int index = 1;
+				
+				pstmt.setInt(index++, startRow);
+				pstmt.setInt(index, endRow);
+				
+				rset = pstmt.executeQuery();
+				
+				  while(rset.next()) {   // next() : 다음 행
+	                  Magazine admin = new Magazine();
+	                  admin.setnNum(rset.getInt("notice_num"));
+	                  admin.setnRef(rset.getString("notice_ref"));
+	                  admin.setnTitle(rset.getString("notice_title"));
+	                  admin.setUserId(rset.getString("user_id"));
+	                  admin.setnCount(rset.getInt("ncount"));
+	                  
+	                  List<MagazineFile> photoList = new ArrayList<>();
+	                  MagazineFile photo = new MagazineFile();
+	                  photo.setRoute(rset.getString("route"));
+	                  photo.setChangeName(rset.getString("change_name"));
+	                  photo.setFileLevel(rset.getInt("file_level"));
+	                  photoList.add(photo);
+	                  admin.setPhotoList(photoList);
+					
+					  
+					photoList.add(photo);
+					
+					admin.setPhotoList(photoList);
+					
+					magazineAdminList.add(admin);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				close(rset);
+				close(pstmt);
+			}
+			
+			return magazineAdminList;
 		}
 
 

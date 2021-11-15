@@ -186,28 +186,17 @@ margin-top:-20px;
 
 /*-------하단 페이징-----------*/
 .paging{
-    margin-top: 20px;
-    margin-bottom: -90px;
+    margin-left: 10px; 
+    margin-right: 10px;
 }
 
-.board_paging {
-    height: 50px;
-    line-height: 50px;
+.pagebox{
+    display: flex;
     justify-content: center;
-    list-style: none;
-    width: 480px;
-    margin: auto;
- }
- 
- .board_paging a {
-    text-decoration: none;
-    color: #282A35;
-    width: 40px;
-    display: block;
-    text-align: center;
- }
- 
- .board_paging a.current_page {
-    border-bottom: 2px solid #282A35;
-    font-weight: bold;
- }
+    position : relative;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+li {
+	list-style-type: none;
+}

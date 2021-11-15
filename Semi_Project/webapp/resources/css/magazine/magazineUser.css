@@ -5,6 +5,9 @@ html {
     font-family: 'Noto Sans KR', sans-serif;
 }
 
+
+
+
 /*타이틀 부분*/
 .title-big{
     margin-top: -59px;
@@ -19,6 +22,21 @@ html {
     color:rgb(7, 86, 105);
 
 }
+
+
+
+/*  */
+
+/* 배너 */
+.super {
+    width: 100%;
+ }
+ 
+ .super-child {
+     width: 1000px;
+     margin : 0 auto;
+ }
+
 
 
 .body-inner1{
@@ -53,7 +71,8 @@ html {
     text-decoration: underline;
     text-align:right;
     margin-right:-47px;
-    
+    margin-bottom:-28px;
+    margin-top:72px;
 
 }
 .view1>a {
@@ -186,28 +205,17 @@ margin-top:-20px;
 
 /*-------하단 페이징-----------*/
 .paging{
-    margin-top: 20px;
-    margin-bottom: -90px;
+    margin-left: 10px; 
+    margin-right: 10px;
 }
 
-.board_paging {
-    height: 50px;
-    line-height: 50px;
+.pagebox{
+    display: flex;
     justify-content: center;
-    list-style: none;
-    width: 480px;
-    margin: auto;
- }
- 
- .board_paging a {
-    text-decoration: none;
-    color: #282A35;
-    width: 40px;
-    display: block;
-    text-align: center;
- }
- 
- .board_paging a.current_page {
-    border-bottom: 2px solid #282A35;
-    font-weight: bold;
- }
+    position : relative;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+li {
+	list-style-type: none;
+}
