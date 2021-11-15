@@ -30,9 +30,15 @@ html {
     margin: 0 auto;
  }
 
+.photo-par{
+	text-align:center;
+}
+
 .photo-follow{
+	display:inline-block;
 	margin-top:30px;
    justify-content:center;
+   text-align: -webkit-right;
 }
 
 .id{
@@ -77,6 +83,7 @@ html {
    justify-content:space-around;
    font-size: 20px;
    margin-top: -25px;
+       margin-left: 44px;
 }
 
 .name{
@@ -94,9 +101,7 @@ html {
 }
 
 
-.photo-follow{
-   display: flex;
-}
+
 
  .profile{
     width: 110px;

@@ -545,7 +545,7 @@ public class MagazineDao {
 	               while(rset.next()) {   // next() : 다음 행
 	                  Magazine userself = new Magazine();
 	                  userself.setnNum(rset.getInt("notice_num"));
-	                  userself.setnRef(rset.getString("notice_ref"));
+	                  userself.setnType(rset.getString("notice_type"));
 	                  userself.setnTitle(rset.getString("notice_title"));
 	                  userself.setUserId(rset.getString("user_id"));
 	                  
@@ -585,7 +585,7 @@ public class MagazineDao {
 	               while(rset.next()) {   // next() : 다음 행
 	                  Magazine userself = new Magazine();
 	                  userself.setnNum(rset.getInt("notice_num"));
-	                  userself.setnRef(rset.getString("notice_ref"));
+	                  userself.setnType(rset.getString("notice_type"));
 	                  userself.setnTitle(rset.getString("notice_title"));
 	                  userself.setUserId(rset.getString("user_id"));
 	                  

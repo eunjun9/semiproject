@@ -42,8 +42,8 @@
 
 <body>
     <!--header-->
-    <div class="body-super">
     <%@ include file="/WEB-INF/views/common/header.jsp"%>
+    <div class="body-super">
 
         <div class="board1">
             <div class="body-inner1">
@@ -87,9 +87,8 @@
 								</c:forEach>
 							</ul>
 							</div>
-						</div>
+						
 
-					</div>
 
 
 
@@ -163,7 +162,6 @@
 
 
 	</div>
-	
  <script>
    		function detailView(nNum){
    			location.href = '${contextPath}/magazine/detail?nNum=' + nNum;

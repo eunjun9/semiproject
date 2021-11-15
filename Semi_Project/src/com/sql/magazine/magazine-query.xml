@@ -316,16 +316,14 @@ REPLY_MODIFYDATE
     
     
 	<entry key="selectUserselfList">
-	   SELECT
+	  SELECT
           NOTICE_NUM
         , NOTICE_type
         , NOTICE_TITLE
         , USER_ID
-        , NCOUNT
         , ROUTE
         , CHANGE_NAME
         , file_level
-        , NOTICE_SELF_NUM
      FROM NOTICE
      JOIN MEMBER_INFO USING(USER_ID)
      JOIN TBL_FILE USING(NOTICE_NUM)
@@ -335,16 +333,15 @@ REPLY_MODIFYDATE
     </entry>
     
     	<entry key="selectOthersList">
-	   SELECT
+  SELECT
           NOTICE_NUM
-        , NOTICE_ref
+        , NOTICE_type
         , NOTICE_TITLE
         , USER_ID
         , NCOUNT
         , ROUTE
         , CHANGE_NAME
         , file_level
-        , NOTICE_SELF_NUM
      FROM NOTICE
      JOIN MEMBER_INFO USING(USER_ID)
      JOIN TBL_FILE USING(NOTICE_NUM)
