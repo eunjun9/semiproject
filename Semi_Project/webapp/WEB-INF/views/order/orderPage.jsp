@@ -51,6 +51,7 @@
 				<!-- 장바구니 추가한 클래스 정보 가져올 영역 -->
 				<div class="wish-class-info">
 					<p class="category">${ wishList.cCategory }</p>
+					<input type="hidden" id="category" name="category" value="${ wishList.cCategory }">
 					<p class="title">${ wishList.nTitle }</p>
 				</div>
 
@@ -211,6 +212,7 @@
         	var nNum = $('#noticeNum').val();
         	var userEmail =  $('#email').val();
         	var selDate = $('#selDate').val();
+        	var category = $('#category').val();
         	
         	 if ( rsp.success ) {				// 결제 성공 시
  		    	$.ajax({
@@ -218,7 +220,7 @@
  		    		type: 'get',
  		    		data: { imp_uid : rsp.imp_uid, pg_provider : rsp.pg_provider
 	    				, nNum : nNum, userEmail : userEmail, selDate : selDate
-		    			, buyerTel : rsp.buyer_tel },
+		    			, buyerTel : rsp.buyer_tel, category : category },
 		    		success : function(data){
 		    			if( data > 0 ) {
 		    			var msg = '결제가 완료되었습니다.' + '\n';
@@ -241,9 +243,9 @@
 		   } else {
 		        msg = '결제에 실패하였습니다.';
 		        msg += '에러내용 : ' + rsp.error_msg;
+		        alert(msg);
 		        //실패시 이동할 페이지
 		        location.href='${ contextPath }/wishlist';
-		        alert(msg);
 		    }
         
         });
@@ -267,6 +269,7 @@
 	        	var nNum = $('#noticeNum').val();
 	        	var userEmail =  $('#email').val();
 	        	var selDate = $('#selDate').val();
+	        	var category = $('#category').val();
 	        	
 	        	 if ( rsp.success ) {				// 결제 성공 시
 	 		    	$.ajax({
@@ -274,7 +277,7 @@
 	 		    		type: 'get',
 	 		    		data: { imp_uid : rsp.imp_uid, pg_provider : rsp.pg_provider
 		    				, nNum : nNum, userEmail : userEmail, selDate : selDate
-			    			, buyerTel : rsp.buyer_tel },
+			    			, buyerTel : rsp.buyer_tel, category : category },
 			    		success : function(data){
 			    		if ( data > 0 ) {
 			    			var msg = '결제가 완료되었습니다.' + '\n';
@@ -286,6 +289,8 @@
 	            		} else {
 	               		 var msg = '결제에 실패하였습니다.';
 	                	 msg += '에러내용 : ' + rsp.error_msg;
+	                	 alert(msg);
+	                	 
 	                	//[3] 아직 제대로 결제가 되지 않았습니다.
 		    			//[4] 결제된 금액이 요청한 금액과 달라 결제를 자동취소처리하였습니다.
 	            		}
@@ -297,9 +302,9 @@
 			   } else {
 			        msg = '결제에 실패하였습니다.';
 			        msg += '에러내용 : ' + rsp.error_msg;
+			        alert(msg);
 			        //실패시 이동할 페이지
 			        location.href='${ contextPath }/wishlist';
-			        alert(msg);
 			    }
 	        
 	        });

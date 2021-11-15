@@ -163,7 +163,8 @@
 
                        $.ajax({
                         url:"${ contextPath }/kakao/login",
-                        data:{ userEmail : userEmail, userName : userName, kakaoId : kakaoId, kakaoGender : kakaoGender, token : token },
+                        data:{ userEmail : userEmail, userName : userName, kakaoId : kakaoId, 
+                        	kakaoGender : kakaoGender, token : token },
                         Type:"post",
                         success:function(data){
                         	location.href="${ contextPath }/mainpage";

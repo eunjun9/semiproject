@@ -82,7 +82,7 @@ public class PwdFindServlet extends HttpServlet {
             props.put("mail.smtp.ssl.protocols", "TLSv1.2");
             props.put("mail.smtp.ssl.enable", "true");
 
-			// 5자리 임시비밀번호 생성
+			// 5자리 인증번호 생성
 			int random = (int)(Math.random() * (99999 - 10000 + 1)) + 10000;
 			System.out.println("인증번호 : " + random);
 			String randomStr = Integer.toString(random);

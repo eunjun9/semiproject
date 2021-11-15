@@ -41,9 +41,10 @@ public class PaymentSuccessServlet extends HttpServlet {
 		String payId = request.getParameter("imp_uid");				// 결제승인번호
 		String pg = request.getParameter("pg_provider");			// 결제pg사 (ex. 카카오페이)
 		String payPhone = request.getParameter("buyerTel");			// 주문자 연락처
+		String category = request.getParameter("category");			// 결제한 클래스 카테고리
 		
 		System.out.println(nNum +"/" + selectDate + "/" + 
-				payId + "/" + pg + "/" + payPhone);
+				payId + "/" + pg + "/" + payPhone + "/" + category);
     	
 		// 원데이 선택 날짜 String으로 넘어와서 sql Date로 변환
 		java.sql.Date selDate = null;
@@ -59,10 +60,8 @@ public class PaymentSuccessServlet extends HttpServlet {
 		payment.setPayId(payId);
 		payment.setPayOption(pg);
 		payment.setPayPhone(payPhone);
+		payment.setcType(category);
 		
-		// 결제하려는 클래스 조회
-		// List<WishList> wishList = new WishListService().whsilistPay(nNum, selectDate);
-
 		// 결제한 클래스 insert
 		int payInsert = new PaymentService().payInsert(payment);
 

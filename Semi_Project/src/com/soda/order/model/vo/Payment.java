@@ -14,7 +14,8 @@ public class Payment {
 	private String payId;		// 결제승인번호
 	private int nNum;			// 주문게시글번호
 	
-	private Date selectDate;	// 원데이선택날짜 (class_member 테이블 참고)
+	private Date selectDate;	// 원데이선택날짜 (class_member 테이블)
+	private String cType;		// 카테고리 (class_member 테이블)
 	
 	private String payListDate1;	// 마이페이지 결제내역 선택날짜1
 	private String payListDate2;
@@ -40,7 +41,7 @@ public class Payment {
 
 
 public Payment(int payNum, Date payDate, String payOption, String payPhone, String payEmail, String payCancle,
-		String userId, String payId, int nNum, Date selectDate) {
+		String userId, String payId, int nNum, Date selectDate, String cType) {
 	super();
 	this.payNum = payNum;
 	this.payDate = payDate;
@@ -52,6 +53,7 @@ public Payment(int payNum, Date payDate, String payOption, String payPhone, Stri
 	this.payId = payId;
 	this.nNum = nNum;
 	this.selectDate = selectDate;
+	this.cType = cType;
 }
 
 // 마이페이지 - 결제내역 생성자
@@ -262,13 +264,30 @@ public void setAccountHolder(String accountHolder) {
 	this.accountHolder = accountHolder;
 }
 
+
+public String getcType() {
+	return cType;
+}
+
+
+
+public void setcType(String cType) {
+	this.cType = cType;
+}
+
+
+
 @Override
 public String toString() {
 	return "Payment [payNum=" + payNum + ", payDate=" + payDate + ", payOption=" + payOption + ", payPhone=" + payPhone
 			+ ", payEmail=" + payEmail + ", payCancle=" + payCancle + ", userId=" + userId + ", payId=" + payId
-			+ ", nNum=" + nNum + ", selectDate=" + selectDate + ", payListDate1=" + payListDate1 + ", payListDate2="
-			+ payListDate2 + ", refundAccount=" + refundAccount + ", refundBank=" + refundBank + ", accountHolder="
-			+ accountHolder + "]";
+			+ ", nNum=" + nNum + ", selectDate=" + selectDate + ", cType=" + cType + ", payListDate1=" + payListDate1
+			+ ", payListDate2=" + payListDate2 + ", refundAccount=" + refundAccount + ", refundBank=" + refundBank
+			+ ", accountHolder=" + accountHolder + "]";
 }
+
+
+
+
 
 }

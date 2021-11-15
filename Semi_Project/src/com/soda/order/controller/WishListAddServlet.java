@@ -44,11 +44,6 @@ public class WishListAddServlet extends HttpServlet {
 			response.sendRedirect(request.getContextPath()+"/WEB-INF/views/member/login.jsp");
 			return;
 		}
-		
-		// 테스트
-		//System.out.println("nNum : " + nNum);
-		//System.out.println("userId : " + userId);
-		//System.out.println("selDate : " + selDate);
 
 		WishList wishlist = new WishList();
 		wishlist.setnNum(nNum);

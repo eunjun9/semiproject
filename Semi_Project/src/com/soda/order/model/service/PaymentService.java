@@ -11,10 +11,13 @@ public class PaymentService {
 	
 	private PaymentDao paymentDao = new PaymentDao();
 
+	// 결제 insert
 	public int payInsert(Payment payment) {
 		Connection conn = getConnection();
 		
+		// 결제 후 lesson_member 테이블 insert
 		int lessonMember = paymentDao.lessonMemberInsert(conn, payment);
+		// 결제 후 payment 테이블 insert
 		int payInsert = paymentDao.payInsert(conn, payment);
 		int result = 0;
 		
@@ -31,23 +34,6 @@ public class PaymentService {
 		return result;
 	}
 
-	// 결제 완료된 클래스 장바구니에서 삭제
-//	public int wishlistEnd(Payment payment) {
-//		Connection conn = getConnection();
-//		
-//		int result = paymentDao.wishlistEnd(conn, payment);
-//		
-//		if(result > 0) {
-//			commit(conn);
-//		} else {
-//			rollback(conn);
-//		}
-//		close(conn);
-//		
-//		return result;
-//		
-//	}
-	
 	
 	
 
