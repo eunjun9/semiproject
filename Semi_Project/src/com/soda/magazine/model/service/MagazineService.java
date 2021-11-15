@@ -116,7 +116,7 @@ public class MagazineService {
 //		return result;
 //	}
 
-	// 매거진 전체 메인 화면 불러오기
+	// 매거진 유저 메인 화면 불러오기
 	public List<Magazine> selectUserList() {
 		Connection conn = getConnection();
 

@@ -12,6 +12,7 @@ public class Magazine {
 	private Date nDate;			// 작성 날짜
 	private String nStatus;		// 상태 (Y, N)
 	private String nType;		// 게시판 종류 (클래스, 소셜링, 매거진)
+	private String nRef;		// 매거진 참조 게시팜
 	private String userId;		// 사용자 아이디 (Member_info 테이블 참조)
 	private String userName; 	// 사용자 이름 (Member_info 테이블 참조)
 	private Date modifyDate;	// 수정 날짜
@@ -39,8 +40,23 @@ public class Magazine {
 	
 	
 	
-	public Magazine(int nNum, String nTitle, String nContent, Date nDate, String nStatus, String nType, String userId,
-			String userName, Date modifyDate, String selfNum, int nCount, List<MagazineFile> photoList,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	public Magazine(int nNum, String nTitle, String nContent, Date nDate, String nStatus, String nType, String nRef,
+			String userId, String userName, Date modifyDate, String selfNum, int nCount, List<MagazineFile> photoList,
 			List<Reply> replyList) {
 		super();
 		this.nNum = nNum;
@@ -49,6 +65,7 @@ public class Magazine {
 		this.nDate = nDate;
 		this.nStatus = nStatus;
 		this.nType = nType;
+		this.nRef = nRef;
 		this.userId = userId;
 		this.userName = userName;
 		this.modifyDate = modifyDate;
@@ -57,6 +74,72 @@ public class Magazine {
 		this.photoList = photoList;
 		this.replyList = replyList;
 	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	public String getnRef() {
+		return nRef;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	public void setnRef(String nRef) {
+		this.nRef = nRef;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -543,9 +626,9 @@ public class Magazine {
 	@Override
 	public String toString() {
 		return "Magazine [nNum=" + nNum + ", nTitle=" + nTitle + ", nContent=" + nContent + ", nDate=" + nDate
-				+ ", nStatus=" + nStatus + ", nType=" + nType + ", userId=" + userId + ", userName=" + userName
-				+ ", modifyDate=" + modifyDate + ", selfNum=" + selfNum + ", nCount=" + nCount + ", photoList="
-				+ photoList + ", replyList=" + replyList + "]";
+				+ ", nStatus=" + nStatus + ", nType=" + nType + ", nRef=" + nRef + ", userId=" + userId + ", userName="
+				+ userName + ", modifyDate=" + modifyDate + ", selfNum=" + selfNum + ", nCount=" + nCount
+				+ ", photoList=" + photoList + ", replyList=" + replyList + "]";
 	}
 
 	

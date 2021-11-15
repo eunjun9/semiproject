@@ -1,6 +1,7 @@
 package com.soda.mypage.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -52,17 +53,49 @@ public class OthersFeedServlet extends HttpServlet {
 				List<Magazine> othersList = new MagazineService().selectOthersList(userId);
 				
 				
-				String str  = others.getInterest();
-				String[] list = str.split("\\|");
-				request.setAttribute("list", list);
+				
+				/*
+				 * String str = others.getInterest();
+				 * 
+				 * System.out.println("str나와라 "+str);
+				 * 
+				 * if(str == null) { request.setAttribute("others", others);
+				 * request.setAttribute("othersList", othersList);
+				 * request.getRequestDispatcher("/WEB-INF/views/mypage/othersFeedMain.jsp").
+				 * forward(request, response);
+				 * 
+				 * }else { String[] list = str.split("\\|"); request.setAttribute("list", list);
+				 * request.setAttribute("others", others); request.setAttribute("othersList",
+				 * othersList);
+				 * request.getRequestDispatcher("/WEB-INF/views/mypage/othersFeedMain.jsp").
+				 * forward(request, response);
+				 * 
+				 * }
+				 */
+				 
 				
 				
-				request.setAttribute("others", others);
-				request.setAttribute("othersList", othersList);
-				request.getRequestDispatcher("/WEB-INF/views/mypage/othersFeedMain.jsp").forward(request, response);
-
 				
-				System.out.println("내 게시물 " + othersList);
+				  if (others == null || others.getInterest() ==null) {
+					  
+					  response.setContentType("text/html; charset=UTF-8");
+					  
+					  PrintWriter out = response.getWriter();
+					   
+					  out.println("<script>alert('이 사용자는 현자 마이 피드 기능을 이용하지 않습니다'); location.href='javascript:history.back()'</script>");
+					  out.flush();
+					  
+						
+					} else {
+						String str  = others.getInterest();
+						String[] list = str.split("\\|");
+						request.setAttribute("list", list);
+						
+						request.setAttribute("others", others);
+						request.setAttribute("othersList", othersList);
+						request.getRequestDispatcher("/WEB-INF/views/mypage/othersFeedMain.jsp").forward(request, response);
+					}
+				
 					
 
 				

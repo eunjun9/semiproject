@@ -13,7 +13,7 @@
     <!-- 외부 스타일 시트 -->
 	<!-- 외부 스타일 시트 -->
 <link
-	href="<%=request.getContextPath()%>/resources/css/magazine/magazineUser.css"
+	href="<%=request.getContextPath()%>/resources/css/magazine/magazineAdmin.css"
 	rel="stylesheet">
 
     <!-- favicon (Real Favicon Generator)-->
@@ -42,11 +42,11 @@
 
 <body>
     <!--header-->
+    <div class="body-super">
     <%@ include file="/WEB-INF/views/common/header.jsp"%>
 
-    <div class="body-super">
-        <div class="board">
-            <div class="board-inner">
+        <div class="board1">
+            <div class="body-inner1">
                 <div class="title-big">
                     <div class="title">소다만의 이야기</div>
                     <div class="word">소다만의 STORY를 공개합니다</div>
@@ -61,15 +61,13 @@
 
 
       	<!--body-->
-		<div class=body-big>
-			<div class=body-inner>
 						<div class="list_div">
 							<ul class="board_list">
 								<c:forEach var="magazine" items="${ magazineAdminList }">
 								<div class="box">
 									<div class="pics" onclick="detailView(${ magazine.nNum })">
 										<img src="${ contextPath }${ magazine.photoList.get(0).route }${ magazine.photoList.get(0).changeName }">
-											<p class="category">[${ magazine.nType }]</p>
+											<p class="category">[${ magazine.nRef }]</p>
 											<p class="list-title">${ magazine.nTitle }</p><br> 
 								   </div>
 									<div class="writer-par">
@@ -88,12 +86,10 @@
 								</div>
 								</c:forEach>
 							</ul>
+							</div>
 						</div>
 
 					</div>
-				</div>
-			</div>
-
 
 
 

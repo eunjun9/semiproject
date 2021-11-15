@@ -51,7 +51,7 @@
                             <img src="${ contextPath }${ profile.profileFile.get(0).route}${profile.profileFile.get(0).changeName}">
                           </c:when>
                           <c:otherwise>
-                           <img src="${ contextPath }/resources/images/yeonjoo/pro.jpg">
+                           <img src="${ contextPath }/resources/images/yewon/profile.png">
                           </c:otherwise>
                           </c:choose>
                         </div>
@@ -117,30 +117,37 @@
                         <!--자기소개-->
                         <div class="introduction">
                         
-                        
                         <div class="tag-par">
+
+                         <c:choose>
+                                <c:when test="${!empty list }">
                             <c:forEach var="i" items="${ list }">
                             <div class="tag">
                               <p> ${i}</p>
                             </div>
                             </c:forEach>
+                        </c:when>
+                        <c:otherwise>
+                        <div class="tag">
+                              <p></p>
+                              </div>
+                        </c:otherwise>
+                        </c:choose>
                         </div>
-                        
-                        
-                        
                         
                         
                             <div class="intro">
                                 <p class="intro-p">자기소개</p>
+                               
                                 <textarea class="intro-text">${ others.introduction }</textarea>
+                                
                                 
                                 <p class="sns">SNS</p>
                               <p class="sns-text">${ others.sns }</p>
                             </div>
-
-
+			
+			
                          
-                        </div>
                         
                          <!--피드 사진들-->
                     
@@ -159,6 +166,9 @@
                    
         </div>
     </div>
+    
+    </div>
+    
 
 
 

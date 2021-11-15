@@ -73,8 +73,8 @@ window.opener.location.reload();
             <div class="label-input4">
             <label class="gender">성 별 : </label>
             <select id="gender" name="gender">
-              <option value="여자" <c:if test="${member.userGrade eq 'F'}">selected</c:if>>여자</option>
-               <option value="남자" <c:if test="${member.userGrade eq'M'}">selected</c:if>>남자</option>
+              <option value="F" <c:if test="${member.userGrade eq 'F'}">selected</c:if>>F</option>
+               <option value="M" <c:if test="${member.userGrade eq'M'}">selected</c:if>>M</option>
               </select>
             </div>
             

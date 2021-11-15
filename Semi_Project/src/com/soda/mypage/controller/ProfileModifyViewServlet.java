@@ -109,13 +109,13 @@ public class ProfileModifyViewServlet extends HttpServlet {
 		int result = new ProfileService().modifyProfile(profile, file);
 		
 
-		
-		if (result > 0) {
+		System.out.println("ㅅㅂ"+ result);
+		if (result > 0 ) {
 			request.setAttribute("profile", profile);
 			response.sendRedirect(request.getContextPath() + "/myfeed");
 		} else {
 
-			request.setAttribute("message", "사진 게시글 수정에 실패했습니다.");
+			request.setAttribute("message", "수정에 실패했습니다.");
 			request.getRequestDispatcher("/WEB-INF/views/common/errorpage.jsp").forward(request, response);
 		}
 	}

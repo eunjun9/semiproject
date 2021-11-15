@@ -1,6 +1,7 @@
 package com.soda.mypage.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,7 +45,7 @@ public class MyFeedServlet extends HttpServlet {
 		
 		// 사용자가 그동안 올렸던 게시글들 보여줌
 		List<Magazine> userselfList = new MagazineService().selectUserselfList();
-		request.setAttribute("userselfList", userselfList);
+		
 
 
 		ProfileService profileService = new ProfileService();
@@ -60,14 +61,45 @@ public class MyFeedServlet extends HttpServlet {
 		
 		  if (profile == null) {
 			  
-			  request.setAttribute("profile", profile);
-			  request.getRequestDispatcher("/WEB-INF/views/mypage/myfeedInsert.jsp").forward(request, response);
+				/*
+				 * request.setAttribute("profile", profile);
+				 * request.setAttribute("userselfList", userselfList);
+				 */
+			  
+			  
+			  response.setContentType("text/html; charset=UTF-8");
+			  
+			  PrintWriter out = response.getWriter();
+			   
+			  out.println("<script>alert('현재 마이 피드를 이용하지 않고 있습니다. 정보를 입력해주세요.(1)'); location.href='/semi/profile/insert'</script>");
+			  out.flush();
+			  
+				/*
+				 * request.getRequestDispatcher("/WEB-INF/views/mypage/myfeedInsert.jsp").
+				 * forward(request, response);
+				 */
+			  
 				
-			} else {
+			} else if(profile.getInterest() ==null){
+				
+				  response.setContentType("text/html; charset=UTF-8");
+				  
+				  PrintWriter out = response.getWriter();
+				   
+				  out.println("<script>alert('관심사 정보를 입력해주세요.(2)'); location.href='/semi/profile/modify'</script>");
+				  out.flush();
+				  
+					/*
+					 * request.getRequestDispatcher("/WEB-INF/views/mypage/myfeedInsert.jsp").
+					 * forward(request, response);
+					 */
+			} else{
 				String str  = profile.getInterest();
 				String[] list = str.split("\\|");
 				request.setAttribute("list", list);
 				
+				
+				request.setAttribute("userselfList", userselfList);
 				request.setAttribute("profile", profile);
 				request.getRequestDispatcher("/WEB-INF/views/mypage/myfeedMain.jsp").forward(request, response);
 			}

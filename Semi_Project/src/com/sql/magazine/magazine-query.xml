@@ -47,6 +47,7 @@
 
 	</entry>
 
+<!-- 유저 게시판에 인서트 -->
 	<entry key="insertUser">
 		INSERT
 		INTO NOTICE
@@ -60,7 +61,8 @@
 		USER_ID,
 		MODIFY_DATE,
 		NOTICE_SELF_NUM,
-		NCOUNT
+		NCOUNT, 
+		NOTICE_REF
 		)
 		VALUES
 		(
@@ -69,11 +71,12 @@
 		, ?
 		, SYSDATE
 		, DEFAULT
-		, ?
+		, '매거진'
 		, ?
 		, SYSDATE
 		, 'USER'
 		, 0
+		,?
 		)
 	</entry>
 
@@ -103,6 +106,7 @@
 		)
 	</entry>
 
+<!-- 관리자 게시판에 인서트 -->
 <entry key="insertAdmin">
 	INSERT
 		INTO NOTICE
@@ -116,7 +120,8 @@
 		USER_ID,
 		MODIFY_DATE,
 		NOTICE_SELF_NUM,
-		NCOUNT
+		NCOUNT,
+		NOTICE_REF
 		)
 		VALUES
 		(
@@ -125,11 +130,12 @@
 		, ?
 		, SYSDATE
 		, DEFAULT
-		, ?
+		, '매거진'
 		, ?
 		, SYSDATE
 		, 'ADMIN'
 		, 0
+		, ?
 		)
 		</entry>
 
@@ -141,6 +147,7 @@
 		NOTICE_DATE,
 		NOTICE_STATUS,
 		NOTICE_TYPE,
+		notice_ref,
 		USER_ID,
 		MODIFY_DATE,
 		NOTICE_SELF_NUM,
@@ -165,9 +172,9 @@
 	
 	
 	<entry key="selectUserList">
-	   SELECT
+   SELECT
           NOTICE_NUM
-        , NOTICE_TYPE
+        , NOTICE_REF
         , NOTICE_TITLE
         , USER_ID
         , NCOUNT
@@ -181,6 +188,7 @@
     WHERE NOTICE_STATUS = 'Y'
     AND FILE_LEVEL = 1
     AND NOTICE_SELF_NUM = 'USER'
+    and notice_type='매거진'
     ORDER BY NOTICE_NUM DESC
     </entry>
 	
@@ -188,7 +196,7 @@
 	<entry key="selectAdminList">
 	       SELECT
           NOTICE_NUM
-        , NOTICE_TYPE
+        , NOTICE_REF
         , NOTICE_TITLE
         , USER_ID
         , NCOUNT
@@ -202,6 +210,7 @@
     WHERE NOTICE_STATUS = 'Y'
     AND FILE_LEVEL = 1
     AND NOTICE_SELF_NUM = 'ADMIN'
+    and notice_type='매거진'
     ORDER BY NOTICE_NUM DESC
     </entry>
     
@@ -309,7 +318,7 @@ REPLY_MODIFYDATE
 	<entry key="selectUserselfList">
 	   SELECT
           NOTICE_NUM
-        , NOTICE_TYPE
+        , NOTICE_type
         , NOTICE_TITLE
         , USER_ID
         , NCOUNT
@@ -328,7 +337,7 @@ REPLY_MODIFYDATE
     	<entry key="selectOthersList">
 	   SELECT
           NOTICE_NUM
-        , NOTICE_TYPE
+        , NOTICE_ref
         , NOTICE_TITLE
         , USER_ID
         , NCOUNT

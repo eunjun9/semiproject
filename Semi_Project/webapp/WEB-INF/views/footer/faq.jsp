@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" 
+    pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -8,11 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FAQ</title>
 
-    <!-- ¿ÜºÎ ½ºÅ¸ÀÏ ½ÃÆ® -->
-    <link href="../css/Headerfooter.css" rel="stylesheet">
-    <link href="../css/faq.css" rel="stylesheet">
+    <!-- ì™¸ë¶€ ìŠ¤íƒ€ì¼ ì‹œíŠ¸ -->
+ <link href="${ contextPath }/resources/css/footer/faq.css" rel="stylesheet">
 
-    <!-- ±Û²Ã (Noto Sans) -->
+    <!-- ê¸€ê¼´ (Noto Sans) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
@@ -22,31 +21,13 @@
 
 </head>
 <body>
-    <!--header-->
-    <div class="header">
-        <div class="head-inner">
-            <div class="logo">
-                <img src="../image/logo.png">
-            </div>
-            <div class="big-category">
-                <div class="category1">
-                    <a href="socialing_main.html">SOCIALING</a>
-                    <a href="#">CLASS</a>
-                    <a href="#">MAGAZINE</a>
-                </div>
-                <div class="category2">
-                    <a href="#">CART</a>
-                    <a href="#">MYPAGE</a>
-                </div>
-            </div>
-        </div>
-    </div>
+  <%@ include file="/WEB-INF/views/common/header.jsp"%>
 
       <!-- body -->
       <div class="page body">
         <div class="titleArea">
             <div class="titleArea2">
-                <h2 id="title">ÀÚÁÖ ¹¯´Â Áú¹® FAQ</h2>
+                <h2 id="title">ìžì£¼ ë¬»ëŠ” ì§ˆë¬¸ FAQ</h2>
             </div>
         </div>
         <div class="body-inner">
@@ -54,42 +35,42 @@
             <div class="cQnA">
                 <form>
                     <div class="outer">
-                        <p class="cQuestion2"> ´ë°üÀÌ ÇÊ¿äÇÒ °æ¿ì¿¡ ºô¸± ¼ö ÀÖÀ»±î¿ä?</p>
-                        <p class="cAnswer" >³×, ¼Ò´Ù¿¡¼­ Á÷Á¢ ÄÁÅÃÇÑ ¾÷Ã¼¸¦ ¿¬°áÇØµå¸³´Ï´Ù. ¼Ò´Ù·Î ÀüÈ­ ºÎÅ¹µå¸³´Ï´Ù.</p>
+                        <p class="cQuestion2"> ëŒ€ê´€ì´ í•„ìš”í•  ê²½ìš°ì— ë¹Œë¦´ ìˆ˜ ìžˆì„ê¹Œìš”?</p>
+                        <p class="cAnswer" >ë„¤, ì†Œë‹¤ì—ì„œ ì§ì ‘ ì»¨íƒí•œ ì—…ì²´ë¥¼ ì—°ê²°í•´ë“œë¦½ë‹ˆë‹¤. ì†Œë‹¤ë¡œ ì „í™” ë¶€íƒë“œë¦½ë‹ˆë‹¤.</p>
                     </div>
                     <div class="outer">
-                        <p class="cQuestion2">È¯ºÒ ±ÔÁ¤Àº ¾î¶»°Ô µÇ³ª¿ä?</p>
-                        <p class="cAnswer" >°áÁ¦ ÈÄ ÀÛ¼ºÇØÁÖ½Å °èÁÂ·Î ÀÔ±ÝµÇ´Â Çü½ÄÀÔ´Ï´Ù.</p>
+                        <p class="cQuestion2">í™˜ë¶ˆ ê·œì •ì€ ì–´ë–»ê²Œ ë˜ë‚˜ìš”?</p>
+                        <p class="cAnswer" >ê²°ì œ í›„ ìž‘ì„±í•´ì£¼ì‹  ê³„ì¢Œë¡œ ìž…ê¸ˆë˜ëŠ” í˜•ì‹ìž…ë‹ˆë‹¤.</p>
                     </div>
                     <div class="outer">
-                        <p class="cQuestion2"> °¡Á®°¡¾ß µÉ ÁØºñ¹°ÀÌ ÀÖÀ»±î¿ä?</p>
-                        <p class="cAnswer" >Å¬·¡½º¿¡ µû¶ó ´Ù¸¨´Ï´Ù.</p>
-                    </div>
-
-                    <div class="outer">
-                        <p class="cQuestion2"> ´ë°üÀÌ ÇÊ¿äÇÒ °æ¿ì¿¡ ºô¸± ¼ö ÀÖÀ»±î¿ä?</p>
-                        <p class="cAnswer" >³×, ¼Ò´Ù¿¡¼­ Á÷Á¢ ÄÁÅÃÇÑ ¾÷Ã¼¸¦ ¿¬°áÇØµå¸³´Ï´Ù. ¼Ò´Ù·Î ÀüÈ­ ºÎÅ¹µå¸³´Ï´Ù.</p>
-                    </div>
-                    <div class="outer">
-                        <p class="cQuestion2">È¯ºÒ ±ÔÁ¤Àº ¾î¶»°Ô µÇ³ª¿ä?</p>
-                        <p class="cAnswer" >°áÁ¦ ÈÄ ÀÛ¼ºÇØÁÖ½Å °èÁÂ·Î ÀÔ±ÝµÇ´Â Çü½ÄÀÔ´Ï´Ù.</p>
-                    </div>
-                    <div class="outer">
-                        <p class="cQuestion2"> °¡Á®°¡¾ß µÉ ÁØºñ¹°ÀÌ ÀÖÀ»±î¿ä?</p>
-                        <p class="cAnswer" >Å¬·¡½º¿¡ µû¶ó ´Ù¸¨´Ï´Ù.</p>
+                        <p class="cQuestion2"> ê°€ì ¸ê°€ì•¼ ë  ì¤€ë¹„ë¬¼ì´ ìžˆì„ê¹Œìš”?</p>
+                        <p class="cAnswer" >í´ëž˜ìŠ¤ì— ë”°ë¼ ë‹¤ë¦…ë‹ˆë‹¤.</p>
                     </div>
 
                     <div class="outer">
-                        <p class="cQuestion2"> ´ë°üÀÌ ÇÊ¿äÇÒ °æ¿ì¿¡ ºô¸± ¼ö ÀÖÀ»±î¿ä?</p>
-                        <p class="cAnswer" >³×, ¼Ò´Ù¿¡¼­ Á÷Á¢ ÄÁÅÃÇÑ ¾÷Ã¼¸¦ ¿¬°áÇØµå¸³´Ï´Ù. ¼Ò´Ù·Î ÀüÈ­ ºÎÅ¹µå¸³´Ï´Ù.</p>
+                        <p class="cQuestion2"> ëŒ€ê´€ì´ í•„ìš”í•  ê²½ìš°ì— ë¹Œë¦´ ìˆ˜ ìžˆì„ê¹Œìš”?</p>
+                        <p class="cAnswer" >ë„¤, ì†Œë‹¤ì—ì„œ ì§ì ‘ ì»¨íƒí•œ ì—…ì²´ë¥¼ ì—°ê²°í•´ë“œë¦½ë‹ˆë‹¤. ì†Œë‹¤ë¡œ ì „í™” ë¶€íƒë“œë¦½ë‹ˆë‹¤.</p>
                     </div>
                     <div class="outer">
-                        <p class="cQuestion2">È¯ºÒ ±ÔÁ¤Àº ¾î¶»°Ô µÇ³ª¿ä?</p>
-                        <p class="cAnswer" >°áÁ¦ ÈÄ ÀÛ¼ºÇØÁÖ½Å °èÁÂ·Î ÀÔ±ÝµÇ´Â Çü½ÄÀÔ´Ï´Ù.</p>
+                        <p class="cQuestion2">í™˜ë¶ˆ ê·œì •ì€ ì–´ë–»ê²Œ ë˜ë‚˜ìš”?</p>
+                        <p class="cAnswer" >ê²°ì œ í›„ ìž‘ì„±í•´ì£¼ì‹  ê³„ì¢Œë¡œ ìž…ê¸ˆë˜ëŠ” í˜•ì‹ìž…ë‹ˆë‹¤.</p>
                     </div>
                     <div class="outer">
-                        <p class="cQuestion2"> °¡Á®°¡¾ß µÉ ÁØºñ¹°ÀÌ ÀÖÀ»±î¿ä?</p>
-                        <p class="cAnswer" >Å¬·¡½º¿¡ µû¶ó ´Ù¸¨´Ï´Ù.</p>
+                        <p class="cQuestion2"> ê°€ì ¸ê°€ì•¼ ë  ì¤€ë¹„ë¬¼ì´ ìžˆì„ê¹Œìš”?</p>
+                        <p class="cAnswer" >í´ëž˜ìŠ¤ì— ë”°ë¼ ë‹¤ë¦…ë‹ˆë‹¤.</p>
+                    </div>
+
+                    <div class="outer">
+                        <p class="cQuestion2"> ëŒ€ê´€ì´ í•„ìš”í•  ê²½ìš°ì— ë¹Œë¦´ ìˆ˜ ìžˆì„ê¹Œìš”?</p>
+                        <p class="cAnswer" >ë„¤, ì†Œë‹¤ì—ì„œ ì§ì ‘ ì»¨íƒí•œ ì—…ì²´ë¥¼ ì—°ê²°í•´ë“œë¦½ë‹ˆë‹¤. ì†Œë‹¤ë¡œ ì „í™” ë¶€íƒë“œë¦½ë‹ˆë‹¤.</p>
+                    </div>
+                    <div class="outer">
+                        <p class="cQuestion2">í™˜ë¶ˆ ê·œì •ì€ ì–´ë–»ê²Œ ë˜ë‚˜ìš”?</p>
+                        <p class="cAnswer" >ê²°ì œ í›„ ìž‘ì„±í•´ì£¼ì‹  ê³„ì¢Œë¡œ ìž…ê¸ˆë˜ëŠ” í˜•ì‹ìž…ë‹ˆë‹¤.</p>
+                    </div>
+                    <div class="outer">
+                        <p class="cQuestion2"> ê°€ì ¸ê°€ì•¼ ë  ì¤€ë¹„ë¬¼ì´ ìžˆì„ê¹Œìš”?</p>
+                        <p class="cAnswer" >í´ëž˜ìŠ¤ì— ë”°ë¼ ë‹¤ë¦…ë‹ˆë‹¤.</p>
                     </div>
                 
                 </form>
@@ -97,11 +78,11 @@
             
             <script>
                 $('.cQuestion2').click(function(){
-                    if($(this).siblings('.cAnswer').css('display') == 'none'){ // question´ÙÀ½ÀÇ ÄÁÅÙÃ÷ ¿µ¿ªÀÌ display=noneÀÏ ¶§
-                        $('p.cAnswer').slideUp();       // ±âÁ¸¿¡ ¿­·ÁÀÖ´Â ÄÜÅÙÃ÷´Â ´Ý°í
-                        $(this).siblings('.cAnswer').slideDown();  // Å¬¸¯ÇÑ ¸Þ´ºÀÇ ÄÜÅÙÃ÷´Â ¹ØÀ¸·Î ½º¸£¸¤ ³»·Á¿À°Ô
+                    if($(this).siblings('.cAnswer').css('display') == 'none'){ // questionë‹¤ìŒì˜ ì»¨í…ì¸  ì˜ì—­ì´ display=noneì¼ ë•Œ
+                        $('p.cAnswer').slideUp();       // ê¸°ì¡´ì— ì—´ë ¤ìžˆëŠ” ì½˜í…ì¸ ëŠ” ë‹«ê³ 
+                        $(this).siblings('.cAnswer').slideDown();  // í´ë¦­í•œ ë©”ë‰´ì˜ ì½˜í…ì¸ ëŠ” ë°‘ìœ¼ë¡œ ìŠ¤ë¥´ë¥µ ë‚´ë ¤ì˜¤ê²Œ
                     }else{
-                        $(this).siblings('.cAnswer').slideUp();    // display=none ÀÌ ¾Æ´Ò ¶§ Å¬¸¯ ½Ã À§·Î ¿Ã¶ó°¡°Ô
+                        $(this).siblings('.cAnswer').slideUp();    // display=none ì´ ì•„ë‹ ë•Œ í´ë¦­ ì‹œ ìœ„ë¡œ ì˜¬ë¼ê°€ê²Œ
                     }
                 });
             </script>
@@ -112,31 +93,6 @@
  
 
     <!--footer-->
-    <div class="footer">
-        <div class="foot-inner">
-            <div class="foot-logo foot-all">
-                S O D A</div>
-            <div class="information foot-all">
-                <ul>ÁÖ½ÄÈ¸»ç ¼Ò¼È ´ÙÀÌ´×</ul>
-                <ul>´ëÇ¥ : È«±æµ¿ | °³ÀÎÁ¤º¸°ü¸®Ã¥ÀÓÀÚ : È«±æµ¿ | ÀüÈ­ : 02-123-4567 | ÀÌ¸ÞÀÏ : soda@gmail.com</ul>
-                <ul>ÁÖ¼Ò : ¼­¿ï °­³²±¸ Å×Çì¶õ·Î 14±æ 6 ³²µµºôµù 2Ãþ | »ç¾÷ÀÚµî·Ï¹øÈ£ : 000-00-00000</ul>
-                    <ul> Åë½ÅÆÇ¸Å : Á¦ 2021-¼­¿ï°­³²-0000È£</ul>
-                        <ul>¿µ¾÷½Ã°£ : ¿ù-±Ý ¿ÀÈÄ 2½Ã-7½Ã</ul>
-            </div>
-            <div class="foot-category foot-all">
-                <ul><a href="#">¼Ò´Ù¼Ò°³</a></ul>
-                <ul><a href="#">°øÁö»çÇ× </a></ul>
-                <ul><a href="#">°­»ç½ÅÃ»</a></ul>
-                <ul><a href="#">ÀÚÁÖ¹¯´ÂÁú¹®</a></ul>
-            </div>
-        </div>
-    </div>
-    <div class="final">
-        <div class="foot-final">
-            <a href="terms.html">ÀÌ¿ë¾à°ü | </a>
-            <a href="personalInfo.html">°³ÀÎÁ¤º¸Ã³¸®¹æÄ§ | </a>
-            <a href="#">»ç¾÷ÀÚÁ¤º¸È®ÀÎ</a>
-        </div>
-    </div>
+<%@ include file="/WEB-INF/views/common/footer.jsp"%>
 </body>
 </html>

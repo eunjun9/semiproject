@@ -33,10 +33,7 @@
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
 <style>
-.swiper {
-	width: 800px;
-	height: 250px;
-}
+
 </style>
 
 
@@ -94,7 +91,7 @@
 								<div class="box">
 									<div class="pics" onclick="detailView(${magazine.nNum})">
 										<img src="${ contextPath }${ magazine.photoList.get(0).route }${ magazine.photoList.get(0).changeName }">
-										<p class="category">[${ magazine.nType }]</p>
+										<p class="category">[${ magazine.nRef }]</p>
 										<p class="list-title">${ magazine.nTitle }</p>
 										<br>
 									</div>
@@ -124,6 +121,7 @@
 			<div class=button1>
 				<!-- If we need navigation buttons -->
 				<div class="swiper-button-prev but1"></div>
+				<%-- <div class="swiper-button-prev but1"><img width="20px" src="${ contextPath }/resources/images/yewon/prev_b.png"></div> --%>
 			</div>
 
 			<div class=button2>
@@ -182,7 +180,7 @@
 								<div class="box">
 									<div class="pics" onclick="detailView(${ magazine.nNum })">
 										<img src=${ contextPath }${ magazine.photoList.get(0).route }${ magazine.photoList.get(0).changeName }>
-										<p class="category">[${ magazine.nType }]</p>
+										<p class="category">[${ magazine.nRef }]</p>
 										<p class="list-title">${ magazine.nTitle }</p>
 										<br>
 									</div>
@@ -239,7 +237,7 @@
 
 	<!--슬라이드-->
 
-	<div class="third">
+<%-- 	<div class="third">
 		<div class="title">
 			<div class="title-inner">
 				<div class="tit">
@@ -318,7 +316,7 @@
         prevEl: '.but6',
       },
     });
-  </script>
+  </script> --%>
 
 
 

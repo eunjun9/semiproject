@@ -51,7 +51,7 @@
                             <img src="${ contextPath }${ profile.profileFile.get(0).route}${profile.profileFile.get(0).changeName}">
                           </c:when>
                           <c:otherwise>
-                           <img src="${ contextPath }/resources/images/yeonjoo/pro.jpg">
+                           <img src="${ contextPath }/resources/images/yewon/profile.png">
                           </c:otherwise>
                           </c:choose>
                         </div>
