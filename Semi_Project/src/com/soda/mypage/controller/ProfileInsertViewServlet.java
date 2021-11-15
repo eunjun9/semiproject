@@ -79,8 +79,6 @@ public class ProfileInsertViewServlet extends HttpServlet {
 		profile.setSns(sns);
 		profile.setIntroduction(introduction);
 		profile.setInterest(interest);
-
-		
 		
 		// 프로필 파일에 값 넣어주기
 		List<ProfileFile> profileFile = new ArrayList<>();

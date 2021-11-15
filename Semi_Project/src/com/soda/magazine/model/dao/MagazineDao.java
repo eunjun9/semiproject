@@ -38,30 +38,6 @@ public class MagazineDao {
 	}
 	
 	
-//	// 게시물 개수 조회
-//	public int getListCount(Connection conn) {
-//		PreparedStatement pstmt = null;
-//		ResultSet rset = null;
-//		String sql = magazineQuery.getProperty("getListCount");
-//		int listCount = 0;
-//		
-//		try {
-//			pstmt = conn.prepareStatement(sql);
-//			
-//			rset = pstmt.executeQuery();
-//			
-//			if(rset.next()) {
-//				listCount = rset.getInt(1);
-//			}
-//			
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		} finally {
-//			close(pstmt);
-//			close(rset);
-//		}
-//		return listCount;
-//	}
 
 
 	// 게시물 리스트 조회
@@ -631,6 +607,58 @@ public class MagazineDao {
 	       
 	        	 return othersList;
 		}
+
+
+
+		
+
+		public int deleteReply(Connection conn, int rNum) {
+			PreparedStatement pstmt = null;
+		      int result = 0;
+		      String sql = magazineQuery.getProperty("deleteReply");
+		      
+		      try {
+		         pstmt = conn.prepareStatement(sql);
+		         pstmt.setInt(1, rNum);
+		         
+		         result = pstmt.executeUpdate();   
+		      } catch (SQLException e) {
+		         e.printStackTrace();
+		      } finally {
+		         close(pstmt);
+		      }
+		            
+		      return result;
+		   }
+
+
+		public int getListCount(Connection conn) {
+			PreparedStatement pstmt = null;
+			ResultSet rset = null;
+			String sql = magazineQuery.getProperty("getListCount");
+			int listCount = 0;
+			
+
+			try {
+				pstmt = conn.prepareStatement(sql);
+				
+				
+				rset = pstmt.executeQuery();
+
+				if(rset.next()) {
+					listCount = rset.getInt(1);
+				}
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				close(rset);
+				close(pstmt);
+			}
+			return listCount;
+		}
+
+
 
 		
 		

@@ -42,15 +42,26 @@ public class ReplyDeleteServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		int rNum = Integer.parseInt(request.getParameter("rNum"));
+		int nNum = Integer.parseInt(request.getParameter("nNum"));
+		int rNum = Integer.parseInt(request.getParameter("reNum"));
 
+	
 		// Magazine, MagazineFile 테이블의 bid 일치하는 행 status N -> Y으로 변경
 		// 서버에 저장된 이미지 파일의 정보를 알아와서 삭제 처리
 		
-		List<Reply> deleteReplyList = new MagazineService().deleteReply(rNum);
+		Reply reply = new Reply();
+		reply.setnNum(nNum);
+		reply.setrNum(rNum);
 		
-	
-	
+		int result = new MagazineService().deleteReply(rNum);
+		
+		
+		if(result>0){
+			
+			response.sendRedirect(request.getContextPath() + "/magazine/detail?nNum="+nNum);
+		}else {
+			request.getRequestDispatcher("/WEB-INF/views/common/errorpage.jsp").forward(request, response);
+		}
 	
 	}
 	

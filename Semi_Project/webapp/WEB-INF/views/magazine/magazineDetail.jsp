@@ -51,16 +51,15 @@
 				</button>
 			</div>
 			<div class="admin">
-				<c:if test="${ loginUser.userId.contains('admin') || loginUser.userId == magazine.userId }">
+				<c:if
+					test="${ loginUser.userId.contains('admin') || loginUser.userId == magazine.userId }">
 					<button onclick="deleteDetail();">삭제</button>
 					<button onclick="updateDetail();">수정</button>
 				</c:if>
-				<c:if
-					test="${ loginUser.userId.contains('admin')}">
-					
-					<button type="button" class="report-button"
-						onclick="openPopup('${ contextPath }/reportForm', 'reportForm', 450, 500)">신고</button>
 				
+				<c:if test="${ loginUser.userId.contains('admin') || !empty loginUser}">
+					<button type="button" class="report-button"
+						onclick="openPopup('${ contextPath }/reportForm', 'reportForm', 600, 500)">신고</button>
 				</c:if>
 			</div>
 
@@ -78,28 +77,40 @@
 			<div class="content-inner">
 				<div class="myinfo">
 					<div class="myinfo1">
-						<div class="profile">
-							<img src="${ contextPath }${ profile.profileFile.get(0).route}${profile.profileFile.get(0).changeName}">
-						</div>
+						   <div class="profile">
+                        <c:choose>
+                         
+                         <c:when test="${not empty profile.profileFile.get(0).changeName}">
+                            <img src="${ contextPath }${ profile.profileFile.get(0).route}${profile.profileFile.get(0).changeName}">
+                          </c:when>
+                          <c:otherwise>
+                           <img src="${ contextPath }/resources/images/yeonjoo/pro.jpg">
+                          </c:otherwise>
+                          </c:choose>
+                        </div>
+						
+						
+						
 						<div class="id">
-						
-						
-	
+
+
+
 							<c:choose>
-							<c:when test="${ loginUser.userId == magazine.userId}">
-							<a href="${contextPath}/myfeed">${ magazine.userId }</a>
-							
-							</c:when>
-							<c:otherwise>
-							<a href="${contextPath}/others/feed?userId=${magazine.userId}">${ magazine.userId }</a>
-							</c:otherwise>
+								<c:when test="${ loginUser.userId == magazine.userId}">
+									<a href="${contextPath}/myfeed">${ magazine.userId }</a>
+
+								</c:when>
+								<c:otherwise>
+									<a href="${contextPath}/others/feed?userId=${magazine.userId}">${ magazine.userId }</a>
+								</c:otherwise>
 							</c:choose>
-							
-							
+
+
 						</div>
 						<div class="date">
 							<p>
-								<fmt:formatDate value="${ magazine.nDate }" type="both"	pattern="yyy.MM.dd HH:mm" />
+								<fmt:formatDate value="${ magazine.nDate }" type="both"
+									pattern="yyy.MM.dd HH:mm" />
 							</p>
 						</div>
 					</div>
@@ -147,26 +158,37 @@
 			<div class="com-front">
 				<div class="reply_list">
 					<c:forEach items="${ magazine.replyList }" var="reply">
-						<ul class="reply_ul">
-							<a href class="rwriter">${ magazine.userId }</a>
-							<li class="rcontent">${ reply.rContent }</li>
-							<li class="rdate"><fmt:formatDate value="${ reply.rDate }"
-									type="both" pattern="yyyy.MM.dd HH:mm" /></li>
-						
-						</ul>
-						<div class="delete">
-						<button onclick="detailReply()">삭제</button>
+						<div class="reply-with">
+							<ul class="reply_ul">
+								<a href class="rwriter">${ magazine.userId }</a>
+								<li class="rcontent">${ reply.rContent }</li>
+								<li class="rdate"><fmt:formatDate value="${ reply.rDate }"
+										type="both" pattern="yyyy.MM.dd HH:mm" /></li>
+
+							</ul>
+							<div class="delete">
+								<form name="replyForm" method="post">
+									<input type="hidden" name="reNum" id='reNum'
+										value="${reply.rNum }"> <input type="hidden"
+										value="${magazine.nNum }" name="nNum">
+										
+								<c:if test="${ loginUser.userId.contains('admin') || loginUser.userId == magazine.userId}">
+									<button id="btn" onclick="deleteReply()">삭제</button>
+								</c:if>
+										
+								</form>
+							</div>
 						</div>
 					</c:forEach>
-				
-			
-					
+
+
+
 				</div>
-			
+
 			</div>
 
-			
-			
+
+
 
 
 
@@ -174,11 +196,11 @@
 
 		</div>
 		<form method="post" action="${contextPath}/magazine/insertReply">
-		<input type="hidden" value="${magazine.nNum }" name="nNum">
-		<div class="reply_write">
-			<input type="text" name="rContent" class="reply_content">
-			<button type="submit">댓글등록</button>
-		</div>
+			<input type="hidden" value="${magazine.nNum }" name="nNum">
+			<div class="reply_write">
+				<input type="text" name="rContent" class="reply_content">
+				<button type="submit">댓글등록</button>
+			</div>
 		</form>
 
 		<!-- <div class="comment-each">
@@ -202,10 +224,10 @@
 		<div>
 			<hr class="hr2">
 		</div> -->
-		
-		
-		
-	<%-- 	<div class="admin com-button">
+
+
+
+		<%-- 	<div class="admin com-button">
 				<button>삭제</button>
 				<button>수정</button>
 				<c:if
@@ -217,7 +239,7 @@
 
 
 
-		
+
 
 
 	</div>
@@ -249,9 +271,9 @@
 
 <!--  게시물 삭제 수정 -->
 
-	<form name="detailForm" method="post">
-		<input type="hidden" name="nNum" id='nNum' value="${magazine.nNum }">
-	</form>
+<form name="detailForm" method="post">
+	<input type="hidden" name="nNum" id='nNum' value="${magazine.nNum }">
+</form>
 
 
 <script>
@@ -267,20 +289,20 @@
 			}
 		}
 	</script>
-	
-	<!--  댓글 삭제 수정 -->
 
-	<form name="replyForm" method="post">
-		<input type="hidden" name="reNum" id='reNum' value="${reply.rNum }">
-	</form>
-	
-	
+<!--  댓글 삭제 수정 -->
+
+
+
+
 <script>
 	
 	
 		function deleteReply(){
-				document.forms.detailForm.action="${contextPath}/reply/delete";
-				document.forms.detailForm.submit();
+			if(confirm("이 게시글을 삭제하시겠습니까?")){
+				document.forms.replyForm.action="${contextPath}/reply/delete";
+				document.forms.replyForm.submit();
+			}
 		}
 	</script>
 

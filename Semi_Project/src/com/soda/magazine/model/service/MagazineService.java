@@ -7,12 +7,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.soda.lesson.model.vo.Lesson;
 import com.soda.magazine.model.dao.MagazineDao;
 import com.soda.magazine.model.vo.MagazineFile;
 import com.soda.magazine.model.vo.Magazine;
 import com.soda.magazine.model.vo.PageInfo;
 import com.soda.magazine.model.vo.Reply;
 import com.soda.mypage.model.vo.Profile;
+import com.soda.socialing.model.vo.Socialing;
 
 public class MagazineService {
 
@@ -272,22 +274,42 @@ public class MagazineService {
 
 	}
 
-	public List<Reply> deleteReply(int rNum) {
+	public int deleteReply(int rNum) {
 		Connection conn = getConnection();
 
 		
-		Reply deleteReply = magazineDao.selectReply(rNum);
+		int result = magazineDao.deleteReply(conn, rNum);
 	      
-	      int boardResult = magazineDao.deleteMagazine(conn, nNum);   /* 게시글 지우기 */
-	     
 	      
 	      
 	      close(conn);
-	      return deleteReply;
+	      return result;
+	}
+
+	
+	// 페이징
+	public Map<String, Object> selectList(int page) {
+Connection conn = getConnection();
+		
+		// 1. 조회할 게시글 총 개수 구하기 
+		int listCount = magazineDao.getListCount(conn);
+		
+		// 2. PageInfo 객체 만들기 (목록 5개씩, 한 페이지당 9개 게시글)
+		PageInfo pi = new PageInfo(page, listCount, 5, 16);
+		
+		// 3. 페이징 처리 된 게시글 목록 조회
+		List<Magazine> magazineList = magazineDao.selectList(conn, pi);
+		
+		// 4. 시작 임박 소셜링 목록 조회
+		
+		Map<String, Object> returnMap = new HashMap<>();
+		
+		returnMap.put("pi", pi);
+		returnMap.put("magazineList", magazineList);
+		
+		return returnMap;
+	}
 	}
 
 	
 
-	
-
-}

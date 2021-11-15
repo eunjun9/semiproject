@@ -118,11 +118,9 @@
 
 
 
-                              <%--  <c:forEach var="profile" items="${interest}"> --%>
                             <div class="tag">
-                                <p></p>
+                              <p></p>
                             </div>
-          
                         </div>
                         
                          <!--피드 사진들-->

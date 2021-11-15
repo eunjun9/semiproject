@@ -163,14 +163,29 @@ html {
 	margin-left: 20px;
 }
 
-.reply_list>ul {
-	list-style: none;
-	padding-left: 0px;
+.reply-with{
+	display:flex;
 }
 
+.reply-with>ul {
+	list-style: none;
+	padding-left: 0px;
+	 margin-right:16px;
+}
+
+.delete{
+	margin-top: 19px;
+}
 .reply_ul>a {
 	margin-left: 40px;
 	margin-top: 60px;
+}
+
+#btn{
+	background-color:rgb(7, 86, 105);
+	border-radius:6px;
+	color:white;
+	
 }
 
 .rcontent {
@@ -179,7 +194,7 @@ html {
 }
 
 .rdate {
-	margin-left: 761px;
+	margin-left: 738px;
     margin-top: -30px;
 }
 
@@ -202,20 +217,21 @@ html {
 }
 
 .reply_content {
-    width: 783px;
+    width: 786px;
     height: 80px;
     resize: none;
-    margin-left: -24px;
+    margin-left: -39px;
 }
 
 .reply_write>button {
 	background-color: rgb(218, 239, 245);
 	margin-top: 20px;
-	margin-left: 20px;
+	margin-left: 22px;
 	height: 40px;
 	font-family: 'Noto Sans KR', sans-serif;
 	border-radius: 10px;
 	border: 1px lightgray solid;
+	margin-right:-32px;
 }
 
 .ntype {

@@ -43,6 +43,10 @@ public class PageInfo {
 			if(this.maxPage < this.endPage)		// 105개의 글이 있을 때 목록은 1~10과 11 페이지만 출력되기 때문에 
 				this.endPage = this.maxPage;
 		}
+		
+		
+		
+		
 
 		public PageInfo(int page, int listCount, int pageLimit, int boardLimit, int maxPage, int startPage,
 				int endPage) {
@@ -55,6 +59,8 @@ public class PageInfo {
 			this.startPage = startPage;
 			this.endPage = endPage;
 		}
+
+		
 
 		public int getPage() {
 			return page;
