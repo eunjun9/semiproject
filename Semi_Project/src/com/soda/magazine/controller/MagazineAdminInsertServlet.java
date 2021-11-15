@@ -75,7 +75,7 @@ public class MagazineAdminInsertServlet extends HttpServlet {
 	
 		
 		Magazine admin = new Magazine();
-		admin.setnType(mCategory);
+		admin.setnRef(mCategory);
 		admin.setnTitle(mtitle);
 		admin.setnContent(mcontent);
 		admin.setUserId(mwriter);

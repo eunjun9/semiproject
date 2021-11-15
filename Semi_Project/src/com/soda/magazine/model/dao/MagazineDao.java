@@ -94,6 +94,7 @@ public class MagazineDao {
 
 
 		
+		// 유저게시판에 인서트하기
 		public int insertUser(Connection conn, Magazine user) {
 			 PreparedStatement pstmt = null;
 		      int result = 0;
@@ -103,8 +104,8 @@ public class MagazineDao {
 		         pstmt = conn.prepareStatement(sql);
 		         pstmt.setString(1, user.getnTitle());
 		         pstmt.setString(2, user.getnContent());
-		         pstmt.setString(3, user.getnType());
-		         pstmt.setString(4, user.getUserId());
+		         pstmt.setString(3, user.getUserId());
+		         pstmt.setString(4, user.getnRef());
 		         
 		         result = pstmt.executeUpdate();
 		         
@@ -222,6 +223,7 @@ public class MagazineDao {
 		        	magazine.setnDate(rset.getTimestamp("notice_date"));
 		        	magazine.setnStatus(rset.getString("notice_status"));
 		        	magazine.setnType(rset.getString("notice_type"));
+		        	magazine.setnRef(rset.getString("notice_ref"));
 		        	magazine.setUserId(rset.getString("user_id"));
 		        	magazine.setnDate(rset.getTimestamp("modify_date"));
 		        	magazine.setSelfNum(rset.getString("notice_self_num"));
@@ -239,7 +241,7 @@ public class MagazineDao {
 		}
 
 		
-		// 매거진 메인 화면
+		// 사진 셀렉 해오기
 		public List<Magazine> selectUserList(Connection conn) {
 			   PreparedStatement pstmt = null;
 		         ResultSet rset = null;
@@ -253,7 +255,7 @@ public class MagazineDao {
 		               while(rset.next()) {   // next() : 다음 행
 		                  Magazine user = new Magazine();
 		                  user.setnNum(rset.getInt("notice_num"));
-		                  user.setnType(rset.getString("notice_type"));
+		                  user.setnRef(rset.getString("NOTICE_ref"));
 		                  user.setnTitle(rset.getString("notice_title"));
 		                  user.setUserId(rset.getString("user_id"));
 		                  user.setnCount(rset.getInt("ncount"));
@@ -290,8 +292,8 @@ public class MagazineDao {
 		         pstmt = conn.prepareStatement(sql);
 		         pstmt.setString(1, admin.getnTitle());
 		         pstmt.setString(2, admin.getnContent());
-		         pstmt.setString(3, admin.getnType());
-		         pstmt.setString(4, admin.getUserId());
+		         pstmt.setString(3, admin.getUserId());
+		         pstmt.setString(4, admin.getnRef());
 		         
 		         result = pstmt.executeUpdate();
 		         
@@ -306,7 +308,7 @@ public class MagazineDao {
 
 		
 		
-		// 관리자 메인 페이지 조회
+		//  메인 관리자 게시판 페이지 조회
 		public List<Magazine> selectAdminList(Connection conn) {
 			PreparedStatement pstmt = null;
 	         ResultSet rset = null;
@@ -320,7 +322,7 @@ public class MagazineDao {
 	               while(rset.next()) {   // next() : 다음 행
 	                  Magazine admin = new Magazine();
 	                  admin.setnNum(rset.getInt("notice_num"));
-	                  admin.setnType(rset.getString("notice_type"));
+	                  admin.setnRef(rset.getString("notice_ref"));
 	                  admin.setnTitle(rset.getString("notice_title"));
 	                  admin.setUserId(rset.getString("user_id"));
 	                  admin.setnCount(rset.getInt("ncount"));
@@ -528,7 +530,7 @@ public class MagazineDao {
 			return replyList;
 		}
 
-
+		// 유저 게시판에 사진 셀렉해오기
 		public List<Magazine> selectUserselfList(Connection conn) {
 			PreparedStatement pstmt = null;
 	         ResultSet rset = null;
@@ -543,7 +545,7 @@ public class MagazineDao {
 	               while(rset.next()) {   // next() : 다음 행
 	                  Magazine userself = new Magazine();
 	                  userself.setnNum(rset.getInt("notice_num"));
-	                  userself.setnType(rset.getString("notice_type"));
+	                  userself.setnRef(rset.getString("notice_ref"));
 	                  userself.setnTitle(rset.getString("notice_title"));
 	                  userself.setUserId(rset.getString("user_id"));
 	                  
@@ -583,7 +585,7 @@ public class MagazineDao {
 	               while(rset.next()) {   // next() : 다음 행
 	                  Magazine userself = new Magazine();
 	                  userself.setnNum(rset.getInt("notice_num"));
-	                  userself.setnType(rset.getString("notice_type"));
+	                  userself.setnRef(rset.getString("notice_ref"));
 	                  userself.setnTitle(rset.getString("notice_title"));
 	                  userself.setUserId(rset.getString("user_id"));
 	                  

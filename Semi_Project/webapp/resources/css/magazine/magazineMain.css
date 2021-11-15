@@ -125,7 +125,7 @@ html {
 }
 
 .button2{
-    right:-90px;
+    right:-22px;
     bottom : 165px;
     position:absolute;
 }
@@ -137,7 +137,7 @@ html {
 }
 
 .button4{
-    right:-90px;
+    right:-22px;
     bottom : 165px;
     position:absolute;
 }
@@ -237,6 +237,10 @@ margin-top:-20px;
 	
 }
 
+.swiper{
+	margin-left:38px;
+}
+
 .magazine{
     width: 1000px;
     height: 300px;
@@ -245,3 +249,18 @@ margin-top:-20px;
     background-size: cover;
 }
 
+.first{
+	margin-left:24px;
+}
+
+.second{
+	margin-left:24px;
+	margin-bottom:48px;
+}
+
+
+.swiper {
+	width: 800px;
+	height: 250px;
+	margin-left: 37px;
+}

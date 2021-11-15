@@ -65,7 +65,7 @@
 
 		</div>
 		<div class="ntype">
-			<p>[${magazine.nType }]
+			<p>[${magazine.nRef }]
 			<p>
 		</div>
 
@@ -84,7 +84,7 @@
                             <img src="${ contextPath }${ profile.profileFile.get(0).route}${profile.profileFile.get(0).changeName}">
                           </c:when>
                           <c:otherwise>
-                           <img src="${ contextPath }/resources/images/yeonjoo/pro.jpg">
+                           <img src="${ contextPath }/resources/images/yewon/profile.png">
                           </c:otherwise>
                           </c:choose>
                         </div>
@@ -117,11 +117,11 @@
 
 
 
-					<div class="myinfo2">
+					<!-- <div class="myinfo2">
 						<div class="follow">
 							<button>팔로워 추가</button>
 						</div>
-					</div>
+					</div> -->
 				</div>
 
 				<hr class="hr1">
@@ -160,7 +160,7 @@
 					<c:forEach items="${ magazine.replyList }" var="reply">
 						<div class="reply-with">
 							<ul class="reply_ul">
-								<a href class="rwriter">${ magazine.userId }</a>
+								<a href class="rwriter">${ reply.rWriter }</a>
 								<li class="rcontent">${ reply.rContent }</li>
 								<li class="rdate"><fmt:formatDate value="${ reply.rDate }"
 										type="both" pattern="yyyy.MM.dd HH:mm" /></li>

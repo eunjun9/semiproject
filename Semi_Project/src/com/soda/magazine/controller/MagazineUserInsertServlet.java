@@ -76,7 +76,7 @@ public class MagazineUserInsertServlet extends HttpServlet {
 	
 		
 		Magazine user = new Magazine();
-		user.setnType(mCategory);
+		user.setnRef(mCategory);
 		user.setnTitle(mtitle);
 		user.setnContent(mcontent);
 		user.setUserId(mwriter);

@@ -44,17 +44,19 @@
 </head>
 
 <body>
-	<!--header-->
-
-	<%@ include file="/WEB-INF/views/common/header.jsp"%>
 
 
 	<div class="body-super">
+	<!--header-->
+
+	<%@ include file="/WEB-INF/views/common/header.jsp"%>
 		<div class="board1">
-			<div class=body-inner1>
+			<div class="body-inner1">
 				<div class="title-big">
 					<div class="title">우리들의 이야기</div>
-					<div class="word">다른 이들과 나누는 우리 이야기</div><c:if test="${ !empty loginUser }">
+					<div class="word">다른 이들과 나누는 우리 이야기</div>
+					</div>
+					<c:if test="${ !empty loginUser }">
 					<div class="view1">
 						<a href="<%=request.getContextPath()%>/user/insert">글쓰기</a>
 					</div>
@@ -72,7 +74,7 @@
 								<div class="box">
 									<div class="pics" onclick="detailView(${ magazine.nNum })">
 										<img src="${ contextPath }${ magazine.photoList.get(0).route }${ magazine.photoList.get(0).changeName }">
-											<p class="category">[${ magazine.nType }]</p>
+											<p class="category">[${ magazine.nRef }]</p>
 											<p class="list-title">${ magazine.nTitle }</p><br> 
 								   </div>
 									<div class="writer-par">

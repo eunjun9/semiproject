@@ -132,7 +132,7 @@
 					</div>
 
 					<div class="btn_area">
-						<button class="button" type="button">목록으로</button>
+						<button class="button" type="button" onclick="location.href='${ contextPath }/magazine/main'">목록으로</button>
 						<button class="submit" type="submit" onclick="action();">작성하기</button>
 
 					</div>
