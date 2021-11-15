@@ -106,7 +106,6 @@
 	 				success : function(list) {
 	 					
 	 					if(list) {
-
 		 					var str = '';
 		 					$.each(list, function(i){
 		 						if(list[i].nTitle != null) {
