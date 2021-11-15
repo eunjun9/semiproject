@@ -45,9 +45,11 @@
 
 <body>
 
+	<%@ include file="/WEB-INF/views/common/header.jsp"%>
+	<div class="super">
+	<div class-"super-child">
 	<div class="body-super">
 
-	<%@ include file="/WEB-INF/views/common/header.jsp"%>
 	<!--header-->
 
 		<div class="board1">
@@ -70,7 +72,7 @@
 		<!--body-->
 						<div class="list_div">
 							<ul class="board_list">
-								<c:forEach var="magazine" items="${ userList }">
+								<c:forEach var="magazine" items="${ magazineList }">
 								<div class="box">
 									<div class="pics" onclick="detailView(${ magazine.nNum })">
 										<img src="${ contextPath }${ magazine.photoList.get(0).route }${ magazine.photoList.get(0).changeName }">
@@ -150,6 +152,8 @@
 		            <img width="16px" src="${ contextPath }/resources/images/eunjung/next.png"></a>
                 </div>
 
+</div>
+</div>
 </div>
 
 

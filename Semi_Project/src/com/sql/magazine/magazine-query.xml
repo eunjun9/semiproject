@@ -13,7 +13,7 @@
 		NOTICE_STATUS = 'Y'
 	</entry>
 
-
+<!-- 페이징 유저 -->
 	<entry key="selectList">
 		SELECT *
 		FROM(SELECT ROWNUM RNUM, A.*
@@ -46,6 +46,35 @@
 
 
 	</entry>
+	
+	<!-- 페에징 했음 어드민 -->
+	<entry key="selectAdminPagingList">
+		SELECT *
+		FROM(SELECT ROWNUM RNUM, A.*
+		FROM(SELECT
+          NOTICE_NUM
+        , NOTICE_REF
+        , NOTICE_TITLE
+        , USER_ID
+        , NCOUNT
+        , ROUTE
+        , CHANGE_NAME
+        , file_level
+        , NOTICE_SELF_NUM
+     FROM NOTICE
+     JOIN MEMBER_INFO USING(USER_ID)
+     JOIN TBL_FILE USING(NOTICE_NUM)
+    WHERE NOTICE_STATUS = 'Y'
+    AND FILE_LEVEL = 1
+    AND NOTICE_SELF_NUM = 'ADMIN'
+    and notice_type='매거진'
+    ORDER BY NOTICE_NUM DESC) A)
+		WHERE RNUM
+		BETWEEN ? AND ?
+
+
+	</entry>
+	
 
 <!-- 유저 게시판에 인서트 -->
 	<entry key="insertUser">
@@ -192,8 +221,8 @@
     ORDER BY NOTICE_NUM DESC
     </entry>
 	
-	
-	<entry key="selectAdminList">
+	<!-- 페이징 처리 전 -->
+<entry key="selectAdminList">
 	       SELECT
           NOTICE_NUM
         , NOTICE_REF
@@ -212,7 +241,7 @@
     AND NOTICE_SELF_NUM = 'ADMIN'
     and notice_type='매거진'
     ORDER BY NOTICE_NUM DESC
-    </entry>
+    </entry> 
     
     
     <entry key="deleteMagazine">
@@ -371,19 +400,24 @@ REPLY_MODIFYDATE
    	<entry key="selectList">
    	SELECT * 
 		  FROM(SELECT ROWNUM RNUM, A.*
-				 FROM(SELECT
-						     NOTICE_NUM
-						   , NOTICE_TITLE
-		                   , USER_NAME
-						     , ROUTE
-						   , CHANGE_NAME
-						   , NOTICE_STATUS
-		                FROM NOTICE
-						JOIN MEMBER_INFO USING(USER_ID)
-						JOIN TBL_FILE USING(NOTICE_NUM)
-						WHERE NOTICE_TYPE = '매거진'
-						  AND NOTICE_STATUS = 'Y'
-					    ORDER BY NOTICE_NUM DESC) A)
+				 FROM( SELECT
+          NOTICE_NUM
+        , NOTICE_REF
+        , NOTICE_TITLE
+        , USER_ID
+        , NCOUNT
+        , ROUTE
+        , CHANGE_NAME
+        , file_level
+        , NOTICE_SELF_NUM
+     FROM NOTICE
+     JOIN MEMBER_INFO USING(USER_ID)
+     JOIN TBL_FILE USING(NOTICE_NUM)
+    WHERE NOTICE_STATUS = 'Y'
+    AND FILE_LEVEL = 1
+    AND NOTICE_SELF_NUM = 'USER'
+    and notice_type='매거진'
+    ORDER BY NOTICE_NUM DESC) A)
 		WHERE RNUM BETWEEN ? AND ?
 	</entry>
 	
