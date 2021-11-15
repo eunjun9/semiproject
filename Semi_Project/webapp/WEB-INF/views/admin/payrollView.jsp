@@ -102,8 +102,10 @@
         					
         					var data = '';
         					$.each(result, function(i){
-        							data += "<tr><td>" + result[i].nNum + "</td><td>" + result[i].nTitle + "</td><td>" + result[i].userName
-        							+ "</td><td>" + result[i].userId + "</td><td>" + result[i].total + "</td><td>" + result[i].taxTotal
+        							data += "<tr><td>" + result[i].nNum + "</td><td>" 
+        							+ result[i].nTitle + "</td><td>" + result[i].userName
+        							+ "</td><td>" + result[i].userId + "</td><td>" 
+        							+ result[i].total + "</td><td>" + result[i].taxTotal
         							+ "</td></tr>";
         							
         							// $(".tbl tbody").append(data);

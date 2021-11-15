@@ -45,7 +45,7 @@
                             <option value="">2020년 07월</option>
                         </select>
                     </div> -->
-                    <table class="tbl" style="width:1000px; margin-left:-345px;">
+                    <table class="tbl" style="width:1000px; margin-left:-345px; margin-top:100px;">
                         <thead>
                           <tr>
                             <th class="tbl-title">클래스명</th>
@@ -72,6 +72,12 @@
                             <td class="tbl-content">${ refund.aHolder }</td>
                             <%-- <td class="tbl-content"><input type="submit" id="button_${var.index }" onclick='changeBtnName()' value="미완료"></td> --%>
                           	<td class="tbl-content"><input type="submit" id="button1" value="미완료"></td>
+                            <td class="tbl-content">
+                            <form name="refundcheck" method="post">
+                            <input type="hidden" name="refundcomfirm" id="comfirm">
+    						<input id="button" type="submit"  onclick='changeBtnName()' value="미완료">
+                            
+                            </form>
                           </tr>
                         </c:forEach>
                         </tbody>
@@ -83,18 +89,22 @@
 
     <!--footer-->
     <%@ include file="/WEB-INF/views/common/footer.jsp"%>
+	
 	<script>
 		
 	/* $("input[name^='button']").on("click", function(e) {
 		function changeBtnName()  {
+=======
+	   function changeBtnName()  {
+>>>>>>> branch 'master' of https://github.com/umyewon/semiproject.git
 	        const btnElement 
 	          = document.getElementById('button');
+	        
 	        btnElement.value = "완료";
 	      }
+<<<<<<< HEAD
 	    function($(this));
 	  }); */
-   
-   </script>
 
     	<script>
         $(document).ready(function(){ 

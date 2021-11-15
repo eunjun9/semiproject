@@ -216,7 +216,7 @@
         	
         	 if ( rsp.success ) {				// 결제 성공 시
  		    	$.ajax({
- 		    		url: "${ contextPath }/pay/success", //cross-domain error가 발생하지 않도록 주의해주세요
+ 		    		url: "${ contextPath }/pay/success", 
  		    		type: 'get',
  		    		data: { imp_uid : rsp.imp_uid, pg_provider : rsp.pg_provider
 	    				, nNum : nNum, userEmail : userEmail, selDate : selDate
