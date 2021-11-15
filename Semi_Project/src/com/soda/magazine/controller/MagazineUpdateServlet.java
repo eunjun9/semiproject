@@ -64,7 +64,7 @@ public class MagazineUpdateServlet extends HttpServlet {
 	      /* Magazine 테이블 수정 값 설정*/
 	      Magazine magazine = new Magazine();
 	      magazine.setnNum(Integer.parseInt(multiRequest.getParameter("nNum")));
-	      magazine.setnType(multiRequest.getParameter("category"));
+	      magazine.setnRef(multiRequest.getParameter("category"));
 	      magazine.setnTitle(multiRequest.getParameter("title"));
 	      magazine.setnContent(multiRequest.getParameter("content"));
 	      

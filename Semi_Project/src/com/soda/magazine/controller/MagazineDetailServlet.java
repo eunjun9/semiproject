@@ -47,11 +47,13 @@ public class MagazineDetailServlet extends HttpServlet {
 		Profile profile = profileService.selectOthers(nNum);
 		
 		
-    	 	   	   	
-    	
+		// 댓글 조회
+//		Magazine reply = magazineService.selectReply(nNum);
+		
 		
 		
 		if(magazine != null) {
+//			request.setAttribute("reply", reply);
 			request.setAttribute("magazine", magazine);
 			request.setAttribute("profile", profile);
 			request.getRequestDispatcher("/WEB-INF/views/magazine/magazineDetail.jsp").forward(request, response);

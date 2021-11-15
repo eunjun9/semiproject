@@ -230,7 +230,7 @@
     
      <entry key="updateMagazine">
          UPDATE NOTICE
-            SET NOTICE_TYPE = ?
+            SET NOTICE_REF = ?
               , NOTICE_TITLE = ?
               , NOTICE_CONTENT = ?
               , MODIFY_DATE = SYSDATE
@@ -359,7 +359,6 @@ REPLY_MODIFYDATE
    </entry>
     
     
-    
     <entry key="getListCount">
 		SELECT
     		    COUNT(*)
@@ -387,4 +386,27 @@ REPLY_MODIFYDATE
 					    ORDER BY NOTICE_NUM DESC) A)
 		WHERE RNUM BETWEEN ? AND ?
 	</entry>
+	
+	
+	
+	<entry key = "selectReply">
+	   SELECT
+             REPLY_NUM,
+REPLY_CONTENT,
+REPLY_DATE,
+NOTICE_NUM,
+REPLY_SELF_NUM,
+RWRITER,
+REPLY_STATUS,
+REPLY_MODIFYDATE
+        FROM REPLY R
+        JOIN MEMBER_INFO ON (RWRITER = USER_ID)
+       WHERE REPLY_STATUS = 'Y'
+         AND NOTICE_NUM = ?
+       ORDER BY REPLY_NUM DESC
+	
+	</entry>
+	
+	
+	
 	</properties>

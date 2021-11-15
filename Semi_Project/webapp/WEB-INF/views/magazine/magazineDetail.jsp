@@ -172,7 +172,7 @@
 										value="${reply.rNum }"> <input type="hidden"
 										value="${magazine.nNum }" name="nNum">
 										
-								<c:if test="${ loginUser.userId.contains('admin') || loginUser.userId == magazine.userId}">
+								<c:if test="${ loginUser.userId.contains('admin') || loginUser.userId eq reply.rWriter}">
 									<button id="btn" onclick="deleteReply()">삭제</button>
 								</c:if>
 										
