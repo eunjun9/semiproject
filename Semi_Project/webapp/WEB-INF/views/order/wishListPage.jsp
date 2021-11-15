@@ -151,7 +151,7 @@
 						url : "${ contextPath }/wishlist/delete",
 						type : "post",
 						data : { checkArr : checkArr },
-						traditional : true,					// 배열 넘겨줄 때 꼭 작성해야함
+						traditional : true,					// 배열 넘겨줄 때 작성
 						success : function(result){
 							if(result > 0){
 								alert('삭제되었습니다.');

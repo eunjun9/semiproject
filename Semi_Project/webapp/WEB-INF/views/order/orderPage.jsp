@@ -243,9 +243,9 @@
 		   } else {
 		        msg = '결제에 실패하였습니다.';
 		        msg += '에러내용 : ' + rsp.error_msg;
+		        alert(msg);
 		        //실패시 이동할 페이지
 		        location.href='${ contextPath }/wishlist';
-		        alert(msg);
 		    }
         
         });
@@ -289,6 +289,8 @@
 	            		} else {
 	               		 var msg = '결제에 실패하였습니다.';
 	                	 msg += '에러내용 : ' + rsp.error_msg;
+	                	 alert(msg);
+	                	 
 	                	//[3] 아직 제대로 결제가 되지 않았습니다.
 		    			//[4] 결제된 금액이 요청한 금액과 달라 결제를 자동취소처리하였습니다.
 	            		}
@@ -300,9 +302,9 @@
 			   } else {
 			        msg = '결제에 실패하였습니다.';
 			        msg += '에러내용 : ' + rsp.error_msg;
+			        alert(msg);
 			        //실패시 이동할 페이지
 			        location.href='${ contextPath }/wishlist';
-			        alert(msg);
 			    }
 	        
 	        });
