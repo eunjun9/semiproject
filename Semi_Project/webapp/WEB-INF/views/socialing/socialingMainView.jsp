@@ -10,7 +10,7 @@
 <title>소셜링</title>
 
 <!-- 외부 스타일 시트 -->
-<link href="${ contextPath }/resources/css/socialing/socialing_main.css?4" rel="stylesheet">
+<link href="${ contextPath }/resources/css/socialing/socialing_main.css?5" rel="stylesheet">
 
 <!-- 글꼴 (Noto Sans) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -172,14 +172,11 @@
 	                 <c:when test="${ !empty param.local }">
 	                	<c:set var="search2" value="&local=${ param.local }"/>
 	                 </c:when>
-	                 <c:when test="${ !param.dateIn }">
-	                	<c:set var="search3" value="&dateIn=${ param.dateIn }"/>
-	                 </c:when>
 	                 <c:when test="${ !empty param.onoff }">
-	                	<c:set var="search4" value="&onoff=${ param.onoff }"/>
+	                	<c:set var="search3" value="&onoff=${ param.onoff }"/>
 	                 </c:when>
 	                <c:when test="${ !empty param.lineup }">
-	                	<c:set var="search5" value="&lineup=${ param.lineup }"/>
+	                	<c:set var="search4" value="&lineup=${ param.lineup }"/>
 	                </c:when>
                 </c:choose>
 
@@ -187,14 +184,14 @@
                 <div class="pagebox">
                 
                 	<!-- (<<) 제일 첫 페이지로 이동 -->
-                	<a class="paging" href="${ contextPath }/socialing/main?page=1${search1}${search2}${search3}${search4}${search5}">
+                	<a class="paging" href="${ contextPath }/socialing/main?page=1${search1}${search2}${search3}${search4}">
                 	<img width="16px" src="${ contextPath }/resources/images/eunjung/previous.png">
 		            <img width="16px" src="${ contextPath }/resources/images/eunjung/previous.png"></a>
 		            
 		            <!--  (<) 이전 페이지  : 현재 페이지 - 1이니까 -->
 		            <c:choose>
 		             	<c:when test="${ pi.page > 1 }"> <!--  현재 페이지가 1보다 클 때는 이동하고  -->
-		             		<a class="paging" href="${ contextPath }/socialing/main?page=${ pi.page - 1 }${search1}${search2}${search3}${search4}${search5}"><img width="18px" src="${ contextPath }/resources/images/eunjung/previous.png"></a>
+		             		<a class="paging" href="${ contextPath }/socialing/main?page=${ pi.page - 1 }${search1}${search2}${search3}${search4}"><img width="18px" src="${ contextPath }/resources/images/eunjung/previous.png"></a>
 		             	</c:when>
 		             	<c:otherwise> <!-- 1이면 현재 페이지에 머뭄 -->
 		             		<a class="paging" href="#"><img width="18px" src="${ contextPath }/resources/images/eunjung/previous.png"></a>
@@ -209,7 +206,7 @@
 					 			<a href="#" class="paging"><img width="20px" src="${ contextPath }/resources/images/eunjung/circle_sky.png"></a>
 					 		</c:when>
 					 		<c:otherwise> <!-- 현재 페이지 외에는 페이지 목록 숫자만 출력 -->
-					 			<a class="paging" href="${ contextPath }/socialing/main?page=${ p }${search1}${search2}${search3}${search4}${search5}"><img width="20px" src="${ contextPath }/resources/images/eunjung/circle_beige.png"></a>
+					 			<a class="paging" href="${ contextPath }/socialing/main?page=${ p }${search1}${search2}${search3}${search4}"><img width="20px" src="${ contextPath }/resources/images/eunjung/circle_beige.png"></a>
 					 		</c:otherwise>
 					 	</c:choose>
 					 	</li>
@@ -218,7 +215,7 @@
 		            <!-- (>) 다음 페이지 : 제일 끝 페이지에서 버튼 누를 것을 고려하여 조건문 사용 -->
 		            <c:choose>
 		            	<c:when test="${ pi.page < pi.maxPage }"> <!-- 현재 페이지가 최대 페이지보다 아래일 때 이동 -->
-		            		<a class="paging" href="${ contextPath }/socialing/main?page=${ pi.page + 1 }${search1}${search2}${search3}${search4}${search5}"><img width="18px" src="${ contextPath }/resources/images/eunjung/next.png"></a>
+		            		<a class="paging" href="${ contextPath }/socialing/main?page=${ pi.page + 1 }${search1}${search2}${search3}${search4}"><img width="18px" src="${ contextPath }/resources/images/eunjung/next.png"></a>
 		            	</c:when>
 		            	<c:otherwise>
 		            		<a class="paging" href="#"><img width="18px" src="${ contextPath }/resources/images/eunjung/next.png"></a>
@@ -226,7 +223,7 @@
 		            </c:choose>
 	                
 	                <!-- (>>) 제일 끝 페이지로 이동 -->
-		            <a class="paging" href="${ contextPath }/socialing/main?page=${ pi.maxPage }${search1}${search2}${search3}${search4}${search5}">
+		            <a class="paging" href="${ contextPath }/socialing/main?page=${ pi.maxPage }${search1}${search2}${search3}${search4}">
 		            <img width="16px" src="${ contextPath }/resources/images/eunjung/next.png">
 		            <img width="16px" src="${ contextPath }/resources/images/eunjung/next.png"></a>
                 </div>
@@ -260,7 +257,6 @@
     	$(function(){
     		// 정렬 콤보박스 변경 시 글 목록 바로 정렬
     		$("select[name=lineup]").change(listChange);
-
     	});
     	
     	function listChange() {
