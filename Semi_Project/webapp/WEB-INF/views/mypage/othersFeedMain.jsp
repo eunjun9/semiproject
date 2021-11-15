@@ -157,8 +157,21 @@
                <div class="img-par">
                     <div class="imgs">
                     <c:forEach var="magazine" items="${othersList}">
-                    <div class="pics" onclick="detailView(${ magazine.nNum })">
+                    <c:choose>
+					<c:when test="${magazine.nType eq '소셜링'}">
+					<c:set var="url" value="${contextPath}/socialing/detail?nNum="/>
+                    </c:when>
+                    <c:when test="${magazine.nType eq '클래스'}">
+                    <c:set var="url" value="${contextPath}/lesson/detail?nNum="/>
+                    </c:when>
+                    <c:when test="${magazine.nType eq '매거진'}">
+                     <c:set var="url" value="${contextPath}/magazine/detail?nNum="/>
+                    </c:when>
+                    </c:choose>
+                    <div class="pics" onclick="location.href='${url}${magazine.nNum}'">
+                    
                <img src="${ contextPath }${ magazine.photoList.get(0).route }${ magazine.photoList.get(0).changeName }">
+            
                </div>
                    </c:forEach>
                    </div>
@@ -171,10 +184,44 @@
     </div>
     
 
+<%--          
+<c:choose>
+<c:when test="${magazine.nType eq '소셜링'}">
+	<script>
+		function detailView(nNum){
+			location.href = '${contextPath}/socialing/detail?nNum=' + nNum;
+		}
+	</script>
+</c:when>
+<c:when test="${magazine.nType eq '클래스'}">
+	<script>
+	function detailView(nNum){
+		location.href = '${contextPath}/lesson/detail?nNum=' + nNum;
+	}		
+	</script>
+</c:when>
+<c:when test="${magazine.nType eq '매거진'}">
+<script>
+	function detailView(nNum){
+		location.href = '${contextPath}/magazine/detail?nNum=' + nNum;
+	}		
+	</script>
+</c:when>
+</c:choose>  
+ --%>
 
+              
+<%-- function detailView(nNum){
+	 if( ${ magazine.nType} = '매거진'){
 
-
-
+		 location.href = '${contextPath}/magazine/detail?nNum=' + nNum;
+   
+	 } else if( ${ magazine.nType} = '클래스'){
+			 location.href = '${contextPath}/lesson/detail?nNum=' + nNum;
+	 }else {
+		 location.href = '${contextPath}/socialing/detail?nNum=' + nNum;
+	 }
+} --%>
     
 
 
@@ -183,13 +230,13 @@
     <!-- footer -->
    <%@ include file="/WEB-INF/views/common/footer.jsp" %>
 
-<script>
-         function detailView(nNum){
-            location.href = '${contextPath}/magazine/detail?nNum=' + nNum;
-         }
-   
+
+
+     
          
-   </script>
+         
+         
+
 
 
 </body>

@@ -228,9 +228,8 @@ public class MagazineService {
 
 	public int insertReply(Reply reply) {
 		Connection conn = getConnection();
-		/*
-		 * List<Reply> replyList = null;
-		 */		
+		
+		 	
 		// 댓글 입력
 		int result = magazineDao.insertReply(conn, reply);
 		
@@ -239,7 +238,7 @@ public class MagazineService {
 		
 			
 			commit(conn);
-//			replyList = magazineDao.selectReplyList(conn, reply.getnNum());
+//			List<Reply> replyList = magazineDao.selectReplyList(conn, reply.getnNum());
 			
 			
 		} else {
@@ -274,11 +273,11 @@ public class MagazineService {
 
 	}
 
-	public int deleteReply(int rNum) {
+	public int deleteReply(int reNum) {
 		Connection conn = getConnection();
 
 		
-		int result = magazineDao.deleteReply(conn, rNum);
+		int result = magazineDao.deleteReply(conn, reNum);
 	      
 	      
 	      
@@ -309,6 +308,15 @@ Connection conn = getConnection();
 		
 		return returnMap;
 	}
+
+//	public Magazine selectReply(int nNum) {
+//		Connection conn = getConnection();
+//		
+//		Magazine reply = magazineDao.selectReply(conn, nNum);
+//		
+//		 close(conn);
+//	      return reply;
+//	}
 	}
 
 	

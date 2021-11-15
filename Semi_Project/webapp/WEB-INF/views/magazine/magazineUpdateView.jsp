@@ -71,13 +71,13 @@
 						</h4>
 						<span class="input_area"> <select name="category">
 								<option value="소셜링"
-									<c:if test="${magzine.nType=='소셜링'}">selected</c:if>>소셜링</option>
+									<c:if test="${magazine.nRef=='소셜링'}">selected</c:if>>소셜링</option>
 								<option value="원데이클래스"
-									<c:if test="${magzine.nType=='원데이클래스'}">selected</c:if>>원데이클래스</option>
+									<c:if test="${magazine.nRef=='원데이클래스'}">selected</c:if>>원데이클래스</option>
 								<option value="VOD"
-									<c:if test="${magzine.nType=='VOD'}">selected</c:if>>VOD</option>
+									<c:if test="${magazine.nRef=='VOD'}">selected</c:if>>VOD</option>
 								<option value="기타"
-									<c:if test="${magzine.nType=='기타'}">selected</c:if>>기타</option>
+									<c:if test="${magazine.nRef=='기타'}">selected</c:if>>기타</option>
 						</select>
 						</span>
 						<h4>

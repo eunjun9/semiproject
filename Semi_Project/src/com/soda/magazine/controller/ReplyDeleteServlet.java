@@ -43,7 +43,7 @@ public class ReplyDeleteServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		int nNum = Integer.parseInt(request.getParameter("nNum"));
-		int rNum = Integer.parseInt(request.getParameter("reNum"));
+		int reNum = Integer.parseInt(request.getParameter("reNum"));
 
 	
 		// Magazine, MagazineFile 테이블의 bid 일치하는 행 status N -> Y으로 변경
@@ -51,13 +51,15 @@ public class ReplyDeleteServlet extends HttpServlet {
 		
 		Reply reply = new Reply();
 		reply.setnNum(nNum);
-		reply.setrNum(rNum);
+		reply.setrNum(reNum);
 		
-		int result = new MagazineService().deleteReply(rNum);
+		int result = new MagazineService().deleteReply(reNum);
 		
+		
+		System.out.println("댓"+ result);
 		
 		if(result>0){
-			
+//			 response.sendRedirect(request.getHeader("referer"));
 			response.sendRedirect(request.getContextPath() + "/magazine/detail?nNum="+nNum);
 		}else {
 			request.getRequestDispatcher("/WEB-INF/views/common/errorpage.jsp").forward(request, response);
