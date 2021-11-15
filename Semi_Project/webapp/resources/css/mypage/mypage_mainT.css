@@ -59,12 +59,15 @@ img{
 .profile{
     margin-left: 35%;
     margin-top: 70px;
-    width : 70%;
+  	width: 115px;
+    height: 115px;
 }
 
 #profileimg {
 	margin-left: 5px;
 	border-radius: 100%;
+	min-width: 100%;
+    min-height: 100%;
 }
 
 #name{

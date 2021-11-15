@@ -318,7 +318,7 @@ public class MypageDao {
 				lesson.setcPrice(rset.getInt("c_price"));
 				lesson.setcTime1(rset.getString("c_time1"));
 				lesson.setcTime2(rset.getString("c_time2"));
-				lesson.setcCategory(rset.getString("c_category"));
+				lesson.setcCategory(rset.getString("c_type"));
 				lesson.setvDate(rset.getString("v_date"));
 				lesson.setSelectDate(rset.getDate("select_date"));
 				lesson.setpNum(rset.getInt("pay_num"));
