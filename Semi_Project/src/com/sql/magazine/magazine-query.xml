@@ -201,7 +201,6 @@
      JOIN TBL_FILE USING(NOTICE_NUM)
     WHERE NOTICE_STATUS = 'Y'
     AND FILE_LEVEL = 1
-    AND USER_ID = 'admin@gmail.com'
     AND NOTICE_SELF_NUM = 'ADMIN'
     ORDER BY NOTICE_NUM DESC
     </entry>
