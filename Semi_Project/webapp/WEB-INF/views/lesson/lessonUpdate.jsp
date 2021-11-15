@@ -97,12 +97,21 @@
                 <hr>
                 
                 <h3>상세페이지를 작성해주세요</h3>
-                
+                <div id="detatil_wrapper">
+                 <div id="form_head">
+                    <textarea name="nTitle" id="sub_title6" placeholder="클래스 제목을 입력하세요(최대20자)">${ lesson.nTitle }</textarea>
+                    <p id="lengthck"></p>
+                    <hr>
+                    <label>타입</label> 
+                    <input type="radio" name="class_type" value="원데이" id="oneday" <c:if test="${lesson.cCategory == '원데이' }"> checked</c:if> disabled><label for="oneday" class="btnlabel">원데이 클래스</label>
+                    <input type="radio" name="class_type" value="vod" id="vod" <c:if test="${lesson.cCategory == 'vod' }"> checked </c:if> disabled><label for="vod" class="btnlabel">VOD 클래스</label><br>
+                </div> 
                 <div id="img_wrapper">
                     <h4 id="sub_title5">썸네일/메인 이미지를 첨부해주세요</h4>
                     <div class="image_area"><img src="${ contextPath }${ lesson.photoList.get(0).route }${ lesson.photoList.get(0).changeName }"></div>
                     <button type="button" id="fileBtn">file</button><br>
                     <input type="file" name="cThumbnail" accept="image/gif,image/jpeg,image/png">
+                </div>
                 </div>
                 
                 <!-- 파일 버튼 스크립트 -->
@@ -134,14 +143,7 @@
 			    </script>
                 
 
-                <div id="form_head">
-                    <textarea name="nTitle" id="sub_title6" placeholder="클래스 제목을 입력하세요(최대20자)">${ lesson.nTitle }</textarea>
-                    <p id="lengthck"></p>
-                    <hr>
-                    <label>타입</label> 
-                    <input type="radio" name="class_type" value="원데이" id="oneday" <c:if test="${lesson.cCategory == '원데이' }"> checked</c:if> disabled><label for="oneday" class="btnlabel">원데이 클래스</label>
-                    <input type="radio" name="class_type" value="vod" id="vod" <c:if test="${lesson.cCategory == 'vod' }"> checked </c:if> disabled><label for="vod" class="btnlabel">VOD 클래스</label><br>
-                </div> 
+               
                 
                 <script>
                 	$("#sub_title6").keyup(function(e){
@@ -269,8 +271,9 @@
 						});
 					</script>
             
-            
+          		<div id = "submitwrapper">
                 <button type="submit" id="cf_submit">클래스 등록</button>
+                </div>
             </form>
         </div>
     </div>

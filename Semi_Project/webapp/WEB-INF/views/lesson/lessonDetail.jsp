@@ -140,7 +140,7 @@
     <h4>클래스 소개</h4>
     <h4 id="count">조회수 : <span>${ lesson.nCount }</span></h4>
     <div class="cDetail_b">
-         <p class="cBodyText2">${ lesson.nContent }</p>
+         <pre class="cBodyText2">${ lesson.nContent }</pre>
 			<div class="photoList">
 					<c:if test="${ lesson.photoList.size() > 1 }">
 						<img  src="${ contextPath }${ lesson.photoList.get(1).route }${ lesson.photoList.get(1).changeName }">
