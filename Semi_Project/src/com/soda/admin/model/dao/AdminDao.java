@@ -233,7 +233,7 @@ private Properties adminQuery = new Properties();
 				refund2.setPrice(rset.getInt("c_price"));
 				refund2.setrAccount(rset.getString("refund_account"));
 				refund2.setBank(rset.getString("bank"));
-				refund2.setrAccount(rset.getString("account_holder"));
+				refund2.setaHolder(rset.getString("account_holder"));
 				
 				refundList.add(refund2);
 			}
