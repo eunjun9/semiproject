@@ -47,7 +47,6 @@
 
 	<%@ include file="/WEB-INF/views/common/header.jsp"%>
 	<div class="super">
-	<div class-"super-child">
 	<div class="body-super">
 
 	<!--header-->
@@ -152,7 +151,6 @@
 		            <img width="16px" src="${ contextPath }/resources/images/eunjung/next.png"></a>
                 </div>
 
-</div>
 </div>
 </div>
 

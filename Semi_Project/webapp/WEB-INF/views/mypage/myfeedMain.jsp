@@ -45,9 +45,9 @@
                 <div class="photo-par">
                 <div class="photo-follow">
                     <div class="photo">
+                    
                         <div class="profile">
                         <c:choose>
-                         
                          <c:when test="${not empty profile.profileFile.get(0).changeName}">
                             <img src="${ contextPath }${ profile.profileFile.get(0).route}${profile.profileFile.get(0).changeName}">
                           </c:when>

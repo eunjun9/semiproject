@@ -48,8 +48,8 @@
                         <div class="profile">
                         <c:choose>
                          
-                         <c:when test="${not empty profile.profileFile.get(0).changeName}">
-                            <img src="${ contextPath }${ profile.profileFile.get(0).route}${profile.profileFile.get(0).changeName}">
+                         <c:when test="${not empty others.profileFile.get(0).changeName}">
+                            <img src="${ contextPath }${ others.profileFile.get(0).route}${others.profileFile.get(0).changeName}">
                           </c:when>
                           <c:otherwise>
                            <img src="${ contextPath }/resources/images/yewon/profile.png">

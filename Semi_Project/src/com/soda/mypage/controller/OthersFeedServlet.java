@@ -90,6 +90,8 @@ public class OthersFeedServlet extends HttpServlet {
 						String[] list = str.split("\\|");
 						request.setAttribute("list", list);
 						
+						System.out.println(others);
+						
 						request.setAttribute("others", others);
 						request.setAttribute("othersList", othersList);
 						request.getRequestDispatcher("/WEB-INF/views/mypage/othersFeedMain.jsp").forward(request, response);
