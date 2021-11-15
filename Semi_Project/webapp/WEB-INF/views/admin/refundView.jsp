@@ -70,9 +70,10 @@
                             <td class="tbl-content">${ refund.rAccount }</td>
                             <td class="tbl-content">${ refund.bank }</td>
                             <td class="tbl-content">${ refund.aHolder }</td>
-                            <td class="tbl-content"><input type="submit" id="button_${var.index }" onclick='changeBtnName()' value="미완료"></td>
+                            <%-- <td class="tbl-content"><input type="submit" id="button_${var.index }" onclick='changeBtnName()' value="미완료"></td> --%>
+                          	<td class="tbl-content"><input type="submit" id="button1" value="미완료"></td>
                           </tr>
-                          </c:forEach>
+                        </c:forEach>
                         </tbody>
                     </table>
                 </article>
@@ -83,14 +84,15 @@
     <!--footer-->
     <%@ include file="/WEB-INF/views/common/footer.jsp"%>
 	<script>
-	$("input[name^='button']").on("click", function(e) {
+		
+	/* $("input[name^='button']").on("click", function(e) {
 		function changeBtnName()  {
 	        const btnElement 
 	          = document.getElementById('button');
 	        btnElement.value = "완료";
 	      }
 	    function($(this));
-	  });
+	  }); */
    
    </script>
 
