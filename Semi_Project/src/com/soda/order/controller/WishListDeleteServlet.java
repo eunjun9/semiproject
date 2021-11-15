@@ -50,7 +50,6 @@ public class WishListDeleteServlet extends HttpServlet {
 		int result = 0;
 		for(int i = 0; i < deleteList.length; i++) {
 			deleteList[i] = Integer.parseInt(deleteArr[i]);
-			//System.out.println(deleteList[i]);
 			result = new WishListService().deleteWishlist(deleteList[i], userId);
 		}
 
