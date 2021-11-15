@@ -6,11 +6,20 @@
 
 	<entry key="getListCount">
 		SELECT
-		COUNT(*)
-		FROM NOTICE
+			  COUNT(*)
+		FROM  NOTICE
 		WHERE NOTICE_TYPE = '매거진'
-		AND
-		NOTICE_STATUS = 'Y'
+		AND NOTICE_STATUS = 'Y'
+		AND USER_GRADE = '회원'
+	</entry>
+	
+	<entry key="getListCountAdmin">
+		SELECT
+			  COUNT(*)
+		FROM  NOTICE
+		WHERE NOTICE_TYPE = '매거진'
+		AND NOTICE_STATUS = 'Y'
+		AND USER_GRADE = '관리자'
 	</entry>
 
 <!-- 페이징 유저 -->

@@ -33,10 +33,8 @@ public class MagazineUserServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		
 		/* 페이징 처리 */
 		// 페이지 초기값 (첫 페이지)
 		int page = 1;
@@ -46,20 +44,15 @@ public class MagazineUserServlet extends HttpServlet {
 			page = Integer.parseInt(request.getParameter("page"));
 		}
 		
-		
-		
 		// 페이징과 관련된 데이터, 조회 된 게시판 List를 담아서 map에 리턴
-//		Map<String, Object> map = new SocialingService().selectList(page);
-		Map<String, Object> map = new MagazineService().selectList(page );
+		// Map<String, Object> map = new SocialingService().selectList(page);
+		Map<String, Object> map = new MagazineService().selectList(page);
 		
 		
 		request.setAttribute("pi", map.get("pi"));
 		request.setAttribute("magazineList", map.get("magazineList"));
 		
 //List<Magazine> userList = new MagazineService().selectUserList();
-	
-//	System.out.println(boardList);
-	
 //	request.setAttribute("userList", userList);
 	request.getRequestDispatcher("/WEB-INF/views/magazine/magazineUser.jsp").forward(request, response);
 //	System.out.println(magazineList);

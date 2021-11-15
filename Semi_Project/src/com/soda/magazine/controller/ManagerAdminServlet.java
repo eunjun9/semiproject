@@ -32,8 +32,6 @@ public class ManagerAdminServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
 
 		/* 페이징 처리 */
 		// 페이지 초기값 (첫 페이지)
@@ -44,20 +42,13 @@ public class ManagerAdminServlet extends HttpServlet {
 			page = Integer.parseInt(request.getParameter("page"));
 		}
 		
-		
-		
 		// 페이징과 관련된 데이터, 조회 된 게시판 List를 담아서 map에 리턴
-//		Map<String, Object> map = new SocialingService().selectList(page);
-		Map<String, Object> map = new MagazineService().selectAdminList(page );
+		// Map<String, Object> map = new SocialingService().selectList(page);
+		Map<String, Object> map = new MagazineService().selectAdminList(page);
 		
 		
 		request.setAttribute("pi", map.get("pi"));
 		request.setAttribute("magazineAdminList", map.get("magazineAdminList"));
-		
-		
-		
-		
-		
 		
 		/*
 		 * List<Magazine> magazineAdminList = new MagazineService().selectAdminList();

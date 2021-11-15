@@ -590,10 +590,33 @@ public class MagazineDao {
 			String sql = magazineQuery.getProperty("getListCount");
 			int listCount = 0;
 			
-
 			try {
 				pstmt = conn.prepareStatement(sql);
 				
+				rset = pstmt.executeQuery();
+
+				if(rset.next()) {
+					listCount = rset.getInt(1);
+				}
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				close(rset);
+				close(pstmt);
+			}
+			return listCount;
+		}
+		
+		// 관리자 게시글 리스트 카운트
+		public int getListCountAdmin(Connection conn) {
+			PreparedStatement pstmt = null;
+			ResultSet rset = null;
+			String sql = magazineQuery.getProperty("getListCountAdmin");
+			int listCount = 0;
+			
+			try {
+				pstmt = conn.prepareStatement(sql);
 				
 				rset = pstmt.executeQuery();
 
@@ -612,7 +635,7 @@ public class MagazineDao {
 
 
 
-		// 게시물 리스트 조회
+		// 게시물 리스트 조회-페이징o
 				public List<Magazine> selectList(Connection conn, PageInfo pi) {
 					PreparedStatement pstmt = null;
 					ResultSet rset = null;
