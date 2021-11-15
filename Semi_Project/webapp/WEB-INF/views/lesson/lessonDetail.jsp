@@ -163,7 +163,7 @@
     <p>환불 정책에 따라 클래스 수강일로부터 7일 전 까지 전액 환불이 가능합니다.</p><hr>
     
     <!-- 문의사항 나중에 처리 -->
-   <h4>문의 사항</h4>
+   <!-- <h4>문의 사항</h4>
     <div class="cQnA">
         <form>
             <input type="text" name="cQuestion" placeholder=" 강사님께 문의하실 내용을 입력해주세요." size="110">
@@ -190,7 +190,7 @@
                 <p class="cAnswer2" >아니요 준비물은 없습니다.</p>
             </div>
         </form> 
-    </div>
+    </div> -->
 
             <div class="btnArea">
               <button onclick="location.href='${ contextPath }/lesson/main'">목록보기</button>
