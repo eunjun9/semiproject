@@ -78,7 +78,6 @@
                         <p class="class_priceP"><fmt:formatNumber value="${ lesson.cPrice }" type="currency" currencySymbol=""/> 원</p>
                         <button type="button" class="refund_Btn">취소</button>
                     </div><hr>
-                      ${payment.userId }
                     </form>
                 	</c:forEach>
             </div>
