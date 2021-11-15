@@ -60,17 +60,19 @@ public class ReplyInsertServlet extends HttpServlet {
 		reply.setrWriter(rwriter);
 
 		// 댓글 insert 후 갱신된 댓글 리스트 select하여 리턴
-//		List<Reply> replyList = new MagazineService().insertReply(reply);
 		
 		int result = new MagazineService().insertReply(reply);
 		
 //		System.out.println(result);
+//		List<Reply> replyList = new MagazineService().selectReplyList(reply);
 
 		
 //		 response.sendRedirect(request.getHeader("referer"));
 
-		 response.sendRedirect(request.getContextPath() + "/magazine/detail?nNum="+nnum);
+		if(result>0) {
 		
+		 response.sendRedirect(request.getContextPath() + "/magazine/detail?nNum="+nnum);
+		}
 		
 		
 //		System.out.println(replyList);

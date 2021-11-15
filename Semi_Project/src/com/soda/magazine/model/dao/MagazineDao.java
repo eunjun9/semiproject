@@ -398,7 +398,7 @@ public class MagazineDao {
 		      try {
 		         pstmt = conn.prepareStatement(sql);
 		         
-		         pstmt.setString(1, magazine.getnType());
+		         pstmt.setString(1, magazine.getnRef());
 		         pstmt.setString(2, magazine.getnTitle());
 		         pstmt.setString(3, magazine.getnContent());
 		         pstmt.setInt(4, magazine.getnNum());
@@ -614,14 +614,14 @@ public class MagazineDao {
 
 		
 
-		public int deleteReply(Connection conn, int rNum) {
+		public int deleteReply(Connection conn, int reNum) {
 			PreparedStatement pstmt = null;
 		      int result = 0;
 		      String sql = magazineQuery.getProperty("deleteReply");
 		      
 		      try {
 		         pstmt = conn.prepareStatement(sql);
-		         pstmt.setInt(1, rNum);
+		         pstmt.setInt(1, reNum);
 		         
 		         result = pstmt.executeUpdate();   
 		      } catch (SQLException e) {
@@ -662,12 +662,43 @@ public class MagazineDao {
 
 
 
-		
-		
-		
-		
-		
-		
+
+//		public Magazine selectReply(Connection conn, int nNum) {
+//		
+//			PreparedStatement pstmt = null;
+//		  ResultSet rset = null;
+//	      String sql = magazineQuery.getProperty("selectReply");
+//	      Magazine reply = new Reply();
+//	      
+//	      try {
+//	         pstmt = conn.prepareStatement(sql);
+//	         pstmt.setInt(1, nNum);
+//	         rset = pstmt.executeQuery();
+//	         
+//	         
+//	         if(rset.next()) {
+//	        	 reply.setrNum(rset.getInt("reply_num"));
+//					reply.setrContent(rset.getString("reply_content"));
+//					reply.setrDate(rset.getTimestamp("reply_date"));
+//					reply.setnNum(rset.getInt("notice_num"));
+//					reply.setrWriter(rset.getString("rwriter"));
+//					reply.setrStatus(rset.getString("reply_status"));
+//					reply.setrModifyDate(rset.getTimestamp("reply_modifydate"));
+//					
+//					
+//				}
+//				
+//				
+//			} catch (SQLException e) {
+//				e.printStackTrace();
+//			} finally {
+//				close(rset);
+//				close(pstmt);
+//			}
+//			
+//			return reply;
+//		}
+//		
 		
 		}
 

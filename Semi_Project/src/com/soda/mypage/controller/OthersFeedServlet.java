@@ -53,7 +53,6 @@ public class OthersFeedServlet extends HttpServlet {
 				List<Magazine> othersList = new MagazineService().selectOthersList(userId);
 				
 				
-				
 				/*
 				 * String str = others.getInterest();
 				 * 
@@ -82,7 +81,7 @@ public class OthersFeedServlet extends HttpServlet {
 					  
 					  PrintWriter out = response.getWriter();
 					   
-					  out.println("<script>alert('이 사용자는 현자 마이 피드 기능을 이용하지 않습니다'); location.href='javascript:history.back()'</script>");
+					  out.println("<script>alert('이 사용자는 현재 마이 피드 기능을 이용하지 않습니다'); location.href='javascript:history.back()'</script>");
 					  out.flush();
 					  
 						

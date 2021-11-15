@@ -23,6 +23,9 @@ public class Reply {
 	private String rStatus;
 	private int rSelfNum;
 	
+	
+	
+	
 	public Reply(){}
 
 	public Reply(int rNum, String rContent, String rWriter, int nNum, String userId, Date rDate, Date rModifyDate,
