@@ -119,7 +119,7 @@
 		  WHERE REPORT_STATUS = 'Y'
 		    AND NOTICE_STATUS = 'Y'
 		   	AND N.NOTICE_TYPE = '매거진'
-   	   ORDER BY REPORT_DATE ASC;
+   	   ORDER BY REPORT_DATE ASC
 	</entry>
 	
 	<entry key="selectsocialingList">

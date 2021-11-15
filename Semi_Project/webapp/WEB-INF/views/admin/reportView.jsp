@@ -7,7 +7,7 @@
 <title>관리자페이지_신고내역</title>
 
 	<!-- 외부 스타일 시트 -->
-    <link rel="stylesheet" href="${contextPath }/resources/css/admin/admin-report.css">
+    <link rel="stylesheet" href="${contextPath }/resources/css/admin/admin-report.css?6">
     <!-- 글꼴 (Noto Sans) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -32,21 +32,19 @@
 
                 <article class="articlewrapper">
                     <h1 id="main-title">신고내역</h1>
-                    <div class="combo-area">
+                    <div class="combo-area2">
                       <!-- 정렬 선택 전 전체보기가 디폴트, 오래된 순으로 정렬-->
                       <form method="get" action="${ contextPath }/admin/report">
                         <select name="filter">
-                            <option value="all">전체보기</option>
-                            <option value="magazine">매거진</option>
-                            <option value="socialing">소셜링</option>
-                           <%--  <option value="magazine" <c:if test="${ reportList.category == '매거진' }">selected</c:if>>매거진</option>
-                            <option value="socialing" <c:if test="${ reportList.category == '소셜링' }">selected</c:if>>소셜링</option> --%>
+                            <option value="all" <c:if test="${ param.filter == 'all'}"> selected</c:if>>전체보기</option>
+                            <option value="magazine"  <c:if test="${ param.filter == 'magazine'}"> selected</c:if>>매거진</option>
+                            <option value="socialing" <c:if test="${ param.filter == 'socialing'}"> selected</c:if>>소셜링</option>
                         </select>
                         <input type="submit" id="submitBtn" style="display:none"></input>
                       </form>
                     </div>
                     
-                    <script>
+                 <script>
                     	$(function(){
                     		$("select[name=filter]").change(sortMethod);
                     	
@@ -55,11 +53,13 @@
 	                    			$("#submitBtn").click();
 	                    		} else if ($(this).val() == 'socialing'){
 	                    			$("#submitBtn").click();
+	                    		} else {
+	                    			$("#submitBtn").click();
 	                    		}
                     		}
                     	});
                     </script>
-                    <table class="tbl">
+                    <table class="tbl2">
                         <thead>
                           <tr>
                             <th class="tbl-title"> </th>

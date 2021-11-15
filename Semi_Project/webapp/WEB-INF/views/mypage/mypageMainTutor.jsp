@@ -8,7 +8,7 @@
 <title>마이페이지</title>
 
 	<!--외부 스타일 시트-->
-    <link rel="stylesheet" href="${ contextPath }/resources/css/mypage/mypage_mainT.css?3">
+    <link rel="stylesheet" href="${ contextPath }/resources/css/mypage/mypage_mainT.css?4">
     <!-- font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -43,9 +43,12 @@
                 <p id="name">${ loginUser.userName }</p>
                 <p id="level">${ loginUser.userGrade }</p>
                 <p id="mail">${ loginUser.userId }</p>
-                <a id="myfeed" href="${ contextPath }/myfeed">내 피드 <img width="5%" src="${ contextPath }/resources/images/yewon/next.png"></a>
+                <a id="myfeed" href="${ contextPath }/myfeed">내 피드 <img width="10%" src="${ contextPath }/resources/images/yewon/next.png"></a>
             </div>
 
+        </div>
+        
+        <div id="movewrapper">
             <ul class="move">
                 <li><a class="mv" id="modify" href="${ contextPath }/mypage/userinfomodify">정보수정 <img class="pmv" width="5%" src="${ contextPath }/resources/images/yewon/next.png"> </a></li>
                 <li><a class="mv" id="logout" href="${ contextPath }/logout">로그아웃 <img class="pmv" width="5%" src="${ contextPath }/resources/images/yewon/next.png"> </a> </li>

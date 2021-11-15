@@ -36,7 +36,7 @@ a {
 }
 
 .articlewrapper {
-    width : 77%;
+    width : 75%;
     order : 2;
 }
 
@@ -51,10 +51,11 @@ aside {
     font-size: 2.2rem;
 }
 
-.combo-area {
+.combo-area2 {
     display: flex;
     justify-content: flex-end;
     margin-bottom: 30px;
+    width: 130%;
 }
 
 select[name=filter] {
@@ -71,10 +72,15 @@ select[name=filter] {
 .tbl {
     border-collapse:collapse;
     border-spacing:0;
-    width: 100%;
 }
 
-.tbl td {
+.tbl2{
+	 border-collapse:collapse;
+    border-spacing:0;
+	width: 130%;
+}
+
+.tbl2 td {
     border-bottom-width:1px;
     border-color:rgb(150,150,150);
     border-style:solid;
@@ -87,7 +93,7 @@ select[name=filter] {
     word-break:normal;
 }
 
-.tbl th {
+.tbl2 th {
     border-bottom-width:1px;
     border-color:rgb(150,150,150);
     border-style:solid;
@@ -101,7 +107,7 @@ select[name=filter] {
     word-break:normal;
 }
 
-.tbl .tbl-title {
+.tbl2 .tbl-title {
     background-color:#dadada;
     border-color:rgb(150,150,150);
     font-weight: bold;

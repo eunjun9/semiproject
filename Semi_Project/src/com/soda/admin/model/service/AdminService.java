@@ -67,7 +67,7 @@ public class AdminService {
 		
 		return salesList;}
 
-	// 신고 내역 조회
+	// 신고 내역 조회 - 정렬 o
 	public List<Report> selectReportList(Report report) {
 		Connection conn = getConnection();
 		
@@ -79,7 +79,6 @@ public class AdminService {
 
 	}
 
-
 	public List<Refund> selectRefundList(Refund refund) {
 		Connection conn = getConnection();
 		
@@ -89,5 +88,5 @@ public class AdminService {
 		
 		return refundList;
 	}
-	
+
 }

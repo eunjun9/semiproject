@@ -119,7 +119,7 @@ private Properties adminQuery = new Properties();
 		
 		}
 	
-	// 신고 내역 조회
+	// 신고 내역 조회 - 정렬 o
 	public List<Report> selectreportList(Connection conn, Report report2) {
 		PreparedStatement pstmt = null;
 		String sql= adminQuery.getProperty("selectreportList");
@@ -131,6 +131,8 @@ private Properties adminQuery = new Properties();
 				sql = adminQuery.getProperty("selectmagazineList");
 			} else if(report2.getSort().equals("socialing")) {
 				sql = adminQuery.getProperty("selectsocialingList");
+			}else {
+				sql= adminQuery.getProperty("selectreportList");
 			}
 		}
 			
@@ -158,9 +160,9 @@ private Properties adminQuery = new Properties();
 			close(pstmt);
 		}
 		return reportList;
-		
 	}
 
+	
 	// 매출조회
 	public List<SalesList> selectSalesList(Connection conn, String filter) {
 		PreparedStatement pstmt = null;
@@ -247,5 +249,7 @@ private Properties adminQuery = new Properties();
 		
 		return refundList;
 	}
+
+	
 
 }
