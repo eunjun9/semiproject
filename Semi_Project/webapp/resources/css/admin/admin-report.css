@@ -35,8 +35,8 @@ a {
     margin-bottom: 50px;
 }
 
-article {
-    width : 70%;
+.articlewrapper {
+    width : 77%;
     order : 2;
 }
 
@@ -109,7 +109,7 @@ select[name=filter] {
     vertical-align:top;
 }
 
-.tbl .tbl-content {
+.tbl2 .tbl-content {
     border-color:inherit;
     text-align:center;
     vertical-align:top;

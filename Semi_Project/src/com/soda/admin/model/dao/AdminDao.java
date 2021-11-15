@@ -133,8 +133,7 @@ private Properties adminQuery = new Properties();
 				sql = adminQuery.getProperty("selectsocialingList");
 			}
 		}
-		
-		
+			
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
@@ -145,7 +144,8 @@ private Properties adminQuery = new Properties();
 				report.setnNum(rset.getInt("notice_num"));
 				report.setCategory(rset.getString("notice_type"));
 				report.setNoticeTitle(rset.getString("notice_title"));
-				report.setReportedId(rset.getString("user_id"));
+				report.setReportedId(rset.getString(4));
+				report.setUserId(rset.getString(5));
 				report.setrDate(rset.getDate("report_date"));
 				report.setrReason(rset.getString("report_reason"));
 				
@@ -158,6 +158,7 @@ private Properties adminQuery = new Properties();
 			close(pstmt);
 		}
 		return reportList;
+		
 	}
 
 	// 매출조회

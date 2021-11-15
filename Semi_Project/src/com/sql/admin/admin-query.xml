@@ -95,6 +95,7 @@
 		      , N.NOTICE_TYPE
 		      , N.NOTICE_TITLE
 		      , N.USER_ID
+		      , R.USER_ID
 		      , REPORT_DATE
 		      , REPORT_REASON
 		   FROM REPORT R
@@ -109,7 +110,8 @@
 		        R.NOTICE_NUM
 		      , N.NOTICE_TYPE
 		      , N.NOTICE_TITLE
-		      , N.USER_ID
+		      , N.USER_ID 
+              , R.USER_ID
 		      , REPORT_DATE
 		      , REPORT_REASON
 		   FROM REPORT R
@@ -117,7 +119,7 @@
 		  WHERE REPORT_STATUS = 'Y'
 		    AND NOTICE_STATUS = 'Y'
 		   	AND N.NOTICE_TYPE = '매거진'
-   	   ORDER BY REPORT_DATE ASC
+   	   ORDER BY REPORT_DATE ASC;
 	</entry>
 	
 	<entry key="selectsocialingList">
@@ -126,6 +128,7 @@
 		      , N.NOTICE_TYPE
 		      , N.NOTICE_TITLE
 		      , N.USER_ID
+		      , R.USER_ID
 		      , REPORT_DATE
 		      , REPORT_REASON
 		   FROM REPORT R

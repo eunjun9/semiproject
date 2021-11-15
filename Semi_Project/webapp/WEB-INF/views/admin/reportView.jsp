@@ -7,7 +7,7 @@
 <title>관리자페이지_신고내역</title>
 
 	<!-- 외부 스타일 시트 -->
-    <link rel="stylesheet" href="/resources/css/admin/admin-report.css?6">
+    <link rel="stylesheet" href="${contextPath }/resources/css/admin/admin-report.css">
     <!-- 글꼴 (Noto Sans) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,15 +30,17 @@
                    <%@ include file="/WEB-INF/views/admin/sideMenu.jsp"%>
                 </aside>
 
-                <article>
+                <article class="articlewrapper">
                     <h1 id="main-title">신고내역</h1>
                     <div class="combo-area">
                       <!-- 정렬 선택 전 전체보기가 디폴트, 오래된 순으로 정렬-->
                       <form method="get" action="${ contextPath }/admin/report">
                         <select name="filter">
-                            <option value="all" selected>전체보기</option>
+                            <option value="all">전체보기</option>
                             <option value="magazine">매거진</option>
                             <option value="socialing">소셜링</option>
+                           <%--  <option value="magazine" <c:if test="${ reportList.category == '매거진' }">selected</c:if>>매거진</option>
+                            <option value="socialing" <c:if test="${ reportList.category == '소셜링' }">selected</c:if>>소셜링</option> --%>
                         </select>
                         <input type="submit" id="submitBtn" style="display:none"></input>
                       </form>
@@ -61,10 +63,11 @@
                         <thead>
                           <tr>
                             <th class="tbl-title"> </th>
-                            <th class="tbl-title">게시글 번호</th>
+                            <th class="tbl-title">글 번호</th>
                             <th class="tbl-title">카테고리</th>
                             <th class="tbl-title">제목</th>
-                            <th class="tbl-title">게시자</th>
+                            <th class="tbl-title">작성자</th>
+                            <th class="tbl-title">신고자</th>
                             <th class="tbl-title">신고일</th>
                             <th class="tbl-title">신고사유</th>
                           </tr>
@@ -84,6 +87,7 @@
                             	</c:when>
                             </c:choose>
                             <td class="tbl-content">${ report.reportedId }</td>
+                            <td class="tbl-content">${ report.userId }</td>
                             <td class="tbl-content">${ report.rDate }</td>
                             <td class="tbl-content">${ report.rReason }</td>
                           </tr>
