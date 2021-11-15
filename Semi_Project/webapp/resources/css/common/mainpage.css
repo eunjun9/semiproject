@@ -8,7 +8,7 @@ html{
 body {
     color : #432;
     line-height: 2.0; 
-    height: 2100px;
+    
     
 }
 
@@ -138,11 +138,13 @@ img{
     font-weight: bold;
     cursor: pointer;
     color: black;
+    margin-left: 50px;
 }
 
 #s-thumsub {
     margin-top: -45px;
     color: lightslategray;
+    margin-left: 40px;
 }
 
 
@@ -192,37 +194,58 @@ img{
 }
 
 /*---------------body----------------*/
-.socialing-content{
-    margin-top: 30px;
+.body-inner {
+     width: 930px;
+     height:500px;
+     margin : 0 auto;
+     display: flex;
+ }
+
+#socialing-title{
+    margin-top: 10px;
+    
 }
 
 .content-title{
-    margin-left: 300px;
+    margin-left: 100px;
+    
+    
 }
 
-.view-all{
-    margin-left: 1070px;
+#view-all{
+    margin-left: 850px;
     color: rgb(154, 154, 154);
     line-height: 7px;
 
 }
 
+.view-all{
+    margin-left: 850px;
+    color: rgb(154, 154, 154);
+    line-height: 7px;
+
+}
+
+.slide2{
+	margin-left: 47px;
+}
+
 .swiper {
-    width: 800px;
+    width: 830px;
     height: 330px;
-    margin-left: 90px;
+    margin-left: 130px;
 }
 
 .button3{
     position: relative;
-    top:-190px;
-    left: 300px;
+    top:-230px;
+
     
 }
 .button4{
     position: relative;
-    top:-230px;
-    right: -1170px;
+    top:-275px;
+    right: -890px;
     
 }
 
@@ -238,14 +261,13 @@ img{
 
 .button5{
     position: relative;
-    top:-190px;
-    left: 300px;
+    top:-230px;
     
 }
 .button6{
     position: relative;
-    top:-230px;
-    right: -1170px;
+    top:-275px;
+    right: -890px;
 
 }
 
@@ -260,6 +282,19 @@ img{
 }
 
 /*---------------footer----------------*/
+
+.board {
+    width: 100%;
+    display: flex;
+ }
+ 
+ .board-inner {
+     max-width: 1000px;
+     margin : 0 auto;
+ }
+
+/*---------------footer----------------*/
+
 .footer{
     width: 100%;
     height: 150px;

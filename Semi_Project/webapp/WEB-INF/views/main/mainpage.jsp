@@ -11,7 +11,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="resources/css/common/mainpage.css">
+    <link rel="stylesheet" href="${ contextPath }/resources/css/common/mainpage.css">
     <title>SODA 메인페이지</title>
 
 	<%-- session에 담긴 message 있을 경우 alert 하는 script --%>
@@ -95,14 +95,14 @@
                         <div class="swiper-slide">
                             <div id="thumbox">
                                 <ul>
-                                    <li><img src="resources/images/main/climing.png"><br></li>
+                                    <li><img src="resources/images/main/climing.png" style="width:176px; height:200px;"><br></li>
                                 </ul>
                                 
                             </div>
                             <a href="#">
-                                <div id="titlebox">
-                                    <p id="s-thumtitle">클라이밍</p><br>
-                                    <h5 id="s-thumsub" style="margin-left: 30px;">나는 나를 이긴다</h5>
+                                <div class="titlebox">
+                                    <p id="s-thumtitle" style="margin-left: 40px;">클라이밍</p><br>
+                                    <h5 id="s-thumsub" style="margin-left: 60px;">나는 나를 이긴다</h5>
                                     
                                 </div>
                             </a>
@@ -110,14 +110,14 @@
                         <div class="swiper-slide">
                             <div id="thumbox">
                                 <ul>
-                                    <li><img src="resources/images/main/surfing.png"><br></li>
+                                    <li><img src="resources/images/main/surfing.png" style="width:176px; height:200px;"><br></li>
                                 </ul>
   
                             </div>
                             <a href="#">
                                 <div id="titlebox">
-                                    <p id="s-thumtitle">서핑</p><br>
-                                    <h5 id="s-thumsub" style="margin-left: 30px;">두려움을 넘어서</h5>
+                                    <p id="s-thumtitle" style="margin-left: 40px;">서핑</p><br>
+                                    <h5 id="s-thumsub" style="margin-left: 60px;">두려움을 넘어서</h5>
                                     
                                 </div>
                             </a>
@@ -125,14 +125,14 @@
                         <div class="swiper-slide">
                             <div id="thumbox">
                                 <ul>
-                                    <li><img src="resources/images/main/poledancing.png"><br></li>
+                                    <li><img src="resources/images/main/poledancing.png" style="width:176px; height:200px;"><br></li>
                                 </ul>
 
                             </div>
                             <a href="#">
                                 <div id="titlebox">
-                                    <p id="s-thumtitle">폴댄스</p><br>
-                                    <h5 id="s-thumsub" style="margin-left: 30px;">내 한계에 도전하다</h5>
+                                    <p id="s-thumtitle" style="margin-left: 40px;">폴댄스</p><br>
+                                    <h5 id="s-thumsub" style="margin-left: 60px;">내 한계에 도전하다</h5>
                                     
                                 </div>
                             </a>
@@ -140,14 +140,14 @@
                         <div class="swiper-slide">
                             <div id="thumbox">
                                 <ul>
-                                    <li><img src="resources/images/main/climing.png"><br></li>
+                                    <li><img src="resources/images/main/barista.jfif" style="width:176px; height:200px;"><br></li>
                                 </ul>
  
                             </div>
                             <a href="#">
                                 <div id="titlebox">
-                                    <p id="s-thumtitle">클라이밍</p><br>
-                                    <h5 id="s-thumsub" style="margin-left: 30px;">나는 나를 이긴다</h5>
+                                    <p id="s-thumtitle" style="margin-left: 40px;">바리스타</p><br>
+                                    <h5 id="s-thumsub" style="margin-left: 60px;">새로운 세상에 도전</h5>
                                     
                                 </div>
                             </a>
@@ -155,14 +155,14 @@
                         <div class="swiper-slide">
                             <div id="thumbox">
                                 <ul>
-                                    <li><img src="resources/images/main/surfing.png"><br></li>
+                                    <li><img src="resources/images/main/cooking.jfif" style="width:176px; height:200px;"><br></li>
                                 </ul>
      
                             </div>
                             <a href="#">
                                 <div id="titlebox">
-                                    <p id="s-thumtitle">서핑</p><br>
-                                    <h5 id="s-thumsub" style="margin-left: 30px;">두려움을 넘어서</h5>
+                                    <p id="s-thumtitle" style="margin-left: 40px;">쿠킹 클래스</p><br>
+                                    <h5 id="s-thumsub" style="margin-left: 60px;">풍부한 요리 경험</h5>
                                     
                                 </div>
                             </a>
@@ -170,14 +170,14 @@
                         <div class="swiper-slide">
                             <div id="thumbox">
                                 <ul>
-                                    <li><img src="resources/images/main/poledancing.png"><br></li>
+                                    <li><img src="resources/images/main/florist.jfif" style="width:176px; height:200px;"><br></li>
                                 </ul>
   
                             </div>
                             <a href="#">
                                 <div id="titlebox">
-                                    <p id="s-thumtitle">폴댄스</p><br>
-                                    <h5 id="s-thumsub" style="margin-left: 30px;">내 한계에 도전하다</h5>
+                                    <p id="s-thumtitle" style="margin-left: 40px;">플로리스트 클래스</p><br>
+                                    <h5 id="s-thumsub" style="margin-left: 60px;">삶의 생기를 넣고</h5>
                                     
                                 </div>
                             </a>
@@ -185,53 +185,50 @@
                         </div> 
                         
                     </div> 
-                        <div class="button1">
-                            <!-- If we need navigation buttons -->
-                            <div class="but1"><img width="30px" src="resources/images/main/prev_b.png"></div>
-                        </div>
                         
-                        <div class="button2">
-                            <div class="but2"><img width="30px" src="resources/images/main/next_b.png"></div>
-                        </div>
                 </div>
                 </article>
 
             <!-- Swiper JS -->
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-        
-    <!-- Initialize Swiper -->
-    <script>
-        var swiper1 = new Swiper(".mySwiper1", {
-            slidesPerView: 3,
-            spaceBetween: 25,
-
-            loop: true,
-
-            autoplay:{
-                delay: 2000, 
-                disableOnInteraction: false,
-            },
-            
-            // Navigation arrows
-            navigation: {
-                nextEl: '.but1',
-                prevEl: '.but2',
-            },
-        });
-    </script>
+		    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+		        
+		    <!-- Initialize Swiper -->
+		    <script>
+		        var swiper1 = new Swiper(".mySwiper1", {
+		            slidesPerView: 3,
+		            spaceBetween: 25,
+		
+		            loop: true,
+		
+		            autoplay:{
+		                delay: 2000, 
+		                disableOnInteraction: false,
+		            },
+		            
+		            // Navigation arrows
+		            navigation: {
+		                nextEl: '.but1',
+		                prevEl: '.but2',
+		            },
+		        });
+		    </script>
 
         </div>
 
      </div>
+</div>
+<div class="body">
+    <div class="body-inner">
 
-     <div class="socialing-content">
-        <div>
-            <h3 class="content-title">취향이 통하는 친구와 원데이 소셜링</h3>
-            <h5><a class="view-all" href="${ contextPath }/socialing/main">전체보기</a></h5>
+        <div class="banner-slide1">
+          
+            <div>
+            <h3 id="socialing-title" style="margin-left: 20px;">취향이 통하는 친구와 원데이 소셜링</h3>
+            <h5><a class="view-all" href="${ contextPath }/socialing/main" style="margin-left:810px;">전체보기</a></h5>
         </div>
 
         <article>
-                <div class="slide">
+                <div class="slide2">
                     <div class="swiper mySwiper2" style="height: 350px;">
                         <div class="swiper-wrapper">
                         <!-- 반복문으로 현재날짜(date) 기준 모임날짜(sdate) 2일 이내로 남은 소셜링 글 목록 출력 -->
@@ -239,7 +236,8 @@
 	                        <div class="swiper-slide">
 	                            <div id="thumbox">
 	                                <img id="s-thumbnail2" onclick="detailView(${ s.nNum })" 
-	                                src="${ contextPath }${ s.photoList.get(0).route }${ s.photoList.get(0).changeName }"><br>
+	                                src="${ contextPath }${ s.photoList.get(0).route }${ s.photoList.get(0).changeName }"
+	                                style="width: 256px; height: 200px;"><br>
 	                            </div>
 	                            <a href="${ contextPath }/socialing/detail?nNum=${ s.nNum }">
 	                                <div id="titlebox">
@@ -276,42 +274,50 @@
             </article>
 
             <!-- Swiper JS -->
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-        
-    <!-- Initialize Swiper -->
-    <script>
-        var swiper2 = new Swiper(".mySwiper2", {
-            slidesPerView: 3,
-            spaceBetween: 30,
-
-            loop: true,
-            
-            // Navigation arrows
-            navigation: {
-                nextEl: '.but3',
-                prevEl: '.but4',
-            },
-        });
-    </script>
+		    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+		        
+		    <!-- Initialize Swiper -->
+		    <script>
+		        var swiper2 = new Swiper(".mySwiper2", {
+		            slidesPerView: 3,
+		            spaceBetween: 30,
+		
+		            loop: true,
+		            
+		            // Navigation arrows
+		            navigation: {
+		                nextEl: '.but3',
+		                prevEl: '.but4',
+		            },
+		        });
+		    </script>
     
     
 
      </div>
-     
-     <div class="onedayclass-content">
-        <div>
-            <h3 class="content-title">취향을 더 깊이있게 알아가는 원데이클래스</h3>
-            <h5><a class="view-all" href="${ contextPath }/lesson/main">전체보기</a></h5>
-        </div>
+
+     </div>
+</div>
+<div class="body">
+    <div class="body-inner">
+
+        <div class="banner-slide1">
+          
+            <div>
+	            <h3 id="onedayclass-title" style="margin-left: 20px;">취향을 더 깊이있게 알아가는 원데이클래스</h3>
+	            <h5><a class="view-all" href="${ contextPath }/socialing/main" style="margin-left:810px;">전체보기</a></h5>
+	        </div>
+
         <article>
-                <div class="slide">
-                    <div class="swiper mySwiper3" style="height: 350px;">
+                <div class="slide2">
+                    <div class="swiper mySwiper3" style="height: 330px;">
                         <div class="swiper-wrapper">
                         <c:forEach var="lesson" items="${ lessonList }">
 	                        <div class="swiper-slide">
 	                            <div id="thumbox">
 	                                <img id="s-thumbnail2" onclick="detailView2(${lesson.nNum})" 
-	                                src="${ contextPath }${ lesson.photoList.get(0).route}${ lesson.photoList.get(0).changeName }"><br>
+	                                src="${ contextPath }${ lesson.photoList.get(0).route}${ lesson.photoList.get(0).changeName }"
+	                                style="width: 256px; height: 200px;"><br>
 	                            </div>
 	                            <a href="${ contextPath }/socialing/detail?nNum=${lesson.nNum}">
 	                                <div id="titlebox">
@@ -346,28 +352,31 @@
                 
     
     
-     <!-- Swiper JS -->
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-        
-    <!-- Initialize Swiper -->
-    <script>
-        var swiper3 = new Swiper(".mySwiper3", {
-            slidesPerView: 3,
-            spaceBetween: 30,
+		     <!-- Swiper JS -->
+		    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+		        
+		    <!-- Initialize Swiper -->
+		    <script>
+		        var swiper3 = new Swiper(".mySwiper3", {
+		            slidesPerView: 3,
+		            spaceBetween: 30,
+		
+		            loop: true,
+		            
+		            // Navigation arrows
+		            navigation: {
+		                nextEl: '.but5',
+		                prevEl: '.but6',
+		            },
+		        });
+		    </script>
+    
+    
 
-            loop: true,
-            
-            // Navigation arrows
-            navigation: {
-                nextEl: '.but5',
-                prevEl: '.but6',
-            },
-        });
-    </script>
+     	</div>
 
+     </div>
 </div>
-
-
 
     
     <script>
