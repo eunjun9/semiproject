@@ -72,10 +72,14 @@ li{
 #mypic{
 	width :40%;
 	margin : 0 auto;
+	width: 115px;
+    height: 115px;
 }
 
 #mypic img{
 	border-radius : 100%;
+	min-width: 100%;
+    min-height: 100%;
 }
 
 #infoarea{
@@ -112,8 +116,7 @@ li{
     font-size: 1.0rem;
     font-weight: bold;
     color : rgb(77, 77, 77);
-	width : 60%;
-	margin : 0 33%;
+	margin-left : 40%;
     display: inline;
 }
 
