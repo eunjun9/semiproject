@@ -6,6 +6,10 @@ html {
 }
 
 /*타이틀 부분*/
+
+
+
+
 .title-big{
     margin-top: -59px;
 }
@@ -18,6 +22,26 @@ html {
     z-index: 2;
     color:rgb(7, 86, 105);
 
+}
+
+
+
+.super{
+	display:flex;
+	justify-content:center;
+}
+
+
+.body-super{
+    width: 1113px;
+    height: auto;
+}
+
+.board1{
+    width: 100%;
+    height: auto;
+    display:block;
+     margin-left:-135px;
 }
 
 
@@ -91,12 +115,6 @@ html {
 
 
 /* 게시판 */
-
-.body-super{
-	margin-left:184px;
-    width: 1113px;
-    height: auto;
-}
 
 .board1{
     width: 100%;

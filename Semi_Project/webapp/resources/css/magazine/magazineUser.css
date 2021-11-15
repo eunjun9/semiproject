@@ -70,7 +70,7 @@ html {
 .view1{
     text-decoration: underline;
     text-align:right;
-    margin-right:-47px;
+    margin-right:-65px;
     margin-bottom:-28px;
     margin-top:72px;
 
@@ -111,8 +111,13 @@ html {
 
 /* 게시판 */
 
+.super{
+	display:flex;
+	justify-content:center;
+}
+
+
 .body-super{
-	margin-left:184px;
     width: 1113px;
     height: auto;
 }
