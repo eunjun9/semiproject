@@ -93,9 +93,9 @@
             <a class="paging" href="${ contextPath }/mypage/main?page=1"><img width="16px" src="${ contextPath }/resources/images/yewon/previous.png">
             <img width="16px" src="${ contextPath }/resources/images/yewon/previous.png"></a>
              
-             <!--  (<) 이전 페이지  : 현재 페이지 - 1이니까 -->	
+             <!--  (<) 이전 페이지  : 현재 페이지 = 1 -->	
              <c:choose>
-             	<c:when test="${ pi.page > 1 }"> <!--  현재 페이지가 1보다 클 때는 이동하고  -->
+             	<c:when test="${ pi.page > 1 }"> <!-- 현재 페이지가 1보다 클 때는 이동하고  -->
              		<a class="paging" href="${ contextPath }/lesson/main?page=${ pi.page - 1}"><img width="18px" src="${ contextPath }/resources/images/yewon/previous.png"></a>
              	</c:when>
              	<c:otherwise> <!-- 1이면 현재 페이지에 머뭄 -->

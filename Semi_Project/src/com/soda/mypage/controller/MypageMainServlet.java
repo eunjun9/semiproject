@@ -50,7 +50,6 @@ public class MypageMainServlet extends HttpServlet {
 		System.out.println(userId);
 		
 		Map<String, Object> map = new MypageService().likeSocialingList(page, socialing);
-		//List<Socialing> socialingList = new MypageService().likeSocialingList(userId);
 		
 		/* 프로필 사진 */
 	    Profile profile = new MypageService().selectProfile(userId);
