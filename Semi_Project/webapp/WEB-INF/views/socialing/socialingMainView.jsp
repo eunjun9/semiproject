@@ -158,7 +158,7 @@
                                 <fmt:formatDate value="${ s.sdate }" type="date" pattern="M.dd(E)"/>
                                 <fmt:parseDate value="${ s.stime }" var="stime2" pattern="HH:mm" scope="page"/>
 								<fmt:formatDate value="${ stime2 }" type="time" pattern="a h:mm"/></h5>
-                                <a href="#"><!-- <img id="profile" src="${ contextPath }/resources/images/eunjung/profile.png"> --></a>
+                                <a href="#"></a>
                             </div>
                         </a>
                     </div>

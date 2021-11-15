@@ -55,7 +55,7 @@ public class SocialingMainServlet extends HttpServlet {
 		String local = request.getParameter("local");		// 지역
 //		String dateIn = request.getParameter("dateIn");		// 날짜
 		String onoff = request.getParameter("onoff");		// 온오프라인
-		System.out.println(onoff);
+		
 		/*
 		String startDate = "";
 	    String date2 = "";

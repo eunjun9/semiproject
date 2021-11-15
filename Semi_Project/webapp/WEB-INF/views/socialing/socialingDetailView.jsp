@@ -129,7 +129,6 @@
 						<a href="${ contextPath }/others/feed?userId=${ m.memberId }">
 					</c:otherwise>
 				</c:choose>
-                <!-- <a href="#"> -->
                 	<div class="s-profile">
 	                	<c:choose>
 		                    <c:when test="${ not empty m.profile.changeName }">

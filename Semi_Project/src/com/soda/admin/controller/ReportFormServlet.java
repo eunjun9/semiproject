@@ -46,10 +46,7 @@ public class ReportFormServlet extends HttpServlet {
 			reason = request.getParameter("rep-reason");	// 신고 사유 (라디오 버튼)
 		}
 		
-	int nNum = Integer.parseInt(request.getParameter("rNum"));
-		
-		
-		
+		int nNum = Integer.parseInt(request.getParameter("rNum"));	// 신고 글 번호
 		String userId = ((Member)request.getSession().getAttribute("loginUser")).getUserId(); // 신고한 회원 id
 
 		// 신고 테이블에 값 담기
@@ -58,9 +55,6 @@ public class ReportFormServlet extends HttpServlet {
 		report.setnNum(nNum);
 		report.setUserId(userId);
 		
-		
-		
-
 		int result = new AdminService().insertReport(report);
 		
 		if (result > 0) {
