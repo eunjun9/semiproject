@@ -304,9 +304,10 @@ public class MypageDao {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setString(1, payment.getUserId());
-			pstmt.setString(2, payment.getPayListDate1());
-			pstmt.setString(3, payment.getPayListDate2());
+			pstmt.setString(1, payment.getPayListDate1());
+			pstmt.setString(2, payment.getPayListDate2());
+			pstmt.setString(3, payment.getUserId());
+			pstmt.setString(4, payment.getUserId());
 			
 			rset = pstmt.executeQuery();
 			
