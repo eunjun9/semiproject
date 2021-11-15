@@ -11,10 +11,12 @@
 			  	C_MEM_ID
 			  , NOTICE_NUM
 			  , SELECT_DATE
+			  , C_TYPE
 			  )
 			  VALUES
 			  (
 			    ?
+			  , ?
 			  , ?
 			  , ?
 			  )

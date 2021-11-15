@@ -11,7 +11,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="${ contextPath }/resources/css/common/mainpage.css">
+    <link rel="stylesheet" href="${ contextPath }/resources/css/common/mainpage.css?1">
     <title>SODA 메인페이지</title>
 
 	<%-- session에 담긴 message 있을 경우 alert 하는 script --%>

@@ -51,6 +51,7 @@
 				<!-- 장바구니 추가한 클래스 정보 가져올 영역 -->
 				<div class="wish-class-info">
 					<p class="category">${ wishList.cCategory }</p>
+					<input type="hidden" id="category" name="category" value="${ wishList.cCategory }">
 					<p class="title">${ wishList.nTitle }</p>
 				</div>
 
@@ -211,6 +212,7 @@
         	var nNum = $('#noticeNum').val();
         	var userEmail =  $('#email').val();
         	var selDate = $('#selDate').val();
+        	var category = $('#category').val();
         	
         	 if ( rsp.success ) {				// 결제 성공 시
  		    	$.ajax({
@@ -218,7 +220,7 @@
  		    		type: 'get',
  		    		data: { imp_uid : rsp.imp_uid, pg_provider : rsp.pg_provider
 	    				, nNum : nNum, userEmail : userEmail, selDate : selDate
-		    			, buyerTel : rsp.buyer_tel },
+		    			, buyerTel : rsp.buyer_tel, category : category },
 		    		success : function(data){
 		    			if( data > 0 ) {
 		    			var msg = '결제가 완료되었습니다.' + '\n';
@@ -267,6 +269,7 @@
 	        	var nNum = $('#noticeNum').val();
 	        	var userEmail =  $('#email').val();
 	        	var selDate = $('#selDate').val();
+	        	var category = $('#category').val();
 	        	
 	        	 if ( rsp.success ) {				// 결제 성공 시
 	 		    	$.ajax({
@@ -274,7 +277,7 @@
 	 		    		type: 'get',
 	 		    		data: { imp_uid : rsp.imp_uid, pg_provider : rsp.pg_provider
 		    				, nNum : nNum, userEmail : userEmail, selDate : selDate
-			    			, buyerTel : rsp.buyer_tel },
+			    			, buyerTel : rsp.buyer_tel, category : category },
 			    		success : function(data){
 			    		if ( data > 0 ) {
 			    			var msg = '결제가 완료되었습니다.' + '\n';

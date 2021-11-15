@@ -37,6 +37,7 @@ private Properties paymentQuery = new Properties();
 			pstmt.setString(1, payment.getUserId());
 			pstmt.setInt(2, payment.getnNum());
 			pstmt.setDate(3, payment.getSelectDate());
+			pstmt.setString(4, payment.getcType());
 			
 			result = pstmt.executeUpdate();
 			
