@@ -16,7 +16,42 @@ public class Refund {
 	private int nNum;			// 게시물번호 notice_num
 	private String rProcess;
 	
+	private int pNum;			// 주문번호
+	
 	public Refund() {}
+
+	
+
+	public Refund(String nTitle, Date pDate, Date fDate, String userId, int price, String rAccount, String bank,
+			String aHolder, String rProcess, int pNum) {
+		super();
+		this.nTitle = nTitle;
+		this.pDate = pDate;
+		this.fDate = fDate;
+		this.userId = userId;
+		this.price = price;
+		this.rAccount = rAccount;
+		this.bank = bank;
+		this.aHolder = aHolder;
+		this.rProcess = rProcess;
+		this.pNum = pNum;
+	}
+
+
+
+	public Refund(String nTitle, Date pDate, Date fDate, String userId, int price, String rAccount, String bank,
+			String aHolder, String rProcess) {
+		super();
+		this.nTitle = nTitle;
+		this.pDate = pDate;
+		this.fDate = fDate;
+		this.userId = userId;
+		this.price = price;
+		this.rAccount = rAccount;
+		this.bank = bank;
+		this.aHolder = aHolder;
+		this.rProcess = rProcess;
+	}
 
 
 
@@ -151,13 +186,29 @@ public class Refund {
 		this.nNum = nNum;
 	}
 
+	
+
+	public int getpNum() {
+		return pNum;
+	}
+
+
+
+	public void setpNum(int pNum) {
+		this.pNum = pNum;
+	}
+
+
 
 	@Override
 	public String toString() {
 		return "Refund [nTitle=" + nTitle + ", pDate=" + pDate + ", fDate=" + fDate + ", userName=" + userName
 				+ ", userId=" + userId + ", price=" + price + ", rAccount=" + rAccount + ", bank=" + bank + ", aHolder="
-				+ aHolder + ", nNum=" + nNum + ", rProcess=" + rProcess + "]";
+				+ aHolder + ", nNum=" + nNum + ", rProcess=" + rProcess + ", pNum=" + pNum + "]";
 	}
+
+
+
 	
 	
 	

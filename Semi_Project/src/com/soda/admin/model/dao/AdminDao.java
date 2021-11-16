@@ -317,7 +317,7 @@ private Properties adminQuery = new Properties();
 				refund.setBank(rset.getString("bank"));
 				refund.setaHolder(rset.getString("account_holder"));
 				refund.setrProcess(rset.getString("refund_process"));
-				
+				refund.setpNum(rset.getInt("pay_num"));
 			}
 			
 		} catch (SQLException e) {
@@ -329,5 +329,64 @@ private Properties adminQuery = new Properties();
 		
 		return refund;
 	
+	}
+
+	public int refundModify(Connection conn, Refund refund) {
+		
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = adminQuery.getProperty("updateAdminRefund");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, refund.getrAccount());
+			pstmt.setString(2, refund.getBank());
+			pstmt.setString(3, refund.getaHolder());
+			pstmt.setString(4, refund.getrProcess());
+			pstmt.setString(5, refund.getUserId());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	public Refund seletRefundInfo(Connection conn, Refund refund) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = adminQuery.getProperty("selectAdminRefund");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, refund.getUserId());
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				refund = new Refund(rset.getString("notice_title"),
+									rset.getDate("pay_date"),
+									rset.getDate("refund_date"),
+									rset.getString("user_id"),
+									rset.getInt("price"),
+									rset.getString("refund_account"),
+									rset.getString("bank"),
+									rset.getString("account_holder"),
+									rset.getString("refund_process"));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return refund;
 	}
 }
