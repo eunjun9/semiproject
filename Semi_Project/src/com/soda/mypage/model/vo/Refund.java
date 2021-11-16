@@ -21,19 +21,36 @@ public class Refund {
 	private String refundAccount;
 	private String bank;
 	private String accountHolder;
+	private String rProcess;
 	
 	
 	
 	public Refund() {}
 	
-	public Refund(String userId, int payNum, String refundAccount, String bank, String accountHolder) {
+	
+
+	public String getrProcess() {
+		return rProcess;
+	}
+
+
+
+	public void setrProcess(String rProcess) {
+		this.rProcess = rProcess;
+	}
+
+
+
+	public Refund(String userId, int payNum, String refundAccount, String bank, String accountHolder, String rProcess) {
 		super();
 		this.userId = userId;
 		this.payNum = payNum;
 		this.refundAccount = refundAccount;
 		this.bank = bank;
 		this.accountHolder = accountHolder;
+		this.rProcess = rProcess;
 	}
+
 
 
 	public String getUserId() {
@@ -79,7 +96,7 @@ public class Refund {
 	@Override
 	public String toString() {
 		return "Refund [userId=" + userId + ", payNum=" + payNum + ", refundAccount=" + refundAccount + ", bank=" + bank
-				+ ", accountHolder=" + accountHolder + "]";
+				+ ", accountHolder=" + accountHolder + ", rProcess=" + rProcess + "]";
 	}
 
 	 
