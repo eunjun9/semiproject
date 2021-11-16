@@ -208,7 +208,7 @@
 					JOIN PAYMENT P ON (R.NOTICE_NUM = P.NOTICE_NUM)
 					JOIN CLASS C ON (C.NOTICE_NUM = R.NOTICE_NUM)
 					WHERE P.PAY_CANCLE = 'N'
-			        and p.user_id = ?
+			        and p.pay_num = ?
 					ORDER BY R.REFUND_DATE ASC
 				
 	</entry>

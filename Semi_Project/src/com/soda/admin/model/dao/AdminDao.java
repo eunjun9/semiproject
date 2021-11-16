@@ -374,7 +374,7 @@ private Properties adminQuery = new Properties();
 									rset.getDate("pay_date"),
 									rset.getDate("refund_date"),
 									rset.getString("user_id"),
-									rset.getInt("pNum"),
+									rset.getInt("pay_num"),
 									rset.getInt("c_price"),
 									rset.getString("refund_account"),
 									rset.getString("bank"),

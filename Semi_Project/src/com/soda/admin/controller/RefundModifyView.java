@@ -46,7 +46,8 @@ public class RefundModifyView extends HttpServlet {
 		String bank = request.getParameter("bank");
 		String aHolder = request.getParameter("aHolder");
 		String rProcess = request.getParameter("rProcess");
-		Int pNum = request.getParameter("pNum");
+		int pNum = Integer.parseInt(request.getParameter("pNum"));
+		
 		
 		Refund refund = new Refund();
 		refund.setrAccount(rAccount);
@@ -58,9 +59,15 @@ public class RefundModifyView extends HttpServlet {
 		Refund updateRefund = new AdminService().refundModify(refund);
 		
 		
+		if (updateRefund != null) {
+			request.setAttribute("result", "success");
+		} else {
+			request.setAttribute("result", "fail");
+		}
+		
 	//	System.out.println(updateRefund);
 		
-		
+			request.setAttribute("updateRefund", updateRefund);
 			request.getRequestDispatcher("/WEB-INF/views/admin/refundModify.jsp").forward(request, response);
 //			response.sendRedirect(request.getContextPath() + "/mypage/adminmain");
 		
