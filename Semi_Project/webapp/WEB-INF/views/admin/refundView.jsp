@@ -45,7 +45,7 @@
                             <option value="">2020년 07월</option>
                         </select>
                     </div> -->
-                    <table class="tbl" style="width:1000px; margin-left:-345px; margin-top:100px;">
+                    <table class="tbl" style="width:1100px; margin-left:-345px; margin-top:100px;">
                         <thead>
                           <tr>
                             <th class="tbl-title">클래스명</th>
@@ -86,7 +86,7 @@
                             <form name="refundForm" method="post">
                             <input type="hidden" name="userId" id="userId">
                             <input type="hidden" name="pNum" id="pNum">
-    						<input id="button" type="submit" name="userId" class="revise-button" onclick="document.getElementById('userId').value='${ refund.userId }'" value="미완료">
+    						<input id="button" type="submit" name="userId" class="revise-button" onclick="document.getElementById('userId').value='${ refund.userId }'" value="수정">
                             
                             </form>
                             </td>
