@@ -44,7 +44,7 @@
 
         <article>
           <h1 id="main-title">회원관리</h1>
-          <table class="tbl">
+          <table class="tbl1">
             <thead>
               <tr>
                 <th class="tbl-title th2">아이디</th>

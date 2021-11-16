@@ -69,13 +69,18 @@ select[name=filter] {
     cursor: pointer;
 }
 
-.tbl {
-    border-collapse:collapse;
-    border-spacing:0;
-    width: 800px;
+#main-title{
+	margin-left:-81px;
 }
 
-.tbl td {
+.tbl1 {
+    border-collapse:collapse;
+    border-spacing:0;
+    width: 110%;
+    margin-left: -84px;
+}
+
+.tbl1 td {
     border-bottom-width:1px;
     border-color:rgb(150,150,150);
     border-style:solid;
@@ -88,7 +93,7 @@ select[name=filter] {
     word-break:normal;
 }
 
-.tbl th {
+.tbl1 th {
     border-bottom-width:1px;
     border-color:rgb(150,150,150);
     border-style:solid;
@@ -103,7 +108,7 @@ select[name=filter] {
 }
 
 
-.tbl .tbl-title {
+.tbl1 .tbl-title {
     background-color:#dadada;
     border-color:rgb(150,150,150);
     font-weight: bold;
@@ -111,7 +116,7 @@ select[name=filter] {
     vertical-align:top;
 }
 
-.tbl .tbl-content {
+.tbl1 .tbl-content {
     border-color:inherit;
     text-align:center;
     vertical-align:top;
