@@ -57,6 +57,7 @@
                             <th class="tbl-title">은행</th>
                             <th class="tbl-title">예금주</th>
                             <th class="tbl-title">처리현황</th>
+                            <th class="tbl-title">환불 처리 수정</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -71,14 +72,21 @@
                             <td class="tbl-content">${ refund.bank }</td>
                             <td class="tbl-content">${ refund.aHolder }</td>
                             <%-- <td class="tbl-content"><input type="submit" id="button_${var.index }" onclick='changeBtnName()' value="미완료"></td> --%>
-                          	<td class="tbl-content"><input type="submit" id="button1" value="미완료"></td>
+                          	<td class="tbl-content">
+                          	<c:choose>
+			                <c:when test="${refund.rProcess =='Y'}">접수중</c:when>
+			                <c:when test="${refund.rProcess =='N'}">처리완료</c:when>
+			                </c:choose>
+                          	
+                          	</td>
+                            
                             <td class="tbl-content">
                             <form name="refundForm" method="post">
                             <input type="hidden" name="userId" id="userId">
     						<input id="button" type="submit" name="userId" class="revise-button" onclick="document.getElementById('userId').value='${ refund.userId }'" value="미완료">
                             
                             </form>
-                            
+                            </td>
                             
                             
                           </tr>
