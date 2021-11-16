@@ -60,6 +60,7 @@
 	           			$('.artS').hide();
 	           		 	$('.foodS').hide();
 	           		 	$('.sportS').hide();
+	           		 	
                      $(document).on('change', '#bigC', changeoption);
                      
                      function changeoption(){

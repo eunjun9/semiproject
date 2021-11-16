@@ -75,7 +75,7 @@
         	</c:when>
         	
         	<c:when test="${ lesson.cCategory == '원데이'}" >
-        	<!-- 원데이 클래스는 수강하기 버튼만 있고 클릭 시 , 날짜 선택 모달창 -> 장바구니 / 결제하기로 넘어갈 수 있음 -->
+        	<!-- 원데이 클래스는 날짜 선택 후 -> 장바구니 / 결제하기 -->
        				<div class="payment2">
         				<form name="orderForm" method="get">
 						<input type="hidden" name="noticeNum" value="${ lesson.nNum }">
