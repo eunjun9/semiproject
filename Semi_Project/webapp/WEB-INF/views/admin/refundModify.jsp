@@ -50,8 +50,9 @@ window.opener.location.reload();
 <body>
     <div class="page body">
         <h2 id="title">환불 처리 정보 수정</h2>
-        <form name="modifyForm" id="modify" action="${contextPath }/refund/process" method="post">
-
+        <form name="modifyForm" id="modify" action="${contextPath }/refund/modifyview" method="post">
+		<input type ="hidden" name="userId" value="${refund.userId}">
+		
             <div class="line">
 
             <div class="label-input1">

@@ -1,8 +1,6 @@
 package com.soda.admin.controller;
 
 import java.io.IOException;
-import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,18 +9,21 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.soda.admin.model.service.AdminService;
 import com.soda.admin.model.vo.Refund;
+import com.soda.magazine.model.vo.Reply;
+import com.soda.member.model.service.MemberService;
+import com.soda.member.model.vo.Member;
 
 /**
- * Servlet implementation class RefundModify
+ * Servlet implementation class memberModify
  */
-@WebServlet("/refund/modify")
-public class RefundModify extends HttpServlet {
+@WebServlet("/refund/modifyview")
+public class RefundModifyView extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public RefundModify() {
+    public RefundModifyView() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,8 +32,9 @@ public class RefundModify extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+
+		
+		
 	}
 
 	/**
@@ -40,19 +42,28 @@ public class RefundModify extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String userId= request.getParameter("userId");
+		String rAccount = request.getParameter("rAccount");
+		String bank = request.getParameter("bank");
+		String aHolder = request.getParameter("aHolder");
+		String rProcess = request.getParameter("rProcess");
 		
-	
+		Refund refund = new Refund();
+		refund.setrAccount(rAccount);
+		refund.setBank(bank);
+		refund.setaHolder(aHolder);
+		refund.setrProcess(rProcess);
+		
+		Refund updateRefund = new AdminService().refundModify(refund);
 		
 		
-//		List<Refund> refundList = new AdminService().selectRefundUserList(userId);
+	//	System.out.println(updateRefund);
 		
-		Refund refund = new AdminService().selectRefund(userId);
 		
-		System.out.println(refund);
-
-		request.setAttribute("refund", refund);
-		request.getRequestDispatcher("/WEB-INF/views/admin/refundModify.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/views/admin/refundModify.jsp").forward(request, response);
+//			response.sendRedirect(request.getContextPath() + "/mypage/adminmain");
+		
+		
+		
 	}
 
 }

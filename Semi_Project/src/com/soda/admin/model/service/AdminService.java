@@ -105,13 +105,38 @@ public class AdminService {
 	
 
 	public Refund selectRefund(String userId) {
-Connection conn = getConnection();
-		
-Refund refund = new AdminDao().selectRefund(conn, userId);
+	Connection conn = getConnection();
+			
+	Refund refund = new AdminDao().selectRefund(conn, userId);
 		
 		close(conn);
 		
 		return refund;
 	}
+
+
+	public Refund refundModify(Refund refund) {
+		Connection conn = getConnection();
+		Refund updateRefund = null;
+		
+		int result = adminDao.refundModify(conn, refund);
+		
+		if(result > 0) {
+			updateRefund = adminDao.seletRefundInfo(conn, refund);
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return updateRefund;
+	}
+
+
+	
+
+
+	
 
 }

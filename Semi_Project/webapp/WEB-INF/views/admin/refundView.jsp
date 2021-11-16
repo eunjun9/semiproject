@@ -82,8 +82,9 @@
                             
                             <td class="tbl-content">
                             <form name="refundForm" method="post">
-                            <input type="hidden" name="userId" id="userId">
-    						<input id="button" type="submit" name="userId" class="revise-button" onclick="document.getElementById('userId').value='${ refund.userId }'" value="미완료">
+                            <input type="hidden" name="pNum" id="pNum">
+    						<input id="button" type="submit" name="pNUm" class="revise-button" 
+    						onclick="document.getElementById('pNum').value='${ refund.pNum }'" value="미완료">
                             
                             </form>
                             </td>
