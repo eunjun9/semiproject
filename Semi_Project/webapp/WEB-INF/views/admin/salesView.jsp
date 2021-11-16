@@ -123,8 +123,7 @@
 		 						}
 		 					});
 		 					$("tbody").html(str);
-		 					
-        					$("[name=filter]").val("");
+
 	 					} else {
 	 						alert('매출 정보가 없습니다.');
 	 					}

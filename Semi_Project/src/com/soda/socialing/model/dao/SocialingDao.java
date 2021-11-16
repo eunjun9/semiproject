@@ -442,14 +442,14 @@ public class SocialingDao {
 				sMember.setMemberId(rset.getString("user_id"));
 				sMember.setStatus(rset.getString("s_status"));
 				sMember.setMemberName(rset.getString("user_name"));
-				// 참여자 프로필사진이 있을 경우 추가
+				// 프로필사진이 있을 경우 추가
 				if(rset.getString("route") != null && rset.getString("change_name") != null) {
 					ProfileFile profile = new ProfileFile();
 					profile.setRoute(rset.getString("route"));
 					profile.setChangeName(rset.getString("change_name"));
 					sMember.setProfile(profile);
 				}
-				// 참여자 자기소개가 있을 경우 추가
+				// 자기소개가 있을 경우 추가
 				if(rset.getString("introduction") != null) {
 					sMember.setIntroduction(rset.getString("introduction"));
 				}

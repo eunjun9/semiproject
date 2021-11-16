@@ -166,7 +166,7 @@
                 </div>
                 
                 <c:choose>
-	                 <c:when test="${ !param.keyword }">
+	                 <c:when test="${ !empty param.keyword }">
 	                	<c:set var="search1" value="&keyword=${ param.keyword }"/>
 	                 </c:when>
 	                 <c:when test="${ !empty param.local }">
@@ -180,7 +180,7 @@
 	                </c:when>
                 </c:choose>
 
-				<!-- 페이지 로직 (필터링 조건문 추후에 작성) -->
+				<!-- 페이지 로직 -->
                 <div class="pagebox">
                 
                 	<!-- (<<) 제일 첫 페이지로 이동 -->
@@ -237,7 +237,6 @@
         </div>
     </div>
         
-    <!-- Initialize Swiper -->
     <script>
         var swiper = new Swiper(".mySwiper", {
             slidesPerView: 3,
@@ -245,7 +244,6 @@
 
             loop: true,
             
-            // Navigation arrows
             navigation: {
                 nextEl: '.button-next',
                 prevEl: '.button-prev',
