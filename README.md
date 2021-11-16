@@ -40,8 +40,8 @@ KH교육원 세미프로젝트
 개발 언어 : Java , HTML5, CSS3, JavaScript, jQuery, SQL, JSP, Servlet, Ajax, Json, Gson<br>
 소스 제어 관리 : GitHub<br>
 협업 툴 : Slack<br>
-디자인 툴 : ERD Cloud, Kakao Oven<br>
-Open API : Kakao API, Google SMTP, SummerNote, Postcodify, iamport API<br>
+프로토타이핑 툴 : ERD Cloud, Kakao Oven<br>
+Open API : Kakao API, Google SMTP, Postcodify, iamport API<br>
 <p>
 <p>
 
