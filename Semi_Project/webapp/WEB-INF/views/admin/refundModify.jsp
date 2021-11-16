@@ -91,7 +91,6 @@ window.opener.location.reload();
             <button type="button" id="cancel" onclick="window.close()">취소</button>
             
             <button id="sub" type="submit">확인</button>
-            
             </div>
 
             </div>
