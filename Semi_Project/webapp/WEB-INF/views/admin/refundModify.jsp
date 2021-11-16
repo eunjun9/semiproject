@@ -57,7 +57,7 @@ window.opener.location.reload();
             
             <div class="label-input1">
             <label class="id">주문번호  : </label>
-            <input type="text" class="id-text" name="rAccount" value="${refund.pNum}" readonly><br>
+            <input type="text" class="id-text" name="pNum" value="${refund.pNum}" readonly><br>
             </div>
 
             <div class="label-input1">
