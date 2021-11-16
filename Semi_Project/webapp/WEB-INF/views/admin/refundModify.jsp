@@ -52,8 +52,13 @@ window.opener.location.reload();
         <h2 id="title">환불 처리 정보 수정</h2>
         <form name="modifyForm" id="modify" action="${contextPath }/refund/modifyview" method="post">
 		<input type ="hidden" name="userId" value="${refund.userId}">
-		
+		<input type="hidden" name="pNum" id="pNum" value="${refund.pNum }">
             <div class="line">
+            
+            <div class="label-input1">
+            <label class="id">주문번호  : </label>
+            <input type="text" class="id-text" name="rAccount" value="${refund.pNum}" readonly><br>
+            </div>
 
             <div class="label-input1">
             <label class="id">계좌번호  : </label>
