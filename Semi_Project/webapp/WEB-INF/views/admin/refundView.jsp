@@ -73,11 +73,14 @@
                             <%-- <td class="tbl-content"><input type="submit" id="button_${var.index }" onclick='changeBtnName()' value="미완료"></td> --%>
                           	<td class="tbl-content"><input type="submit" id="button1" value="미완료"></td>
                             <td class="tbl-content">
-                            <form name="refundcheck" method="post">
-                            <input type="hidden" name="refundcomfirm" id="comfirm">
-    						<input id="button" type="submit"  onclick='changeBtnName()' value="미완료">
+                            <form name="refundForm" method="post">
+                            <input type="hidden" name="userId" id="userId">
+    						<input id="button" type="submit" name="userId" class="revise-button" onclick="document.getElementById('userId').value='${ refund.userId }'" value="미완료">
                             
                             </form>
+                            
+                            
+                            
                           </tr>
                         </c:forEach>
                         </tbody>
@@ -90,9 +93,8 @@
     <!--footer-->
     <%@ include file="/WEB-INF/views/common/footer.jsp"%>
 	
-	<script>
 		
-	/* $("input[name^='button']").on("click", function(e) {
+<!-- 	/* $("input[name^='button']").on("click", function(e) {
 		function changeBtnName()  {
 =======
 	   function changeBtnName()  {
@@ -104,7 +106,20 @@
 	      }
 <<<<<<< HEAD
 	    function($(this));
-	  }); */
+	  }); */ -->
+	  
+	<script>
+		
+		$(".revise-button").on("click", function() {
+			 var form = document.forms.refundForm;
+			 var modifyChild=window.open("","popup","width=510,height=460,left=700,top=300,scrollbars=no");
+	 		 form.target = "popup";
+	 		 form.action = "${ contextPath }/refund/modify";
+	 		 form.method = "post";
+	 		 form.submit();
+		});
+	  
+	  </script>
 
     	<script>
         $(document).ready(function(){ 

@@ -89,4 +89,29 @@ public class AdminService {
 		return refundList;
 	}
 
+
+	/*
+	 * public List<Refund> selectRefundUserList(String userId) { Connection conn =
+	 * getConnection();
+	 * 
+	 * List<Refund> refundList = adminDao.selectRefundList(conn, userId);
+	 * 
+	 * close(conn);
+	 * 
+	 * return refundList; }
+	 */
+
+
+	
+
+	public Refund selectRefund(String userId) {
+Connection conn = getConnection();
+		
+Refund refund = new AdminDao().selectRefund(conn, userId);
+		
+		close(conn);
+		
+		return refund;
+	}
+
 }

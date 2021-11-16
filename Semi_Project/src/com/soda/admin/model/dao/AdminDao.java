@@ -250,6 +250,83 @@ private Properties adminQuery = new Properties();
 		return refundList;
 	}
 
-	
+	public List<Refund> selectRefundList(Connection conn, String userId) {
+		PreparedStatement pstmt = null;
+		String sql= adminQuery.getProperty("selectRefundUserList");
+		ResultSet rset = null;
+		List<Refund> refundList = new ArrayList<>();
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, userId);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				Refund refund2 = new Refund();
+				
+				
+				refund2.setnTitle(rset.getString("notice_title"));
+				refund2.setpDate(rset.getDate("pay_date"));
+				refund2.setfDate(rset.getDate("refund_date"));
+				refund2.setUserId(rset.getString("user_id"));
+				refund2.setPrice(rset.getInt("c_price"));
+				refund2.setrAccount(rset.getString("refund_account"));
+				refund2.setBank(rset.getString("bank"));
+				refund2.setaHolder(rset.getString("account_holder"));
+				
+				refundList.add(refund2);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return refundList;
+	}
 
+	
+	
+	public Refund selectRefund(Connection conn, String userId) {
+		PreparedStatement pstmt = null;
+		String sql= adminQuery.getProperty("selectRefund");
+		ResultSet rset = null;
+		Refund refund = new Refund();
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, userId);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				
+				
+				refund.setnTitle(rset.getString("notice_title"));
+				refund.setpDate(rset.getDate("pay_date"));
+				refund.setfDate(rset.getDate("refund_date"));
+				refund.setUserId(rset.getString("user_id"));
+				refund.setPrice(rset.getInt("c_price"));
+				refund.setrAccount(rset.getString("refund_account"));
+				refund.setBank(rset.getString("bank"));
+				refund.setaHolder(rset.getString("account_holder"));
+				refund.setrProcess(rset.getString("refund_process"));
+				
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return refund;
+	
+	}
 }

@@ -41,6 +41,8 @@ public class RefundServlet extends HttpServlet {
 		
 		List<Refund> refundList = new AdminService().selectRefundList(refund);
 		
+		
+		
 
 		request.setAttribute("refundList", refundList);
 		request.getRequestDispatcher("/WEB-INF/views/admin/refundView.jsp").forward(request, response);

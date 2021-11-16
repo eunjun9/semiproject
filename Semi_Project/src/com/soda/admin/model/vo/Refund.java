@@ -14,13 +14,15 @@ public class Refund {
 	private String bank;		// 은행
 	private String aHolder;		// 예금주
 	private int nNum;			// 게시물번호 notice_num
-	
+	private String rProcess;
 	
 	public Refund() {}
 
 
+
+
 	public Refund(String nTitle, Date pDate, Date fDate, String userName, String userId, int price, String rAccount,
-			String bank, String aHolder, int nNum) {
+			String bank, String aHolder, int nNum, String rProcess) {
 		super();
 		this.nTitle = nTitle;
 		this.pDate = pDate;
@@ -32,7 +34,22 @@ public class Refund {
 		this.bank = bank;
 		this.aHolder = aHolder;
 		this.nNum = nNum;
+		this.rProcess = rProcess;
 	}
+
+
+	public String getrProcess() {
+		return rProcess;
+	}
+
+
+
+
+	public void setrProcess(String rProcess) {
+		this.rProcess = rProcess;
+	}
+
+
 
 
 	public String getnTitle() {
@@ -137,8 +154,9 @@ public class Refund {
 
 	@Override
 	public String toString() {
-		return "Refund [nTitle=" + nTitle + ", userName=" + userName + ", userId=" + userId + ", price=" + price
-				+ ", rAccount=" + rAccount + ", bank=" + bank + ", aHolder=" + aHolder + ", nNum=" + nNum + "]";
+		return "Refund [nTitle=" + nTitle + ", pDate=" + pDate + ", fDate=" + fDate + ", userName=" + userName
+				+ ", userId=" + userId + ", price=" + price + ", rAccount=" + rAccount + ", bank=" + bank + ", aHolder="
+				+ aHolder + ", nNum=" + nNum + ", rProcess=" + rProcess + "]";
 	}
 	
 	
