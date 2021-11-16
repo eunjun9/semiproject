@@ -145,6 +145,7 @@
 	        , P.PAY_DATE
 	        , R.REFUND_DATE
 	        , P.USER_ID
+	        , P.PAY_NUM
 	        , C_PRICE
 	        , R.REFUND_ACCOUNT
 	        , R.BANK
@@ -164,6 +165,7 @@
 				        , P.PAY_DATE
 				        , R.REFUND_DATE
 				        , P.USER_ID
+				        , P.PAY_NUM
 				        , C_PRICE
 				        , R.REFUND_ACCOUNT
 				        , R.BANK
@@ -195,6 +197,7 @@
 				        , P.PAY_DATE
 				        , R.REFUND_DATE
 				        , P.USER_ID
+				        , P.PAY_NUM
 				        , C_PRICE
 				        , R.REFUND_ACCOUNT
 				        , R.BANK

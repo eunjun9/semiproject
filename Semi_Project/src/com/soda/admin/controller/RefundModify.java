@@ -49,7 +49,7 @@ public class RefundModify extends HttpServlet {
 		
 		Refund refund = new AdminService().selectRefund(userId);
 		
-		System.out.println(refund);
+//		System.out.println(refund);
 
 		request.setAttribute("refund", refund);
 		request.getRequestDispatcher("/WEB-INF/views/admin/refundModify.jsp").forward(request, response);

@@ -232,6 +232,7 @@ private Properties adminQuery = new Properties();
 				refund2.setpDate(rset.getDate("pay_date"));
 				refund2.setfDate(rset.getDate("refund_date"));
 				refund2.setUserId(rset.getString("user_id"));
+				refund2.setpNum(rset.getInt("pay_num"));
 				refund2.setPrice(rset.getInt("c_price"));
 				refund2.setrAccount(rset.getString("refund_account"));
 				refund2.setBank(rset.getString("bank"));
@@ -344,7 +345,7 @@ private Properties adminQuery = new Properties();
 			pstmt.setString(2, refund.getBank());
 			pstmt.setString(3, refund.getaHolder());
 			pstmt.setString(4, refund.getrProcess());
-			pstmt.setString(5, refund.getUserId());
+			pstmt.setInt(5, refund.getpNum());
 			
 			result = pstmt.executeUpdate();
 			
@@ -364,7 +365,7 @@ private Properties adminQuery = new Properties();
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, refund.getUserId());
+			pstmt.setInt(1, refund.getpNum());
 			
 			rset = pstmt.executeQuery();
 			
@@ -373,7 +374,8 @@ private Properties adminQuery = new Properties();
 									rset.getDate("pay_date"),
 									rset.getDate("refund_date"),
 									rset.getString("user_id"),
-									rset.getInt("price"),
+									rset.getInt("pNum"),
+									rset.getInt("c_price"),
 									rset.getString("refund_account"),
 									rset.getString("bank"),
 									rset.getString("account_holder"),

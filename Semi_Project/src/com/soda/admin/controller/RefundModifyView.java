@@ -46,12 +46,14 @@ public class RefundModifyView extends HttpServlet {
 		String bank = request.getParameter("bank");
 		String aHolder = request.getParameter("aHolder");
 		String rProcess = request.getParameter("rProcess");
+		Int pNum = request.getParameter("pNum");
 		
 		Refund refund = new Refund();
 		refund.setrAccount(rAccount);
 		refund.setBank(bank);
 		refund.setaHolder(aHolder);
 		refund.setrProcess(rProcess);
+		refund.setpNum(pNum);
 		
 		Refund updateRefund = new AdminService().refundModify(refund);
 		

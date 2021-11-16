@@ -22,8 +22,8 @@ public class Refund {
 
 	
 
-	public Refund(String nTitle, Date pDate, Date fDate, String userId, int price, String rAccount, String bank,
-			String aHolder, String rProcess, int pNum) {
+	public Refund(String nTitle, Date pDate, Date fDate, String userId, int price, int pNum, String bank,
+			String aHolder, String rProcess, String rAccount) {
 		super();
 		this.nTitle = nTitle;
 		this.pDate = pDate;
