@@ -10,6 +10,7 @@
 		  FROM WISHLIST
 		 WHERE USER_ID = ?
 		   AND NOTICE_NUM = ?
+		   AND WISH_STATUS = 'Y'
 	</entry>
 
 	<!-- 장바구니 담기 추가 -->

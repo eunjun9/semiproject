@@ -52,6 +52,7 @@ public class WishListAddServlet extends HttpServlet {
 		
 		// 장바구니 중복 체크
 		int wishlistCheck = new WishListService().wishlistCheck(wishlist);
+		System.out.println(wishlistCheck);
 		
 		// 중복된 클래스가 1개 이상이면 선택한 옵션으로 DB 업데이트
 		if( wishlistCheck > 0 ) {
