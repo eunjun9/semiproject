@@ -38,9 +38,6 @@ public class PaymentServlet extends HttpServlet {
 		String userPhone = ((Member)request.getSession().getAttribute("loginUser")).getUserPhone();
 		String selDate = request.getParameter("selDate");
 		
-		System.out.println("selDate : " + selDate);
-		
-		// System.out.println("결제페이지" + userId + userName + userPhone);
 		
 		// 신청하기 누른 장바구니 클래스 번호 가져오기
 		int nNum = Integer.parseInt(request.getParameter("noticeNum"));
@@ -52,8 +49,6 @@ public class PaymentServlet extends HttpServlet {
 
 		// 결제하려는 클래스 조회
 		List<WishList> wishList = new WishListService().whsilistPay(nNum, selDate);
-
-		// System.out.println(wishList);
 
 		int totalPrice = 0;
 		for(WishList cart : wishList) {
@@ -69,8 +64,8 @@ public class PaymentServlet extends HttpServlet {
 			request.setAttribute("nNum", nNum);
 			request.getRequestDispatcher("/WEB-INF/views/order/orderPage.jsp").forward(request, response);
 		} else { 
-			request.setAttribute("message", "결제 페이지 접속에 실패하였습니다. 다시 시도해주세요.");
 			PrintWriter writer = response.getWriter();
+			writer.print("<script>alert('결제 페이지 접속에 실패하였습니다. 다시 시도해주세요.'); </script>");
 			writer.println("<script>history.back();</script>");
 			writer.close();
 		}
