@@ -34,9 +34,6 @@ public class WishListServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String userId = ((Member)request.getSession().getAttribute("loginUser")).getUserId();
 		
-		// 테스트
-		//System.out.println(userId);
-		
 		List<WishList> wishList = new WishListService().wishlistList(userId);
 
 		// 장바구니 총 합계 금액
@@ -46,8 +43,6 @@ public class WishListServlet extends HttpServlet {
 		    totalPrice += price;
 		  }
 		
-		// 테스트
-		// System.out.println(totalPrice);
 
 			if(wishList != null) {
 				request.setAttribute("wishList", wishList);
