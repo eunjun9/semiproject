@@ -34,9 +34,6 @@ public class WishListAddServlet extends HttpServlet {
 	 *      response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		PrintWriter writer = response.getWriter();
-		response.setContentType("text/html; charset=UTF-8");
-		
 		// 장바구니에 클래스 추가하는 서블릿
 		int nNum = Integer.parseInt(request.getParameter("noticeNum"));
 		// 원데이클래스는 사용자가 직접 원하는 날짜 선택하기때문에 선택한 날짜 받아오기
@@ -61,10 +58,11 @@ public class WishListAddServlet extends HttpServlet {
 			int result = new WishListService().checkUpdate(wishlist);
 			
 			if( result > 0 ) {
-				writer.print("<script>alert('이미 장바구니에 같은 클래스가 있습니다. 새로 선택한 날짜로 추가되었습니다.'); </script>");
 				response.sendRedirect(request.getContextPath() + "/wishlist");
 			} else { 
-				writer.print("<script>alert('장바구니 추가에 실패하였습니다. 다시 시도해주세요.'); </script>");
+				PrintWriter writer = response.getWriter();
+				response.setContentType("text/html; charset=UTF-8");
+				writer.println("<script> alert('장바구니 추가에 실패하였습니다. 다시 시도해주세요.'); </script>");
 				writer.println("<script>history.back();</script>");
 				writer.close();
 			}
@@ -76,6 +74,8 @@ public class WishListAddServlet extends HttpServlet {
 				request.setAttribute("wishList", wishList);
 				response.sendRedirect(request.getContextPath() + "/wishlist");
 			} else { /* 장바구니 insert 실패 시 */
+				PrintWriter writer = response.getWriter();
+				response.setContentType("text/html; charset=UTF-8");
 				writer.println("<script> alert('장바구니 추가에 실패하였습니다. 다시 시도해주세요.'); </script>");
 				writer.println("<script>history.back();</script>");
 				writer.close();
