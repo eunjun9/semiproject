@@ -1,5 +1,5 @@
 # 소셜다이닝 [소다]
-KH교육원 세미프로젝트
+일상에 지친 사람들을 위한 취미공유 프로젝트
 
 ## 기획의도 
 주 52시간제가 도입되고, 많은 직장인들이 퇴근 후 취미생활을 할 수 있게 되었다. <br>
@@ -35,13 +35,22 @@ KH교육원 세미프로젝트
 <p>
 
 ## 개발환경
-운영체제 : Window OS<br>
-개발 툴 : Eclipse / Apache Tomcat 8.5 / Oracle SQL Developer / Visual Studio code<br>
-개발 언어 : Java , HTML5, CSS3, JavaScript, jQuery, SQL, JSP, Servlet, Ajax, Json, Gson<br>
-소스 제어 관리 : GitHub<br>
-협업 툴 : Slack<br>
-프로토타이핑 툴 : ERD Cloud, Kakao Oven<br>
-Open API : Kakao API, Google SMTP, Postcodify, iamport API<br>
+운영체제 : Windows 10
+개발 툴 : Eclipse, SQL Developer, Visual Studio Code
+소스 제어 관리 : GitHub
+협업 툴 : Slack
+프로토타이핑 툴 : Kakao Oven
+DB 모델링 툴 : ERD Cloud
+
+[Front-End]
+마크업 언어: HTML5, CSS3
+스크립트 언어 : JavaScript, jQuery, JSP
+
+[Back-End]
+프로그래밍 언어 : Java 8
+서버 : Apache Tomcat 8.5
+데이터베이스 : Oracle 11g
+API : Kakao 로그인, Google SMTP, Postcodify 주소 찾기, iamport
 <p>
 <p>
 
