@@ -35,22 +35,22 @@
 <p>
 
 ## 개발환경
-운영체제 : Windows 10
-개발 툴 : Eclipse, SQL Developer, Visual Studio Code
-소스 제어 관리 : GitHub
-협업 툴 : Slack
-프로토타이핑 툴 : Kakao Oven
-DB 모델링 툴 : ERD Cloud
+운영체제 : Windows 10 <br>
+개발 툴 : Eclipse, SQL Developer, Visual Studio Code <br>
+소스 제어 관리 : GitHub<br>
+협업 툴 : Slack<br>
+프로토타이핑 툴 : Kakao Oven<br>
+DB 모델링 툴 :  ERD Cloud <br>
+  
+[Front-End] <br>
+마크업 언어:  HTML5, CSS3 <br>
+스크립트 언어 : JavaScript, jQuery, JSP <br>
 
-[Front-End]
-마크업 언어: HTML5, CSS3
-스크립트 언어 : JavaScript, jQuery, JSP
-
-[Back-End]
-프로그래밍 언어 : Java 8
-서버 : Apache Tomcat 8.5
-데이터베이스 : Oracle 11g
-API : Kakao 로그인, Google SMTP, Postcodify 주소 찾기, iamport
+[Back-End] <br>
+프로그래밍 언어 : Java 8<br>
+서버 : Apache Tomcat 8.5 <br>
+데이터베이스 : Oracle 11g <br>
+API : Kakao 로그인, Google SMTP, Postcodify 주소 찾기, iamport <br>
 <p>
 <p>
 
